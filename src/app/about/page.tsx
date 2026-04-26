@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ExternalLink, Shield, Zap, Users, Bot, BookOpen, TrendingUp, Lock, Unlock } from "lucide-react";
+import {
+  ExternalLink, Shield, Zap, Users, Bot, BookOpen,
+  TrendingUp, Lock, Unlock, Eye, Database, Code2, FileCode2,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About | Medialane",
@@ -28,7 +31,7 @@ const PILLARS = [
     icon: Unlock,
     title: "Permissionless by Design",
     description:
-      "No whitelist, no application, no approval. If you can connect a wallet or sign in with email, you can mint on Medialane. The Mediolano protocol is open to every creator, developer, and organization on Earth.",
+      "No whitelist, no application, no approval. If you can connect a wallet or sign in with email, you can mint on Medialane. Open to every creator, developer, AI agent, and organization on Earth.",
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
   },
@@ -50,11 +53,68 @@ const PILLARS = [
   },
   {
     icon: BookOpen,
-    title: "Open Protocol",
+    title: "Open and Transparent",
     description:
-      "The Mediolano protocol at Medialane's core is fully open source — smart contracts, indexer, and SDK are publicly verifiable. No hidden logic, no vendor lock-in, no platform that can take your work away.",
+      "Every contract, every protocol, every SDK is open source and publicly verifiable. No hidden logic, no vendor lock-in. Your assets and records exist on decentralized infrastructure that no one entity controls.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
+  },
+];
+
+const TECH_STACK = [
+  {
+    name: "Cairo Smart Contracts",
+    role: "Immutable on-chain logic",
+    detail: "Every rule — how IP is minted, licensed, traded, and royalties flow — is defined in audited Cairo contracts. Once deployed, no one can change them. Not even us.",
+    color: "text-brand-purple",
+    bg: "bg-brand-purple/10",
+    border: "border-brand-purple/20",
+    icon: FileCode2,
+  },
+  {
+    name: "Zero-Knowledge Proofs",
+    role: "Trustless security layer",
+    detail: "ZK proofs make every transaction mathematically verifiable without requiring trust in any party. Privacy-preserving, censorship-resistant, and quantum-resistant by design.",
+    color: "text-brand-blue",
+    bg: "bg-brand-blue/10",
+    border: "border-brand-blue/20",
+    icon: Eye,
+  },
+  {
+    name: "Mediolano Protocol",
+    role: "IP tokenization · Zero fees",
+    detail: "An independent public goods protocol we build on for permissionless IP tokenization, Berne Convention-aligned copyright anchoring, and programmable licensing — at zero cost to creators.",
+    color: "text-primary",
+    bg: "bg-primary/10",
+    border: "border-primary/20",
+    icon: Shield,
+  },
+  {
+    name: "IPFS",
+    role: "Decentralized storage",
+    detail: "Asset metadata and content are stored on IPFS — a decentralized, peer-to-peer network. Your IP records don't depend on any single server, company, or cloud provider.",
+    color: "text-brand-orange",
+    bg: "bg-brand-orange/10",
+    border: "border-brand-orange/20",
+    icon: Database,
+  },
+  {
+    name: "Stark Zap SDK",
+    role: "Permissionless Web3 dApp",
+    detail: "The SDK powering our Web3-native interface — enabling direct wallet interactions, session key management, and full self-custody without friction.",
+    color: "text-brand-rose",
+    bg: "bg-brand-rose/10",
+    border: "border-brand-rose/20",
+    icon: Code2,
+  },
+  {
+    name: "ChipiPay + Account Abstraction",
+    role: "Gasless UX layer",
+    detail: "A UX layer that abstracts gas fees and wallet complexity — so creators can sign in with email, mint, trade, and earn without managing seed phrases or paying gas.",
+    color: "text-brand-orange",
+    bg: "bg-brand-orange/10",
+    border: "border-brand-orange/20",
+    icon: Zap,
   },
 ];
 
@@ -111,11 +171,35 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* ── Mission & Vision ── */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="bento-cell p-7 space-y-3 border-brand-purple/20 border">
+          <p className="text-xs font-black uppercase tracking-widest text-brand-purple">Mission</p>
+          <p className="text-xl font-black leading-snug">
+            Empower creators, collectors, AI agents, and organizations to build new revenue from creative work.
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            We give every creative work a permanent, verifiable record of authorship, programmable
+            licensing terms, and automatic revenue flows — with security, transparency, and
+            full ownership. No gatekeepers. No intermediaries.
+          </p>
+        </div>
+        <div className="bento-cell p-7 space-y-3 border-brand-blue/20 border">
+          <p className="text-xs font-black uppercase tracking-widest text-brand-blue">Vision</p>
+          <p className="text-xl font-black leading-snug">
+            A world where creativity is capital — accessible to anyone, anywhere, forever.
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Where every creator — human or AI — can participate in a global capital market for
+            their ideas. Where ownership is cryptographic, licensing is code, and value flows
+            directly to those who create it. The open creator economy, built on the Integrity Web.
+          </p>
+        </div>
+      </div>
+
       {/* ── What we build ── */}
       <div className="bento-cell p-8 space-y-5">
-        <h2 className="text-2xl font-black">
-          What We Build
-        </h2>
+        <h2 className="text-2xl font-black">What We Build</h2>
         <div className="space-y-4 text-muted-foreground leading-relaxed">
           <p>
             The internet made creative work infinitely reproducible — but it never gave creators
@@ -123,27 +207,30 @@ export default function AboutPage() {
             their ideas. Medialane exists to fix that.
           </p>
           <p>
-            We are building the infrastructure for <strong className="text-foreground">creator capital markets</strong> —
-            where every creative work is a programmable asset with embedded rights, automatic royalties,
-            and verifiable provenance. Where licensing is code, ownership is cryptographic, and
-            revenue flows without intermediaries.
+            We are building the infrastructure for{" "}
+            <strong className="text-foreground">creator capital markets</strong> — where every
+            creative work is a programmable asset with embedded rights, automatic royalties,
+            and verifiable provenance. Where licensing is code, ownership is cryptographic,
+            and revenue flows without intermediaries.
           </p>
           <p>
-            At the core of Medialane is{" "}
-            <strong className="text-foreground">Mediolano</strong> — a permissionless, open-source
-            IP protection and licensing protocol aligned with the Berne Convention, providing
+            Medialane builds on top of{" "}
+            <strong className="text-foreground">Mediolano</strong> — an independent, permissionless
+            public goods protocol for IP protection and licensing, aligned with the Berne Convention.
+            Mediolano is not a Medialane product. It is a community-owned, zero-fee protocol
+            that anyone can use, fork, or build on. We chose to build on it because it provides
             automatic copyright recognition in{" "}
-            <strong className="text-foreground">181 countries</strong> from the moment of creation.
-            Mediolano is a public good: zero fees, community-owned, open to anyone.
+            <strong className="text-foreground">181 countries</strong> from the moment of creation,
+            with zero cost to creators.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
           <div className="bento-cell p-4 space-y-1.5 border-brand-purple/20 border">
-            <p className="text-sm font-bold text-brand-purple">Mediolano Protocol</p>
-            <p className="text-xs text-muted-foreground">Permissionless IP protection · Zero fees · Public good · Open source · Berne Convention aligned</p>
+            <p className="text-sm font-bold text-brand-purple">Mediolano Protocol <span className="text-xs font-normal text-muted-foreground">(independent)</span></p>
+            <p className="text-xs text-muted-foreground">Public good · Zero fees · Open source · Berne Convention aligned · Community owned</p>
           </div>
           <div className="bento-cell p-4 space-y-1.5 border-brand-blue/20 border">
-            <p className="text-sm font-bold text-brand-blue">Medialane Platform</p>
+            <p className="text-sm font-bold text-brand-blue">Medialane Platform <span className="text-xs font-normal text-muted-foreground">(built on top)</span></p>
             <p className="text-xs text-muted-foreground">Creator launchpad · Marketplace · POP Protocol · Collection Drop · Royalties · Gasless trading</p>
           </div>
         </div>
@@ -151,9 +238,7 @@ export default function AboutPage() {
 
       {/* ── Pillars ── */}
       <div className="space-y-5">
-        <h2 className="text-2xl font-black">
-          What We Stand For
-        </h2>
+        <h2 className="text-2xl font-black">What We Stand For</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {PILLARS.map(({ icon: Icon, title, description, color, bg }) => (
             <div key={title} className="bento-cell p-6 space-y-3 hover:scale-[1.01] transition-transform">
@@ -167,38 +252,44 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* ── Infrastructure ── */}
-      <div className="bento-cell p-8 space-y-4">
-        <div className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-xl bg-primary/10 flex items-center justify-center">
-            <Shield className="h-5 w-5 text-primary" />
+      {/* ── Built to Last ── */}
+      <div className="space-y-5">
+        <div className="space-y-2">
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-9 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Shield className="h-5 w-5 text-primary" />
+            </div>
+            <h2 className="text-2xl font-black">Built to Last</h2>
           </div>
-          <h2 className="text-xl font-black">Built to Last</h2>
-        </div>
-        <div className="space-y-3 text-muted-foreground leading-relaxed">
-          <p>
-            Medialane runs on <strong className="text-foreground">Starknet</strong> — a decentralized
-            network secured by zero-knowledge proofs that make every transaction mathematically verifiable.
-            No company, government, or platform can freeze your assets, delist your IP, or change the rules
-            of your smart contracts. Your work exists on-chain and belongs to you.
-          </p>
-          <p>
-            Gasless by default via{" "}
-            <strong className="text-foreground">ChipiPay</strong> and Starknet account abstraction —
-            sign in with email or social, mint, trade, and earn without managing seed phrases, gas fees,
-            or browser extensions. Passkey (biometric) support included.
+          <p className="text-muted-foreground leading-relaxed max-w-2xl">
+            The foundation of Medialane is not a company or a server — it is code and cryptography.
+            Immutable Cairo smart contracts define every rule onchain. Zero-knowledge proofs secure
+            every transaction without requiring trust in any party. Decentralized storage ensures
+            your assets persist without depending on any single infrastructure provider.
           </p>
         </div>
-        <div className="flex flex-wrap gap-3 pt-1">
-          <div className="flex items-center gap-2 text-xs px-3 py-1.5 rounded-full bg-primary/8 text-primary border border-primary/20 font-medium">
-            <Lock className="h-3 w-3" /> Permissionless
-          </div>
-          <div className="flex items-center gap-2 text-xs px-3 py-1.5 rounded-full bg-brand-blue/10 text-brand-blue border border-brand-blue/20 font-medium">
-            <Shield className="h-3 w-3" /> Censorship-resistant
-          </div>
-          <div className="flex items-center gap-2 text-xs px-3 py-1.5 rounded-full bg-brand-orange/10 text-brand-orange border border-brand-orange/20 font-medium">
-            <Zap className="h-3 w-3" /> Gasless
-          </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {TECH_STACK.map(({ name, role, detail, color, bg, border, icon: Icon }) => (
+            <div key={name} className={`bento-cell p-5 space-y-3 border ${border}`}>
+              <div className={`h-10 w-10 rounded-xl ${bg} flex items-center justify-center`}>
+                <Icon className={`h-5 w-5 ${color}`} />
+              </div>
+              <div>
+                <p className={`font-bold text-sm ${color}`}>{name}</p>
+                <p className="text-xs text-muted-foreground/70 mt-0.5">{role}</p>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">{detail}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          {["Permissionless", "Censorship-resistant", "Immutable contracts", "ZK-secured", "Decentralized storage", "Gasless"].map((tag) => (
+            <span key={tag} className="text-xs px-3 py-1.5 rounded-full bg-primary/8 text-primary border border-primary/20 font-medium">
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
 
