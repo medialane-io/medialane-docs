@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 const LEARN_NAV = [
   { label: "Overview",               href: "/learn" },
+  { label: "Integrity Web",          href: "/learn/integrity-web" },
   { label: "NFTs",                   href: "/learn/nft" },
   { label: "Blockchain",             href: "/learn/blockchain" },
   { label: "Zero Knowledge",         href: "/learn/zero-knowledge" },

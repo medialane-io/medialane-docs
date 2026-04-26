@@ -4,6 +4,7 @@ import {
   ExternalLink, ArrowRight, Zap, Shield, Lock, FileText, Bot,
   BookOpen, Tag, Terminal, Check, Package, GitBranch,
   Store, Sparkles, Code2, Building2, Globe, Ban, Unlock, Crown,
+  Bitcoin, Layers, Cpu,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -238,6 +239,47 @@ const SC_GUARANTEES = [
       "Your NFTs exist in your wallet — not on Medialane's servers. Your wallet is the only key. If Medialane's frontend went offline tomorrow, your assets would still exist on-chain and remain fully transferable.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
+  },
+];
+
+// ── Multichain ────────────────────────────────────────────────────────────────
+
+const CHAINS = [
+  {
+    icon: Layers,
+    title: "Starknet",
+    status: "Primary",
+    statusColor: "bg-green-500/15 text-green-400 border-green-500/30",
+    color: "text-brand-blue",
+    bg: "bg-brand-blue/10",
+    desc: "Home chain. ZK-STARK proofs — quantum-resistant, no trusted setup, trustless by design. Ethereum-level security with low fees. All Medialane smart contracts are deployed here.",
+  },
+  {
+    icon: Bitcoin,
+    title: "Bitcoin",
+    status: "Roadmap",
+    statusColor: "bg-yellow-500/15 text-yellow-400 border-yellow-500/30",
+    color: "text-brand-orange",
+    bg: "bg-brand-orange/10",
+    desc: "The only truly censorship-resistant layer. No company or government can shut it down. Bitcoin integration will let creators anchor IP to the hardest, most decentralized money network — the ultimate sovereignty layer.",
+  },
+  {
+    icon: Globe,
+    title: "Ethereum",
+    status: "Roadmap",
+    statusColor: "bg-yellow-500/15 text-yellow-400 border-yellow-500/30",
+    color: "text-brand-purple",
+    bg: "bg-brand-purple/10",
+    desc: "Largest NFT and DeFi ecosystem. Ethereum integration brings ERC-721 / ERC-1155 interoperability, deep collector liquidity, and the broadest developer reach in Web3.",
+  },
+  {
+    icon: Cpu,
+    title: "Solana",
+    status: "Roadmap",
+    statusColor: "bg-yellow-500/15 text-yellow-400 border-yellow-500/30",
+    color: "text-brand-rose",
+    bg: "bg-brand-rose/10",
+    desc: "High-throughput, low-cost minting at scale. Solana's large creator and NFT community and compressed NFT (cNFT) standard make it an ideal target for mass IP issuance.",
   },
 ];
 
@@ -502,6 +544,49 @@ export default function AppsPage() {
               )}
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* ── Multichain ── */}
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Infrastructure</span>
+          <h2 className="text-2xl font-bold">Multichain by Roadmap</h2>
+          <p className="text-muted-foreground text-sm max-w-2xl">
+            Medialane starts on Starknet — chosen for its ZK-STARK proof system, quantum resistance,
+            and trustless design. The roadmap expands to Bitcoin, Ethereum, and Solana,
+            bringing the Mediolano protocol to every creator community across every major chain.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {CHAINS.map(({ icon: Icon, title, status, statusColor, color, bg, desc }) => (
+            <div key={title} className="bento-cell p-5 space-y-3">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className={`h-9 w-9 rounded-xl ${bg} flex items-center justify-center shrink-0`}>
+                    <Icon className={`h-4.5 w-4.5 ${color}`} />
+                  </div>
+                  <h3 className="font-semibold text-sm">{title}</h3>
+                </div>
+                <span className={`text-xs font-medium px-2.5 py-0.5 rounded-full border shrink-0 ${statusColor}`}>
+                  {status}
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="bento-cell p-5 border-l-4 border-brand-orange space-y-1.5">
+          <p className="text-sm font-semibold text-foreground">Why Bitcoin matters most</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Bitcoin is the only network with a proven track record of censorship resistance.
+            No entity — corporate, governmental, or otherwise — has ever successfully shut it down.
+            As digital ownership becomes more contested, anchoring IP to Bitcoin is not just a
+            feature; it is a sovereignty statement. Starknet's ZK-STARK proofs already give us
+            quantum resistance and trustless design. Bitcoin adds the ultimate resilience layer.
+          </p>
         </div>
       </div>
 

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Shield, Zap, Globe, Users, Bot, BookOpen } from "lucide-react";
+import {
+  Shield, Zap, Globe, Users, Bot, BookOpen,
+  Bitcoin, Layers, Cpu, Lock, ExternalLink,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About | Medialane",
@@ -21,10 +24,10 @@ const PILLARS = [
       "Powered by ChipiPay and Starknet's account abstraction, Medialane removes friction from every interaction. Sign in with email, mint, trade, and earn — without managing seed phrases or paying gas. Passkey (biometric) support included.",
   },
   {
-    icon: Globe,
-    title: "Built on Starknet",
+    icon: Lock,
+    title: "ZK-STARK Proofs",
     description:
-      "Starknet's ZK-rollup technology gives Medialane the security of Ethereum at a fraction of the cost. Every transaction is provably valid. Zero-knowledge proofs protect privacy while maintaining full on-chain transparency.",
+      "Starknet's ZK-STARK proofs are quantum-resistant and require no trusted setup. Every transaction is mathematically proven — not just assumed. Trustless by design, secured by math, resilient against future computing threats.",
   },
   {
     icon: Bot,
@@ -44,6 +47,85 @@ const PILLARS = [
     description:
       "The Mediolano protocol at the core of Medialane is fully open source. Smart contracts, indexer, and SDK are publicly verifiable. No hidden logic, no vendor lock-in — your IP records exist permanently on Starknet.",
   },
+];
+
+const CHAINS = [
+  {
+    icon: Layers,
+    title: "Starknet",
+    status: "Primary chain",
+    statusColor: "bg-green-500/15 text-green-400 border-green-500/30",
+    color: "text-brand-blue",
+    bg: "bg-brand-blue/10",
+    border: "border-brand-blue/20",
+    points: [
+      "ZK-STARK proofs — quantum-resistant, no trusted setup",
+      "Trustless by design — math replaces intermediaries",
+      "Ethereum-level security at a fraction of the cost",
+      "Cairo smart contracts for the full platform",
+      "Validity proofs for every transaction, on-chain and verifiable",
+    ],
+  },
+  {
+    icon: Bitcoin,
+    title: "Bitcoin",
+    status: "Future integration",
+    statusColor: "bg-yellow-500/15 text-yellow-400 border-yellow-500/30",
+    color: "text-brand-orange",
+    bg: "bg-brand-orange/10",
+    border: "border-brand-orange/20",
+    points: [
+      "The only truly censorship-resistant base layer",
+      "No company, government, or entity can shut it down",
+      "The hardest money and most decentralized network",
+      "Long-term anchor for digital ownership and sovereignty",
+      "Growing ecosystem: Taproot, Ordinals, Lightning, L2s",
+    ],
+  },
+  {
+    icon: Globe,
+    title: "Ethereum",
+    status: "Future integration",
+    statusColor: "bg-yellow-500/15 text-yellow-400 border-yellow-500/30",
+    color: "text-brand-purple",
+    bg: "bg-brand-purple/10",
+    border: "border-brand-purple/20",
+    points: [
+      "Largest smart contract and NFT ecosystem",
+      "ERC-721 / ERC-1155 token standard interoperability",
+      "Deep DeFi liquidity and collector base",
+      "EVM compatibility for the broadest developer reach",
+      "Cross-chain royalty enforcement via bridge protocols",
+    ],
+  },
+  {
+    icon: Cpu,
+    title: "Solana",
+    status: "Future integration",
+    statusColor: "bg-yellow-500/15 text-yellow-400 border-yellow-500/30",
+    color: "text-brand-rose",
+    bg: "bg-brand-rose/10",
+    border: "border-brand-rose/20",
+    points: [
+      "High throughput — fast, low-cost minting at scale",
+      "Large and growing creator and NFT community",
+      "cNFT compressed token standard for mass IP issuance",
+      "Expanding DeFi and institutional NFT adoption",
+    ],
+  },
+];
+
+const AXIOMS = [
+  { num: "01", title: "Code is Math, Math is Reality", summary: "Computation is the foundation for integrity. Cryptography is proof, not opinion." },
+  { num: "02", title: "Proof Replaces Trust", summary: "Mathematical verification eliminates intermediaries. Validity proofs are the basis for collective confidence." },
+  { num: "03", title: "Freedom is a Protocol", summary: "Permissionless participation, open innovation, and censorship-resistance by design." },
+  { num: "04", title: "Integrity by Design", summary: "Tamper-proof records, verifiable actions, self-sovereign identity as embedded principles." },
+  { num: "05", title: "Public Goods are Sacred", summary: "Infrastructure, proof systems, and protocols are shared resources serving all intelligences." },
+  { num: "06", title: "Privacy is Power", summary: "Zero-knowledge systems as mechanisms for information sovereignty, not secrecy." },
+  { num: "07", title: "Decentralization is Resilience", summary: "No single points of control or failure. Distributed power structures." },
+  { num: "08", title: "Universality of Intelligences", summary: "Humans, AI agents, and future intelligences have equal participation rights." },
+  { num: "09", title: "Creativity is Integrity", summary: "Tokenizing knowledge and art as public goods. Creator value preserved without gatekeepers." },
+  { num: "10", title: "The Integrity Web is for Everyone", summary: "Censorship-free, permissionless, universal. The trust foundation of digital civilization." },
 ];
 
 export default function AboutPage() {
@@ -130,13 +212,14 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Technology */}
+      {/* Technology Stack */}
       <div className="space-y-4">
         <h2 className="text-2xl font-bold">Technology Stack</h2>
         <p className="text-muted-foreground leading-relaxed">
           Medialane is built on <strong className="text-foreground">Starknet</strong>, an
-          Ethereum Layer 2 network using ZK-STARK proofs for validity and scalability.
-          Smart contracts are written in <strong className="text-foreground">Cairo 2</strong>,
+          Ethereum Layer 2 network secured by ZK-STARK proofs — quantum-resistant cryptography
+          that requires no trusted setup. Every transaction is mathematically proven valid before
+          settlement. Smart contracts are written in <strong className="text-foreground">Cairo 2</strong>,
           Starknet's native language, and cover the full platform: marketplace, collection
           registry, POP Protocol, Collection Drop, on-chain comments, and gated content.
           All contracts are part of the open-source{" "}
@@ -151,6 +234,57 @@ export default function AboutPage() {
           manually. All platform data is accessible through the open{" "}
           <strong className="text-foreground">Medialane SDK</strong>.
         </p>
+      </div>
+
+      {/* Multichain */}
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Infrastructure</span>
+          <h2 className="text-2xl font-bold">A Multichain Future</h2>
+          <p className="text-muted-foreground leading-relaxed max-w-2xl">
+            We believe in a decentralised, multichain world. Medialane starts on Starknet for
+            its unique ZK-STARK proof system — trustless, quantum-resistant, Ethereum-anchored.
+            Over time we will integrate Bitcoin, Ethereum, and Solana to bring the Mediolano
+            protocol to every creator community and chain ecosystem.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {CHAINS.map(({ icon: Icon, title, status, statusColor, color, bg, border, points }) => (
+            <div key={title} className={`bento-cell border ${border} p-6 space-y-4`}>
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className={`h-10 w-10 rounded-xl ${bg} flex items-center justify-center`}>
+                    <Icon className={`h-5 w-5 ${color}`} />
+                  </div>
+                  <h3 className="font-bold">{title}</h3>
+                </div>
+                <span className={`text-xs font-medium px-2.5 py-0.5 rounded-full border shrink-0 ${statusColor}`}>
+                  {status}
+                </span>
+              </div>
+              <ul className="space-y-1.5">
+                {points.map((p) => (
+                  <li key={p} className="flex items-start gap-2 text-sm">
+                    <span className={`mt-1.5 h-1.5 w-1.5 rounded-full ${bg} border ${border} shrink-0`} />
+                    <span className="text-muted-foreground">{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="bento-cell p-5 border-l-4 border-brand-orange space-y-2">
+          <p className="text-sm font-semibold text-foreground">Bitcoin — The Foundation of Censorship Resistance</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Bitcoin is the only network that no company, government, or actor can shut down.
+            As the hardest, most decentralised money in existence, it represents the ultimate
+            long-term anchor for digital ownership — the base layer that will matter most when
+            censorship resistance is tested. Medialane's integration roadmap treats Bitcoin
+            not just as a payment layer, but as a sovereignty layer.
+          </p>
+        </div>
       </div>
 
       {/* DAO */}
@@ -186,6 +320,48 @@ export default function AboutPage() {
           </a>
           <Link href="/dao/governance" className="text-sm font-medium text-primary hover:underline">
             Read Governance Docs →
+          </Link>
+        </div>
+      </div>
+
+      {/* Integrity Web axioms */}
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Philosophy</span>
+          <h2 className="text-2xl font-bold">The Integrity Web</h2>
+          <p className="text-muted-foreground leading-relaxed max-w-2xl">
+            Medialane is a participant in the Integrity Web — a declaration of digital freedom
+            built on ten axioms. These are not aspirational slogans. They are the architectural
+            constraints that govern every design decision we make.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {AXIOMS.map(({ num, title, summary }) => (
+            <div key={num} className="bento-cell p-4 flex gap-4">
+              <span className="text-xs font-mono text-primary/40 shrink-0 mt-0.5 w-6">{num}</span>
+              <div className="space-y-0.5">
+                <p className="text-sm font-semibold text-foreground">{title}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{summary}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-4 pt-1">
+          <a
+            href="https://www.integrityweb.xyz/axioms"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+          >
+            Read the full manifesto <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+          <Link
+            href="/learn/integrity-web"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+          >
+            Learn how Medialane embodies it →
           </Link>
         </div>
       </div>
