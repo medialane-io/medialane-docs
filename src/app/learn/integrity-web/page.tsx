@@ -104,8 +104,8 @@ const AXIOMS = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    medialane: "IP tokenization transforms creative works into programmable assets — with embedded rights, automatic royalties, and verifiable provenance. No gallery, label, publisher, or platform can alter the terms or extract value without the creator's consent. The license terms are code. The royalties are law.",
-    highlights: ["Programmable licenses set at mint time", "Automatic royalties on every secondary sale", "Derivative chain tracking — value flows back to originators"],
+    medialane: "IP tokenization transforms creative works into programmable assets — with embedded rights,  and verifiable provenance. No gallery, label, publisher, or platform can alter the terms or extract value without the creator's consent. The license terms are code. The royalties are law.",
+    highlights: ["Programmable licenses set at mint time", "Derivative chain tracking — value flows back to originators"],
   },
   {
     num: "10",

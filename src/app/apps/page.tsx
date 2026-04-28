@@ -23,7 +23,6 @@ const APPS = [
     features: [
       "Mint & protect IP as NFTs with programmable licenses",
       "List, buy, and sell in the peer-to-peer marketplace",
-      "Earn automatic royalties on every secondary sale",
       "Launch POP Protocol credential campaigns",
       "Deploy collection drops with on-chain allowlists",
       "Gasless — email/social login, no seed phrases",
@@ -166,7 +165,6 @@ const AUDIENCES = [
       "Mint any creative work as an IP NFT",
       "Set programmable licenses and royalty rates",
       "Launch collections and timed drops",
-      "Earn automatic royalties on every resale",
       "Issue POP credentials to your community",
       "No gas fees — gasless by default",
     ],

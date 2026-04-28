@@ -209,13 +209,13 @@ export function HomePage() {
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.0]">
             Create.<br />
-            <span className="gradient-text">Own forever.</span><br />
-            <span className="gradient-text-warm">Earn automatically.</span>
+            <span className="gradient-text">Own.</span><br />
+            <span className="gradient-text-warm">Earn.</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
             Medialane is the permissionless creator launchpad where creative work becomes
-            capital — with verifiable ownership, automatic royalties, and access to
+            capital — with verifiable ownership,  and access to
             a global market. No gatekeepers. No intermediaries. For all intelligences.
           </p>
 

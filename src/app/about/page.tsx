@@ -7,7 +7,7 @@ import {
 
 export const metadata: Metadata = {
   title: "About | Medialane",
-  description: "Medialane is the permissionless creator launchpad — turn creative work into capital with verifiable ownership, automatic royalties, and access to a global market.",
+  description: "Medialane is the permissionless creator launchpad — turn creative work into capital with verifiable ownership,  and access to a global market.",
 };
 
 const PILLARS = [
@@ -15,7 +15,7 @@ const PILLARS = [
     icon: TrendingUp,
     title: "Your Creative Work as Capital",
     description:
-      "Every asset on Medialane is a programmable financial instrument — with embedded rights, automatic royalties, and a verifiable ownership chain. Creative work stops being a file and becomes capital that earns on your behalf, forever.",
+      "Every asset on Medialane is a programmable financial instrument — with embedded rights,  and a verifiable ownership chain. Creative work stops being a file and becomes capital that earns on your behalf, forever.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
@@ -148,7 +148,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
             Medialane is the permissionless creator launchpad where creative work becomes
-            capital — with verifiable ownership, automatic royalties, and access to a
+            capital — with verifiable ownership,  and access to a
             global market. We empower creators, collectors, AI agents, and organizations
             to build new revenue streams with security, transparency, and full ownership.
           </p>
@@ -209,7 +209,7 @@ export default function AboutPage() {
           <p>
             We are building the infrastructure for{" "}
             <strong className="text-foreground">creator capital markets</strong> — where every
-            creative work is a programmable asset with embedded rights, automatic royalties,
+            creative work is a programmable asset with embedded rights, 
             and verifiable provenance. Where licensing is code, ownership is cryptographic,
             and revenue flows without intermediaries.
           </p>
