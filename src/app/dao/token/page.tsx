@@ -57,20 +57,20 @@ export default function TokenPage() {
           platform governance, vote on proposals, and shape the future of the IP economy.
         </p>
         <div className="flex items-center gap-3">
-          <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-yellow-500/15 text-yellow-400 border border-yellow-500/30">
-            Not yet launched
+          <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+            Live on Ethereum &amp; Starknet
           </span>
-          <span className="text-xs text-muted-foreground">Token launch date TBD — follow @medialane_io for announcements</span>
+          <span className="text-xs text-muted-foreground">Bridged via StarkGate · Liquidity pool on Ekubo</span>
         </div>
       </div>
 
       {/* Token basics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: "Ticker", value: "MDLN" },
-          { label: "Network", value: "Starknet" },
-          { label: "Standard", value: "ERC-20" },
-          { label: "Max Supply", value: "TBD" },
+          { label: "Ticker",     value: "MDLN" },
+          { label: "Ethereum",   value: "ERC-20" },
+          { label: "Starknet",   value: "ERC-20 (StarkGate)" },
+          { label: "Max Supply", value: "Community vote" },
         ].map(({ label, value }) => (
           <div key={label} className="bento-cell px-4 py-3 space-y-1">
             <p className="text-xs text-muted-foreground">{label}</p>
@@ -109,6 +109,44 @@ export default function TokenPage() {
                 <p className="text-sm font-semibold">{category}</p>
                 <p className="text-xs text-muted-foreground">{desc}</p>
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Creator Fund */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Creator Fund Program</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Each year, a portion of the Community &amp; Ecosystem allocation is distributed to Medialane
+          participants through the Creator Fund program. The exact amount for each cycle is determined
+          by a Snapshot governance vote — the community decides how much to allocate, not the founding
+          team.
+        </p>
+        <div className="space-y-3">
+          {[
+            {
+              phase: "Phase 1",
+              trigger: "5,000 verified participants",
+              desc: "First distribution cycle. Rewards participants who registered and secured their account, with higher allocations for those who published content and engaged on the platform.",
+            },
+            {
+              phase: "Phase 2",
+              trigger: "10,000 verified participants",
+              desc: "Second distribution cycle, including revenue accumulated since Phase 1. Snapshot governance ratifies the allocation amount before distribution.",
+            },
+            {
+              phase: "Annual cycle",
+              trigger: "Ongoing · Snapshot vote each year",
+              desc: "The creator fund continues annually. Platform revenue and the yearly community allocation are pooled and distributed to active members, creating a recurring creator dividend.",
+            },
+          ].map(({ phase, trigger, desc }) => (
+            <div key={phase} className="bento-cell p-5 space-y-2">
+              <div className="flex items-start justify-between gap-3">
+                <p className="font-semibold text-sm">{phase}</p>
+                <span className="text-xs text-muted-foreground shrink-0">{trigger}</span>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
