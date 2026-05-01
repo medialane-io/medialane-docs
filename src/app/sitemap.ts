@@ -52,6 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/dao/constitution`,                 changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/dao/governance`,                   changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/dao/token`,                        changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/dao/airdrop`,                      changeFrequency: "monthly", priority: 0.8 },
 
     // ── Links ─────────────────────────────────────────────────────────────────
     { url: `${BASE_URL}/links`,                            changeFrequency: "monthly", priority: 0.6 },
