@@ -136,7 +136,7 @@ export default function DocsCompliancePage() {
 
         <Section title="DAO Liability">
           <p>
-            Medialane DAO LLC is being incorporated in Utah, USA, as the organizational
+            Medialane DAO LLC is registered in Utah, USA, as the organizational
             entity overseeing long-term platform governance. The DAO structure is designed
             so that contributors and voters are not personally liable for the actions of
             the protocol, to the extent permitted by applicable law.

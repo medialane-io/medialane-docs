@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Governance | Docs | Medialane",
@@ -22,7 +23,7 @@ export default function DocsGovernancePage() {
         <p className="text-muted-foreground text-lg leading-relaxed">
           Medialane is building toward full community governance through the{" "}
           <strong className="text-foreground">Medialane DAO LLC</strong> — currently
-          being incorporated in Utah, USA. This document describes the governance
+          registered in Utah, USA. This document describes the governance
           principles, membership structure, and the roadmap to decentralized autonomy.
         </p>
       </div>
@@ -47,8 +48,8 @@ export default function DocsGovernancePage() {
 
         <Section title="Medialane DAO LLC">
           <p>
-            The <strong className="text-foreground">Medialane DAO LLC</strong> is being
-            bootstrapped in Utah, USA, as the legal entity that will govern the platform.
+            The <strong className="text-foreground">Medialane DAO LLC</strong> is registered
+            in Utah, USA, as the legal entity that governs the platform.
             This structure is chosen deliberately — a DAO LLC provides:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
@@ -87,9 +88,9 @@ export default function DocsGovernancePage() {
           <div className="space-y-2">
             {[
               ["Discussion", "Community forums and calls where ideas are surfaced and refined before formal submission."],
-              ["Proposal", "Formal on-chain proposal submission. Minimum token holding may be required."],
-              ["Voting", "Token-weighted voting period. Quadratic or other mechanisms may be used to prevent plutocracy."],
-              ["Execution", "Approved proposals are executed automatically via smart contract, or via timelocked governance actions."],
+              ["Proposal", "Formal Snapshot proposal submission by Contributor-tier members holding at least 100 MDLN."],
+              ["Voting", "Token-weighted Snapshot voting. One MDLN equals one vote."],
+              ["Execution", "Approved proposals are executed through smart contracts, multisig, or working groups."],
             ].map(([step, desc], i) => (
               <div key={step} className="bento-cell px-4 py-3 flex items-start gap-3">
                 <span className="h-6 w-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
@@ -106,7 +107,7 @@ export default function DocsGovernancePage() {
 
         <Section title="Treasury">
           <p>
-            The Medialane DAO treasury receives a share of platform revenue. Funds are
+            The Medialane DAO treasury receives the 1% marketplace fee, grants, and ecosystem revenue. Funds are
             allocated by community governance to:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
@@ -116,6 +117,10 @@ export default function DocsGovernancePage() {
             <li>Contributor compensation</li>
             <li>Open-source tooling and public goods</li>
           </ul>
+          <p>
+            For the canonical fee and revenue model, see{" "}
+            <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
+          </p>
         </Section>
 
         <Section title="AI Agents as Participants">
@@ -136,7 +141,7 @@ export default function DocsGovernancePage() {
 
         <Section title="Public Goods Commitment">
           <p>
-            The Mediolano protocol — the foundation Medialane is built upon — is{" "}
+            The Mediolano protocol — the independent public goods protocol Medialane builds on — is{" "}
             <strong className="text-foreground">fully open source</strong> (MIT/GPL
             licensed) and operates as a digital public good. The entire codebase, from
             Cairo smart contracts to the indexer and frontend, is publicly verifiable.
@@ -164,7 +169,7 @@ export default function DocsGovernancePage() {
 
         <Section title="Get Involved">
           <p>
-            The Medialane DAO is in active formation. Creators, developers, and
+            Medialane DAO governance is live. Creators, developers, and
             community members are welcome to participate now:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Creator Launchpad | Learn | Medialane",
@@ -23,6 +24,10 @@ export default function LearnCreatorLaunchpadPage() {
           The Medialane Creator Launchpad lets you deploy your own NFT collection, mint
           individual IP assets, and bring your creative work onchain — without any coding
           or prior blockchain experience.
+        </p>
+        <p className="text-sm text-muted-foreground">
+          For gas sponsorship, marketplace fees, royalties, and DAO treasury flow, see{" "}
+          <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
         </p>
       </div>
 
@@ -104,6 +109,12 @@ export default function LearnCreatorLaunchpadPage() {
             behalf. Most actions — minting, listing, accepting offers — require no ETH
             or STRK from the user. You interact with the blockchain the same way you&apos;d
             interact with any web application.
+          </p>
+          <p>
+            Sponsorship applies to normal creator workflows and may be limited by abuse controls,
+            unsupported flows, or future DAO policy. See{" "}
+            <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
+            for the canonical fee model.
           </p>
         </Section>
 

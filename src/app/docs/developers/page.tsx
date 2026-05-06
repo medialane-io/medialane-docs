@@ -36,7 +36,7 @@ export default function DocsDevsPage() {
 
       <div className="space-y-8">
         <Section title="Base URL">
-          <Code>https://medialane-backend-production.up.railway.app/v1</Code>
+          <Code>https://api.medialane.io/v1</Code>
           <p>All API requests are served over HTTPS. HTTP requests are not supported.</p>
         </Section>
 
@@ -66,7 +66,7 @@ export default function DocsDevsPage() {
 
 const client = new MedialaneClient({
   network: "mainnet",
-  backendUrl: "https://medialane-backend-production.up.railway.app",
+  backendUrl: "https://api.medialane.io",
   apiKey: "ml_live_your_api_key_here",
 });
 

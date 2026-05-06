@@ -9,9 +9,11 @@ import {
   Sun, Moon, Zap, ChevronRight, ExternalLink,
   Image, Rocket, Store, Award, Package, Layers,
   GitBranch, Globe, Shield, FileText, Lock, Code2,
-  Terminal, Network, Users, Scale, Vote, Coins,
+  Users, Scale, Vote, Coins,
   LayoutGrid, Link2, Building2, Scroll, Eye, User, FileCheck,
 } from "lucide-react";
+import { DOCS_NAV } from "@/lib/docs-nav";
+import { CANONICAL } from "@/lib/canonical";
 import { cn } from "@/lib/utils";
 import {
   Sidebar, SidebarContent, SidebarFooter, SidebarGroup,
@@ -43,15 +45,6 @@ const LEARN_SUB = [
   { href: "/learn/programmable-licensing", label: "Programmable Licensing",   icon: FileText },
 ];
 
-const DOCS_SUB = [
-  { href: "/docs/protocol",   label: "Protocol",       icon: Network },
-  { href: "/docs/sdk",        label: "SDK",            icon: Package },
-  { href: "/docs/api",        label: "API Reference",  icon: Terminal },
-  { href: "/docs/contracts",  label: "Contracts",      icon: FileCode2 },
-  { href: "/docs/developers", label: "Developers",     icon: Code2 },
-  { href: "/docs/security",   label: "Security",       icon: Shield },
-];
-
 const GUIDELINES_SUB = [
   { href: "/guidelines/community",       label: "Community",       icon: Users },
   { href: "/guidelines/user-guidelines", label: "User Guidelines", icon: User },
@@ -65,6 +58,7 @@ const DAO_SUB = [
   { href: "/dao/constitution", label: "Constitution",       icon: Scroll },
   { href: "/dao/governance",   label: "Governance Charter", icon: Vote },
   { href: "/dao/token",        label: "MDLN Token",         icon: Coins },
+  { href: "/dao/airdrop",      label: CANONICAL.creatorAirdropName,  icon: Award },
 ];
 
 // ── Collapsible nav group ─────────────────────────────────────────────────────
@@ -228,7 +222,7 @@ export function AppSidebar() {
             <CollapsibleNavItem
               label="Docs"
               icon={FileCode2}
-              sub={DOCS_SUB}
+              sub={DOCS_NAV}
               defaultOpen={onDocs}
               tooltip="Docs"
               onClose={closeSidebar}
@@ -286,8 +280,8 @@ export function AppSidebar() {
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip="Search" onClick={closeSidebar}>
-                <Link href="/search"><Search /><span>Search</span></Link>
+              <SidebarMenuButton asChild isActive={pathname === "/search"} tooltip="Knowledge Index" onClick={closeSidebar}>
+                <Link href="/search"><Search /><span>Knowledge Index</span></Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <ThemeToggleItem />

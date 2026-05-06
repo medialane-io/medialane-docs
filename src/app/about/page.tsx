@@ -47,7 +47,7 @@ const PILLARS = [
     icon: Users,
     title: "Community Owned",
     description:
-      "Medialane DAO LLC is being bootstrapped in Utah. The long-term vision: a platform owned and governed entirely by its community — creators, collectors, developers, and autonomous agents deciding the future together.",
+      "Medialane DAO LLC is registered in Utah. The long-term vision: a platform owned and governed entirely by its community — creators, collectors, developers, and autonomous agents deciding the future together.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
@@ -297,7 +297,7 @@ export default function AboutPage() {
       <div className="bento-cell p-8 space-y-3">
         <h2 className="text-xl font-black">Medialane DAO LLC</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Medialane DAO LLC is being bootstrapped in{" "}
+          Medialane DAO LLC is registered in{" "}
           <strong className="text-foreground">Utah, USA</strong> as the legal entity governing
           the platform. This structure bridges on-chain governance with real-world legal
           recognition — giving community members liability protection while enabling

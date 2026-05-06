@@ -88,6 +88,7 @@ bun run build  # production build — kills dev server, restart after
   /dao/constitution
   /dao/governance
   /dao/token
+  /dao/airdrop
 /links                      Official community links
 /search                     Search (static)
 ```
@@ -113,6 +114,9 @@ next.config.ts                        Redirects
 - **Audience:** Creators, collectors, AI agents, organizations, developers
 - **Tone:** Bold, direct, inspiring — not corporate or technical-first
 - **Mediolano:** An independent public goods protocol Medialane builds on — not a Medialane product
+- **DAO source of truth:** `medialane.org` / `medialane-dao` owns live MDLN, treasury, Snapshot, and constitution facts
+- **MDLN:** Fixed 21,000,000 supply, 100% DAO-controlled, live on Ethereum and bridged to Starknet
+- **Revenue model:** 1% marketplace fee → DAO treasury → MDLN holder vote; Creator's Airdrop is an option, not a guaranteed formula
 - **Tech stack framing:** Cairo smart contracts (immutable) + ZK proofs are the foundation; Starknet, ChipiPay, IPFS, Stark Zap SDK are tools
 - **Integrity Web:** 10 axioms from [integrityweb.xyz/axioms](https://www.integrityweb.xyz/axioms) — architectural constraints, not slogans
 

@@ -2,17 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { DOCS_TABS } from "@/lib/docs-nav";
 import { cn } from "@/lib/utils";
-
-const DOCS_NAV = [
-  { label: "Overview",   href: "/docs" },
-  { label: "Protocol",   href: "/docs/protocol" },
-  { label: "SDK",        href: "/docs/sdk" },
-  { label: "API Docs",   href: "/docs/api" },
-  { label: "Contracts",  href: "/docs/contracts" },
-  { label: "Developers", href: "/docs/developers" },
-  { label: "Security",   href: "/docs/security" },
-];
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -28,7 +19,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 
       <nav className="overflow-x-auto scrollbar-hide -mx-4 px-4 border-b border-border/60">
         <div className="flex items-center gap-0 min-w-max">
-          {DOCS_NAV.map((item) => {
+          {DOCS_TABS.map((item) => {
             const active =
               item.href === "/docs"
                 ? pathname === "/docs"

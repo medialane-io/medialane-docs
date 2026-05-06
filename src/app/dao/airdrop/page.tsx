@@ -6,8 +6,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Creator Fund | Medialane DAO",
-  description: "The Medialane Creator Fund — how platform revenue and community allocations are distributed to creators and participants each year.",
+  title: "Creator's Airdrop | Medialane DAO",
+  description: "The Medialane Creator's Airdrop — a DAO-governed option for distributing approved treasury allocations to creators and participants.",
 };
 
 const TIERS = [
@@ -55,16 +55,16 @@ const PHASES = [
     phase: "Phase 1",
     trigger: "5,000 participants",
     items: [
-      "First distribution from the creator fund",
-      "Snapshot governance vote ratifies the allocation amount",
-      "All eligible participants receive their proportional share",
+      "First milestone cycle if MDLN holders approve a Creator's Airdrop allocation",
+      "Snapshot governance ratifies the amount, timing, and eligibility rules",
+      "Eligible participants receive their proportional share of the approved pool",
     ],
   },
   {
     phase: "Phase 2",
     trigger: "10,000 participants",
     items: [
-      "Second distribution — includes revenue accumulated since Phase 1",
+      "Second milestone cycle, subject to DAO approval",
       "Community vote determines the allocation amount and rules",
       "Contribution scores re-calculated from all activity since launch",
     ],
@@ -74,8 +74,8 @@ const PHASES = [
     trigger: "Every year, ongoing",
     items: [
       "Yearly community allocation voted on via Snapshot",
-      "100% of platform revenue for the year added to the pool",
-      "The cycle repeats — Medialane has no investors drawing revenue",
+      "MDLN holders decide whether revenue funds airdrops, buybacks, burns, development, or operations",
+      "The cycle repeats through DAO governance — no predetermined formula",
       "The community decides how much to distribute each year",
     ],
   },
@@ -91,12 +91,11 @@ export default function AirdropPage() {
           <Gift className="h-5 w-5 text-primary" />
           <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Community Program</span>
         </div>
-        <h2 className="text-2xl font-bold">Creator Fund</h2>
+        <h2 className="text-2xl font-bold">Creator&apos;s Airdrop</h2>
         <p className="text-muted-foreground leading-relaxed">
-          The Medialane Creator Fund distributes platform revenue and community allocations
-          directly to the people who build and use the platform — creators, collectors, and active
-          participants. There are no investors extracting revenue. What the platform earns goes back
-          to the community.
+          The Creator&apos;s Airdrop is a DAO-governed program that may distribute approved treasury
+          allocations to the people who build and use the platform — creators, collectors, and active
+          participants. Every cycle is controlled by MDLN holders and verified on-chain.
         </p>
       </div>
 
@@ -107,14 +106,16 @@ export default function AirdropPage() {
           <h3 className="font-semibold text-sm">The Model</h3>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Each year, the Medialane DAO community votes on how to allocate that year&apos;s creator fund
-          pool. The pool consists of platform revenue from the previous year plus the annual community
-          allocation approved by governance. The community — not the founding team — decides the
-          amount and distribution rules every cycle.
+          A 1% marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on
+          Snapshot to decide how that revenue is used — Creator&apos;s Airdrop, token buyback, token burn,
+          protocol development, or operations. No predetermined formula. The Creator&apos;s Airdrop is one
+          option, not a guarantee. See{" "}
+          <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
+          for the canonical fee model.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
           {[
-            { label: "Platform revenue", value: "100% to fund" },
+            { label: "Revenue source", value: "1% marketplace fee" },
             { label: "Governed by",      value: "Snapshot DAO vote" },
             { label: "Cycle",            value: "Annual + milestones" },
           ].map(({ label, value }) => (
@@ -207,7 +208,7 @@ export default function AirdropPage() {
         <p className="text-sm text-muted-foreground leading-relaxed">
           Every distribution is ratified by a community governance vote on Snapshot before
           it happens. MDLN token holders decide the amount, the rules, and the timing.
-          If the community votes to increase or decrease the fund for a given year,
+          If the community votes to fund, increase, decrease, or skip an airdrop for a given year,
           that decision stands.
         </p>
         <Link

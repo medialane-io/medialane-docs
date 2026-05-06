@@ -19,7 +19,7 @@ const APPS = [
     url: "https://medialane.io",
     label: "medialane.io",
     description:
-      "The main IP marketplace and creator launchpad. Mint, protect, and trade intellectual property as NFTs — gasless, permissionless, built on Starknet.",
+      "The main creator capital markets app and launchpad. Mint, protect, license, and trade creative work — gasless, permissionless, built on Starknet.",
     features: [
       "Mint & protect IP as NFTs with programmable licenses",
       "List, buy, and sell in the peer-to-peer marketplace",
@@ -147,7 +147,7 @@ const PLATFORM_FEATURES = [
     icon: BookOpen,
     title: "Open Protocol",
     description:
-      "Mediolano — the IP protocol at Medialane's core — is fully open source. Smart contracts, indexer, and SDK are publicly verifiable. No vendor lock-in, ever.",
+      "Mediolano — the independent public goods protocol Medialane builds on — is fully open source. Smart contracts, indexer, and SDK are publicly verifiable. No vendor lock-in, ever.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },

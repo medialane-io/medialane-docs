@@ -28,7 +28,7 @@ export default function DocsProtocolPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Protocol Specification</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          The Medialane protocol consists of two onchain contracts on Starknet mainnet
+          The Medialane protocol consists of audited Starknet mainnet contracts
           and an off-chain indexer/API layer. This document describes the contracts,
           their interfaces, and the event model used by the indexer.
         </p>
@@ -39,9 +39,14 @@ export default function DocsProtocolPage() {
           <div className="space-y-2">
             {[
               {
-                name: "Marketplace Contract",
-                address: "0x059deafbbafbf7051c315cf75a94b03c5547892bc0c6dfa36d7ac7290d4cc33a",
-                desc: "Handles order creation, fulfillment, cancellation, and royalty distribution for all listings and offers.",
+                name: "Marketplace v2 (ERC-721)",
+                address: "0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6",
+                desc: "Handles order creation, fulfillment, cancellation, and royalty distribution for ERC-721 listings and offers.",
+              },
+              {
+                name: "Marketplace v2 (ERC-1155)",
+                address: "0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99",
+                desc: "Handles ERC-1155 multi-edition listings, partial fills, settlement, and royalty distribution.",
               },
               {
                 name: "Collection Registry Contract",
@@ -50,12 +55,12 @@ export default function DocsProtocolPage() {
               },
               {
                 name: "POP Protocol Factory",
-                address: "see NEXT_PUBLIC env — deployed per environment",
+                address: "0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111",
                 desc: "Factory contract for creating POP (Proof of Participation) events. Each event deploys a soulbound NFT contract. Manages provider registration and event lifecycle.",
               },
               {
                 name: "Collection Drop Factory",
-                address: "see NEXT_PUBLIC env — deployed per environment",
+                address: "0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800",
                 desc: "Factory for launching timed NFT drop events. Enforces supply caps, mint windows, allowlists, per-wallet limits, and mint prices onchain.",
               },
               {

@@ -11,7 +11,7 @@ const ARTICLES = [
     article: "Article I",
     title: "Name and Purpose",
     content:
-      "The organization shall be known as Medialane DAO LLC, a Utah Limited Liability Company organized as a Decentralized Autonomous Organization. Its purpose is to govern, fund, and advance the Medialane IP marketplace and the Mediolano open-source protocol — ensuring that intellectual property ownership, licensing, and trading remain transparent, permissionless, and creator-first.",
+      "The organization shall be known as Medialane DAO LLC, a Utah Limited Liability Company organized as a Decentralized Autonomous Organization. Its purpose is to govern, fund, and advance Medialane creator capital markets and the open protocol infrastructure they depend on — ensuring that intellectual property ownership, licensing, and trading remain transparent, permissionless, and creator-first.",
   },
   {
     article: "Article II",
@@ -35,7 +35,7 @@ const ARTICLES = [
     article: "Article V",
     title: "Treasury",
     content:
-      "The DAO treasury shall hold assets received from platform fees, grants, and community contributions. Treasury funds may only be disbursed pursuant to a passed governance proposal. Multi-sig signatories shall be elected by governance and shall execute treasury transactions only as authorized. A public treasury dashboard shall be maintained for full transparency.",
+      "The DAO treasury holds assets received from platform fees, grants, and community contributions. A 1% marketplace fee flows to the treasury. Treasury funds may only be disbursed pursuant to a passed governance proposal. Multi-sig signatories execute treasury transactions only as authorized. Public treasury records shall be maintained for full transparency.",
   },
   {
     article: "Article VI",
@@ -66,9 +66,9 @@ export default function ConstitutionPage() {
           purpose, membership, governance structure, and values.
         </p>
         <div className="flex items-center gap-3 text-xs text-muted-foreground">
-          <span>Draft version 0.1</span>
+          <span>Ratified April 7, 2026</span>
           <span>·</span>
-          <span>Subject to ratification by community vote</span>
+          <span>Canonical version at medialane.org</span>
         </div>
       </div>
 
@@ -85,11 +85,14 @@ export default function ConstitutionPage() {
       </div>
 
       <div className="bento-cell p-5 space-y-2 text-sm text-muted-foreground">
-        <p className="font-semibold text-foreground">Status: Draft</p>
+        <p className="font-semibold text-foreground">Status: Ratified</p>
         <p>
-          This constitution is in draft form and has not yet been ratified by a community vote.
-          The final version will be published following the formation of Medialane DAO LLC and
-          the issuance of the MDLN governance token.
+          This summary mirrors the ratified Medialane DAO constitution. For the authoritative
+          document, token addresses, and live governance links, use the DAO hub at{" "}
+          <a href="https://medialane.org/docs/Constitution-of-Medialane-DAO" className="text-primary hover:underline">
+            medialane.org
+          </a>. For the current fee and revenue model, see{" "}
+          <a href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</a>.
         </p>
       </div>
 

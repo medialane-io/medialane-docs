@@ -19,8 +19,8 @@ const PROCESS_STEPS = [
   },
   {
     step: "03",
-    title: "On-Chain Submission",
-    description: "To submit a formal governance proposal, a member must hold or have delegated to them a minimum of 100,000 MDLN tokens. This threshold prevents spam while keeping governance accessible.",
+    title: "Snapshot Submission",
+    description: "To submit a formal governance proposal, a Contributor-tier member must hold or have delegated to them at least 100 MDLN. This threshold prevents spam while keeping governance accessible.",
   },
   {
     step: "04",
@@ -40,11 +40,11 @@ const PROCESS_STEPS = [
 ];
 
 const THRESHOLDS = [
-  { type: "Standard Proposal", quorum: "5% of MDLN supply", threshold: "Simple majority (>50%)" },
-  { type: "Treasury Allocation", quorum: "10% of MDLN supply", threshold: "Supermajority (>60%)" },
-  { type: "Protocol Upgrade", quorum: "10% of MDLN supply", threshold: "Supermajority (>67%)" },
-  { type: "Constitutional Amendment", quorum: "10% of MDLN supply", threshold: "Supermajority (>67%)" },
-  { type: "Emergency Action", quorum: "15% of MDLN supply", threshold: "Supermajority (>75%)" },
+  { type: "Standard Proposal", quorum: "Snapshot configuration", threshold: "Simple majority" },
+  { type: "Treasury Allocation", quorum: "Snapshot configuration", threshold: "DAO approval + multisig execution" },
+  { type: "Protocol Upgrade", quorum: "Snapshot configuration", threshold: "DAO approval + implementation review" },
+  { type: "Constitutional Amendment", quorum: "Snapshot configuration", threshold: "Supermajority (>66%)" },
+  { type: "Governance Charter Amendment", quorum: "Snapshot configuration", threshold: "Supermajority (>66%)" },
 ];
 
 export default function GovernancePage() {
@@ -61,7 +61,7 @@ export default function GovernancePage() {
           The Governance Charter defines how Medialane DAO makes decisions — the proposal lifecycle,
           voting mechanics, quorum requirements, and execution process.
         </p>
-        <p className="text-xs text-muted-foreground">Draft version 0.1 · Subject to ratification</p>
+        <p className="text-xs text-muted-foreground">Ratified April 7, 2026 · Snapshot: medialane.eth</p>
       </div>
 
       {/* Governance process */}
@@ -137,7 +137,7 @@ export default function GovernancePage() {
 
       {/* Snapshot link */}
       <a
-        href="https://snapshot.org"
+        href="https://snapshot.org/#/s:medialane.eth"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"

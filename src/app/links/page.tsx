@@ -45,10 +45,10 @@ const LINKS = [
     category: "Developers",
     items: [
       {
-        name: "GitHub — mediolano-app",
-        handle: "mediolano-app",
+        name: "GitHub — medialane-io",
+        handle: "medialane-io",
         description: "Open-source contracts, SDK, and protocol repositories.",
-        url: "https://github.com/mediolano-app",
+        url: "https://github.com/medialane-io",
         color: "text-foreground",
         bg: "bg-foreground/10 group-hover:bg-foreground/15",
       },
@@ -69,7 +69,7 @@ const LINKS = [
         name: "Snapshot",
         handle: "medialane.eth",
         description: "Off-chain governance voting for Medialane DAO proposals.",
-        url: "https://snapshot.org/#/medialane.eth",
+        url: "https://snapshot.org/#/s:medialane.eth",
         color: "text-brand-purple",
         bg: "bg-brand-purple/10 group-hover:bg-brand-purple/15",
       },

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Coins, Vote, Lock, Users, TrendingUp, Gift } from "lucide-react";
+import { CANONICAL } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "MDLN Token | Medialane DAO",
-  description: "The MDLN governance token — utility, distribution, and staking for Medialane DAO participants.",
+  description: "The MDLN governance token — fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
 };
 
 const UTILITIES = [
@@ -19,27 +21,32 @@ const UTILITIES = [
   },
   {
     icon: Gift,
-    title: "Platform Rewards",
-    description: "Contributors, creators, and active community members can earn MDLN through participation programs, grants, and platform-wide incentive mechanisms.",
+    title: "Contributor Rewards",
+    description: "Contributors, creators, and active community members may receive grants or rewards when approved through DAO governance.",
   },
   {
     icon: Lock,
-    title: "Staking",
-    description: "Stake MDLN to increase voting power over time and participate in long-term governance. Staking signals commitment to the ecosystem.",
+    title: "Membership Tiers",
+    description: "MDLN holdings define DAO participation tiers: Observer, Contributor, and Guardian.",
   },
   {
     icon: TrendingUp,
-    title: "Fee Sharing",
-    description: "A portion of Medialane platform fees may be directed to the DAO treasury, benefiting token holders through community-governed fund allocation.",
+    title: "Treasury Governance",
+    description: `The ${CANONICAL.marketplaceFee} marketplace fee flows to the DAO treasury. MDLN holders vote on allocation: ${CANONICAL.creatorAirdropName}, buyback, burn, development, or operations.`,
   },
 ];
 
 const DISTRIBUTION = [
-  { category: "Community & Ecosystem", pct: "40%", desc: "Grants, creator rewards, contributor programs, and community incentives." },
-  { category: "DAO Treasury", pct: "25%", desc: "Reserved for the DAO to fund future development, audits, and operations via governance." },
-  { category: "Team & Founders", pct: "20%", desc: "Allocated to founding contributors with a 4-year vest and 1-year cliff." },
-  { category: "Investors", pct: "10%", desc: "Strategic partners with a 2-year vest and 6-month cliff." },
-  { category: "Liquidity & Listings", pct: "5%", desc: "Initial liquidity provisioning and exchange listings." },
+  { category: "Vested DAO Treasury", pct: "90%", desc: "18,900,000 MDLN time-locked for 9 years, releasing 2,100,000 MDLN per year to the DAO treasury." },
+  { category: "Operational Runway", pct: "10%", desc: "2,100,000 MDLN available for protocol operations through the DAO treasury." },
+  { category: "VC Allocation", pct: "0%", desc: "No venture capital allocation, no private sale, and no preferential investor tranche." },
+  { category: "Team Allocation", pct: "0%", desc: "No separate founder or team allocation outside DAO-governed treasury operations." },
+];
+
+const MEMBERSHIP_TIERS = [
+  { tier: "Observer", requirement: "1+ MDLN", rights: "View proposals and join community discussions." },
+  { tier: "Contributor", requirement: "100+ MDLN", rights: "Vote on Snapshot and submit governance proposals." },
+  { tier: "Guardian", requirement: "1,000+ MDLN", rights: "Council nomination and working group leadership." },
 ];
 
 export default function TokenPage() {
@@ -70,7 +77,7 @@ export default function TokenPage() {
           { label: "Ticker",     value: "MDLN" },
           { label: "Ethereum",   value: "ERC-20" },
           { label: "Starknet",   value: "ERC-20 (StarkGate)" },
-          { label: "Max Supply", value: "Community vote" },
+          { label: "Max Supply", value: CANONICAL.mdln.totalSupply },
         ].map(({ label, value }) => (
           <div key={label} className="bento-cell px-4 py-3 space-y-1">
             <p className="text-xs text-muted-foreground">{label}</p>
@@ -99,8 +106,8 @@ export default function TokenPage() {
 
       {/* Distribution */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Planned Distribution</h3>
-        <p className="text-sm text-muted-foreground">Final token economics are subject to community ratification before the token launch.</p>
+        <h3 className="text-lg font-semibold">Token Distribution</h3>
+        <p className="text-sm text-muted-foreground">MDLN has a fixed {CANONICAL.mdln.totalSupply} token supply. 100% is DAO-controlled, with no VC allocation, no team allocation, and no insider pre-mine.</p>
         <div className="space-y-2">
           {DISTRIBUTION.map(({ category, pct, desc }) => (
             <div key={category} className="bento-cell p-4 flex items-start gap-4">
@@ -114,31 +121,48 @@ export default function TokenPage() {
         </div>
       </div>
 
-      {/* Creator Fund */}
+      {/* Membership */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Creator Fund Program</h3>
+        <h3 className="text-lg font-semibold">Membership Tiers</h3>
+        <div className="space-y-2">
+          {MEMBERSHIP_TIERS.map(({ tier, requirement, rights }) => (
+            <div key={tier} className="bento-cell p-4 flex items-start gap-4">
+              <span className="text-xs font-mono text-primary shrink-0 w-20">{requirement}</span>
+              <div className="space-y-0.5">
+                <p className="text-sm font-semibold">{tier}</p>
+                <p className="text-xs text-muted-foreground">{rights}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Creator's Airdrop */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">{CANONICAL.creatorAirdropName}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Each year, a portion of the Community &amp; Ecosystem allocation is distributed to Medialane
-          participants through the Creator Fund program. The exact amount for each cycle is determined
-          by a Snapshot governance vote — the community decides how much to allocate, not the founding
-          team.
+          A {CANONICAL.marketplaceFee} marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on
+          Snapshot to decide how that revenue is used — {CANONICAL.creatorAirdropName}, token buyback, token burn,
+          protocol development, or operations. The {CANONICAL.creatorAirdropName} is one option, not a guarantee.
+          See <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
+          for the canonical breakdown.
         </p>
         <div className="space-y-3">
           {[
             {
               phase: "Phase 1",
               trigger: "5,000 verified participants",
-              desc: "First distribution cycle. Rewards participants who registered and secured their account, with higher allocations for those who published content and engaged on the platform.",
+              desc: "First milestone cycle if MDLN holders approve an airdrop allocation. Rewards verified participation, creation, and marketplace engagement.",
             },
             {
               phase: "Phase 2",
               trigger: "10,000 verified participants",
-              desc: "Second distribution cycle, including revenue accumulated since Phase 1. Snapshot governance ratifies the allocation amount before distribution.",
+              desc: "Second milestone cycle. Snapshot governance determines the allocation amount, eligibility rules, and timing before any distribution.",
             },
             {
               phase: "Annual cycle",
               trigger: "Ongoing · Snapshot vote each year",
-              desc: "The creator fund continues annually. Platform revenue and the yearly community allocation are pooled and distributed to active members, creating a recurring creator dividend.",
+              desc: `Annual DAO vote decides whether revenue funds the ${CANONICAL.creatorAirdropName}, buyback, burn, development, operations, or another approved use.`,
             },
           ].map(({ phase, trigger, desc }) => (
             <div key={phase} className="bento-cell p-5 space-y-2">

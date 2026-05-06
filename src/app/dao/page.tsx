@@ -42,29 +42,28 @@ export default function DAOPage() {
           Medialane DAO LLC
         </h2>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">
-          Medialane DAO LLC is the legal and governance structure being bootstrapped in Utah, USA. It bridges
+          Medialane DAO LLC is the legal and governance structure registered in Utah, USA. It bridges
           on-chain community governance with real-world legal recognition — giving participants liability
-          protection while enabling transparent, autonomous platform governance over time.
+          protection while enabling transparent, autonomous platform governance.
         </p>
       </div>
 
       {/* Status */}
       <div className="bento-cell p-6 space-y-4">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-yellow-400 animate-pulse" />
-          <p className="text-sm font-semibold">Status: Bootstrapping</p>
+          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          <p className="text-sm font-semibold">Status: Live governance</p>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Medialane DAO LLC is currently in its formation phase. The legal entity is being registered
-          in Utah as a DAO LLC — a structure that provides the community with both on-chain governance
-          tools and real-world legal standing. Key milestones ahead include completing the legal
-          formation, publishing the final constitution, and launching the MDLN governance token.
+          Medialane DAO LLC operates through MDLN token governance. The constitution was ratified on
+          April 7, 2026, Snapshot voting is live at medialane.eth, and the MDLN token is active on
+          Ethereum mainnet with Starknet bridging through StarkGate.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
           {[
             { label: "Legal Structure", value: "DAO LLC" },
             { label: "Jurisdiction", value: "Utah, USA" },
-            { label: "Stage", value: "Formation" },
+            { label: "Governance", value: "MDLN + Snapshot" },
           ].map(({ label, value }) => (
             <div key={label} className="bg-muted/30 rounded-lg px-4 py-3 space-y-1">
               <p className="text-xs text-muted-foreground">{label}</p>
@@ -126,7 +125,7 @@ export default function DAOPage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <a
-            href="https://snapshot.org"
+            href="https://snapshot.org/#/s:medialane.eth"
             target="_blank"
             rel="noopener noreferrer"
             className="group bento-cell p-4 hover:border-primary/40 transition-colors flex items-center justify-between gap-3"
@@ -138,14 +137,14 @@ export default function DAOPage() {
             <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
           </a>
           <a
-            href="https://t.me/IntegrityWeb"
+            href="https://medialane.org"
             target="_blank"
             rel="noopener noreferrer"
             className="group bento-cell p-4 hover:border-primary/40 transition-colors flex items-center justify-between gap-3"
           >
             <div>
-              <p className="font-semibold text-sm">Telegram Community</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Join the Integrity Web community</p>
+              <p className="font-semibold text-sm">DAO Hub</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Open medialane.org for live DAO details</p>
             </div>
             <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
           </a>

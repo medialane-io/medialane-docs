@@ -114,7 +114,7 @@ export default function SDKPage() {
           NPM package <ExternalLink className="h-3.5 w-3.5" />
         </a>
         <a
-          href="https://github.com/mediolano-app"
+          href="https://github.com/medialane-io/medialane-sdk"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"

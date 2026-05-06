@@ -56,7 +56,7 @@ export default function DocsAPIPage() {
 
       <div className="space-y-8">
         <Section title="Base URL & Versioning">
-          <Code>https://medialane-backend-production.up.railway.app/v1</Code>
+          <Code>https://api.medialane.io/v1</Code>
           <p>All endpoints are prefixed with <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">/v1</code>.
           Breaking changes will be introduced under a new version prefix.</p>
         </Section>

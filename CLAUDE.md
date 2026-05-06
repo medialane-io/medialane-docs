@@ -32,6 +32,15 @@ The `.next` directory gets rebuilt on each `bun run build`. If the browser shows
 - Correct framing: "Medialane builds on Mediolano" / "Mediolano is an independent protocol that Medialane uses"
 - Never say "At the core of Medialane is Mediolano" (implies ownership)
 
+### Medialane DAO / MDLN
+- DAO/token facts should mirror `medialane.org` and the `medialane-dao` repo
+- Medialane DAO LLC is registered in Utah, USA
+- MDLN is live on Ethereum mainnet and bridgeable to Starknet via StarkGate
+- MDLN supply is fixed at 21,000,000; 100% is DAO-controlled; no VC/team allocation
+- Snapshot governance is `medialane.eth`
+- Revenue framing: 1% marketplace fee → DAO treasury → MDLN holders vote annually on allocation
+- Creator's Airdrop is one possible DAO allocation, not a guaranteed or automatic formula
+
 ### Technology framing
 Lead with **what it means for creators**, not the tech name:
 - ✅ "Immutable Cairo smart contracts define every rule — once deployed, no one can change them"
@@ -113,7 +122,7 @@ Note: aurora blobs need `position: "absolute"` as an inline style — Tailwind's
 | Docs | `/docs/*` | Collapsible (7 sub-pages) |
 | Guidelines | `/guidelines/*` | Collapsible (5 sub-pages) |
 | Support | `/support` | Direct |
-| DAO | `/dao/*` | Collapsible (3 sub-pages) |
+| DAO | `/dao/*` | Collapsible (4 sub-pages) |
 | Links | `/links` | Direct |
 
 ## Build Checks

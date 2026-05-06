@@ -9,7 +9,7 @@ const DAO_NAV = [
   { label: "Constitution",       href: "/dao/constitution" },
   { label: "Governance Charter", href: "/dao/governance" },
   { label: "MDLN Token",         href: "/dao/token" },
-  { label: "Creator Fund",       href: "/dao/airdrop" },
+  { label: "Creator's Airdrop",  href: "/dao/airdrop" },
 ];
 
 export default function DAOLayout({ children }: { children: React.ReactNode }) {

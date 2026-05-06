@@ -60,7 +60,7 @@ const AXIOMS = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    medialane: "The Mediolano protocol — the IP protection and licensing layer at Medialane's core — is a public good. Zero fees. Fully open source. Community owned. Any creator, developer, or AI agent in the world can use it, fork it, or build on it without permission or payment.",
+    medialane: "The Mediolano protocol — the independent IP protection and licensing layer Medialane builds on — is a public good. Zero fees. Fully open source. Community owned. Any creator, developer, or AI agent in the world can use it, fork it, or build on it without permission or payment.",
     highlights: ["Mediolano protocol: zero fees, open source", "MIT-licensed contracts and SDK", "Community governed via Medialane DAO"],
   },
   {

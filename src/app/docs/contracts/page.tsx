@@ -71,7 +71,7 @@ export default function ContractsPage() {
         <h2 className="text-2xl font-bold">Contracts</h2>
         <p className="text-muted-foreground leading-relaxed">
           Medialane is powered by Cairo smart contracts deployed on Starknet. All contracts are
-          open source, audited, and part of the <strong className="text-foreground">mediolano-contracts</strong> repository.
+          open source, audited, and part of the <strong className="text-foreground">medialane-contracts</strong> repository.
         </p>
       </div>
 
@@ -108,7 +108,7 @@ export default function ContractsPage() {
       {/* Links */}
       <div className="flex flex-wrap gap-4">
         <a
-          href="https://github.com/mediolano-app"
+          href="https://github.com/medialane-io/medialane-contracts"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"

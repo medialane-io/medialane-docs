@@ -1,50 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Network, Package, Terminal, FileCode2, Code2, Shield, ArrowRight } from "lucide-react";
+import { DOCS_NAV, CANONICAL_SOURCES } from "@/lib/docs-nav";
+import { LinkCard } from "@/components/ui/link-card";
 
 export const metadata: Metadata = {
   title: "Docs | Medialane",
   description: "Technical documentation for the Medialane platform, protocol, SDK, API, contracts, and security.",
 };
-
-const SECTIONS = [
-  {
-    href: "/docs/protocol",
-    icon: Network,
-    title: "Protocol",
-    description: "Technical specification of the Mediolano protocol — onchain IP registration, licensing, events, and data structures.",
-  },
-  {
-    href: "/docs/sdk",
-    icon: Package,
-    title: "SDK",
-    description: "The @medialane/sdk TypeScript package — installation, configuration, asset queries, minting, and marketplace integration.",
-  },
-  {
-    href: "/docs/api",
-    icon: Terminal,
-    title: "API Reference",
-    description: "Full REST API reference — endpoints, authentication, request shapes, rate limits, and response types.",
-  },
-  {
-    href: "/docs/contracts",
-    icon: FileCode2,
-    title: "Contracts",
-    description: "Cairo smart contracts — marketplace, collection registry, POP Protocol, Collection Drop, and royalty enforcement.",
-  },
-  {
-    href: "/docs/developers",
-    icon: Code2,
-    title: "Developers",
-    description: "Integration guides, quickstarts, authentication setup, and code examples for building on top of Medialane.",
-  },
-  {
-    href: "/docs/security",
-    icon: Shield,
-    title: "Security",
-    description: "Defense-in-depth architecture, audit reports, decentralized storage, monitoring, and responsible disclosure.",
-  },
-];
 
 export default function DocsPage() {
   return (
@@ -54,26 +15,40 @@ export default function DocsPage() {
         build on top of the platform. Select a section to get started.
       </p>
 
+      <div className="bento-cell p-5 space-y-4 border-primary/20">
+        <div className="space-y-1">
+          <h2 className="text-lg font-semibold">Canonical Sources</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Medialane documentation is split by ownership so product guides, DAO facts, contracts,
+            and SDK internals do not drift apart.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {CANONICAL_SOURCES.map(({ title, owner, description, href, icon, external }) => (
+            <LinkCard
+              key={title}
+              href={href}
+              title={title}
+              eyebrow={owner}
+              description={description}
+              icon={icon}
+              external={external}
+              compact
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {SECTIONS.map(({ href, icon: Icon, title, description }) => (
-          <Link
+        {DOCS_NAV.map(({ href, icon, title, description }) => (
+          <LinkCard
             key={href}
             href={href}
-            className="group bento-cell p-5 hover:border-primary/40 transition-colors"
-          >
-            <div className="flex items-start gap-4">
-              <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors">
-                <Icon className="h-5 w-5 text-primary" />
-              </div>
-              <div className="space-y-1 flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <p className="font-semibold text-sm">{title}</p>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
-              </div>
-            </div>
-          </Link>
+            title={title}
+            description={description}
+            icon={icon}
+            showArrow
+          />
         ))}
       </div>
     </div>

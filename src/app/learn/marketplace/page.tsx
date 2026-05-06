@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Marketplace | Learn | Medialane",
@@ -23,6 +24,10 @@ export default function LearnMarketplacePage() {
           The Medialane marketplace is a peer-to-peer trading environment for IP assets.
           Creators list their work, collectors make offers, and every transaction is
           settled on Starknet with royalties enforced automatically.
+        </p>
+        <p className="text-sm text-muted-foreground">
+          For the canonical fee model, see{" "}
+          <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
         </p>
       </div>
 
@@ -103,6 +108,18 @@ export default function LearnMarketplacePage() {
             This is enforced at the protocol level, not as a voluntary platform policy.
             Even if a buyer transfers the asset to another wallet and sells it there,
             the royalty logic is embedded in the order execution.
+          </p>
+        </Section>
+
+        <Section title="Fees">
+          <p>
+            Listing and offer creation are gas-sponsored for normal product flows. Completed
+            marketplace sales include a 1% marketplace fee routed to the Medialane DAO treasury.
+            Creator royalties, when configured, are separate from that marketplace fee.
+          </p>
+          <p>
+            Read the canonical breakdown in{" "}
+            <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
           </p>
         </Section>
 
