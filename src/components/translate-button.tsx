@@ -59,6 +59,15 @@ export function TranslateButton() {
   }, []);
 
   function select(code: string) {
+    if (code === "") {
+      // Google Translate has no programmatic restore — clear the cookie and reload
+      const expiry = "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = `googtrans=; ${expiry}`;
+      document.cookie = `googtrans=; ${expiry} domain=${window.location.hostname}`;
+      document.cookie = `googtrans=; ${expiry} domain=.${window.location.hostname}`;
+      window.location.reload();
+      return;
+    }
     triggerTranslation(code);
     setActive(code);
     setOpen(false);
