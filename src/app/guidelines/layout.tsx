@@ -10,6 +10,7 @@ const GUIDELINES_NAV = [
   { label: "User Guidelines",  href: "/guidelines/user-guidelines" },
   { label: "Terms of Use",     href: "/guidelines/terms" },
   { label: "Privacy Policy",   href: "/guidelines/privacy" },
+  { label: "Campaign Terms",   href: "/guidelines/campaign-terms" },
   { label: "Compliance",       href: "/guidelines/compliance" },
 ];
 

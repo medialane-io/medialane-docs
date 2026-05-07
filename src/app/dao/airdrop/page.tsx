@@ -1,52 +1,52 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Gift, Star, Repeat2, Vote, CheckCircle2,
-  PenLine, ShoppingCart, UserCheck, ArrowRight,
+  Gift, Repeat2, Vote, CheckCircle2,
+  PenLine, ShoppingCart, UserCheck, ArrowRight, Shield,
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Creator's Airdrop | Medialane DAO",
-  description: "The Medialane Creator's Airdrop — a DAO-governed option for distributing approved treasury allocations to creators and participants.",
+  description: "The Medialane Creator's Airdrop — a DAO-governed program distributing rewards to creators and early participants.",
 };
 
 const TIERS = [
   {
     icon: UserCheck,
-    tier: "Tier 1 — Register",
-    points: "Base eligibility",
-    colorClass: "text-blue-400",
-    bgClass: "bg-blue-500/10",
+    tier: "Sign up — you're in",
+    label: "Base tier",
+    colorClass: "text-emerald-400",
+    bgClass: "bg-emerald-500/10",
     actions: [
-      "Create a free account",
+      "Create a free Medialane account",
       "Secure your account with PIN or passkey",
+      "Claim your participation certificate (optional, free)",
     ],
-    desc: "Every participant who completes onboarding qualifies. This is the floor — you participate and receive a base share of each distribution.",
+    desc: "Every verified participant who completes sign-up qualifies for the base reward. This is the floor — register once and you're included in every distribution.",
   },
   {
     icon: PenLine,
-    tier: "Tier 2 — Create",
-    points: "Higher allocation",
+    tier: "Create",
+    label: "Bonus tier",
     colorClass: "text-purple-400",
     bgClass: "bg-purple-500/10",
     actions: [
-      "Publish at least one piece of original content",
-      "Set up a collection or creator profile",
+      "Publish at least one original piece of content",
+      "Launch a collection or creator profile",
     ],
-    desc: "Creators who publish original work receive a meaningfully larger share. The platform exists because of what you create.",
+    desc: "Creators who publish original work earn a bonus allocation on top of the base tier. The platform exists because of what creators make.",
   },
   {
     icon: ShoppingCart,
-    tier: "Tier 3 — Engage",
-    points: "Largest allocation",
+    tier: "Trade & Collect",
+    label: "Bonus tier",
     colorClass: "text-orange-400",
     bgClass: "bg-orange-500/10",
     actions: [
-      "Trade, collect, or make offers on the marketplace",
+      "Buy, sell, or make offers on the marketplace",
       "Collaborate or remix with other creators",
-      "Consistent activity across multiple cycles",
     ],
-    desc: "Active participants who both create and engage with the broader community receive the highest contribution scores.",
+    desc: "Active participants who engage with the broader community earn an additional bonus. Consistent activity across both creating and trading maximises your allocation.",
   },
 ];
 
@@ -55,7 +55,7 @@ const PHASES = [
     phase: "Phase 1",
     trigger: "5,000 participants",
     items: [
-      "First milestone cycle if MDLN holders approve a Creator's Airdrop allocation",
+      "First milestone distribution if MDLN holders approve the allocation",
       "Snapshot governance ratifies the amount, timing, and eligibility rules",
       "Eligible participants receive their proportional share of the approved pool",
     ],
@@ -64,19 +64,18 @@ const PHASES = [
     phase: "Phase 2",
     trigger: "10,000 participants",
     items: [
-      "Second milestone cycle, subject to DAO approval",
+      "Second milestone distribution, subject to DAO approval",
       "Community vote determines the allocation amount and rules",
       "Contribution scores re-calculated from all activity since launch",
     ],
   },
   {
-    phase: "Annual cycle",
-    trigger: "Every year, ongoing",
+    phase: "Ongoing",
+    trigger: "Annual cycle",
     items: [
       "Yearly community allocation voted on via Snapshot",
-      "MDLN holders decide whether revenue funds airdrops, buybacks, burns, development, or operations",
-      "The cycle repeats through DAO governance — no predetermined formula",
-      "The community decides how much to distribute each year",
+      "MDLN holders decide how revenue is used — airdrops, buybacks, burns, development, or operations",
+      "No predetermined formula — the community decides each year",
     ],
   },
 ];
@@ -93,9 +92,9 @@ export default function AirdropPage() {
         </div>
         <h2 className="text-2xl font-bold">Creator&apos;s Airdrop</h2>
         <p className="text-muted-foreground leading-relaxed">
-          The Creator&apos;s Airdrop is a DAO-governed program that may distribute approved treasury
-          allocations to the people who build and use the platform — creators, collectors, and active
-          participants. Every cycle is controlled by MDLN holders and verified on-chain.
+          The Creator&apos;s Airdrop rewards the people who build and use the platform — creators,
+          collectors, and early participants. Every distribution is subject to DAO governance
+          and verified on-chain. Signing up is enough to qualify for the base reward.
         </p>
       </div>
 
@@ -109,15 +108,15 @@ export default function AirdropPage() {
           A 1% marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on
           Snapshot to decide how that revenue is used — Creator&apos;s Airdrop, token buyback, token burn,
           protocol development, or operations. No predetermined formula. The Creator&apos;s Airdrop is one
-          option, not a guarantee. See{" "}
+          option among several, not a guarantee. See{" "}
           <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
           for the canonical fee model.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
           {[
             { label: "Revenue source", value: "1% marketplace fee" },
-            { label: "Governed by",      value: "Snapshot DAO vote" },
-            { label: "Cycle",            value: "Annual + milestones" },
+            { label: "Governed by",    value: "Snapshot DAO vote" },
+            { label: "Cycle",          value: "Annual + milestones" },
           ].map(({ label, value }) => (
             <div key={label} className="bg-muted/30 rounded-lg px-4 py-3 space-y-1">
               <p className="text-xs text-muted-foreground">{label}</p>
@@ -127,15 +126,15 @@ export default function AirdropPage() {
         </div>
       </div>
 
-      {/* How participation works */}
+      {/* How it works */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">How Participation Works</h3>
+        <h3 className="text-lg font-semibold">How It Works</h3>
         <p className="text-sm text-muted-foreground">
-          Your contribution score determines your proportional share of each distribution.
-          The more you create and engage, the larger your share.
+          Signing up automatically qualifies you for the base reward. Creating and engaging earn
+          bonus tiers on top.
         </p>
         <div className="space-y-4">
-          {TIERS.map(({ icon: Icon, tier, points, colorClass, bgClass, actions, desc }) => (
+          {TIERS.map(({ icon: Icon, tier, label, colorClass, bgClass, actions, desc }) => (
             <div key={tier} className="bento-cell p-5 space-y-3">
               <div className="flex items-start gap-3">
                 <div className={`h-9 w-9 rounded-lg ${bgClass} flex items-center justify-center shrink-0 mt-0.5`}>
@@ -144,7 +143,7 @@ export default function AirdropPage() {
                 <div className="space-y-0.5 flex-1">
                   <div className="flex items-center justify-between gap-2">
                     <p className="font-semibold text-sm">{tier}</p>
-                    <span className={`text-xs font-medium ${colorClass}`}>{points}</span>
+                    <span className={`text-xs font-medium ${colorClass}`}>{label}</span>
                   </div>
                   <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
                 </div>
@@ -185,20 +184,6 @@ export default function AirdropPage() {
         </div>
       </div>
 
-      {/* Fair by design */}
-      <div className="bento-cell p-5 space-y-2">
-        <div className="flex items-center gap-2">
-          <Star className="h-4 w-4 text-primary" />
-          <h3 className="font-semibold text-sm">Fair by Design</h3>
-        </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          All participation is recorded on a public decentralized network — the same infrastructure
-          that makes Medialane permissionless and censorship-resistant. Contribution scores are
-          verifiable and tamper-proof. Accounts found using automated tools or duplicate
-          registrations are disqualified. The fund rewards real creative work, not gaming.
-        </p>
-      </div>
-
       {/* Governance */}
       <div className="bento-cell p-5 space-y-3">
         <div className="flex items-center gap-2">
@@ -219,12 +204,31 @@ export default function AirdropPage() {
         </Link>
       </div>
 
+      {/* Legal note */}
+      <div className="bento-cell p-5 space-y-2">
+        <div className="flex items-center gap-2">
+          <Shield className="h-4 w-4 text-muted-foreground" />
+          <h3 className="font-semibold text-sm text-muted-foreground">Legal</h3>
+        </div>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          This campaign is not a financial product, investment scheme, lottery, or gambling service.
+          Participation does not guarantee any financial return. Distributions are made at the sole
+          discretion of Medialane DAO governance. See the{" "}
+          <Link href="/guidelines/campaign-terms" className="underline underline-offset-2 hover:text-foreground transition-colors">
+            Campaign Terms
+          </Link>{" "}
+          for the full legal text.
+        </p>
+      </div>
+
       {/* CTAs */}
       <div className="space-y-3">
-        <h3 className="text-base font-semibold">Get started</h3>
+        <h3 className="text-base font-semibold">Join the campaign</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <a
-            href="https://medialane.io/mint"
+            href="https://medialane.io/airdrop"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group bento-cell p-4 hover:border-primary/40 transition-colors flex items-center justify-between gap-3"
           >
             <div>
@@ -235,6 +239,8 @@ export default function AirdropPage() {
           </a>
           <a
             href="https://medialane.io/br/mint"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group bento-cell p-4 hover:border-primary/40 transition-colors flex items-center justify-between gap-3"
           >
             <div>
