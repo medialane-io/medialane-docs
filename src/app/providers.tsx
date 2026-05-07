@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import Link from "next/link";
 import { AppSidebar } from "@/components/layout/app-sidebar";
+import { TranslateButton } from "@/components/translate-button";
 import { Aurora } from "@/components/ui/aurora";
 import { SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { MedialaneLogo } from "@/components/brand/medialane-logo";
@@ -57,6 +58,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
       <Aurora />
       <Shell>{children}</Shell>
+      <TranslateButton />
       <Toaster richColors position="bottom-right" />
     </ThemeProvider>
   );

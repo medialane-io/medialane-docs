@@ -40,7 +40,39 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Translate — loaded once, triggered by TranslateButton */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateInit" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateInit() {
+                new google.translate.TranslateElement({
+                  pageLanguage: 'en',
+                  autoDisplay: false,
+                }, 'google_translate_element');
+              }
+            `,
+          }}
+        />
+        <style>{`
+          /* Hide all Google Translate chrome — we drive it via TranslateButton */
+          #google_translate_element { display: none !important; }
+          .goog-te-banner-frame.skiptranslate { display: none !important; }
+          .goog-te-gadget { display: none !important; }
+          .goog-tooltip { display: none !important; }
+          .goog-tooltip:hover { display: none !important; }
+          .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+          /* Counteract the body top offset Google Translate injects */
+          body { top: 0 !important; }
+          /* Hide the translation attribution bar Google injects at the top */
+          .skiptranslate { display: none !important; }
+        `}</style>
+      </head>
       <body className={inter.className}>
+        {/* Hidden anchor for Google Translate widget */}
+        <div id="google_translate_element" />
         <Providers>{children}</Providers>
       </body>
     </html>
