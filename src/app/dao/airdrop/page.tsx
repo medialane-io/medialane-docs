@@ -31,7 +31,7 @@ const TIERS = [
       "Secure your account with PIN or passkey",
       "Claim your participation certificate (optional, free)",
     ],
-    desc: "Every verified participant who completes sign-up qualifies for the base reward. This is the floor — register once and you're included in every distribution.",
+    desc: "Every verified participant who completes sign-up is eligible for the base allocation if a distribution is approved by governance. Signing up is the only requirement for this tier.",
   },
   {
     icon: PenLine,
@@ -43,7 +43,7 @@ const TIERS = [
       "Publish at least one original piece of content",
       "Launch a collection or creator profile",
     ],
-    desc: "Creators who publish original work earn a bonus allocation on top of the base tier. The platform exists because of what creators make.",
+    desc: "Creators who publish original work are eligible for a bonus allocation on top of the base tier, subject to DAO approval of the distribution.",
   },
   {
     icon: ShoppingCart,
@@ -55,7 +55,7 @@ const TIERS = [
       "Buy, sell, or make offers on the marketplace",
       "Collaborate or remix with other creators",
     ],
-    desc: "Active participants who engage with the broader community earn an additional bonus. Consistent activity across both creating and trading maximises your allocation.",
+    desc: "Active participants who engage across creating and trading are eligible for an additional bonus tier, subject to DAO approval of the distribution.",
   },
 ];
 
@@ -139,8 +139,8 @@ export default function AirdropPage() {
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">How It Works</h3>
         <p className="text-sm text-muted-foreground">
-          Signing up automatically qualifies you for the base reward. Creating and engaging earn
-          bonus tiers on top.
+          Signing up makes you eligible for the base tier. Creating and trading activity
+          makes you eligible for bonus tiers. All distributions require a DAO governance vote.
         </p>
         <div className="space-y-4">
           {TIERS.map(({ icon: Icon, tier, label, colorClass, bgClass, actions, desc }) => (

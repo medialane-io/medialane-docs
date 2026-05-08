@@ -30,39 +30,34 @@ export default function DocsSecurityPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Security</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Security is foundational to the Integrity Web. Medialane and the underlying
-          Mediolano protocol employ rigorous testing, formal verification, and continuous
-          monitoring to safeguard user assets and IP records.
+          This page documents the security properties of the Medialane contracts,
+          the current audit status, known risks, and how to report vulnerabilities.
         </p>
       </div>
 
       <div className="space-y-8">
-        <Section title="Defense-in-Depth Strategy">
-          <p>
-            The Mediolano protocol — the IP protection and licensing layer that Medialane
-            is built upon — adopts a layered security approach across every component:
-          </p>
+        <Section title="Security Properties">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
               {
+                icon: Lock,
+                title: "Immutable contracts",
+                desc: "The v3 marketplace contracts have no admin keys, no upgrade path, and no owner role. Once deployed, no one can change them. Verified from the open-source Cairo code.",
+              },
+              {
                 icon: Shield,
-                title: "Formal Verification",
-                desc: "Core Cairo contracts are formally verified where applicable to prove correctness at the mathematical level.",
+                title: "No custody",
+                desc: "The marketplace never holds funds. Trades settle via atomic swap — both the NFT transfer and the payment happen in the same transaction, or neither does.",
               },
               {
                 icon: Eye,
-                title: "Peer Review",
-                desc: "Every code change to protocol contracts and the platform undergoes peer review before deployment.",
-              },
-              {
-                icon: Lock,
-                title: "Timelock Controllers",
-                desc: "Governance actions that affect protocol parameters are subject to timelocked execution, giving the community time to respond.",
+                title: "Open source",
+                desc: "All contracts are publicly available. Anyone can read what the code does and verify the deployed bytecode matches the source.",
               },
               {
                 icon: AlertTriangle,
-                title: "Immutable Core Contracts",
-                desc: "Core protocol contracts are immutable to prevent unauthorized upgrades — no single party can change the rules unilaterally.",
+                title: "No emergency pause",
+                desc: "There is no pause function or circuit breaker in the v3 contracts. This is a deliberate design choice — no admin can stop the protocol. It also means bugs cannot be patched once deployed.",
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bento-cell p-4 space-y-2">
@@ -76,26 +71,27 @@ export default function DocsSecurityPage() {
           </div>
         </Section>
 
-        <Section title="Audit Reports">
+        <Section title="Audit Status">
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Core Protocol Audit — Mediolano</p>
-                <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Completed</span>
+                <p className="text-sm font-semibold text-foreground">Marketplace v3 — Internal Review</p>
+                <span className="text-[10px] font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">Internal only</span>
               </div>
-              <p className="text-xs text-muted-foreground">Audited by the core development team · October 2025</p>
+              <p className="text-xs text-muted-foreground">Reviewed by the core development team · October 2025</p>
               <p className="text-xs text-muted-foreground">
-                Covers the Marketplace contract, Collection Registry factory, IP NFT standard,
-                SNIP-12 order signing, and royalty distribution logic.
+                Covers the Marketplace contract (ERC-721 and ERC-1155), Collection Registry factory,
+                and SNIP-12 order signing. This is an internal review, not an independent third-party audit.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">POP Protocol & Collection Drop Audit</p>
-                <span className="text-[10px] font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">In progress</span>
+                <p className="text-sm font-semibold text-foreground">Independent Audit — Not yet completed</p>
+                <span className="text-[10px] font-medium text-muted-foreground bg-muted px-2 py-0.5 rounded-full">Pending</span>
               </div>
               <p className="text-xs text-muted-foreground">
-                Third-party audit of the POP Protocol factory and Collection Drop contracts is scheduled as these contracts approach stable release.
+                A third-party audit has not been completed. Users should take this into account
+                when deciding how much to trust the contracts with valuable assets.
               </p>
             </div>
           </div>
@@ -113,15 +109,6 @@ export default function DocsSecurityPage() {
             This means your IP proof is not dependent on Medialane's servers continuing to
             operate. The record exists on the Starknet blockchain and IPFS permanently,
             independent of the platform.
-          </p>
-        </Section>
-
-        <Section title="Real-Time Monitoring">
-          <p>
-            The Medialane infrastructure uses real-time on-chain monitoring to detect
-            anomalies and suspicious transaction patterns — including unusual order volumes,
-            contract call anomalies, and potential flash-loan attack vectors. Alerts allow
-            for rapid response to potential threats before they can escalate.
           </p>
         </Section>
 
