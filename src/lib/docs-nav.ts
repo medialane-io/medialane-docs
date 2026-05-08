@@ -1,5 +1,5 @@
 import {
-  BookOpen, Building2, Coins, Code2, FileCode2, History,
+  BookOpen, Bot, Building2, Coins, Code2, FileCode2, History,
   Info, Landmark, LifeBuoy, Package, Shield, Terminal, Network,
 } from "lucide-react";
 import { CANONICAL } from "@/lib/canonical";
@@ -45,6 +45,13 @@ export const DOCS_NAV = [
     title: "Developers",
     icon: Code2,
     description: "Integration guides, quickstarts, authentication setup, and code examples for building on top of Medialane.",
+  },
+  {
+    href: "/docs/agents",
+    label: "AI Agents",
+    title: "AI Agents",
+    icon: Bot,
+    description: "Build autonomous agents that read, write, and pay using the Medialane API — 402 billing, SIWS auth, webhook events, and MDLN multipliers.",
   },
   {
     href: "/docs/security",
