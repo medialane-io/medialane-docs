@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { Network } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Protocol | Docs | Medialane",
-  description: "Technical specification of the Medialane onchain protocol — contracts, events, data structures, and standards.",
+  title: "Protocol | Medialane Docs",
+  description: "Technical specification of the Medialane onchain protocol — atomic swaps, SNIP-12 signing, ERC-2981 royalties, indexer, and event model.",
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -16,217 +17,203 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function Code({ children }: { children: string }) {
   return (
-    <pre className="bento-cell p-4 text-xs font-mono overflow-x-auto text-foreground/80 leading-relaxed">
+    <pre className="bento-cell p-4 text-xs font-mono overflow-x-auto text-foreground/80 leading-relaxed whitespace-pre">
       {children}
     </pre>
   );
 }
 
+const EVENTS = [
+  { name: "Transfer (ERC-721)", desc: "Single-token ownership transfer. Emitted on mint, sale, and manual transfer." },
+  { name: "TransferSingle (ERC-1155)", desc: "Single-edition transfer with from, to, id, and value fields. Used for ERC-1155 balance tracking." },
+  { name: "TransferBatch (ERC-1155)", desc: "Batch ERC-1155 transfer — multiple token IDs and values in one event." },
+  { name: "OrderCreated", desc: "Emitted when a new listing or offer is activated on the marketplace contract." },
+  { name: "OrderFulfilled", desc: "Emitted when a listing is purchased or an offer is accepted." },
+  { name: "OrderCancelled", desc: "Emitted when an order is cancelled by the offerer." },
+  { name: "CollectionDeployed", desc: "Emitted by factory contracts when a new collection, drop, or POP campaign is deployed." },
+  { name: "RoyaltyPaid", desc: "Emitted by ERC-2981 royalty distribution — recipient address and amount on every settled trade." },
+];
+
 export default function DocsProtocolPage() {
   return (
     <div className="space-y-10">
+
       <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <Network className="h-5 w-5 text-primary" />
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Protocol</span>
+        </div>
         <h2 className="text-2xl font-bold">Protocol Specification</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          The Medialane protocol consists of audited Starknet mainnet contracts
-          and an off-chain indexer/API layer. This document describes the contracts,
-          their interfaces, and the event model used by the indexer.
+          The Medialane protocol consists of immutable Starknet mainnet contracts and
+          an off-chain indexer/API layer. This document covers the order lifecycle,
+          atomic swap mechanics, event model, and indexer design.
         </p>
       </div>
 
       <div className="space-y-8">
-        <Section title="Contracts (Starknet Mainnet)">
+
+        <Section title="Deployed Contracts (Starknet Mainnet)">
           <div className="space-y-2">
             {[
-              {
-                name: "Marketplace v2 (ERC-721)",
-                address: "0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6",
-                desc: "Handles order creation, fulfillment, cancellation, and royalty distribution for ERC-721 listings and offers.",
-              },
-              {
-                name: "Marketplace v2 (ERC-1155)",
-                address: "0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99",
-                desc: "Handles ERC-1155 multi-edition listings, partial fills, settlement, and royalty distribution.",
-              },
-              {
-                name: "Collection Registry Contract",
-                address: "0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b",
-                desc: "Factory for deploying IP NFT collections. Assigns a unique onchain collection ID to every deployed collection.",
-              },
-              {
-                name: "POP Protocol Factory",
-                address: "0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111",
-                desc: "Factory contract for creating POP (Proof of Participation) events. Each event deploys a soulbound NFT contract. Manages provider registration and event lifecycle.",
-              },
-              {
-                name: "Collection Drop Factory",
-                address: "0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800",
-                desc: "Factory for launching timed NFT drop events. Enforces supply caps, mint windows, allowlists, per-wallet limits, and mint prices onchain.",
-              },
-              {
-                name: "IP Collection 1155 Factory",
-                address: "0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6",
-                desc: "Factory for deploying multi-edition ERC-1155 IP collections. Each deploy_collection() call deploys a new ERC-1155 contract owned by the caller and emits a CollectionDeployed event with the contract address, name, symbol, and base_uri.",
-              },
-            ].map(({ name, address, desc }) => (
+              { name: "Marketplace v3 (ERC-721)",   address: "0x004387e58d469f19332dd5d20846b10339ddc49ef208025ec7d5bef294a8daf3" },
+              { name: "Marketplace v3 (ERC-1155)",  address: "0x035836932ba1d219e00b8e42cd9a433fb2b211a08edcaa8bae40232f335f777d" },
+              { name: "NFTComments",                address: "0x024f97eb5abe659fb650bf162b5fc16501f8f3863a7369901ce6099462e62799" },
+              { name: "Collection Registry",        address: "0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b" },
+              { name: "ERC-1155 Collection Factory",address: "0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6" },
+              { name: "Collection Drop Factory",    address: "0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800" },
+              { name: "POP Protocol Factory",       address: "0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111" },
+            ].map(({ name, address }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
                 <p className="text-sm font-semibold text-foreground">{name}</p>
-                <p className="font-mono text-xs text-muted-foreground break-all">{address}</p>
-                <p className="text-xs text-muted-foreground mt-1">{desc}</p>
+                <p className="font-mono text-xs text-primary/70 break-all">{address}</p>
               </div>
             ))}
           </div>
+          <p className="text-xs">
+            Indexer scans from block <code className="font-mono bg-muted px-1 py-0.5 rounded">9130000</code>.
+            All contracts are immutable — no admin account, no upgrade path. See{" "}
+            <a href="/docs/contracts" className="text-primary hover:underline">Contracts</a> for details.
+          </p>
         </Section>
 
-        <Section title="NFT Standards">
+        <Section title="Order Lifecycle (SNIP-12 Typed Data)">
           <p>
-            Medialane supports two token standards, both auto-detected at index time via
-            ERC-165 <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">supportsInterface</code>.
-            The detected standard is stored on <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">Collection.standard</code>{" "}
-            and returned in every <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">ApiCollection</code> response.
+            Marketplace orders are off-chain signed, on-chain enforced. The flow prevents
+            signature replay, ensures order validity without a pending transaction, and
+            allows gasless cancellation of unmatched orders.
           </p>
-          <div className="space-y-2 text-sm">
-            {[
-              {
-                name: "SNIP-2 / ERC-721",
-                interfaceId: "0x80ac58cd",
-                desc: "One owner per token ID. Each token has a unique token_id (u256) and a token_uri() returning a ByteArray pointing to IPFS metadata. Used by IP assets, creator collections, and POP Protocol tokens.",
-              },
-              {
-                name: "ERC-1155",
-                interfaceId: "0xd9b67a26",
-                desc: "Multiple owners per token ID, each holding a quantity. Metadata resolved via uri(token_id) with EIP-1155 {id} substitution (64-char zero-padded lowercase hex). Used by IP Collection 1155 — Medialane's multi-edition format for music tracks, art series, and editions.",
-              },
-            ].map(({ name, interfaceId, desc }) => (
-              <div key={name} className="bento-cell px-4 py-3 space-y-1">
-                <div className="flex items-center gap-3">
-                  <p className="text-sm font-semibold text-foreground">{name}</p>
-                  <code className="text-xs font-mono text-muted-foreground">{interfaceId}</code>
-                </div>
-                <p className="text-xs text-muted-foreground">{desc}</p>
+          <Code>{`1. Creator calls POST /v1/orders/intent/listing
+   ← { typedData: { domain, types, primaryType, message }, orderHash }
+
+2. Creator signs typedData with their Starknet account (SNIP-12)
+   ← { r, s } signature
+
+3. Creator calls POST /v1/orders/signature
+   → { orderHash, signature }
+   ← Order is now ACTIVE in the indexer
+
+4. Buyer calls POST /v1/orders/intent/fulfill
+   ← { calls: [ approve_erc20, fulfill_order ] }   ← atomic
+
+5. Buyer submits calls via their wallet (ChipiPay / Argent / Braavos)
+   ← OrderFulfilled event emitted on-chain
+   ← Royalties distributed automatically (ERC-2981)
+   ← Order status → FULFILLED in indexer (~6s)`}</Code>
+        </Section>
+
+        <Section title="Atomic Swap — No Escrow, No Custody">
+          <p>
+            Every purchase executes as a pair of calls submitted atomically in a single
+            Starknet transaction. Either both succeed or both revert — there is no
+            intermediate state where the buyer&apos;s funds are held by the marketplace contract.
+          </p>
+          <Code>{`// Atomic call batch (submitted by buyer's wallet):
+[
+  {
+    to:       "0x<erc20_token>",           // e.g. USDC contract
+    selector: "approve",
+    calldata: [marketplace_contract, amount],
+  },
+  {
+    to:       "0x<marketplace_contract>",
+    selector: "fulfill_order",
+    calldata: [orderHash, buyer_address],
+  }
+]`}</Code>
+          <p>
+            The marketplace contract calls <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">transfer_from</code> on the
+            ERC-20 after verifying the order signature. If the seller is no longer the token owner
+            or the approve fails for any reason, the entire transaction reverts.
+          </p>
+        </Section>
+
+        <Section title="ERC-2981 Royalties">
+          <p>
+            Every collection deployed through Medialane implements ERC-2981. On every
+            fulfilled order, the marketplace contract queries the token contract for the
+            royalty recipient and basis points, then distributes the payment before
+            transferring the remainder to the seller.
+          </p>
+          <Code>{`// Royalty calculation on fulfill
+royalty_amount = order_price * royalty_bps / 10_000
+seller_amount  = order_price - royalty_amount
+
+transfer(royalty_recipient, royalty_amount)   // creator
+transfer(seller, seller_amount)               // current owner`}</Code>
+          <p>
+            Royalties are enforced at the contract level — they cannot be bypassed by
+            any marketplace or wrapper contract. The rate is set at collection deploy
+            time and cannot be changed (immutable contract design).
+          </p>
+        </Section>
+
+        <Section title="ERC-1155 Partial Fills">
+          <p>
+            ERC-1155 listings specify an <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">amount</code> (number of editions for sale)
+            and a unit <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">price</code>.
+            Each fulfillment decrements <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">remainingAmount</code>.
+            The order stays <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">ACTIVE</code> until{" "}
+            <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">remainingAmount == 0</code>,
+            then transitions to <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">FULFILLED</code>.
+          </p>
+          <Code>{`// ERC-1155 order state
+{
+  "standard": "ERC1155",
+  "amount": "10",           // original listing quantity
+  "remainingAmount": "7",   // still available
+  "status": "ACTIVE",
+  "pricePerUnit": "1000000" // USDC, 6 decimals
+}`}</Code>
+        </Section>
+
+        <Section title="Indexer & Event Model">
+          <p>
+            The off-chain indexer polls Starknet RPC for new blocks (~6s cadence),
+            parses contract events, and writes to a PostgreSQL database that backs
+            the REST API. The indexer is the only write path to the API state — it
+            does not accept user-submitted transaction data.
+          </p>
+          <div className="space-y-2">
+            {EVENTS.map(({ name, desc }) => (
+              <div key={name} className="bento-cell px-4 py-2.5 flex items-start gap-3">
+                <code className="text-xs font-mono text-foreground/80 shrink-0 mt-0.5 w-52">{name}</code>
+                <span className="text-xs text-muted-foreground">{desc}</span>
               </div>
             ))}
           </div>
-          <p>
-            The metadata JSON for both standards conforms to the OpenSea metadata
-            specification with Medialane-specific extensions for licensing attributes.
+          <p className="text-xs">
+            ERC-1155 balance tracking uses <code className="font-mono bg-muted px-1 py-0.5 rounded">TransferSingle</code> and{" "}
+            <code className="font-mono bg-muted px-1 py-0.5 rounded">TransferBatch</code> exclusively.
+            The <code className="font-mono bg-muted px-1 py-0.5 rounded">Transfer</code> event is deduplicated at ingestion time
+            to prevent double-counting on contracts that emit both event types.
           </p>
         </Section>
 
-        <Section title="Metadata Schema">
-          <Code>{`{
-  "name": "My IP Asset",
-  "description": "A description of the work.",
-  "image": "ipfs://bafybei...",
-  "attributes": [
-    { "trait_type": "IP Type",          "value": "Visual Art" },
-    { "trait_type": "License",          "value": "CC BY-NC-SA 4.0" },
-    { "trait_type": "Commercial Use",   "value": "Not Allowed" },
-    { "trait_type": "Derivatives",      "value": "Allowed with Attribution" },
-    { "trait_type": "AI Training",      "value": "Not Allowed" },
-    { "trait_type": "Geographic Scope", "value": "Worldwide" },
-    { "trait_type": "Royalty %",        "value": "10" }
+        <Section title="Session Keys (SNIP-9)">
+          <p>
+            The Medialane app uses SNIP-9 session keys to enable gasless, PIN-authorized
+            transactions without exposing the account&apos;s master private key on every action.
+          </p>
+          <Code>{`// Session key scope (registered on-chain)
+{
+  validUntil: now + 6 * 60 * 60,          // 6 hours
+  allowedMethods: [
+    { contractAddress: marketplace_721,  selector: "create_order" },
+    { contractAddress: marketplace_721,  selector: "cancel_order" },
+    { contractAddress: marketplace_1155, selector: "create_order" },
+    { contractAddress: marketplace_1155, selector: "cancel_order" },
+    { contractAddress: nftcomments,      selector: "post_comment" },
+    // approve and set_approval_for_all are intentionally excluded
   ]
 }`}</Code>
-        </Section>
-
-        <Section title="SNIP-12 Typed Data (Order Signing)">
           <p>
-            All marketplace intents (listings, offers, fulfillments, cancellations) use
-            SNIP-12 typed data for off-chain signing. The domain separator is:
-          </p>
-          <Code>{`{
-  "name": "Medialane",
-  "version": "1",
-  "revision": "1",
-  "chainId": "SN_MAIN"
-}`}</Code>
-          <p>
-            The indexer validates submitted signatures onchain before recording orders.
-            Fulfilled and cancelled orders are reconciled from onchain events emitted by
-            the marketplace contract.
+            Session key approval and sponsored gas are managed by ChipiPay on the
+            consumer app. The dApp (app.medialane.io) accepts any Starknet wallet
+            and uses standard account signing instead.
           </p>
         </Section>
 
-        <Section title="Marketplace Events">
-          <p>The marketplace contract emits the following events, indexed by the Medialane mirror:</p>
-          <div className="space-y-2 text-sm">
-            {[
-              ["OrderCreated", "Emitted when a listing or offer intent is submitted. Contains order_hash only — full params fetched via get_order_details()."],
-              ["OrderFulfilled", "Emitted when a buyer executes a listing or a creator accepts an offer."],
-              ["OrderCancelled", "Emitted when an order is cancelled by the maker."],
-            ].map(([name, desc]) => (
-              <div key={name} className="bento-cell px-4 py-3 space-y-1">
-                <code className="text-xs font-mono text-foreground">{name}</code>
-                <p className="text-xs text-muted-foreground">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section title="Transfer Events">
-          <p>
-            The indexer tracks token ownership changes for both ERC-721 and ERC-1155
-            collections. Ownership state is maintained in a <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">TokenBalance</code> table
-            that records each (contract, tokenId, owner) balance — updated atomically
-            with every transfer event.
-          </p>
-          <div className="space-y-2 text-sm">
-            {[
-              ["Transfer", "ERC-721 ownership transfer. Keys: from, to, tokenId (u256 low/high). Always quantity 1."],
-              ["TransferSingle", "ERC-1155 single-item transfer. Keys: operator, from, to. Data: token_id (u256), value (u256)."],
-              ["TransferBatch", "ERC-1155 batch transfer. Keys: operator, from, to. Data: array of (token_id, value) pairs."],
-            ].map(([name, desc]) => (
-              <div key={name} className="bento-cell px-4 py-3 space-y-1">
-                <code className="text-xs font-mono text-foreground">{name}</code>
-                <p className="text-xs text-muted-foreground">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section title="Collection Registry Events">
-          <div className="space-y-2 text-sm">
-            <div className="bento-cell px-4 py-3 space-y-1">
-              <code className="text-xs font-mono text-foreground">CollectionCreated</code>
-              <p className="text-xs text-muted-foreground">
-                Emitted by the ERC-721 Collection Registry when a new collection is deployed.
-                Data contains <code className="font-mono">collection_id</code> (u256 low/high),
-                owner address, and name/symbol/base_uri ByteArrays.
-                The actual ERC-721 contract address (<code className="font-mono">ip_nft</code>) is
-                resolved by calling <code className="font-mono">get_collection(collection_id)</code>
-                on the registry.
-              </p>
-            </div>
-            <div className="bento-cell px-4 py-3 space-y-1">
-              <code className="text-xs font-mono text-foreground">CollectionDeployed</code>
-              <p className="text-xs text-muted-foreground">
-                Emitted by the IP Collection 1155 Factory when a new ERC-1155 collection is deployed.
-                Data contains the deployed contract address, caller (owner), name, symbol, and base_uri
-                (IPFS URI pointing to collection-level metadata JSON with name, description, image fields).
-                The indexer reads these fields directly from the event — no RPC call is needed to fetch
-                name/symbol/base_uri for ERC-1155 collections.
-              </p>
-            </div>
-          </div>
-        </Section>
-
-        <Section title="Indexer Architecture">
-          <p>
-            The Medialane off-chain layer consists of three components running as a single
-            Bun process:
-          </p>
-          <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li><strong className="text-foreground">Mirror</strong> — polls the Starknet RPC for new blocks, processes events, and writes to PostgreSQL</li>
-            <li><strong className="text-foreground">Orchestrator</strong> — an in-memory worker that processes metadata fetch jobs (IPFS resolution, stats updates)</li>
-            <li><strong className="text-foreground">API</strong> — a Hono REST server exposing all platform data to frontends and third-party integrations</li>
-          </ul>
-          <p>
-            The indexer polls every ~6 seconds. Block lag is typically 1–3 blocks.
-            New collections and order events appear in the API within one indexer tick
-            of the transaction being confirmed.
-          </p>
-        </Section>
       </div>
     </div>
   );
