@@ -25,8 +25,8 @@ const AXIOMS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    medialane: "Medialane's Cairo smart contracts are pure mathematics. A marketplace listing, a royalty payment, a license term — none can be altered by opinion, pressure, or authority. The contract executes as written. Always.",
-    highlights: ["ZK-STARK proofs verified on Starknet", "Cairo 2 smart contracts open-sourced", "No admin keys to upgrade core logic"],
+    medialane: "The v3 marketplace contracts have no admin keys and cannot be upgraded. What they do is determined by the deployed code, which is open source and verifiable by anyone. A listing, an order, a transfer — the rules are fixed at deployment.",
+    highlights: ["ZK-STARK proofs verified on Starknet", "Cairo 2 smart contracts open-sourced", "No admin keys — no upgrades after deploy"],
   },
   {
     num: "02",
@@ -69,8 +69,8 @@ const AXIOMS = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    medialane: "The Mediolano protocol — the independent IP protection and licensing layer Medialane builds on — is a public good. Zero fees. Fully open source. Community owned. Any creator, developer, or AI agent in the world can use it, fork it, or build on it without permission or payment.",
-    highlights: ["Mediolano protocol: zero fees, open source", "MIT-licensed contracts and SDK", "Community governed via Medialane DAO"],
+    medialane: "The Mediolano protocol — the independent IP protection and licensing layer Medialane builds on — is a public good. Zero fees. Fully open source. Any creator, developer, or AI agent can use it, fork it, or build on it without permission or payment.",
+    highlights: ["Mediolano protocol: zero fees, open source", "MIT-licensed contracts and SDK", "Permissionless — no approval to build on it"],
   },
   {
     num: "06",
@@ -102,8 +102,8 @@ const AXIOMS = [
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    medialane: "Medialane was built from the start for AI agents as first-class participants. An autonomous agent can register IP, check license terms, pay royalties, and transact in the marketplace — without human intervention. The smart contract doesn't ask whether the caller is human.",
-    highlights: ["AI agents can mint, trade, and license without barriers", "API and SDK designed for agent-to-agent interaction", "On-chain license scanning for autonomous compliance"],
+    medialane: "The API and smart contracts make no distinction between human users and AI agents. An autonomous agent can register IP, read license terms, and transact in the marketplace — the contracts don't check whether the caller is human. HTTP 402 billing in the Portal is designed for agent-to-agent use cases.",
+    highlights: ["AI agents can mint and trade without barriers", "API and SDK designed for agent-to-agent interaction", "HTTP 402 credit billing for autonomous agents"],
   },
   {
     num: "09",
@@ -113,8 +113,8 @@ const AXIOMS = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    medialane: "IP tokenization transforms creative works into programmable assets — with embedded rights,  and verifiable provenance. No gallery, label, publisher, or platform can alter the terms or extract value without the creator's consent. The license terms are code. The royalties are law.",
-    highlights: ["Programmable licenses set at mint time", "Derivative chain tracking — value flows back to originators"],
+    medialane: "Minting on Medialane creates an immutable record of authorship and embeds license terms in the token itself. The terms travel with every transfer. No gallery, label, or platform can alter the on-chain record. The creator's address and stated terms are permanently verifiable.",
+    highlights: ["Programmable licenses set at mint time", "Immutable authorship record — verifiable by anyone", "Derivative chain recorded on-chain"],
   },
   {
     num: "10",
@@ -136,14 +136,13 @@ export default function IntegrityWebPage() {
       {/* Hero */}
       <div className="space-y-5">
         <span className="pill-badge">Philosophy</span>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
-          The Integrity Web<br />
-          <span className="gradient-text">A Fine Art Declaration of Digital Freedom</span>
+        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
+          The Integrity Web
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          The Integrity Web is a set of ten axioms that define what it means to build
-          trustworthy digital infrastructure. Medialane was designed from the ground up
-          to embody each one — not as aspiration, but as architecture.
+          The Integrity Web is a set of ten axioms that define what trustworthy digital
+          infrastructure must implement at the architectural level. This page explains
+          what each axiom means and how Medialane applies it in practice.
         </p>
         <div className="flex flex-wrap gap-3 pt-1">
           <a
@@ -259,8 +258,8 @@ export default function IntegrityWebPage() {
           Ready to build on the Integrity Web?
         </h2>
         <p className="text-muted-foreground max-w-xl mx-auto">
-          Mint your IP, earn royalties, or build on the Mediolano protocol.
-          Permissionless. Censorship-resistant. For all intelligences.
+          Mint your IP, build on the Mediolano protocol, or start with the API.
+          No approval required.
         </p>
         <div className="flex flex-wrap justify-center gap-3 pt-2">
           <a

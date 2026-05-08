@@ -31,10 +31,9 @@ export default function LearnProtectIPPage() {
         <h2 className="text-2xl font-bold">Protecting Your Intellectual Property</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Your creative work is automatically protected by international copyright law
-          the moment you create it. Medialane — built on the Mediolano protocol —
-          adds a permanent, cryptographic layer of proof that reinforces those rights
-          across <strong className="text-foreground">181 countries</strong>, without
-          registration, without lawyers, and without fees.
+          the moment you create it — this is true regardless of Medialane. What minting
+          adds is a timestamped, immutable, publicly verifiable record of authorship that
+          can serve as evidence of when a work existed and who published it.
         </p>
       </div>
 
@@ -125,9 +124,10 @@ export default function LearnProtectIPPage() {
             <li>A <strong className="text-foreground">content hash</strong> of the metadata is committed to the blockchain, linking the on-chain record to the off-chain content permanently.</li>
           </ul>
           <p>
-            This creates a Berne Convention-compliant proof of authorship that is
-            valid in 181 countries — without registration, without WIPO filing, and
-            without any fee beyond standard Starknet gas (which is fractions of a cent).
+            This creates a timestamped, publicly verifiable record of authorship — without
+            registration, without WIPO filing, and without any fee beyond standard Starknet
+            gas. It is not formal copyright registration, but it is tamper-proof evidence
+            of when a work existed and who created it.
           </p>
         </Section>
 
@@ -163,11 +163,10 @@ export default function LearnProtectIPPage() {
 
         <Section title="On-Chain Licensing">
           <p>
-            Beyond proof of authorship, Medialane lets you attach programmable license
-            terms to every work at mint time — defining in machine-readable form what
-            others can and cannot do with your creation. License terms travel with the
-            token through every transfer and are enforced by the marketplace smart contract
-            on every sale.
+            Beyond proof of authorship, Medialane lets you attach license terms to every
+            work at mint time — defining in machine-readable form what others can and cannot
+            do with your creation. The terms are embedded in the token metadata and travel
+            with every transfer, publicly readable by any application or agent.
           </p>
           <p>
             See the{" "}

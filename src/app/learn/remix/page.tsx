@@ -35,12 +35,12 @@ export default function LearnRemixPage() {
   return (
     <div className="space-y-10">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">Remix & Derivative Works</h2>
+        <h2 className="text-2xl font-semibold">Remix & Derivative Works</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Creativity is iterative. Medialane natively supports derivative works — letting
-          creators build on existing IP while automatically respecting the original
-          license terms. Every remix creates a transparent, immutable provenance chain
-          on Starknet.
+          Medialane supports derivative works — letting creators build on existing IP
+          with the parent asset&apos;s license terms visible at every step. Every remix
+          records its relationship to the original on-chain, creating a transparent
+          and permanent provenance chain.
         </p>
       </div>
 
@@ -65,9 +65,8 @@ export default function LearnRemixPage() {
 
         <Section title="How License Terms Flow Through Remixes">
           <p>
-            The Mediolano protocol — the IP licensing layer Medialane is built upon —
-            enforces license compatibility automatically before a remix can be minted.
-            Key rules:
+            The parent asset&apos;s license terms are displayed before minting a remix.
+            Certain incompatibilities are blocked at the application level. Key rules:
           </p>
           <div className="space-y-2">
             {[
@@ -114,21 +113,6 @@ export default function LearnRemixPage() {
           </p>
         </Section>
 
-        <Section title="Royalties in the Remix Graph">
-          <p>
-            When a remix is sold on the Medialane marketplace, royalties flow to the
-            remix creator at the percentage they set. Optionally, the original creator
-            may also be entitled to a share — depending on the license terms configured
-            at mint time.
-          </p>
-          <p>
-            This creates a fair economic model: as derivative works appreciate in value
-            and trade hands, the original creative contributions that made them possible
-            continue to be recognized and compensated — automatically, on every sale,
-            enforced by the marketplace smart contract.
-          </p>
-        </Section>
-
         <Section title="AI Agents & Automated Remixing">
           <p>
             The Remix Graph is particularly powerful for AI-generated content. An
@@ -138,12 +122,11 @@ export default function LearnRemixPage() {
             <li>Query the Medialane API for assets that permit remixing (<code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">derivatives: allowed</code>).</li>
             <li>Generate a new derivative work using the source asset as input.</li>
             <li>Mint the new asset with the source material automatically linked in metadata.</li>
-            <li>Propagate royalties to the original human creator if the remix is later sold.</li>
+            <li>Mint the new asset with proper attribution back to the source material.</li>
           </ol>
           <p>
-            This structure makes the Mediolano protocol and Medialane platform natively
-            AI-agent-ready — autonomous intelligences can participate in the IP economy
-            with the same transparency and accountability as human creators.
+            The API and smart contracts make no distinction between human users and
+            AI agents — the same endpoints and contracts are available to both.
           </p>
         </Section>
 
