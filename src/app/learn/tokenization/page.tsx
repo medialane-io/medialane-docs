@@ -36,7 +36,7 @@ export default function TokenizationPage() {
           {[
             { label: "Ownership", desc: "The right to claim authorship and control over an IP asset — represented as an NFT in your wallet." },
             { label: "Licenses", desc: "Specific usage rights (commercial, derivative, distribution) encoded in a programmable license attached to the token." },
-            { label: "Royalties", desc: "Future revenue streams — when an IP asset is resold, a percentage automatically flows back to the original creator." },
+            { label: "Royalties", desc: "Creators can define royalty terms in the asset metadata — the percentage and recipient for secondary sales. Whether a given marketplace honors those terms depends on the platform facilitating the sale." },
             { label: "Credentials", desc: "Participation records (POP Protocol) — proof you attended an event, joined a community, or reached a milestone." },
           ].map(({ label, desc }) => (
             <div key={label} className="flex items-start gap-3">
@@ -52,7 +52,7 @@ export default function TokenizationPage() {
         <h3 className="text-lg font-semibold">Why Tokenization Matters for Creators</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
-            { icon: DollarSign, title: "New Revenue Streams", desc: "Sell primary rights, earn royalties on secondary sales, license specific uses independently — all automated by smart contracts." },
+            { icon: DollarSign, title: "New Revenue Streams", desc: "Sell primary rights, license specific uses independently, and define royalty terms that compatible marketplaces can honor on secondary sales." },
             { icon: Users, title: "Global Liquidity", desc: "A tokenized IP asset can be listed on a marketplace accessible by anyone, anywhere — no gallery representation or publisher deal required." },
             { icon: Coins, title: "Fractional Ownership", desc: "Tokenization enables splitting ownership of a single asset among many holders — opening IP investment to communities." },
             { icon: Layers, title: "Composability", desc: "Tokenized IP can plug into other protocols — DeFi vaults, on-chain royalty splits, DAO treasuries — in ways impossible with traditional IP." },
@@ -77,9 +77,9 @@ export default function TokenizationPage() {
           and creating a verifiable ownership record aligned with the Berne Convention.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Your tokenized IP then lives in your portfolio, can be listed on the marketplace, licensed
-          to other creators, used as collateral in future DeFi integrations, or passed to the next generation
-          of owners — all with the original creator receiving their programmed royalty on every transaction.
+          Your tokenized IP lives in your portfolio, can be listed on the marketplace, licensed
+          to other creators, or passed to the next generation of owners — with your authorship record
+          and license terms permanently attached and publicly readable.
         </p>
       </div>
 

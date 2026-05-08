@@ -5,15 +5,15 @@ import { CANONICAL } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "Fees & Revenue | Medialane Docs",
-  description: "Canonical guide to Medialane fees, gas sponsorship, royalties, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
+  description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
   openGraph: {
     title: "Fees & Revenue | Medialane Docs",
-    description: "Canonical guide to Medialane fees, gas sponsorship, royalties, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
+    description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
     url: "https://docs.medialane.io/docs/fees",
   },
   twitter: {
     title: "Fees & Revenue | Medialane Docs",
-    description: "Canonical guide to Medialane fees, gas sponsorship, royalties, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
+    description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
   },
 };
 

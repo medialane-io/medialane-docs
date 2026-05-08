@@ -58,9 +58,9 @@ export default function LearnNFTPage() {
           </p>
           <p>
             On Medialane, every NFT carries a programmable license embedded in its metadata.
-            This license defines exactly how the work can be used: whether it can be reproduced,
-            remixed, used commercially, or trained on by AI systems. These rules are enforced
-            onchain and cannot be silently changed by a platform or middleman.
+            This license defines how the work can be used — whether it can be reproduced,
+            remixed, used commercially, or trained on by AI systems. These terms are part of the
+            token metadata and cannot be silently changed after minting.
           </p>
         </Section>
 

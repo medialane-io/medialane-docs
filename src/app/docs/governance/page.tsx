@@ -43,7 +43,7 @@ export default function DocsGovernancePage() {
             <strong className="text-foreground">Mediolano</strong> — a permissionless,
             open-source protocol for IP protection and licensing. Mediolano was designed
             as a <strong className="text-foreground">public good</strong>: zero fees,
-            community-owned, and governed by its users through the Mediolano DAO.
+            open source, and permissionless — anyone can use or build on it without approval.
           </p>
           <p>
             Medialane extends this foundation by adding a full marketplace, creator
@@ -154,9 +154,8 @@ export default function DocsGovernancePage() {
         <Section title="Dispute Resolution">
           <p>
             Disputes involving platform conduct, IP infringement, or governance decisions
-            are resolved through on-chain arbitration or DAO voting. The community has the
-            ability to flag malicious actors, propose content delisting from the platform
-            interface, and vote on enforcement actions.
+            can be raised through DAO governance. Community members can flag malicious actors,
+            propose content delisting from the platform interface, and vote on enforcement actions.
           </p>
           <p>
             Note: on-chain records on Starknet are immutable and cannot be deleted by any

@@ -98,8 +98,8 @@ export default function LearnWeb3Page() {
           <p>
             Smart contracts are programs that run on the blockchain. They execute automatically
             when certain conditions are met — no intermediary required. The Medialane
-            marketplace contract enforces royalties, validates signatures, and executes
-            asset transfers entirely through code, not through a human decision.
+            marketplace contract validates signatures and executes asset transfers entirely
+            through code, not through a human decision.
           </p>
           <p>
             Starknet smart contracts are written in <strong className="text-foreground">Cairo</strong>,
