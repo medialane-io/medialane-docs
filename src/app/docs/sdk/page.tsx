@@ -5,6 +5,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "SDK | Medialane Docs",
   description: "The @medialane/sdk TypeScript package — installation, client configuration, data queries, marketplace intents, and type reference.",
+  openGraph: {
+    title: "SDK | Medialane Docs",
+    description: "The @medialane/sdk TypeScript package — installation, client configuration, data queries, marketplace intents, and type reference.",
+    url: "https://docs.medialane.io/docs/sdk",
+  },
+  twitter: {
+    title: "SDK | Medialane Docs",
+    description: "The @medialane/sdk TypeScript package — installation, client configuration, data queries, marketplace intents, and type reference.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

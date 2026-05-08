@@ -5,6 +5,15 @@ import { BookOpen, Image, Rocket, Store, Globe, Shield, FileText, Award, Package
 export const metadata: Metadata = {
   title: "Learn | Medialane",
   description: "Learn about NFTs, IP protection, blockchain technology, and how the Medialane platform works.",
+  openGraph: {
+    title: "Learn | Medialane",
+    description: "Learn about NFTs, IP protection, blockchain technology, and how the Medialane platform works.",
+    url: "https://docs.medialane.io/learn",
+  },
+  twitter: {
+    title: "Learn | Medialane",
+    description: "Learn about NFTs, IP protection, blockchain technology, and how the Medialane platform works.",
+  },
 };
 
 const TOPICS = [

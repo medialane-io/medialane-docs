@@ -5,6 +5,15 @@ import { Users, User, FileText, Eye, Scale, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Guidelines | Medialane",
   description: "Community standards, user policies, terms of use, privacy policy, and compliance guidelines for the Medialane platform.",
+  openGraph: {
+    title: "Guidelines | Medialane",
+    description: "Community standards, user policies, terms of use, privacy policy, and compliance guidelines for the Medialane platform.",
+    url: "https://docs.medialane.io/guidelines",
+  },
+  twitter: {
+    title: "Guidelines | Medialane",
+    description: "Community standards, user policies, terms of use, privacy policy, and compliance guidelines for the Medialane platform.",
+  },
 };
 
 const SECTIONS = [

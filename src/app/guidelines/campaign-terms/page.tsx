@@ -5,6 +5,15 @@ import { Shield } from "lucide-react";
 export const metadata: Metadata = {
   title: "Campaign Terms | Medialane",
   description: "Medialane Creator Fund campaign participation terms and disclaimer.",
+  openGraph: {
+    title: "Campaign Terms | Medialane",
+    description: "Medialane Creator Fund campaign participation terms and disclaimer.",
+    url: "https://docs.medialane.io/guidelines/campaign-terms",
+  },
+  twitter: {
+    title: "Campaign Terms | Medialane",
+    description: "Medialane Creator Fund campaign participation terms and disclaimer.",
+  },
 };
 
 export default function CampaignTermsPage() {

@@ -5,6 +5,15 @@ import { Building2, Scroll, Vote, Coins, ExternalLink, ArrowRight, Users, Globe 
 export const metadata: Metadata = {
   title: "DAO | Medialane",
   description: "Medialane DAO LLC — community governance, constitution, MDLN token, and the path to full platform autonomy.",
+  openGraph: {
+    title: "DAO | Medialane",
+    description: "Medialane DAO LLC — community governance, constitution, MDLN token, and the path to full platform autonomy.",
+    url: "https://docs.medialane.io/dao",
+  },
+  twitter: {
+    title: "DAO | Medialane",
+    description: "Medialane DAO LLC — community governance, constitution, MDLN token, and the path to full platform autonomy.",
+  },
 };
 
 const PILLARS = [

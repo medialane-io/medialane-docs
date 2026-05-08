@@ -4,6 +4,15 @@ import { Coins, Layers, DollarSign, Users } from "lucide-react";
 export const metadata: Metadata = {
   title: "Tokenization | Medialane Learn",
   description: "What tokenization means for intellectual property — turning creative works into tradeable digital assets.",
+  openGraph: {
+    title: "Tokenization | Medialane Learn",
+    description: "What tokenization means for intellectual property — turning creative works into tradeable digital assets.",
+    url: "https://docs.medialane.io/learn/tokenization",
+  },
+  twitter: {
+    title: "Tokenization | Medialane Learn",
+    description: "What tokenization means for intellectual property — turning creative works into tradeable digital assets.",
+  },
 };
 
 export default function TokenizationPage() {

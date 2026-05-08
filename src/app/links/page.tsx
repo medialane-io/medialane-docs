@@ -4,6 +4,15 @@ import { ExternalLink } from "lucide-react";
 export const metadata: Metadata = {
   title: "Links | Medialane",
   description: "Connect with Medialane — official social media, community channels, and developer resources.",
+  openGraph: {
+    title: "Links | Medialane",
+    description: "Connect with Medialane — official social media, community channels, and developer resources.",
+    url: "https://docs.medialane.io/links",
+  },
+  twitter: {
+    title: "Links | Medialane",
+    description: "Connect with Medialane — official social media, community channels, and developer resources.",
+  },
 };
 
 const LINKS = [

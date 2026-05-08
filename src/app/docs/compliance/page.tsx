@@ -4,6 +4,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Compliance | Docs | Medialane",
   description: "Medialane's approach to regulatory compliance — KYC/AML, IP law, sanctions, data protection, and DAO liability.",
+  openGraph: {
+    title: "Compliance | Docs | Medialane",
+    description: "Medialane's approach to regulatory compliance — KYC/AML, IP law, sanctions, data protection, and DAO liability.",
+    url: "https://docs.medialane.io/docs/compliance",
+  },
+  twitter: {
+    title: "Compliance | Docs | Medialane",
+    description: "Medialane's approach to regulatory compliance — KYC/AML, IP law, sanctions, data protection, and DAO liability.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

@@ -4,6 +4,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Creator Launchpad | Learn | Medialane",
   description: "Learn how to deploy collections, mint IP assets, and launch your creative work on Medialane.",
+  openGraph: {
+    title: "Creator Launchpad | Learn | Medialane",
+    description: "Learn how to deploy collections, mint IP assets, and launch your creative work on Medialane.",
+    url: "https://docs.medialane.io/learn/creator-launchpad",
+  },
+  twitter: {
+    title: "Creator Launchpad | Learn | Medialane",
+    description: "Learn how to deploy collections, mint IP assets, and launch your creative work on Medialane.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

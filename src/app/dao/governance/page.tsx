@@ -4,6 +4,15 @@ import { Vote, ExternalLink, Clock, CheckCircle2, Users, Landmark } from "lucide
 export const metadata: Metadata = {
   title: "Governance Charter | Medialane DAO",
   description: "How Medialane DAO governance works — proposals, voting, quorum, and execution.",
+  openGraph: {
+    title: "Governance Charter | Medialane DAO",
+    description: "How Medialane DAO governance works — proposals, voting, quorum, and execution.",
+    url: "https://docs.medialane.io/dao/governance",
+  },
+  twitter: {
+    title: "Governance Charter | Medialane DAO",
+    description: "How Medialane DAO governance works — proposals, voting, quorum, and execution.",
+  },
 };
 
 const PROCESS_STEPS = [

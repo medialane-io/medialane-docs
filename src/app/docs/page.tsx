@@ -5,6 +5,15 @@ import { LinkCard } from "@/components/ui/link-card";
 export const metadata: Metadata = {
   title: "Docs | Medialane",
   description: "Technical documentation for the Medialane platform, protocol, SDK, API, contracts, and security.",
+  openGraph: {
+    title: "Docs | Medialane",
+    description: "Technical documentation for the Medialane platform, protocol, SDK, API, contracts, and security.",
+    url: "https://docs.medialane.io/docs",
+  },
+  twitter: {
+    title: "Docs | Medialane",
+    description: "Technical documentation for the Medialane platform, protocol, SDK, API, contracts, and security.",
+  },
 };
 
 export default function DocsPage() {

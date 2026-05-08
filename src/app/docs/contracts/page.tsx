@@ -4,6 +4,15 @@ import { FileCode2, ExternalLink, Shield, Lock } from "lucide-react";
 export const metadata: Metadata = {
   title: "Contracts | Medialane Docs",
   description: "Medialane v3 smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
+  openGraph: {
+    title: "Contracts | Medialane Docs",
+    description: "Medialane v3 smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
+    url: "https://docs.medialane.io/docs/contracts",
+  },
+  twitter: {
+    title: "Contracts | Medialane Docs",
+    description: "Medialane v3 smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
+  },
 };
 
 const CONTRACTS = [

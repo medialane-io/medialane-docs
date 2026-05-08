@@ -4,6 +4,15 @@ import { User, ShieldCheck, AlertTriangle, Lock } from "lucide-react";
 export const metadata: Metadata = {
   title: "User Guidelines | Medialane",
   description: "How to use the Medialane platform responsibly — account rules, content standards, and best practices.",
+  openGraph: {
+    title: "User Guidelines | Medialane",
+    description: "How to use the Medialane platform responsibly — account rules, content standards, and best practices.",
+    url: "https://docs.medialane.io/guidelines/user-guidelines",
+  },
+  twitter: {
+    title: "User Guidelines | Medialane",
+    description: "How to use the Medialane platform responsibly — account rules, content standards, and best practices.",
+  },
 };
 
 const SECTIONS = [

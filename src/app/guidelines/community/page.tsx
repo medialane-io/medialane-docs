@@ -4,6 +4,15 @@ import { Users, Heart, Flag, Gavel, MessageSquare } from "lucide-react";
 export const metadata: Metadata = {
   title: "Community Guidelines | Medialane",
   description: "Rules and standards for participation in the Medialane community.",
+  openGraph: {
+    title: "Community Guidelines | Medialane",
+    description: "Rules and standards for participation in the Medialane community.",
+    url: "https://docs.medialane.io/guidelines/community",
+  },
+  twitter: {
+    title: "Community Guidelines | Medialane",
+    description: "Rules and standards for participation in the Medialane community.",
+  },
 };
 
 const PRINCIPLES = [

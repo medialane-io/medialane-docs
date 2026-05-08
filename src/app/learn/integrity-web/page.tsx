@@ -5,6 +5,15 @@ import { ExternalLink, Shield, Lock, Globe, Layers, FileCheck, Eye, Network, Bot
 export const metadata: Metadata = {
   title: "The Integrity Web | Learn | Medialane",
   description: "Understand the Integrity Web — the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
+  openGraph: {
+    title: "The Integrity Web | Learn | Medialane",
+    description: "Understand the Integrity Web — the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
+    url: "https://docs.medialane.io/learn/integrity-web",
+  },
+  twitter: {
+    title: "The Integrity Web | Learn | Medialane",
+    description: "Understand the Integrity Web — the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
+  },
 };
 
 const AXIOMS = [

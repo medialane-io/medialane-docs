@@ -3,6 +3,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Collection Drop | Learn | Medialane",
   description: "Learn how to launch and participate in time-limited NFT Collection Drops on Medialane.",
+  openGraph: {
+    title: "Collection Drop | Learn | Medialane",
+    description: "Learn how to launch and participate in time-limited NFT Collection Drops on Medialane.",
+    url: "https://docs.medialane.io/learn/collection-drop",
+  },
+  twitter: {
+    title: "Collection Drop | Learn | Medialane",
+    description: "Learn how to launch and participate in time-limited NFT Collection Drops on Medialane.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

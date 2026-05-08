@@ -3,6 +3,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Remix & Derivatives | Learn | Medialane",
   description: "Learn how to create derivative works on Medialane — remix graphs, license compliance, attribution, and AI agent remixing.",
+  openGraph: {
+    title: "Remix & Derivatives | Learn | Medialane",
+    description: "Learn how to create derivative works on Medialane — remix graphs, license compliance, attribution, and AI agent remixing.",
+    url: "https://docs.medialane.io/learn/remix",
+  },
+  twitter: {
+    title: "Remix & Derivatives | Learn | Medialane",
+    description: "Learn how to create derivative works on Medialane — remix graphs, license compliance, attribution, and AI agent remixing.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

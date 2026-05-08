@@ -4,6 +4,15 @@ import { Eye } from "lucide-react";
 export const metadata: Metadata = {
   title: "Privacy Policy | Medialane",
   description: "Privacy Policy for the Medialane platform.",
+  openGraph: {
+    title: "Privacy Policy | Medialane",
+    description: "Privacy Policy for the Medialane platform.",
+    url: "https://docs.medialane.io/guidelines/privacy",
+  },
+  twitter: {
+    title: "Privacy Policy | Medialane",
+    description: "Privacy Policy for the Medialane platform.",
+  },
 };
 
 function Section({ num, title, children }: { num: string; title: string; children: React.ReactNode }) {

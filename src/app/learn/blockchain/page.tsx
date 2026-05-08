@@ -4,6 +4,15 @@ import { Globe, Layers, Shield, Clock } from "lucide-react";
 export const metadata: Metadata = {
   title: "Blockchain | Medialane Learn",
   description: "Understand how blockchain technology works and why it matters for intellectual property and digital ownership.",
+  openGraph: {
+    title: "Blockchain | Medialane Learn",
+    description: "Understand how blockchain technology works and why it matters for intellectual property and digital ownership.",
+    url: "https://docs.medialane.io/learn/blockchain",
+  },
+  twitter: {
+    title: "Blockchain | Medialane Learn",
+    description: "Understand how blockchain technology works and why it matters for intellectual property and digital ownership.",
+  },
 };
 
 export default function BlockchainPage() {

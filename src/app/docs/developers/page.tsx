@@ -5,6 +5,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Developers | Medialane Docs",
   description: "Developer quickstart — portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
+  openGraph: {
+    title: "Developers | Medialane Docs",
+    description: "Developer quickstart — portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
+    url: "https://docs.medialane.io/docs/developers",
+  },
+  twitter: {
+    title: "Developers | Medialane Docs",
+    description: "Developer quickstart — portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

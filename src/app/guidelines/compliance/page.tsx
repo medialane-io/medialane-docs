@@ -4,6 +4,15 @@ import { Scale, Shield, Globe, FileCheck } from "lucide-react";
 export const metadata: Metadata = {
   title: "Compliance | Medialane",
   description: "Medialane compliance framework — KYC/AML, IP law, securities regulations, and data protection.",
+  openGraph: {
+    title: "Compliance | Medialane",
+    description: "Medialane compliance framework — KYC/AML, IP law, securities regulations, and data protection.",
+    url: "https://docs.medialane.io/guidelines/compliance",
+  },
+  twitter: {
+    title: "Compliance | Medialane",
+    description: "Medialane compliance framework — KYC/AML, IP law, securities regulations, and data protection.",
+  },
 };
 
 const AREAS = [

@@ -4,6 +4,15 @@ import { FileText } from "lucide-react";
 export const metadata: Metadata = {
   title: "Terms of Use | Medialane",
   description: "Terms of Use for the Medialane platform.",
+  openGraph: {
+    title: "Terms of Use | Medialane",
+    description: "Terms of Use for the Medialane platform.",
+    url: "https://docs.medialane.io/guidelines/terms",
+  },
+  twitter: {
+    title: "Terms of Use | Medialane",
+    description: "Terms of Use for the Medialane platform.",
+  },
 };
 
 function Section({ num, title, children }: { num: string; title: string; children: React.ReactNode }) {

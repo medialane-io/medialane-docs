@@ -4,6 +4,15 @@ import { Shield, Eye, Lock, AlertTriangle } from "lucide-react";
 export const metadata: Metadata = {
   title: "Security | Docs | Medialane",
   description: "Security architecture, audit reports, risk disclosure, and monitoring for the Medialane protocol.",
+  openGraph: {
+    title: "Security | Docs | Medialane",
+    description: "Security architecture, audit reports, risk disclosure, and monitoring for the Medialane protocol.",
+    url: "https://docs.medialane.io/docs/security",
+  },
+  twitter: {
+    title: "Security | Docs | Medialane",
+    description: "Security architecture, audit reports, risk disclosure, and monitoring for the Medialane protocol.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

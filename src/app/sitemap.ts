@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Learn ─────────────────────────────────────────────────────────────────
     { url: `${BASE_URL}/learn`,                            changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/learn/integrity-web`,              changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/nft`,                        changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/blockchain`,                 changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/zero-knowledge`,             changeFrequency: "monthly", priority: 0.7 },
@@ -33,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/docs/api`,                         changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/docs/contracts`,                   changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/docs/developers`,                  changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/docs/agents`,                      changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/docs/security`,                    changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/docs/fees`,                        changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/docs/changelog`,                   changeFrequency: "monthly", priority: 0.6 },
@@ -58,6 +60,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Links ─────────────────────────────────────────────────────────────────
     { url: `${BASE_URL}/links`,                            changeFrequency: "monthly", priority: 0.6 },
-    { url: `${BASE_URL}/search`,                           changeFrequency: "monthly", priority: 0.5 },
   ];
 }

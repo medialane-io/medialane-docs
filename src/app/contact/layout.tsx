@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Medialane",
     description: "Get in touch with the Medialane team — support, partnerships, and press inquiries.",
+    url: "https://docs.medialane.io/contact",
   },
   twitter: {
     card: "summary",

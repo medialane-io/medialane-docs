@@ -1,8 +1,10 @@
-import type { MetadataRoute } from "next";
+import type { MetadataRoute } from "next"
+
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://docs.medialane.io"
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://docs.medialane.io/sitemap.xml",
-  };
+    sitemap: `${BASE_URL}/sitemap.xml`,
+  }
 }

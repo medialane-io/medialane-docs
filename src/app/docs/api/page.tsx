@@ -4,6 +4,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "API Reference | Medialane Docs",
   description: "Full REST API reference — endpoints, authentication, rate limits, MDLN multiplier tiers, and response types.",
+  openGraph: {
+    title: "API Reference | Medialane Docs",
+    description: "Full REST API reference — endpoints, authentication, rate limits, MDLN multiplier tiers, and response types.",
+    url: "https://docs.medialane.io/docs/api",
+  },
+  twitter: {
+    title: "API Reference | Medialane Docs",
+    description: "Full REST API reference — endpoints, authentication, rate limits, MDLN multiplier tiers, and response types.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

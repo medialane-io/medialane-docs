@@ -4,6 +4,15 @@ import { Scroll } from "lucide-react";
 export const metadata: Metadata = {
   title: "Constitution | Medialane DAO",
   description: "The founding document of Medialane DAO LLC — mission, membership, and core values.",
+  openGraph: {
+    title: "Constitution | Medialane DAO",
+    description: "The founding document of Medialane DAO LLC — mission, membership, and core values.",
+    url: "https://docs.medialane.io/dao/constitution",
+  },
+  twitter: {
+    title: "Constitution | Medialane DAO",
+    description: "The founding document of Medialane DAO LLC — mission, membership, and core values.",
+  },
 };
 
 const ARTICLES = [

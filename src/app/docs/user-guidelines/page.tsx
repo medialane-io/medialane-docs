@@ -3,6 +3,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "User Guidelines | Docs | Medialane",
   description: "How to use the Medialane platform responsibly — account rules, content standards, and best practices.",
+  openGraph: {
+    title: "User Guidelines | Docs | Medialane",
+    description: "How to use the Medialane platform responsibly — account rules, content standards, and best practices.",
+    url: "https://docs.medialane.io/docs/user-guidelines",
+  },
+  twitter: {
+    title: "User Guidelines | Docs | Medialane",
+    description: "How to use the Medialane platform responsibly — account rules, content standards, and best practices.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

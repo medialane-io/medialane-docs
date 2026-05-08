@@ -6,6 +6,15 @@ import { CANONICAL } from "@/lib/canonical";
 export const metadata: Metadata = {
   title: "MDLN Token | Medialane DAO",
   description: "The MDLN governance token — fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
+  openGraph: {
+    title: "MDLN Token | Medialane DAO",
+    description: "The MDLN governance token — fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
+    url: "https://docs.medialane.io/dao/token",
+  },
+  twitter: {
+    title: "MDLN Token | Medialane DAO",
+    description: "The MDLN governance token — fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
+  },
 };
 
 const UTILITIES = [

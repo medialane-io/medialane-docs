@@ -3,6 +3,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "POP Protocol | Learn | Medialane",
   description: "Learn how the POP Protocol issues on-chain proof-of-participation credentials for events, communities, and milestones.",
+  openGraph: {
+    title: "POP Protocol | Learn | Medialane",
+    description: "Learn how the POP Protocol issues on-chain proof-of-participation credentials for events, communities, and milestones.",
+    url: "https://docs.medialane.io/learn/pop-protocol",
+  },
+  twitter: {
+    title: "POP Protocol | Learn | Medialane",
+    description: "Learn how the POP Protocol issues on-chain proof-of-participation credentials for events, communities, and milestones.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

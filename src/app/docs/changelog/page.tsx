@@ -5,6 +5,15 @@ import { ExternalLink, History } from "lucide-react";
 export const metadata: Metadata = {
   title: "Changelog | Medialane Docs",
   description: "Protocol, SDK, API, governance, and documentation changes that affect Medialane users and builders.",
+  openGraph: {
+    title: "Changelog | Medialane Docs",
+    description: "Protocol, SDK, API, governance, and documentation changes that affect Medialane users and builders.",
+    url: "https://docs.medialane.io/docs/changelog",
+  },
+  twitter: {
+    title: "Changelog | Medialane Docs",
+    description: "Protocol, SDK, API, governance, and documentation changes that affect Medialane users and builders.",
+  },
 };
 
 const CHANGES = [

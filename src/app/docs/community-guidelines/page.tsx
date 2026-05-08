@@ -4,6 +4,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Community Guidelines | Docs | Medialane",
   description: "Rules for community participation, moderation standards, and how violations are handled on Medialane.",
+  openGraph: {
+    title: "Community Guidelines | Docs | Medialane",
+    description: "Rules for community participation, moderation standards, and how violations are handled on Medialane.",
+    url: "https://docs.medialane.io/docs/community-guidelines",
+  },
+  twitter: {
+    title: "Community Guidelines | Docs | Medialane",
+    description: "Rules for community participation, moderation standards, and how violations are handled on Medialane.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

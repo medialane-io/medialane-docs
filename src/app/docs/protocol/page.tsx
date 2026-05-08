@@ -3,7 +3,16 @@ import { Network } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Protocol | Medialane Docs",
-  description: "Technical specification of the Medialane onchain protocol — atomic swaps, SNIP-12 signing, ERC-2981 royalties, indexer, and event model.",
+  description: "Technical specification of the Medialane onchain protocol — SNIP-12 typed data signing, atomic swaps, ERC-2981 royalties, SNIP-9 session keys, indexer, and event model.",
+  openGraph: {
+    title: "Protocol | Medialane Docs",
+    description: "Technical specification of the Medialane onchain protocol — SNIP-12 typed data signing, atomic swaps, ERC-2981 royalties, SNIP-9 session keys, indexer, and event model.",
+    url: "https://docs.medialane.io/docs/protocol",
+  },
+  twitter: {
+    title: "Protocol | Medialane Docs",
+    description: "Technical specification of the Medialane onchain protocol — SNIP-12 typed data signing, atomic swaps, ERC-2981 royalties, SNIP-9 session keys, indexer, and event model.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -102,6 +111,69 @@ export default function DocsProtocolPage() {
    ← Order status → FULFILLED in indexer (~6s)`}</Code>
         </Section>
 
+        <Section title="SNIP-12 Typed Data Signing">
+          <p>
+            SNIP-12 is Starknet&apos;s structured typed-data signing standard — the equivalent
+            of Ethereum&apos;s EIP-712. Medialane uses it so that marketplace orders are
+            human-readable when presented in a wallet UI, and so the on-chain contract
+            can verify the signature without trusting any off-chain intermediary.
+          </p>
+          <p>
+            A SNIP-12 message has three parts: a <strong className="text-foreground">domain separator</strong> that
+            identifies the application, a <strong className="text-foreground">type definition</strong> that
+            describes the message structure, and the <strong className="text-foreground">message itself</strong>.
+            All three are hashed together to produce a unique digest that the signer&apos;s
+            private key signs.
+          </p>
+          <Code>{`// Domain separator — ties the signature to Medialane specifically
+{
+  "name":     "Medialane",
+  "version":  "1",
+  "revision": "1",     // SNIP-12 revision, not semver
+  "chainId":  "SN_MAIN"
+}
+
+// Order type definition
+types: {
+  Order: [
+    { name: "offerer",      type: "ContractAddress" },
+    { name: "nftContract",  type: "ContractAddress" },
+    { name: "tokenId",      type: "u256"            },
+    { name: "price",        type: "u256"            },
+    { name: "currency",     type: "ContractAddress" },
+    { name: "amount",       type: "u128"            }, // ERC-1155 quantity
+    { name: "salt",         type: "felt252"         }, // replay protection
+    { name: "endTime",      type: "u64"             },
+    { name: "orderType",    type: "felt252"         }, // LISTING | OFFER
+    { name: "itemType",     type: "felt252"         }, // ERC721 | ERC1155
+  ]
+}`}</Code>
+          <Code>{`// Message hash derivation (Poseidon)
+message_hash = h(
+  "StarkNet Message",  // prefix
+  domain_hash,         // h(name, version, revision, chainId)
+  sender_address,
+  type_hash,           // h(type_string)
+  message_content_hash // h(all field values)
+)
+
+// Signed on the client using starknet.js
+const sig = await account.signMessage(typedData)
+// → { r: "0x...", s: "0x..." }
+
+// Verified on-chain by the marketplace contract
+is_valid_signature(offerer, message_hash, [r, s])
+// uses account.is_valid_signature() — works with any Starknet account type`}</Code>
+          <p>
+            The <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">salt</code> field
+            is a random felt generated server-side for each intent. It makes every order hash unique
+            even if all other fields are identical, preventing signature replay across separate
+            listing attempts. The <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">endTime</code> field
+            encodes expiry — the marketplace contract rejects orders past their end time at
+            the Cairo level.
+          </p>
+        </Section>
+
         <Section title="Atomic Swap — No Escrow, No Custody">
           <p>
             Every purchase executes as a pair of calls submitted atomically in a single
@@ -125,26 +197,6 @@ export default function DocsProtocolPage() {
             The marketplace contract calls <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">transfer_from</code> on the
             ERC-20 after verifying the order signature. If the seller is no longer the token owner
             or the approve fails for any reason, the entire transaction reverts.
-          </p>
-        </Section>
-
-        <Section title="ERC-2981 Royalties">
-          <p>
-            Every collection deployed through Medialane implements ERC-2981. On every
-            fulfilled order, the marketplace contract queries the token contract for the
-            royalty recipient and basis points, then distributes the payment before
-            transferring the remainder to the seller.
-          </p>
-          <Code>{`// Royalty calculation on fulfill
-royalty_amount = order_price * royalty_bps / 10_000
-seller_amount  = order_price - royalty_amount
-
-transfer(royalty_recipient, royalty_amount)   // creator
-transfer(seller, seller_amount)               // current owner`}</Code>
-          <p>
-            Royalties are enforced at the contract level — they cannot be bypassed by
-            any marketplace or wrapper contract. The rate is set at collection deploy
-            time and cannot be changed (immutable contract design).
           </p>
         </Section>
 

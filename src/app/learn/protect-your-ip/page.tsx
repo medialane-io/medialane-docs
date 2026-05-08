@@ -4,6 +4,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Protect Your IP | Learn | Medialane",
   description: "Understand the Berne Convention, cryptographic IP protection, and how Medialane and the Mediolano protocol protect creators in 181 countries.",
+  openGraph: {
+    title: "Protect Your IP | Learn | Medialane",
+    description: "Understand the Berne Convention, cryptographic IP protection, and how Medialane and the Mediolano protocol protect creators in 181 countries.",
+    url: "https://docs.medialane.io/learn/protect-your-ip",
+  },
+  twitter: {
+    title: "Protect Your IP | Learn | Medialane",
+    description: "Understand the Berne Convention, cryptographic IP protection, and how Medialane and the Mediolano protocol protect creators in 181 countries.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

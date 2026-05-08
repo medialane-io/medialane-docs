@@ -5,6 +5,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "AI Agents | Medialane Docs",
   description: "Build autonomous agents on Medialane — HTTP 402 billing, SIWS wallet auth, MDLN multiplier, webhook listeners, and permissionless API access.",
+  openGraph: {
+    title: "AI Agents | Medialane Docs",
+    description: "Build autonomous agents on Medialane — HTTP 402 billing, SIWS wallet auth, MDLN multiplier, webhook listeners, and permissionless API access.",
+    url: "https://docs.medialane.io/docs/agents",
+  },
+  twitter: {
+    title: "AI Agents | Medialane Docs",
+    description: "Build autonomous agents on Medialane — HTTP 402 billing, SIWS wallet auth, MDLN multiplier, webhook listeners, and permissionless API access.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

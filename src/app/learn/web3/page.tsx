@@ -3,6 +3,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Web3 & Starknet | Learn | Medialane",
   description: "A beginner-friendly introduction to blockchain, Web3, Starknet, and zero-knowledge proof technology.",
+  openGraph: {
+    title: "Web3 & Starknet | Learn | Medialane",
+    description: "A beginner-friendly introduction to blockchain, Web3, Starknet, and zero-knowledge proof technology.",
+    url: "https://docs.medialane.io/learn/web3",
+  },
+  twitter: {
+    title: "Web3 & Starknet | Learn | Medialane",
+    description: "A beginner-friendly introduction to blockchain, Web3, Starknet, and zero-knowledge proof technology.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

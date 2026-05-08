@@ -4,6 +4,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Marketplace | Learn | Medialane",
   description: "Learn how to list, buy, sell, and make offers on IP assets in the Medialane marketplace.",
+  openGraph: {
+    title: "Marketplace | Learn | Medialane",
+    description: "Learn how to list, buy, sell, and make offers on IP assets in the Medialane marketplace.",
+    url: "https://docs.medialane.io/learn/marketplace",
+  },
+  twitter: {
+    title: "Marketplace | Learn | Medialane",
+    description: "Learn how to list, buy, sell, and make offers on IP assets in the Medialane marketplace.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

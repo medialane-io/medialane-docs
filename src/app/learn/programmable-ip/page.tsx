@@ -4,6 +4,15 @@ import { Code2, GitBranch, Shield, Zap } from "lucide-react";
 export const metadata: Metadata = {
   title: "Programmable IP | Medialane Learn",
   description: "How programmable intellectual property works — smart contracts, automated licensing, and on-chain rights enforcement.",
+  openGraph: {
+    title: "Programmable IP | Medialane Learn",
+    description: "How programmable intellectual property works — smart contracts, automated licensing, and on-chain rights enforcement.",
+    url: "https://docs.medialane.io/learn/programmable-ip",
+  },
+  twitter: {
+    title: "Programmable IP | Medialane Learn",
+    description: "How programmable intellectual property works — smart contracts, automated licensing, and on-chain rights enforcement.",
+  },
 };
 
 export default function ProgrammableIPPage() {

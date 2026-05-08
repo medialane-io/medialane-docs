@@ -4,6 +4,15 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Governance | Docs | Medialane",
   description: "Medialane DAO — governance charter, membership, voting, treasury, and the path to full community autonomy.",
+  openGraph: {
+    title: "Governance | Docs | Medialane",
+    description: "Medialane DAO — governance charter, membership, voting, treasury, and the path to full community autonomy.",
+    url: "https://docs.medialane.io/docs/governance",
+  },
+  twitter: {
+    title: "Governance | Docs | Medialane",
+    description: "Medialane DAO — governance charter, membership, voting, treasury, and the path to full community autonomy.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

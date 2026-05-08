@@ -10,6 +10,12 @@ export const metadata: Metadata = {
     description:
       "Everything you need to understand, build on, and use the Medialane platform.",
     type: "website",
+    url: "https://docs.medialane.io",
+  },
+  twitter: {
+    title: "Medialane Docs — Knowledge Hub",
+    description:
+      "Documentation, guides, support, and institutional content for Medialane creator capital markets on Starknet.",
   },
 };
 

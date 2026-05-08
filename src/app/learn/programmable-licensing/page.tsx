@@ -3,6 +3,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Programmable Licensing | Learn | Medialane",
   description: "Explore Medialane's onchain licensing system — Creative Commons variants, AI policy, royalties, and derivative rules embedded in every NFT.",
+  openGraph: {
+    title: "Programmable Licensing | Learn | Medialane",
+    description: "Explore Medialane's onchain licensing system — Creative Commons variants, AI policy, royalties, and derivative rules embedded in every NFT.",
+    url: "https://docs.medialane.io/learn/programmable-licensing",
+  },
+  twitter: {
+    title: "Programmable Licensing | Learn | Medialane",
+    description: "Explore Medialane's onchain licensing system — Creative Commons variants, AI policy, royalties, and derivative rules embedded in every NFT.",
+  },
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

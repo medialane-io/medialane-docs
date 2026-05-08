@@ -8,6 +8,15 @@ import {
 export const metadata: Metadata = {
   title: "Creator's Airdrop | Medialane DAO",
   description: "The Medialane Creator's Airdrop — a DAO-governed program distributing rewards to creators and early participants.",
+  openGraph: {
+    title: "Creator's Airdrop | Medialane DAO",
+    description: "The Medialane Creator's Airdrop — a DAO-governed program distributing rewards to creators and early participants.",
+    url: "https://docs.medialane.io/dao/airdrop",
+  },
+  twitter: {
+    title: "Creator's Airdrop | Medialane DAO",
+    description: "The Medialane Creator's Airdrop — a DAO-governed program distributing rewards to creators and early participants.",
+  },
 };
 
 const TIERS = [

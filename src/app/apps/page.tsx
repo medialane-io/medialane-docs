@@ -9,6 +9,15 @@ import {
 export const metadata: Metadata = {
   title: "Apps | Medialane",
   description: "Explore all Medialane applications — marketplace, Web3 dApp, developer portal, and DAO governance.",
+  openGraph: {
+    title: "Apps | Medialane",
+    description: "Explore all Medialane applications — marketplace, Web3 dApp, developer portal, and DAO governance.",
+    url: "https://docs.medialane.io/apps",
+  },
+  twitter: {
+    title: "Apps | Medialane",
+    description: "Explore all Medialane applications — marketplace, Web3 dApp, developer portal, and DAO governance.",
+  },
 };
 
 // ── App data ──────────────────────────────────────────────────────────────────
@@ -79,8 +88,8 @@ const APPS = [
   },
   {
     name: "Medialane DAO",
-    url: "https://dao.medialane.io",
-    label: "dao.medialane.io",
+    url: "https://medialane.org",
+    label: "medialane.org",
     description:
       "Governance platform for Medialane DAO LLC. Submit proposals, vote with MDLN tokens, delegate power, and participate in shaping the platform's future.",
     features: [
@@ -104,10 +113,10 @@ const APPS = [
 
 const PLATFORM_FEATURES = [
   {
-    icon: Zap,
-    title: "Gasless by Default",
+    icon: Lock,
+    title: "Immutable Contracts",
     description:
-      "Powered by ChipiPay and Starknet account abstraction. Sign in with email or social, mint, trade, and earn — no gas fees, no seed phrases, no browser extensions.",
+      "All core contracts — marketplace, IP registry, royalties — are fully immutable with no admin keys and no upgrade path. The rules are in the code and cannot be changed by anyone, including Medialane.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
@@ -293,22 +302,6 @@ export default function AppsPage() {
           A suite of applications for creators, collectors, developers, and governance
           participants — all built on the Mediolano protocol and Starknet.
         </p>
-        <div className="flex flex-wrap gap-3 pt-1">
-          <a
-            href="https://medialane.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
-          >
-            Open Medialane <ExternalLink className="h-4 w-4" />
-          </a>
-          <Link
-            href="/docs/developers"
-            className="inline-flex items-center gap-2 border border-border bg-background px-4 py-2 rounded-lg text-sm font-medium hover:bg-muted/40 transition-colors"
-          >
-            <Code2 className="h-4 w-4" /> Developer docs
-          </Link>
-        </div>
       </div>
 
       {/* ── App cards ── */}

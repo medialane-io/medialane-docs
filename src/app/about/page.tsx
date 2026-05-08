@@ -8,6 +8,15 @@ import {
 export const metadata: Metadata = {
   title: "About | Medialane",
   description: "Medialane is the permissionless creator launchpad — turn creative work into capital with verifiable ownership,  and access to a global market.",
+  openGraph: {
+    title: "About | Medialane",
+    description: "Medialane is the permissionless creator launchpad — turn creative work into capital with verifiable ownership,  and access to a global market.",
+    url: "https://docs.medialane.io/about",
+  },
+  twitter: {
+    title: "About | Medialane",
+    description: "Medialane is the permissionless creator launchpad — turn creative work into capital with verifiable ownership,  and access to a global market.",
+  },
 };
 
 const PILLARS = [
