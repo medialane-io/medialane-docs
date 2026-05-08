@@ -198,41 +198,57 @@ export default function AboutPage() {
       </div>
 
       {/* ── What we build ── */}
-      <div className="bento-cell p-8 space-y-5">
+      <div className="bento-cell p-8 space-y-6">
         <h2 className="text-2xl font-black">What We Build</h2>
-        <div className="space-y-4 text-muted-foreground leading-relaxed">
-          <p>
-            The internet made creative work infinitely reproducible — but it never gave creators
-            a reliable way to track ownership, enforce licenses, or capture the full value of
-            their ideas. Medialane exists to fix that.
-          </p>
-          <p>
-            We are building the infrastructure for{" "}
-            <strong className="text-foreground">creator capital markets</strong> — where every
-            creative work is a programmable asset with embedded rights, 
-            and verifiable provenance. Where licensing is code, ownership is cryptographic,
-            and revenue flows without intermediaries.
-          </p>
-          <p>
-            Medialane builds on top of{" "}
-            <strong className="text-foreground">Mediolano</strong> — an independent, permissionless
-            public goods protocol for IP protection and licensing, aligned with the Berne Convention.
-            Mediolano is not a Medialane product. It is a community-owned, zero-fee protocol
-            that anyone can use, fork, or build on. We chose to build on it because it provides
-            automatic copyright recognition in{" "}
-            <strong className="text-foreground">181 countries</strong> from the moment of creation,
-            with zero cost to creators.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-          <div className="bento-cell p-4 space-y-1.5 border-brand-purple/20 border">
-            <p className="text-sm font-bold text-brand-purple">Mediolano Protocol <span className="text-xs font-normal text-muted-foreground">(independent)</span></p>
-            <p className="text-xs text-muted-foreground">Public good · Zero fees · Open source · Berne Convention aligned · Community owned</p>
-          </div>
-          <div className="bento-cell p-4 space-y-1.5 border-brand-blue/20 border">
-            <p className="text-sm font-bold text-brand-blue">Medialane Platform <span className="text-xs font-normal text-muted-foreground">(built on top)</span></p>
-            <p className="text-xs text-muted-foreground">Creator launchpad · Marketplace · POP Protocol · Collection Drop · Royalties · Gasless trading</p>
-          </div>
+        <p className="text-muted-foreground leading-relaxed">
+          Medialane is a suite of onchain services for creators — each independent, each permissionless.
+          There is no single product. There are tools that work together when you need them and
+          stand alone when you don't.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {[
+            {
+              title: "Creator Launchpad",
+              desc: "Mint IP as NFTs — ERC-721 collections and ERC-1155 multi-edition series. Programmable licensing terms embedded in every asset at mint time.",
+              color: "text-brand-purple",
+              border: "border-brand-purple/20",
+            },
+            {
+              title: "Marketplace",
+              desc: "Peer-to-peer trading of IP assets. SNIP-12 signed orders, atomic swaps, no escrow, no custody. Listings and offers settled directly on-chain.",
+              color: "text-brand-blue",
+              border: "border-brand-blue/20",
+            },
+            {
+              title: "POP Protocol",
+              desc: "Proof-of-Participation credentials — soulbound NFTs issued to verified participants of campaigns, events, and communities. Claimable, non-transferable, permanent.",
+              color: "text-brand-orange",
+              border: "border-brand-orange/20",
+            },
+            {
+              title: "Collection Drop",
+              desc: "Timed NFT drop campaigns with supply caps, mint windows, per-wallet limits, and allowlists — all enforced on-chain. No admin can override parameters after deploy.",
+              color: "text-brand-rose",
+              border: "border-brand-rose/20",
+            },
+            {
+              title: "Developer API & Portal",
+              desc: "REST API and TypeScript SDK for building on Medialane. Real-time webhooks, MDLN tier multipliers, and HTTP 402 billing for AI agents.",
+              color: "text-primary",
+              border: "border-primary/20",
+            },
+            {
+              title: "DAO & Governance",
+              desc: "Community ownership via MDLN token. Proposals, Snapshot voting, and a treasury funded by marketplace fees — creators and collectors governing together.",
+              color: "text-brand-purple",
+              border: "border-brand-purple/20",
+            },
+          ].map(({ title, desc, color, border }) => (
+            <div key={title} className={`bento-cell p-4 space-y-1.5 border ${border}`}>
+              <p className={`text-sm font-bold ${color}`}>{title}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -262,10 +278,11 @@ export default function AboutPage() {
             <h2 className="text-2xl font-black">Built to Last</h2>
           </div>
           <p className="text-muted-foreground leading-relaxed max-w-2xl">
-            Medialane runs on code, cryptography, and community. Immutable Cairo smart contracts
-            define the rules onchain. Zero-knowledge proofs secure every transaction without
-            requiring trust in any party. Decentralized storage keeps your assets permanent.
-            And the community — creators, collectors, developers — is what gives it all meaning.
+            Medialane runs on open protocols, cryptography, and community. Smart contracts define
+            rules that no one can change after deployment. Zero-knowledge proofs secure every
+            transaction without requiring trust in any party. Decentralized storage keeps your
+            assets permanent. The community — creators, collectors, developers — is what gives
+            it all meaning.
           </p>
         </div>
 
