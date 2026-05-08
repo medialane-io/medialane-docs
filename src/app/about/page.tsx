@@ -72,9 +72,9 @@ const PILLARS = [
 
 const TECH_STACK = [
   {
-    name: "Cairo Smart Contracts",
-    role: "Immutable on-chain logic",
-    detail: "Every rule — how IP is minted, licensed, and traded — is defined in audited Cairo contracts. Once deployed, no one can change them. Not even us.",
+    name: "Open Protocol",
+    role: "Chain-agnostic by design",
+    detail: "Medialane is not tied to any single blockchain. The protocol is designed to operate across chains — censorship resistance requires no single point of failure.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
@@ -92,7 +92,7 @@ const TECH_STACK = [
   {
     name: "Mediolano Protocol",
     role: "IP tokenization · Zero fees",
-    detail: "An independent public goods protocol we build on for permissionless IP tokenization, Berne Convention-aligned copyright anchoring, and programmable licensing — at zero cost to creators.",
+    detail: "An independent public goods protocol for permissionless IP tokenization, Berne Convention-aligned copyright anchoring, and programmable licensing — at zero cost to creators.",
     color: "text-primary",
     bg: "bg-primary/10",
     border: "border-primary/20",
