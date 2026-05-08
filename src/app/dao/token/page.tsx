@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Coins, Vote, Lock, Users, TrendingUp, Gift } from "lucide-react";
+import { Coins, Vote, Lock, Users, TrendingUp, Gift, Zap } from "lucide-react";
 import { CANONICAL } from "@/lib/canonical";
 
 export const metadata: Metadata = {
@@ -30,6 +30,11 @@ const UTILITIES = [
     description: "MDLN holdings define DAO participation tiers: Observer, Contributor, and Guardian.",
   },
   {
+    icon: Zap,
+    title: "Platform Multiplier",
+    description: "MDLN holders receive a boosted API quota on the developer portal — 1.2× at 500 MDLN, 1.5× at 2,000, and 2× at 5,000. Autonomous AI agents holding MDLN benefit on equal terms.",
+  },
+  {
     icon: TrendingUp,
     title: "Treasury Governance",
     description: `The ${CANONICAL.marketplaceFee} marketplace fee flows to the DAO treasury. MDLN holders vote on allocation: ${CANONICAL.creatorAirdropName}, buyback, burn, development, or operations.`,
@@ -41,6 +46,13 @@ const DISTRIBUTION = [
   { category: "Operational Runway", pct: "10%", desc: "2,100,000 MDLN available for protocol operations through the DAO treasury." },
   { category: "VC Allocation", pct: "0%", desc: "No venture capital allocation, no private sale, and no preferential investor tranche." },
   { category: "Team Allocation", pct: "0%", desc: "No separate founder or team allocation outside DAO-governed treasury operations." },
+];
+
+const PLATFORM_MULTIPLIER_TIERS = [
+  { label: "Free",    mdln: "0 MDLN",    mult: "1×",   quota: "50 req / month" },
+  { label: "Starter", mdln: "500 MDLN",  mult: "1.2×", quota: "60 req / month" },
+  { label: "Builder", mdln: "2,000 MDLN",mult: "1.5×", quota: "75 req / month" },
+  { label: "Pro",     mdln: "5,000 MDLN",mult: "2×",   quota: "100 req / month" },
 ];
 
 const MEMBERSHIP_TIERS = [
@@ -135,6 +147,32 @@ export default function TokenPage() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Platform multiplier */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Developer Portal Multiplier</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          MDLN holders automatically receive a boosted API quota when they register their
+          wallet in the{" "}
+          <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            developer portal
+          </a>. The multiplier applies equally to human developers and autonomous AI agents.
+        </p>
+        <div className="space-y-2">
+          {PLATFORM_MULTIPLIER_TIERS.map(({ label, mdln, mult, quota }) => (
+            <div key={label} className="bento-cell px-4 py-3 flex items-center gap-4 flex-wrap text-sm">
+              <span className="font-semibold w-16 shrink-0">{label}</span>
+              <span className="text-muted-foreground font-mono flex-1">{mdln}</span>
+              <span className="font-bold font-mono text-primary">{mult}</span>
+              <span className="text-xs text-muted-foreground w-32 text-right">{quota}</span>
+            </div>
+          ))}
+        </div>
+        <p className="text-sm text-muted-foreground">
+          The multiplier is read on-chain at key registration time. Increasing your MDLN
+          balance and re-registering upgrades your tier immediately.
+        </p>
       </div>
 
       {/* Creator's Airdrop */}
