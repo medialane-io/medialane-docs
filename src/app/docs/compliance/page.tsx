@@ -43,8 +43,7 @@ export default function DocsCompliancePage() {
             <strong className="text-foreground">Mediolano protocol</strong> — a
             permissionless, open-source IP protection and licensing infrastructure.
             The decentralized architecture of the protocol is designed to comply with
-            applicable laws while preserving user privacy and sovereignty. We actively
-            monitor global regulatory developments to ensure ongoing adherence.
+            applicable laws while preserving user privacy and sovereignty.
           </p>
         </Section>
 
@@ -146,13 +145,13 @@ export default function DocsCompliancePage() {
         <Section title="DAO Liability">
           <p>
             Medialane DAO is the governance organization overseeing long-term platform governance.
-            The DAO structure is designed so that contributors and voters are not personally liable
-            for the actions of the protocol, to the extent permitted by applicable law.
+            The liability exposure of DAO contributors and token holders varies by jurisdiction and
+            depends on how regulators classify DAOs in each location. Users should seek qualified
+            legal advice in their jurisdiction before relying on any assumptions about liability.
           </p>
           <p>
-            As the governance structure matures, decisions affecting the protocol and
-            platform will transition to community governance through transparent on-chain
-            voting and proposal mechanisms.
+            Decisions affecting the protocol and platform are made through transparent community
+            governance. The DAO does not provide legal services or legal opinions.
           </p>
         </Section>
 

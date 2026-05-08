@@ -36,7 +36,7 @@ const PAID_ACTIONS = [
   {
     action: "Creator royalties",
     cost: "Set by the creator at mint time",
-    note: "Royalties are separate from the 1% marketplace fee and are routed by the marketplace contract on eligible sales.",
+    note: "Royalty terms are defined in the asset metadata. The 1% marketplace fee is the only fee the marketplace contract itself applies — royalty amounts are set by creators as metadata, not automatically extracted by the contract.",
   },
   {
     action: "Remix or license fee",
@@ -149,13 +149,15 @@ export default function FeesPage() {
 
       <Section title="Royalties">
         <p>
-          Royalties are set by creators at mint time and enforced by the marketplace contract on
-          eligible secondary sales. Royalties compensate the original creator; the marketplace fee
-          funds the DAO treasury. They are not the same thing.
+          Creators set royalty terms in asset metadata at mint time. These terms are readable by any
+          marketplace, application, or agent — but the Medialane marketplace contract does not
+          automatically extract or route royalties. The only fee the contract applies is the{" "}
+          {CANONICAL.marketplaceFee} marketplace fee to the DAO treasury.
         </p>
         <p>
-          A sale can include seller proceeds, creator royalty, and the {CANONICAL.marketplaceFee} marketplace fee. The exact
-          split depends on the asset&apos;s license and royalty configuration.
+          Royalty terms are separate from the marketplace fee and do not mean the same thing. Whether
+          a given secondary sale honors creator royalties depends on the marketplace facilitating the
+          sale and the terms agreed to by the parties involved.
         </p>
       </Section>
 

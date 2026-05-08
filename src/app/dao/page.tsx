@@ -48,7 +48,7 @@ export default function DAOPage() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Decentralized Autonomous Organization</span>
         </div>
         <h2 className="text-3xl font-bold leading-tight">
-          Medialane DAO LLC
+          Medialane DAO
         </h2>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">
           Medialane DAO is the governance structure for the platform — bridging on-chain token voting
@@ -110,18 +110,16 @@ export default function DAOPage() {
       <div className="bento-cell p-6 space-y-4">
         <div className="flex items-center gap-2">
           <Globe className="h-4 w-4 text-primary" />
-          <h3 className="font-semibold">Long-Term Vision</h3>
+          <h3 className="font-semibold">Direction</h3>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          The ultimate goal of Medialane DAO is a platform owned and governed entirely by its community.
-          Creators, collectors, developers, and autonomous agents collectively deciding the future of the
-          IP economy — through on-chain proposals, transparent voting, and a community treasury that
-          funds ecosystem development.
+          Today, Medialane DAO governs through MDLN token voting on Snapshot and a multi-sig treasury.
+          The goal is to progressively transfer platform decisions — treasury allocation, fee changes,
+          protocol direction — to MDLN holders as the community grows and governance tooling matures.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          This isn't just decentralization for its own sake. It's about aligning the incentives of every
-          participant: when the community owns the platform, every improvement benefits everyone who
-          contributes to it.
+          Fully on-chain governance is a goal, not the current state. The constitution and governance
+          charter define the process for getting there without centralizing control along the way.
         </p>
       </div>
 

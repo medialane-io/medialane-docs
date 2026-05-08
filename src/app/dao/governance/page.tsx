@@ -44,7 +44,7 @@ const PROCESS_STEPS = [
   {
     step: "06",
     title: "Execution",
-    description: "Proposals passing with simple majority (>50%) and meeting quorum are queued for execution. Treasury proposals require multi-sig execution. Protocol upgrades follow a 48-hour timelock.",
+    description: "Proposals passing with simple majority (>50%) and meeting quorum are approved for execution. Treasury proposals require multi-sig execution. Protocol changes require a 48-hour review window before implementation.",
   },
 ];
 

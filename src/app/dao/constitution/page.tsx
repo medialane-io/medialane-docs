@@ -26,7 +26,7 @@ const ARTICLES = [
     article: "Article II",
     title: "Mission",
     content:
-      "Medialane DAO exists to democratize intellectual property infrastructure. We believe every creative work deserves a permanent, verifiable record of authorship and a programmable set of rules for how it can be used. The DAO exists to build, maintain, and govern the technology that makes this possible — while ensuring no single entity controls it.",
+      "Medialane DAO exists to build, maintain, and govern IP infrastructure that is open, permanent, and not controlled by any single entity. Every creative work should have a verifiable record of authorship and machine-readable terms for how it can be used. The DAO funds and directs the technology that makes this possible.",
   },
   {
     article: "Article III",
