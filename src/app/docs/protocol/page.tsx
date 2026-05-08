@@ -40,7 +40,6 @@ const EVENTS = [
   { name: "OrderFulfilled", desc: "Emitted when a listing is purchased or an offer is accepted." },
   { name: "OrderCancelled", desc: "Emitted when an order is cancelled by the offerer." },
   { name: "CollectionDeployed", desc: "Emitted by factory contracts when a new collection, drop, or POP campaign is deployed." },
-  { name: "RoyaltyPaid", desc: "Emitted by ERC-2981 royalty distribution — recipient address and amount on every settled trade." },
 ];
 
 export default function DocsProtocolPage() {

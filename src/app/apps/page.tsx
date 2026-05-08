@@ -91,7 +91,7 @@ const APPS = [
     url: "https://medialane.org",
     label: "medialane.org",
     description:
-      "Governance platform for Medialane DAO LLC. Submit proposals, vote with MDLN tokens, delegate power, and participate in shaping the platform's future.",
+      "Governance platform for Medialane DAO. Submit proposals, vote with MDLN tokens, delegate power, and participate in shaping the platform's future.",
     features: [
       "Submit and vote on governance proposals",
       "Delegate MDLN voting power to trusted members",

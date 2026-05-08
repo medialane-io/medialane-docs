@@ -91,7 +91,6 @@ export default function LearnCreatorLaunchpadPage() {
             <li>Derivative work rules</li>
             <li>AI training policy</li>
             <li>Geographic scope</li>
-            <li>Royalty percentage on secondary sales</li>
           </ul>
           <p>
             Your file is uploaded to IPFS via Pinata, giving it a permanent content
@@ -105,10 +104,6 @@ export default function LearnCreatorLaunchpadPage() {
             Once minted, your asset appears in your Portfolio. You can hold it as proof
             of ownership, list it for sale at a fixed price, or receive offers from
             interested collectors directly through the platform.
-          </p>
-          <p>
-            Royalties you configure at mint time are enforced on every secondary sale —
-            automatically and without relying on any marketplace to honour them.
           </p>
         </Section>
 

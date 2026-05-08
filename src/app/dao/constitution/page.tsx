@@ -3,15 +3,15 @@ import { Scroll } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Constitution | Medialane DAO",
-  description: "The founding document of Medialane DAO LLC — mission, membership, and core values.",
+  description: "The founding document of Medialane DAO — mission, membership, and core values.",
   openGraph: {
     title: "Constitution | Medialane DAO",
-    description: "The founding document of Medialane DAO LLC — mission, membership, and core values.",
+    description: "The founding document of Medialane DAO — mission, membership, and core values.",
     url: "https://docs.medialane.io/dao/constitution",
   },
   twitter: {
     title: "Constitution | Medialane DAO",
-    description: "The founding document of Medialane DAO LLC — mission, membership, and core values.",
+    description: "The founding document of Medialane DAO — mission, membership, and core values.",
   },
 };
 
@@ -20,19 +20,19 @@ const ARTICLES = [
     article: "Article I",
     title: "Name and Purpose",
     content:
-      "The organization shall be known as Medialane DAO LLC, a Utah Limited Liability Company organized as a Decentralized Autonomous Organization. Its purpose is to govern, fund, and advance Medialane creator capital markets and the open protocol infrastructure they depend on — ensuring that intellectual property ownership, licensing, and trading remain transparent, permissionless, and creator-first.",
+      "The organization shall be known as Medialane DAO, a Decentralized Autonomous Organization. Its purpose is to govern, fund, and advance Medialane creator capital markets and the open protocol infrastructure they depend on — ensuring that intellectual property ownership, licensing, and trading remain transparent, permissionless, and creator-first.",
   },
   {
     article: "Article II",
     title: "Mission",
     content:
-      "Medialane DAO LLC exists to democratize intellectual property infrastructure. We believe every creative work deserves a permanent, verifiable record of authorship and a programmable set of rules for how it can be used. The DAO exists to build, maintain, and govern the technology that makes this possible — while ensuring no single entity controls it.",
+      "Medialane DAO exists to democratize intellectual property infrastructure. We believe every creative work deserves a permanent, verifiable record of authorship and a programmable set of rules for how it can be used. The DAO exists to build, maintain, and govern the technology that makes this possible — while ensuring no single entity controls it.",
   },
   {
     article: "Article III",
     title: "Membership",
     content:
-      "Membership in Medialane DAO LLC is open to all holders of the MDLN governance token. Membership rights include participation in governance votes, submission of proposals, and access to community resources. Membership obligations include acting in good faith, disclosing conflicts of interest, and adhering to the community guidelines and this constitution.",
+      "Membership in Medialane DAO is open to all holders of the MDLN governance token. Membership rights include participation in governance votes, submission of proposals, and access to community resources. Membership obligations include acting in good faith, disclosing conflicts of interest, and adhering to the community guidelines and this constitution.",
   },
   {
     article: "Article IV",
@@ -56,7 +56,7 @@ const ARTICLES = [
     article: "Article VII",
     title: "Dissolution",
     content:
-      "Dissolution of Medialane DAO LLC requires a supermajority vote (80% or greater) with a minimum 30-day deliberation period. Upon dissolution, treasury assets shall be distributed to MDLN token holders on a pro-rata basis after satisfying all outstanding legal obligations. The open-source protocol shall remain publicly available regardless of DAO status.",
+      "Dissolution of Medialane DAO requires a supermajority vote (80% or greater) with a minimum 30-day deliberation period. Upon dissolution, treasury assets shall be distributed to MDLN token holders on a pro-rata basis after satisfying all outstanding legal obligations. The open-source protocol shall remain publicly available regardless of DAO status.",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function ConstitutionPage() {
         </div>
         <h2 className="text-2xl font-bold">Constitution</h2>
         <p className="text-muted-foreground leading-relaxed">
-          The constitution of Medialane DAO LLC is the foundational document governing the organization&apos;s
+          The constitution of Medialane DAO is the foundational document governing the organization&apos;s
           purpose, membership, governance structure, and values.
         </p>
         <div className="flex items-center gap-3 text-xs text-muted-foreground">

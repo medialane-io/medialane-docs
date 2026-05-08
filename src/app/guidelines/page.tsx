@@ -33,7 +33,7 @@ const SECTIONS = [
     href: "/guidelines/terms",
     icon: FileText,
     title: "Terms of Use",
-    description: "The legal agreement between you and Medialane DAO LLC governing your access to and use of the platform and services.",
+    description: "The legal agreement between you and Medialane governing your access to and use of the platform and services.",
   },
   {
     href: "/guidelines/privacy",

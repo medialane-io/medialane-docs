@@ -22,7 +22,7 @@ const CONTRACTS = [
       {
         name: "Marketplace v3 (ERC-721)",
         address: "0x004387e58d469f19332dd5d20846b10339ddc49ef208025ec7d5bef294a8daf3",
-        desc: "Handles listing creation, offer submission, order fulfillment, cancellation, and ERC-2981 royalty distribution for standard (ERC-721) NFTs. Orders use SNIP-12 typed data signing.",
+        desc: "Handles listing creation, offer submission, order fulfillment, and cancellation for standard (ERC-721) NFTs. Orders use SNIP-12 typed data signing.",
       },
       {
         name: "Marketplace v3 (ERC-1155)",
@@ -94,7 +94,7 @@ export default function ContractsPage() {
           <code className="font-mono bg-muted px-1 py-0.5 rounded">9130000</code>.
         </p>
         <div className="flex flex-wrap gap-2">
-          {["No admin keys", "No upgrade path", "No emergency pause", "Royalties on every trade", "ZK-proven execution"].map((t) => (
+          {["No admin keys", "No upgrade path", "No emergency pause", "Atomic swaps", "ZK-proven execution"].map((t) => (
             <span key={t} className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
               {t}
             </span>
@@ -135,7 +135,6 @@ export default function ContractsPage() {
           {[
             "ERC-721",
             "ERC-1155",
-            "ERC-2981 (On-chain Royalties)",
             "SRC-5 (Introspection)",
             "SRC-6 (Account Standard)",
             "SNIP-2 (Events)",

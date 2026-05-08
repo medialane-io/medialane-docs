@@ -32,7 +32,7 @@ export default function LearnMarketplacePage() {
         <p className="text-muted-foreground text-lg leading-relaxed">
           The Medialane marketplace is a peer-to-peer trading environment for IP assets.
           Creators list their work, collectors make offers, and every transaction is
-          settled on Starknet with royalties enforced automatically.
+          settled on Starknet.
         </p>
         <p className="text-sm text-muted-foreground">
           For the canonical fee model, see{" "}
@@ -62,7 +62,7 @@ export default function LearnMarketplacePage() {
             or on individual collection and asset pages. Click <strong className="text-foreground">Buy</strong>,
             confirm the price, and enter your session PIN. The transaction executes via
             ChipiPay — the NFT transfers to your wallet and the payment goes to the seller,
-            with royalties automatically split to the original creator.
+            and the payment goes directly to the seller.
           </p>
           <p>
             You can also use the <strong className="text-foreground">Cart</strong> to queue
@@ -87,8 +87,7 @@ export default function LearnMarketplacePage() {
           </p>
           <p>
             The total you pay is always{" "}
-            <strong className="text-foreground">price per unit × quantity</strong>, with
-            ERC-2981 royalties applied to the full purchase value automatically.
+            <strong className="text-foreground">price per unit × quantity</strong>.
           </p>
         </Section>
 
@@ -106,25 +105,11 @@ export default function LearnMarketplacePage() {
           </p>
         </Section>
 
-        <Section title="Royalties">
-          <p>
-            Every asset on Medialane carries a royalty percentage set by the creator at
-            mint time. On every secondary sale — whether through a fixed listing or an
-            accepted offer — the royalty is split automatically by the marketplace contract
-            without any manual action from the creator.
-          </p>
-          <p>
-            This is enforced at the protocol level, not as a voluntary platform policy.
-            Even if a buyer transfers the asset to another wallet and sells it there,
-            the royalty logic is embedded in the order execution.
-          </p>
-        </Section>
-
         <Section title="Fees">
           <p>
             Listing and offer creation are gas-sponsored for normal product flows. Completed
             marketplace sales include a 1% marketplace fee routed to the Medialane DAO treasury.
-            Creator royalties, when configured, are separate from that marketplace fee.
+            The 1% fee is the only fee the marketplace contract applies.
           </p>
           <p>
             Read the canonical breakdown in{" "}

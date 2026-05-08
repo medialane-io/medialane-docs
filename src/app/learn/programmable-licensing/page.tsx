@@ -122,18 +122,6 @@ export default function LearnProgrammableLicensingPage() {
           </p>
         </Section>
 
-        <Section title="Royalties">
-          <p>
-            At mint time, creators set a royalty percentage (0–100%) applied to every
-            secondary sale on the Medialane marketplace. This is enforced by the marketplace
-            smart contract, not by platform policy — meaning it cannot be bypassed by
-            listing through a different interface that calls the same contract.
-          </p>
-          <p>
-            Royalties are distributed instantly on transaction settlement, with no manual
-            claim step required from the creator.
-          </p>
-        </Section>
       </div>
     </div>
   );

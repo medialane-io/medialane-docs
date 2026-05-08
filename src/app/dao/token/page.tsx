@@ -81,7 +81,7 @@ export default function TokenPage() {
         </div>
         <h2 className="text-2xl font-bold">MDLN Token</h2>
         <p className="text-muted-foreground leading-relaxed">
-          MDLN is the governance token of Medialane DAO LLC. It gives holders the power to participate in
+          MDLN is the governance token of Medialane DAO. It gives holders the power to participate in
           platform governance, vote on proposals, and shape the future of the IP economy.
         </p>
         <div className="flex items-center gap-3">

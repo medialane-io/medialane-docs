@@ -30,9 +30,9 @@ const PILLARS = [
   },
   {
     icon: Zap,
-    title: "Revenue That Runs Itself",
+    title: "Peer-to-Peer, No Middlemen",
     description:
-      "Primary sales, perpetual royalties, licensing fees, derivative earnings — all distributed automatically by smart contracts. No invoicing, no chasing payments, no platform taking a cut after the fact.",
+      "Every sale settles directly between creator and collector on Starknet — no escrow, no custody, no platform holding funds. The marketplace contract executes the atomic swap and the payment goes straight to the seller.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
@@ -56,7 +56,7 @@ const PILLARS = [
     icon: Users,
     title: "Community Owned",
     description:
-      "Medialane DAO LLC is registered in Utah. The long-term vision: a platform owned and governed entirely by its community — creators, collectors, developers, and autonomous agents deciding the future together.",
+      "The long-term vision: a platform owned and governed entirely by its community — creators, collectors, developers, and autonomous agents deciding the future together.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
@@ -74,7 +74,7 @@ const TECH_STACK = [
   {
     name: "Cairo Smart Contracts",
     role: "Immutable on-chain logic",
-    detail: "Every rule — how IP is minted, licensed, traded, and royalties flow — is defined in audited Cairo contracts. Once deployed, no one can change them. Not even us.",
+    detail: "Every rule — how IP is minted, licensed, and traded — is defined in audited Cairo contracts. Once deployed, no one can change them. Not even us.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
@@ -108,22 +108,13 @@ const TECH_STACK = [
     icon: Database,
   },
   {
-    name: "Stark Zap SDK",
-    role: "Permissionless Web3 dApp",
-    detail: "The SDK powering our Web3-native interface — enabling direct wallet interactions, session key management, and full self-custody without friction.",
+    name: "Medialane SDK",
+    role: "Open API & developer tools",
+    detail: "Open-source TypeScript SDK for building on top of Medialane — marketplace integrations, collection management, and real-time event streaming. No permission required.",
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
     icon: Code2,
-  },
-  {
-    name: "ChipiPay + Account Abstraction",
-    role: "Gasless UX layer",
-    detail: "A UX layer that abstracts gas fees and wallet complexity — so creators can sign in with email, mint, trade, and earn without managing seed phrases or paying gas.",
-    color: "text-brand-orange",
-    bg: "bg-brand-orange/10",
-    border: "border-brand-orange/20",
-    icon: Zap,
   },
 ];
 
@@ -188,9 +179,9 @@ export default function AboutPage() {
             Empower creators, collectors, AI agents, and organizations to build new revenue from creative work.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            We give every creative work a permanent, verifiable record of authorship, programmable
-            licensing terms, and automatic revenue flows — with security, transparency, and
-            full ownership. No gatekeepers. No intermediaries.
+            We give every creative work a permanent, verifiable record of authorship and programmable
+            licensing terms — with security, transparency, and full ownership. No gatekeepers.
+            No intermediaries.
           </p>
         </div>
         <div className="bento-cell p-7 space-y-3 border-brand-blue/20 border">
@@ -271,10 +262,10 @@ export default function AboutPage() {
             <h2 className="text-2xl font-black">Built to Last</h2>
           </div>
           <p className="text-muted-foreground leading-relaxed max-w-2xl">
-            The foundation of Medialane is not a company or a server — it is code and cryptography.
-            Immutable Cairo smart contracts define every rule onchain. Zero-knowledge proofs secure
-            every transaction without requiring trust in any party. Decentralized storage ensures
-            your assets persist without depending on any single infrastructure provider.
+            Medialane runs on code, cryptography, and community. Immutable Cairo smart contracts
+            define the rules onchain. Zero-knowledge proofs secure every transaction without
+            requiring trust in any party. Decentralized storage keeps your assets permanent.
+            And the community — creators, collectors, developers — is what gives it all meaning.
           </p>
         </div>
 
@@ -304,13 +295,10 @@ export default function AboutPage() {
 
       {/* ── DAO ── */}
       <div className="bento-cell p-8 space-y-3">
-        <h2 className="text-xl font-black">Medialane DAO LLC</h2>
+        <h2 className="text-xl font-black">Medialane DAO</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Medialane DAO LLC is registered in{" "}
-          <strong className="text-foreground">Utah, USA</strong> as the legal entity governing
-          the platform. This structure bridges on-chain governance with real-world legal
-          recognition — giving community members liability protection while enabling
-          fully transparent, autonomous governance.
+          The Medialane DAO is the governance structure for the platform, bridging on-chain
+          token voting with community-driven decision making.
         </p>
         <p className="text-muted-foreground leading-relaxed">
           The long-term vision: a platform owned entirely by its community — creators,

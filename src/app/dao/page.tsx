@@ -4,15 +4,15 @@ import { Building2, Scroll, Vote, Coins, ExternalLink, ArrowRight, Users, Globe 
 
 export const metadata: Metadata = {
   title: "DAO | Medialane",
-  description: "Medialane DAO LLC — community governance, constitution, MDLN token, and the path to full platform autonomy.",
+  description: "Medialane DAO — community governance, constitution, MDLN token, and the path to full platform autonomy.",
   openGraph: {
     title: "DAO | Medialane",
-    description: "Medialane DAO LLC — community governance, constitution, MDLN token, and the path to full platform autonomy.",
+    description: "Medialane DAO — community governance, constitution, MDLN token, and the path to full platform autonomy.",
     url: "https://docs.medialane.io/dao",
   },
   twitter: {
     title: "DAO | Medialane",
-    description: "Medialane DAO LLC — community governance, constitution, MDLN token, and the path to full platform autonomy.",
+    description: "Medialane DAO — community governance, constitution, MDLN token, and the path to full platform autonomy.",
   },
 };
 
@@ -20,7 +20,7 @@ const PILLARS = [
   {
     icon: Scroll,
     title: "Constitution",
-    description: "The founding document of Medialane DAO LLC — defining its mission, membership structure, and core values.",
+    description: "The founding document of Medialane DAO — defining its mission, membership structure, and core values.",
     href: "/dao/constitution",
   },
   {
@@ -51,9 +51,9 @@ export default function DAOPage() {
           Medialane DAO LLC
         </h2>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">
-          Medialane DAO LLC is the legal and governance structure registered in Utah, USA. It bridges
-          on-chain community governance with real-world legal recognition — giving participants liability
-          protection while enabling transparent, autonomous platform governance.
+          Medialane DAO is the governance structure for the platform — bridging on-chain token voting
+          with community-driven decision making over protocol development, treasury, and the future of
+          creator capital markets.
         </p>
       </div>
 
@@ -64,14 +64,13 @@ export default function DAOPage() {
           <p className="text-sm font-semibold">Status: Live governance</p>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Medialane DAO LLC operates through MDLN token governance. The constitution was ratified on
+          Medialane DAO operates through MDLN token governance. The constitution was ratified on
           April 7, 2026, Snapshot voting is live at medialane.eth, and the MDLN token is active on
           Ethereum mainnet with Starknet bridging through StarkGate.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
           {[
-            { label: "Legal Structure", value: "DAO LLC" },
-            { label: "Jurisdiction", value: "Utah, USA" },
+            { label: "Token", value: "MDLN" },
             { label: "Governance", value: "MDLN + Snapshot" },
           ].map(({ label, value }) => (
             <div key={label} className="bg-muted/30 rounded-lg px-4 py-3 space-y-1">

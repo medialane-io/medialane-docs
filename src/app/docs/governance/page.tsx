@@ -31,9 +31,8 @@ export default function DocsGovernancePage() {
         <h2 className="text-2xl font-bold">Governance & DAO</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Medialane is building toward full community governance through the{" "}
-          <strong className="text-foreground">Medialane DAO LLC</strong> — currently
-          registered in Utah, USA. This document describes the governance
-          principles, membership structure, and the roadmap to decentralized autonomy.
+          <strong className="text-foreground">Medialane DAO</strong>. This document describes
+          the governance principles, membership structure, and the roadmap to decentralized autonomy.
         </p>
       </div>
 
@@ -55,22 +54,12 @@ export default function DocsGovernancePage() {
           </p>
         </Section>
 
-        <Section title="Medialane DAO LLC">
+        <Section title="Medialane DAO">
           <p>
-            The <strong className="text-foreground">Medialane DAO LLC</strong> is registered
-            in Utah, USA, as the legal entity that governs the platform.
-            This structure is chosen deliberately — a DAO LLC provides:
-          </p>
-          <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li>Legal recognition for the organization and its members</li>
-            <li>Limited liability protection for DAO participants</li>
-            <li>A bridge between on-chain governance and real-world legal obligations</li>
-            <li>Ability to enter contracts, hold IP, and operate commercially</li>
-          </ul>
-          <p>
-            The goal is a fully autonomous organization where creators, collectors, and
-            developers collectively own and govern the platform through transparent
-            on-chain processes.
+            The <strong className="text-foreground">Medialane DAO</strong> is the governance
+            organization for the platform. The goal is a fully autonomous organization where
+            creators, collectors, and developers collectively own and govern the platform through
+            transparent on-chain processes.
           </p>
         </Section>
 
