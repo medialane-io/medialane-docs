@@ -253,6 +253,33 @@ const order = await client.marketplace.submitIntentSignature(intent.orderHash, s
 console.log("Listed:", order.status);  // "ACTIVE"`}</Code>
       </Section>
 
+      <Section title="Agent Identity Model">
+        <p>
+          An AI agent&apos;s wallet is a first-class Medialane account — the contracts make
+          no distinction between a human signing a transaction and an agent doing the same.
+          Identity has three facets:
+        </p>
+        <div className="space-y-2">
+          <div className="bento-cell px-4 py-3 space-y-1">
+            <p className="text-sm font-semibold text-foreground">Wallet</p>
+            <p className="text-xs text-muted-foreground">The Starknet private key your agent controls. The only thing that signs transactions. This is your agent&apos;s proof of identity on-chain.</p>
+          </div>
+          <div className="bento-cell px-4 py-3 space-y-1">
+            <p className="text-sm font-semibold text-foreground">Account</p>
+            <p className="text-xs text-muted-foreground">Your agent&apos;s on-chain history — assets it has created, collected, and traded. Permanent and protocol-level.</p>
+          </div>
+          <div className="bento-cell px-4 py-3 space-y-1">
+            <p className="text-sm font-semibold text-foreground">Role: Agent</p>
+            <p className="text-xs text-muted-foreground">The Agent role gates what the UI surfaces — not what the contracts permit. An agent has identical protocol capabilities to a human account.</p>
+          </div>
+        </div>
+        <p className="text-sm">
+          See{" "}
+          <Link href="/learn/identity" className="text-primary hover:underline">Identity</Link>{" "}
+          for the full Wallet / Account / Profile model and SIWS authentication details.
+        </p>
+      </Section>
+
       <Section title="Permissionless & Censorship-Resistant">
         <p>
           Medialane&apos;s contracts are fully immutable — no admin can block a specific

@@ -52,6 +52,7 @@ const API_METHODS = [
   { method: "getCollectionBySlug(slug)", returns: "ApiCollection", desc: "Resolve a vanity slug to a collection. Added in v0.10.0." },
   { method: "submitCollectionSlugClaim(params)", returns: "ApiCollectionSlugClaim", desc: "Claim a vanity slug for a collection you own. Added in v0.10.0." },
   { method: "getMyCollectionSlugClaims()", returns: "ApiCollectionSlugClaim[]", desc: "All slug claims submitted by the authenticated wallet." },
+  { method: "getService(serviceId)", returns: "ServiceDefinition", desc: "Full capability set and contract configuration for a given service ID (e.g. 'mip-erc721', 'pop-protocol'). Service IDs are stable across contract upgrades." },
 ];
 
 const MARKETPLACE_METHODS = [
@@ -229,6 +230,36 @@ console.log(order.status); // "ACTIVE"`}</Code>
   ApiComment, ApiCollectionProfile, ApiCollectionSlugClaim,
   IpAttribute, IpNftMetadata, SupportedTokenSymbol, OrderStatus,
 } from "@medialane/sdk";`}</Code>
+      </Section>
+
+      <Section title="Service Registry">
+        <p className="text-sm">
+          Each asset has two identifying fields set at index time:{" "}
+          <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">standard</code>{" "}
+          (chain-detected token standard: ERC721 | ERC1155) and{" "}
+          <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">service</code>{" "}
+          (a stable string ID from the registry). Use{" "}
+          <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">getService()</code>{" "}
+          to retrieve the full capability set for any service ID.
+        </p>
+        <Code>{`// Look up a service by its canonical ID
+const service = await client.api.getService("mip-erc721");
+// → { id, label, standard, contractAddress, capabilities: [...] }
+
+// Canonical service IDs
+// "mip-erc721"                   — IP Asset (single-edition ERC-721)
+// "mip-erc1155"                  — IP Asset (multi-edition ERC-1155)
+// "pop-protocol"                 — Proof of Participation credential
+// "drop-collection"              — Collection Drop event
+// "medialane-marketplace-erc721" — Marketplace venue (ERC-721)
+// "medialane-marketplace-erc1155"— Marketplace venue (ERC-1155)
+//
+// Service IDs are stable across contract upgrades — no -v3 suffix, ever.`}</Code>
+        <p className="text-sm">
+          See{" "}
+          <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
+          for the full registry and capability set.
+        </p>
       </Section>
 
       <div className="flex flex-wrap gap-4">

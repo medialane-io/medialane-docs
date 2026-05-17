@@ -125,17 +125,30 @@ export default function LearnCreatorLaunchpadPage() {
         <Section title="Launchpad Services">
           <p>
             Beyond collections and individual assets, the Launchpad gives creators access
-            to a growing suite of onchain tools:
+            to a growing suite of onchain services. Each service has a stable ID used by the
+            protocol and SDK:
           </p>
-          <ul className="list-disc list-inside space-y-1 text-sm">
-            <li><strong className="text-foreground">POP Protocol</strong> — Issue soulbound credentials for events, bootcamps, and milestones</li>
-            <li><strong className="text-foreground">Collection Drop</strong> — Launch a fixed-supply ERC-721 drop with a timed mint window</li>
-            <li><strong className="text-foreground">IP Collection 1155</strong> — Deploy a multi-edition ERC-1155 collection and mint token editions into it</li>
-            <li><strong className="text-foreground">Remix</strong> — Create licensed derivative works with on-chain attribution back to the original</li>
-          </ul>
+          <div className="space-y-2">
+            {[
+              { id: "mip-erc721", name: "IP Asset (ERC-721)", desc: "Single-edition IP assets — 1-of-1 tokens with their own owner and license terms." },
+              { id: "mip-erc1155", name: "IP Collection 1155", desc: "Multi-edition ERC-1155 collections. Multiple collectors own the same work." },
+              { id: "pop-protocol", name: "POP Protocol", desc: "Issue soulbound credentials for events, bootcamps, and milestones." },
+              { id: "drop-collection", name: "Collection Drop", desc: "Launch a fixed-supply ERC-721 drop with a timed mint window and optional allowlist." },
+            ].map(({ id, name, desc }) => (
+              <div key={id} className="bento-cell px-4 py-3 flex items-start gap-3">
+                <span className="font-mono text-xs bg-primary/10 text-primary px-2 py-1 rounded-md shrink-0 mt-0.5">{id}</span>
+                <div className="space-y-0.5">
+                  <p className="text-sm font-semibold text-foreground">{name}</p>
+                  <p className="text-xs text-muted-foreground">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
           <p>
             All services are permissionless — no approval required. Your contract is
-            deployed directly to Starknet mainnet, owned by your wallet.
+            deployed directly to Starknet mainnet, owned by your wallet. See{" "}
+            <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
+            for the full registry and capability set.
           </p>
         </Section>
       </div>

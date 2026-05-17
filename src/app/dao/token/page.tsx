@@ -184,6 +184,36 @@ export default function TokenPage() {
         </p>
       </div>
 
+      {/* Ethereum + StarkGate */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Ethereum Deployment &amp; StarkGate Bridge</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          MDLN is deployed on Ethereum mainnet as an ERC-20 token and bridgeable to Starknet
+          via StarkGate — the same model used by the STRK token. Ethereum was chosen for the
+          DAO&apos;s primary token deployment because of its security, deep liquidity, and the
+          maturity of its governance tooling.
+        </p>
+        <div className="space-y-2">
+          {[
+            { label: "Ethereum", desc: "Primary deployment. ERC-20. Where MDLN is minted, held, and voted with on Snapshot." },
+            { label: "StarkGate bridge", desc: "The canonical bridge between Ethereum and Starknet — the same infrastructure used by the Starknet Foundation for STRK. Trustless, no custodian." },
+            { label: "Starknet", desc: "Bridged MDLN (ERC-20) for use in developer portal multipliers, on-chain tooling, and future protocol integrations." },
+            { label: "Ekubo", desc: "Liquidity pool on Starknet. Bridged MDLN is tradeable onchain without returning to Ethereum." },
+          ].map(({ label, desc }) => (
+            <div key={label} className="bento-cell px-4 py-3 space-y-1">
+              <p className="text-sm font-semibold text-foreground">{label}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-sm text-muted-foreground">
+          The Medialane protocol runs on Starknet. The DAO is anchored on Ethereum for security
+          and liquidity. The long-term direction is toward fully chain-agnostic, censorship-resistant
+          infrastructure — the same foundation that Starknet&apos;s ZK proofs and account abstraction
+          make possible.
+        </p>
+      </div>
+
       {/* Creator's Airdrop */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">{CANONICAL.creatorAirdropName}</h3>

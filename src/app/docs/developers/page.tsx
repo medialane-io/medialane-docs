@@ -51,6 +51,14 @@ export default function DocsDevsPage() {
           Everything you need to integrate with Medialane — from API key setup to
           real-time webhooks and MDLN-boosted quotas.
         </p>
+        <p className="text-sm text-muted-foreground">
+          The Medialane stack has four layers: immutable contracts on Starknet, an indexer that
+          reads chain events, the SDK that wraps both, and apps on top. The API and SDK give you
+          access to everything the apps can do — and nothing they do can override the contracts.
+          See{" "}
+          <Link href="/docs/architecture" className="text-primary hover:underline">Architecture</Link>{" "}
+          for the full model.
+        </p>
       </div>
 
       <div className="space-y-8">

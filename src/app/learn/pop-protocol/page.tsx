@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "POP Protocol | Learn | Medialane",
@@ -32,6 +33,14 @@ export default function LearnPOPPage() {
           The POP Protocol (Proof of Participation) allows event organisers, communities,
           and platforms to issue verifiable on-chain credentials to participants — permanently
           anchored on Starknet.
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Service ID:{" "}
+          <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">pop-protocol</code>.
+          The factory contract deploys one soulbound ERC-1155 collection per event.
+          See{" "}
+          <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
+          for the full capability set.
         </p>
       </div>
 

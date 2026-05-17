@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Collection Drop | Learn | Medialane",
@@ -32,6 +33,14 @@ export default function LearnCollectionDropPage() {
           A Collection Drop is a time-limited NFT release event on Medialane — organizers
           deploy a drop with a fixed supply, a mint window, and optional allowlists.
           Collectors mint directly from the drop, with settlement handled on Starknet.
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Service ID:{" "}
+          <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">drop-collection</code>.
+          Each drop is an independent smart contract deployed from the Collection Drop Factory.
+          See{" "}
+          <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
+          for the full capability set.
         </p>
       </div>
 

@@ -145,6 +145,11 @@ export default function FeesPage() {
           Example: if an asset sells for 100 USDC, the marketplace fee is 1 USDC. Creator royalties,
           if configured, are applied separately according to the asset&apos;s royalty rules.
         </p>
+        <p className="text-sm">
+          This fee is a platform-layer parameter — it is part of how Medialane operates as a service,
+          not a constant of the underlying protocol. The contracts enforce it; the DAO governs the
+          rate and treasury allocation.
+        </p>
       </Section>
 
       <Section title="Royalties">

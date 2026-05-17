@@ -70,6 +70,11 @@ export default function GovernancePage() {
           The Governance Charter defines how Medialane DAO makes decisions — the proposal lifecycle,
           voting mechanics, quorum requirements, and execution process.
         </p>
+        <p className="text-sm text-muted-foreground">
+          The DAO governs the platform layer: marketplace fees, treasury allocation, service registry
+          parameters, and community initiatives. It does not govern the underlying contracts — those
+          are immutable by design and have no admin keys or upgrade path.
+        </p>
         <p className="text-xs text-muted-foreground">Ratified April 7, 2026 · Snapshot: medialane.eth</p>
       </div>
 

@@ -91,8 +91,8 @@ const AXIOMS = [
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    medialane: "Medialane's smart contracts on Starknet, Starknet's own decentralized validator network, and the path to Bitcoin integration as the ultimate censorship-resistant layer — these are not separate concerns. They are layers of the same resilience strategy. If Medialane's frontend went offline tomorrow, every NFT would still exist and be transferable.",
-    highlights: ["Assets live on Starknet — survive frontend outages", "Multichain roadmap: Bitcoin, Ethereum, Solana", "Bitcoin as the censorship-resistant sovereignty layer"],
+    medialane: "Medialane's smart contracts on Starknet, Starknet's own decentralized validator network, and the long-term architecture toward fully chain-agnostic, censorship-resistant infrastructure — these are not separate concerns. They are layers of the same resilience strategy. If Medialane's frontend went offline tomorrow, every NFT would still exist and be transferable.",
+    highlights: ["Assets live on Starknet — survive frontend outages", "Long-term: chain-agnostic, censorship-resistant infrastructure", "ZK proofs + account abstraction make this possible"],
   },
   {
     num: "08",
@@ -281,6 +281,12 @@ export default function IntegrityWebPage() {
             className="inline-flex items-center gap-2 border border-border bg-background px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-muted/40 transition-colors"
           >
             Learn ZK proofs →
+          </Link>
+          <Link
+            href="/docs/architecture"
+            className="inline-flex items-center gap-2 border border-border bg-background px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-muted/40 transition-colors"
+          >
+            Protocol architecture →
           </Link>
         </div>
       </div>
