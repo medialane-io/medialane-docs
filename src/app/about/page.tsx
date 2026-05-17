@@ -1,336 +1,315 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ExternalLink, Shield, Zap, Users, Bot, BookOpen,
-  Lock, Unlock, Eye, Database, Code2, FileCode2,
+  Lock, Zap, Unlock, Bot, Users, BookOpen,
+  Database, Package, Monitor,
+  ExternalLink, Shield,
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About | Medialane",
-  description: "Medialane is an open platform for minting, licensing, and trading intellectual property onchain. Live on Starknet. Immutable contracts. Open source.",
+  description: "Medialane is a creator capital markets platform — open, permissionless, and built on immutable smart contracts. Live on Starknet.",
   openGraph: {
     title: "About | Medialane",
-    description: "Medialane is an open platform for minting, licensing, and trading intellectual property onchain. Live on Starknet. Immutable contracts. Open source.",
+    description: "Medialane is a creator capital markets platform — open, permissionless, and built on immutable smart contracts. Live on Starknet.",
     url: "https://docs.medialane.io/about",
   },
   twitter: {
     title: "About | Medialane",
-    description: "Medialane is an open platform for minting, licensing, and trading intellectual property onchain. Live on Starknet. Immutable contracts. Open source.",
+    description: "Medialane is a creator capital markets platform — open, permissionless, and built on immutable smart contracts. Live on Starknet.",
   },
 };
+
+const WHAT_WE_BUILD = [
+  {
+    label: "Creator Launchpad",
+    desc: "Deploy IP collections, mint assets, and bring creative work onchain. No coding required.",
+    href: "/learn/creator-launchpad",
+    color: "text-brand-purple",
+    bg: "bg-brand-purple/10",
+    border: "border-brand-purple/20",
+  },
+  {
+    label: "Marketplace",
+    desc: "List, buy, make offers, and trade IP assets. Atomic settlement — no escrow, no custody.",
+    href: "/learn/marketplace",
+    color: "text-brand-blue",
+    bg: "bg-brand-blue/10",
+    border: "border-brand-blue/20",
+  },
+  {
+    label: "Collection Drops",
+    desc: "Timed drops with supply caps, allowlists, and gasless minting. Run on your schedule.",
+    href: "/learn/collection-drop",
+    color: "text-brand-orange",
+    bg: "bg-brand-orange/10",
+    border: "border-brand-orange/20",
+  },
+  {
+    label: "POP Protocol",
+    desc: "Issue proof-of-participation credentials. Soulbound, on-chain, permanent.",
+    href: "/learn/pop-protocol",
+    color: "text-brand-rose",
+    bg: "bg-brand-rose/10",
+    border: "border-brand-rose/20",
+  },
+];
+
+const LAYERS = [
+  {
+    num: "01",
+    label: "Chain",
+    icon: Lock,
+    color: "text-brand-purple",
+    bg: "bg-brand-purple/10",
+    desc: "Immutable Cairo contracts on Starknet. The only truth. No admin can change the rules.",
+  },
+  {
+    num: "02",
+    label: "Indexer",
+    icon: Database,
+    color: "text-brand-blue",
+    bg: "bg-brand-blue/10",
+    desc: "Reads chain events, builds a queryable cache. Drop the database — it rebuilds from scratch.",
+  },
+  {
+    num: "03",
+    label: "SDK",
+    icon: Package,
+    color: "text-brand-orange",
+    bg: "bg-brand-orange/10",
+    desc: "Typed interface + service registry. Everything the app does, the SDK exposes.",
+  },
+  {
+    num: "04",
+    label: "Apps",
+    icon: Monitor,
+    color: "text-brand-rose",
+    bg: "bg-brand-rose/10",
+    desc: "medialane.io and partner apps. Views, UX, fees. Cannot override what the contracts say.",
+  },
+];
 
 const DESIGN_CHOICES = [
   {
     icon: Lock,
     title: "No admin keys",
-    description:
-      "The v3 contracts have no owner role, no upgrade path, and no emergency pause. Once deployed, no one can change the rules — including us. You can verify this from the open-source contract code.",
+    desc: "The v3 contracts have no owner role, no upgrade path, and no emergency pause. Once deployed, no one can change the rules — including us.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
   {
     icon: Zap,
     title: "No custody",
-    description:
-      "Sales settle via atomic swap. The marketplace contract never holds buyer funds — the payment and the NFT transfer in the same transaction, or both revert. There is no escrow step.",
+    desc: "Sales settle via atomic swap. The marketplace contract never holds buyer funds — the payment and the NFT transfer in the same transaction, or both revert.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
   {
     icon: Unlock,
     title: "No approval required",
-    description:
-      "Any wallet can mint, list, make offers, and deploy collections. There is no whitelist, no application process, and no content moderation at the contract level.",
+    desc: "Any wallet can mint, list, make offers, and deploy collections. There is no whitelist, no application process, and no content moderation at the contract level.",
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
   },
   {
     icon: Bot,
-    title: "AI agents as users",
-    description:
-      "The REST API uses SIWS (Sign In With Starknet) for authentication and HTTP 402 for credit-based billing. AI agents can use the same endpoints as human users — no special integration required.",
+    title: "AI agents as first-class users",
+    desc: "The contracts make no distinction between a human and an AI agent. Same API, same fees, same protocol capabilities. No special integration required.",
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
   },
   {
     icon: Users,
     title: "Community governance",
-    description:
-      "The MDLN token gives holders voting rights on Snapshot. A 1% marketplace fee flows to the DAO treasury. The goal is to increase community control over protocol decisions over time.",
+    desc: "The MDLN token gives holders voting rights on Snapshot. A 1% marketplace fee flows to the DAO treasury — holders vote annually on how it is allocated.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
   {
     icon: BookOpen,
     title: "Everything is auditable",
-    description:
-      "All contracts, the TypeScript SDK, and the indexer are open source. The deployed contract addresses are public. Anyone can read what the code does before using it.",
+    desc: "All contracts, the TypeScript SDK, and the indexer are open source. The deployed contract addresses are public. Anyone can verify what the code does before using it.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
 ];
 
-const TECH_STACK = [
-  {
-    name: "Open Protocol",
-    role: "Chain-agnostic by design",
-    detail: "The platform currently runs on Starknet. The protocol is not permanently tied to any single chain — censorship resistance requires no single point of failure.",
-    color: "text-brand-purple",
-    bg: "bg-brand-purple/10",
-    border: "border-brand-purple/20",
-    icon: FileCode2,
-  },
-  {
-    name: "Zero-Knowledge Proofs",
-    role: "Trustless transaction verification",
-    detail: "Starknet uses STARK proofs to verify every transaction without requiring trust in any party. No trusted setup. Quantum-resistant.",
-    color: "text-brand-blue",
-    bg: "bg-brand-blue/10",
-    border: "border-brand-blue/20",
-    icon: Eye,
-  },
-  {
-    name: "Mediolano Protocol",
-    role: "IP tokenization layer",
-    detail: "An independent public goods protocol for permissionless IP tokenization and Berne Convention-aligned copyright anchoring. Zero fees. Not a Medialane product — anyone can use or fork it.",
-    color: "text-primary",
-    bg: "bg-primary/10",
-    border: "border-primary/20",
-    icon: Shield,
-  },
-  {
-    name: "IPFS",
-    role: "Decentralized storage",
-    detail: "Asset metadata and content are pinned to IPFS via content-addressed CIDs. Records do not depend on any single server or cloud provider.",
-    color: "text-brand-orange",
-    bg: "bg-brand-orange/10",
-    border: "border-brand-orange/20",
-    icon: Database,
-  },
-  {
-    name: "Medialane SDK",
-    role: "Open API & developer tools",
-    detail: "Open-source TypeScript SDK for building on Medialane. Marketplace integrations, collection management, real-time event streaming. Published on npm.",
-    color: "text-brand-rose",
-    bg: "bg-brand-rose/10",
-    border: "border-brand-rose/20",
-    icon: Code2,
-  },
-];
-
-const AXIOMS = [
-  { num: "01", title: "Code is Math, Math is Reality" },
-  { num: "02", title: "Proof Replaces Trust" },
-  { num: "03", title: "Freedom is a Protocol" },
-  { num: "04", title: "Integrity by Design" },
-  { num: "05", title: "Public Goods are Sacred" },
-  { num: "06", title: "Privacy is Power" },
-  { num: "07", title: "Decentralization is Resilience" },
-  { num: "08", title: "Universality of Intelligences" },
-  { num: "09", title: "Creativity is Integrity" },
-  { num: "10", title: "The Integrity Web is for Everyone" },
+const STARKNET_REASONS = [
+  { label: "Quantum-resistant", desc: "ZK-STARK proofs rely on hash functions, not elliptic curves. Safe from future quantum computing threats." },
+  { label: "No trusted setup", desc: "No ceremony that could be compromised. The security is fully transparent and verifiable by anyone." },
+  { label: "Account abstraction", desc: "Native AA means session keys, gasless UX, and smart wallet capabilities at the protocol level." },
+  { label: "Verifiable computation", desc: "Every transaction is backed by a validity proof — math, not trust." },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 pt-12 pb-16 max-w-6xl space-y-16">
+    <div className="space-y-16">
 
-      {/* ── Intro ── */}
-      <div className="space-y-6 max-w-3xl">
-        <h1 className="text-3xl font-bold tracking-tight">About Medialane</h1>
-        <p className="text-muted-foreground leading-relaxed text-lg">
-          Medialane is an open platform where creators mint intellectual property as NFTs,
-          attach licensing terms at the time of minting, and trade assets peer-to-peer on a
-          permissionless marketplace. It is live on Starknet. The contracts are immutable
-          and the code is open source.
-        </p>
-        <p className="text-muted-foreground leading-relaxed">
-          This page describes what the platform is and how it works. What is documented here
-          reflects what exists today and is verifiable from the deployed contracts and open-source
-          repositories. Where something is a goal rather than a current capability, it is stated as such.
-        </p>
-        <div className="flex flex-wrap gap-3 pt-1">
-          <a
-            href="https://medialane.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-primary/90 transition-all"
-          >
-            Open Medialane <ExternalLink className="h-4 w-4" />
-          </a>
-          <Link
-            href="/apps"
-            className="inline-flex items-center gap-2 border border-border/60 bg-background/60 backdrop-blur-sm px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-muted/40 transition-all"
-          >
-            All apps →
-          </Link>
+      {/* Hero */}
+      <div className="relative overflow-hidden rounded-3xl bento-cell p-10 sm:p-14 space-y-5">
+        <div className="aurora-purple w-[500px] h-[500px] -top-32 -right-20 animate-blob" style={{ position: "absolute" }} />
+        <div className="aurora-blue w-[300px] h-[300px] bottom-0 left-0 animate-blob-slow" style={{ position: "absolute" }} />
+        <div className="relative space-y-5">
+          <span className="pill-badge">Creator Capital Markets</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+            <span className="gradient-text">Built for creators.</span>
+            <br />Built to last.
+          </h1>
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
+            Medialane is an open platform for minting, licensing, and trading intellectual
+            property onchain. Permissionless participation. Immutable contracts. No admin keys.
+            Built on Starknet — live today.
+          </p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <a
+              href="https://medialane.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
+            >
+              Start creating <ExternalLink className="h-4 w-4" />
+            </a>
+            <Link
+              href="/docs"
+              className="inline-flex items-center gap-2 border border-border bg-background/60 backdrop-blur px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-muted/40 transition-colors"
+            >
+              Developer docs →
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* ── Services ── */}
-      <div className="space-y-5">
+      {/* What We Build */}
+      <div className="space-y-6">
         <div className="space-y-1">
-          <h2 className="text-xl font-semibold">Services</h2>
-          <p className="text-sm text-muted-foreground">
-            Each service is independent and permissionless. They share the same underlying infrastructure
-            but operate as separate contracts.
+          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">What We Build</p>
+          <h2 className="text-2xl font-black">Four services. One platform.</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {WHAT_WE_BUILD.map(({ label, desc, href, color, bg, border }) => (
+            <Link key={label} href={href} className={`bento-cell border ${border} p-6 space-y-2 hover:bg-muted/20 transition-colors group`}>
+              <p className={`font-black text-base ${color}`}>{label}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className={`text-xs font-semibold ${color} group-hover:underline`}>Learn more →</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* How It Works */}
+      <div className="space-y-6">
+        <div className="space-y-1">
+          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">How It Works</p>
+          <h2 className="text-2xl font-black">Four layers. Authority flows downward.</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Contracts set immutable rules. The indexer reads the chain. The SDK gives builders
+            a typed interface. Apps are where creators work. Nothing at the top overrides
+            what the bottom says.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {[
-            {
-              title: "Creator Launchpad",
-              desc: "Mint IP as NFTs — ERC-721 single-edition collections and ERC-1155 multi-edition series. Licensing terms (license type, commercial use, derivative rules, AI policy, geographic scope) are embedded in the asset metadata at mint time.",
-              color: "text-brand-purple",
-              border: "border-brand-purple/20",
-            },
-            {
-              title: "Marketplace",
-              desc: "Peer-to-peer trading of IP assets. Orders use SNIP-12 typed data signing — off-chain signed, on-chain enforced. Trades settle as atomic swaps. No escrow, no custody, no intermediary holding funds.",
-              color: "text-brand-blue",
-              border: "border-brand-blue/20",
-            },
-            {
-              title: "POP Protocol",
-              desc: "Proof-of-Participation credentials. Each campaign deploys a soulbound (non-transferable) NFT contract. Eligible wallets claim one credential per campaign. Permanent and on-chain.",
-              color: "text-brand-orange",
-              border: "border-brand-orange/20",
-            },
-            {
-              title: "Collection Drop",
-              desc: "Timed NFT drop campaigns with supply caps, mint windows, per-wallet limits, and optional allowlists — all parameters enforced by the contract. No admin can modify them after deployment.",
-              color: "text-brand-rose",
-              border: "border-brand-rose/20",
-            },
-            {
-              title: "Developer API & Portal",
-              desc: "REST API and TypeScript SDK for querying marketplace data, collections, and events. MDLN token tiers determine rate multipliers. HTTP 402 credit billing for AI agent use cases.",
-              color: "text-primary",
-              border: "border-primary/20",
-            },
-            {
-              title: "DAO & Governance",
-              desc: "MDLN token holders vote on Snapshot. A 1% fee on marketplace sales flows to the DAO treasury. Governance decisions are currently off-chain via Snapshot with on-chain execution through a multisig.",
-              color: "text-brand-purple",
-              border: "border-brand-purple/20",
-            },
-          ].map(({ title, desc, color, border }) => (
-            <div key={title} className={`bento-cell p-5 space-y-2 border ${border}`}>
-              <p className={`text-sm font-semibold ${color}`}>{title}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+          {LAYERS.map(({ num, label, icon: Icon, color, bg, desc }) => (
+            <div key={num} className="bento-cell p-5 space-y-2">
+              <div className="flex items-center gap-2">
+                <div className={`h-8 w-8 rounded-lg ${bg} flex items-center justify-center`}>
+                  <Icon className={`h-4 w-4 ${color}`} />
+                </div>
+                <span className={`text-xs font-mono ${color}`}>{num}</span>
+                <p className={`font-bold text-sm ${color}`}>{label}</p>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-sm text-muted-foreground">
+          See the full{" "}
+          <Link href="/docs/architecture" className="text-primary hover:underline">Architecture documentation</Link>
+          {" "}for the rebuild test, six core primitives, and the protocol vs. platform distinction.
+        </p>
+      </div>
+
+      {/* Why Starknet */}
+      <div className="space-y-6">
+        <div className="space-y-1">
+          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">Why Starknet</p>
+          <h2 className="text-2xl font-black">The foundation matters.</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Medialane is built on Starknet. Not because it is popular — because its
+            cryptographic properties are uniquely suited to the bigger vision.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {STARKNET_REASONS.map(({ label, desc }) => (
+            <div key={label} className="bento-cell p-5 space-y-1">
+              <p className="font-bold text-sm text-brand-purple">{label}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── Design choices ── */}
-      <div className="space-y-5">
+      {/* Built to Grow */}
+      <div className="bento-cell border border-brand-blue/20 p-8 space-y-4">
+        <p className="text-xs font-black uppercase tracking-widest text-brand-blue">Built to Grow</p>
+        <h2 className="text-xl font-black">Starknet-first. Designed for more.</h2>
+        <p className="text-muted-foreground leading-relaxed">
+          The Medialane protocol runs on Starknet today. The Medialane DAO is deployed on
+          Ethereum — for security and liquidity — with MDLN bridgeable to Starknet via
+          StarkGate, the same model used by the STRK token.
+        </p>
+        <p className="text-muted-foreground leading-relaxed">
+          The long-term arc is toward fully chain-agnostic, censorship-resistant infrastructure.
+          Starknet&apos;s ZK proofs and account abstraction are what make that possible — not chain
+          loyalty, but architectural necessity.
+        </p>
+        <p className="text-sm text-muted-foreground">
+          See{" "}
+          <Link href="/dao/token" className="text-primary hover:underline">MDLN Token</Link>
+          {" "}for the Ethereum deployment and bridge details, and{" "}
+          <Link href="/docs/architecture" className="text-primary hover:underline">Architecture</Link>
+          {" "}for the protocol roadmap.
+        </p>
+      </div>
+
+      {/* Design Choices */}
+      <div className="space-y-6">
         <div className="space-y-1">
-          <h2 className="text-xl font-semibold">Design choices</h2>
-          <p className="text-sm text-muted-foreground">
-            Specific decisions made in how the platform is built — and why.
-          </p>
+          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">Design Choices</p>
+          <h2 className="text-2xl font-black">Why it&apos;s built this way.</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {DESIGN_CHOICES.map(({ icon: Icon, title, description, color, bg }) => (
-            <div key={title} className="bento-cell p-5 space-y-3">
-              <div className={`h-9 w-9 rounded-lg ${bg} flex items-center justify-center`}>
-                <Icon className={`h-4 w-4 ${color}`} />
+          {DESIGN_CHOICES.map(({ icon: Icon, title, desc, color, bg }) => (
+            <div key={title} className="bento-cell p-6 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className={`h-9 w-9 rounded-xl ${bg} flex items-center justify-center`}>
+                  <Icon className={`h-5 w-5 ${color}`} />
+                </div>
+                <p className={`font-black text-sm ${color}`}>{title}</p>
               </div>
-              <div>
-                <h3 className="text-sm font-semibold text-foreground">{title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mt-1">{description}</p>
-              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── Technical foundation ── */}
-      <div className="space-y-5">
-        <div className="space-y-1">
-          <h2 className="text-xl font-semibold">Technical foundation</h2>
-          <p className="text-sm text-muted-foreground">
-            The infrastructure and protocols Medialane is built on.
-          </p>
+      {/* Integrity Web */}
+      <div className="bento-cell border border-primary/20 p-8 space-y-4">
+        <div className="flex items-center gap-3">
+          <Shield className="h-5 w-5 text-primary" />
+          <p className="font-black text-primary">The Integrity Web</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {TECH_STACK.map(({ name, role, detail, color, bg, border, icon: Icon }) => (
-            <div key={name} className={`bento-cell p-5 space-y-3 border ${border}`}>
-              <div className={`h-9 w-9 rounded-lg ${bg} flex items-center justify-center`}>
-                <Icon className={`h-4 w-4 ${color}`} />
-              </div>
-              <div>
-                <p className={`text-sm font-semibold ${color}`}>{name}</p>
-                <p className="text-xs text-muted-foreground/70 mt-0.5">{role}</p>
-              </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">{detail}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ── DAO ── */}
-      <div className="bento-cell p-7 space-y-3 max-w-3xl">
-        <h2 className="text-xl font-semibold">Governance</h2>
-        <p className="text-muted-foreground leading-relaxed text-sm">
-          MDLN is the governance token. Holders with 100+ MDLN can vote on Snapshot proposals
-          and submit new ones. A 1% fee on marketplace sales accumulates in the DAO treasury.
-          Decisions are currently made via off-chain Snapshot votes with multisig execution.
+        <p className="text-muted-foreground leading-relaxed">
+          The Integrity Web is a set of ten axioms that define what trustworthy digital
+          infrastructure must implement at the architectural level. They are not aspirations —
+          they are engineering constraints. Medialane treats them as design requirements.
         </p>
-        <p className="text-muted-foreground leading-relaxed text-sm">
-          The intended direction is to move more protocol decisions to community governance over time.
-          This has not happened in full yet — the current structure is a starting point, not the end state.
-        </p>
-        <div className="flex flex-wrap gap-4 pt-1">
-          <a href="https://x.com/medialane_io" target="_blank" rel="noopener noreferrer"
-            className="text-sm text-primary hover:underline">
-            X / Twitter →
-          </a>
-          <a href="https://t.me/IntegrityWeb" target="_blank" rel="noopener noreferrer"
-            className="text-sm text-primary hover:underline">
-            Telegram →
-          </a>
-          <Link href="/dao/governance" className="text-sm text-primary hover:underline">
-            Governance docs →
-          </Link>
-        </div>
-      </div>
-
-      {/* ── Integrity Web ── */}
-      <div className="bento-cell p-7 space-y-5 max-w-3xl">
-        <div className="space-y-2">
-          <h2 className="text-xl font-semibold">The Integrity Web</h2>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Medialane is a founding application of the Integrity Web — a set of ten axioms
-            that define what trustworthy digital infrastructure must implement at the architectural
-            level. These are design constraints, not marketing claims.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {AXIOMS.map(({ num, title }) => (
-            <div key={num} className="flex items-center gap-3 py-1">
-              <span className="text-xs font-mono text-primary/50 shrink-0 w-6">{num}</span>
-              <span className="text-sm text-muted-foreground">{title}</span>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="https://www.integrityweb.xyz/axioms"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-primary hover:text-primary/80 transition-colors"
-          >
-            Read the axioms <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-          <Link
-            href="/learn/integrity-web"
-            className="inline-flex items-center gap-1.5 text-sm text-primary hover:text-primary/80 transition-colors"
-          >
-            How Medialane implements each one →
-          </Link>
-        </div>
+        <Link
+          href="/learn/integrity-web"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+        >
+          Read the ten axioms and how Medialane applies them →
+        </Link>
       </div>
 
     </div>
