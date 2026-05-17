@@ -3,15 +3,15 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Marketplace | Learn | Medialane",
-  description: "Learn how to list, buy, sell, and make offers on IP assets in the Medialane marketplace.",
+  description: "How the Medialane marketplace works — venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
   openGraph: {
     title: "Marketplace | Learn | Medialane",
-    description: "Learn how to list, buy, sell, and make offers on IP assets in the Medialane marketplace.",
+    description: "How the Medialane marketplace works — venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
     url: "https://docs.medialane.io/learn/marketplace",
   },
   twitter: {
     title: "Marketplace | Learn | Medialane",
-    description: "Learn how to list, buy, sell, and make offers on IP assets in the Medialane marketplace.",
+    description: "How the Medialane marketplace works — venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
   },
 };
 
@@ -24,140 +24,156 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
+function Code({ children }: { children: string }) {
+  return (
+    <pre className="bento-cell p-4 text-xs font-mono overflow-x-auto text-foreground/80 leading-relaxed whitespace-pre">
+      {children}
+    </pre>
+  );
+}
+
+const CURRENCIES = [
+  { symbol: "STRK", desc: "Starknet's native token" },
+  { symbol: "ETH", desc: "Bridged Ethereum" },
+  { symbol: "USDC", desc: "USD Coin (Circle)" },
+  { symbol: "USDT", desc: "Tether USD" },
+  { symbol: "WBTC", desc: "Wrapped Bitcoin" },
+];
+
 export default function LearnMarketplacePage() {
   return (
     <div className="space-y-10">
+
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">The Medialane Marketplace</h2>
+        <h2 className="text-2xl font-bold">Marketplace</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          The Medialane marketplace is a peer-to-peer trading environment for IP assets.
-          Creators list their work, collectors make offers, and every transaction is
-          settled on Starknet.
-        </p>
-        <p className="text-sm text-muted-foreground">
-          For the canonical fee model, see{" "}
-          <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
+          The Medialane Marketplace is a venue service — a set of immutable smart contracts
+          where IP assets are listed, offered on, and traded. No custody. No intermediary.
+          Settlement is atomic: the NFT and the payment move in the same transaction,
+          or both revert.
         </p>
       </div>
 
       <div className="space-y-8">
-        <Section title="Listings (Fixed Price)">
+
+        <Section title="A Venue, Not a Custodian">
+          <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
+            <p className="font-bold text-foreground">The marketplace contract never holds your assets.</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              A listing is a signed order — a cryptographic intent that sits on-chain. Your NFT
+              stays in your wallet until a buyer fills the order. At that moment, the NFT and
+              the payment swap atomically in a single Starknet transaction. If anything fails,
+              both revert.
+            </p>
+          </div>
           <p>
-            To sell an asset at a fixed price, navigate to the asset page and click
-            <strong className="text-foreground"> List for sale</strong>. Set your price
-            in STRK or ETH, review the terms, and sign the listing with your session key.
-            The listing is recorded on the Medialane smart contract and immediately
-            visible to all buyers.
-          </p>
-          <p>
-            A listing is an onchain intent signed with SNIP-12 typed data. Your asset
-            remains in your wallet until a buyer fulfils the order — Medialane never
-            takes custody of your NFT.
+            Two service IDs serve the marketplace:{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">medialane-marketplace-erc721</code>{" "}
+            for single-edition assets and{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">medialane-marketplace-erc1155</code>{" "}
+            for multi-edition assets. See{" "}
+            <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
+            for the full registry.
           </p>
         </Section>
 
-        <Section title="Buying an Asset">
+        <Section title="Order Lifecycle">
           <p>
-            Browse listings in the <strong className="text-foreground">Marketplace</strong>{" "}
-            or on individual collection and asset pages. Click <strong className="text-foreground">Buy</strong>,
-            confirm the price, and enter your session PIN. The transaction executes via
-            ChipiPay — the NFT transfers to your wallet and the payment goes to the seller,
-            and the payment goes directly to the seller.
+            An order is a signed proposal: one offer item (what you give) and one
+            consideration item (what you receive). The{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">orderHash</code>{" "}
+            is computed at creation and is the permanent on-chain identifier. Orders move
+            through four states:
           </p>
+          <Code>{`ACTIVE       — signed, visible on-chain, can be filled
+FULFILLED    — NFT + payment swapped atomically
+CANCELLED    — revoked by the offerer on-chain
+EXPIRED      — past the order's expiry timestamp`}</Code>
           <p>
-            You can also use the <strong className="text-foreground">Cart</strong> to queue
-            multiple purchases and execute them in a single session, saving time and reducing
-            the number of PIN entries required.
-          </p>
-        </Section>
-
-        <Section title="Buying Multi-Edition Assets (ERC-1155)">
-          <p>
-            Multi-edition IP assets — music tracks, art series, and other works deployed
-            as ERC-1155 collections — support <strong className="text-foreground">partial fills</strong>.
-            Instead of purchasing all available copies at once, you choose exactly how many
-            editions you want.
-          </p>
-          <p>
-            When you open the buy dialog on a multi-edition listing, a quantity selector
-            appears showing the number of units still available. Adjust the quantity with
-            the <strong className="text-foreground">−</strong> and <strong className="text-foreground">+</strong>{" "}
-            buttons — the total price updates in real time. The order stays active on-chain
-            after your purchase so other collectors can buy the remaining editions.
-          </p>
-          <p>
-            The total you pay is always{" "}
-            <strong className="text-foreground">price per unit × quantity</strong>.
+            Once FULFILLED or CANCELLED, the{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">orderHash</code>{" "}
+            is permanently invalidated. A counter-offer is a new order with a{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">parentOrderHash</code>{" "}
+            reference — both parties can cancel at any time before acceptance.
           </p>
         </Section>
 
-        <Section title="Offers (Bids)">
-          <p>
-            If an asset is not listed or you want to negotiate a price, you can make an
-            offer. Navigate to the asset page and click <strong className="text-foreground">Make offer</strong>.
-            Specify your bid amount — the offer is an onchain signed intent and the funds
-            are not locked until the creator accepts.
-          </p>
-          <p>
-            Creators receive notifications about incoming offers in their Portfolio under
-            <strong className="text-foreground"> Offers received</strong>. Accepting an
-            offer triggers an immediate onchain settlement.
+        <Section title="Listings and Offers">
+          <div className="space-y-2">
+            <div className="bento-cell px-4 py-3 space-y-1">
+              <p className="text-sm font-semibold text-foreground">Fixed-price listing</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Navigate to any asset page and click <strong>List for sale</strong>. Set a price
+                in any supported currency. The listing is signed with SNIP-12 typed data and
+                recorded on the marketplace contract. Your asset stays in your wallet.
+              </p>
+            </div>
+            <div className="bento-cell px-4 py-3 space-y-1">
+              <p className="text-sm font-semibold text-foreground">Offer (bid)</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Click <strong>Make offer</strong> on any asset — listed or not. The offer
+                is a signed on-chain intent. No funds are locked until the creator accepts.
+                Creators receive notifications in Portfolio → Offers received.
+              </p>
+            </div>
+            <div className="bento-cell px-4 py-3 space-y-1">
+              <p className="text-sm font-semibold text-foreground">Counter-offer</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                When you receive an offer, you can counter with a different price. A
+                counter-offer is a new order referencing the original. Both parties can
+                cancel at any point before acceptance. Managed from Portfolio → Offers received.
+              </p>
+            </div>
+            <div className="bento-cell px-4 py-3 space-y-1">
+              <p className="text-sm font-semibold text-foreground">Partial fills (ERC-1155)</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Multi-edition assets support partial fills — buy any quantity up to the
+                available supply. The order stays ACTIVE after your purchase so other
+                collectors can buy the remaining editions. Total = price per unit × quantity.
+              </p>
+            </div>
+          </div>
+        </Section>
+
+        <Section title="Supported Currencies">
+          <div className="space-y-2">
+            {CURRENCIES.map(({ symbol, desc }) => (
+              <div key={symbol} className="bento-cell px-4 py-3 flex items-center gap-3">
+                <span className="font-mono text-xs bg-primary/10 text-primary px-2 py-1 rounded-md shrink-0">{symbol}</span>
+                <p className="text-sm text-muted-foreground">{desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm">
+            All prices are entered in human-readable units. The protocol handles
+            precision conversion automatically.
           </p>
         </Section>
 
-        <Section title="Fees">
+        <Section title="Fees Are a Platform Layer">
           <p>
-            Listing and offer creation are gas-sponsored for normal product flows. Completed
-            marketplace sales include a 1% marketplace fee routed to the Medialane DAO treasury.
-            The 1% fee is the only fee the marketplace contract applies.
+            The marketplace contracts enforce one rule: a 1% fee on completed sales,
+            routed to the Medialane DAO treasury. This is a platform-layer choice
+            governed by the DAO — not a protocol invariant. ERC-2981 royalty splits
+            are also enforced on-chain for collections that declare them.
           </p>
-          <p>
-            Read the canonical breakdown in{" "}
-            <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
+          <p className="text-sm">
+            Listing and offer creation are gas-sponsored for standard flows. See{" "}
+            <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
+            for the canonical breakdown.
           </p>
         </Section>
 
         <Section title="Cancelling Orders">
           <p>
-            Listings and offers can be cancelled at any time from the asset page or from
-            your Portfolio under <strong className="text-foreground">Listings</strong> or
-            <strong className="text-foreground"> Offers sent</strong>. Cancellation is
-            an onchain transaction that invalidates the signed intent. No funds are lost —
-            cancellation is free of asset cost, though a small gas fee applies.
+            Listings and offers can be cancelled at any time from the asset page or
+            from Portfolio → Listings / Offers sent. Cancellation is an on-chain
+            transaction that permanently invalidates the{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">orderHash</code>.
+            No funds or assets are lost — a small gas fee applies.
           </p>
         </Section>
 
-        <Section title="Counter-Offers">
-          <p>
-            When you receive an offer on one of your assets, you can accept it, decline it,
-            or send a <strong className="text-foreground">counter-offer</strong>. A counter-offer
-            proposes a different price to the buyer — they can then accept, decline, or
-            counter again. Counter-offers are managed from{" "}
-            <strong className="text-foreground">Portfolio → Offers received</strong>.
-          </p>
-          <p>
-            Like all orders, counter-offers are signed intents and do not lock any funds
-            until accepted. Both parties can cancel at any time before acceptance.
-          </p>
-        </Section>
-
-        <Section title="Supported Currencies">
-          <p>
-            The Medialane marketplace supports the following tokens on Starknet mainnet:
-          </p>
-          <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li><strong className="text-foreground">STRK</strong> — Starknet&apos;s native token</li>
-            <li><strong className="text-foreground">ETH</strong> — Bridged Ethereum</li>
-            <li><strong className="text-foreground">USDC</strong> — USD Coin (Circle)</li>
-            <li><strong className="text-foreground">USDT</strong> — Tether USD</li>
-            <li><strong className="text-foreground">WBTC</strong> — Wrapped Bitcoin</li>
-          </ul>
-          <p>
-            The currency filter in the marketplace lets you browse listings and offers
-            by token. Price inputs are always in human-readable units — the protocol
-            handles precision conversion automatically.
-          </p>
-        </Section>
       </div>
     </div>
   );
