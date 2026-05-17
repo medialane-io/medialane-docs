@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Programmable Licensing | Learn | Medialane",
-  description: "Explore Medialane's onchain licensing system — Creative Commons variants, AI policy, royalties, and derivative rules embedded in every NFT.",
+  description: "Medialane's onchain licensing system — license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
   openGraph: {
     title: "Programmable Licensing | Learn | Medialane",
-    description: "Explore Medialane's onchain licensing system — Creative Commons variants, AI policy, royalties, and derivative rules embedded in every NFT.",
+    description: "Medialane's onchain licensing system — license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
     url: "https://docs.medialane.io/learn/programmable-licensing",
   },
   twitter: {
     title: "Programmable Licensing | Learn | Medialane",
-    description: "Explore Medialane's onchain licensing system — Creative Commons variants, AI policy, royalties, and derivative rules embedded in every NFT.",
+    description: "Medialane's onchain licensing system — license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
   },
 };
 
@@ -32,93 +33,123 @@ function LicenseRow({ name, description }: { name: string; description: string }
   );
 }
 
+const CORE_TRAITS = [
+  { trait: "License", desc: "The preset: CC BY-SA (default), CC BY, CC0, All Rights Reserved, or Custom." },
+  { trait: "Commercial Use", desc: "Whether the work may be used commercially — and by whom." },
+  { trait: "Derivatives", desc: "Whether derivative works are permitted, and under what conditions." },
+  { trait: "Attribution", desc: "Whether credit to the original creator is required." },
+  { trait: "Territory", desc: "Geographic scope of the license — worldwide or specific regions." },
+  { trait: "AI Policy", desc: "Explicit declaration on AI training use: allowed, not allowed, or with permission only." },
+];
+
 export default function LearnProgrammableLicensingPage() {
   return (
     <div className="space-y-10">
+
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Programmable Licensing</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Every IP asset minted on Medialane carries a machine-readable license embedded
-          in its on-chain metadata. Creators define the rules once — and they apply
-          automatically to every holder, forever.
+          in its on-chain metadata. The terms travel with the asset — to any marketplace,
+          viewer, or aggregator that reads metadata.
         </p>
       </div>
 
       <div className="space-y-8">
-        <Section title="Why On-Chain Licensing?">
+
+        <Section title="License as Metadata">
           <p>
-            Traditional licensing requires negotiating and signing contracts with each
-            individual user. This is impractical for digital content distributed at scale.
-            Creative Commons solved part of this problem with standardised license text —
-            but even CC licenses rely on platforms to honour them and provide no automatic
-            enforcement.
+            License terms are encoded as plain attributes on the token — the same attribute
+            format that OpenSea, Rarible, and any other NFT viewer reads. This means the
+            terms are portable: visible wherever the asset appears, not just on Medialane.
           </p>
           <p>
-            Medialane takes licensing further: the terms are embedded in the NFT&apos;s IPFS
-            metadata as structured attributes, readable by any application, and linked
-            permanently to the token. They travel with the asset through every transfer
-            and are surfaced to every buyer in the marketplace UI.
+            Medialane extends the OpenSea metadata baseline with a structured license object.
+            Third parties that don&apos;t understand the extension can still read the plain
+            attributes. The floor is always the OpenSea baseline — it is never lowered.
           </p>
         </Section>
 
-        <Section title="License Types">
-          <div className="space-y-2">
-            <LicenseRow name="ARR" description="All Rights Reserved — no use permitted beyond viewing. Full copyright retained by the creator." />
-            <LicenseRow name="CC BY" description="Creative Commons Attribution — free to use, share, and adapt with credit to the original creator." />
-            <LicenseRow name="CC BY-SA" description="Attribution + ShareAlike — derivatives must be licensed under the same terms." />
-            <LicenseRow name="CC BY-NC" description="Attribution + NonCommercial — free for non-commercial use with credit." />
-            <LicenseRow name="CC BY-NC-SA" description="Attribution + NonCommercial + ShareAlike — non-commercial use, same-license derivatives." />
-            <LicenseRow name="CC BY-ND" description="Attribution + NoDerivatives — sharing permitted but no modifications allowed." />
-            <LicenseRow name="CC0" description="Public Domain dedication — creator waives all rights. Anyone can use for any purpose." />
-            <LicenseRow name="Custom" description="Creator-defined terms specified as freeform text alongside structured attributes." />
+        <Section title="Soft Enforcement Is the Default">
+          <div className="bento-cell border border-brand-orange/20 bg-brand-orange/5 p-5 space-y-3">
+            <p className="font-bold text-foreground">The contract does not revert on license violation.</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Enforcement of license terms is social, legal, and jurisdictional — the same
+              mechanisms that enforce traditional copyright. This is intentional: encoding
+              jurisdiction-specific law into immutable contracts would make them globally
+              unusable. Soft enforcement gives the system worldwide durability.
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              The on-chain record is evidence. It establishes what the creator stated, when
+              they stated it, and what terms apply. That record is tamper-proof and permanently
+              verifiable — which is exactly what you need for legal enforcement, even without
+              automatic contract reversion.
+            </p>
           </div>
         </Section>
 
-        <Section title="Commercial Use">
+        <Section title="The Six Core Traits">
           <p>
-            Creators specify whether commercial use of their work is permitted. Options range
-            from full commercial rights (any entity may use the work commercially) to
-            personal-only (non-commercial individuals only) to no commercial use at all.
-            This is surfaced as a discrete attribute on the asset page so buyers can
-            understand what they are purchasing.
+            License terms are expressed as a structured set of attributes. The six core traits
+            are encoded on every asset and readable by any third party.
           </p>
+          <div className="space-y-2">
+            {CORE_TRAITS.map(({ trait, desc }) => (
+              <div key={trait} className="bento-cell px-4 py-3 flex items-start gap-3">
+                <span className="font-mono text-xs bg-primary/10 text-primary px-2 py-1 rounded-md shrink-0 mt-0.5">{trait}</span>
+                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
         </Section>
 
-        <Section title="Derivative Works">
-          <p>
-            The license specifies what buyers or licensees may do with the original work:
-          </p>
-          <ul className="list-disc list-inside space-y-1 text-sm">
-            <li><strong className="text-foreground">Not allowed</strong> — the work may not be modified or adapted</li>
-            <li><strong className="text-foreground">Allowed</strong> — derivatives are permitted under the same license</li>
-            <li><strong className="text-foreground">Allowed with attribution</strong> — derivatives must credit the original creator</li>
-            <li><strong className="text-foreground">Allowed, share-alike</strong> — derivatives must carry the same license terms</li>
-          </ul>
+        <Section title="License Presets">
+          <div className="space-y-2">
+            <LicenseRow name="CC BY-SA" description="Attribution + ShareAlike — the default. Free to use and adapt with credit. Derivatives must carry the same license. The most creator-protective open license." />
+            <LicenseRow name="CC BY" description="Attribution — free to use and adapt with credit. Derivatives can use any license." />
+            <LicenseRow name="CC0" description="Public Domain dedication. Creator waives all rights. Anyone can use for any purpose, without attribution." />
+            <LicenseRow name="ARR" description="All Rights Reserved. Full copyright retained by the creator. No use permitted beyond viewing." />
+            <LicenseRow name="Custom" description="Creator-defined terms specified as freeform text alongside the structured attributes." />
+          </div>
         </Section>
 
-        <Section title="AI Training Policy">
-          <p>
-            Medialane is one of the first platforms to include explicit AI policy as a
-            structured license attribute. Creators choose from:
-          </p>
-          <ul className="list-disc list-inside space-y-1 text-sm">
-            <li><strong className="text-foreground">Allowed</strong> — the work may be used to train AI models</li>
-            <li><strong className="text-foreground">Not allowed</strong> — AI training use is explicitly prohibited</li>
-            <li><strong className="text-foreground">With permission only</strong> — AI training requires prior written consent from the creator</li>
-          </ul>
-          <p>
-            While enforcement of AI policy remains a legal grey area globally, the explicit
-            declaration in machine-readable metadata creates a clear record of the creator&apos;s
-            intent — relevant in any future legal or regulatory context.
-          </p>
+        <Section title="Immutable at Mint">
+          <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
+            <p className="font-bold text-foreground">Terms cannot be edited after minting.</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Once a token is minted, its license terms are fixed. The metadata lives on IPFS
+              or Arweave — content-addressed and immutable. If a creator wants to offer different
+              terms, they mint a new token. There is no edit path.
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              This is a durability guarantee, not a limitation. Collectors know exactly what
+              they purchased. The terms cannot be changed after the fact — by the creator,
+              by Medialane, or by anyone else.
+            </p>
+          </div>
         </Section>
 
-        <Section title="Geographic Scope">
+        <Section title="When Contracts Do Enforce">
           <p>
-            Creators can restrict the geographic scope of their license — specifying whether
-            rights apply worldwide, to specific regions, or excluding particular jurisdictions.
-            This is particularly useful for works subject to local copyright restrictions or
-            distribution agreements.
+            Soft enforcement is the default. But services can opt into stronger mechanisms
+            where it makes sense:
+          </p>
+          <div className="space-y-2">
+            {[
+              { name: "ERC-2981 royalty splits", desc: "Royalty percentages encoded in the contract. Marketplaces that implement ERC-2981 pay them automatically." },
+              { name: "Escrow and time-lock", desc: "Certain services can hold funds in escrow pending license verification." },
+              { name: "Revocation", desc: "Some service types support on-chain revocation for specific license categories." },
+            ].map(({ name, desc }) => (
+              <div key={name} className="bento-cell px-4 py-3 space-y-1">
+                <p className="text-sm font-semibold text-foreground">{name}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm">
+            See{" "}
+            <Link href="/learn/remix" className="text-primary hover:underline">Remix &amp; Derivatives</Link>
+            {" "}for how license terms propagate through derivative chains.
           </p>
         </Section>
 
