@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Network } from "lucide-react";
+import Link from "next/link";
+import { Network, Database, Package } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Protocol | Medialane Docs",
-  description: "Technical specification of the Medialane onchain protocol — SNIP-12 typed data signing, atomic swaps, ERC-2981 royalties, SNIP-9 session keys, indexer, and event model.",
+  description: "Technical specification of the Medialane onchain protocol — contracts, event model, order lifecycle, service registry, and indexer design.",
   openGraph: {
     title: "Protocol | Medialane Docs",
-    description: "Technical specification of the Medialane onchain protocol — SNIP-12 typed data signing, atomic swaps, ERC-2981 royalties, SNIP-9 session keys, indexer, and event model.",
+    description: "Technical specification of the Medialane onchain protocol — contracts, event model, order lifecycle, service registry, and indexer design.",
     url: "https://docs.medialane.io/docs/protocol",
   },
   twitter: {
     title: "Protocol | Medialane Docs",
-    description: "Technical specification of the Medialane onchain protocol — SNIP-12 typed data signing, atomic swaps, ERC-2981 royalties, SNIP-9 session keys, indexer, and event model.",
+    description: "Technical specification of the Medialane onchain protocol — contracts, event model, order lifecycle, service registry, and indexer design.",
   },
 };
 
@@ -32,13 +33,23 @@ function Code({ children }: { children: string }) {
   );
 }
 
+const CONTRACTS = [
+  { name: "Marketplace v3 (ERC-721)",    address: "0x004387e58d469f19332dd5d20846b10339ddc49ef208025ec7d5bef294a8daf3" },
+  { name: "Marketplace v3 (ERC-1155)",   address: "0x035836932ba1d219e00b8e42cd9a433fb2b211a08edcaa8bae40232f335f777d" },
+  { name: "NFTComments",                 address: "0x024f97eb5abe659fb650bf162b5fc16501f8f3863a7369901ce6099462e62799" },
+  { name: "Collection Registry",         address: "0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b" },
+  { name: "ERC-1155 Collection Factory", address: "0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6" },
+  { name: "Collection Drop Factory",     address: "0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800" },
+  { name: "POP Protocol Factory",        address: "0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111" },
+];
+
 const EVENTS = [
-  { name: "Transfer (ERC-721)", desc: "Single-token ownership transfer. Emitted on mint, sale, and manual transfer." },
-  { name: "TransferSingle (ERC-1155)", desc: "Single-edition transfer with from, to, id, and value fields. Used for ERC-1155 balance tracking." },
+  { name: "Transfer (ERC-721)", desc: "Single-token ownership change. Emitted on mint, sale, and manual transfer." },
+  { name: "TransferSingle (ERC-1155)", desc: "Single-edition transfer with from, to, id, and value. Used for ERC-1155 balance tracking." },
   { name: "TransferBatch (ERC-1155)", desc: "Batch ERC-1155 transfer — multiple token IDs and values in one event." },
-  { name: "OrderCreated", desc: "Emitted when a new listing or offer is activated on the marketplace contract." },
-  { name: "OrderFulfilled", desc: "Emitted when a listing is purchased or an offer is accepted." },
-  { name: "OrderCancelled", desc: "Emitted when an order is cancelled by the offerer." },
+  { name: "OrderCreated", desc: "New listing or offer activated on the marketplace contract. Contains orderHash, offerer, offer, and consideration." },
+  { name: "OrderFulfilled", desc: "Listing purchased or offer accepted. The orderHash is permanently fulfilled — no further fills possible." },
+  { name: "OrderCancelled", desc: "Order revoked by the offerer. The orderHash is permanently invalidated." },
   { name: "CollectionDeployed", desc: "Emitted by factory contracts when a new collection, drop, or POP campaign is deployed." },
 ];
 
@@ -53,9 +64,10 @@ export default function DocsProtocolPage() {
         </div>
         <h2 className="text-2xl font-bold">Protocol Specification</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          The Medialane protocol consists of immutable Starknet mainnet contracts and
-          an off-chain indexer/API layer. This document covers the order lifecycle,
-          atomic swap mechanics, event model, and indexer design.
+          Medialane runs on immutable Starknet mainnet contracts. This document covers
+          deployed addresses, the event model, order lifecycle, service registry, and
+          indexer design. For the architectural foundation, see{" "}
+          <Link href="/docs/architecture" className="text-primary hover:underline">Architecture</Link>.
         </p>
       </div>
 
@@ -63,205 +75,115 @@ export default function DocsProtocolPage() {
 
         <Section title="Deployed Contracts (Starknet Mainnet)">
           <div className="space-y-2">
-            {[
-              { name: "Marketplace v3 (ERC-721)",   address: "0x004387e58d469f19332dd5d20846b10339ddc49ef208025ec7d5bef294a8daf3" },
-              { name: "Marketplace v3 (ERC-1155)",  address: "0x035836932ba1d219e00b8e42cd9a433fb2b211a08edcaa8bae40232f335f777d" },
-              { name: "NFTComments",                address: "0x024f97eb5abe659fb650bf162b5fc16501f8f3863a7369901ce6099462e62799" },
-              { name: "Collection Registry",        address: "0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b" },
-              { name: "ERC-1155 Collection Factory",address: "0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6" },
-              { name: "Collection Drop Factory",    address: "0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800" },
-              { name: "POP Protocol Factory",       address: "0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111" },
-            ].map(({ name, address }) => (
+            {CONTRACTS.map(({ name, address }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
                 <p className="text-sm font-semibold text-foreground">{name}</p>
                 <p className="font-mono text-xs text-primary/70 break-all">{address}</p>
               </div>
             ))}
           </div>
-          <p className="text-xs">
-            Indexer scans from block <code className="font-mono bg-muted px-1 py-0.5 rounded">9130000</code>.
-            All contracts are immutable — no admin account, no upgrade path. See{" "}
-            <a href="/docs/contracts" className="text-primary hover:underline">Contracts</a> for details.
+          <p className="text-sm">
+            These contracts have no admin key and no upgrade path. Once deployed, the rules
+            are fixed. Canonical addresses are also published in the{" "}
+            <Link href="/docs/contracts" className="text-primary hover:underline">Contracts</Link> reference.
           </p>
         </Section>
 
-        <Section title="Order Lifecycle (SNIP-12 Typed Data)">
+        <Section title="Event Model">
           <p>
-            Marketplace orders are off-chain signed, on-chain enforced. The flow prevents
-            signature replay, ensures order validity without a pending transaction, and
-            allows gasless cancellation of unmatched orders.
-          </p>
-          <Code>{`1. Creator calls POST /v1/orders/intent/listing
-   ← { typedData: { domain, types, primaryType, message }, orderHash }
-
-2. Creator signs typedData with their Starknet account (SNIP-12)
-   ← { r, s } signature
-
-3. Creator calls POST /v1/orders/signature
-   → { orderHash, signature }
-   ← Order is now ACTIVE in the indexer
-
-4. Buyer calls POST /v1/orders/intent/fulfill
-   ← { calls: [ approve_erc20, fulfill_order ] }   ← atomic
-
-5. Buyer submits calls via their wallet (ChipiPay / Argent / Braavos)
-   ← OrderFulfilled event emitted on-chain
-   ← Royalties distributed automatically (ERC-2981)
-   ← Order status → FULFILLED in indexer (~6s)`}</Code>
-        </Section>
-
-        <Section title="SNIP-12 Typed Data Signing">
-          <p>
-            SNIP-12 is Starknet&apos;s structured typed-data signing standard — the equivalent
-            of Ethereum&apos;s EIP-712. Medialane uses it so that marketplace orders are
-            human-readable when presented in a wallet UI, and so the on-chain contract
-            can verify the signature without trusting any off-chain intermediary.
-          </p>
-          <p>
-            A SNIP-12 message has three parts: a <strong className="text-foreground">domain separator</strong> that
-            identifies the application, a <strong className="text-foreground">type definition</strong> that
-            describes the message structure, and the <strong className="text-foreground">message itself</strong>.
-            All three are hashed together to produce a unique digest that the signer&apos;s
-            private key signs.
-          </p>
-          <Code>{`// Domain separator — ties the signature to Medialane specifically
-{
-  "name":     "Medialane",
-  "version":  "1",
-  "revision": "1",     // SNIP-12 revision, not semver
-  "chainId":  "SN_MAIN"
-}
-
-// Order type definition
-types: {
-  Order: [
-    { name: "offerer",      type: "ContractAddress" },
-    { name: "nftContract",  type: "ContractAddress" },
-    { name: "tokenId",      type: "u256"            },
-    { name: "price",        type: "u256"            },
-    { name: "currency",     type: "ContractAddress" },
-    { name: "amount",       type: "u128"            }, // ERC-1155 quantity
-    { name: "salt",         type: "felt252"         }, // replay protection
-    { name: "endTime",      type: "u64"             },
-    { name: "orderType",    type: "felt252"         }, // LISTING | OFFER
-    { name: "itemType",     type: "felt252"         }, // ERC721 | ERC1155
-  ]
-}`}</Code>
-          <Code>{`// Message hash derivation (Poseidon)
-message_hash = h(
-  "StarkNet Message",  // prefix
-  domain_hash,         // h(name, version, revision, chainId)
-  sender_address,
-  type_hash,           // h(type_string)
-  message_content_hash // h(all field values)
-)
-
-// Signed on the client using starknet.js
-const sig = await account.signMessage(typedData)
-// → { r: "0x...", s: "0x..." }
-
-// Verified on-chain by the marketplace contract
-is_valid_signature(offerer, message_hash, [r, s])
-// uses account.is_valid_signature() — works with any Starknet account type`}</Code>
-          <p>
-            The <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">salt</code> field
-            is a random felt generated server-side for each intent. It makes every order hash unique
-            even if all other fields are identical, preventing signature replay across separate
-            listing attempts. The <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">endTime</code> field
-            encodes expiry — the marketplace contract rejects orders past their end time at
-            the Cairo level.
-          </p>
-        </Section>
-
-        <Section title="Atomic Swap — No Escrow, No Custody">
-          <p>
-            Every purchase executes as a pair of calls submitted atomically in a single
-            Starknet transaction. Either both succeed or both revert — there is no
-            intermediate state where the buyer&apos;s funds are held by the marketplace contract.
-          </p>
-          <Code>{`// Atomic call batch (submitted by buyer's wallet):
-[
-  {
-    to:       "0x<erc20_token>",           // e.g. USDC contract
-    selector: "approve",
-    calldata: [marketplace_contract, amount],
-  },
-  {
-    to:       "0x<marketplace_contract>",
-    selector: "fulfill_order",
-    calldata: [orderHash, buyer_address],
-  }
-]`}</Code>
-          <p>
-            The marketplace contract calls <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">transfer_from</code> on the
-            ERC-20 after verifying the order signature. If the seller is no longer the token owner
-            or the approve fails for any reason, the entire transaction reverts.
-          </p>
-        </Section>
-
-        <Section title="ERC-1155 Partial Fills">
-          <p>
-            ERC-1155 listings specify an <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">amount</code> (number of editions for sale)
-            and a unit <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">price</code>.
-            Each fulfillment decrements <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">remainingAmount</code>.
-            The order stays <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">ACTIVE</code> until{" "}
-            <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">remainingAmount == 0</code>,
-            then transitions to <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">FULFILLED</code>.
-          </p>
-          <Code>{`// ERC-1155 order state
-{
-  "standard": "ERC1155",
-  "amount": "10",           // original listing quantity
-  "remainingAmount": "7",   // still available
-  "status": "ACTIVE",
-  "pricePerUnit": "1000000" // USDC, 6 decimals
-}`}</Code>
-        </Section>
-
-        <Section title="Indexer & Event Model">
-          <p>
-            The off-chain indexer polls Starknet RPC for new blocks (~6s cadence),
-            parses contract events, and writes to a PostgreSQL database that backs
-            the REST API. The indexer is the only write path to the API state — it
-            does not accept user-submitted transaction data.
+            On-chain events are the source of truth. The indexer is a deterministic event
+            reducer — a function that reads the event log and produces a queryable cache.
+            Every state change in the protocol is expressed as an event; the database
+            is a reduction of those events, rebuildable at any time.
           </p>
           <div className="space-y-2">
             {EVENTS.map(({ name, desc }) => (
-              <div key={name} className="bento-cell px-4 py-2.5 flex items-start gap-3">
-                <code className="text-xs font-mono text-foreground/80 shrink-0 mt-0.5 w-52">{name}</code>
-                <span className="text-xs text-muted-foreground">{desc}</span>
+              <div key={name} className="bento-cell px-4 py-3 space-y-1">
+                <p className="text-sm font-semibold text-foreground">{name}</p>
+                <p className="text-xs text-muted-foreground">{desc}</p>
               </div>
             ))}
           </div>
-          <p className="text-xs">
-            ERC-1155 balance tracking uses <code className="font-mono bg-muted px-1 py-0.5 rounded">TransferSingle</code> and{" "}
-            <code className="font-mono bg-muted px-1 py-0.5 rounded">TransferBatch</code> exclusively.
-            The <code className="font-mono bg-muted px-1 py-0.5 rounded">Transfer</code> event is deduplicated at ingestion time
-            to prevent double-counting on contracts that emit both event types.
+        </Section>
+
+        <Section title="Order Lifecycle">
+          <p>
+            An order is a signed proposal: one offer item and one consideration item,
+            signed with your wallet using SNIP-12 typed data. The{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">orderHash</code>{" "}
+            is computed at creation and is the permanent on-chain identifier.
+          </p>
+          <Code>{`Order states
+──────────────────────────────────────────────
+ACTIVE       — signed, visible, can be filled
+FULFILLED    — payment + NFT swapped atomically
+CANCELLED    — revoked by the offerer on-chain
+EXPIRED      — past the order's expiry timestamp
+
+Counter-offers
+──────────────────────────────────────────────
+A counter-offer is a new order with parentOrderHash
+referencing the original. Both parties can cancel
+at any time before acceptance.`}</Code>
+          <p>
+            Settlement is an atomic swap: the NFT transfer and the payment happen in the
+            same Starknet transaction or both revert. The marketplace contract never takes
+            custody of funds or assets.
           </p>
         </Section>
 
-        <Section title="Session Keys (SNIP-9)">
+        <Section title="Service Registry">
           <p>
-            The Medialane app uses SNIP-9 session keys to enable gasless, PIN-authorized
-            transactions without exposing the account&apos;s master private key on every action.
+            Each asset has two identifying fields set at index time:
           </p>
-          <Code>{`// Session key scope (registered on-chain)
-{
-  validUntil: now + 6 * 60 * 60,          // 6 hours
-  allowedMethods: [
-    { contractAddress: marketplace_721,  selector: "create_order" },
-    { contractAddress: marketplace_721,  selector: "cancel_order" },
-    { contractAddress: marketplace_1155, selector: "create_order" },
-    { contractAddress: marketplace_1155, selector: "cancel_order" },
-    { contractAddress: nftcomments,      selector: "post_comment" },
-    // approve and set_approval_for_all are intentionally excluded
-  ]
-}`}</Code>
+          <Code>{`standard   — chain-detected token standard: ERC721 | ERC1155 | ERC20 | UNKNOWN
+service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`}</Code>
           <p>
-            Session key approval and sponsored gas are managed by ChipiPay on the
-            consumer app. The dApp (app.medialane.io) accepts any Starknet wallet
-            and uses standard account signing instead.
+            The SDK exposes a{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">getService(serviceId)</code>{" "}
+            function that returns the full capability set and contract configuration for a
+            given service ID. Service IDs are stable across contract upgrades — no{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">-v3</code> suffix, ever.
+          </p>
+          <p>
+            In Year 1, the registry lives in the SDK. Year 2+ moves it on-chain, making
+            service registration permissionless. See{" "}
+            <Link href="/learn/services" className="text-primary hover:underline">Services</Link> for
+            the full registry and capability set.
+          </p>
+        </Section>
+
+        <Section title="Indexer Design">
+          <div className="space-y-3">
+            <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
+              <div className="flex items-center gap-2">
+                <Database className="h-4 w-4 text-brand-blue" />
+                <p className="font-bold text-foreground text-sm">Off-chain event reducer</p>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The indexer polls Starknet for new events, parses them with per-event handlers,
+                and writes a normalized PostgreSQL cache. It holds no state of its own — everything
+                it knows came from the chain.
+              </p>
+            </div>
+            <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
+              <div className="flex items-center gap-2">
+                <Package className="h-4 w-4 text-brand-orange" />
+                <p className="font-bold text-foreground text-sm">Rebuild guarantee</p>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Drop the database. The indexer replays events from genesis and reconstructs
+                the full state. This is not a disaster-recovery feature — it is the protocol
+                invariant that proves the DB is a cache, not a source of truth.
+              </p>
+            </div>
+          </div>
+          <p className="text-sm">
+            Platform state — profiles, slugs, API keys — cannot be reconstructed from events.
+            It is honestly classified as off-chain enrichment and stored in a separate namespace.
+            See{" "}
+            <Link href="/docs/architecture" className="text-primary hover:underline">Architecture</Link> for
+            the protocol vs. platform distinction.
           </p>
         </Section>
 
