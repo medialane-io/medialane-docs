@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight } from "lucide-react";
+import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Learn | Medialane",
@@ -28,6 +28,18 @@ const TOPICS = [
     icon: Rocket,
     title: "Creator Launchpad",
     description: "Learn how to deploy your own collection, mint IP assets, and launch your creative work on Medialane.",
+  },
+  {
+    href: "/learn/services",
+    icon: Layers,
+    title: "Services",
+    description: "How Medialane services work — the registry that defines what creators can do, canonical service IDs, and the capability set.",
+  },
+  {
+    href: "/learn/identity",
+    icon: Fingerprint,
+    title: "Identity",
+    description: "Wallets, accounts, and profiles — three separate things. Roles, authentication vs. authorization, and AI agent accounts.",
   },
   {
     href: "/learn/marketplace",
