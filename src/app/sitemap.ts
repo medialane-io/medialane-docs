@@ -17,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/learn/zero-knowledge`,             changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/programmable-ip`,            changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/tokenization`,               changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/learn/services`,                   changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/learn/identity`,                   changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/creator-launchpad`,          changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/marketplace`,                changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/pop-protocol`,               changeFrequency: "monthly", priority: 0.7 },
@@ -29,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Docs ──────────────────────────────────────────────────────────────────
     { url: `${BASE_URL}/docs`,                             changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/docs/architecture`,                changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/docs/protocol`,                    changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/docs/sdk`,                         changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/docs/api`,                         changeFrequency: "monthly", priority: 0.8 },

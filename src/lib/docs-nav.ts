@@ -1,6 +1,6 @@
 import {
   BookOpen, Bot, Building2, Coins, Code2, FileCode2, History,
-  Info, Landmark, LifeBuoy, Package, Shield, Terminal, Network,
+  Info, Landmark, Layers, LifeBuoy, Package, Shield, Terminal, Network,
 } from "lucide-react";
 import { CANONICAL } from "@/lib/canonical";
 
@@ -11,6 +11,13 @@ export type NavLink = {
 };
 
 export const DOCS_NAV = [
+  {
+    href: "/docs/architecture",
+    label: "Architecture",
+    title: "Architecture",
+    icon: Layers,
+    description: "The four-layer authority model, six core primitives, the rebuild test, and the protocol vs. platform distinction.",
+  },
   {
     href: "/docs/protocol",
     label: "Protocol",
