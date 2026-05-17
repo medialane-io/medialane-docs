@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Layers, Database, Package, Monitor, Lock, Box, FileText, ShoppingCart, Zap, Star } from "lucide-react";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Architecture | Medialane Docs",
@@ -15,15 +16,6 @@ export const metadata: Metadata = {
     description: "The Medialane four-layer authority model — Chain, Indexer, SDK, and Apps. Six core primitives, the rebuild test, and the protocol vs. platform distinction.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
 
 const LAYERS = [
   {

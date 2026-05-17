@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "IP Collection 1155 | Learn | Medialane",
@@ -13,15 +14,6 @@ export const metadata: Metadata = {
     description: "Learn how to deploy a multi-edition ERC-1155 IP collection on Medialane — mint music tracks, art series, and creative editions.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
 
 export default function LearnIPCollection1155Page() {
   return (

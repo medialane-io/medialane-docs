@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Community Guidelines | Docs | Medialane",
@@ -14,15 +15,6 @@ export const metadata: Metadata = {
     description: "Rules for community participation, moderation standards, and how violations are handled on Medialane.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
 
 export default function DocsCommunityGuidelinesPage() {
   return (

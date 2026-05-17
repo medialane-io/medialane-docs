@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Key, Star, User, Shield, Eye, Bot } from "lucide-react";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Identity | Learn | Medialane",
@@ -15,15 +16,6 @@ export const metadata: Metadata = {
     description: "How identity works on Medialane — Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
 
 const FACETS = [
   {

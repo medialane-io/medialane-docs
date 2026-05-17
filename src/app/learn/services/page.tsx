@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Package, Image, Music, Award, Clock, Store } from "lucide-react";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Services | Learn | Medialane",
@@ -15,15 +16,6 @@ export const metadata: Metadata = {
     description: "How Medialane services work — the registry that defines what creators can do, canonical service IDs, and the full capability set.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
 
 const SERVICES = [
   {

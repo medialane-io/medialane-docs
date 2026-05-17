@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Coins, ExternalLink, Landmark, Repeat2, ShieldCheck, Zap } from "lucide-react";
 import { CANONICAL } from "@/lib/canonical";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Fees & Revenue | Medialane Docs",
@@ -58,15 +59,6 @@ const REVENUE_OPTIONS = [
   "Operations",
   "Grants or other approved DAO initiatives",
 ];
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <section className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </section>
-  );
-}
 
 export default function FeesPage() {
   return (

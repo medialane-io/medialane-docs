@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Programmable Licensing | Learn | Medialane",
@@ -14,15 +15,6 @@ export const metadata: Metadata = {
     description: "Medialane's onchain licensing system — license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
 
 function LicenseRow({ name, description }: { name: string; description: string }) {
   return (

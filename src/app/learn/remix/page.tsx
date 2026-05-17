@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Remix & Derivatives | Learn | Medialane",
@@ -14,23 +15,6 @@ export const metadata: Metadata = {
     description: "How derivative works flow through Medialane — on-chain attribution, license propagation, soft enforcement, and the remix graph.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
-
-function Code({ children }: { children: string }) {
-  return (
-    <pre className="bento-cell p-4 text-xs font-mono overflow-x-auto text-foreground/80 leading-relaxed whitespace-pre">
-      {children}
-    </pre>
-  );
-}
 
 const LICENSE_RULES = [
   {

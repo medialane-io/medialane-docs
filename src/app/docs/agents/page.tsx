@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bot, ExternalLink, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "AI Agents | Medialane Docs",
@@ -15,23 +16,6 @@ export const metadata: Metadata = {
     description: "Build autonomous agents on Medialane — HTTP 402 billing, SIWS wallet auth, MDLN multiplier, webhook listeners, and permissionless API access.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
-
-function Code({ children }: { children: string }) {
-  return (
-    <pre className="bento-cell p-4 text-xs font-mono overflow-x-auto text-foreground/80 leading-relaxed whitespace-pre">
-      {children}
-    </pre>
-  );
-}
 
 const AGENT_CAPABILITIES = [
   { title: "Read market state", desc: "Query collections, tokens, orders, activities, and wallet portfolios without authentication. Public read endpoints are completely open." },

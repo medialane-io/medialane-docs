@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "What is an NFT? | Learn | Medialane",
@@ -13,15 +14,6 @@ export const metadata: Metadata = {
     description: "Learn what NFTs are, how they work on blockchain, and why they are powerful tools for creators protecting intellectual property.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
 
 export default function LearnNFTPage() {
   return (

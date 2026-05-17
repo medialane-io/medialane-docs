@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Network, Database, Package } from "lucide-react";
+import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Protocol | Medialane Docs",
@@ -15,23 +16,6 @@ export const metadata: Metadata = {
     description: "Technical specification of the Medialane onchain protocol — contracts, event model, order lifecycle, service registry, and indexer design.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
-
-function Code({ children }: { children: string }) {
-  return (
-    <pre className="bento-cell p-4 text-xs font-mono overflow-x-auto text-foreground/80 leading-relaxed whitespace-pre">
-      {children}
-    </pre>
-  );
-}
 
 const CONTRACTS = [
   { name: "Marketplace v3 (ERC-721)",    address: "0x004387e58d469f19332dd5d20846b10339ddc49ef208025ec7d5bef294a8daf3" },

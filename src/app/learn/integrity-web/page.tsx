@@ -131,7 +131,7 @@ const AXIOMS = [
 
 export default function IntegrityWebPage() {
   return (
-    <div className="container mx-auto px-4 pt-12 pb-16 max-w-5xl space-y-16">
+    <div className="space-y-16">
 
       {/* Hero */}
       <div className="space-y-5">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Governance | Docs | Medialane",
@@ -14,15 +15,6 @@ export const metadata: Metadata = {
     description: "Medialane DAO — governance charter, membership, voting, treasury, and the path to full community autonomy.",
   },
 };
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
-    </div>
-  );
-}
 
 export default function DocsGovernancePage() {
   return (
