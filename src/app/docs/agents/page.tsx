@@ -1,301 +1,225 @@
-import type { Metadata } from "next";
-import { Bot, ExternalLink, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { Section, Code } from "@/components/docs";
+import type { Metadata } from "next"
+import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
+import { DocH2, DocH3, DocCodeBlock } from "@/components/docs/typography"
 
 export const metadata: Metadata = {
   title: "AI Agents | Medialane Docs",
-  description: "Build autonomous agents on Medialane — HTTP 402 billing, SIWS wallet auth, MDLN multiplier, webhook listeners, and permissionless API access.",
+  description: "Build autonomous AI agents on Medialane — SIWS auth, 402 credit billing, autonomous USDC top-up, and MDLN multipliers.",
   openGraph: {
     title: "AI Agents | Medialane Docs",
-    description: "Build autonomous agents on Medialane — HTTP 402 billing, SIWS wallet auth, MDLN multiplier, webhook listeners, and permissionless API access.",
+    description: "Build autonomous AI agents on Medialane — SIWS auth, 402 credit billing, autonomous USDC top-up, and MDLN multipliers.",
     url: "https://docs.medialane.io/docs/agents",
   },
-  twitter: {
-    title: "AI Agents | Medialane Docs",
-    description: "Build autonomous agents on Medialane — HTTP 402 billing, SIWS wallet auth, MDLN multiplier, webhook listeners, and permissionless API access.",
-  },
-};
-
-const AGENT_CAPABILITIES = [
-  { title: "Read market state", desc: "Query collections, tokens, orders, activities, and wallet portfolios without authentication. Public read endpoints are completely open." },
-  { title: "Monitor events via webhooks", desc: "Register a webhook to receive push notifications for mints, sales, and transfers in real time — no polling required." },
-  { title: "Submit marketplace orders", desc: "Create listings and offers by generating SNIP-12 typed data and signing with a Starknet account controlled by the agent." },
-  { title: "Pay autonomously (HTTP 402)", desc: "Pre-fund a USDC credit balance in the portal. When quota is exhausted, the API returns 402 — the agent deposits credits and retries." },
-  { title: "Multiply quota with MDLN", desc: "An agent wallet holding MDLN tokens and registered in the portal receives a rate-limit multiplier (up to 2× for 5,000 MDLN)." },
-];
+}
 
 export default function AgentsPage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-2">
+      <Badge className="bg-primary/10 text-primary border-primary/30 px-3 py-1 text-xs">
+        Agents
+      </Badge>
 
-      <div className="space-y-3">
-        <div className="flex items-center gap-2">
-          <Bot className="h-5 w-5 text-primary" />
-          <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">AI Agents</span>
-        </div>
-        <h2 className="text-2xl font-bold">Building AI Agents on Medialane</h2>
-        <p className="text-muted-foreground leading-relaxed">
-          Medialane&apos;s permissionless, immutable design makes it a natural fit for autonomous
-          software agents. Agents can read market data, react to on-chain events, submit
-          marketplace orders, and pay for API access without any human in the loop.
-        </p>
-      </div>
+      <h1 className="text-4xl font-extrabold text-white leading-tight">
+        Agent Quickstart
+      </h1>
 
-      <Section title="What Agents Can Do">
-        <div className="space-y-2">
-          {AGENT_CAPABILITIES.map(({ title, desc }) => (
-            <div key={title} className="bento-cell p-4 space-y-1">
-              <p className="text-sm font-semibold text-foreground">{title}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
+      <p className="text-muted-foreground text-lg mt-2 mb-8">
+        Medialane is built to be consumed by autonomous AI agents. Wallet keypair identity, on-chain payments, and machine-readable 402 billing make it a natural fit for agent workflows.
+      </p>
 
-      <Section title="Authentication — SIWS (Sign In With Starknet)">
-        <p>
-          Agents that need to perform write operations (submit orders, post comments,
-          manage API keys) must authenticate using{" "}
-          <strong className="text-foreground">Sign In With Starknet (SIWS)</strong>.
-          SIWS is a Starknet-native equivalent of EIP-4361: the agent signs a structured
-          message with its Starknet private key to prove wallet ownership.
-        </p>
-        <Code>{`// 1. Fetch a nonce from the portal
-const { nonce } = await fetch("https://api.medialane.io/v1/portal/auth/nonce").then(r => r.json());
+      {/* Why agents */}
+      <DocH2 id="why">Why agents work here</DocH2>
+      <p className="text-muted-foreground mb-4 text-sm">
+        Traditional API platforms require email, OAuth, or credit-card billing — all designed for humans. Medialane uses permissionless primitives instead:
+      </p>
+      <ul className="space-y-2 text-sm text-muted-foreground mb-6 list-disc list-inside">
+        <li><strong className="text-white">Identity</strong> — a Starknet wallet keypair. No email, no OAuth provider, no third-party dependency.</li>
+        <li><strong className="text-white">Auth</strong> — Sign-In with Starknet (SIWS). Sign a typed-data challenge, receive a short-lived JWT.</li>
+        <li><strong className="text-white">Billing</strong> — USDC on Starknet. Deposit on-chain, credits settle within ~2 minutes.</li>
+        <li><strong className="text-white">Access gate</strong> — 500 MDLN minimum in the agent wallet to provision an API key. Tokens stay in the wallet.</li>
+        <li><strong className="text-white">Credit exhaustion</strong> — machine-readable <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402</code> with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining</code> header, not a human-facing error page.</li>
+      </ul>
 
-// 2. Build the SIWS message
-const message = {
-  domain:    "portal.medialane.io",
-  address:   agentWalletAddress,         // Starknet wallet address
-  statement: "Sign in to Medialane Portal",
-  nonce,
-  issuedAt:  new Date().toISOString(),
+      {/* SIWS */}
+      <DocH2 id="siws">SIWS Authentication</DocH2>
+      <p className="text-muted-foreground mb-4 text-sm">
+        Agents authenticate the same way a browser wallet does — by signing a typed-data challenge. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">starknet.js</code> with a local keypair:
+      </p>
+
+      <DocH3>1. Fetch challenge</DocH3>
+      <DocCodeBlock lang="ts">{`import { RpcProvider, Account, ec, stark } from "starknet";
+
+const address = process.env.AGENT_WALLET_ADDRESS!;
+const privateKey = process.env.AGENT_PRIVATE_KEY!;
+
+const res = await fetch(
+  \`https://portal.medialane.io/api/auth/challenge?address=\${address}\`
+);
+const { nonce } = await res.json();`}</DocCodeBlock>
+
+      <DocH3>2. Sign the typed-data challenge</DocH3>
+      <DocCodeBlock lang="ts">{`const provider = new RpcProvider({ nodeUrl: process.env.STARKNET_RPC_URL });
+const account = new Account(provider, address, privateKey);
+
+// The same typed-data domain the portal uses
+const typedData = {
+  types: {
+    StarkNetDomain: [
+      { name: "name", type: "felt" },
+      { name: "version", type: "felt" },
+      { name: "chainId", type: "felt" },
+    ],
+    Message: [
+      { name: "nonce", type: "felt" },
+      { name: "address", type: "felt" },
+    ],
+  },
+  primaryType: "Message",
+  domain: { name: "Medialane Portal", version: "1", chainId: "SN_MAIN" },
+  message: { nonce, address },
 };
 
-// 3. Sign with the agent's Starknet account
-const signature = await starknetAccount.signMessage(message);
+const signature = await account.signMessage(typedData);`}</DocCodeBlock>
 
-// 4. Exchange for a session token
-const { token } = await fetch("https://api.medialane.io/v1/portal/auth/verify", {
+      <DocH3>3. Exchange for JWT</DocH3>
+      <DocCodeBlock lang="ts">{`const verifyRes = await fetch("https://portal.medialane.io/api/auth/verify", {
   method: "POST",
-  body: JSON.stringify({ message, signature }),
-}).then(r => r.json());
-
-// 5. Use the session token to manage keys and credits
-const keys = await fetch("https://api.medialane.io/v1/portal/keys", {
-  headers: { Authorization: \`Bearer \${token}\` },
-}).then(r => r.json());`}</Code>
-        <p>
-          For pure read-only agents, SIWS is not required — use a static API key
-          generated once in the portal.
-        </p>
-      </Section>
-
-      <Section title="Autonomous Billing — HTTP 402">
-        <p>
-          When a key&apos;s monthly quota is exhausted, the API returns{" "}
-          <code className="font-mono bg-muted px-1.5 py-0.5 rounded text-xs">402 Payment Required</code>.
-          Agents can intercept this status, deposit USDC credits via the portal API,
-          and retry — without any human intervention.
-        </p>
-        <Code>{`// Robust agent request wrapper
-async function apiRequest(url: string, apiKey: string): Promise<Response> {
-  let res = await fetch(url, { headers: { "x-api-key": apiKey } });
-
-  if (res.status === 402) {
-    const { creditRequired } = await res.json();
-
-    // Deposit USDC credits autonomously (agent must hold USDC on Starknet)
-    await depositCredits(apiKey, creditRequired * 2);  // deposit 2× buffer
-
-    // Retry once after deposit
-    res = await fetch(url, { headers: { "x-api-key": apiKey } });
-  }
-
-  return res;
-}
-
-// Credit deposit via portal API (requires SIWS session token)
-async function depositCredits(apiKey: string, usdcAmount: number) {
-  await fetch("https://api.medialane.io/v1/portal/credits/deposit", {
-    method: "POST",
-    headers: {
-      Authorization: \`Bearer \${sessionToken}\`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ apiKey, usdcAmount }),
-  });
-}`}</Code>
-        <p>
-          The credit balance is separate from the monthly request quota. Credits never expire.
-          Deposited USDC is held in the portal contract until consumed by API calls.
-        </p>
-      </Section>
-
-      <Section title="Rate Limit Headers">
-        <p>Agents should check these headers on every response to avoid unexpected 402s:</p>
-        <Code>{`X-RateLimit-Limit: 50        // total requests this period
-X-RateLimit-Remaining: 3     // requests left — act before this hits 0
-X-RateLimit-Reset: 1714521600 // Unix timestamp when quota resets
-X-RateLimit-Multiplier: 1.5  // current MDLN multiplier active on key
-X-Credits-Balance: 0.24       // remaining USDC credit balance (if using credits)`}</Code>
-      </Section>
-
-      <Section title="MDLN Multiplier for Agent Wallets">
-        <p>
-          An agent that controls a Starknet wallet holding MDLN tokens can register that
-          wallet in the portal to receive a quota multiplier. This is the same multiplier
-          available to human developers — agents are first-class citizens.
-        </p>
-        <Code>{`// Check current multiplier
-const usage = await fetch("https://api.medialane.io/v1/portal/usage", {
-  headers: { "x-api-key": apiKey },
-}).then(r => r.json());
-
-console.log(usage.multiplier);   // 1, 1.2, 1.5, or 2
-console.log(usage.mdlnBalance);  // MDLN held by registered wallet
-console.log(usage.remaining);    // requests left this month`}</Code>
-        <div className="space-y-2">
-          {[
-            { mdln: "0 MDLN",    mult: "1×",   note: "Free tier — no MDLN required" },
-            { mdln: "500 MDLN",  mult: "1.2×", note: "20% more requests per month" },
-            { mdln: "2,000 MDLN",mult: "1.5×", note: "50% more requests per month" },
-            { mdln: "5,000 MDLN",mult: "2×",   note: "Double the base quota" },
-          ].map(({ mdln, mult, note }) => (
-            <div key={mdln} className="bento-cell px-4 py-2.5 flex items-center gap-4 flex-wrap text-sm">
-              <span className="font-mono text-foreground/80 w-24 shrink-0">{mdln}</span>
-              <span className="font-bold font-mono text-primary">{mult}</span>
-              <span className="text-muted-foreground text-xs ml-auto">{note}</span>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Listening for Events (Webhooks)">
-        <p>
-          Instead of polling, register a webhook to receive push notifications.
-          This is the recommended pattern for reactive agents that respond to market activity.
-        </p>
-        <Code>{`// Register webhook via portal API
-const webhook = await fetch("https://api.medialane.io/v1/portal/webhooks", {
-  method: "POST",
-  headers: {
-    Authorization: \`Bearer \${sessionToken}\`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    url: "https://my-agent.example.com/hooks",
-    events: ["order.created", "order.fulfilled", "token.minted"],
-    secret: crypto.randomUUID(),
-  }),
-}).then(r => r.json());
-
-// Webhook payload shape
-{
-  "type": "order.created",
-  "timestamp": 1714521600,
-  "data": {
-    "orderHash": "0x...",
-    "contract":  "0x...",
-    "tokenId":   "1",
-    "price":     "1000000",
-    "currency":  "USDC",
-    "offerer":   "0x...",
-    "status":    "ACTIVE"
-  }
-}`}</Code>
-      </Section>
-
-      <Section title="Submitting Orders from an Agent">
-        <p>
-          An agent with a funded Starknet account can list and buy NFTs autonomously.
-          Use the SDK to build intents, sign with the agent&apos;s account, and submit.
-        </p>
-        <Code>{`import { MedialaneClient } from "@medialane/sdk";
-import { Account, RpcProvider } from "starknet";
-
-const client   = new MedialaneClient({ backendUrl: "https://api.medialane.io", apiKey });
-const provider = new RpcProvider({ nodeUrl: process.env.STARKNET_RPC_URL });
-const account  = new Account(provider, agentAddress, agentPrivateKey);
-
-// Create a listing intent
-const intent = await client.marketplace.createListingIntent({
-  contract: "0x<collection>",
-  tokenId:  "1",
-  price:    "1000000",          // 1 USDC (6 decimals)
-  currency: "0x<usdc_address>",
-  duration: 86400 * 3,          // 3 days
-  standard: "ERC721",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ address, nonce, signature }),
+  credentials: "include",  // stores auth-token + auth-refresh cookies
 });
 
-// Sign with agent account (SNIP-12)
-const signature = await account.signMessage(intent.typedData);
+// JWT is set as an HttpOnly cookie automatically.
+// For headless agents, extract from Set-Cookie if needed.`}</DocCodeBlock>
 
-// Activate the order
-const order = await client.marketplace.submitIntentSignature(intent.orderHash, signature);
-console.log("Listed:", order.status);  // "ACTIVE"`}</Code>
-      </Section>
+      {/* API Key */}
+      <DocH2 id="api-key">Get an API Key</DocH2>
+      <p className="text-muted-foreground mb-4 text-sm">
+        After authenticating, provision your wallet and create an API key via the portal API. Keys are tied to the wallet address, not an email account.
+      </p>
+      <DocCodeBlock lang="ts">{`// Provision wallet (idempotent — safe to call on every boot)
+await fetch("https://portal.medialane.io/api/portal/provision", {
+  method: "POST",
+  credentials: "include",
+});
 
-      <Section title="Agent Identity Model">
-        <p>
-          An AI agent&apos;s wallet is a first-class Medialane account — the contracts make
-          no distinction between a human signing a transaction and an agent doing the same.
-          Identity has three facets:
-        </p>
-        <div className="space-y-2">
-          <div className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-sm font-semibold text-foreground">Wallet</p>
-            <p className="text-xs text-muted-foreground">The Starknet private key your agent controls. The only thing that signs transactions. This is your agent&apos;s proof of identity on-chain.</p>
-          </div>
-          <div className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-sm font-semibold text-foreground">Account</p>
-            <p className="text-xs text-muted-foreground">Your agent&apos;s on-chain history — assets it has created, collected, and traded. Permanent and protocol-level.</p>
-          </div>
-          <div className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-sm font-semibold text-foreground">Role: Agent</p>
-            <p className="text-xs text-muted-foreground">The Agent role gates what the UI surfaces — not what the contracts permit. An agent has identical protocol capabilities to a human account.</p>
-          </div>
-        </div>
-        <p className="text-sm">
-          See{" "}
-          <Link href="/learn/identity" className="text-primary hover:underline">Identity</Link>{" "}
-          for the full Wallet / Account / Profile model and SIWS authentication details.
-        </p>
-      </Section>
+// Create an API key
+const keyRes = await fetch("https://portal.medialane.io/api/portal/keys", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name: "agent-key" }),
+  credentials: "include",
+});
+const { key } = await keyRes.json();
+// store key securely — shown only once`}</DocCodeBlock>
 
-      <Section title="Permissionless & Censorship-Resistant">
-        <p>
-          Medialane&apos;s contracts are fully immutable — no admin can block a specific
-          wallet address, freeze an order, or prevent a trade. An agent that can call
-          Starknet contracts can always interact with the marketplace, regardless of
-          any off-chain policy decision.
-        </p>
-        <p>
-          The REST API adds convenience (intent creation, metadata indexing) but is
-          not a prerequisite. Agents comfortable with direct Starknet contract calls
-          can operate entirely on-chain: call{" "}
-          <code className="font-mono bg-muted px-1 py-0.5 rounded text-xs">fulfill_order</code> directly
-          with the SNIP-12 signed order hash.
-        </p>
-      </Section>
-
-      <div className="flex flex-wrap gap-4">
-        <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-          Open Portal <ExternalLink className="h-3.5 w-3.5" />
-        </a>
-        <Link href="/docs/api" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-          API Reference <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
-        <Link href="/docs/sdk" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-          SDK Docs <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
-        <Link href="/docs/protocol" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-          Protocol Spec <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
-      </div>
-
-    </div>
+      {/* Credit billing */}
+      <DocH2 id="billing">Credit Billing — Handling 402</DocH2>
+      <p className="text-muted-foreground mb-4 text-sm">
+        Every response includes an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining</code> header.
+        When credits reach zero the API returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code>.
+        Detect and handle it programmatically:
+      </p>
+      <DocCodeBlock lang="ts">{`async function apiCall(endpoint: string) {
+  const res = await fetch(
+    \`https://medialane-backend-production.up.railway.app\${endpoint}\`,
+    { headers: { "x-api-key": process.env.ML_API_KEY! } }
   );
+
+  const remaining = Number(res.headers.get("X-Credits-Remaining") ?? 0);
+  if (remaining < 10) {
+    console.warn(\`Low credits: \${remaining} remaining\`);
+  }
+
+  if (res.status === 402) {
+    // Credits exhausted — trigger top-up before retrying
+    await topUpCredits();
+    return apiCall(endpoint);  // retry once
+  }
+
+  return res.json();
+}`}</DocCodeBlock>
+
+      {/* Autonomous top-up */}
+      <DocH2 id="topup">Autonomous USDC Top-up</DocH2>
+      <p className="text-muted-foreground mb-4 text-sm">
+        Agents can top up credits autonomously by sending USDC to the treasury address on Starknet.
+        Credits appear within ~2 minutes (one Vercel cron cycle).
+      </p>
+      <DocCodeBlock lang="ts">{`import { Account, RpcProvider, Contract } from "starknet";
+
+const USDC_CONTRACT = "0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8";
+const TREASURY = process.env.NEXT_PUBLIC_TREASURY_ADDRESS!;
+
+async function topUpCredits(usdcAmount = 5) {
+  const provider = new RpcProvider({ nodeUrl: process.env.STARKNET_RPC_URL });
+  const account = new Account(provider, process.env.AGENT_WALLET_ADDRESS!, process.env.AGENT_PRIVATE_KEY!);
+
+  // USDC has 6 decimals
+  const amount = BigInt(usdcAmount * 1_000_000);
+
+  await account.execute([{
+    contractAddress: USDC_CONTRACT,
+    entrypoint: "transfer",
+    calldata: [TREASURY, amount.toString(), "0"],
+  }]);
+
+  // Poll until credits arrive (typically < 2 min)
+  await waitForCredits();
+}
+
+async function waitForCredits(retries = 20, delayMs = 7_000) {
+  for (let i = 0; i < retries; i++) {
+    await new Promise(r => setTimeout(r, delayMs));
+    const res = await fetch("https://portal.medialane.io/api/credits/balance", {
+      credentials: "include",
+    });
+    const { balance } = await res.json();
+    if (balance > 0) return;
+  }
+  throw new Error("Credits did not appear after 2 minutes");
+}`}</DocCodeBlock>
+
+      {/* MDLN tip */}
+      <DocH2 id="mdln">MDLN Token Multipliers</DocH2>
+      <p className="text-muted-foreground mb-4 text-sm">
+        If your agent wallet holds MDLN tokens, the multiplier is applied automatically at deposit time — no configuration required.
+        The on-chain balance is read at the moment the deposit transaction is detected.
+      </p>
+      <div className="rounded-xl border border-white/10 overflow-hidden bg-white/[0.02] text-sm">
+        <div className="grid grid-cols-3 px-5 py-3 bg-white/[0.03] border-b border-white/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+          <span>MDLN Balance</span>
+          <span className="text-center">Multiplier</span>
+          <span className="text-center">Credits per $1 USDC</span>
+        </div>
+        {[
+          ["0 MDLN", "1.0×", "100"],
+          ["500+ MDLN", "1.2×", "120"],
+          ["2,000+ MDLN", "1.5×", "150"],
+          ["5,000+ MDLN", "2.0×", "200"],
+        ].map(([range, mult, credits], i, arr) => (
+          <div key={range} className={`grid grid-cols-3 px-5 py-3 items-center ${i < arr.length - 1 ? "border-b border-white/5" : ""}`}>
+            <span className="text-muted-foreground">{range}</span>
+            <span className="text-center text-white font-medium">{mult}</span>
+            <span className="text-center text-primary font-medium">{credits}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-xs text-muted-foreground mt-3">
+        Learn more about MDLN at{" "}
+        <a href="https://medialane.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+          medialane.org
+        </a>. Hold MDLN in the same wallet you use as your agent identity.
+      </p>
+
+      {/* Next steps */}
+      <DocH2 id="next">Next Steps</DocH2>
+      <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+        <li><Link href="/docs/api" className="text-primary hover:underline">API Reference</Link> — all available endpoints</li>
+        <li><Link href="/docs/sdk" className="text-primary hover:underline">SDK Docs</Link> — typed TypeScript client (@medialane/sdk)</li>
+        <li><Link href="https://portal.medialane.io/integrate" className="text-primary hover:underline">Integrate</Link> — credit costs and MDLN tier details</li>
+      </ul>
+    </div>
+  )
 }
