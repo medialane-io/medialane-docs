@@ -61,30 +61,30 @@ const TIERS = [
 
 const PHASES = [
   {
-    phase: "Phase 1",
-    trigger: "5,000 participants",
+    phase: "Distribution rounds",
+    trigger: "Every $1,000",
     items: [
-      "First milestone distribution if MDLN holders approve the allocation",
-      "Snapshot governance ratifies the amount, timing, and eligibility rules",
-      "Eligible participants receive their proportional share of the approved pool",
+      "Each time the Creator's Fund reaches $1,000, that round is distributed to participants",
+      "Shares are weighted by Score Board points — earned by creating, trading, and engaging",
+      "Every dollar of revenue is returned: $5,000 → 5 rounds, $10,000 → 10",
     ],
   },
   {
-    phase: "Phase 2",
-    trigger: "10,000 participants",
+    phase: "Year-one campaign",
+    trigger: "Until July 1, 2027",
     items: [
-      "Second milestone distribution, subject to DAO approval",
-      "Community vote determines the allocation amount and rules",
-      "Contribution scores re-calculated from all activity since launch",
+      "For year one, the DAO's revenue-allocation decision is the Creator's Airdrop",
+      "All platform revenue collected during the window is returned to participants",
+      "Activity is measured across the full campaign, not a single snapshot",
     ],
   },
   {
-    phase: "Ongoing",
-    trigger: "Annual cycle",
+    phase: "Annual cycle",
+    trigger: "Every year thereafter",
     items: [
-      "Yearly community allocation voted on via Snapshot",
-      "MDLN holders decide how revenue is used — airdrops, buybacks, burns, development, or operations",
-      "No predetermined formula — the community decides each year",
+      "Each year, MDLN holders vote on Snapshot how revenue is used",
+      "Airdrop, buyback, burn, development, or operations — no predetermined formula",
+      "The community decides each cycle",
     ],
   },
 ];
@@ -125,7 +125,7 @@ export default function AirdropPage() {
           {[
             { label: "Revenue source", value: "1% marketplace fee" },
             { label: "Governed by",    value: "Snapshot DAO vote" },
-            { label: "Cycle",          value: "Annual + milestones" },
+            { label: "Cycle",          value: "$1,000 rounds + annual vote" },
           ].map(({ label, value }) => (
             <div key={label} className="bg-muted/30 rounded-lg px-4 py-3 space-y-1">
               <p className="text-xs text-muted-foreground">{label}</p>
