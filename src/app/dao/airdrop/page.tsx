@@ -133,6 +133,14 @@ export default function AirdropPage() {
             </div>
           ))}
         </div>
+        <a
+          href="https://medialane.org/airdrop/fund"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors pt-1"
+        >
+          Track the Creator&apos;s Fund — live balance &amp; airdrops <ArrowRight className="h-4 w-4" />
+        </a>
       </div>
 
       {/* How it works */}
