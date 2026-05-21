@@ -172,7 +172,7 @@ export default function AirdropPage() {
 
       {/* Distribution phases */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Distribution Phases</h3>
+        <h3 className="text-lg font-semibold">Distribution Rounds</h3>
         <div className="space-y-3">
           {PHASES.map(({ phase, trigger, items }) => (
             <div key={phase} className="bento-cell p-5 space-y-3">
