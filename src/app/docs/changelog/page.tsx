@@ -18,6 +18,39 @@ export const metadata: Metadata = {
 
 const CHANGES = [
   {
+    date: "2026-05-26",
+    title: "Backend + SDK hardening cycle complete",
+    items: [
+      "P0 correctness fixes: webhook fanout no longer returns undefined for ERC-1155 transfers; the indexer tick can no longer stall on a destructured undefined payload.",
+      "P1 atomicity: FREE-tier rate limit collapsed to one atomic Postgres round-trip; intent checkout batch lookup + parallel build; SSRF guard now blocks integer/hex/octal IPv4 hostnames.",
+      "P2 hygiene: SIWS tokens reject future or missing iat; the legacy plain-SHA-256 ApiKey fallback was removed (HMAC_KEY now required); metadata upload returns 400 (not 500) on malformed JSON.",
+      "BFF proxy auth audit: server-only API key via /api/proxy on medialane.io, plus method + path allowlist with audit-driven scope (GET wildcard for /v1/*, explicit POST/PATCH enumeration).",
+      "47 focused unit tests added to medialane-backend; TypeScript strict-mode errors driven from 8 to 0 across the cycle.",
+      "SDK 0.21–0.23: ApiOrder.hasActiveCounterOffer + parentOrderHash, OrderStatus.COUNTER_OFFERED removed from the union (replaced by the boolean flag).",
+    ],
+  },
+  {
+    date: "2026-05-22",
+    title: "Collection contracts v0.2.0 / v0.3.0 deployed",
+    items: [
+      "MIP IPCollection registry v0.3.0 (ERC-721 factory) deployed at 0x0322cb71… on Starknet mainnet.",
+      "IP-Programmable ERC-1155 factory v0.2.0 deployed at 0x067064ad… — programmable IP traits at mint time.",
+      "Collection.service is now NOT NULL at the database level — fixes a class of silent classification bugs that produced 108 mislabeled rows in production.",
+      "TokenStandard.UNKNOWN removed from the enum — standard is now ERC721 or ERC1155, no phantom-state defensive code allowed.",
+      "Service IDs are typed against the SDK ServiceId union (≥ 0.20.0); typos like pop_protocol fail at compile time.",
+    ],
+  },
+  {
+    date: "2026-05-20",
+    title: "Account model, atomic execution, and creators' fund fee",
+    items: [
+      "Account model redesign shipped: the legacy User table is replaced by Account + Wallet + Identity + AccountProfile. The Wallet signs, the Account carries reputation, the Profile carries the public face — conflating them is now a structural impossibility.",
+      "ChipiPay transaction execution moved to TxBuilder.sendSponsored() — atomic batches. One call reverting now reverts the whole transaction (the previous hosted relayer swallowed per-call reverts).",
+      "Creators' fund platform fee shipped — 1% applied at the platform layer only, never in any contract. Fee is computed by a single SDK builder (buildFeeCall) and spliced at exactly seven call sites; activation is env-only and fail-safe.",
+      "Per-app API keys for attribution + isolation (ApiKey.appSource).",
+    ],
+  },
+  {
     date: "2026-05-05",
     title: "Docs and DAO content aligned",
     items: [

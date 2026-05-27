@@ -3,15 +3,15 @@ import { FileCode2, ExternalLink, Shield, Lock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contracts | Medialane Docs",
-  description: "Medialane v3 smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
+  description: "Medialane smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
   openGraph: {
     title: "Contracts | Medialane Docs",
-    description: "Medialane v3 smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
+    description: "Medialane smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
     url: "https://docs.medialane.io/docs/contracts",
   },
   twitter: {
     title: "Contracts | Medialane Docs",
-    description: "Medialane v3 smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
+    description: "Medialane smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
   },
 };
 
@@ -20,18 +20,18 @@ const CONTRACTS = [
     category: "Marketplace",
     items: [
       {
-        name: "Marketplace v3 (ERC-721)",
-        address: "0x004387e58d469f19332dd5d20846b10339ddc49ef208025ec7d5bef294a8daf3",
-        desc: "Handles listing creation, offer submission, order fulfillment, and cancellation for standard (ERC-721) NFTs. Orders use SNIP-12 typed data signing.",
+        name: "Marketplace (ERC-721)",
+        address: "0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6",
+        desc: "Handles listing creation, offer submission, order fulfillment, and cancellation for standard (ERC-721) NFTs. Orders use SNIP-12 typed data signing. Atomic settlement: the NFT transfer and payment happen in the same Starknet transaction or both revert.",
       },
       {
-        name: "Marketplace v3 (ERC-1155)",
-        address: "0x035836932ba1d219e00b8e42cd9a433fb2b211a08edcaa8bae40232f335f777d",
-        desc: "ERC-1155 multi-edition marketplace. Supports partial fills via remainingAmount tracking — a single order can be fulfilled by multiple buyers across multiple transactions.",
+        name: "Marketplace 1155 V2 (ERC-1155)",
+        address: "0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99",
+        desc: "ERC-1155 multi-edition marketplace. SNIP-12 domain version 2 with nested OrderParameters matching the ERC-721 protocol structure. Supports partial fills — a single order can be fulfilled by multiple buyers across multiple transactions.",
       },
       {
         name: "NFTComments",
-        address: "0x024f97eb5abe659fb650bf162b5fc16501f8f3863a7369901ce6099462e62799",
+        address: "0x02cdac70c94447189af0389dfea63f4d5e4154ea8a563de288a5ab1c39e37843",
         desc: "Permissionless on-chain comment contract. Any wallet can post a comment on any token. Comments are permanent, censorship-resistant, and indexed by the Medialane indexer.",
       },
     ],
@@ -40,14 +40,14 @@ const CONTRACTS = [
     category: "Collections & Launchpad",
     items: [
       {
-        name: "Collection Registry (ERC-721 Factory)",
-        address: "0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b",
-        desc: "Factory for deploying ERC-721 IP NFT collections. Each deploy_collection() call deploys a new ERC-721 contract, assigns a unique numeric collectionId, and emits CollectionDeployed.",
+        name: "MIP IPCollection Registry v0.3.0 (ERC-721 Factory)",
+        address: "0x0322cb7119955e01ac778d40976eb3ba50540bb0899f812d612f9c7e63e49fd2",
+        desc: "Factory for deploying ERC-721 IP NFT collections. Each deploy_collection() call deploys a new ERC-721 contract, assigns a unique numeric collectionId, and emits CollectionDeployed. v0.3.0 deployed 2026-05-22.",
       },
       {
-        name: "IP Collection 1155 Factory (ERC-1155)",
-        address: "0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6",
-        desc: "Factory for deploying ERC-1155 multi-edition collections. Each collection is a separate contract owned by the creator. Emits CollectionDeployed with contract address, name, symbol, and base_uri.",
+        name: "IP-Programmable ERC-1155 Factory v0.2.0",
+        address: "0x067064adcaaed61e17bf50ea802ea6482336126aec5b4d032b4ff8fbb5009131",
+        desc: "Factory for deploying ERC-1155 multi-edition collections with programmable IP traits at mint time. Each collection is a separate contract owned by the creator. Emits CollectionDeployed with contract address, name, symbol, and base_uri. v0.2.0 deployed 2026-05-22.",
       },
       {
         name: "Collection Drop Factory",
@@ -87,11 +87,12 @@ export default function ContractsPage() {
           <h3 className="font-semibold text-sm">Immutable &amp; Permissionless by Design</h3>
         </div>
         <p className="text-xs text-muted-foreground leading-relaxed">
-          v3 contracts were deployed in April 2026. The constructor accepts only a{" "}
-          <code className="font-mono bg-muted px-1 py-0.5 rounded">native_token_address</code> — there
-          is no admin account, no <code className="font-mono bg-muted px-1 py-0.5 rounded">UpgradeableComponent</code>, and no owner role.
-          Previous v2 contracts are decommissioned. The indexer started scanning from block{" "}
-          <code className="font-mono bg-muted px-1 py-0.5 rounded">9130000</code>.
+          The current contracts are fully immutable: no admin account, no{" "}
+          <code className="font-mono bg-muted px-1 py-0.5 rounded">UpgradeableComponent</code>, no owner role,
+          no emergency pause. Evolution happens by redeploy, not by upgrade — the factory class hashes
+          themselves cannot be rotated. The collection factories shipped fresh v0.2.0 / v0.3.0
+          deployments on 2026-05-22. The indexer started scanning from block{" "}
+          <code className="font-mono bg-muted px-1 py-0.5 rounded">9196722</code>.
         </p>
         <div className="flex flex-wrap gap-2">
           {["No admin keys", "No upgrade path", "No emergency pause", "Atomic swaps", "ZK-proven execution"].map((t) => (
