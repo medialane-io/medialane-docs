@@ -34,7 +34,7 @@ export default function DocsSecurityPage() {
               {
                 icon: Lock,
                 title: "Immutable contracts",
-                desc: "The v3 marketplace contracts have no admin keys, no upgrade path, and no owner role. Once deployed, no one can change them. Verified from the open-source Cairo code.",
+                desc: "All current marketplace and factory contracts have no admin keys, no upgrade path, and no owner role. Once deployed, no one can change them. Evolution happens by redeploy, not by upgrade. Verified from the open-source Cairo code.",
               },
               {
                 icon: Shield,
@@ -49,7 +49,7 @@ export default function DocsSecurityPage() {
               {
                 icon: AlertTriangle,
                 title: "No emergency pause",
-                desc: "There is no pause function or circuit breaker in the v3 contracts. This is a deliberate design choice — no admin can stop the protocol. It also means bugs cannot be patched once deployed.",
+                desc: "There is no pause function or circuit breaker. This is a deliberate design choice — no admin can stop the protocol. It also means bugs cannot be patched once deployed; fixes require redeploying a new contract.",
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bento-cell p-4 space-y-2">
@@ -67,13 +67,29 @@ export default function DocsSecurityPage() {
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Marketplace v3 — Internal Review</p>
+                <p className="text-sm font-semibold text-foreground">Backend &amp; SDK — P0/P1/P2 hardening cycle</p>
+                <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Completed May 2026</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Internal review of medialane-backend (~16k LOC) and @medialane/sdk · May 2026</p>
+              <p className="text-xs text-muted-foreground">
+                Three-batch hardening pass: P0 correctness (webhook fanout, indexer stall vectors,
+                BFF proxy allowlist), P1 atomicity (rate-limit single round-trip, intent batch
+                lookup, transaction atomicity), P2 hygiene (SSRF integer/hex/octal block, SIWS iat
+                guard, server-only API key via BFF proxy, HMAC-required key hashing). TypeScript
+                strict-mode errors driven from 8 → 0 across the cycle.
+              </p>
+            </div>
+            <div className="bento-cell px-4 py-3 space-y-1">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-semibold text-foreground">Marketplace &amp; collection contracts — Internal Review</p>
                 <span className="text-[10px] font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">Internal only</span>
               </div>
-              <p className="text-xs text-muted-foreground">Reviewed by the core development team · October 2025</p>
+              <p className="text-xs text-muted-foreground">Reviewed by the core development team · May 2026</p>
               <p className="text-xs text-muted-foreground">
-                Covers the Marketplace contract (ERC-721 and ERC-1155), Collection Registry factory,
-                and SNIP-12 order signing. This is an internal review, not an independent third-party audit.
+                Covers the Marketplace contracts (ERC-721 and ERC-1155 V2 with SNIP-12 nested
+                OrderParameters), the MIP IPCollection registry v0.3.0, the IP-Programmable
+                ERC-1155 factory v0.2.0, the Collection Drop factory, and the POP factory. This
+                is an internal review, not an independent third-party audit.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">

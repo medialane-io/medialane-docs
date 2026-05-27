@@ -18,13 +18,13 @@ export const metadata: Metadata = {
 };
 
 const CONTRACTS = [
-  { name: "Marketplace v3 (ERC-721)",    address: "0x004387e58d469f19332dd5d20846b10339ddc49ef208025ec7d5bef294a8daf3" },
-  { name: "Marketplace v3 (ERC-1155)",   address: "0x035836932ba1d219e00b8e42cd9a433fb2b211a08edcaa8bae40232f335f777d" },
-  { name: "NFTComments",                 address: "0x024f97eb5abe659fb650bf162b5fc16501f8f3863a7369901ce6099462e62799" },
-  { name: "Collection Registry",         address: "0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b" },
-  { name: "ERC-1155 Collection Factory", address: "0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6" },
-  { name: "Collection Drop Factory",     address: "0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800" },
-  { name: "POP Protocol Factory",        address: "0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111" },
+  { name: "Marketplace (ERC-721)",                       address: "0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6" },
+  { name: "Marketplace 1155 V2 (ERC-1155)",              address: "0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99" },
+  { name: "NFTComments",                                 address: "0x02cdac70c94447189af0389dfea63f4d5e4154ea8a563de288a5ab1c39e37843" },
+  { name: "MIP IPCollection Registry v0.3.0",            address: "0x0322cb7119955e01ac778d40976eb3ba50540bb0899f812d612f9c7e63e49fd2" },
+  { name: "IP-Programmable ERC-1155 Factory v0.2.0",     address: "0x067064adcaaed61e17bf50ea802ea6482336126aec5b4d032b4ff8fbb5009131" },
+  { name: "Collection Drop Factory",                     address: "0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800" },
+  { name: "POP Protocol Factory",                        address: "0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111" },
 ];
 
 const EVENTS = [
@@ -120,7 +120,7 @@ at any time before acceptance.`}</Code>
           <p>
             Each asset has two identifying fields set at index time:
           </p>
-          <Code>{`standard   — chain-detected token standard: ERC721 | ERC1155 | ERC20 | UNKNOWN
+          <Code>{`standard   — chain-detected token standard: ERC721 | ERC1155
 service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`}</Code>
           <p>
             The SDK exposes a{" "}
