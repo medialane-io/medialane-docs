@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp, LifeBuoy } from "lucide-react";
 import Link from "next/link";
+import { PageContainer } from "@/components/page-container";
 
 const FAQS = [
   {
@@ -99,7 +100,7 @@ export default function SupportPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 pt-12 pb-16 max-w-5xl space-y-12">
+    <PageContainer className="pb-16 space-y-12">
       {/* Header */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
@@ -203,6 +204,6 @@ export default function SupportPage() {
         For general contact see the{" "}
         <Link href="/contact" className="text-primary hover:underline">Contact page</Link>.
       </p>
-    </div>
+    </PageContainer>
   );
 }
