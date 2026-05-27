@@ -144,7 +144,7 @@ const STARKNET_REASONS = [
 
 export default function AboutPage() {
   return (
-    <div className="space-y-16">
+    <div className="container mx-auto px-4 pt-8 pb-20 max-w-5xl space-y-16">
 
       {/* Hero */}
       <div className="relative overflow-hidden rounded-3xl bento-cell p-10 sm:p-14 space-y-5">
