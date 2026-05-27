@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ExternalLink } from "lucide-react";
+import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
   title: "Links | Medialane",
@@ -88,7 +89,7 @@ const LINKS = [
 
 export default function LinksPage() {
   return (
-    <div className="container mx-auto px-4 pt-12 pb-20 max-w-3xl space-y-14">
+    <PageContainer width="narrow" className="space-y-14">
 
       {/* Header */}
       <div className="space-y-4">
@@ -138,6 +139,6 @@ export default function LinksPage() {
         We will never DM you asking for seed phrases, private keys, or funds. If you receive unsolicited messages claiming to be Medialane, they are scams.
       </div>
 
-    </div>
+    </PageContainer>
   );
 }

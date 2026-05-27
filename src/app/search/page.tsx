@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Search, LifeBuoy, ExternalLink } from "lucide-react";
 import { EXTERNAL_LINKS, KNOWLEDGE_GROUPS } from "@/lib/docs-nav";
 import { LinkCard } from "@/components/ui/link-card";
+import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
   title: "Knowledge Index",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function SearchPage() {
   return (
-    <div className="container mx-auto px-4 pt-14 pb-16 max-w-5xl space-y-10">
+    <PageContainer className="pb-16 space-y-10">
       <div className="space-y-4">
         <div className="flex items-center gap-2 text-primary">
           <Search className="h-5 w-5" />
@@ -58,6 +59,6 @@ export default function SearchPage() {
           </p>
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 }

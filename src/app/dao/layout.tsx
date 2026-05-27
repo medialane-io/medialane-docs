@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { PageContainer } from "@/components/page-container";
 
 const DAO_NAV = [
   { label: "About DAO",          href: "/dao" },
@@ -16,7 +17,7 @@ export default function DAOLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
-    <div className="container mx-auto px-4 pt-10 pb-16 max-w-6xl space-y-0">
+    <PageContainer width="wide" className="pb-16">
       <div className="pb-6 border-b border-border/50">
         <p className="text-xs font-semibold uppercase tracking-widest text-primary/70 mb-2">Governance</p>
         <h1 className="text-2xl font-bold">Medialane DAO</h1>
@@ -51,6 +52,6 @@ export default function DAOLayout({ children }: { children: React.ReactNode }) {
       </nav>
 
       <div className="pt-2">{children}</div>
-    </div>
+    </PageContainer>
   );
 }

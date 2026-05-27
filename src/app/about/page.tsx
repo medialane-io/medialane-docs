@@ -5,6 +5,7 @@ import {
   Database, Package, Monitor,
   ExternalLink, Shield,
 } from "lucide-react";
+import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
   title: "About | Medialane",
@@ -144,7 +145,7 @@ const STARKNET_REASONS = [
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 pt-8 pb-20 max-w-5xl space-y-16">
+    <PageContainer className="space-y-16">
 
       {/* Hero */}
       <div className="relative overflow-hidden rounded-3xl bento-cell p-10 sm:p-14 space-y-5">
@@ -312,6 +313,6 @@ export default function AboutPage() {
         </Link>
       </div>
 
-    </div>
+    </PageContainer>
   );
 }

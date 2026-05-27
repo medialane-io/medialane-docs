@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Mail, Send, Twitter, Loader2, CheckCircle } from "lucide-react";
 import { sendContact } from "@/actions/send-contact";
+import { PageContainer } from "@/components/page-container";
 
 type Step = "form" | "submitting" | "success";
 
@@ -33,7 +34,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 pt-12 pb-16 max-w-6xl space-y-12">
+    <PageContainer width="wide" className="pb-16 space-y-12">
       {/* Header */}
       <div className="space-y-3">
         <h1 className="text-3xl font-bold">Reach Us</h1>
@@ -179,6 +180,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 }

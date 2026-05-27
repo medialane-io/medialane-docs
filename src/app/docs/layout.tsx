@@ -4,12 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { DOCS_TABS } from "@/lib/docs-nav";
 import { cn } from "@/lib/utils";
+import { PageContainer } from "@/components/page-container";
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
-    <div className="container mx-auto px-4 pt-12 pb-16 max-w-6xl space-y-8">
+    <PageContainer width="wide" className="pt-12 pb-16 space-y-8">
       <div>
         <h1 className="text-3xl font-bold">Docs</h1>
         <p className="text-muted-foreground mt-1 text-sm">
@@ -17,7 +18,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         </p>
       </div>
 
-      <nav className="overflow-x-auto scrollbar-hide -mx-4 px-4 border-b border-border/60">
+      <nav className="overflow-x-auto scrollbar-hide -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 border-b border-border/60">
         <div className="flex items-center gap-0 min-w-max">
           {DOCS_TABS.map((item) => {
             const active =
@@ -43,6 +44,6 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
       </nav>
 
       <div>{children}</div>
-    </div>
+    </PageContainer>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { PageContainer } from "@/components/page-container";
 
 const LEARN_NAV = [
   { label: "Overview",               href: "/learn" },
@@ -27,7 +28,7 @@ export default function LearnLayout({ children }: { children: React.ReactNode })
   const pathname = usePathname();
 
   return (
-    <div className="container mx-auto px-4 pt-10 pb-16 max-w-6xl space-y-0">
+    <PageContainer width="wide" className="pb-16">
       {/* Header */}
       <div className="pb-6 border-b border-border/50">
         <p className="text-xs font-semibold uppercase tracking-widest text-primary/70 mb-2">Education</p>
@@ -65,6 +66,6 @@ export default function LearnLayout({ children }: { children: React.ReactNode })
 
       {/* Content */}
       <div className="pt-2">{children}</div>
-    </div>
+    </PageContainer>
   );
 }

@@ -5,6 +5,7 @@ import {
   BookOpen, Tag, Terminal, Check, Package, GitBranch,
   Store, Sparkles, Code2, Building2, Globe, Ban, Unlock, Crown,
 } from "lucide-react";
+import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
   title: "Apps | Medialane",
@@ -290,7 +291,7 @@ const INSTALL_COMMANDS = [
 
 export default function AppsPage() {
   return (
-    <div className="container mx-auto px-4 pt-12 pb-20 max-w-5xl space-y-20">
+    <PageContainer className="space-y-20">
 
       {/* ── Hero ── */}
       <div className="space-y-5">
@@ -586,6 +587,6 @@ export default function AppsPage() {
         </div>
       </div>
 
-    </div>
+    </PageContainer>
   );
 }

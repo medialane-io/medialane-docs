@@ -5,6 +5,7 @@ import {
   Coins, GitBranch, Award, Tag, Package, RefreshCw,
   Sparkles, Bot, ShoppingBag, Terminal, TrendingUp,
 } from "lucide-react";
+import { PageContainer } from "@/components/page-container";
 
 const SECTIONS = [
   {
@@ -195,7 +196,7 @@ const QUICK_LINKS = [
 
 export function HomePage() {
   return (
-    <div className="container mx-auto px-4 pt-8 pb-20 max-w-5xl space-y-20">
+    <PageContainer className="pt-8 space-y-20">
 
       {/* ── Hero ── */}
       <div className="relative overflow-hidden rounded-3xl">
@@ -441,6 +442,6 @@ export function HomePage() {
         </div>
       </div>
 
-    </div>
+    </PageContainer>
   );
 }
