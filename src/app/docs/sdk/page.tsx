@@ -49,7 +49,7 @@ yarn add @medialane/sdk starknet`}</DocCodeBlock>
 const client = new MedialaneClient({
   network: "mainnet",        // "mainnet" | "sepolia"
   rpcUrl: "https://starknet-mainnet.g.alchemy.com/starknet/version/rpc/v0_7/YOUR_KEY",
-  backendUrl: "https://medialane-backend-production.up.railway.app",
+  backendUrl: "https://api.medialane.io",
   apiKey: "ml_live_YOUR_KEY",
   // marketplaceContract — optional, defaults to mainnet contract
   // collectionContract  — optional, defaults to mainnet collection registry
@@ -174,6 +174,47 @@ console.log(newKey.data.key) // shown once — save it!
 
 // Get usage
 const usage = await client.api.getUsage()`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Accounts</h3>
+      <p className="text-muted-foreground text-sm mb-3">
+        One Account model across the whole platform. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">registerUser</code> uses a tenant key (web3 wallet connect); the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">*MyWallet</code> pair uses a Clerk JWT.
+      </p>
+      <DocCodeBlock>{`// Tenant-key registration (e.g. wallet connect) — idempotent
+await client.api.registerUser({
+  walletAddress: "0x0591...",
+  walletType: "ARGENT",      // ARGENT | BRAAVOS | CARTRIDGE | PRIVY | CHIPIPAY | INJECTED | UNKNOWN
+  appSource: "MEDIALANE_DAPP",
+})
+
+// Clerk-JWT lazy onboarding (medialane-io). Wallet comes from the token.
+await client.api.upsertMyWallet(clerkToken, { walletType: "CHIPIPAY", appSource: "MEDIALANE_IO" })
+
+// Read the caller's stored wallet (null until onboarded)
+const me = await client.api.getMyWallet(clerkToken)`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Creator &amp; collection profiles</h3>
+      <DocCodeBlock>{`// Public reads
+const creators = await client.api.getCreators({ page: 1, limit: 24 })
+const creator  = await client.api.getCreatorByUsername("kalamaha")
+const profile  = await client.api.getCreatorProfile("0x03d0...")
+const colProfile = await client.api.getCollectionProfile("0x076c...")
+
+// Owner-only writes (require a Clerk JWT)
+await client.api.updateCreatorProfile("0x03d0...", { displayName: "Kalamaha", bio: "..." }, clerkToken)
+await client.api.updateCollectionProfile("0x076c...", { displayName: "Genesis" }, clerkToken)
+
+// Collection ownership claim — Path 1 (on-chain) or Path 3 (manual review)
+await client.api.claimCollection("0x076c...", "0x0591...", clerkToken)
+await client.api.requestCollectionClaim({ contractAddress: "0x076c...", email: "me@x.com" })`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Vanity slugs</h3>
+      <DocCodeBlock>{`// Resolve an approved slug to a full collection
+const col = await client.api.getCollectionBySlug("genesis")
+
+// Availability check (public) + submit a claim (owner, Clerk JWT)
+const { available } = await client.api.checkCollectionSlugAvailability("genesis")
+await client.api.submitCollectionSlugClaim("0x076c...", "genesis", clerkToken)
+const mine = await client.api.getMyCollectionSlugClaims(clerkToken)`}</DocCodeBlock>
 
       <DocH2 id="comments" border>On-chain Comments</DocH2>
       <DocCodeBlock>{`// Fetch permanent on-chain comments for a token
@@ -401,6 +442,75 @@ await client.services.drop.batchAddToAllowlist(account, {
 // Withdraw ERC-20 proceeds
 await client.services.drop.withdrawPayments(account, { collection: "0x03587f..." })`}</DocCodeBlock>
 
+      {/* ERC-1155 marketplace */}
+      <DocH2 id="marketplace-1155" border>ERC-1155 Marketplace (on-chain)</DocH2>
+      <p className="text-muted-foreground text-sm mb-3">
+        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.marketplace1155</code> handles multi-edition orders against the Medialane1155 V2 contract. SNIP-12 domain version <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">2</code> — listings carry an edition quantity. All write methods take a starknet.js <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">AccountInterface</code>.
+      </p>
+      <DocCodeBlock>{`// List N editions for sale (auto-grants set_approval_for_all if needed)
+await client.marketplace1155.createListing(account, {
+  nftContract: "0x067064...",
+  tokenId: "7",
+  amount: "10",            // editions to list
+  currency: "USDC",
+  price: "50000000",        // per-edition base units
+  endTime: Math.floor(Date.now() / 1000) + 86400 * 30,
+})
+
+// Buy editions, cancel an order
+await client.marketplace1155.fulfillOrder(account, { orderHash: "0x04f7a1...", amount: "3" })
+await client.marketplace1155.cancelOrder(account, { orderHash: "0x04f7a1..." })
+
+// For ChipiPay / custom signers — get the SNIP-12 typed data only
+const typedData = client.marketplace1155.buildListingTypedData(params, chainId)`}</DocCodeBlock>
+
+      {/* ERC-1155 collection service */}
+      <DocH2 id="erc1155-collection" border>ERC-1155 Collections (on-chain)</DocH2>
+      <p className="text-muted-foreground text-sm mb-3">
+        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.erc1155Collection</code> deploys and manages multi-edition IP collections with ERC-2981 royalties.
+      </p>
+      <DocCodeBlock>{`// Deploy a new ERC-1155 collection via the factory
+await client.services.erc1155Collection.deployCollection(account, {
+  name: "Editions",
+  symbol: "EDN",
+  baseUri: "ipfs://...",
+})
+
+// Mint a single edition / batch mint
+await client.services.erc1155Collection.mintItem(account, {
+  collection: "0x067064...", tokenId: "7", recipient: "0x0591...", amount: "10", tokenUri: "ipfs://...",
+})
+await client.services.erc1155Collection.batchMintItem(account, {
+  collection: "0x067064...", tokenIds: ["7", "8"], recipients: ["0x0591...", "0x06a3..."], amounts: ["1", "1"],
+})
+
+// ERC-2981 royalties
+await client.services.erc1155Collection.setDefaultRoyalty(account, { collection: "0x067064...", receiver: "0x0591...", feeBasisPoints: 500 })
+await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "0x067064...", tokenId: "7", receiver: "0x0591...", feeBasisPoints: 250 })`}</DocCodeBlock>
+
+      {/* Platform fee */}
+      <DocH2 id="platform-fee" border>Platform Fee</DocH2>
+      <p className="text-muted-foreground text-sm mb-3">
+        The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer — never an on-chain protocol rule. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or no fund address is configured, so a missing config simply means no fee.
+      </p>
+      <DocCodeBlock>{`import { buildFeeCall, resolveFeeConfig } from "@medialane/sdk"
+
+const feeConfig = resolveFeeConfig({
+  enabled: true,
+  fundAddress: "0x0123...",
+  marketplaceBps: 100,   // 1%
+  launchpadBps: 100,
+})
+
+const feeCall = buildFeeCall(
+  { surface: "marketplace", grossAmount: 50000000n, token: "0x0330..." },
+  feeConfig,
+)
+
+// feeCall is a starknet Call (or null). Append it to your trade multicall:
+const calls = feeCall ? [...tradeCalls, feeCall] : tradeCalls
+await account.execute(calls)`}</DocCodeBlock>
+
       {/* Error Handling */}
       <DocH2 id="errors" border>Error Handling</DocH2>
       <p className="text-muted-foreground text-sm mb-3">
@@ -482,37 +592,41 @@ try {
         Common patterns you can build with the SDK:
       </p>
 
-      <DocH3>Fetch a creator&apos;s portfolio</DocH3>
-      <DocCodeBlock lang="ts">{`const portfolio = await client.api.getTokensByOwner({
-  owner: "0x05f9...",
-  limit: 20,
-});
-// portfolio.data → array of token objects with metadata, license terms, remixCount`}</DocCodeBlock>
+      <DocH3>Fetch a wallet&apos;s portfolio</DocH3>
+      <DocCodeBlock lang="ts">{`// getTokensByOwner(address, page?, limit?) — positional args
+const portfolio = await client.api.getTokensByOwner("0x05f9...", 1, 20);
+// portfolio.data → ApiToken[] with metadata, license terms, balances`}</DocCodeBlock>
 
-      <DocH3>List open-license assets for remix</DocH3>
+      <DocH3>Check whether an asset is open-licensed</DocH3>
       <DocCodeBlock lang="ts">{`import { OPEN_LICENSES } from "@medialane/sdk";
 
-const openAssets = await client.api.getTokens({
-  licenseType: OPEN_LICENSES, // ["CC0", "CC BY", "CC BY-SA", "CC BY-NC"]
-});`}</DocCodeBlock>
+const { data: token } = await client.api.getToken("0x04a...", "42");
+const isRemixable = OPEN_LICENSES.includes(token.metadata?.licenseType ?? "");
+// OPEN_LICENSES → ["CC0", "CC BY", "CC BY-SA", "CC BY-NC", ...]`}</DocCodeBlock>
 
-      <DocH3>Submit a trade intent (no private key exposure)</DocH3>
-      <DocCodeBlock lang="ts">{`const intent = await client.api.createListingIntent({
-  contractAddress: "0x04a...",
+      <DocH3>Create and sign a listing intent (no private key exposure)</DocH3>
+      <DocCodeBlock lang="ts">{`import { toSignatureArray } from "@medialane/sdk";
+
+// 1. Create the intent — backend returns SNIP-12 typed data to sign
+const { data: intent } = await client.api.createListingIntent({
+  offerer: "0x05f9...",
+  nftContract: "0x04a...",
   tokenId: "42",
-  price: "0.05",       // in ETH
-  currency: "ETH",
-  duration: 86400,     // seconds
+  currency: "USDC",
+  price: "50000000",        // base units (USDC has 6 decimals → 50 USDC)
+  endTime: Math.floor(Date.now() / 1000) + 86400,
 });
 
-// sign off-chain, submit on-chain
+// 2. Sign the typed data off-chain
 const sig = await account.signMessage(intent.typedData);
-await client.api.submitOrder({ ...intent, signature: sig });`}</DocCodeBlock>
+
+// 3. Submit the signature — backend populates the calldata
+await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</DocCodeBlock>
 
       <DocH3>Stream on-chain activity</DocH3>
       <DocCodeBlock lang="ts">{`const activity = await client.api.getActivities({
-  eventType: "TRANSFER",   // TRANSFER | ORDER_CREATED | ORDER_FULFILLED | ORDER_CANCELLED
-  contractAddress: "0x04a...",
+  type: "transfer",   // "transfer" | "sale" | "listing" | "offer"
+  page: 1,
   limit: 50,
 });`}</DocCodeBlock>
 
