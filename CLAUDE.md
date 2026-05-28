@@ -111,19 +111,15 @@ Note: aurora blobs need `position: "absolute"` as an inline style — Tailwind's
 
 ## Navigation Structure
 
-9 sections in the sidebar — do not add new top-level sections without user approval:
+Navigation is a **command palette** (`NavCommandMenu` from `@medialane/ui`), not a sidebar — migrated 2026-05-27 to match medialane.io. The old `app-sidebar.tsx` + shadcn `ui/sidebar.tsx` were deleted.
 
-| Section | Path | Type |
-|---|---|---|
-| Start | `/` | Direct |
-| About | `/about` | Direct |
-| Apps | `/apps` | Direct |
-| Learn | `/learn/*` | Collapsible (15 sub-pages) |
-| Docs | `/docs/*` | Collapsible (7 sub-pages) |
-| Guidelines | `/guidelines/*` | Collapsible (5 sub-pages) |
-| Support | `/support` | Direct |
-| DAO | `/dao/*` | Collapsible (4 sub-pages) |
-| Links | `/links` | Direct |
+- Opened via the top-left `NavTrigger` button (icon + Menu glyph) or `⌘K`.
+- All entries live in **`src/lib/nav-commands.ts`** as `NAV_COMMANDS: NavCommandGroup[]` — add new destinations there, not in the menu component. Do not add new top-level groups without user approval.
+- Mounted once in `src/app/providers.tsx`'s `Shell`, with a `NavThemeToggle` in the menu `footerSlot`.
+
+Groups (in `nav-commands.ts`): primary (Start / About / Apps), then **Learn**, **Docs**, **Guidelines**, **DAO**, **Resources** (Support / Links / Knowledge Index).
+
+Per-section tab sub-nav still lives in each section's `layout.tsx` (`docs/layout.tsx`, `learn/layout.tsx`, etc.) — independent of the global command menu.
 
 ## Build Checks
 
