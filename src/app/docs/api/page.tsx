@@ -87,7 +87,7 @@ function Endpoint({
   )
 }
 
-const BASE = "https://medialane-backend-production.up.railway.app"
+const BASE = "https://api.medialane.io"
 const KEY = "ml_live_YOUR_KEY"
 
 export default function ApiReferencePage() {
@@ -1173,6 +1173,47 @@ const resumeSource = new EventSource(url, {
 }`}
       />
 
+      <Endpoint
+        method="GET"
+        path="/v1/creators"
+        description="Paginated list of creator profiles. Public."
+        params={[
+          { name: "page", type: "number", required: false, desc: "Page number (default 1)" },
+          { name: "limit", type: "number", required: false, desc: "Page size" },
+        ]}
+        curl={`curl "${BASE}/v1/creators?page=1&limit=24" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": [
+    {
+      "walletAddress": "0x03d0...",
+      "username": "kalamaha",
+      "displayName": "Kalamaha",
+      "avatarImage": "ipfs://...",
+      "bannerImage": "ipfs://..."
+    }
+  ],
+  "meta": { "page": 1, "limit": 24, "total": 61 }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/creators/by-username/:username"
+        description="Resolve a creator's vanity username to their full profile. Public. Returns null if the username is unclaimed."
+        params={[
+          { name: "username", type: "string", required: true, desc: "Creator username" },
+        ]}
+        curl={`curl "${BASE}/v1/creators/by-username/kalamaha" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "walletAddress": "0x03d0...",
+  "username": "kalamaha",
+  "displayName": "Kalamaha",
+  "bio": "Visual artist on Starknet"
+}`}
+      />
+
       {/* ── COMMENTS ── */}
       <DocH2 id="comments" border>On-chain Comments</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
@@ -1514,6 +1555,443 @@ const resumeSource = new EventSource(url, {
     "mintedByWallet": 2,
     "totalMinted": 347
   }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/drop/:contract/info"
+        description="Collection metadata merged with stored claim conditions. Public. Returns conditions: null if the drop has not had conditions set yet."
+        params={[
+          { name: "contract", type: "string", required: true, desc: "Drop collection contract address" },
+        ]}
+        curl={`curl "${BASE}/v1/drop/0x03587f.../info" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": {
+    "contractAddress": "0x03587f...",
+    "name": "Genesis Drop",
+    "symbol": "GEN",
+    "description": "...",
+    "image": "ipfs://...",
+    "owner": "0x0591...",
+    "totalMinted": 347,
+    "conditions": {
+      "maxSupply": "1000",
+      "price": "1000000",
+      "paymentToken": "0x0330...",
+      "startTime": "1740000000",
+      "endTime": "1745000000",
+      "maxPerWallet": "5"
+    }
+  }
+}`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/drop/conditions"
+        description="Store claim conditions after a successful create_drop transaction. Requires a Clerk JWT — only the collection owner (owner or claimedBy) may set conditions. Amounts are integer strings in token base units; set price to '0' for free mints and endTime to 0 for no expiry."
+        params={[
+          { name: "collectionAddress", type: "string", required: true, desc: "Drop collection contract address" },
+          { name: "maxSupply", type: "string", required: true, desc: "Total supply cap (integer string)" },
+          { name: "price", type: "string", required: false, desc: "Mint price in token base units (default '0')" },
+          { name: "paymentToken", type: "string", required: false, desc: "ERC-20 address, or '0x0' for native (default '0x0')" },
+          { name: "startTime", type: "number", required: true, desc: "Unix seconds; mint window open" },
+          { name: "endTime", type: "number", required: true, desc: "Unix seconds; 0 for no expiry" },
+          { name: "maxPerWallet", type: "string", required: false, desc: "Per-wallet cap (default '1')" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/drop/conditions" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <clerk-jwt>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"collectionAddress":"0x03587f...","maxSupply":"1000","price":"1000000","startTime":1740000000,"endTime":1745000000,"maxPerWallet":"5"}'`}
+        response={`{
+  "data": {
+    "collectionAddress": "0x03587f...",
+    "maxSupply": "1000",
+    "price": "1000000",
+    "paymentToken": "0x0330...",
+    "startTime": "1740000000",
+    "endTime": "1745000000",
+    "maxPerWallet": "5"
+  }
+}`}
+      />
+
+      {/* ── REWARDS ── */}
+      <DocH2 id="rewards" border>Rewards</DocH2>
+      <p className="text-sm text-muted-foreground mb-6">
+        The 50-level DAO-managed XP and badge system. Scores are computed off-chain from on-chain activity (mints, sales, comments, remixes). All weights live in DAO-adjustable tables. Reads are public (tenant key); writes are admin-only.
+      </p>
+
+      <Endpoint
+        method="GET"
+        path="/v1/rewards/:address"
+        description="Score, level, progress, badges, and XP breakdown for one address. Returns a zeroed Starter state for addresses not yet in the system."
+        params={[
+          { name: "address", type: "string", required: true, desc: "Wallet address" },
+        ]}
+        curl={`curl "${BASE}/v1/rewards/0x0591..." \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": {
+    "address": "0x0591...",
+    "accountId": "acc_...",
+    "publicId": "ml_...",
+    "totalXp": 1240,
+    "currentLevel": 7,
+    "currentLevelName": "Builder",
+    "badgeColor": "#7c3aed",
+    "nextLevel": { "level": 8, "name": "Architect", "xpRequired": 1500 },
+    "progressPct": 62,
+    "breakdown": { "mint": 400, "sale": 600, "comment": 240 },
+    "badges": [
+      { "key": "first_mint", "name": "First Mint", "description": "...", "icon": "Sparkles", "color": "#f59e0b", "category": "milestone" }
+    ],
+    "computedAt": "2026-05-27T12:00:00Z"
+  }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/rewards"
+        description="Paginated leaderboard ordered by total XP descending."
+        params={[
+          { name: "page", type: "number", required: false, desc: "Page number (default 1)" },
+          { name: "limit", type: "number", required: false, desc: "Page size, max 100 (default 50)" },
+        ]}
+        curl={`curl "${BASE}/v1/rewards?page=1&limit=50" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": [
+    {
+      "rank": 1,
+      "address": "0x0591...",
+      "accountId": "acc_...",
+      "publicId": "ml_...",
+      "totalXp": 9820,
+      "currentLevel": 23,
+      "currentLevelName": "Luminary",
+      "badgeColor": "#ec4899"
+    }
+  ],
+  "meta": { "page": 1, "limit": 50, "total": 508 }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/rewards/:address/events"
+        description="Point-event history for one address — each scored action with its base XP, multiplier, and final XP."
+        params={[
+          { name: "address", type: "string", required: true, desc: "Wallet address" },
+          { name: "page", type: "number", required: false, desc: "Page number (default 1)" },
+          { name: "limit", type: "number", required: false, desc: "Page size, max 100 (default 20)" },
+        ]}
+        curl={`curl "${BASE}/v1/rewards/0x0591.../events" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": [
+    {
+      "id": "pe_...",
+      "actionType": "sale",
+      "xp": 100,
+      "multiplier": 1.5,
+      "finalXp": 150,
+      "txHash": "0x04f7a1...",
+      "createdAt": "2026-05-26T09:00:00Z"
+    }
+  ],
+  "meta": { "page": 1, "limit": 20, "total": 42 }
+}`}
+      />
+
+      {/* ── ACCOUNTS ── */}
+      <DocH2 id="accounts" border>Accounts</DocH2>
+      <p className="text-sm text-muted-foreground mb-6">
+        Account onboarding and lookup. An Account is the logical actor (one per human/agent/org); a Wallet is its signing key; an Identity is its auth-provider record. There is one kind of user across the whole platform — these endpoints register and read that single Account model regardless of which app the user came from.
+      </p>
+
+      <Endpoint
+        method="POST"
+        path="/v1/users/register"
+        description="Frictionless registration, authenticated by tenant API key (no Clerk JWT). The wallet address is supplied in the body. Idempotent — returns the existing Account if the wallet is already known. Used by medialane-dapp to silently register web3 wallet connections."
+        params={[
+          { name: "walletAddress", type: "string", required: true, desc: "Starknet wallet address" },
+          { name: "walletType", type: "string", required: false, desc: "ARGENT | BRAAVOS | CARTRIDGE | PRIVY | CHIPIPAY | INJECTED | UNKNOWN" },
+          { name: "appSource", type: "string", required: false, desc: "MEDIALANE_DAPP | MEDIALANE_IO | MEDIALANE_PORTAL | MEDIALANE_SDK" },
+          { name: "chain", type: "string", required: false, desc: "Defaults to STARKNET" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/users/register" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"walletAddress":"0x0591...","walletType":"ARGENT","appSource":"MEDIALANE_DAPP"}'`}
+        response={`{
+  "accountId": "acc_...",
+  "publicId": "ml_...",
+  "walletAddress": "0x0591...",
+  "chain": "STARKNET",
+  "walletType": "ARGENT",
+  "appSource": "MEDIALANE_DAPP",
+  "createdAt": "2026-05-27T12:00:00Z"
+}`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/users/me"
+        description="Upsert the authenticated caller's Account (lazy onboarding for first-touch flows). Identity is taken from the Bearer token — a Clerk JWT (medialane-io) or a SIWS token (medialane-dapp / agents). The wallet address comes from the verified token, never the body."
+        params={[
+          { name: "walletType", type: "string", required: false, desc: "Defaults to UNKNOWN" },
+          { name: "appSource", type: "string", required: false, desc: "Defaults to MEDIALANE_IO" },
+          { name: "chain", type: "string", required: false, desc: "STARKNET only in v1" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/users/me" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <clerk-jwt-or-siws-token>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"walletType":"CHIPIPAY","appSource":"MEDIALANE_IO"}'`}
+        response={`{
+  "walletAddress": "0x0591..."
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/users/me"
+        description="Return the authenticated caller's account identifiers, or 404 if the wallet has no Account yet. Identity from the Bearer token (Clerk JWT or SIWS)."
+        params={[]}
+        curl={`curl "${BASE}/v1/users/me" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <clerk-jwt-or-siws-token>"`}
+        response={`{
+  "walletAddress": "0x0591...",
+  "accountId": "acc_...",
+  "publicId": "ml_..."
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/users/count"
+        description="Account count with optional filters. Tenant key only. Used for grant reporting. An Account with any matching Wallet/Identity is counted once."
+        params={[
+          { name: "chain", type: "string", required: false, desc: "Filter by wallet chain" },
+          { name: "appSource", type: "string", required: false, desc: "Filter by identity app source" },
+          { name: "walletType", type: "string", required: false, desc: "Filter by wallet type" },
+          { name: "since", type: "string", required: false, desc: "ISO date — count accounts created on/after" },
+        ]}
+        curl={`curl "${BASE}/v1/users/count?appSource=MEDIALANE_IO&since=2026-05-01" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "count": 61,
+  "filters": { "chain": null, "appSource": "MEDIALANE_IO", "walletType": null, "since": "2026-05-01" }
+}`}
+      />
+
+      {/* ── GATED CONTENT & SLUGS ── */}
+      <DocH2 id="gated-content" border>Gated Content &amp; Slugs</DocH2>
+      <p className="text-sm text-muted-foreground mb-6">
+        Holder-only collection content and vanity-slug resolution.
+      </p>
+
+      <Endpoint
+        method="GET"
+        path="/v1/collections/:contract/gated-content"
+        description="Return a collection's holder-only content (title, url, type) to verified holders. Requires a Clerk JWT — the caller's on-chain token ownership is checked before the URL is released. Non-holders get 403; the gatedContentUrl is never exposed via the public profile endpoint."
+        params={[
+          { name: "contract", type: "string", required: true, desc: "Collection contract address" },
+        ]}
+        curl={`curl "${BASE}/v1/collections/0x076c.../gated-content" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <clerk-jwt>"`}
+        response={`{
+  "title": "Behind the scenes",
+  "url": "https://...",
+  "type": "VIDEO"
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/collections/by-slug/:slug"
+        description="Resolve an approved vanity slug to a full collection (with profile). Public. Returns 404 if the slug is not claimed/approved."
+        params={[
+          { name: "slug", type: "string", required: true, desc: "Vanity slug (case-insensitive)" },
+        ]}
+        curl={`curl "${BASE}/v1/collections/by-slug/genesis" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": {
+    "contractAddress": "0x076c...",
+    "name": "Genesis",
+    "slug": "genesis",
+    "profile": { "displayName": "Genesis", "slug": "genesis" }
+  }
+}`}
+      />
+
+      {/* ── STATS ── */}
+      <DocH2 id="stats" border>Stats</DocH2>
+      <p className="text-sm text-muted-foreground mb-6">
+        Platform-wide aggregate counts. Publicly cacheable.
+      </p>
+
+      <Endpoint
+        method="GET"
+        path="/v1/stats"
+        description="Platform totals: indexed collections, indexed tokens, and completed sales (order fills)."
+        params={[]}
+        curl={`curl "${BASE}/v1/stats" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": {
+    "collections": 108,
+    "tokens": 1977,
+    "sales": 342
+  }
+}`}
+      />
+
+      {/* ── REPORTS ── */}
+      <DocH2 id="reports" border>Reports</DocH2>
+      <p className="text-sm text-muted-foreground mb-6">
+        Community moderation. Any authenticated wallet can report a collection, token, creator, or comment. After 3 unique reports a target is auto-hidden. Rate-limited to 5 reports per wallet per hour.
+      </p>
+
+      <Endpoint
+        method="POST"
+        path="/v1/reports"
+        description="Submit a report. Requires a Clerk JWT or SIWS token (identity auth) in addition to the tenant key. 409 if the caller already reported this target; 429 if the per-wallet hourly limit is hit."
+        params={[
+          { name: "targetType", type: "string", required: true, desc: "COLLECTION | TOKEN | CREATOR | COMMENT" },
+          { name: "targetKey", type: "string", required: true, desc: "Stable target key (e.g. COMMENT::<id>)" },
+          { name: "categories", type: "string[]", required: true, desc: "COPYRIGHT_PIRACY | VIOLENCE_GRAPHIC | HATE_SPEECH | SCAM_FRAUD | SPAM | NSFW | OTHER" },
+          { name: "targetContract", type: "string", required: false, desc: "For TOKEN/COLLECTION targets" },
+          { name: "targetTokenId", type: "string", required: false, desc: "For TOKEN targets" },
+          { name: "targetAddress", type: "string", required: false, desc: "For CREATOR targets" },
+          { name: "description", type: "string", required: false, desc: "Free text, max 500 chars" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/reports" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <clerk-jwt-or-siws-token>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"targetType":"TOKEN","targetKey":"0x05e7...:42","targetContract":"0x05e7...","targetTokenId":"42","categories":["SCAM_FRAUD"]}'`}
+        response={`{
+  "data": {
+    "id": "rep_...",
+    "targetType": "TOKEN",
+    "status": "PENDING",
+    "createdAt": "2026-05-27T12:00:00Z"
+  }
+}`}
+      />
+
+      {/* ── NAME & SLUG CLAIMS ── */}
+      <DocH2 id="claims-naming" border>Username &amp; Slug Claims</DocH2>
+      <p className="text-sm text-muted-foreground mb-6">
+        Vanity usernames (per wallet) and collection slugs (per contract). Availability checks are public; submissions require a Clerk JWT and are reviewed by an admin before the name goes live.
+      </p>
+
+      <Endpoint
+        method="GET"
+        path="/v1/username-claims/check/:username"
+        description="Public availability check for a username. Validates format and checks for taken profiles or pending/approved claims."
+        params={[
+          { name: "username", type: "string", required: true, desc: "Candidate username" },
+        ]}
+        curl={`curl "${BASE}/v1/username-claims/check/satoshi" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "available": false, "reason": "Already taken" }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/username-claims"
+        description="Submit a username claim. Requires a Clerk JWT. One pending claim per wallet at a time."
+        params={[
+          { name: "username", type: "string", required: true, desc: "Requested username" },
+          { name: "notifyEmail", type: "string", required: false, desc: "Email to notify on review" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/username-claims" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <clerk-jwt>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"username":"satoshi"}'`}
+        response={`{
+  "claim": {
+    "id": "ucl_...",
+    "username": "satoshi",
+    "status": "PENDING",
+    "createdAt": "2026-05-27T12:00:00Z"
+  }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/username-claims/me"
+        description="Return all username claims submitted by the authenticated wallet. Requires a Clerk JWT."
+        params={[]}
+        curl={`curl "${BASE}/v1/username-claims/me" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <clerk-jwt>"`}
+        response={`{
+  "username": "satoshi",
+  "claim": { "id": "ucl_...", "username": "satoshi", "status": "APPROVED" }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/collection-slug-claims/check/:slug"
+        description="Public availability check for a collection slug. Same format + reserved-word rules as usernames."
+        params={[
+          { name: "slug", type: "string", required: true, desc: "Candidate slug" },
+        ]}
+        curl={`curl "${BASE}/v1/collection-slug-claims/check/genesis" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "available": true }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/collection-slug-claims"
+        description="Submit a collection slug claim. Requires a Clerk JWT — the caller must be the collection owner (owner or claimedBy). One pending claim per collection at a time."
+        params={[
+          { name: "contractAddress", type: "string", required: true, desc: "Collection contract address" },
+          { name: "slug", type: "string", required: true, desc: "Requested slug" },
+          { name: "notifyEmail", type: "string", required: false, desc: "Email to notify on review" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/collection-slug-claims" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <clerk-jwt>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"contractAddress":"0x076c...","slug":"genesis"}'`}
+        response={`{
+  "claim": {
+    "id": "scl_...",
+    "slug": "genesis",
+    "contractAddress": "0x076c...",
+    "status": "PENDING"
+  }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/collection-slug-claims/me"
+        description="Return all collection slug claims submitted by the authenticated wallet. Requires a Clerk JWT."
+        params={[]}
+        curl={`curl "${BASE}/v1/collection-slug-claims/me" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <clerk-jwt>"`}
+        response={`{
+  "claims": [
+    { "id": "scl_...", "slug": "genesis", "status": "APPROVED" }
+  ]
 }`}
       />
 
