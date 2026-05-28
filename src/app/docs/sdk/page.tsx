@@ -49,7 +49,7 @@ yarn add @medialane/sdk starknet`}</DocCodeBlock>
 const client = new MedialaneClient({
   network: "mainnet",        // "mainnet" | "sepolia"
   rpcUrl: "https://starknet-mainnet.g.alchemy.com/starknet/version/rpc/v0_7/YOUR_KEY",
-  backendUrl: "https://medialane-backend-production.up.railway.app",
+  backendUrl: "https://api.medialane.io",
   apiKey: "ml_live_YOUR_KEY",
   // marketplaceContract — optional, defaults to mainnet contract
   // collectionContract  — optional, defaults to mainnet collection registry
