@@ -101,8 +101,9 @@ All routes prerender as fully static (`○`).
 
 ```
 src/components/home/index.tsx         Home page component
-src/components/layout/app-sidebar.tsx Sidebar navigation (9 sections, collapsible)
-src/app/providers.tsx                 Shell + footer nav
+src/lib/nav-commands.ts               NAV_COMMANDS — command-palette entries
+src/components/nav-theme-toggle.tsx   Light/dark toggle (menu footer)
+src/app/providers.tsx                 Shell + NavCommandMenu + footer nav
 src/app/globals.css                   CSS tokens + Tailwind base
 src/app/sitemap.ts                    ~50 static routes
 next.config.ts                        Redirects
