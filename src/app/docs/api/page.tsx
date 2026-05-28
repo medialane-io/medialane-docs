@@ -1752,7 +1752,7 @@ const resumeSource = new EventSource(url, {
   -H "x-api-key: ${KEY}" \\
   -H "Authorization: Bearer <clerk-jwt-or-siws-token>" \\
   -H "Content-Type: application/json" \\
-  -d '{"walletType":"CHIPIPAY","appSource":"MEDIALANE_IO"}'`}
+  -d '{"walletType":"CHIPIPAY","appSource":"MEDIALANE_IO","chain":"STARKNET"}'`}
         response={`{
   "walletAddress": "0x0591..."
 }`}
@@ -1800,7 +1800,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/collections/:contract/gated-content"
-        description="Return a collection's holder-only content (title, url, type) to verified holders. Requires a Clerk JWT — the caller's on-chain token ownership is checked before the URL is released. Non-holders get 403; the gatedContentUrl is never exposed via the public profile endpoint."
+        description="Return a collection's holder-only content (title, url, type) to verified holders. Requires a Clerk JWT — the caller's balance is read live from the contract (balance_of for ERC-721, balance_of_batch for ERC-1155), never from the indexer cache, so access reflects current on-chain ownership. Non-holders get 403; the gatedContentUrl is never exposed via the public profile endpoint."
         params={[
           { name: "contract", type: "string", required: true, desc: "Collection contract address" },
         ]}
