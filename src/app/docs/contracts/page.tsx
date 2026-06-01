@@ -20,14 +20,14 @@ const CONTRACTS = [
     category: "Marketplace",
     items: [
       {
-        name: "Marketplace (ERC-721)",
-        address: "0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6",
-        desc: "Handles listing creation, offer submission, order fulfillment, and cancellation for standard (ERC-721) NFTs. Orders use SNIP-12 typed data signing. Atomic settlement: the NFT transfer and payment happen in the same Starknet transaction or both revert.",
+        name: "Medialane721 — Marketplace Venue (ERC-721)",
+        address: "0x069cf5391077e3ebdd9cb6aebf90ed530d29f0d6aa34a43f5afae938c0fb565e",
+        desc: "Listing, offer, fulfillment, and cancellation venue for standard (ERC-721) NFTs. Orders are SNIP-12 typed data (domain version 4); only the listing/offer and cancellation are signed — fulfillment is an unsigned call by the buyer. Royalties are paid on-chain per EIP-2981, capped by a royalty_max_bps the signer agrees to. A per-offerer counter enables bulk cancellation. Atomic settlement with a reentrancy guard and payment-before-delivery ordering. Deployed 2026-05-31.",
       },
       {
-        name: "Marketplace 1155 V2 (ERC-1155)",
-        address: "0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99",
-        desc: "ERC-1155 multi-edition marketplace. SNIP-12 domain version 2 with nested OrderParameters matching the ERC-721 protocol structure. Supports partial fills — a single order can be fulfilled by multiple buyers across multiple transactions.",
+        name: "Medialane1155 — Marketplace Venue (ERC-1155)",
+        address: "0x040cd7b3e73bb3c892166e34bdc01d1797f97ecbc356c23f1cf38033cacf0077",
+        desc: "Multi-edition trading venue for ERC-1155 assets. Same redesigned order protocol as Medialane721 (SNIP-12 domain version 3), keeping the single-amount order shape while preserving edition quantities — a single listing can be filled by multiple buyers across transactions. On-chain EIP-2981 royalties, per-offerer counter, unsigned fulfillment, reentrancy-guarded settlement. Deployed 2026-05-31.",
       },
       {
         name: "NFTComments",
@@ -89,10 +89,11 @@ export default function ContractsPage() {
         <p className="text-xs text-muted-foreground leading-relaxed">
           The current contracts are fully immutable: no admin account, no{" "}
           <code className="font-mono bg-muted px-1 py-0.5 rounded">UpgradeableComponent</code>, no owner role,
-          no emergency pause. Evolution happens by redeploy, not by upgrade — the factory class hashes
+          no emergency pause. Evolution happens by redeploy, not by upgrade — the class hashes
           themselves cannot be rotated. The collection factories shipped fresh v0.2.0 / v0.3.0
-          deployments on 2026-05-22. The indexer started scanning from block{" "}
-          <code className="font-mono bg-muted px-1 py-0.5 rounded">9196722</code>.
+          deployments on 2026-05-22, and the redesigned marketplace venues
+          (Medialane721 / Medialane1155) were redeployed as new immutable contracts on
+          2026-05-31.
         </p>
         <div className="flex flex-wrap gap-2">
           {["No admin keys", "No upgrade path", "No emergency pause", "Atomic swaps", "ZK-proven execution"].map((t) => (

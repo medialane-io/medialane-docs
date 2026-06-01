@@ -21,7 +21,7 @@ const CHANGES = [
     date: "2026-06-01",
     title: "Marketplace protocol upgrade, intent contract, and streamlined onboarding",
     items: [
-      "Marketplace upgraded to the redesigned venues (@medialane/sdk 0.26.0). Orders use a single-amount schema with an on-chain royalty cap and a per-offerer counter; fulfilment is now unsigned — the buyer is the fulfiller, so buying takes one signature less. SNIP-12 domain v4 (ERC-721) / v3 (ERC-1155).",
+      "Marketplace upgraded to the redesigned venues (@medialane/sdk 0.26.0), deployed as new immutable contracts on 2026-05-31 — Medialane721 (0x069cf539…) and Medialane1155 (0x040cd7b3…). Orders use a single-amount schema with on-chain EIP-2981 royalties capped by a seller-agreed limit, plus a per-offerer counter; fulfilment is now unsigned — the buyer is the fulfiller, so buying takes one signature less. SNIP-12 domain v4 (ERC-721) / v3 (ERC-1155).",
       "@medialane/sdk 0.27.0: every create-intent response carries a requiresSignature flag, modelled as a discriminated union (ApiIntentCreated) — signed intents (listing, offer, cancel) return typedData to sign; unsigned intents (fulfil, mint, create-collection) return executable calls directly. The type makes reading the wrong field a compile error.",
       "Onboarding streamlined: sign up or sign in, secure your account once (passkey or PIN), then continue to exactly where you were headed. One flow across the whole platform — sign-ups from a campaign or mint page always return to that page, no dead ends.",
     ],

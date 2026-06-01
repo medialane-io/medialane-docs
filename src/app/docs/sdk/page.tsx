@@ -450,7 +450,7 @@ await client.services.drop.withdrawPayments(account, { collection: "0x03587f..."
       {/* ERC-1155 marketplace */}
       <DocH2 id="marketplace-1155" border>ERC-1155 Marketplace (on-chain)</DocH2>
       <p className="text-muted-foreground text-sm mb-3">
-        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.marketplace1155</code> handles multi-edition orders against the Medialane1155 V2 contract. SNIP-12 domain version <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">2</code> — listings carry an edition quantity. All write methods take a starknet.js <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">AccountInterface</code>.
+        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.marketplace1155</code> handles multi-edition orders against the redesigned Medialane1155 venue. SNIP-12 domain version <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">3</code> — listings carry an edition quantity; listing/offer and cancellation are signed, while fulfillment is an unsigned call by the buyer. All write methods take a starknet.js <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">AccountInterface</code>.
       </p>
       <DocCodeBlock>{`// List N editions for sale (auto-grants set_approval_for_all if needed)
 await client.marketplace1155.createListing(account, {

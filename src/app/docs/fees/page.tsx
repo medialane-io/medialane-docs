@@ -37,7 +37,7 @@ const PAID_ACTIONS = [
   {
     action: "Creator royalties",
     cost: "Set by the creator at mint time",
-    note: "Royalty terms are defined in the asset metadata. The 1% marketplace fee is the only fee the marketplace contract itself applies — royalty amounts are set by creators as metadata, not automatically extracted by the contract.",
+    note: "Creator royalties follow the EIP-2981 standard and are paid on-chain by the marketplace venue at settlement, capped by a royalty limit the seller agrees to when signing. The 1% marketplace fee is separate: it is applied at the platform layer, never inside the venue contract — the venue protocols themselves are zero-fee.",
   },
   {
     action: "Remix or license fee",

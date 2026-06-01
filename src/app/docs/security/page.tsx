@@ -86,10 +86,12 @@ export default function DocsSecurityPage() {
               </div>
               <p className="text-xs text-muted-foreground">Reviewed by the core development team · May 2026</p>
               <p className="text-xs text-muted-foreground">
-                Covers the Marketplace contracts (ERC-721 and ERC-1155 V2 with SNIP-12 nested
-                OrderParameters), the MIP IPCollection registry v0.3.0, the IP-Programmable
-                ERC-1155 factory v0.2.0, the Collection Drop factory, and the POP factory. This
-                is an internal review, not an independent third-party audit.
+                Covers the redesigned marketplace venues (Medialane721 / Medialane1155 —
+                independent immutable contracts with per-deployment replay binding, on-chain
+                EIP-2981 royalties, and reentrancy-guarded settlement, redeployed 2026-05-31),
+                the MIP IPCollection registry v0.3.0, the IP-Programmable ERC-1155 factory
+                v0.2.0, the Collection Drop factory, and the POP factory. This is an internal
+                review, not an independent third-party audit.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
