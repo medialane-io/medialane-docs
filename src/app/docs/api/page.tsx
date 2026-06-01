@@ -232,7 +232,7 @@ export default function ApiReferencePage() {
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
   -d '{ "owner": "0x0591...", "collectionId": "42", "recipient": "0x0591...", "tokenUri": "ipfs://..." }'`}
-        response={`{ "intentId": "clm_mnt123", "status": "SIGNED", "calls": [...] }`}
+        response={`{ "id": "clm_mnt123", "requiresSignature": false, "calls": [...] }`}
       />
 
       <Endpoint
@@ -250,7 +250,7 @@ export default function ApiReferencePage() {
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
   -d '{ "owner": "0x0591...", "name": "My Collection", "symbol": "MYC", "baseUri": "ipfs://..." }'`}
-        response={`{ "intentId": "clm_coll123", "status": "SIGNED", "calls": [...] }`}
+        response={`{ "id": "clm_coll123", "requiresSignature": false, "calls": [...] }`}
       />
 
       {/* ── COLLECTIONS ── */}
@@ -477,7 +477,7 @@ export default function ApiReferencePage() {
       {/* ── INTENTS ── */}
       <DocH2 id="intents" border>Intents</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Intents orchestrate SNIP-12 typed data for listings, offers, fulfillments, and cancellations. Create an intent, sign it client-side, then submit the signature.
+        Intents orchestrate marketplace transactions. Every create-intent response carries a <code>requiresSignature</code> flag. When <code>true</code> (listing, offer, cancel) the response includes <code>typedData</code> to sign client-side (SNIP-12); submit the signature to <code>/v1/intents/:id/signature</code> to get the executable calls. When <code>false</code> (fulfil, mint, create-collection) the response returns fully-populated <code>calls</code> directly — there is no signing step, because the caller is the fulfiller.
       </p>
 
       <Endpoint
@@ -502,11 +502,12 @@ export default function ApiReferencePage() {
     "offerer": "0x0591..."
   }'`}
         response={`{
-  "intentId": "clm_abc123",
+  "id": "clm_abc123",
+  "requiresSignature": true,
   "typedData": {
     "types": { ... },
-    "primaryType": "Order",
-    "domain": { "name": "Medialane", "version": "1", "revision": "1" },
+    "primaryType": "OrderParameters",
+    "domain": { "name": "Medialane", "version": "4", "revision": "1" },
     "message": { ... }
   }
 }`}
@@ -527,22 +528,24 @@ export default function ApiReferencePage() {
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
   -d '{ "nftContract": "0x05e7...", "tokenId": "42", "price": "400000", "currency": "USDC", "offerer": "0x0482..." }'`}
-        response={`{ "intentId": "clm_def456", "typedData": { ... } }`}
+        response={`{ "id": "clm_def456", "requiresSignature": true, "typedData": { ... } }`}
       />
 
       <Endpoint
         method="POST"
         path="/v1/intents/fulfill"
-        description="Create a fulfillment intent to accept an open order."
+        description="Create a fulfillment intent to buy a listing or accept an offer. Unsigned — the caller is the fulfiller, so the response returns executable calls directly (no signing step)."
         params={[
           { name: "orderHash", type: "string", required: true, desc: "Hash of the order to fulfill" },
           { name: "fulfiller", type: "string", required: true, desc: "Fulfiller Starknet address" },
+          { name: "tokenStandard", type: "string", desc: "ERC721 | ERC1155 (hint if the order isn't indexed yet)" },
+          { name: "quantity", type: "string", desc: "ERC-1155 only: units to buy (default 1)" },
         ]}
         curl={`curl -X POST "${BASE}/v1/intents/fulfill" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
   -d '{ "orderHash": "0x04f7a1...", "fulfiller": "0x0482..." }'`}
-        response={`{ "intentId": "clm_ghi789", "typedData": { ... } }`}
+        response={`{ "id": "clm_ghi789", "requiresSignature": false, "calls": [...] }`}
       />
 
       <Endpoint
@@ -557,7 +560,7 @@ export default function ApiReferencePage() {
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
   -d '{ "orderHash": "0x04f7a1...", "offerer": "0x0591..." }'`}
-        response={`{ "intentId": "clm_jkl012", "typedData": { ... } }`}
+        response={`{ "id": "clm_jkl012", "requiresSignature": true, "typedData": { ... } }`}
       />
 
       <Endpoint

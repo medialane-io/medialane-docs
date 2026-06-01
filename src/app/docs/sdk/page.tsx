@@ -111,8 +111,8 @@ const { intentId, calls } = await client.api.createCollectionIntent({
       <DocCodeBlock>{`// Get order details directly from the contract
 const order = await client.marketplace.getOrderDetails("0x04f7a1...")
 
-// Get the current nonce for signing
-const nonce = await client.marketplace.getNonce("0x0591...")`}</DocCodeBlock>
+// Get the offerer's order counter (replaces the removed nonce in 0.26.0)
+const counter = await client.marketplace.getCounter("0x0591...")`}</DocCodeBlock>
 
       {/* API client */}
       <DocH2 id="api-client" border>API Client (REST)</DocH2>
@@ -156,8 +156,13 @@ import { Account } from "starknet"
 const account = new Account(provider, walletAddress, privateKey)
 const signature = await account.signMessage(intent.data.typedData)
 
-// 3. Submit the signature
-await client.api.submitIntentSignature(intent.data.id, toSignatureArray(signature))`}</DocCodeBlock>
+// 3. Submit the signature → returns executable calls
+await client.api.submitIntentSignature(intent.data.id, toSignatureArray(signature))
+
+// Note: every create-intent response carries intent.data.requiresSignature.
+// Listings/offers/cancels are true (sign typedData, as above). Fulfil/mint/
+// create-collection are false — their .calls are returned ready to execute,
+// with no signing step (the caller is the fulfiller).`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-3">Search</h3>
       <DocCodeBlock>{`const results = await client.api.search("genesis", 10)
