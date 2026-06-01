@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Network, Database, Package } from "lucide-react";
 import { Section, Code } from "@/components/docs";
+import { CONTRACTS } from "@/lib/contracts";
 
 export const metadata: Metadata = {
   title: "Protocol | Medialane Docs",
@@ -16,16 +17,6 @@ export const metadata: Metadata = {
     description: "Technical specification of the Medialane onchain protocol — contracts, event model, order lifecycle, service registry, and indexer design.",
   },
 };
-
-const CONTRACTS = [
-  { name: "Medialane721 — Marketplace Venue (ERC-721)",  address: "0x069cf5391077e3ebdd9cb6aebf90ed530d29f0d6aa34a43f5afae938c0fb565e" },
-  { name: "Medialane1155 — Marketplace Venue (ERC-1155)", address: "0x040cd7b3e73bb3c892166e34bdc01d1797f97ecbc356c23f1cf38033cacf0077" },
-  { name: "NFTComments",                                 address: "0x02cdac70c94447189af0389dfea63f4d5e4154ea8a563de288a5ab1c39e37843" },
-  { name: "MIP IPCollection Registry v0.3.0",            address: "0x0322cb7119955e01ac778d40976eb3ba50540bb0899f812d612f9c7e63e49fd2" },
-  { name: "IP-Programmable ERC-1155 Factory v0.2.0",     address: "0x067064adcaaed61e17bf50ea802ea6482336126aec5b4d032b4ff8fbb5009131" },
-  { name: "Collection Drop Factory",                     address: "0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800" },
-  { name: "POP Protocol Factory",                        address: "0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111" },
-];
 
 const EVENTS = [
   { name: "Transfer (ERC-721)", desc: "Single-token ownership change. Emitted on mint, sale, and manual transfer." },
