@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
       { source: "/terms",          destination: "/guidelines/terms",          permanent: true },
       { source: "/privacy",        destination: "/guidelines/privacy",        permanent: true },
       { source: "/campaign-terms", destination: "/guidelines/campaign-terms", permanent: true },
+      { source: "/docs/compliance",           destination: "/guidelines/compliance",      permanent: true },
+      { source: "/docs/community-guidelines",  destination: "/guidelines/community",       permanent: true },
+      { source: "/docs/user-guidelines",       destination: "/guidelines/user-guidelines", permanent: true },
     ];
   },
 };

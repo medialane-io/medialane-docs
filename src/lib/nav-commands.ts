@@ -66,7 +66,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "docs-fees",         label: "Fees",                  icon: Coins,     href: "/docs/fees",           keywords: ["1%", "creators fund", "platform fee"] },
       { id: "docs-security",     label: "Security",              icon: Shield,    href: "/docs/security",       keywords: ["audit", "immutable", "risk"] },
       { id: "docs-governance",   label: "Governance",            icon: Vote,      href: "/docs/governance",     keywords: ["dao", "snapshot", "voting"] },
-      { id: "docs-compliance",   label: "Compliance",            icon: Scale,     href: "/docs/compliance",     keywords: ["legal", "tos", "kyc"] },
+      { id: "docs-compliance",   label: "Compliance",            icon: Scale,     href: "/guidelines/compliance",     keywords: ["legal", "tos", "kyc"] },
       { id: "docs-changelog",    label: "Changelog",             icon: History,   href: "/docs/changelog",      keywords: ["release", "updates", "history"] },
     ],
   },

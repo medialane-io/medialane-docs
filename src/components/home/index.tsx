@@ -190,9 +190,9 @@ const TOPIC_GROUPS = [
     links: [
       { href: "/dao", label: "DAO" },
       { href: "/docs/governance", label: "Governance" },
-      { href: "/docs/compliance", label: "Compliance" },
-      { href: "/docs/community-guidelines", label: "Community" },
-      { href: "/docs/user-guidelines", label: "User Guidelines" },
+      { href: "/guidelines/compliance", label: "Compliance" },
+      { href: "/guidelines/community", label: "Community" },
+      { href: "/guidelines/user-guidelines", label: "User Guidelines" },
       { href: "/guidelines", label: "All Guidelines" },
     ],
   },
