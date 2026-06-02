@@ -19,6 +19,16 @@ export const metadata: Metadata = {
 const CHANGES = [
   {
     date: "2026-06-01",
+    title: "Permissionless remix and an independent Licensing service",
+    items: [
+      "Remixing is now fully permissionless: anyone can mint an attributed derivative of any asset — Medialane-native or external — without owning the parent or asking permission. The parent is linked on-chain; provenance, not permission, is what the protocol guarantees.",
+      "The platform stays a neutral tool. It honors a creator's explicit \"Derivatives: Not Allowed\" declaration at the application layer only (it doesn't offer a direct remix and points you to Licensing instead) — never on-chain. The contract is always permissionless; assets are surfaced and flagged via reports, never blocked.",
+      "Licensing is now its own service with a dedicated flow, separate from Remix. Propose license terms and a fee to a creator; if they accept, the licensed derivative is minted and listed for you. Use it to pay or credit the original creator, get a formal commercial license, or remix a work marked no-derivatives.",
+      "Asset pages now show Remix and License as independent actions, and the remix flow is a clean mint (no bundled listing step).",
+    ],
+  },
+  {
+    date: "2026-06-01",
     title: "Marketplace protocol upgrade, intent contract, and streamlined onboarding",
     items: [
       "Marketplace upgraded to the redesigned venues (@medialane/sdk 0.26.0), deployed as new immutable contracts on 2026-05-31 — Medialane721 (0x069cf539…) and Medialane1155 (0x040cd7b3…). Orders use a single-amount schema with on-chain EIP-2981 royalties capped by a seller-agreed limit, plus a per-offerer counter; fulfilment is now unsigned — the buyer is the fulfiller, so buying takes one signature less. SNIP-12 domain v4 (ERC-721) / v3 (ERC-1155).",

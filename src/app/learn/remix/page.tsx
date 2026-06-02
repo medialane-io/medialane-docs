@@ -18,20 +18,20 @@ export const metadata: Metadata = {
 
 const LICENSE_RULES = [
   {
-    rule: "ShareAlike (viral)",
-    desc: "If the parent uses CC BY-SA, any derivative must carry the same license. You cannot relicense a viral work under more permissive terms.",
+    rule: "Permissionless by default",
+    desc: "Anyone can create a derivative of any asset — you don't need to own the parent or ask permission. Your remix is your own asset, minted into your own collection.",
   },
   {
-    rule: "Attribution",
-    desc: "If the parent requires attribution, the derivative's metadata embeds the original creator's address and asset ID automatically. The record is on-chain.",
+    rule: "Attribution embedded",
+    desc: "The parent asset's ID is written into your derivative's on-chain metadata automatically. The lineage is permanent and publicly verifiable — provenance, not permission, is what the protocol guarantees.",
   },
   {
-    rule: "Commercial rights",
-    desc: "The most restrictive commercial terms in the ancestor chain apply. A parent marked non-commercial cannot grant commercial rights to derivatives.",
+    rule: "You set your own license",
+    desc: "You choose the license for your derivative. The parent's declared terms are surfaced for transparency, but Medialane doesn't force them onto your work — honoring them is your responsibility as the creator.",
   },
   {
-    rule: "No-derivatives",
-    desc: "If the parent carries a no-derivatives flag, remixing is not permitted. The application layer blocks mint attempts that reference ND-licensed parents.",
+    rule: "No-derivatives → request a license",
+    desc: "If the parent declares Derivatives: Not Allowed, Medialane doesn't offer a direct remix in the app — instead you can request a license from the creator. This is an application-layer courtesy that respects the creator's stated wishes; the contract itself stays fully permissionless.",
   },
 ];
 
@@ -42,10 +42,13 @@ export default function LearnRemixPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Remix &amp; Derivatives</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          A remix is a new IP asset that builds on an existing one. The relationship
-          is recorded on-chain — permanently, publicly, and without requiring anyone
-          to trust the creator's word. License terms travel with the asset through
-          every generation of the derivative chain.
+          A remix is a new IP asset that builds on an existing one. Remixing is
+          permissionless — anyone can build on any asset, and the relationship is
+          recorded on-chain permanently and publicly. What no one can change is the
+          record: the parent stays linked to your derivative forever. Need the
+          creator&apos;s blessing or a paid license instead? That&apos;s a separate,
+          optional flow — see{" "}
+          <Link href="/learn/programmable-licensing" className="text-primary hover:underline">Licensing</Link>.
         </p>
       </div>
 
@@ -57,10 +60,10 @@ export default function LearnRemixPage() {
             new token's on-chain metadata. This creates a directed graph of creative
             lineage — traceable from any asset back to its root.
           </p>
-          <Code>{`Asset A  (root — CC BY-SA)
-  └─ Asset B  (remix of A — must carry CC BY-SA)
-       └─ Asset C  (remix of B — must carry CC BY-SA)
-            └─ Asset D  (remix of C — must carry CC BY-SA)`}</Code>
+          <Code>{`Asset A  (root)
+  └─ Asset B  (remix of A — links to A)
+       └─ Asset C  (remix of B — links to B)
+            └─ Asset D  (remix of C — links to C)`}</Code>
           <p>
             Every node in the graph is a token on Starknet. The edges between them
             are on-chain records — tamper-proof and permanently verifiable by anyone.
@@ -90,11 +93,13 @@ export default function LearnRemixPage() {
           </p>
         </Section>
 
-        <Section title="How License Terms Propagate">
+        <Section title="What Medialane Surfaces and Honors">
           <p>
             License terms are attributes on the parent token — readable by any third party.
-            Before minting a remix, the application surfaces the parent's terms. Certain
-            incompatibilities are blocked at the UI level:
+            Before minting a remix, the application surfaces the parent&apos;s terms so you can
+            make an informed choice. The platform stays neutral and permissionless — it only
+            honors the creator&apos;s explicit no-derivatives declaration (at the app layer), and
+            always embeds attribution:
           </p>
           <div className="space-y-2">
             {LICENSE_RULES.map(({ rule, desc }) => (
@@ -109,19 +114,42 @@ export default function LearnRemixPage() {
         <Section title="Creating a Remix">
           <p>
             Navigate to any asset page and click <strong className="text-foreground">Remix</strong>.
-            You will be shown the parent's license terms before proceeding. Steps:
+            The parent&apos;s license terms are shown for context before you proceed. Steps:
           </p>
           <ol className="list-decimal list-inside space-y-1.5 text-sm text-muted-foreground">
-            <li>Review the parent asset's license terms and confirm eligibility.</li>
             <li>Upload your derivative work (image, audio, video, or other format).</li>
             <li>Set metadata — name, description, IP type.</li>
-            <li>Choose a license for your remix (constrained by what the parent permits).</li>
-            <li>Sign and mint — the parent asset's ID is embedded in your new token's metadata.</li>
+            <li>Choose the license for your remix — you decide your own terms.</li>
+            <li>Sign and mint — the parent asset&apos;s ID is embedded in your new token&apos;s metadata.</li>
           </ol>
           <p>
             Minting a remix carries the same gas model as any other IP asset mint.
             There is no additional fee for creating a derivative.
           </p>
+        </Section>
+
+        <Section title="Remix vs Licensing">
+          <p>
+            Remix and Licensing are two distinct, independent actions:
+          </p>
+          <div className="space-y-2">
+            <div className="bento-cell px-4 py-3 space-y-1">
+              <p className="text-sm font-semibold text-foreground">Remix — free, permissionless</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Mint your own attributed derivative. No payment, no approval — your work, your license.
+              </p>
+            </div>
+            <div className="bento-cell px-4 py-3 space-y-1">
+              <p className="text-sm font-semibold text-foreground">Licensing — optional, by agreement</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Propose a license deal to the creator: your terms plus a fee. If they accept, the
+                licensed derivative is minted and listed for you. Use it to pay or credit the
+                original creator, get a formal commercial license, or remix a work the creator
+                marked no-derivatives. See{" "}
+                <Link href="/learn/programmable-licensing" className="text-primary hover:underline">Programmable Licensing</Link>.
+              </p>
+            </div>
+          </div>
         </Section>
 
         <Section title="Attribution on Immutable Records">
