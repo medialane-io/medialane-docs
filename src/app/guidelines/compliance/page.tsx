@@ -1,93 +1,168 @@
 import type { Metadata } from "next";
-import { Scale, Shield, Globe, FileCheck } from "lucide-react";
+import Link from "next/link";
+import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Compliance | Medialane",
-  description: "Medialane compliance framework — KYC/AML, IP law, securities regulations, and data protection.",
+  description: "Medialane's approach to regulatory compliance — KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
   openGraph: {
     title: "Compliance | Medialane",
-    description: "Medialane compliance framework — KYC/AML, IP law, securities regulations, and data protection.",
+    description: "Medialane's approach to regulatory compliance — KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
     url: "https://docs.medialane.io/guidelines/compliance",
   },
   twitter: {
     title: "Compliance | Medialane",
-    description: "Medialane compliance framework — KYC/AML, IP law, securities regulations, and data protection.",
+    description: "Medialane's approach to regulatory compliance — KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
   },
 };
-
-const AREAS = [
-  {
-    icon: FileCheck,
-    title: "Intellectual Property",
-    description:
-      "Medialane operates in alignment with the Berne Convention, providing automatic copyright protection in 181 countries from the moment of creation. The platform's IP registration layer is designed to complement, not replace, existing legal frameworks. DMCA takedown procedures are followed for copyright infringement reports.",
-  },
-  {
-    icon: Scale,
-    title: "KYC / AML",
-    description:
-      "Medialane applies Know Your Customer (KYC) and Anti-Money Laundering (AML) procedures commensurate with risk and applicable regulations. High-value transactions and certain marketplace activities may require identity verification. We monitor for and report suspicious activity as required by law.",
-  },
-  {
-    icon: Globe,
-    title: "Sanctions Screening",
-    description:
-      "Medialane screens users and transactions against OFAC Specially Designated Nationals (SDN) lists and other applicable sanctions lists. Users in sanctioned jurisdictions or matching sanctions lists are blocked from accessing platform services.",
-  },
-  {
-    icon: Shield,
-    title: "Data Protection",
-    description:
-      "We apply GDPR principles to the processing of personal data for users in the European Economic Area and follow equivalent standards globally. Data minimization, purpose limitation, and user rights (access, deletion, portability) are core to our data handling practices.",
-  },
-];
 
 export default function CompliancePage() {
   return (
     <div className="space-y-10 max-w-3xl">
-
-      <div className="space-y-3">
-        <div className="flex items-center gap-2">
-          <Scale className="h-5 w-5 text-primary" />
-          <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Legal</span>
-        </div>
+      <div className="space-y-2">
         <h2 className="text-2xl font-bold">Compliance</h2>
-        <p className="text-muted-foreground leading-relaxed">
-          Medialane is committed to operating within applicable legal frameworks. Our compliance approach
-          covers intellectual property law, financial regulation, sanctions, and data protection.
+        <p className="text-muted-foreground text-lg leading-relaxed">
+          Medialane operates at the intersection of blockchain technology, intellectual
+          property law, and global financial regulation. These guidelines outline our
+          approach to compliance and what it means for users of the platform.
         </p>
-        <p className="text-xs text-muted-foreground">Last updated: January 2025</p>
+        <p className="text-xs text-muted-foreground">Last updated: January 2026</p>
       </div>
 
-      <div className="space-y-4">
-        {AREAS.map(({ icon: Icon, title, description }) => (
-          <div key={title} className="bento-cell p-6 space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                <Icon className="h-4 w-4 text-primary" />
+      <div className="space-y-8">
+        <Section title="Overview">
+          <p>
+            Medialane is built on the{" "}
+            <strong className="text-foreground">Mediolano protocol</strong> — a
+            permissionless, open-source IP protection and licensing infrastructure.
+            The decentralized architecture is designed to comply with applicable laws
+            while preserving user privacy and sovereignty.
+          </p>
+        </Section>
+
+        <Section title="Intellectual Property Law">
+          <p>
+            Medialane upholds international IP standards. The Mediolano protocol is
+            specifically designed to align with:
+          </p>
+          <div className="space-y-2">
+            {[
+              {
+                title: "Berne Convention (1886)",
+                desc: "Administered by WIPO. Ensures automatic copyright protection across 181 signatory countries from the moment a work is fixed — no registration required.",
+              },
+              {
+                title: "WIPO Copyright Treaty",
+                desc: "Extends Berne Convention protections to the digital environment, covering digital works and online distribution rights.",
+              },
+              {
+                title: "DMCA (Digital Millennium Copyright Act)",
+                desc: "Medialane implements DMCA takedown procedures for its platform interface. Report infringing content to dmca@medialane.io.",
+              },
+            ].map(({ title, desc }) => (
+              <div key={title} className="bento-cell px-4 py-3 space-y-1">
+                <p className="text-sm font-semibold text-foreground">{title}</p>
+                <p className="text-xs text-muted-foreground">{desc}</p>
               </div>
-              <h3 className="font-semibold">{title}</h3>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+            ))}
           </div>
-        ))}
-      </div>
+        </Section>
 
-      <div className="space-y-3">
-        <h3 className="text-lg font-semibold">Securities Considerations</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          NFTs on Medialane represent creative intellectual property, not investment contracts. We do not
-          offer, promote, or facilitate the purchase or sale of securities. The MDLN token is a governance
-          token used for DAO participation. Users are responsible for understanding the regulatory treatment
-          of digital assets in their own jurisdiction.
-        </p>
-      </div>
+        <Section title="KYC / AML Policy">
+          <p>As a non-custodial platform:</p>
+          <ul className="list-disc list-inside space-y-1.5 text-sm">
+            <li>Medialane <strong className="text-foreground">does not hold user funds</strong> — assets remain in user-controlled wallets at all times.</li>
+            <li>We do not perform Know Your Customer (KYC) checks on general users.</li>
+            <li>We implement wallet screening to block addresses associated with known illicit activity.</li>
+          </ul>
+          <p>
+            This non-custodial model means Medialane is not a money services business (MSB)
+            under most jurisdictions. Users are responsible for their own compliance with
+            local financial regulations.
+          </p>
+        </Section>
 
-      <div className="bento-cell p-5 text-sm text-muted-foreground">
-        For compliance inquiries, regulatory correspondence, or DMCA notices, contact{" "}
-        <a href="mailto:compliance@medialane.io" className="text-primary hover:underline">compliance@medialane.io</a>.
-      </div>
+        <Section title="Securities Regulations">
+          <p>
+            IP tokens generated on Medialane and the Mediolano protocol are{" "}
+            <strong className="text-foreground">utility tokens</strong> representing
+            ownership or licensing rights over a specific creative work — not investment
+            contracts or financial instruments. The MDLN token is a{" "}
+            <strong className="text-foreground">governance token</strong> used for DAO
+            participation, not an investment product.
+          </p>
+          <p>
+            Users who wish to fractionalize IP tokens or sell them in ways that could
+            constitute a securities offering should consult qualified legal counsel to
+            ensure compliance with applicable securities laws in their jurisdiction.
+          </p>
+        </Section>
 
+        <Section title="Taxation">
+          <p>
+            Users are responsible for determining and paying any applicable taxes on
+            earnings derived from IP licensing, sales, royalties, or other platform
+            activity. Medialane does not withhold taxes and does not provide tax advice.
+          </p>
+          <p>
+            Tax treatment of NFT sales and crypto-based royalties varies significantly
+            by jurisdiction. Consult a qualified tax professional in your country before
+            engaging in significant trading or licensing activity.
+          </p>
+        </Section>
+
+        <Section title="Sanctions Compliance">
+          <p>
+            Medialane screens users and transactions against OFAC (Office of Foreign
+            Assets Control) Specially Designated Nationals (SDN) lists and equivalent
+            international restrictions. Access by individuals or entities in sanctioned
+            jurisdictions, or by sanctioned individuals, is prohibited.
+          </p>
+        </Section>
+
+        <Section title="Data Protection">
+          <p>
+            Medialane applies <strong className="text-foreground">GDPR</strong> principles
+            to personal data for users in the European Economic Area and follows equivalent
+            standards globally (including <strong className="text-foreground">CCPA</strong>) —
+            data minimization, purpose limitation, and user rights (access, deletion,
+            portability) are core to our data-handling practices.
+          </p>
+          <p>
+            On-chain data — transactions, wallet addresses, token metadata — is inherently
+            public and permanent on Starknet. Off-platform user data (email, authentication)
+            is handled by Clerk in accordance with their privacy policies. See our{" "}
+            <Link href="/guidelines/privacy" className="text-primary hover:underline">Privacy Policy</Link>{" "}
+            for full details.
+          </p>
+        </Section>
+
+        <Section title="DAO Liability">
+          <p>
+            Medialane DAO is the governance organization overseeing long-term platform
+            governance. The liability exposure of DAO contributors and token holders varies
+            by jurisdiction and depends on how regulators classify DAOs in each location.
+            Users should seek qualified legal advice in their jurisdiction before relying on
+            any assumptions about liability.
+          </p>
+          <p>
+            Decisions affecting the protocol and platform are made through transparent
+            community governance. The DAO does not provide legal services or legal opinions.
+          </p>
+        </Section>
+
+        <Section title="Contact">
+          <p>
+            Compliance inquiries and regulatory correspondence:{" "}
+            <a href="mailto:compliance@medialane.io" className="text-primary hover:underline">compliance@medialane.io</a>{" "}
+            or{" "}
+            <a href="mailto:dao@medialane.org" className="text-primary hover:underline">dao@medialane.org</a>.
+            <br />
+            DMCA / copyright notices:{" "}
+            <a href="mailto:dmca@medialane.io" className="text-primary hover:underline">dmca@medialane.io</a>.
+          </p>
+        </Section>
+      </div>
     </div>
   );
 }
