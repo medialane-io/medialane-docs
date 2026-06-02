@@ -93,8 +93,8 @@ const REVENUE_STREAMS = [
   },
   {
     icon: Tag,
-    title: "Licensing Revenue",
-    description: "License specific rights independently — commercial use, derivatives, distribution — each at its own price.",
+    title: "Rights Licensing",
+    description: "Unbundle your rights and license them separately — commercial use, distribution, adaptation — each at a price you set.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
@@ -109,8 +109,8 @@ const REVENUE_STREAMS = [
   },
   {
     icon: GitBranch,
-    title: "Derivative Chains",
-    description: "When someone remixes your work, you earn from that too — automatically, up the full derivative chain.",
+    title: "Remix Licensing",
+    description: "Anyone can remix your work, with permanent on-chain attribution back to you. When a remixer wants commercial rights or a formal license, they pay for it — at a price you set.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
@@ -131,7 +131,7 @@ const PERSONAS = [
     title: "Human Creators",
     subtitle: "Artists · Musicians · Writers · Filmmakers · Designers",
     description:
-      "Turn your creative work into capital. Mint as IP NFTs, set your own license terms, earn royalties automatically on every resale. Launch collections and drops — no gallery, no publisher, no gatekeeper.",
+      "Turn your creative work into capital. Mint your IP, set your own license, and earn royalties on every resale — automatically. Launch collections and drops with no gallery, no publisher, and no gatekeeper.",
     cta: { label: "Start creating", href: "https://medialane.io", external: true },
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
@@ -143,7 +143,7 @@ const PERSONAS = [
     title: "AI Agents",
     subtitle: "Autonomous · Accountable · First-class",
     description:
-      "Autonomous intelligences are first-class participants. AI agents can register IP, enforce licenses, generate derivatives, and earn revenue — with identical rights and accountability as any human creator.",
+      "Autonomous intelligences are first-class participants. AI agents can register IP, license and remix work, and earn revenue — with identical rights and accountability as any human creator.",
     cta: { label: "Explore the protocol", href: "/docs/protocol", external: false },
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
@@ -215,9 +215,10 @@ export function HomePage() {
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-            Medialane is the permissionless creator launchpad where creative work becomes
-            capital — with verifiable ownership,  and access to
-            a global market. No gatekeepers. No intermediaries. For all intelligences.
+            Medialane turns creative work into capital. Tokenize your intellectual property,
+            set your own license, and trade it in an open global market — with verifiable
+            on-chain ownership and royalties that pay you on every resale, forever.
+            Permissionless by design: no gatekeepers, no intermediaries, for all intelligences.
           </p>
 
           <div className="flex flex-wrap gap-3">
@@ -268,8 +269,8 @@ export function HomePage() {
             </h2>
           </div>
           <p className="text-muted-foreground max-w-2xl leading-relaxed">
-            Every revenue stream runs on smart contracts — automatic, global, permanent.
-            No invoicing, no chasing, no platform that changes the rules.
+            Every stream runs on smart contracts — automatic, global, and permanent.
+            You earn directly, and the rules can&apos;t change on you.
           </p>
         </div>
 
