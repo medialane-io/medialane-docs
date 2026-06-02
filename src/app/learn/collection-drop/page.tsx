@@ -99,20 +99,19 @@ export default function LearnCollectionDropPage() {
           </div>
         </Section>
 
-        <Section title="ERC-1155 Token Standard">
+        <Section title="ERC-721 Token Standard">
           <p>
-            Collection Drop NFTs use the <strong className="text-foreground">ERC-1155</strong> token
-            standard — unlike the ERC-721 standard used for individual IP assets, ERC-1155
-            supports multiple owners per token ID with quantities.
+            Collection Drop NFTs use the <strong className="text-foreground">ERC-721</strong> token
+            standard with sequential minting. Each mint issues a unique, sequentially-numbered
+            token to the minter — a drop of 500 produces 500 distinct one-of-one NFTs, each
+            with its own owner and token ID.
           </p>
           <p>
-            In practice, this means that in a drop of 500 copies, there is one token ID
-            but 500 holders — each owning a quantity of 1. The Medialane marketplace and
-            portfolio display the correct holder count and edition number automatically.
-            On the API, <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">token.balances</code>{" "}
-            returns all holders with their amounts, and{" "}
-            <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">collection.totalSupply</code>{" "}
-            reflects the sum of all quantities minted — not just the number of unique token IDs.
+            Maximum supply caps the number of tokens that can be minted; the per-wallet limit
+            caps how many a single wallet may claim. If you instead want a single work that
+            many collectors share, use{" "}
+            <Link href="/learn/ip-collection-1155" className="text-primary hover:underline">NFT Editions</Link>{" "}
+            — an ERC-1155 collection where holders own editions of the same token.
           </p>
         </Section>
 
