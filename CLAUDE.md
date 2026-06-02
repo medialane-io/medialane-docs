@@ -23,9 +23,11 @@ The `.next` directory gets rebuilt on each `bun run build`. If the browser shows
 ## Content Rules
 
 ### Positioning
-- Medialane is a **creator launchpad** and **creator capital markets** platform — NOT an "IP marketplace" or "NFT marketplace"
-- Focus: empowering creators, collectors, AI agents, and organizations to build new revenue streams
-- Values to emphasise: security, transparency, ownership, onchain transactions, permissionless access, censorship resistance
+- Canonical definition (from `medialane-core/docs/architecture/01-core-model`): Medialane is a **monetization hub for the creative economy** — it lets humans, organizations, and AI agents turn intellectual property into revenue streams with full sovereignty over their assets and identity. NOT an "IP marketplace" or "NFT marketplace."
+- Commercial layer = **two hubs**: **Launchpad** (structure capital from IP) + **Marketplace** (trade/auction/license/remix). Built on Mediolano's zero-fee, Berne-aligned tokenization.
+- **Never cap the offering.** Monetization is **open-ended via services** — the protocol grows by adding services (a registry entry), never a fixed menu. Do NOT write "six ways to earn", "four services", or any closed list as the headline framing.
+- Values to emphasise: permissionless, the contract is the only authority, censorship resistance, ownership/sovereignty, open & verifiable, for humans and AI agents alike.
+- Architecture is the source of truth: `medialane-core/docs/architecture/00`–`09`. Align page content to it.
 
 ### Mediolano Protocol
 - Mediolano is an **independent public goods protocol** — it is NOT a Medialane product and NOT built by Medialane
@@ -121,12 +123,16 @@ Groups (in `nav-commands.ts`): primary (Start / About / Apps), then **Learn**, *
 
 Per-section tab sub-nav still lives in each section's `layout.tsx` (`docs/layout.tsx`, `learn/layout.tsx`, etc.) — independent of the global command menu.
 
+### Policy/legal content lives under `/guidelines` (canonical)
+All policy/legal pages — community, user-guidelines, compliance, terms, privacy, campaign-terms — are canonical under **`/guidelines/*`**. The former `/docs/{compliance,community-guidelines,user-guidelines}` duplicates were merged into `/guidelines` and now 308-redirect there (`next.config.ts`). Do not re-create policy pages under `/docs`.
+
 ## Build Checks
 
 Always run `bun run build` after significant changes and verify:
-- Zero TypeScript/JSX errors
+- Zero TypeScript/JSX errors. **Strict type-checking is ON** — `typescript.ignoreBuildErrors` was removed (2026-06-01), so type errors now fail the build (no more silently-rotting dead components).
 - All routes prerender as `○` (static)
 - No missing imports (especially unused icon imports cause lint warnings)
+- `@medialane/sdk` is pinned to an exact version (currently `0.27.0`); only `OPEN_LICENSES` is imported at runtime — the rest are code samples.
 
 ## GitHub
 

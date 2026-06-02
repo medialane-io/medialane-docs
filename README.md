@@ -54,7 +54,7 @@ bun run build  # production build — kills dev server, restart after
 /                           Home — knowledge hub landing
 /about                      About Medialane, mission, vision, tech stack
 /apps                       App suite: medialane.io, dApp, Portal, DAO
-/learn                      Learn center (15 sub-pages)
+/learn                      Learn center (17 sub-pages)
   /learn/integrity-web      The Integrity Web — 10 axioms applied to Medialane
   /learn/nft
   /learn/blockchain
@@ -70,19 +70,25 @@ bun run build  # production build — kills dev server, restart after
   /learn/web3
   /learn/protect-your-ip
   /learn/programmable-licensing
-/docs                       Technical documentation (7 sub-pages)
+/docs                       Technical documentation
+  /docs/architecture
   /docs/protocol
   /docs/sdk
-  /docs/api-docs
+  /docs/api
   /docs/contracts
   /docs/developers
+  /docs/agents
   /docs/security
-/guidelines                 Policies and standards (5 sub-pages)
+  /docs/fees
+  /docs/governance
+  /docs/changelog
+/guidelines                 Policies & standards (canonical home for all policy/legal)
   /guidelines/community
   /guidelines/user-guidelines
+  /guidelines/compliance
   /guidelines/terms
   /guidelines/privacy
-  /guidelines/compliance
+  /guidelines/campaign-terms
 /support                    FAQ + contact
 /dao                        DAO governance (3 sub-pages)
   /dao/constitution
@@ -93,7 +99,9 @@ bun run build  # production build — kills dev server, restart after
 /search                     Search (static)
 ```
 
-Redirects: `/terms` → `/guidelines/terms`, `/privacy` → `/guidelines/privacy` (308 permanent).
+Redirects (permanent): `/terms`, `/privacy`, `/campaign-terms` → `/guidelines/*`; and the former
+`/docs/compliance`, `/docs/community-guidelines`, `/docs/user-guidelines` → their canonical
+`/guidelines/*` homes (policy content lives only under `/guidelines`).
 
 All routes prerender as fully static (`○`).
 
@@ -111,13 +119,13 @@ next.config.ts                        Redirects
 
 ## Content Philosophy
 
-- **Positioning:** Creator capital markets — not "IP marketplace" or "NFT marketplace"
+- **Positioning:** A **monetization hub for the creative economy** — humans, organizations, and AI agents turn IP into revenue streams with full sovereignty. Commercial layer = **two hubs** (Launchpad + Marketplace) over an open, permissionless protocol. Not "IP/NFT marketplace." Never cap the offering ("six ways to earn", "four services") — monetization is **open-ended via services**.
 - **Audience:** Creators, collectors, AI agents, organizations, developers
 - **Tone:** Bold, direct, inspiring — not corporate or technical-first
 - **Mediolano:** An independent public goods protocol Medialane builds on — not a Medialane product
 - **DAO source of truth:** `medialane.org` / `medialane-dao` owns live MDLN, treasury, Snapshot, and constitution facts
 - **MDLN:** Fixed 21,000,000 supply, 100% DAO-controlled, live on Ethereum and bridged to Starknet
-- **Revenue model:** 1% marketplace fee → DAO treasury → MDLN holder vote; Creator's Airdrop is an option, not a guaranteed formula
+- **Revenue model:** zero-fee contracts; the 1% platform-layer fee → **DAO treasury**, MDLN holders vote on allocation. (Year-one campaign directs revenue to the Creators Fund — explained only on `/dao/airdrop`, not spread across pages.)
 - **Tech stack framing:** Cairo smart contracts (immutable) + ZK proofs are the foundation; Starknet, ChipiPay, IPFS, Stark Zap SDK are tools
 - **Integrity Web:** 10 axioms from [integrityweb.xyz/axioms](https://www.integrityweb.xyz/axioms) — architectural constraints, not slogans
 
