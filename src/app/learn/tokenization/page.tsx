@@ -36,7 +36,7 @@ export default function TokenizationPage() {
           {[
             { label: "Ownership", desc: "The right to claim authorship and control over an IP asset — represented as an NFT in your wallet." },
             { label: "Licenses", desc: "Specific usage rights (commercial, derivative, distribution) encoded in a programmable license attached to the token." },
-            { label: "Royalties", desc: "Creators can define royalty terms in the asset metadata — the percentage and recipient for secondary sales. Whether a given marketplace honors those terms depends on the platform facilitating the sale." },
+            { label: "Royalties", desc: "Creators define royalty terms (percentage and recipient) for secondary sales. Medialane's marketplace pays them on-chain at settlement via EIP-2981; third-party marketplaces honor them at their discretion." },
             { label: "Credentials", desc: "Participation records (POP Protocol) — proof you attended an event, joined a community, or reached a milestone." },
           ].map(({ label, desc }) => (
             <div key={label} className="flex items-start gap-3">
@@ -52,10 +52,10 @@ export default function TokenizationPage() {
         <h3 className="text-lg font-semibold">Why Tokenization Matters for Creators</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
-            { icon: DollarSign, title: "New Revenue Streams", desc: "Sell primary rights, license specific uses independently, and define royalty terms that compatible marketplaces can honor on secondary sales." },
+            { icon: DollarSign, title: "New Revenue Streams", desc: "Sell primary rights, license specific uses independently, and earn royalties on secondary sales — an open-ended set of ways to monetize one work." },
             { icon: Users, title: "Global Liquidity", desc: "A tokenized IP asset can be listed on a marketplace accessible by anyone, anywhere — no gallery representation or publisher deal required." },
-            { icon: Coins, title: "Fractional Ownership", desc: "Tokenization enables splitting ownership of a single asset among many holders — opening IP investment to communities." },
-            { icon: Layers, title: "Composability", desc: "Tokenized IP can plug into other protocols — DeFi vaults, on-chain royalty splits, DAO treasuries — in ways impossible with traditional IP." },
+            { icon: Coins, title: "Shared Editions", desc: "Multi-edition (ERC-1155) collections let many collectors own editions of the same work — broadening participation, no gallery or publisher required." },
+            { icon: Layers, title: "Interoperable by Standards", desc: "Tokenized IP follows open NFT standards (ERC-721 / ERC-1155), so it travels across the wider ecosystem and is never locked into one platform." },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bento-cell p-5 space-y-3">
               <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
