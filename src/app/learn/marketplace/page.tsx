@@ -136,10 +136,18 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
 
         <Section title="Fees Are a Platform Layer">
           <p>
-            The marketplace contracts enforce one rule: a 1% fee on completed sales,
-            routed to the Medialane DAO treasury. This is a platform-layer choice
-            governed by the DAO — not a protocol invariant. ERC-2981 royalty splits
-            are also enforced on-chain for collections that declare them.
+            The marketplace venue contracts are <strong className="text-foreground">zero-fee</strong> —
+            they take no cut. The 1% fee on completed sales is applied at the{" "}
+            <strong className="text-foreground">platform layer</strong> (at settlement), never inside
+            the contract, and is routed to the Medialane DAO treasury. Because the fee lives at the
+            platform layer, the DAO can evolve it without a contract migration, and anyone running
+            their own client is never forced to pay it.
+          </p>
+          <p>
+            Creator royalties are different: they follow the{" "}
+            <strong className="text-foreground">EIP-2981</strong> standard and are paid{" "}
+            <strong className="text-foreground">on-chain by the venue at settlement</strong>, capped
+            by a limit the seller agrees to when signing the order.
           </p>
           <p className="text-sm">
             Listing and offer creation are gas-sponsored for standard flows. See{" "}
