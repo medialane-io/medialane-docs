@@ -116,7 +116,7 @@ const DESIGN_CHOICES = [
   {
     icon: Users,
     title: "Community governance",
-    desc: "The MDLN token gives holders voting rights on Snapshot. A 1% marketplace fee flows to the DAO treasury — holders vote annually on how it is allocated.",
+    desc: "The MDLN token gives holders voting rights on Snapshot. A 1% platform fee flows to the creators fund — the DAO treasury — and each year the DAO proposes and votes on how that revenue is handled.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
