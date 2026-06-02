@@ -138,15 +138,64 @@ const SECTIONS = [
   },
 ];
 
-const QUICK_LINKS = [
-  { href: "/learn/programmable-ip",       label: "Programmable IP" },
-  { href: "/learn/programmable-licensing", label: "Licensing" },
-  { href: "/learn/remix",                 label: "Remix" },
-  { href: "/docs/protocol",               label: "Protocol" },
-  { href: "/docs/sdk",                    label: "SDK" },
-  { href: "/docs/contracts",              label: "Contracts" },
-  { href: "/docs/changelog",              label: "Changelog" },
-  { href: "/support",                     label: "Support" },
+// ── Browse-by-topic directory (every learn/docs page, grouped by intent) ──
+const TOPIC_GROUPS = [
+  {
+    heading: "Learn",
+    color: "text-brand-orange",
+    links: [
+      { href: "/learn/programmable-ip", label: "Programmable IP" },
+      { href: "/learn/programmable-licensing", label: "Licensing" },
+      { href: "/learn/remix", label: "Remix" },
+      { href: "/learn/tokenization", label: "Tokenization" },
+      { href: "/learn/nft", label: "NFTs" },
+      { href: "/learn/marketplace", label: "Marketplace" },
+      { href: "/learn/services", label: "Services" },
+      { href: "/learn/identity", label: "Identity" },
+      { href: "/learn/protect-your-ip", label: "Protect Your IP" },
+      { href: "/learn/web3", label: "Web3 & Blockchain" },
+      { href: "/learn/zero-knowledge", label: "Zero-Knowledge" },
+    ],
+  },
+  {
+    heading: "Launchpad & Services",
+    color: "text-brand-purple",
+    links: [
+      { href: "/learn/creator-launchpad", label: "Creator Launchpad" },
+      { href: "/learn/collection-drop", label: "Collection Drops" },
+      { href: "/learn/ip-collection-1155", label: "NFT Editions" },
+      { href: "/learn/pop-protocol", label: "POP Protocol" },
+      { href: "/learn/integrity-web", label: "Integrity Web" },
+    ],
+  },
+  {
+    heading: "Build",
+    color: "text-brand-rose",
+    links: [
+      { href: "/docs/protocol", label: "Protocol" },
+      { href: "/docs/sdk", label: "SDK" },
+      { href: "/docs/api", label: "API Reference" },
+      { href: "/docs/contracts", label: "Smart Contracts" },
+      { href: "/docs/architecture", label: "Architecture" },
+      { href: "/docs/agents", label: "AI Agents" },
+      { href: "/docs/developers", label: "Developers" },
+      { href: "/docs/fees", label: "Fees" },
+      { href: "/docs/security", label: "Security" },
+      { href: "/docs/changelog", label: "Changelog" },
+    ],
+  },
+  {
+    heading: "Govern & Policies",
+    color: "text-brand-blue",
+    links: [
+      { href: "/dao", label: "DAO" },
+      { href: "/docs/governance", label: "Governance" },
+      { href: "/docs/compliance", label: "Compliance" },
+      { href: "/docs/community-guidelines", label: "Community" },
+      { href: "/docs/user-guidelines", label: "User Guidelines" },
+      { href: "/guidelines", label: "All Guidelines" },
+    ],
+  },
 ];
 
 export function HomePage() {
@@ -286,21 +335,26 @@ export function HomePage() {
             </Link>
           ))}
         </div>
-      </div>
 
-      {/* ── Quick links ── */}
-      <div className="space-y-4">
-        <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">Quick links</p>
-        <div className="flex flex-wrap gap-2">
-          {QUICK_LINKS.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-sm px-3.5 py-1.5 rounded-full border border-border/60 bg-card hover:border-primary/30 hover:text-primary transition-all"
-            >
-              {label}
-            </Link>
-          ))}
+        {/* Browse by topic — full directory */}
+        <div className="space-y-4 pt-4">
+          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">Browse by topic</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-7">
+            {TOPIC_GROUPS.map(({ heading, color, links }) => (
+              <div key={heading} className="space-y-2.5">
+                <p className={`text-xs font-bold uppercase tracking-wider ${color}`}>{heading}</p>
+                <ul className="space-y-1.5">
+                  {links.map(({ href, label }) => (
+                    <li key={href}>
+                      <Link href={href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
