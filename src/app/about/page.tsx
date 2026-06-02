@@ -9,22 +9,22 @@ import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
   title: "About | Medialane",
-  description: "Medialane is a creator capital markets platform — open, permissionless, and built on immutable smart contracts. Live on Starknet.",
+  description: "Medialane is a monetization hub for the creative economy — turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
   openGraph: {
     title: "About | Medialane",
-    description: "Medialane is a creator capital markets platform — open, permissionless, and built on immutable smart contracts. Live on Starknet.",
+    description: "Medialane is a monetization hub for the creative economy — turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
     url: "https://docs.medialane.io/about",
   },
   twitter: {
     title: "About | Medialane",
-    description: "Medialane is a creator capital markets platform — open, permissionless, and built on immutable smart contracts. Live on Starknet.",
+    description: "Medialane is a monetization hub for the creative economy — turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
   },
 };
 
-const WHAT_WE_BUILD = [
+const HUBS = [
   {
-    label: "Creator Launchpad",
-    desc: "Deploy IP collections, mint assets, and bring creative work onchain. No coding required.",
+    label: "Launchpad",
+    desc: "Structure capital from your IP — collection drops, NFT editions, memberships, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
     href: "/learn/creator-launchpad",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
@@ -32,28 +32,21 @@ const WHAT_WE_BUILD = [
   },
   {
     label: "Marketplace",
-    desc: "List, buy, make offers, and trade IP assets. Atomic settlement — no escrow, no custody.",
+    desc: "Trade every tokenized asset — buy, sell, auction, license, and remix. Atomic settlement: payment and asset move in one transaction, or both revert. No escrow, no custody.",
     href: "/learn/marketplace",
-    color: "text-brand-blue",
-    bg: "bg-brand-blue/10",
-    border: "border-brand-blue/20",
-  },
-  {
-    label: "Collection Drops",
-    desc: "Timed drops with supply caps, allowlists, and gasless minting. Run on your schedule.",
-    href: "/learn/collection-drop",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
   },
-  {
-    label: "POP Protocol",
-    desc: "Issue proof-of-participation credentials. Soulbound, on-chain, permanent.",
-    href: "/learn/pop-protocol",
-    color: "text-brand-rose",
-    bg: "bg-brand-rose/10",
-    border: "border-brand-rose/20",
-  },
+];
+
+// The Launchpad's products are open-ended services, not a fixed set (architecture 05).
+const SERVICE_LINKS = [
+  { href: "/learn/services", label: "Services model" },
+  { href: "/learn/creator-launchpad", label: "Creator Launchpad" },
+  { href: "/learn/collection-drop", label: "Collection Drops" },
+  { href: "/learn/ip-collection-1155", label: "NFT Editions" },
+  { href: "/learn/pop-protocol", label: "POP Protocol" },
 ];
 
 const LAYERS = [
@@ -95,7 +88,7 @@ const DESIGN_CHOICES = [
   {
     icon: Lock,
     title: "No admin keys",
-    desc: "The v3 contracts have no owner role, no upgrade path, and no emergency pause. Once deployed, no one can change the rules — including us.",
+    desc: "The contracts have no owner role, no upgrade path, and no emergency pause. Once deployed, no one can change the rules — including us.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
@@ -152,15 +145,16 @@ export default function AboutPage() {
         <div className="aurora-purple w-[500px] h-[500px] -top-32 -right-20 animate-blob" style={{ position: "absolute" }} />
         <div className="aurora-blue w-[300px] h-[300px] bottom-0 left-0 animate-blob-slow" style={{ position: "absolute" }} />
         <div className="relative space-y-5">
-          <span className="pill-badge">Creator Capital Markets</span>
+          <span className="pill-badge">About Medialane</span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
             <span className="gradient-text">Built for creators.</span>
             <br />Built to last.
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-            Medialane is an open platform for minting, licensing, and trading intellectual
-            property onchain. Permissionless participation. Immutable contracts. No admin keys.
-            Built on Starknet — live today.
+            Medialane is a monetization hub for the creative economy. Humans, organizations,
+            and AI agents turn intellectual property into revenue streams — with full sovereignty
+            over their assets and identity. Open, permissionless, immutable. Built on Mediolano&apos;s
+            zero-fee tokenization and live on Starknet.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <a
@@ -185,16 +179,37 @@ export default function AboutPage() {
       <div className="space-y-6">
         <div className="space-y-1">
           <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">What We Build</p>
-          <h2 className="text-2xl font-black">Four services. One platform.</h2>
+          <h2 className="text-2xl font-black">Two hubs, one protocol.</h2>
+          <p className="text-muted-foreground leading-relaxed max-w-2xl">
+            Medialane builds a commercial layer on Mediolano&apos;s zero-fee, Berne-aligned
+            tokenization — two integrated hubs, expressed through one open protocol.
+          </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {WHAT_WE_BUILD.map(({ label, desc, href, color, bg, border }) => (
+          {HUBS.map(({ label, desc, href, color, border }) => (
             <Link key={label} href={href} className={`bento-cell border ${border} p-6 space-y-2 hover:bg-muted/20 transition-colors group`}>
               <p className={`font-black text-base ${color}`}>{label}</p>
               <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               <p className={`text-xs font-semibold ${color} group-hover:underline`}>Learn more →</p>
             </Link>
           ))}
+        </div>
+        <div className="space-y-2">
+          <p className="text-sm text-muted-foreground">
+            The protocol grows by adding <span className="text-foreground font-medium">services</span> —
+            an open, extensible set of monetization primitives, never a fixed menu. A few of them:
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {SERVICE_LINKS.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-sm px-3.5 py-1.5 rounded-full border border-border/60 bg-card hover:border-primary/30 hover:text-primary transition-all"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 
