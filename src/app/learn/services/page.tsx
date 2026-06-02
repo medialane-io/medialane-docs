@@ -30,12 +30,22 @@ const SERVICES = [
   },
   {
     id: "mip-erc1155",
-    label: "Multi-Edition Collection (ERC-1155)",
+    label: "NFT Editions (ERC-1155)",
     icon: Music,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
     desc: "Multiple collectors can own the same piece. Ideal for music tracks, art prints, and any work where shared ownership makes sense.",
+    caps: ["mint", "list", "buy", "make_offer", "transfer", "remix", "license"],
+  },
+  {
+    id: "ip-erc721",
+    label: "Programmable IP (genesis)",
+    icon: Package,
+    color: "text-primary",
+    bg: "bg-primary/10",
+    border: "border-primary/20",
+    desc: "Programmable IP on a single shared genesis contract — many creators mint pieces into one collection. Distinct from per-creator IP Collections, which deploy a contract per creator.",
     caps: ["mint", "list", "buy", "make_offer", "transfer", "remix", "license"],
   },
   {
@@ -81,18 +91,19 @@ const SERVICES = [
 ];
 
 const ALL_CAPS = [
-  { cap: "list", desc: "Create a fixed-price listing" },
+  { cap: "list", desc: "List an asset for sale" },
   { cap: "buy", desc: "Purchase a listed asset" },
-  { cap: "make_offer", desc: "Submit a bid below asking price" },
+  { cap: "make_offer", desc: "Post a bid on an asset" },
   { cap: "cancel", desc: "Revoke a listing or offer" },
-  { cap: "mint", desc: "Create a new token" },
-  { cap: "transfer", desc: "Move a token to another wallet" },
-  { cap: "remix", desc: "Mint a licensed derivative" },
-  { cap: "license", desc: "Apply or enforce license terms" },
-  { cap: "claim", desc: "Collect an airdrop or credential" },
-  { cap: "airdrop", desc: "Distribute tokens to a list of wallets" },
-  { cap: "burn", desc: "Destroy a token permanently" },
-  { cap: "subscribe", desc: "Activate a time-limited access grant" },
+  { cap: "transfer", desc: "Move an asset to another wallet" },
+  { cap: "burn", desc: "Destroy an asset permanently" },
+  { cap: "mint", desc: "Issue a new asset" },
+  { cap: "claim", desc: "Claim under service rules (POP attendance, drop window)" },
+  { cap: "airdrop", desc: "Batch-issue to many wallets" },
+  { cap: "remix", desc: "Parent a derivative work (permissionless)" },
+  { cap: "license", desc: "Exercise license terms through the service" },
+  { cap: "subscribe", desc: "Recurring access (memberships, IP Club)" },
+  { cap: "redeem", desc: "Redeem a redeemable asset (e.g. tickets)" },
 ];
 
 export default function LearnServicesPage() {
@@ -103,8 +114,10 @@ export default function LearnServicesPage() {
         <h2 className="text-2xl font-bold">Services</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Every action on Medialane — minting, trading, dropping, issuing credentials — is
-          powered by a registered service. Services are how the platform knows what creators
-          can do and which contracts handle it.
+          powered by a service: a registered module that produces assets, venues, or both.
+          Services are how the protocol grows. The set of ways to create and monetize is
+          open-ended and expands by adding services — never by rewriting code, and never a
+          fixed menu.
         </p>
       </div>
 
@@ -132,7 +145,13 @@ export default function LearnServicesPage() {
           </div>
         </Section>
 
-        <Section title="Canonical Services">
+        <Section title="Services Available Today">
+          <p>
+            These are the services live on mainnet now. The catalog is not fixed — new
+            monetization primitives (memberships and IP Clubs, IP tickets, commissions,
+            creator coins, auctions, and more) are added as new services over time, each a
+            registry entry rather than a protocol change.
+          </p>
           <div className="space-y-3">
             {SERVICES.map(({ id, label, icon: Icon, color, bg, border, desc, caps }) => (
               <div key={id} className={`bento-cell border ${border} p-5 space-y-3`}>
