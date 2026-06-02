@@ -95,21 +95,21 @@ export MEDIALANE_API_KEY=ml_live_your_key_here`}</Code>
         <Section title="3. Install the SDK">
           <Code>{`bun add @medialane/sdk starknet
 # or: npm install @medialane/sdk starknet`}</Code>
-          <Code>{`import { MedialaneClient } from "@medialane/sdk";
+          <Code>{`import { MedialaneClient, getListableTokens } from "@medialane/sdk";
 
 const client = new MedialaneClient({
   backendUrl: "https://api.medialane.io",
   apiKey: process.env.MEDIALANE_API_KEY,
 });
 
-// Fetch newest collections
-const { data: collections } = await client.api.getCollections(1, 20, { sort: "createdAt" });
+// Fetch newest collections (sort: "recent" | "supply" | "floor" | "volume" | "name")
+const { data: collections } = await client.api.getCollections(1, 20, undefined, "recent");
 
 // Fetch tokens owned by a wallet
-const tokens = await client.api.getTokensByOwner("0x<wallet>");
+const { data: tokens } = await client.api.getTokensByOwner("0x<wallet>");
 
-// Fetch supported currencies for listings
-const currencies = await client.api.getListableTokens();
+// Supported listing currencies — a local, synchronous helper (not an API call)
+const currencies = getListableTokens();
 // → [{ symbol: "USDC", address: "0x...", decimals: 6 }, ...]`}</Code>
         </Section>
 
@@ -162,16 +162,16 @@ app.post("/webhooks/medialane", async (req) => {
 
         <Section title="5. Common Integration Patterns">
           <p className="font-medium text-foreground text-sm">Display a collection with floor price and token grid</p>
-          <Code>{`const collection = await client.api.getCollection("0x<contract>");
-const tokens     = await client.api.getCollectionTokens("0x<contract>");
-const listings   = await client.api.getTokenListings("0x<contract>", tokens[0].tokenId);
+          <Code>{`const { data: collection } = await client.api.getCollection("0x<contract>");
+const { data: tokens }     = await client.api.getCollectionTokens("0x<contract>");
+const { data: listings }   = await client.api.getActiveOrdersForToken("0x<contract>", tokens[0].tokenId);
 
 console.log(collection.name, collection.floorPrice);
 console.log(tokens.length, "tokens");
 console.log(listings[0]?.price, "cheapest listing");`}</Code>
 
           <p className="font-medium text-foreground text-sm mt-4">Check if a wallet holds a specific token (token gating)</p>
-          <Code>{`const token = await client.api.getToken("0x<contract>", "1");
+          <Code>{`const { data: token } = await client.api.getToken("0x<contract>", "1");
 
 // ERC-721 — single owner
 const isOwner = token.balances?.[0]?.owner === walletAddress;
@@ -182,7 +182,7 @@ const amount  = holding ? parseInt(holding.amount, 10) : 0;
 const hasAccess = amount > 0;`}</Code>
 
           <p className="font-medium text-foreground text-sm mt-4">Fetch all orders for a portfolio page</p>
-          <Code>{`const orders = await client.api.getUserOrders("0x<wallet>");
+          <Code>{`const { data: orders } = await client.api.getOrdersByUser("0x<wallet>");
 const listings = orders.filter(o => o.offerer === walletAddress && o.status === "ACTIVE");
 const offers   = orders.filter(o => o.offerer !== walletAddress && o.status === "ACTIVE");`}</Code>
 
@@ -190,9 +190,9 @@ const offers   = orders.filter(o => o.offerer !== walletAddress && o.status === 
           <Code>{`// Check slug availability before claiming
 const available = await client.api.checkCollectionSlugAvailability("my-brand");
 
-// Resolve slug to collection
+// Resolve slug to collection (returns ApiCollection | null — not wrapped)
 const collection = await client.api.getCollectionBySlug("my-brand");
-console.log(collection.contract, collection.name);`}</Code>
+console.log(collection?.contractAddress, collection?.name);`}</Code>
         </Section>
 
       </div>
