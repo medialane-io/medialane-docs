@@ -141,7 +141,33 @@ export default function LearnProgrammableLicensingPage() {
           <p className="text-sm">
             See{" "}
             <Link href="/learn/remix" className="text-primary hover:underline">Remix &amp; Derivatives</Link>
-            {" "}for how license terms propagate through derivative chains.
+            {" "}for how remixing and on-chain attribution work.
+          </p>
+        </Section>
+
+        <Section title="Requesting a License">
+          <p>
+            Licenses on Medialane are declarations, not gates — anyone can read them, and
+            remixing is permissionless. When you want the creator&apos;s explicit agreement —
+            to pay or credit them, secure a formal commercial license, or use a work the
+            creator marked <span className="font-mono text-xs">no-derivatives</span> — you
+            can <strong className="text-foreground">request a license</strong> directly.
+          </p>
+          <div className="space-y-2">
+            {[
+              { name: "Propose terms + a fee", desc: "From an asset page, choose License. You set the proposed license (commercial use, derivatives, royalty) and a fee you're offering the creator, plus an optional message." },
+              { name: "The creator decides", desc: "The request goes to the creator. They can accept or decline — nothing is minted or charged unless they accept. It's a voluntary agreement, never enforced by the platform." },
+              { name: "Licensed derivative is delivered", desc: "On acceptance, the licensed derivative is minted and listed for you to complete. Track requests under Portfolio → Licensing." },
+            ].map(({ name, desc }) => (
+              <div key={name} className="bento-cell px-4 py-3 space-y-1">
+                <p className="text-sm font-semibold text-foreground">{name}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm">
+            Licensing is a distinct, optional service — separate from the free, permissionless{" "}
+            <Link href="/learn/remix" className="text-primary hover:underline">Remix</Link>.
           </p>
         </Section>
 
