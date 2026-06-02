@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Code2, GitBranch, Shield, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -119,9 +120,19 @@ export default function ProgrammableIPPage() {
         <p className="text-sm text-muted-foreground leading-relaxed">
           The IP record infrastructure on Medialane is built on the{" "}
           <strong className="text-foreground">Mediolano protocol</strong> — an open-source,
-          permissionless IP anchoring layer on Starknet. Mediolano is a separate, independent
-          public goods project. Its records exist on-chain regardless of whether Medialane
-          continues to operate. Any developer can build on it without permission or payment.
+          permissionless, <strong className="text-foreground">zero-fee</strong> IP tokenization
+          layer on Starknet, built for compliance with the{" "}
+          <strong className="text-foreground">Berne Convention</strong> so authorship is
+          recognized across its 181 member countries. Mediolano is a separate, independent
+          public good that predates Medialane; Medialane builds its commercial layer on top.
+          Its records exist on-chain regardless of whether Medialane continues to operate, and
+          any developer can build on it without permission or payment.
+        </p>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Learn more about{" "}
+          <Link href="/learn/protect-your-ip" className="text-primary hover:underline">IP protection &amp; the Berne Convention</Link>{" "}
+          and{" "}
+          <Link href="/learn/programmable-licensing" className="text-primary hover:underline">programmable licensing</Link>.
         </p>
       </div>
 
