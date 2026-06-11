@@ -14,6 +14,7 @@ const LEARN_NAV = [
   { label: "Programmable IP",        href: "/learn/programmable-ip" },
   { label: "Tokenization",           href: "/learn/tokenization" },
   { label: "Creator Launchpad",      href: "/learn/creator-launchpad" },
+  { label: "Creator Coins",          href: "/learn/creator-coin" },
   { label: "Marketplace",            href: "/learn/marketplace" },
   { label: "POP Protocol",           href: "/learn/pop-protocol" },
   { label: "Collection Drop",        href: "/learn/collection-drop" },
