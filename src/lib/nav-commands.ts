@@ -39,6 +39,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "learn-programmable-ip",         label: "Programmable IP",         icon: Code2,      href: "/learn/programmable-ip",          keywords: ["ip", "smart", "rights"] },
       { id: "learn-tokenization",            label: "Tokenization",            icon: Coins,      href: "/learn/tokenization",             keywords: ["mint", "token", "rwa"] },
       { id: "learn-creator-launchpad",       label: "Creator Launchpad",       icon: Rocket,     href: "/learn/creator-launchpad",        keywords: ["launchpad", "drop", "mint", "create"] },
+      { id: "learn-creator-coin",            label: "Creator Coins",           icon: Coins,      href: "/learn/creator-coin",             keywords: ["coin", "token", "memecoin", "launch", "liquidity"] },
       { id: "learn-marketplace",             label: "Marketplace",             icon: Store,      href: "/learn/marketplace",              keywords: ["trade", "buy", "sell", "orders"] },
       { id: "learn-pop-protocol",            label: "POP Protocol",            icon: Award,      href: "/learn/pop-protocol",             keywords: ["pop", "proof of participation", "event"] },
       { id: "learn-collection-drop",         label: "Collection Drop",         icon: Package,    href: "/learn/collection-drop",          keywords: ["drop", "timed", "fixed supply"] },

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Package, Image, Music, Award, Clock, Store } from "lucide-react";
+import { Package, Image, Music, Award, Clock, Store, TrendingUp, Coins } from "lucide-react";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
@@ -67,6 +67,26 @@ const SERVICES = [
     border: "border-brand-rose/20",
     desc: "Timed drops with supply caps and optional allowlists. Collectors mint directly from the drop contract during the mint window.",
     caps: ["mint", "claim"],
+  },
+  {
+    id: "creator-coin",
+    label: "Creator Coin",
+    icon: TrendingUp,
+    color: "text-brand-rose",
+    bg: "bg-brand-rose/10",
+    border: "border-brand-rose/20",
+    desc: "Your own fixed-supply standard ERC-20 with permanently-locked Ekubo liquidity (audited unruggable.meme fork). Launch price fixed at 0.01 quote/coin; up to 10% creator allocation, funded by the creator. Ownership renounced at launch — the contract is the only authority.",
+    caps: ["launch", "swap", "transfer"],
+  },
+  {
+    id: "external-erc20",
+    label: "External ERC-20 (claimed coins)",
+    icon: Coins,
+    color: "text-brand-orange",
+    bg: "bg-brand-orange/10",
+    border: "border-brand-orange/20",
+    desc: "Coins launched outside Medialane (unruggable.meme or partner launches), brought in by owner claim with team review — never bulk-indexed. Listed on the Coins page with live Ekubo prices.",
+    caps: ["swap", "transfer"],
   },
   {
     id: "medialane-marketplace-erc721",

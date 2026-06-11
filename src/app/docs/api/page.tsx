@@ -253,6 +253,38 @@ export default function ApiReferencePage() {
         response={`{ "id": "clm_coll123", "requiresSignature": false, "calls": [...] }`}
       />
 
+      {/* ── CREATOR COINS ── */}
+      <DocH2 id="coins" border>Creator Coins</DocH2>
+      <p className="text-muted-foreground text-sm mb-3">
+        Creator Coins index as collections with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code> and
+        service <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">creator-coin</code> (or <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">external-erc20</code> for
+        claimed coins). List them with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/collections?standard=ERC20</code>.
+        A coin&apos;s feature image and description live on its collection profile (platform layer) and are included in list responses.
+      </p>
+
+      <Endpoint
+        method="POST"
+        path="/v1/coins/sync"
+        description="Index a freshly-launched Creator Coin on demand (idempotent). Verifies is_creator_coin on the Factory and reads name/symbol on-chain. The factory event poller is the backstop; trustless ownership (claimedBy) is set from the on-chain CreatorCoinCreated event when it indexes."
+        params={[
+          { name: "coinAddress", type: "string", desc: "The launched coin's contract address (body)" },
+          { name: "owner", type: "string", desc: "Display-only owner hint (body, optional)" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/coins/sync" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"coinAddress": "0x04c1..."}'`}
+        response={`{
+  "data": {
+    "contractAddress": "0x04c1...",
+    "service": "creator-coin",
+    "standard": "ERC20",
+    "name": "My Coin",
+    "symbol": "COIN"
+  }
+}`}
+      />
+
       {/* ── COLLECTIONS ── */}
       <DocH2 id="collections" border>Collections</DocH2>
 
@@ -266,6 +298,8 @@ export default function ApiReferencePage() {
           { name: "owner", type: "string", desc: "Filter by collection owner address" },
           { name: "isKnown", type: "boolean", desc: "true = featured collections only" },
           { name: "sort", type: "string", desc: '"recent" (default) | "supply" | "floor" | "volume" | "name"' },
+          { name: "service", type: "string", desc: 'Filter by service id (e.g. "creator-coin", "pop-protocol")' },
+          { name: "standard", type: "string", desc: 'Filter by token standard, CSV ok: "ERC721,ERC1155" or "ERC20" (coins)' },
         ]}
         curl={`curl "${BASE}/v1/collections?owner=0x0591..." \\
   -H "x-api-key: ${KEY}"`}

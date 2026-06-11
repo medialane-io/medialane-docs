@@ -493,6 +493,55 @@ await client.services.erc1155Collection.batchMintItem(account, {
 await client.services.erc1155Collection.setDefaultRoyalty(account, { collection: "0x067064...", receiver: "0x0591...", feeBasisPoints: 500 })
 await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "0x067064...", tokenId: "7", receiver: "0x0591...", feeBasisPoints: 250 })`}</DocCodeBlock>
 
+      {/* Creator Coins */}
+      <DocH2 id="creator-coins" border>Creator Coins</DocH2>
+      <p className="text-muted-foreground text-sm mb-3">
+        Fixed-supply standard ERC-20s with permanently-locked Ekubo liquidity (audited unruggable.meme fork).
+        Launch price is fixed at 0.01 quote/coin — supply sets the market cap. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.creatorCoin</code> executes
+        with a starknet.js account; the account-free <strong>call builders</strong> (0.35+) return raw calls for custom
+        execution pipelines (paymasters, session keys, batchers). The <strong>coin-launch math module</strong> (0.36)
+        is the single source for validation and allocation math.
+      </p>
+      <DocCodeBlock>{`import {
+  buildCreateCreatorCoinCall, buildLaunchOnEkuboCalls, parseCreatorCoinCreated,
+  validateCoinName, validateCoinSymbol, validateCoinSupply,
+  coinToRaw, teamCoinsRaw, buybackQuoteRaw, fdvHuman,
+  VALIDATED_EKUBO_PARAMS, getCreatorCoinPrice,
+} from "@medialane/sdk"
+
+// 1. Validate + derive the economics (pure, no chain access)
+validateCoinSupply("1000000")                        // null = valid (1e3–1e12)
+const supplyRaw  = coinToRaw(1000000n)               // 18-decimal raw units
+const teamRaw    = teamCoinsRaw(supplyRaw, 5)        // 5% creator allocation
+const buybackRaw = buybackQuoteRaw(teamRaw, 18)      // quote the creator funds
+
+// 2. Tx 1 — deploy the coin (full supply minted to the Factory)
+const createCall = buildCreateCreatorCoinCall({
+  owner, name: "My Coin", symbol: "COIN", initialSupply: supplyRaw,
+})
+// execute with your pipeline, then read the coin address from the receipt:
+const coinAddress = parseCreatorCoinCreated(receipt)
+
+// 3. Tx 2 — launch on Ekubo (quote transfer + launch_on_ekubo multicall)
+const launchCalls = buildLaunchOnEkuboCalls({
+  creatorCoin: coinAddress, quoteToken, initialHolders: [owner],
+  initialHoldersAmounts: [teamRaw], transferRestrictionDelay: 0,
+  ekubo: VALIDATED_EKUBO_PARAMS, quoteFundAmount: buybackRaw,
+})
+
+// Or let the service execute both with an account:
+await client.services.creatorCoin.createCreatorCoin(account, { owner, name, symbol, initialSupply: supplyRaw })
+await client.services.creatorCoin.launchOnEkubo(account, { creatorCoin, quoteToken, initialHolders: [], initialHoldersAmounts: [] })
+
+// Live spot price, read straight from the coin's Ekubo pool (read-only)
+const price = await getCreatorCoinPrice(coinAddress, provider) // { quotePerCoin, quoteSymbol, ... } | null`}</DocCodeBlock>
+      <p className="text-muted-foreground text-sm mb-3">
+        Index a fresh launch instantly with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">POST /v1/coins/sync</code>; the
+        factory event poller is the backstop. Coins index as collections (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code>) —
+        filter lists with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/collections?standard=ERC20</code>. A coin&apos;s image and
+        description live on its collection profile (platform layer) and ride along on list responses.
+      </p>
+
       {/* Platform fee */}
       <DocH2 id="platform-fee" border>Platform Fee</DocH2>
       <p className="text-muted-foreground text-sm mb-3">

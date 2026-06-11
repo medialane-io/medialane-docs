@@ -18,6 +18,29 @@ export const metadata: Metadata = {
 
 const CHANGES = [
   {
+    date: "2026-06-11",
+    title: "Creator Coin Launch Studio",
+    items: [
+      "Launching a Creator Coin is now a studio, not a form: a three-step flow (your coin / economics / review) with a live preview that builds the coin as you type \u2014 image, name, symbol, starting market cap, and your allocation split.",
+      "Coins now carry a feature image and description. These live on the platform layer (the coin's profile \u2014 the contract stays a clean, standard ERC-20) and are editable anytime; they show on the Coins page, the coin's page, and your creator profile.",
+      "Trustless coin ownership for profile edits: the indexer reads the launcher's address from the factory's on-chain CreatorCoinCreated event (launched coins renounce their owner by design), so only the real launcher can edit a coin's profile. Never derived from a request parameter.",
+      "Collection list API responses now include profile image, display name, and description \u2014 discovery surfaces render platform-layer identity without extra requests.",
+      "Resilience: app error screens auto-recover from stale-deploy chunk errors, and IPFS image uploads time out after 60s with a clear retry prompt instead of an endless spinner.",
+    ],
+  },
+  {
+    date: "2026-06-10",
+    title: "Creator Coins live + the redesigned Launchpad",
+    items: [
+      "Creator Coins are live on both apps: launch a fixed-supply standard ERC-20 paired with permanently-locked Ekubo liquidity (audited unruggable.meme fork). Launch price is fixed at 0.01 quote/coin \u2014 supply sets the market cap; up to 10% creator allocation, funded by the creator at launch. Gasless with PIN/passkey on medialane.io; wallet-signed on the dApp.",
+      "Coin discovery on the dApp: the /coins page and a marketplace NFTs | Tokens toggle list creator coins and claimed memecoins with live Ekubo prices, market cap, and holders. Already launched a coin elsewhere? Claim it \u2014 team-reviewed, then live on /coins and your profile.",
+      "The Launchpad was redesigned around creators: services grouped by what you're making (Single Editions, Limited Editions, Creator Coins, Collection Drop, POP Protocol, Licensing & Remix, Claims), one plain-language sentence per card, and the whole card is the action. Shared across both apps from @medialane/ui.",
+      "ERC-1155 Limited Editions v0.3.0: edition ids are now assigned on-chain (sequential from 1) and supply can be topped up later with add_supply. New ownerless factory at 0x0083543c\u2026.",
+      "@medialane/sdk 0.34\u20130.36: ERC-1155 v3 service (mint_edition/add_supply), account-free creator-coin call builders + receipt parser, and the coin-launch math module (validation, allocation, buyback) \u2014 one source for every app.",
+      "Fixed: paid Collection Drop mints on medialane.io had been silently failing since 2026-05-06 (a session whitelist gap); restored per the original audit's contingency.",
+    ],
+  },
+  {
     date: "2026-06-01",
     title: "Permissionless remix and an independent Licensing service",
     items: [
