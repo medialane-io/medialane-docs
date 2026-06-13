@@ -18,6 +18,17 @@ export const metadata: Metadata = {
 
 const CHANGES = [
   {
+    date: "2026-06-13",
+    title: "Trade any coin both ways + the top Starknet memecoins, live",
+    items: [
+      "Buy and sell on every coin page: a Buy/Sell toggle lets you swap into or out of any coin in one place, showing the live exchange rate, the minimum you'll receive, the price impact, and adjustable price protection. Gas is sponsored; trades settle on the open Ekubo market.",
+      "Coins now have their own home and a plain-language page. Each coin lives at its own address (/coins/…) with a page that explains what a Creator Coin is in three guarantees — you own it (it stays in your wallet, never held by us), the price is set by the open market, and it's safe by design (the trading funds can't be pulled and no extra coins can be minted) — each one verifiable on the block explorer in a tap.",
+      "The biggest Starknet memecoins are now on Medialane: STARKNET BROTHER, SISTER, Slinky, Brother Eli (SLAY), SCHIZODIO, and Pain au lait (PAL) are live to trade. Every coin is verified on-chain as a genuine Unruggable launch before it's listed — never an address taken on trust.",
+      "Bringing your own coin is friendlier: already launched on Starknet? Connect your wallet right from the claim page, paste your contract, and it's team-reviewed before going live on the Coins page and your creator profile.",
+      "A cleaner coin discovery grid: the Marketplace Tokens tab shows real coin identities (a logo, or the symbol's initials when there's no logo yet), consistent labels, and honest stats — no more misleading zeros where a figure isn't available yet.",
+    ],
+  },
+  {
     date: "2026-06-12",
     title: "Document proof of authorship + one design system across both apps",
     items: [
