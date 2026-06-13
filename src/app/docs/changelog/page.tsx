@@ -18,6 +18,17 @@ export const metadata: Metadata = {
 
 const CHANGES = [
   {
+    date: "2026-06-12",
+    title: "Document proof of authorship + one design system across both apps",
+    items: [
+      "Documents, Patents, Publications, and Software assets can now carry the work itself: upload a PDF or document (up to 20 MB) when creating the asset and it's pinned to IPFS as an immutable, timestamped copy — evidence of authorship under the Berne Convention, where protection exists from the moment a work is fixed. Asset pages show it as a “View document” card linking to the original file.",
+      "Uploads got reliable and honest: images and documents now upload straight to IPFS via short-lived signed URLs (no more silent failures on larger files), a declined wallet signature says exactly that — it's a one-time, free sign-in signature, not a transaction — and a failed upload clears the preview instead of pretending a file is attached.",
+      "Wallet integrity on the dApp: signatures and transactions now always come from the wallet you explicitly connected — a lingering session from another sign-in method can never sign on its behalf.",
+      "Discover was rebuilt around exploration: Collections, market Activity, Community, and Creators are all horizontal carousels you can swipe through, with activity rendered as artwork cards instead of a list.",
+      "Both apps now render the Launchpad, Discover, the homepage service strip, and the asset-page overview from one shared design system (@medialane/ui) — medialane.io and the dApp stay visually and functionally in lockstep, and improvements land on both at once.",
+    ],
+  },
+  {
     date: "2026-06-11",
     title: "Creator Coin Launch Studio",
     items: [
