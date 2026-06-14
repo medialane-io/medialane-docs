@@ -46,7 +46,7 @@ const LAYERS = [
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
     role: "Typed lens over the indexer + service registry",
-    detail: "The @medialane/sdk package is a typed interface to the API. In Year 1, the SDK hosts the service registry — the canonical map from service IDs to capability sets. Year 2+ moves this on-chain.",
+    detail: "The @medialane/sdk package is a typed interface to the API. The SDK hosts the service registry — the canonical map from service IDs to capability sets.",
   },
   {
     num: "04",
@@ -66,7 +66,7 @@ const PRIMITIVES = [
     icon: Box,
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
-    def: "A digital good on chain. Local identity: (chain, contract, tokenId). Cross-chain identity via IP-ID is a Year 2+ feature.",
+    def: "A digital good on chain. Its identity is (chain, contract, tokenId).",
   },
   {
     label: "Account",
@@ -206,7 +206,7 @@ export default function DocsArchitecturePage() {
               <ul className="space-y-1.5 text-sm">
                 {[
                   "medialane.io and partner apps",
-                  "Service registry curation (Year 1 SDK; Year 2+ on-chain)",
+                  "Service registry curation (in the SDK)",
                   "Settlement fee schedule (DAO-controlled)",
                   "UI curation and house rules",
                   "Profiles, slugs, API keys (off-chain enrichment)",

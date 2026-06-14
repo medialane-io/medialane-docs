@@ -33,7 +33,7 @@ const FACETS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    def: "Your on-chain history. Work you have created, assets you have collected, credentials you have earned. In Year 1, your primary wallet address is your account. Year 2+ introduces AccountID — an on-chain contract that aggregates multiple wallets under one identity.",
+    def: "Your on-chain history. Work you have created, assets you have collected, credentials you have earned. Your primary wallet address is your account.",
     note: "Account state is protocol state — it passes the rebuild test. It is your permanent, verifiable on-chain record.",
   },
   {

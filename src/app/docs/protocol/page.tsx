@@ -121,8 +121,8 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">-v3</code> suffix, ever.
           </p>
           <p>
-            In Year 1, the registry lives in the SDK. Year 2+ moves it on-chain, making
-            service registration permissionless. See{" "}
+            The registry lives in the SDK — the canonical map from service IDs to their
+            capabilities. See{" "}
             <Link href="/learn/services" className="text-primary hover:underline">Services</Link> for
             the full registry and capability set.
           </p>

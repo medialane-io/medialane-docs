@@ -157,10 +157,9 @@ export default function LearnServicesPage() {
           <div className="bento-cell border border-brand-blue/20 bg-brand-blue/5 p-4 space-y-1">
             <p className="text-sm font-semibold text-foreground">The service registry</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              In Year 1, the registry lives in the{" "}
+              The registry lives in the{" "}
               <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">@medialane/sdk</code>{" "}
-              package. Year 2+ moves it on-chain, making service registration permissionless —
-              anyone can deploy a new service without Medialane involvement.
+              package — the canonical map from service IDs to their capabilities. Anyone can read it.
             </p>
           </div>
         </Section>

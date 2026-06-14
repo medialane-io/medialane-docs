@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ExternalLink, History } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -88,7 +87,7 @@ const CHANGES = [
       "Wallet onboarding restored on medialane-dapp. A stale client-side guard introduced during the 2026-05-24 BFF-proxy migration short-circuited the registration hook in the browser, so no new Account / Wallet / Identity rows were written between 2026-05-24 and 2026-05-27. The guard now only checks for a connected address; the proxy injects the server-side API key as designed.",
       "Counterfactual Starknet wallets (Ready, Argent, Braavos smart accounts whose contract isn't deployed until first tx) now get a typed 400 response from POST /v1/auth/siws/verify with message \"Check if your wallet is deployed on Starknet.\" instead of a generic invalid-signature 401 — the dapp surfaces this directly in the upload toast.",
       "Gated content authorization now reads on-chain balance_of (ERC-721) / balance_of_batch (ERC-1155) instead of the indexer's TokenBalance cache, closing the 07-identity §V violation that had caused prior holder lock-outs when the indexer was momentarily behind. On RPC failure the route returns 503 — it never silently falls back to stale DB state.",
-      "Account model carries the chain field end-to-end: backend POST /v1/users/me accepts an optional chain (currently STARKNET-only in v1, validated at the route), the SDK exports a typed ApiChain union and a chain option on upsertMyWallet, and medialane-io passes it explicitly on every call. Locks the year-2 multichain shape into the v1 API surface without changing today's behavior.",
+      "Account model carries the chain field end-to-end: backend POST /v1/users/me accepts an optional chain (currently STARKNET-only in v1, validated at the route), the SDK exports a typed ApiChain union and a chain option on upsertMyWallet, and medialane-io passes it explicitly on every call. The chain field is carried through the v1 API surface without changing today's behavior.",
       "medialane-dapp wallet-connect consolidated: one shared <ConnectWallet /> dialog (Ready / Braavos / Cartridge / Email & Social) replaces the legacy starknetkit-modal path on every launchpad page and reusable mint button. Removes the silent-pick-Braavos failure mode where the rebranded Ready extension's wallet.id wasn't recognised.",
       "medialane-dapp launchpad service-card copy synced with medialane-io. External-link defaults: ERC-1155 create-collection now defaults to the creator's medialane.io profile (parity with ERC-721); ERC-1155 mint-asset defaults the external_url to the collection page rather than the unminted asset URL.",
       "medialane-docs migrated to the cmdk command palette navigation (matches medialane-io / medialane-dapp). About page wrapped in the shared page container; the dapp's stale /learn and /docs redirects now point to docs.medialane.io.",
@@ -197,11 +196,6 @@ export default function ChangelogPage() {
         ))}
       </div>
 
-      <div className="bento-cell p-5 text-sm text-muted-foreground leading-relaxed">
-        Planned next: task-first quickstarts, canonical fees documentation, deeper contract references,
-        SDK/API examples, security evidence, and troubleshooting guides. See the implementation plan in{" "}
-        <Link href="/docs" className="text-primary hover:underline">Docs</Link> for current ownership boundaries.
-      </div>
     </div>
   );
 }
