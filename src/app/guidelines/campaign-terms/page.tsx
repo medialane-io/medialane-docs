@@ -56,10 +56,10 @@ export default function CampaignTermsPage() {
             <a href="https://snapshot.org" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground transition-colors">Snapshot</a>.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Phase 1 distributions are triggered when the platform reaches 5,000 verified participants.
-            Phase 2 distributions are triggered at 10,000 verified participants. These milestones are
-            targets, not guarantees — distribution timing depends on platform growth and community
-            governance decisions.
+            Each year, Medialane DAO members vote on Snapshot on how the platform&apos;s revenue is
+            used — sustaining operations, funding growth, or distributing to participants. Any
+            distribution, its amount, eligibility rules, and timing are decided by that governance
+            vote. Distributions are not guaranteed.
           </p>
         </section>
 

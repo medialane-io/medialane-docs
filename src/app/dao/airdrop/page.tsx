@@ -61,30 +61,29 @@ const TIERS = [
 
 const PHASES = [
   {
-    phase: "Distribution rounds",
-    trigger: "Every $1,000",
+    phase: "Revenue to the treasury",
+    trigger: "1% marketplace fee",
     items: [
-      "Each time the Creator's Fund reaches $1,000, that round is distributed to participants",
-      "Shares are weighted by Score Board points — earned by creating, trading, and engaging",
-      "Every dollar of revenue is returned: $5,000 → 5 rounds, $10,000 → 10",
+      "Platform revenue flows to the Medialane DAO treasury",
+      "Held transparently on-chain, governed by MDLN holders",
     ],
   },
   {
-    phase: "Year-one campaign",
-    trigger: "Until July 1, 2027",
+    phase: "Annual governance vote",
+    trigger: "Every year",
     items: [
-      "For year one, the DAO's revenue-allocation decision is the Creator's Airdrop",
-      "All platform revenue collected during the window is returned to participants",
-      "Activity is measured across the full campaign, not a single snapshot",
+      "Each year, DAO members vote on Snapshot how Medialane's finances are used",
+      "The choice sustains operations and funds the platform's growth",
+      "Airdrop, buyback, burn, development, or operations — the members decide",
     ],
   },
   {
-    phase: "Annual cycle",
-    trigger: "Every year thereafter",
+    phase: "The Creator's Airdrop",
+    trigger: "One possible allocation",
     items: [
-      "Each year, MDLN holders vote on Snapshot how revenue is used",
-      "Airdrop, buyback, burn, development, or operations — no predetermined formula",
-      "The community decides each cycle",
+      "Returning revenue to creators and participants is one option members can choose",
+      "It is not a guaranteed or automatic formula",
+      "When approved, shares are weighted by participation across creating and trading",
     ],
   },
 ];
@@ -125,7 +124,7 @@ export default function AirdropPage() {
           {[
             { label: "Revenue source", value: "1% marketplace fee" },
             { label: "Governed by",    value: "Snapshot DAO vote" },
-            { label: "Cycle",          value: "$1,000 rounds + annual vote" },
+            { label: "Cycle",          value: "Annual DAO vote" },
           ].map(({ label, value }) => (
             <div key={label} className="bg-muted/30 rounded-lg px-4 py-3 space-y-1">
               <p className="text-xs text-muted-foreground">{label}</p>
@@ -180,7 +179,7 @@ export default function AirdropPage() {
 
       {/* Distribution phases */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Distribution Rounds</h3>
+        <h3 className="text-lg font-semibold">How Revenue Is Decided</h3>
         <div className="space-y-3">
           {PHASES.map(({ phase, trigger, items }) => (
             <div key={phase} className="bento-cell p-5 space-y-3">

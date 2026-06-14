@@ -4,15 +4,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Governance | Docs | Medialane",
-  description: "Medialane DAO — governance charter, membership, voting, treasury, and the path to full community autonomy.",
+  description: "Medialane DAO — governance charter, membership, voting, treasury, and how decisions are made.",
   openGraph: {
     title: "Governance | Docs | Medialane",
-    description: "Medialane DAO — governance charter, membership, voting, treasury, and the path to full community autonomy.",
+    description: "Medialane DAO — governance charter, membership, voting, treasury, and how decisions are made.",
     url: "https://docs.medialane.io/docs/governance",
   },
   twitter: {
     title: "Governance | Docs | Medialane",
-    description: "Medialane DAO — governance charter, membership, voting, treasury, and the path to full community autonomy.",
+    description: "Medialane DAO — governance charter, membership, voting, treasury, and how decisions are made.",
   },
 };
 
@@ -22,9 +22,9 @@ export default function DocsGovernancePage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Governance & DAO</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Medialane is building toward full community governance through the{" "}
+          The platform is governed by the{" "}
           <strong className="text-foreground">Medialane DAO</strong>. This document describes
-          the governance principles, membership structure, and the roadmap to decentralized autonomy.
+          the governance principles, membership structure, and how decisions are made.
         </p>
       </div>
 
@@ -49,9 +49,10 @@ export default function DocsGovernancePage() {
         <Section title="Medialane DAO">
           <p>
             The <strong className="text-foreground">Medialane DAO</strong> is the governance
-            organization for the platform. The goal is a fully autonomous organization where
-            creators, collectors, and developers collectively own and govern the platform through
-            transparent on-chain processes.
+            organization for the platform. Creators, collectors, and developers collectively
+            own and govern the platform through transparent on-chain processes. Each year, DAO
+            members vote on how Medialane&apos;s revenue is used — sustaining operations and
+            funding the platform&apos;s growth.
           </p>
         </Section>
 

@@ -208,9 +208,8 @@ export default function TokenPage() {
         </div>
         <p className="text-sm text-muted-foreground">
           The Medialane protocol runs on Starknet. The DAO is anchored on Ethereum for security
-          and liquidity. The long-term direction is toward fully chain-agnostic, censorship-resistant
-          infrastructure — the same foundation that Starknet&apos;s ZK proofs and account abstraction
-          make possible.
+          and liquidity. Censorship resistance comes from Starknet&apos;s ZK proofs and account
+          abstraction, with immutable contracts that no party can alter.
         </p>
       </div>
 
@@ -227,19 +226,14 @@ export default function TokenPage() {
         <div className="space-y-3">
           {[
             {
-              phase: "Phase 1",
-              trigger: "5,000 verified participants",
-              desc: "First milestone cycle if MDLN holders approve an airdrop allocation. Rewards verified participation, creation, and marketplace engagement.",
-            },
-            {
-              phase: "Phase 2",
-              trigger: "10,000 verified participants",
-              desc: "Second milestone cycle. Snapshot governance determines the allocation amount, eligibility rules, and timing before any distribution.",
+              phase: "Revenue to the treasury",
+              trigger: `${CANONICAL.marketplaceFee} marketplace fee`,
+              desc: "Platform revenue flows to the Medialane DAO treasury, held transparently on-chain and governed by MDLN holders.",
             },
             {
               phase: "Annual cycle",
-              trigger: "Ongoing · Snapshot vote each year",
-              desc: `Annual DAO vote decides whether revenue funds the ${CANONICAL.creatorAirdropName}, buyback, burn, development, operations, or another approved use.`,
+              trigger: "Snapshot vote each year",
+              desc: `Each year, DAO members vote on whether revenue funds the ${CANONICAL.creatorAirdropName}, buyback, burn, development, operations, or another approved use — sustaining operations and funding growth.`,
             },
           ].map(({ phase, trigger, desc }) => (
             <div key={phase} className="bento-cell p-5 space-y-2">
