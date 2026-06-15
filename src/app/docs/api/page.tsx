@@ -256,10 +256,88 @@ export default function ApiReferencePage() {
       {/* ── CREATOR COINS ── */}
       <DocH2 id="coins" border>Creator Coins</DocH2>
       <p className="text-muted-foreground text-sm mb-3">
-        Creator Coins index as collections with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code> and
-        service <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">creator-coin</code> (or <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">external-erc20</code> for
-        claimed coins). List them with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/collections?standard=ERC20</code>.
-        A coin&apos;s feature image and description live on its collection profile (platform layer) and are included in list responses.
+        Fungible coins are their own resource (since the 2026-06-14 split) — <strong>not</strong> collections.
+        A coin has service <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">creator-coin</code> (or
+        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">external-erc20</code> for claimed coins) and
+        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code>. List them with
+        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/coins</code>. A coin&apos;s image and
+        description live on the coin (platform layer) and are editable by its creator via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">PATCH /v1/coins/:contract</code>.
+      </p>
+
+      <Endpoint
+        method="GET"
+        path="/v1/coins"
+        description="List indexed fungible coins (Creator Coins + claimed external ERC-20s)."
+        params={[
+          { name: "service", type: "string", desc: '"creator-coin" | "external-erc20"' },
+          { name: "creator", type: "string", desc: "Filter by creator address (a creator's own coins)" },
+          { name: "page", type: "number", desc: "Page number" },
+          { name: "limit", type: "number", desc: "Items per page" },
+        ]}
+        curl={`curl "${BASE}/v1/coins?service=creator-coin" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": [
+    {
+      "contractAddress": "0x04c1...",
+      "service": "creator-coin",
+      "standard": "ERC20",
+      "name": "My Coin",
+      "symbol": "COIN",
+      "decimals": 18,
+      "image": "ipfs://...",
+      "description": "...",
+      "creator": "0x0591..."
+    }
+  ],
+  "meta": { "page": 1, "limit": 24, "total": 7 }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/coins/:contract"
+        description="Fetch a single coin by contract address."
+        curl={`curl "${BASE}/v1/coins/0x04c1..." \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": {
+    "contractAddress": "0x04c1...",
+    "service": "creator-coin",
+    "standard": "ERC20",
+    "name": "My Coin",
+    "symbol": "COIN",
+    "decimals": 18,
+    "image": "ipfs://...",
+    "description": "...",
+    "creator": "0x0591..."
+  }
+}`}
+      />
+
+      <Endpoint
+        method="PATCH"
+        path="/v1/coins/:contract"
+        description="Update a coin's image and/or description. Creator-authed (SIWS or Clerk JWT) — only the coin's on-chain creator may edit. The creator is set trustlessly from the factory event, never from the request body."
+        params={[
+          { name: "image", type: "string", desc: "ipfs:// or https:// URI (body, optional, nullable)" },
+          { name: "description", type: "string", desc: "Up to 500 chars (body, optional, nullable)" },
+        ]}
+        curl={`curl -X PATCH "${BASE}/v1/coins/0x04c1..." \\
+  -H "Authorization: Bearer <SIWS_JWT>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"description": "Founding community coin"}'`}
+        response={`{
+  "data": {
+    "contractAddress": "0x04c1...",
+    "image": "ipfs://...",
+    "description": "Founding community coin"
+  }
+}`}
+      />
+
+      <p className="text-muted-foreground text-sm mb-3 mt-6">
+        On-demand indexing for a freshly-launched coin:
       </p>
 
       <Endpoint
@@ -298,8 +376,8 @@ export default function ApiReferencePage() {
           { name: "owner", type: "string", desc: "Filter by collection owner address" },
           { name: "isKnown", type: "boolean", desc: "true = featured collections only" },
           { name: "sort", type: "string", desc: '"recent" (default) | "supply" | "floor" | "volume" | "name"' },
-          { name: "service", type: "string", desc: 'Filter by service id (e.g. "creator-coin", "pop-protocol")' },
-          { name: "standard", type: "string", desc: 'Filter by token standard, CSV ok: "ERC721,ERC1155" or "ERC20" (coins)' },
+          { name: "service", type: "string", desc: 'Filter by service id (e.g. "mip-erc721", "pop-protocol"). Coins are NOT collections — use /v1/coins' },
+          { name: "standard", type: "string", desc: 'Filter by token standard, CSV ok: "ERC721,ERC1155" (NFT-only; coins live at /v1/coins)' },
         ]}
         curl={`curl "${BASE}/v1/collections?owner=0x0591..." \\
   -H "x-api-key: ${KEY}"`}
