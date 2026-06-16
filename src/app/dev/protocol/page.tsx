@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Protocol | Medialane Docs",
     description: "Technical specification of the Medialane onchain protocol — contracts, event model, order lifecycle, service registry, and indexer design.",
-    url: "https://docs.medialane.io/docs/protocol",
+    url: "https://docs.medialane.io/dev/protocol",
   },
   twitter: {
     title: "Protocol | Medialane Docs",
@@ -42,7 +42,7 @@ export default function DocsProtocolPage() {
           Medialane runs on immutable Starknet mainnet contracts. This document covers
           deployed addresses, the event model, order lifecycle, service registry, and
           indexer design. For the architectural foundation, see{" "}
-          <Link href="/docs/architecture" className="text-primary hover:underline">Architecture</Link>.
+          <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link>.
         </p>
       </div>
 
@@ -60,7 +60,7 @@ export default function DocsProtocolPage() {
           <p className="text-sm">
             These contracts have no admin key and no upgrade path. Once deployed, the rules
             are fixed. Canonical addresses are also published in the{" "}
-            <Link href="/docs/contracts" className="text-primary hover:underline">Contracts</Link> reference.
+            <Link href="/dev/contracts" className="text-primary hover:underline">Contracts</Link> reference.
           </p>
         </Section>
 
@@ -157,7 +157,7 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
             Platform state — profiles, slugs, API keys — cannot be reconstructed from events.
             It is honestly classified as off-chain enrichment and stored in a separate namespace.
             See{" "}
-            <Link href="/docs/architecture" className="text-primary hover:underline">Architecture</Link> for
+            <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link> for
             the protocol vs. platform distinction.
           </p>
         </Section>

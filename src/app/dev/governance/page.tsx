@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Governance | Docs | Medialane",
     description: "Medialane DAO — governance charter, membership, voting, treasury, and how decisions are made.",
-    url: "https://docs.medialane.io/docs/governance",
+    url: "https://docs.medialane.io/dev/governance",
   },
   twitter: {
     title: "Governance | Docs | Medialane",
@@ -110,7 +110,7 @@ export default function DocsGovernancePage() {
           </ul>
           <p>
             For the canonical fee and revenue model, see{" "}
-            <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
+            <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
           </p>
         </Section>
 

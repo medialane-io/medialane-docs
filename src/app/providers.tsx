@@ -55,7 +55,7 @@ function Shell({ children }: { children: React.ReactNode }) {
               <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
               <Link href="/apps" className="hover:text-foreground transition-colors">Apps</Link>
               <Link href="/learn" className="hover:text-foreground transition-colors">Learn</Link>
-              <Link href="/docs" className="hover:text-foreground transition-colors">Docs</Link>
+              <Link href="/dev" className="hover:text-foreground transition-colors">Developers</Link>
               <Link href="/guidelines" className="hover:text-foreground transition-colors">Guidelines</Link>
               <Link href="/support" className="hover:text-foreground transition-colors">Support</Link>
               <Link href="/dao" className="hover:text-foreground transition-colors">DAO</Link>

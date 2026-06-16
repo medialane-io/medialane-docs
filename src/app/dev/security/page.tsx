@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Security | Docs | Medialane",
     description: "Security architecture, audit reports, risk disclosure, and monitoring for the Medialane protocol.",
-    url: "https://docs.medialane.io/docs/security",
+    url: "https://docs.medialane.io/dev/security",
   },
   twitter: {
     title: "Security | Docs | Medialane",

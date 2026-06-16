@@ -151,7 +151,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
           </p>
           <p className="text-sm">
             Listing and offer creation are gas-sponsored for standard flows. See{" "}
-            <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
+            <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
             for the canonical breakdown.
           </p>
         </Section>

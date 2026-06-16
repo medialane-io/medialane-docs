@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contracts | Medialane Docs",
     description: "Medialane smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
-    url: "https://docs.medialane.io/docs/contracts",
+    url: "https://docs.medialane.io/dev/contracts",
   },
   twitter: {
     title: "Contracts | Medialane Docs",

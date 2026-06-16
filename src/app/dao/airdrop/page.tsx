@@ -117,7 +117,7 @@ export default function AirdropPage() {
           Snapshot to decide how that revenue is used — Creator&apos;s Airdrop, token buyback, token burn,
           protocol development, or operations. No predetermined formula. The Creator&apos;s Airdrop is one
           option among several, not a guarantee. See{" "}
-          <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
+          <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
           for the canonical fee model.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">

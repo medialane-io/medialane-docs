@@ -227,10 +227,10 @@ export default function LearnServicesPage() {
           </p>
           <p className="text-sm">
             For developers: see{" "}
-            <Link href="/docs/sdk" className="text-primary hover:underline">SDK documentation</Link>
+            <Link href="/dev/sdk" className="text-primary hover:underline">SDK documentation</Link>
             {" "}for{" "}
             <code className="font-mono text-xs">getService()</code> usage, and{" "}
-            <Link href="/docs/architecture" className="text-primary hover:underline">Architecture</Link>
+            <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link>
             {" "}for how the registry fits into the four-layer model.
           </p>
         </Section>

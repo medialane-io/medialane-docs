@@ -166,7 +166,7 @@ export default function AboutPage() {
               Start creating <ExternalLink className="h-4 w-4" />
             </a>
             <Link
-              href="/docs"
+              href="/dev"
               className="inline-flex items-center gap-2 border border-border bg-background/60 backdrop-blur px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-muted/40 transition-colors"
             >
               Developer docs →
@@ -240,7 +240,7 @@ export default function AboutPage() {
         </div>
         <p className="text-sm text-muted-foreground">
           See the full{" "}
-          <Link href="/docs/architecture" className="text-primary hover:underline">Architecture documentation</Link>
+          <Link href="/dev/architecture" className="text-primary hover:underline">Architecture documentation</Link>
           {" "}for the rebuild test, six core primitives, and the protocol vs. platform distinction.
         </p>
       </div>
@@ -283,7 +283,7 @@ export default function AboutPage() {
           See{" "}
           <Link href="/dao/token" className="text-primary hover:underline">MDLN Token</Link>
           {" "}for the Ethereum deployment and bridge details, and{" "}
-          <Link href="/docs/architecture" className="text-primary hover:underline">Architecture</Link>
+          <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link>
           {" "}for the protocol roadmap.
         </p>
       </div>

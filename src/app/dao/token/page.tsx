@@ -220,7 +220,7 @@ export default function TokenPage() {
           A {CANONICAL.marketplaceFee} marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on
           Snapshot to decide how that revenue is used — {CANONICAL.creatorAirdropName}, token buyback, token burn,
           protocol development, or operations. The {CANONICAL.creatorAirdropName} is one option, not a guarantee.
-          See <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
+          See <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
           for the canonical breakdown.
         </p>
         <div className="space-y-3">

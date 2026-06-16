@@ -10,11 +10,11 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
 
   return (
-    <PageContainer width="wide" className="pt-12 pb-16 space-y-8">
+    <PageContainer width="wide" className="pt-20 pb-16 space-y-8">
       <div>
-        <h1 className="text-3xl font-bold">Docs</h1>
+        <h1 className="text-3xl font-bold">Developers</h1>
         <p className="text-muted-foreground mt-1 text-sm">
-          Technical documentation for the Medialane platform, protocol, SDK, and API.
+          Build on Medialane — the protocol, SDK, API, and contracts. For people and AI agents alike.
         </p>
       </div>
 
@@ -22,8 +22,8 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         <div className="flex items-center gap-0 min-w-max">
           {DOCS_TABS.map((item) => {
             const active =
-              item.href === "/docs"
-                ? pathname === "/docs"
+              item.href === "/dev"
+                ? pathname === "/dev"
                 : pathname.startsWith(item.href);
             return (
               <Link

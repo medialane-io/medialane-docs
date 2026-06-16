@@ -153,7 +153,7 @@ export default function LearnIdentityPage() {
               Agents authenticate with SIWS and use the same REST API as human users.
               The developer portal adds HTTP 402 credit billing for agent-to-agent automation.
               See{" "}
-              <Link href="/docs/agents" className="text-primary hover:underline">AI Agents documentation</Link>.
+              <Link href="/dev/agents" className="text-primary hover:underline">AI Agents documentation</Link>.
             </p>
           </div>
         </Section>

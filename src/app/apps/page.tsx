@@ -208,7 +208,7 @@ const AUDIENCES = [
       "Mediolano protocol — build on the base layer",
       "Portal for API key management and docs",
     ],
-    cta: { label: "View developer docs", href: "/docs/developers", external: false },
+    cta: { label: "View developer docs", href: "/dev/developers", external: false },
   },
 ];
 
@@ -545,7 +545,7 @@ export default function AppsPage() {
               className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
               GitHub <ExternalLink className="h-3.5 w-3.5" />
             </a>
-            <Link href="/docs/sdk" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+            <Link href="/dev/sdk" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
               Full SDK docs <ArrowRight className="h-3.5 w-3.5" />
             </Link>
             <Link href="/apps" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">

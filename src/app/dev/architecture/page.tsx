@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Architecture | Medialane Docs",
     description: "The Medialane four-layer authority model — Chain, Indexer, SDK, and Apps. Six core primitives, the rebuild test, and the protocol vs. platform distinction.",
-    url: "https://docs.medialane.io/docs/architecture",
+    url: "https://docs.medialane.io/dev/architecture",
   },
   twitter: {
     title: "Architecture | Medialane Docs",
@@ -226,7 +226,7 @@ export default function DocsArchitecturePage() {
           </p>
           <p className="text-sm">
             See{" "}
-            <Link href="/docs/protocol" className="text-primary hover:underline">Protocol Specification</Link>
+            <Link href="/dev/protocol" className="text-primary hover:underline">Protocol Specification</Link>
             {" "}for contract addresses and the event model, and{" "}
             <Link href="/learn/services" className="text-primary hover:underline">Services</Link>
             {" "}for how the service registry works.

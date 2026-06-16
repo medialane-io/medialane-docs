@@ -34,7 +34,7 @@ export function PageContainer({ children, width = "default", className }: PageCo
   return (
     <div
       className={cn(
-        "container mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20",
+        "container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20",
         WIDTH[width],
         className,
       )}

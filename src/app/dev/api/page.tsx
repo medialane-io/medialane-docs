@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import React from "react"
 import { Badge } from "@/components/ui/badge"
-import { DocH2, DocCodeBlock } from "@/components/docs/typography"
+import { DocH2, DocH3, DocCodeBlock } from "@/components/docs/typography"
 
 export const metadata: Metadata = {
   title: "API Reference | Medialane Docs",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "API Reference | Medialane Docs",
     description: "Full REST API reference for Medialane — orders, collections, minting, tokens, intents, profiles, comments, and more.",
-    url: "https://docs.medialane.io/docs/api",
+    url: "https://docs.medialane.io/dev/api",
   },
 }
 
@@ -90,6 +90,24 @@ function Endpoint({
 const BASE = "https://api.medialane.io"
 const KEY = "ml_live_YOUR_KEY"
 
+const ERROR_CODES = [
+  { code: "400", name: "Bad Request", desc: "Missing or invalid parameters" },
+  { code: "401", name: "Unauthorized", desc: "Missing or invalid x-api-key" },
+  { code: "402", name: "Payment Required", desc: "Credit balance is zero — deposit USDC to continue" },
+  { code: "403", name: "Forbidden", desc: "Key exists but lacks required permission" },
+  { code: "404", name: "Not Found", desc: "Resource does not exist" },
+  { code: "409", name: "Conflict", desc: "Duplicate resource or state conflict" },
+  { code: "429", name: "Too Many Requests", desc: "Per-minute rate limit exceeded" },
+  { code: "500", name: "Server Error", desc: "Internal error — try again or contact support" },
+]
+
+const CREDIT_COSTS = [
+  { cat: "Read / query", cost: "1", ex: "Get asset, list collections, search, activity" },
+  { cat: "Trade intents", cost: "5", ex: "Create listing, fulfill order, counter-offer" },
+  { cat: "Minting", cost: "10", ex: "Mint token, batch mint" },
+  { cat: "Launchpad / deploy", cost: "100", ex: "Deploy contract, Collection Drop, POP Protocol" },
+]
+
 export default function ApiReferencePage() {
   return (
     <div className="space-y-2">
@@ -98,7 +116,75 @@ export default function ApiReferencePage() {
       </Badge>
       <h1 className="text-4xl font-extrabold text-white">API Reference</h1>
       <p className="text-muted-foreground text-lg mb-8">
-        Full endpoint reference for the Medialane REST API. Base URL: <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">{BASE}</code>
+        Full endpoint reference for the Medialane REST API. Base URL: <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">{BASE}</code>. All endpoints are versioned under <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">/v1/</code>.
+      </p>
+
+      {/* ── AUTHENTICATION ── */}
+      <DocH2 id="authentication" border>Authentication</DocH2>
+      <p className="text-muted-foreground mb-3">
+        Every request carries an API key in the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">x-api-key</code> header. Keys are self-service from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> — for people and agents alike.
+      </p>
+      <DocCodeBlock lang="bash">{`curl "${BASE}/v1/orders" \\
+  -H "x-api-key: ${KEY}"
+
+# Bearer token also accepted:
+# -H "Authorization: Bearer ${KEY}"`}</DocCodeBlock>
+      <p className="text-muted-foreground text-sm">
+        Keys are prefixed <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret — treat them like passwords.
+      </p>
+
+      {/* ── RESPONSE FORMAT ── */}
+      <DocH2 id="response-format" border>Response Format</DocH2>
+      <p className="text-muted-foreground mb-3">All responses are JSON. List responses wrap rows in a <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">data</code> array with pagination in <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">meta</code>.</p>
+      <DocH3>Success</DocH3>
+      <DocCodeBlock>{`{
+  "data": [...],
+  "meta": { "total": 128, "page": 1, "limit": 20 }
+}`}</DocCodeBlock>
+      <DocH3>Error</DocH3>
+      <DocCodeBlock>{`{
+  "error": "Unauthorized",
+  "message": "Invalid or missing API key"
+}`}</DocCodeBlock>
+
+      {/* ── ERROR CODES ── */}
+      <DocH2 id="error-codes" border>Error Codes</DocH2>
+      <div className="rounded-xl border border-white/10 overflow-hidden mb-2">
+        <div className="grid grid-cols-3 px-5 py-3 bg-white/[0.03] border-b border-white/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+          <span>Code</span>
+          <span>Name</span>
+          <span>Description</span>
+        </div>
+        {ERROR_CODES.map((row, i) => (
+          <div key={row.code} className={`grid grid-cols-3 px-5 py-3 items-center text-sm ${i < ERROR_CODES.length - 1 ? "border-b border-white/5" : ""}`}>
+            <span className="font-mono font-semibold text-red-400">{row.code}</span>
+            <span className="text-white">{row.name}</span>
+            <span className="text-muted-foreground">{row.desc}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* ── CREDITS ── */}
+      <DocH2 id="credits" border>Credits &amp; Billing</DocH2>
+      <p className="text-muted-foreground mb-3 text-sm">
+        Credits are the billing unit. Top up by depositing USDC on Starknet from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> — credits appear within ~2 minutes and never expire. Different endpoint categories consume different amounts per call:
+      </p>
+      <div className="rounded-xl border border-white/10 overflow-hidden mb-3">
+        <div className="grid grid-cols-3 px-5 py-3 bg-white/[0.03] border-b border-white/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+          <span>Category</span>
+          <span className="text-center">Credits</span>
+          <span>Examples</span>
+        </div>
+        {CREDIT_COSTS.map((row, i) => (
+          <div key={row.cat} className={`grid grid-cols-3 px-5 py-3 items-start text-sm ${i < CREDIT_COSTS.length - 1 ? "border-b border-white/5" : ""}`}>
+            <span className="text-white">{row.cat}</span>
+            <span className="text-center font-mono font-bold text-primary">{row.cost}</span>
+            <span className="text-muted-foreground text-xs">{row.ex}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-muted-foreground text-sm">
+        When credits run out you receive <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code> with an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining: 0</code> header. An autonomous agent can detect the 402 and top up on its own — see <a href="/dev/agents" className="text-primary hover:underline">AI Agents</a>.
       </p>
 
       {/* ── HEALTH ── */}

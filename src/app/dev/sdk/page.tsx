@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SDK | Medialane Docs",
     description: "@medialane/sdk — TypeScript client for the Medialane API and on-chain marketplace, minting, POP Protocol, and Collection Drop.",
-    url: "https://docs.medialane.io/docs/sdk",
+    url: "https://docs.medialane.io/dev/sdk",
   },
 }
 
@@ -636,7 +636,7 @@ try {
       <div className="mt-10 p-5 rounded-xl border border-primary/20 bg-primary/5">
         <p className="text-sm text-muted-foreground">
           <span className="font-semibold text-white">Full API reference</span> — all REST endpoints, parameters, and response schemas are documented in the{" "}
-          <Link href="/docs/api" className="text-primary hover:underline">API Reference</Link>.
+          <Link href="/dev/api" className="text-primary hover:underline">API Reference</Link>.
         </p>
       </div>
 
@@ -710,8 +710,8 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
         <p className="text-sm font-semibold text-white">Full SDK documentation</p>
         <p className="text-sm text-muted-foreground">
           Complete method reference, type definitions, and advanced usage are on{" "}
-          <a href="https://docs.medialane.io/docs/sdk" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-            docs.medialane.io/docs/sdk
+          <a href="https://docs.medialane.io/dev/sdk" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            docs.medialane.io/dev/sdk
           </a>
           .
         </p>

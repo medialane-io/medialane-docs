@@ -271,7 +271,7 @@ export default function IntegrityWebPage() {
             Start creating <ExternalLink className="h-4 w-4" />
           </a>
           <Link
-            href="/docs"
+            href="/dev"
             className="inline-flex items-center gap-2 border border-border bg-background px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-muted/40 transition-colors"
           >
             Developer docs →
@@ -283,7 +283,7 @@ export default function IntegrityWebPage() {
             Learn ZK proofs →
           </Link>
           <Link
-            href="/docs/architecture"
+            href="/dev/architecture"
             className="inline-flex items-center gap-2 border border-border bg-background px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-muted/40 transition-colors"
           >
             Protocol architecture →

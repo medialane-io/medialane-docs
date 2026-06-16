@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Developers | Medialane Docs",
     description: "Developer quickstart — portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
-    url: "https://docs.medialane.io/docs/developers",
+    url: "https://docs.medialane.io/dev/developers",
   },
   twitter: {
     title: "Developers | Medialane Docs",
@@ -40,7 +40,7 @@ export default function DocsDevsPage() {
           reads chain events, the SDK that wraps both, and apps on top. The API and SDK give you
           access to everything the apps can do — and nothing they do can override the contracts.
           See{" "}
-          <Link href="/docs/architecture" className="text-primary hover:underline">Architecture</Link>{" "}
+          <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link>{" "}
           for the full model.
         </p>
       </div>
@@ -88,7 +88,7 @@ export MEDIALANE_API_KEY=ml_live_your_key_here`}</Code>
           <p className="text-sm">
             For higher-volume use cases, deposit USDC credits in the portal for pay-per-call billing
             on top of your base quota. This is the primary billing model for AI agents.
-            See the <Link href="/docs/agents" className="text-primary hover:underline">AI Agents guide</Link>.
+            See the <Link href="/dev/agents" className="text-primary hover:underline">AI Agents guide</Link>.
           </p>
         </Section>
 
@@ -202,10 +202,10 @@ console.log(collection?.contractAddress, collection?.name);`}</Code>
           className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
           Open Portal <ExternalLink className="h-3.5 w-3.5" />
         </a>
-        <Link href="/docs/api" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+        <Link href="/dev/api" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
           Full API Reference <ArrowRight className="h-3.5 w-3.5" />
         </Link>
-        <Link href="/docs/agents" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+        <Link href="/dev/agents" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
           AI Agent Guide <ArrowRight className="h-3.5 w-3.5" />
         </Link>
       </div>

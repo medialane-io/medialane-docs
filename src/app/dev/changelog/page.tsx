@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Changelog | Medialane Docs",
     description: "Protocol, SDK, API, governance, and documentation changes that affect Medialane users and builders.",
-    url: "https://docs.medialane.io/docs/changelog",
+    url: "https://docs.medialane.io/dev/changelog",
   },
   twitter: {
     title: "Changelog | Medialane Docs",

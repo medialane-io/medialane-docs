@@ -18,7 +18,7 @@ export default function NotFound() {
           <Link href="/"><Home className="h-4 w-4 mr-2" />Home</Link>
         </Button>
         <Button variant="outline" asChild>
-          <Link href="/docs"><BookOpen className="h-4 w-4 mr-2" />Docs</Link>
+          <Link href="/dev"><BookOpen className="h-4 w-4 mr-2" />Developers</Link>
         </Button>
         <Button variant="ghost" asChild>
           <Link href="/search"><Search className="h-4 w-4 mr-2" />Search</Link>

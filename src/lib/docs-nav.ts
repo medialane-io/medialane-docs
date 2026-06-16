@@ -12,70 +12,70 @@ export type NavLink = {
 
 export const DOCS_NAV = [
   {
-    href: "/docs/architecture",
+    href: "/dev/architecture",
     label: "Architecture",
     title: "Architecture",
     icon: Layers,
     description: "The four-layer authority model, six core primitives, the rebuild test, and the protocol vs. platform distinction.",
   },
   {
-    href: "/docs/protocol",
+    href: "/dev/protocol",
     label: "Protocol",
     title: "Protocol",
     icon: Network,
     description: "Technical specification of the Mediolano protocol — onchain IP registration, licensing, events, and data structures.",
   },
   {
-    href: "/docs/sdk",
+    href: "/dev/sdk",
     label: "SDK",
     title: "SDK",
     icon: Package,
     description: "The @medialane/sdk TypeScript package — installation, configuration, asset queries, minting, and marketplace integration.",
   },
   {
-    href: "/docs/api",
+    href: "/dev/api",
     label: "API Reference",
     title: "API Reference",
     icon: Terminal,
     description: "Full REST API reference — endpoints, authentication, request shapes, rate limits, and response types.",
   },
   {
-    href: "/docs/contracts",
+    href: "/dev/contracts",
     label: "Contracts",
     title: "Contracts",
     icon: FileCode2,
     description: "Cairo smart contracts — marketplace, collection registry, POP Protocol, Collection Drop, and royalty enforcement.",
   },
   {
-    href: "/docs/developers",
+    href: "/dev/developers",
     label: "Developers",
     title: "Developers",
     icon: Code2,
     description: "Integration guides, quickstarts, authentication setup, and code examples for building on top of Medialane.",
   },
   {
-    href: "/docs/agents",
+    href: "/dev/agents",
     label: "AI Agents",
     title: "AI Agents",
     icon: Bot,
     description: "Build autonomous agents that read, write, and pay using the Medialane API — 402 billing, SIWS auth, webhook events, and MDLN multipliers.",
   },
   {
-    href: "/docs/security",
+    href: "/dev/security",
     label: "Security",
     title: "Security",
     icon: Shield,
     description: "Defense-in-depth architecture, audit reports, decentralized storage, monitoring, and responsible disclosure.",
   },
   {
-    href: "/docs/fees",
+    href: "/dev/fees",
     label: "Fees & Revenue",
     title: "Fees & Revenue",
     icon: Coins,
     description: "Canonical fee model — free actions, gas sponsorship, royalties, marketplace fees, DAO treasury flow, and Creator's Airdrop governance.",
   },
   {
-    href: "/docs/changelog",
+    href: "/dev/changelog",
     label: "Changelog",
     title: "Changelog",
     icon: History,
@@ -84,7 +84,7 @@ export const DOCS_NAV = [
 ] as const;
 
 export const DOCS_TABS = [
-  { label: "Overview", href: "/docs" },
+  { label: "Overview", href: "/dev" },
   ...DOCS_NAV.map(({ label, href }) => ({ label, href })),
 ] as const;
 
@@ -93,7 +93,7 @@ export const CANONICAL_SOURCES = [
     title: "Product Docs",
     owner: "docs.medialane.io",
     description: "How to use Medialane, learn platform concepts, integrate APIs, and build with the SDK.",
-    href: "/docs",
+    href: "/dev",
     icon: BookOpen,
     external: false,
   },
@@ -150,7 +150,7 @@ export const KNOWLEDGE_GROUPS = [
     title: "Developer Docs",
     icon: FileCode2,
     links: [
-      { href: "/docs", label: "Docs Home", desc: "Canonical source map and technical documentation index." },
+      { href: "/dev", label: "Docs Home", desc: "Canonical source map and technical documentation index." },
       ...DOCS_NAV.map(({ href, title, description }) => ({ href, label: title, desc: description })),
     ],
   },

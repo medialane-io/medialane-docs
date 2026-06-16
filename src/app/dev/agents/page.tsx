@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Agents | Medialane Docs",
     description: "Build autonomous AI agents on Medialane — SIWS auth, 402 credit billing, autonomous USDC top-up, and MDLN multipliers.",
-    url: "https://docs.medialane.io/docs/agents",
+    url: "https://docs.medialane.io/dev/agents",
   },
 }
 
@@ -216,8 +216,8 @@ async function waitForCredits(retries = 20, delayMs = 7_000) {
       {/* Next steps */}
       <DocH2 id="next">Next Steps</DocH2>
       <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-        <li><Link href="/docs/api" className="text-primary hover:underline">API Reference</Link> — all available endpoints</li>
-        <li><Link href="/docs/sdk" className="text-primary hover:underline">SDK Docs</Link> — typed TypeScript client (@medialane/sdk)</li>
+        <li><Link href="/dev/api" className="text-primary hover:underline">API Reference</Link> — all available endpoints</li>
+        <li><Link href="/dev/sdk" className="text-primary hover:underline">SDK Docs</Link> — typed TypeScript client (@medialane/sdk)</li>
         <li><Link href="https://portal.medialane.io/integrate" className="text-primary hover:underline">Integrate</Link> — credit costs and MDLN tier details</li>
       </ul>
     </div>

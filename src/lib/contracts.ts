@@ -1,8 +1,8 @@
 /**
  * Canonical Medialane contract addresses on Starknet mainnet.
  *
- * Single source for the Contracts (`/docs/contracts`) and Protocol
- * (`/docs/protocol`) reference pages — render from here, never re-list
+ * Single source for the Contracts (`/dev/contracts`) and Protocol
+ * (`/dev/protocol`) reference pages — render from here, never re-list
  * addresses inline.
  *
  * Upstream source of truth is `@medialane/sdk` `src/constants.ts`. This repo

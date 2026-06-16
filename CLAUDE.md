@@ -119,9 +119,12 @@ Navigation is a **command palette** (`NavCommandMenu` from `@medialane/ui`), not
 - All entries live in **`src/lib/nav-commands.ts`** as `NAV_COMMANDS: NavCommandGroup[]` — add new destinations there, not in the menu component. Do not add new top-level groups without user approval.
 - Mounted once in `src/app/providers.tsx`'s `Shell`, with a `NavThemeToggle` in the menu `footerSlot`.
 
-Groups (in `nav-commands.ts`): primary (Start / About / Apps), then **Learn**, **Docs**, **Guidelines**, **DAO**, **Resources** (Support / Links / Knowledge Index).
+Groups (in `nav-commands.ts`): primary (Start / About / Apps), then **Learn**, **Developers**, **Guidelines**, **DAO**, **Resources** (Support / Links / Knowledge Index).
 
-Per-section tab sub-nav still lives in each section's `layout.tsx` (`docs/layout.tsx`, `learn/layout.tsx`, etc.) — independent of the global command menu.
+Per-section tab sub-nav still lives in each section's `layout.tsx` (`dev/layout.tsx`, `learn/layout.tsx`, etc.) — independent of the global command menu.
+
+### No `/docs` route — technical reference lives under `/dev`
+The whole site *is* the documentation, so a `/docs` namespace nested inside docs.medialane.io is redundant. The developer/technical reference (API, SDK, Architecture, Protocol, Contracts, Developers, AI Agents, Security, Fees, Governance, Changelog) lives under **`/dev/*`**; `/dev` is a plain developer-hub landing (it is NOT an API-key quickstart — that content belongs on `/dev/api`). Old `/docs` and `/docs/:path*` 308-redirect to `/dev` (`next.config.ts`). Do not re-introduce a `/docs` route. (The `src/lib/docs-nav.ts` filename + `DOCS_*` const names are legacy internal naming for the `/dev` data — harmless, rename if convenient.)
 
 ### Policy/legal content lives under `/guidelines` (canonical)
 All policy/legal pages — community, user-guidelines, compliance, terms, privacy, campaign-terms — are canonical under **`/guidelines/*`**. The former `/docs/{compliance,community-guidelines,user-guidelines}` duplicates were merged into `/guidelines` and now 308-redirect there (`next.config.ts`). Do not re-create policy pages under `/docs`.

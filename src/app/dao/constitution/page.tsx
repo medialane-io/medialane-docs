@@ -101,7 +101,7 @@ export default function ConstitutionPage() {
           <a href="https://medialane.org/docs/Constitution-of-Medialane-DAO" className="text-primary hover:underline">
             medialane.org
           </a>. For the current fee and revenue model, see{" "}
-          <a href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</a>.
+          <a href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</a>.
         </p>
       </div>
 

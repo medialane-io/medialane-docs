@@ -28,7 +28,7 @@ export default function LearnCreatorLaunchpadPage() {
         </p>
         <p className="text-sm text-muted-foreground">
           For gas sponsorship, marketplace fees, royalties, and DAO treasury flow, see{" "}
-          <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
+          <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
         </p>
       </div>
 
@@ -109,7 +109,7 @@ export default function LearnCreatorLaunchpadPage() {
           <p>
             Sponsorship applies to normal creator workflows and may be limited by abuse controls,
             unsupported flows, or future DAO policy. See{" "}
-            <Link href="/docs/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
+            <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
             for the canonical fee model.
           </p>
         </Section>

@@ -30,17 +30,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/learn/programmable-licensing`,     changeFrequency: "monthly", priority: 0.7 },
 
     // ── Docs ──────────────────────────────────────────────────────────────────
-    { url: `${BASE_URL}/docs`,                             changeFrequency: "monthly", priority: 0.9 },
-    { url: `${BASE_URL}/docs/architecture`,                changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/docs/protocol`,                    changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/docs/sdk`,                         changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/docs/api`,                         changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/docs/contracts`,                   changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/docs/developers`,                  changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/docs/agents`,                      changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/docs/security`,                    changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE_URL}/docs/fees`,                        changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/docs/changelog`,                   changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/dev`,                             changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/dev/architecture`,                changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/dev/protocol`,                    changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/dev/sdk`,                         changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/dev/api`,                         changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/dev/contracts`,                   changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/dev/developers`,                  changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/dev/agents`,                      changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/dev/security`,                    changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/dev/fees`,                        changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/dev/changelog`,                   changeFrequency: "monthly", priority: 0.6 },
 
     // ── Guidelines ────────────────────────────────────────────────────────────
     { url: `${BASE_URL}/guidelines`,                       changeFrequency: "monthly", priority: 0.7 },

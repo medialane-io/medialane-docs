@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Fees & Revenue | Medialane Docs",
     description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
-    url: "https://docs.medialane.io/docs/fees",
+    url: "https://docs.medialane.io/dev/fees",
   },
   twitter: {
     title: "Fees & Revenue | Medialane Docs",
@@ -188,7 +188,7 @@ export default function FeesPage() {
         For product workflows, continue with{" "}
         <Link href="/learn/marketplace" className="text-primary hover:underline">Marketplace</Link>,{" "}
         <Link href="/learn/creator-launchpad" className="text-primary hover:underline">Creator Launchpad</Link>, or{" "}
-        <Link href="/docs/developers" className="text-primary hover:underline">Developer Docs</Link>.
+        <Link href="/dev/developers" className="text-primary hover:underline">Developer Docs</Link>.
       </div>
     </div>
   );

@@ -180,7 +180,7 @@ export default function LearnRemixPage() {
           </p>
           <p className="text-sm">
             See{" "}
-            <Link href="/docs/agents" className="text-primary hover:underline">AI Agents</Link>{" "}
+            <Link href="/dev/agents" className="text-primary hover:underline">AI Agents</Link>{" "}
             for the agent account model and HTTP 402 billing.
           </p>
         </Section>

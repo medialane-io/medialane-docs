@@ -81,7 +81,7 @@ const SECTIONS = [
     bg: "bg-brand-orange/10 group-hover:bg-brand-orange/20",
   },
   {
-    href: "/docs",
+    href: "/dev",
     icon: FileCode2,
     title: "Docs",
     description: "Build on Medialane. Protocol specification, SDK, API reference, smart-contract addresses, and integration guides.",
@@ -172,16 +172,16 @@ const TOPIC_GROUPS = [
     heading: "Build",
     color: "text-brand-rose",
     links: [
-      { href: "/docs/protocol", label: "Protocol" },
-      { href: "/docs/sdk", label: "SDK" },
-      { href: "/docs/api", label: "API Reference" },
-      { href: "/docs/contracts", label: "Smart Contracts" },
-      { href: "/docs/architecture", label: "Architecture" },
-      { href: "/docs/agents", label: "AI Agents" },
-      { href: "/docs/developers", label: "Developers" },
-      { href: "/docs/fees", label: "Fees" },
-      { href: "/docs/security", label: "Security" },
-      { href: "/docs/changelog", label: "Changelog" },
+      { href: "/dev/protocol", label: "Protocol" },
+      { href: "/dev/sdk", label: "SDK" },
+      { href: "/dev/api", label: "API Reference" },
+      { href: "/dev/contracts", label: "Smart Contracts" },
+      { href: "/dev/architecture", label: "Architecture" },
+      { href: "/dev/agents", label: "AI Agents" },
+      { href: "/dev/developers", label: "Developers" },
+      { href: "/dev/fees", label: "Fees" },
+      { href: "/dev/security", label: "Security" },
+      { href: "/dev/changelog", label: "Changelog" },
     ],
   },
   {
@@ -189,7 +189,7 @@ const TOPIC_GROUPS = [
     color: "text-brand-blue",
     links: [
       { href: "/dao", label: "DAO" },
-      { href: "/docs/governance", label: "Governance" },
+      { href: "/dev/governance", label: "Governance" },
       { href: "/guidelines/compliance", label: "Compliance" },
       { href: "/guidelines/community", label: "Community" },
       { href: "/guidelines/user-guidelines", label: "User Guidelines" },
@@ -229,7 +229,7 @@ export function HomePage() {
               <BookOpen className="h-4 w-4" /> Start with the basics
             </Link>
             <Link
-              href="/docs"
+              href="/dev"
               className="inline-flex items-center gap-2 border border-border/60 bg-background/60 backdrop-blur-sm px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-muted/60 transition-all"
             >
               <FileCode2 className="h-4 w-4" /> Read the protocol docs
