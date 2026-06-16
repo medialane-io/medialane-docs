@@ -70,18 +70,18 @@ bun run build  # production build — kills dev server, restart after
   /learn/web3
   /learn/protect-your-ip
   /learn/programmable-licensing
-/docs                       Technical documentation
-  /docs/architecture
-  /docs/protocol
-  /docs/sdk
-  /docs/api
-  /docs/contracts
-  /docs/developers
-  /docs/agents
-  /docs/security
-  /docs/fees
-  /docs/governance
-  /docs/changelog
+/dev                        Developer hub — technical reference (was /docs; /docs/* 308-redirects here)
+  /dev/architecture
+  /dev/protocol
+  /dev/sdk
+  /dev/api
+  /dev/contracts
+  /dev/developers
+  /dev/agents
+  /dev/security
+  /dev/fees
+  /dev/governance
+  /dev/changelog
 /guidelines                 Policies & standards (canonical home for all policy/legal)
   /guidelines/community
   /guidelines/user-guidelines
@@ -99,9 +99,13 @@ bun run build  # production build — kills dev server, restart after
 /search                     Search (static)
 ```
 
-Redirects (permanent): `/terms`, `/privacy`, `/campaign-terms` → `/guidelines/*`; and the former
-`/docs/compliance`, `/docs/community-guidelines`, `/docs/user-guidelines` → their canonical
-`/guidelines/*` homes (policy content lives only under `/guidelines`).
+There is **no `/docs` route** — the whole site is the documentation, so a `/docs` namespace
+nested inside docs.medialane.io is redundant. The technical reference lives under `/dev`, and
+`/dev` is a plain developer-hub landing (not an API-key quickstart — that content is on `/dev/api`).
+
+Redirects (permanent): `/terms`, `/privacy`, `/campaign-terms` → `/guidelines/*`; the former
+`/docs/{compliance,community-guidelines,user-guidelines}` → their canonical `/guidelines/*` homes;
+and `/docs` + `/docs/:path*` → `/dev` (policy content lives only under `/guidelines`).
 
 All routes prerender as fully static (`○`).
 
