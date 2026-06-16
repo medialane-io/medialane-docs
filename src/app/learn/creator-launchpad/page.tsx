@@ -22,8 +22,8 @@ export default function LearnCreatorLaunchpadPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Creator Launchpad</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          The Medialane Creator Launchpad lets you deploy your own NFT collection, mint
-          individual IP assets, and bring your creative work onchain — without any coding
+          On the Medialane Creator Launchpad you deploy your own NFT collection, mint
+          individual IP assets, and bring your creative work onchain yourself — with no coding
           or prior blockchain experience.
         </p>
         <p className="text-sm text-muted-foreground">
@@ -116,8 +116,8 @@ export default function LearnCreatorLaunchpadPage() {
 
         <Section title="Launchpad Services">
           <p>
-            Beyond collections and individual assets, the Launchpad gives creators access
-            to a growing suite of onchain services. Each service has a stable ID used by the
+            Beyond collections and individual assets, creators reach a growing suite of
+            onchain services through the Launchpad. Each service has a stable ID used by the
             protocol and SDK:
           </p>
           <div className="space-y-2">

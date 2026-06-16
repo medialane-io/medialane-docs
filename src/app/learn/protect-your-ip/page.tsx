@@ -155,7 +155,7 @@ export default function LearnProtectIPPage() {
 
         <Section title="On-Chain Licensing">
           <p>
-            Beyond proof of authorship, Medialane lets you attach license terms to every
+            Beyond proof of authorship, you attach your own license terms to every
             work at mint time — defining in machine-readable form what others can and cannot
             do with your creation. The terms are embedded in the token metadata and travel
             with every transfer, publicly readable by any application or agent.
