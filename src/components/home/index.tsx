@@ -3,6 +3,7 @@ import {
   BookOpen, FileCode2, LifeBuoy, Info, ArrowRight,
   ExternalLink, LayoutGrid, Building2, FileCheck, Link2,
   Rocket, Store, Lock, Infinity as InfinityIcon, ShieldCheck, Bot, Eye,
+  Terminal,
 } from "lucide-react";
 import { PageContainer } from "@/components/page-container";
 
@@ -68,6 +69,41 @@ const PRINCIPLES = [
     description:
       "Medialane is protocol-first: the apps are reference clients over a public-good protocol governed by the Medialane DAO and the MDLN token.",
   },
+];
+
+// ── Machine-native payments — x402 (principles 00 §6, foundations 10 §15) ──
+const AGENT_PAYMENT_USE_CASES = [
+  {
+    icon: Bot,
+    color: "text-brand-purple",
+    bg: "bg-brand-purple/10",
+    title: "Autonomous AI agents",
+    description:
+      "An agent funds itself, calls the API, and tops up on-chain when credits run low — discovering prices and settling machine-to-machine, with no operator in the loop.",
+  },
+  {
+    icon: Building2,
+    color: "text-brand-blue",
+    bg: "bg-brand-blue/10",
+    title: "Businesses & products",
+    description:
+      "Usage-based access with no seats, contracts, or invoices. Every call is metered and every payment is on-chain and verifiable — pay only for what you use.",
+  },
+  {
+    icon: Terminal,
+    color: "text-brand-rose",
+    bg: "bg-brand-rose/10",
+    title: "Any service that can sign",
+    description:
+      "Permissionless by design — a wallet keypair is the whole identity. Any script, backend, or device that can sign a transaction can pay and consume the API.",
+  },
+];
+
+const X402_STEPS = [
+  { n: "1", title: "Discover", description: "A machine-readable endpoint publishes prices and payment details — agents read it like code." },
+  { n: "2", title: "Call", description: "Hit any endpoint with your key. Out of credits? You get a standard 402 with payment instructions." },
+  { n: "3", title: "Pay", description: "Send a USDC micropayment on Starknet to the address in the 402 — settled on-chain in seconds." },
+  { n: "4", title: "Continue", description: "Retry with proof of payment; credits apply and the call goes through. Hold MDLN for a bonus." },
 ];
 
 // ── Knowledge hub — where to go next ──
@@ -150,6 +186,7 @@ const TOPIC_GROUPS = [
       { href: "/learn/tokenization", label: "Tokenization" },
       { href: "/learn/nft", label: "NFTs" },
       { href: "/learn/marketplace", label: "Marketplace" },
+      { href: "/learn/agent-payments", label: "AI Agent Payments" },
       { href: "/learn/services", label: "Services" },
       { href: "/learn/identity", label: "Identity" },
       { href: "/learn/protect-your-ip", label: "Protect Your IP" },
@@ -300,6 +337,54 @@ export function HomePage() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* ── Machine-native payments (x402) ── */}
+      <div className="space-y-6">
+        <div className="space-y-3 max-w-2xl">
+          <span className="pill-badge">x402 · pay-per-call</span>
+          <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
+            Payments built for <span className="gradient-text">machines</span>
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Agents are first-class users on Medialane — and they pay like one. The API speaks{" "}
+            <strong className="text-foreground">x402</strong>, the open HTTP standard for machine
+            payments: a request returns a price, the agent pays per call in USDC on Starknet, and
+            continues. No email, no OAuth, no credit card, no human in the loop — a wallet keypair
+            is the only identity it needs. Designed for machine-to-machine from day one, not retrofitted.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {AGENT_PAYMENT_USE_CASES.map(({ icon: Icon, title, description, color, bg }) => (
+            <div key={title} className="bento-cell p-5 space-y-3">
+              <div className={`h-10 w-10 rounded-xl ${bg} flex items-center justify-center`}>
+                <Icon className={`h-4.5 w-4.5 ${color}`} />
+              </div>
+              <h3 className="font-bold text-sm">{title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {X402_STEPS.map(({ n, title, description }) => (
+            <div key={n} className="bento-cell p-5 space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="h-6 w-6 rounded-lg bg-primary/10 text-primary text-xs font-black flex items-center justify-center shrink-0">{n}</span>
+                <h3 className="font-bold text-sm">{title}</h3>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+            </div>
+          ))}
+        </div>
+
+        <Link
+          href="/dev/agents"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+        >
+          <Bot className="h-4 w-4" /> Read the agent quickstart
+        </Link>
       </div>
 
       {/* ── Knowledge hub ── */}

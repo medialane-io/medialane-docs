@@ -58,7 +58,7 @@ export const DOCS_NAV = [
     label: "AI Agents",
     title: "AI Agents",
     icon: Bot,
-    description: "Build autonomous agents that read, write, and pay using the Medialane API — 402 billing, SIWS auth, webhook events, and MDLN multipliers.",
+    description: "Build autonomous agents that read, write, and pay using the Medialane API — x402 pay-per-call micropayments in USDC, machine-readable discovery, and MDLN credit bonuses.",
   },
   {
     href: "/dev/security",
