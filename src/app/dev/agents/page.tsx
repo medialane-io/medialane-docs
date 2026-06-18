@@ -5,10 +5,10 @@ import { DocH2, DocH3, DocCodeBlock } from "@/components/docs/typography"
 
 export const metadata: Metadata = {
   title: "AI Agents | Medialane Docs",
-  description: "Build autonomous AI agents on Medialane — SIWS auth, 402 credit billing, autonomous USDC top-up, and MDLN multipliers.",
+  description: "Build autonomous AI agents on Medialane — wallet identity, pay-per-use x402 micropayments in USDC on Starknet, and MDLN credit bonuses. No email, no OAuth, no human in the loop.",
   openGraph: {
     title: "AI Agents | Medialane Docs",
-    description: "Build autonomous AI agents on Medialane — SIWS auth, 402 credit billing, autonomous USDC top-up, and MDLN multipliers.",
+    description: "Build autonomous AI agents on Medialane — wallet identity, pay-per-use x402 micropayments in USDC on Starknet, and MDLN credit bonuses.",
     url: "https://docs.medialane.io/dev/agents",
   },
 }
@@ -25,171 +25,135 @@ export default function AgentsPage() {
       </h1>
 
       <p className="text-muted-foreground text-lg mt-2 mb-8">
-        Medialane is built to be consumed by autonomous AI agents. Wallet keypair identity, on-chain payments, and machine-readable 402 billing make it a natural fit for agent workflows.
+        The Medialane API is built to be consumed by autonomous AI agents. A wallet keypair is your identity, you pay per request in USDC on Starknet, and billing speaks the open <strong className="text-white">x402</strong> standard — machine-readable <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code>, no human in the loop.
       </p>
 
       {/* Why agents */}
       <DocH2 id="why">Why agents work here</DocH2>
       <p className="text-muted-foreground mb-4 text-sm">
-        Traditional API platforms require email, OAuth, or credit-card billing — all designed for humans. Medialane uses permissionless primitives instead:
+        Traditional API platforms require email, OAuth, or a credit card — all designed for humans. Medialane uses permissionless primitives instead:
       </p>
       <ul className="space-y-2 text-sm text-muted-foreground mb-6 list-disc list-inside">
         <li><strong className="text-white">Identity</strong> — a Starknet wallet keypair. No email, no OAuth provider, no third-party dependency.</li>
-        <li><strong className="text-white">Auth</strong> — Sign-In with Starknet (SIWS). Sign a typed-data challenge, receive a short-lived JWT.</li>
-        <li><strong className="text-white">Billing</strong> — USDC on Starknet. Deposit on-chain, credits settle within ~2 minutes.</li>
-        <li><strong className="text-white">Access gate</strong> — 500 MDLN minimum in the agent wallet to provision an API key. Tokens stay in the wallet.</li>
-        <li><strong className="text-white">Credit exhaustion</strong> — machine-readable <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402</code> with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining</code> header, not a human-facing error page.</li>
+        <li><strong className="text-white">Payment</strong> — USDC on Starknet, paid per use. Your wallet pays the API directly.</li>
+        <li><strong className="text-white">Billing protocol</strong> — the open <strong className="text-white">x402</strong> standard: an unfunded request returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402</code> with machine-readable payment instructions, your agent pays and retries.</li>
+        <li><strong className="text-white">No gate, no free tier</strong> — pay only for what you use. The first unfunded call returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402</code> by design — that is the protocol working, not an error.</li>
+        <li><strong className="text-white">MDLN bonus</strong> — hold MDLN in the paying wallet and your credits-per-USDC multiply automatically (see below).</li>
       </ul>
 
-      {/* SIWS */}
-      <DocH2 id="siws">SIWS Authentication</DocH2>
+      {/* API key */}
+      <DocH2 id="api-key">Get an API key</DocH2>
       <p className="text-muted-foreground mb-4 text-sm">
-        Agents authenticate the same way a browser wallet does — by signing a typed-data challenge. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">starknet.js</code> with a local keypair:
+        Create a tenant API key at <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">portal.medialane.io</a> — connect a Starknet wallet and create a key in the API Keys tab. The key is shown once; store it securely. Keys look like <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">ml_live_…</code> and authenticate every request:
+      </p>
+      <DocCodeBlock lang="ts">{`const BASE = "https://api.medialane.io";
+const headers = { "x-api-key": process.env.ML_API_KEY! };`}</DocCodeBlock>
+
+      {/* Discovery */}
+      <DocH2 id="discovery">Discover pricing</DocH2>
+      <p className="text-muted-foreground mb-4 text-sm">
+        Everything an agent needs to pay is published, unauthenticated, at the well-known endpoint:
+      </p>
+      <DocCodeBlock lang="bash">{`curl https://api.medialane.io/.well-known/x402`}</DocCodeBlock>
+      <DocCodeBlock lang="json">{`{
+  "x402Version": 1,
+  "schemes": ["starknet-transfer"],
+  "network": "starknet",
+  "asset": "0x033068f6539f8e6e6b131e6b2b814e6c34a5224bc66947c47dab9dfee93b35fb",
+  "payTo": "0x064c51746dbcb7498cc6e4b8abfcacd60805c0762b0411bb0515c611b5ae8223",
+  "creditsPerUsdc": 100,
+  "pricing": { "default": 1 }
+}`}</DocCodeBlock>
+      <p className="text-muted-foreground mb-4 text-sm">
+        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">asset</code> is USDC on Starknet, <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">payTo</code> is where you send it, and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">1 USDC = 100 credits</code> (1 credit per read; some operations cost more).
       </p>
 
-      <DocH3>1. Fetch challenge</DocH3>
-      <DocCodeBlock lang="ts">{`import { RpcProvider, Account, ec, stark } from "starknet";
-
-const address = process.env.AGENT_WALLET_ADDRESS!;
-const privateKey = process.env.AGENT_PRIVATE_KEY!;
-
-const res = await fetch(
-  \`https://portal.medialane.io/api/auth/challenge?address=\${address}\`
-);
-const { nonce } = await res.json();`}</DocCodeBlock>
-
-      <DocH3>2. Sign the typed-data challenge</DocH3>
-      <DocCodeBlock lang="ts">{`const provider = new RpcProvider({ nodeUrl: process.env.STARKNET_RPC_URL });
-const account = new Account(provider, address, privateKey);
-
-// The same typed-data domain the portal uses
-const typedData = {
-  types: {
-    StarkNetDomain: [
-      { name: "name", type: "felt" },
-      { name: "version", type: "felt" },
-      { name: "chainId", type: "felt" },
-    ],
-    Message: [
-      { name: "nonce", type: "felt" },
-      { name: "address", type: "felt" },
-    ],
-  },
-  primaryType: "Message",
-  domain: { name: "Medialane Portal", version: "1", chainId: "SN_MAIN" },
-  message: { nonce, address },
-};
-
-const signature = await account.signMessage(typedData);`}</DocCodeBlock>
-
-      <DocH3>3. Exchange for JWT</DocH3>
-      <DocCodeBlock lang="ts">{`const verifyRes = await fetch("https://portal.medialane.io/api/auth/verify", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ address, nonce, signature }),
-  credentials: "include",  // stores auth-token + auth-refresh cookies
-});
-
-// JWT is set as an HttpOnly cookie automatically.
-// For headless agents, extract from Set-Cookie if needed.`}</DocCodeBlock>
-
-      {/* API Key */}
-      <DocH2 id="api-key">Get an API Key</DocH2>
+      {/* The flow */}
+      <DocH2 id="flow">Pay-per-use with x402</DocH2>
       <p className="text-muted-foreground mb-4 text-sm">
-        After authenticating, provision your wallet and create an API key via the portal API. Keys are tied to the wallet address, not an email account.
+        Call any endpoint with your key. If your balance can&apos;t cover the call, you get <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402</code> with a <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">paymentRequirements</code> body:
       </p>
-      <DocCodeBlock lang="ts">{`// Provision wallet (idempotent — safe to call on every boot)
-await fetch("https://portal.medialane.io/api/portal/provision", {
-  method: "POST",
-  credentials: "include",
-});
+      <DocCodeBlock lang="json">{`HTTP/1.1 402 Payment Required
+X-Credits-Remaining: 0
 
-// Create an API key
-const keyRes = await fetch("https://portal.medialane.io/api/portal/keys", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ name: "agent-key" }),
-  credentials: "include",
-});
-const { key } = await keyRes.json();
-// store key securely — shown only once`}</DocCodeBlock>
+{
+  "x402Version": 1,
+  "accepts": [{
+    "scheme": "starknet-transfer",
+    "network": "starknet",
+    "asset": "0x033068f6…",
+    "maxAmountRequired": "10000",   // USDC atomic units (6dp) → 0.01 USDC = 1 credit
+    "payTo": "0x064c5174…",
+    "nonce": "…",
+    "resource": "/v1/orders"
+  }]
+}`}</DocCodeBlock>
 
-      {/* Credit billing */}
-      <DocH2 id="billing">Credit Billing — Handling 402</DocH2>
+      <DocH3>Handle it: pay, then retry with X-PAYMENT</DocH3>
       <p className="text-muted-foreground mb-4 text-sm">
-        Every response includes an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining</code> header.
-        When credits reach zero the API returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code>.
-        Detect and handle it programmatically:
+        Send USDC to <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">payTo</code>, then retry the <em>same</em> request with an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-PAYMENT</code> header (base64 JSON). The API verifies the transfer on-chain, credits your tenant, and serves the response. One on-chain transfer credits exactly once — safe to retry the same proof.
       </p>
-      <DocCodeBlock lang="ts">{`async function apiCall(endpoint: string) {
-  const res = await fetch(
-    \`https://medialane-backend-production.up.railway.app\${endpoint}\`,
-    { headers: { "x-api-key": process.env.ML_API_KEY! } }
-  );
+      <DocCodeBlock lang="ts">{`const BASE = "https://api.medialane.io";
 
-  const remaining = Number(res.headers.get("X-Credits-Remaining") ?? 0);
-  if (remaining < 10) {
-    console.warn(\`Low credits: \${remaining} remaining\`);
-  }
+async function call(path: string, init: RequestInit = {}): Promise<Response> {
+  const headers = { "x-api-key": process.env.ML_API_KEY!, ...(init.headers ?? {}) };
+  let res = await fetch(\`\${BASE}\${path}\`, { ...init, headers });
 
   if (res.status === 402) {
-    // Credits exhausted — trigger top-up before retrying
-    await topUpCredits();
-    return apiCall(endpoint);  // retry once
-  }
+    const { accepts } = await res.json();
+    const req = accepts[0]; // { scheme, network, payTo, maxAmountRequired, nonce }
 
-  return res.json();
-}`}</DocCodeBlock>
+    // Fund a chunk (more than one call's worth) so later calls just spend down.
+    const txHash = await payUsdc(req.payTo, 1_000_000n); // 1 USDC → ~100 credits
 
-      {/* Autonomous top-up */}
-      <DocH2 id="topup">Autonomous USDC Top-up</DocH2>
-      <p className="text-muted-foreground mb-4 text-sm">
-        Agents can top up credits autonomously by sending USDC to the treasury address on Starknet.
-        Credits appear within ~2 minutes (one Vercel cron cycle).
-      </p>
-      <DocCodeBlock lang="ts">{`import { Account, RpcProvider, Contract } from "starknet";
+    const xPayment = Buffer.from(JSON.stringify({
+      scheme: req.scheme,
+      network: req.network,
+      txHash,
+      nonce: req.nonce,
+    })).toString("base64");
 
-const USDC_CONTRACT = "0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8";
-const TREASURY = process.env.NEXT_PUBLIC_TREASURY_ADDRESS!;
-
-async function topUpCredits(usdcAmount = 5) {
-  const provider = new RpcProvider({ nodeUrl: process.env.STARKNET_RPC_URL });
-  const account = new Account(provider, process.env.AGENT_WALLET_ADDRESS!, process.env.AGENT_PRIVATE_KEY!);
-
-  // USDC has 6 decimals
-  const amount = BigInt(usdcAmount * 1_000_000);
-
-  await account.execute([{
-    contractAddress: USDC_CONTRACT,
-    entrypoint: "transfer",
-    calldata: [TREASURY, amount.toString(), "0"],
-  }]);
-
-  // Poll until credits arrive (typically < 2 min)
-  await waitForCredits();
-}
-
-async function waitForCredits(retries = 20, delayMs = 7_000) {
-  for (let i = 0; i < retries; i++) {
-    await new Promise(r => setTimeout(r, delayMs));
-    const res = await fetch("https://portal.medialane.io/api/credits/balance", {
-      credentials: "include",
+    res = await fetch(\`\${BASE}\${path}\`, {
+      ...init,
+      headers: { ...headers, "x-payment": xPayment },
     });
-    const { balance } = await res.json();
-    if (balance > 0) return;
   }
-  throw new Error("Credits did not appear after 2 minutes");
+  return res;
 }`}</DocCodeBlock>
 
-      {/* MDLN tip */}
-      <DocH2 id="mdln">MDLN Token Multipliers</DocH2>
+      <DocH3>Paying USDC on Starknet</DocH3>
+      <DocCodeBlock lang="ts">{`import { Account, RpcProvider } from "starknet";
+
+// Circle-native USDC on Starknet (the asset from /.well-known/x402)
+const USDC = "0x033068f6539f8e6e6b131e6b2b814e6c34a5224bc66947c47dab9dfee93b35fb";
+
+async function payUsdc(payTo: string, amountAtomic: bigint): Promise<string> {
+  const provider = new RpcProvider({ nodeUrl: process.env.STARKNET_RPC_URL! });
+  const account = new Account(
+    provider,
+    process.env.AGENT_WALLET_ADDRESS!,
+    process.env.AGENT_PRIVATE_KEY!,
+  );
+  const { transaction_hash } = await account.execute([{
+    contractAddress: USDC,
+    entrypoint: "transfer",
+    calldata: [payTo, amountAtomic.toString(), "0"], // u256: low, high
+  }]);
+  await provider.waitForTransaction(transaction_hash); // wait for finality before retry
+  return transaction_hash;
+}`}</DocCodeBlock>
       <p className="text-muted-foreground mb-4 text-sm">
-        If your agent wallet holds MDLN tokens, the multiplier is applied automatically at deposit time — no configuration required.
-        The on-chain balance is read at the moment the deposit transaction is detected.
+        After funding, subsequent calls return <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">200</code> and spend down your balance — no payment per call. Check it any time via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/portal/me</code> (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">creditBalance</code>) and your payment history via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/portal/credits/history</code>.
+      </p>
+
+      {/* MDLN multipliers */}
+      <DocH2 id="mdln">MDLN credit bonus</DocH2>
+      <p className="text-muted-foreground mb-4 text-sm">
+        If the wallet that paid holds MDLN, the multiplier is applied automatically when your payment is credited — no configuration. The on-chain balance is read at credit time.
       </p>
       <div className="rounded-xl border border-white/10 overflow-hidden bg-white/[0.02] text-sm">
         <div className="grid grid-cols-3 px-5 py-3 bg-white/[0.03] border-b border-white/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-          <span>MDLN Balance</span>
+          <span>MDLN held</span>
           <span className="text-center">Multiplier</span>
           <span className="text-center">Credits per $1 USDC</span>
         </div>
@@ -210,15 +174,15 @@ async function waitForCredits(retries = 20, delayMs = 7_000) {
         Learn more about MDLN at{" "}
         <a href="https://medialane.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
           medialane.org
-        </a>. Hold MDLN in the same wallet you use as your agent identity.
+        </a>. Hold MDLN in the same wallet you pay from.
       </p>
 
       {/* Next steps */}
-      <DocH2 id="next">Next Steps</DocH2>
+      <DocH2 id="next">Next steps</DocH2>
       <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-        <li><Link href="/dev/api" className="text-primary hover:underline">API Reference</Link> — all available endpoints</li>
+        <li><Link href="/dev/api" className="text-primary hover:underline">API Reference</Link> — all available endpoints and their credit costs</li>
         <li><Link href="/dev/sdk" className="text-primary hover:underline">SDK Docs</Link> — typed TypeScript client (@medialane/sdk)</li>
-        <li><Link href="https://portal.medialane.io/integrate" className="text-primary hover:underline">Integrate</Link> — credit costs and MDLN tier details</li>
+        <li><a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Portal</a> — create API keys and watch usage</li>
       </ul>
     </div>
   )
