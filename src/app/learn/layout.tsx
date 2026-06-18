@@ -16,6 +16,7 @@ const LEARN_NAV = [
   { label: "Creator Launchpad",      href: "/learn/creator-launchpad" },
   { label: "Creator Coins",          href: "/learn/creator-coin" },
   { label: "Marketplace",            href: "/learn/marketplace" },
+  { label: "AI Agent Payments",      href: "/learn/agent-payments" },
   { label: "POP Protocol",           href: "/learn/pop-protocol" },
   { label: "Collection Drop",        href: "/learn/collection-drop" },
   { label: "IP Collection 1155",     href: "/learn/ip-collection-1155" },

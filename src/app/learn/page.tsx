@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight } from "lucide-react";
+import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Learn | Medialane",
@@ -46,6 +46,12 @@ const TOPICS = [
     icon: Store,
     title: "Marketplace",
     description: "Discover how to list, buy, sell, make offers, and trade IP assets — including supported currencies and royalties.",
+  },
+  {
+    href: "/learn/agent-payments",
+    icon: Bot,
+    title: "Payments for AI Agents",
+    description: "How AI agents and any software pay to use Medialane — automatic per-use micropayments in USDC, no account or card, no human in the loop.",
   },
   {
     href: "/learn/pop-protocol",

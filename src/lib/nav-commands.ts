@@ -41,6 +41,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "learn-creator-launchpad",       label: "Creator Launchpad",       icon: Rocket,     href: "/learn/creator-launchpad",        keywords: ["launchpad", "drop", "mint", "create"] },
       { id: "learn-creator-coin",            label: "Creator Coins",           icon: Coins,      href: "/learn/creator-coin",             keywords: ["coin", "token", "memecoin", "launch", "liquidity"] },
       { id: "learn-marketplace",             label: "Marketplace",             icon: Store,      href: "/learn/marketplace",              keywords: ["trade", "buy", "sell", "orders"] },
+      { id: "learn-agent-payments",          label: "AI Agent Payments",       icon: Bot,        href: "/learn/agent-payments",           keywords: ["agents", "x402", "payments", "micropayments", "ai", "machine"] },
       { id: "learn-pop-protocol",            label: "POP Protocol",            icon: Award,      href: "/learn/pop-protocol",             keywords: ["pop", "proof of participation", "event"] },
       { id: "learn-collection-drop",         label: "Collection Drop",         icon: Package,    href: "/learn/collection-drop",          keywords: ["drop", "timed", "fixed supply"] },
       { id: "learn-ip-collection-1155",      label: "IP Collection 1155",      icon: Layers,     href: "/learn/ip-collection-1155",       keywords: ["erc1155", "editions", "multi"] },

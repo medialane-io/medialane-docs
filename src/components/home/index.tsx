@@ -186,6 +186,7 @@ const TOPIC_GROUPS = [
       { href: "/learn/tokenization", label: "Tokenization" },
       { href: "/learn/nft", label: "NFTs" },
       { href: "/learn/marketplace", label: "Marketplace" },
+      { href: "/learn/agent-payments", label: "AI Agent Payments" },
       { href: "/learn/services", label: "Services" },
       { href: "/learn/identity", label: "Identity" },
       { href: "/learn/protect-your-ip", label: "Protect Your IP" },
