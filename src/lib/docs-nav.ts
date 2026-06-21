@@ -158,7 +158,7 @@ export const KNOWLEDGE_GROUPS = [
     title: "DAO And Governance",
     icon: Building2,
     links: [
-      { href: "/dao", label: "DAO Summary", desc: "Docs-side summary of Medialane DAO LLC." },
+      { href: "/dao", label: "DAO Summary", desc: "Docs-side summary of the Medialane DAO." },
       { href: "/dao/constitution", label: "Constitution Summary", desc: "Ratified constitution summary and canonical DAO link." },
       { href: "/dao/governance", label: "Governance Charter", desc: "Snapshot proposal lifecycle and voting overview." },
       { href: "/dao/token", label: "MDLN Token", desc: "Fixed supply, membership tiers, and treasury governance." },

@@ -61,9 +61,12 @@ export default function ContractsPage() {
         <div key={category} className="space-y-3">
           <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">{category}</h3>
           <div className="space-y-2">
-            {items.map(({ name, address, desc }) => (
+            {items.map(({ name, chain, address, desc }) => (
               <div key={name} className="bento-cell p-5 space-y-2">
-                <p className="text-sm font-semibold text-foreground">{name}</p>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <p className="text-sm font-semibold text-foreground">{name}</p>
+                  <span className="pill-badge text-[10px] uppercase tracking-widest">{chain}</span>
+                </div>
                 <a
                   href={`https://starkscan.co/contract/${address}`}
                   target="_blank"
