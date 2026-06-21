@@ -85,7 +85,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
   {
     heading: "DAO",
     items: [
-      { id: "dao-about",        label: "About DAO",                  icon: Building2, href: "/dao",              keywords: ["dao", "organization", "utah"] },
+      { id: "dao-about",        label: "About DAO",                  icon: Building2, href: "/dao",              keywords: ["dao", "organization", "governance"] },
       { id: "dao-constitution", label: "Constitution",               icon: Scroll,    href: "/dao/constitution", keywords: ["charter", "rules"] },
       { id: "dao-governance",   label: "Governance Charter",         icon: Landmark,  href: "/dao/governance",   keywords: ["snapshot", "voting"] },
       { id: "dao-token",        label: "MDLN Token",                 icon: Coins,     href: "/dao/token",        keywords: ["mdln", "supply", "token"] },

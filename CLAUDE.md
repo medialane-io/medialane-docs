@@ -36,7 +36,7 @@ The `.next` directory gets rebuilt on each `bun run build`. If the browser shows
 
 ### Medialane DAO / MDLN
 - DAO/token facts should mirror `medialane.org` and the `medialane-dao` repo
-- Medialane DAO LLC is registered in Utah, USA
+- The Medialane DAO exists **on-chain** (governance + treasury) — that is the present, real fact and what docs may state. Do **not** claim a legal entity / LLC or any jurisdiction registration: an incorporation (for compliance / business development) is in progress but **not complete**. Never present an in-progress step as done.
 - MDLN is live on Ethereum mainnet and bridgeable to Starknet via StarkGate
 - MDLN supply is fixed at 21,000,000; 100% is DAO-controlled; no VC/team allocation
 - Snapshot governance is `medialane.eth`
@@ -59,8 +59,14 @@ The actual tech stack and their roles:
 | ChipiPay + account abstraction | Gasless UX layer (a tool, not the foundation) |
 | Starknet | The decentralized network (a tool, not the identity) |
 
-### Multichain — do NOT mention
-Do not add Bitcoin, Ethereum, Solana, or "multichain roadmap" to any docs page. Medialane operates on Starknet. The censorship-resistance and permissionless principles are expressed through ZK proofs and open contracts — not through chain mentions.
+### Multichain — first-class by design
+Chain is a **first-class dimension** of the substrate, never assumed or dropped (`medialane-core/docs/architecture/08-chain-sovereignty.md`, Axiom 07). Starknet, Ethereum, and Solana stand as **peers**, and the set is open-ended — **no chain is the foundation**. Verifiable trust is a *role, not a place*: Starknet currently fills the prover/settlement (trust-anchor) role, behind an interface that can be re-homed.
+
+What this means for docs:
+- State chains **factually**: contract addresses are always chain-qualified (e.g. "Starknet"), and the address registry is chain-aware so peers can be added.
+- Today's deployments live on **Starknet** — say so plainly; do not imply Starknet is the *only* or *home* chain.
+- **Do NOT publish sequencing/roadmap** — which chains, in which order, and port status are a separate roadmap effort, deliberately out of scope (08 §closing). No "coming to X" promises.
+- Use "Starknet", not bare "Mainnet".
 
 ### Integrity Web
 The 10 axioms from [integrityweb.xyz/axioms](https://www.integrityweb.xyz/axioms) are architectural constraints for Medialane, not marketing. Reference them for philosophy sections. The learn page is at `/learn/integrity-web`.

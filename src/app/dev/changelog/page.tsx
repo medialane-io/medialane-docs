@@ -17,6 +17,15 @@ export const metadata: Metadata = {
 
 const CHANGES = [
   {
+    date: "2026-06-20",
+    title: "Creator royalties on every resale — MIP collections v0.4.0",
+    items: [
+      "ERC-721 IP collections now carry on-chain creator royalties (EIP-2981): set a royalty once when you mint and it is paid to you automatically on every secondary sale, on any marketplace that honors the standard. The royalty receiver is the original creator and is immutable — it can never be redirected, even after the asset changes hands.",
+      "MIP IPCollection registry v0.4.0 deployed on Starknet at 0x0558c9b6…aeef2. Each collection is its own immutable ERC-721 with permanent provenance (creator + timestamp). Contracts now expose an on-chain version() so any app or agent can confirm exactly which generation it is talking to.",
+      "Token operations and events were streamlined for indexer-independent reading: tokens are addressed by (collectionId, tokenId), batch mints include per-item metadata in their event, and transfer counts are reported as protocol_routed_transfers.",
+    ],
+  },
+  {
     date: "2026-06-13",
     title: "Trade any coin both ways + the top Starknet memecoins, live",
     items: [
