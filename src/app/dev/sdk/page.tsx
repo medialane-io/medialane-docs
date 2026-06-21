@@ -698,7 +698,7 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
           </p>
         </div>
         <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5 space-y-2">
-          <p className="text-xs font-mono text-muted-foreground">dapp.medialane.io</p>
+          <p className="text-xs font-mono text-muted-foreground">starknet.medialane.io</p>
           <p className="text-sm font-semibold text-white">Permissionless dApp</p>
           <p className="text-xs text-muted-foreground leading-relaxed">
             Activities, Trade Intents, Asset Metadata. Direct starknet.js reads — no backend dependency for browsing.

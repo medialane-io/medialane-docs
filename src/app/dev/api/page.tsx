@@ -1918,7 +1918,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/users/register"
-        description="Frictionless registration, authenticated by tenant API key (no Clerk JWT). The wallet address is supplied in the body. Idempotent — returns the existing Account if the wallet is already known. Used by medialane-dapp to silently register web3 wallet connections."
+        description="Frictionless registration, authenticated by tenant API key (no Clerk JWT). The wallet address is supplied in the body. Idempotent — returns the existing Account if the wallet is already known. Used by medialane-starknet to silently register web3 wallet connections."
         params={[
           { name: "walletAddress", type: "string", required: true, desc: "Starknet wallet address" },
           { name: "walletType", type: "string", required: false, desc: "ARGENT | BRAAVOS | CARTRIDGE | PRIVY | CHIPIPAY | INJECTED | UNKNOWN" },
@@ -1943,7 +1943,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/users/me"
-        description="Upsert the authenticated caller's Account (lazy onboarding for first-touch flows). Identity is taken from the Bearer token — a Clerk JWT (medialane-io) or a SIWS token (medialane-dapp / agents). The wallet address comes from the verified token, never the body."
+        description="Upsert the authenticated caller's Account (lazy onboarding for first-touch flows). Identity is taken from the Bearer token — a Clerk JWT (medialane-io) or a SIWS token (medialane-starknet / agents). The wallet address comes from the verified token, never the body."
         params={[
           { name: "walletType", type: "string", required: false, desc: "Defaults to UNKNOWN" },
           { name: "appSource", type: "string", required: false, desc: "Defaults to MEDIALANE_IO" },
