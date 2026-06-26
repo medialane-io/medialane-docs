@@ -94,8 +94,8 @@ export default function LearnCreatorCoinPage() {
 
         <Section title="Trading & discovery">
           <p>
-            Coins are listed on the dApp&apos;s Coins page with live prices read directly from
-            their Ekubo pool — price, market cap, and holders. Trading settles on Ekubo,
+            Coins are listed on the Coins page with live prices read directly from
+            their Ekubo pool — price, supply, and market cap. Trading settles on Ekubo,
             an external public exchange: Medialane never holds your coins or your funds.
           </p>
         </Section>
