@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot } from "lucide-react";
+import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot, Ticket, Users, Handshake } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Learn | Medialane",
@@ -70,6 +70,24 @@ const TOPICS = [
     icon: Layers,
     title: "IP Collection 1155",
     description: "Deploy a multi-edition ERC-1155 collection for music, art series, and any creative work where multiple people should own the same piece.",
+  },
+  {
+    href: "/learn/ip-tickets",
+    icon: Ticket,
+    title: "IP Tickets",
+    description: "Sell redeemable, tradeable ERC-721 tickets for events and access — a real NFT, not a soulbound pass.",
+  },
+  {
+    href: "/learn/ip-club",
+    icon: Users,
+    title: "IP Club",
+    description: "Run a membership club with an onchain NFT membership card — open, invite-only, paid, or capped.",
+  },
+  {
+    href: "/learn/ip-sponsorship",
+    icon: Handshake,
+    title: "IP Sponsorship",
+    description: "Sell a sponsorship license on an asset you own — sponsors bid, you accept, payment settles directly with no escrow.",
   },
   {
     href: "/learn/remix",

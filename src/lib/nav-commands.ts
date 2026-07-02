@@ -3,7 +3,7 @@ import {
   Zap, Info, LayoutGrid, BookOpen, FileCode2, FileCheck, LifeBuoy,
   Building2, Link2, Search,
   Image, Globe, Lock, Code2, Coins, Rocket, Store, Award, Package,
-  Layers, GitBranch, Shield, FileText,
+  Layers, GitBranch, Shield, FileText, Ticket, Handshake,
   Users, User, Eye, Scale, Scroll, Vote, History, Network, Bot,
   Terminal, Landmark,
 } from "lucide-react";
@@ -45,6 +45,9 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "learn-pop-protocol",            label: "POP Protocol",            icon: Award,      href: "/learn/pop-protocol",             keywords: ["pop", "proof of participation", "event"] },
       { id: "learn-collection-drop",         label: "Collection Drop",         icon: Package,    href: "/learn/collection-drop",          keywords: ["drop", "timed", "fixed supply"] },
       { id: "learn-ip-collection-1155",      label: "IP Collection 1155",      icon: Layers,     href: "/learn/ip-collection-1155",       keywords: ["erc1155", "editions", "multi"] },
+      { id: "learn-ip-tickets",              label: "IP Tickets",              icon: Ticket,     href: "/learn/ip-tickets",               keywords: ["ticket", "event", "redeem", "access"] },
+      { id: "learn-ip-club",                 label: "IP Club",                 icon: Users,      href: "/learn/ip-club",                  keywords: ["club", "membership", "community", "subscribe"] },
+      { id: "learn-ip-sponsorship",          label: "IP Sponsorship",          icon: Handshake,  href: "/learn/ip-sponsorship",           keywords: ["sponsor", "sponsorship", "bid", "license"] },
       { id: "learn-remix",                   label: "Remix & Derivatives",     icon: GitBranch,  href: "/learn/remix",                    keywords: ["remix", "fork", "attribution"] },
       { id: "learn-protect-your-ip",         label: "Protect Your IP",         icon: Shield,     href: "/learn/protect-your-ip",          keywords: ["protect", "rights", "evidence"] },
       { id: "learn-programmable-licensing",  label: "Programmable Licensing",  icon: FileText,   href: "/learn/programmable-licensing",   keywords: ["license", "cc", "license type"] },

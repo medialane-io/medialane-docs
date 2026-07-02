@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Package, Image, Music, Award, Clock, Store, TrendingUp, Coins } from "lucide-react";
+import { Package, Image, Music, Award, Clock, Store, TrendingUp, Coins, Ticket, Users, Handshake } from "lucide-react";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
@@ -69,6 +69,36 @@ const SERVICES = [
     caps: ["mint", "claim"],
   },
   {
+    id: "ip-tickets",
+    label: "IP Tickets",
+    icon: Ticket,
+    color: "text-brand-blue",
+    bg: "bg-brand-blue/10",
+    border: "border-brand-blue/20",
+    desc: "Redeemable, tradeable ERC-721 tickets for events and access. A factory deploys one ticket collection per creator; tickets trade on the marketplace like any NFT until redeemed.",
+    caps: ["mint", "list", "buy", "make_offer", "transfer", "redeem"],
+  },
+  {
+    id: "ip-club",
+    label: "IP Club",
+    icon: Users,
+    color: "text-brand-purple",
+    bg: "bg-brand-purple/10",
+    border: "border-brand-purple/20",
+    desc: "Membership clubs with an onchain NFT membership card. A single registry tracks every club — open, invite-only, paid, or capped — and issues membership cards from a shared NFT contract.",
+    caps: ["mint", "subscribe"],
+  },
+  {
+    id: "ip-sponsorship",
+    label: "IP Sponsorship",
+    icon: Handshake,
+    color: "text-brand-rose",
+    bg: "bg-brand-rose/10",
+    border: "border-brand-rose/20",
+    desc: "Open bidding for sponsorship licenses on an asset you own. Sponsors bid, the author accepts, payment settles directly with no escrow. Accepted bids issue a license via the ip-sponsorship-license service.",
+    caps: ["sponsor", "license"],
+  },
+  {
     id: "creator-coin",
     label: "Creator Coin",
     icon: TrendingUp,
@@ -124,6 +154,7 @@ const ALL_CAPS = [
   { cap: "license", desc: "Exercise license terms through the service" },
   { cap: "subscribe", desc: "Recurring access (memberships, IP Club)" },
   { cap: "redeem", desc: "Redeem a redeemable asset (e.g. tickets)" },
+  { cap: "sponsor", desc: "Bid to sponsor an asset the author owns" },
 ];
 
 export default function LearnServicesPage() {
@@ -167,9 +198,9 @@ export default function LearnServicesPage() {
         <Section title="Services Available Today">
           <p>
             These are the services live on mainnet now. The catalog is not fixed — new
-            monetization primitives (memberships and IP Clubs, IP tickets, commissions,
-            creator coins, auctions, and more) are added as new services over time, each a
-            registry entry rather than a protocol change.
+            monetization primitives (commissions, auctions, subscriptions, and more) are
+            added as new services over time, each a registry entry rather than a protocol
+            change.
           </p>
           <div className="space-y-3">
             {SERVICES.map(({ id, label, icon: Icon, color, bg, border, desc, caps }) => (

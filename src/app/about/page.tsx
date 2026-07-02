@@ -47,6 +47,9 @@ const SERVICE_LINKS = [
   { href: "/learn/collection-drop", label: "Collection Drops" },
   { href: "/learn/ip-collection-1155", label: "NFT Editions" },
   { href: "/learn/pop-protocol", label: "POP Protocol" },
+  { href: "/learn/ip-tickets", label: "IP Tickets" },
+  { href: "/learn/ip-club", label: "IP Club" },
+  { href: "/learn/ip-sponsorship", label: "IP Sponsorship" },
 ];
 
 const LAYERS = [

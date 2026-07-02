@@ -126,6 +126,9 @@ export default function LearnCreatorLaunchpadPage() {
               { id: "mip-erc1155", name: "IP Collection 1155", desc: "Multi-edition ERC-1155 collections. Multiple collectors own the same work." },
               { id: "pop-protocol", name: "POP Protocol", desc: "Issue soulbound credentials for events, bootcamps, and milestones." },
               { id: "drop-collection", name: "Collection Drop", desc: "Launch a fixed-supply ERC-721 drop with a timed mint window and optional allowlist." },
+              { id: "ip-tickets", name: "IP Tickets", desc: "Sell redeemable, tradeable ERC-721 tickets for events and access." },
+              { id: "ip-club", name: "IP Club", desc: "Run a membership club with an onchain NFT membership card." },
+              { id: "ip-sponsorship", name: "IP Sponsorship", desc: "Sell a direct-settlement sponsorship license on an asset you own." },
             ].map(({ id, name, desc }) => (
               <div key={id} className="bento-cell px-4 py-3 flex items-start gap-3">
                 <span className="font-mono text-xs bg-primary/10 text-primary px-2 py-1 rounded-md shrink-0 mt-0.5">{id}</span>
