@@ -98,13 +98,17 @@ export default function LearnIPClubPage() {
           </p>
         </Section>
 
-        <Section title="Membership Cards Are Real NFTs">
+        <Section title="Membership Cards Are Non-Transferable">
           <p>
-            A club membership card lives in your Portfolio like any other Medialane asset. It
-            is the verifiable proof of membership — any application, token gate, or community
-            tool can check whether a wallet holds a card for a given club without trusting a
-            centralized database. If you leave the club, your card no longer certifies
-            membership, since <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">is_member()</code>{" "}
+            A club membership card lives in your Portfolio like any other Medialane asset,
+            but it is <strong className="text-foreground">soulbound</strong> — permanently
+            tied to the wallet that joined. It cannot be sold, gifted, or transferred, so
+            membership always means the current member, not whoever happens to hold the
+            token. It is the verifiable proof of membership — any application, token gate,
+            or community tool can check whether a wallet holds a card for a given club
+            without trusting a centralized database. If you leave the club, your card no
+            longer certifies membership, since{" "}
+            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">is_member()</code>{" "}
             on the club registry is always the source of truth — never the appearance of a
             card in a wallet.
           </p>
