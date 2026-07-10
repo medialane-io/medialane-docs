@@ -33,8 +33,8 @@ const FACETS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    def: "Your on-chain history. Work you have created, assets you have collected, credentials you have earned. Your primary wallet address is your account.",
-    note: "Account state is protocol state — it passes the rebuild test. It is your permanent, verifiable on-chain record.",
+    def: "The logical actor — your own stable identity, not a wallet address. Wallets, social/email logins, and agent keys all attach to it; none of them is the account, and an account does not require a wallet at all (a social-login user with no wallet is still a first-class account). It aggregates the work you have created, assets you have collected, and credentials you have earned across every wallet or login attached to it.",
+    note: "A wallet declares it belongs to an account via a signed statement; the account can rotate or add wallets without losing its history.",
   },
   {
     label: "Profile",
@@ -114,9 +114,12 @@ export default function LearnIdentityPage() {
                 <p className="font-bold text-foreground text-sm">Authentication</p>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Proving who you are. On Medialane, authentication is SIWS — Sign In With
-                Starknet. You sign a message with your wallet. The API verifies the signature.
-                No password, no email, no third-party identity provider.
+                Proving who you are. On the wallet-sovereign Starknet app, authentication is
+                SIWS — Sign In With Starknet: you sign a message with your wallet and the API
+                verifies the signature, no password or third-party provider involved. On
+                medialane.io, authentication is email/social login via Clerk, with a wallet
+                created invisibly behind it — a different identity scheme attached to the same
+                underlying account model.
               </p>
             </div>
             <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">

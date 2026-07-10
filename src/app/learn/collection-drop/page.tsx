@@ -55,7 +55,9 @@ export default function LearnCollectionDropPage() {
           </ul>
           <p>
             Once the drop is live, eligible collectors mint directly from the drop page.
-            All minting transactions are gasless for participants — gas is sponsored by Medialane.
+            On medialane.io, minting transactions are gasless for participants (gas sponsored via
+            ChipiPay). On the Starknet app, gas sponsorship depends on whether AVNU sponsorship is
+            currently active — real gas may apply.
           </p>
         </Section>
 

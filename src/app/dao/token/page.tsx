@@ -45,8 +45,8 @@ const UTILITIES = [
   },
   {
     icon: TrendingUp,
-    title: "Treasury Governance",
-    description: `The ${CANONICAL.marketplaceFee} marketplace fee flows to the DAO treasury. MDLN holders vote on allocation: ${CANONICAL.creatorAirdropName}, buyback, burn, development, or operations.`,
+    title: "Creators Fund Governance",
+    description: `The ${CANONICAL.marketplaceFee} marketplace fee flows to the creators fund at the platform layer. MDLN holders vote on allocation: ${CANONICAL.creatorAirdropName}, buyback, burn, development, or operations.`,
   },
 ];
 
@@ -217,7 +217,7 @@ export default function TokenPage() {
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">{CANONICAL.creatorAirdropName}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          A {CANONICAL.marketplaceFee} marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on
+          A {CANONICAL.marketplaceFee} marketplace fee flows to the creators fund at the platform layer. Each year, MDLN holders vote on
           Snapshot to decide how that revenue is used — {CANONICAL.creatorAirdropName}, token buyback, token burn,
           protocol development, or operations. The {CANONICAL.creatorAirdropName} is one option, not a guarantee.
           See <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
@@ -226,9 +226,9 @@ export default function TokenPage() {
         <div className="space-y-3">
           {[
             {
-              phase: "Revenue to the treasury",
+              phase: "Revenue to the creators fund",
               trigger: `${CANONICAL.marketplaceFee} marketplace fee`,
-              desc: "Platform revenue flows to the Medialane DAO treasury, held transparently on-chain and governed by MDLN holders.",
+              desc: "Platform revenue flows to the creators fund at the platform layer, held transparently on-chain with allocation governed by MDLN holders.",
             },
             {
               phase: "Annual cycle",

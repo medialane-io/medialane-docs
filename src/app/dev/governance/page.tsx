@@ -98,7 +98,9 @@ export default function DocsGovernancePage() {
 
         <Section title="Treasury">
           <p>
-            The Medialane DAO treasury receives the 1% marketplace fee, grants, and ecosystem revenue. Funds are
+            The Medialane DAO treasury receives grants and ecosystem revenue. The 1% marketplace fee
+            flows separately to the creators fund at the platform layer, with allocation governed by
+            the DAO (see <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>). Funds are
             allocated by community governance to:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">

@@ -40,7 +40,7 @@ The `.next` directory gets rebuilt on each `bun run build`. If the browser shows
 - MDLN is live on Ethereum mainnet and bridgeable to Starknet via StarkGate
 - MDLN supply is fixed at 21,000,000; 100% is DAO-controlled; no VC/team allocation
 - Snapshot governance is `medialane.eth`
-- Revenue framing: 1% marketplace fee → DAO treasury → MDLN holders vote annually on allocation
+- Revenue framing: 1% marketplace fee → creators fund (platform layer, never in a contract) → MDLN holders vote annually on allocation (amended 2026-05-19, `medialane-core/docs/architecture/00-principles.md §12`; do not say the fee flows to the DAO treasury)
 - Creator's Airdrop is one possible DAO allocation, not a guaranteed or automatic formula
 
 ### Technology framing

@@ -44,7 +44,7 @@ const ARTICLES = [
     article: "Article V",
     title: "Treasury",
     content:
-      "The DAO treasury holds assets received from platform fees, grants, and community contributions. A 1% marketplace fee flows to the treasury. Treasury funds may only be disbursed pursuant to a passed governance proposal. Multi-sig signatories execute treasury transactions only as authorized. Public treasury records shall be maintained for full transparency.",
+      "The DAO treasury holds assets received from grants and community contributions. A 1% marketplace fee flows to the creators fund at the platform layer, allocation of which is a DAO governance decision (see Fees & Revenue). Treasury funds may only be disbursed pursuant to a passed governance proposal. Multi-sig signatories execute treasury transactions only as authorized. Public treasury records shall be maintained for full transparency.",
   },
   {
     article: "Article VI",

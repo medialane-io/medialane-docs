@@ -56,7 +56,7 @@ const SERVICES = [
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
     desc: "Proof-of-participation credentials. Soulbound tokens issued to people who attended, contributed, or reached a milestone. Non-transferable by design.",
-    caps: ["mint", "claim", "airdrop"],
+    caps: ["mint", "claim"],
   },
   {
     id: "drop-collection",

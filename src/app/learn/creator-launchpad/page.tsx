@@ -27,7 +27,7 @@ export default function LearnCreatorLaunchpadPage() {
           or prior blockchain experience.
         </p>
         <p className="text-sm text-muted-foreground">
-          For gas sponsorship, marketplace fees, royalties, and DAO treasury flow, see{" "}
+          For gas sponsorship, marketplace fees, royalties, and creators-fund flow, see{" "}
           <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
         </p>
       </div>
@@ -101,10 +101,11 @@ export default function LearnCreatorLaunchpadPage() {
 
         <Section title="Gasless Minting">
           <p>
-            Medialane uses ChipiPay&apos;s session key system to sponsor gas fees on your
-            behalf. Most actions — minting, listing, accepting offers — require no ETH
-            or STRK from the user. You interact with the blockchain the same way you&apos;d
-            interact with any web application.
+            On <strong className="text-foreground">medialane.io</strong>, Medialane uses ChipiPay&apos;s
+            session key system to sponsor gas fees on your behalf. Most actions — minting, listing,
+            accepting offers — require no ETH or STRK from the user there. On the wallet-sovereign
+            Starknet app, gas sponsorship runs through a separate mechanism (AVNU) that may or may
+            not be active at any given time — real transactions there can cost real gas.
           </p>
           <p>
             Sponsorship applies to normal creator workflows and may be limited by abuse controls,

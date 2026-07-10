@@ -119,7 +119,7 @@ const DESIGN_CHOICES = [
   {
     icon: Users,
     title: "Community governance",
-    desc: "The MDLN token gives holders voting rights on Snapshot. All platform revenue flows to the DAO treasury, governed by token holders.",
+    desc: "The MDLN token gives holders voting rights on Snapshot. The 1% platform marketplace fee flows to the creators fund, with allocation governed by token holders.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },

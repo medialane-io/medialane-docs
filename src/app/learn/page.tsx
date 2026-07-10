@@ -63,7 +63,7 @@ const TOPICS = [
     href: "/learn/collection-drop",
     icon: Package,
     title: "Collection Drop",
-    description: "Launch time-limited NFT drop events with supply caps, mint windows, allowlists, and gasless onchain settlement.",
+    description: "Launch time-limited NFT drop events with supply caps, mint windows, allowlists, and onchain settlement.",
   },
   {
     href: "/learn/ip-collection-1155",

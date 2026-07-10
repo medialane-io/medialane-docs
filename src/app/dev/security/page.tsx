@@ -81,17 +81,20 @@ export default function DocsSecurityPage() {
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Marketplace &amp; collection contracts — Internal Review</p>
-                <span className="text-[10px] font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">Internal only</span>
+                <p className="text-sm font-semibold text-foreground">Marketplace &amp; collection contracts — Joint Internal Audit + Remediation</p>
+                <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Fixes deployed June 2026</span>
               </div>
-              <p className="text-xs text-muted-foreground">Reviewed by the core development team · May 2026</p>
+              <p className="text-xs text-muted-foreground">Reviewed by the core development team · audit 2026-06-25, fixes redeployed 2026-06-26</p>
               <p className="text-xs text-muted-foreground">
-                Covers the redesigned marketplace venues (Medialane721 / Medialane1155 —
-                independent immutable contracts with per-deployment replay binding, on-chain
-                EIP-2981 royalties, and reentrancy-guarded settlement, redeployed 2026-05-31),
-                the MIP IPCollection registry v0.3.0, the IP-Programmable ERC-1155 factory
-                v0.2.0, the Collection Drop factory, and the POP factory. This is an internal
-                review, not an independent third-party audit.
+                All four core protocol contracts (Medialane721, Medialane1155, the MIP
+                IPCollection registry, and the IP-Programmable ERC-1155 factory) were audited
+                together and redeployed as a coordinated release with fixes for a High-severity
+                bulk-cancel enforcement gap (both marketplace venues), a Medium-severity
+                checks-effects-interactions ordering issue in ERC-1155 minting, and three Low
+                findings (on-chain sender derivation, metadata length caps, overflow-checked
+                royalty math). No Critical findings; no user funds or assets were at risk before
+                the fix. This is an internal review, not an independent third-party audit — the
+                Collection Drop factory and POP factory were not in this cycle&apos;s scope.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">

@@ -61,11 +61,11 @@ const TIERS = [
 
 const PHASES = [
   {
-    phase: "Revenue to the treasury",
+    phase: "Revenue to the creators fund",
     trigger: "1% marketplace fee",
     items: [
-      "Platform revenue flows to the Medialane DAO treasury",
-      "Held transparently on-chain, governed by MDLN holders",
+      "Platform revenue flows to the creators fund at the platform layer",
+      "Held transparently on-chain, allocation governed by MDLN holders",
     ],
   },
   {
@@ -113,7 +113,7 @@ export default function AirdropPage() {
           <h3 className="font-semibold text-sm">The Model</h3>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          A 1% marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on
+          A 1% marketplace fee flows to the creators fund at the platform layer. Each year, MDLN holders vote on
           Snapshot to decide how that revenue is used — Creator&apos;s Airdrop, token buyback, token burn,
           protocol development, or operations. No predetermined formula. The Creator&apos;s Airdrop is one
           option among several, not a guarantee. See{" "}

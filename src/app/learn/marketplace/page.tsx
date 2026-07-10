@@ -139,7 +139,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             The marketplace venue contracts are <strong className="text-foreground">zero-fee</strong> —
             they take no cut. The 1% fee on completed sales is applied at the{" "}
             <strong className="text-foreground">platform layer</strong> (at settlement), never inside
-            the contract, and is routed to the Medialane DAO treasury. Because the fee lives at the
+            the contract, and is routed to the creators fund. Because the fee lives at the
             platform layer, the DAO can evolve it without a contract migration, and anyone running
             their own client is never forced to pay it.
           </p>
@@ -150,7 +150,9 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             by a limit the seller agrees to when signing the order.
           </p>
           <p className="text-sm">
-            Listing and offer creation are gas-sponsored for standard flows. See{" "}
+            Listing and offer creation are gas-sponsored on medialane.io (ChipiPay). On the
+            wallet-sovereign Starknet app, gas sponsorship depends on whether AVNU sponsorship
+            is currently active — check the app for real-time status. See{" "}
             <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
             for the canonical breakdown.
           </p>

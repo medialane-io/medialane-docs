@@ -94,7 +94,8 @@ export default function LearnIPClubPage() {
             Open clubs show their current member count, any entry fee, and whether they&apos;re
             still accepting members. Click <strong className="text-foreground">Join</strong>,
             pay the entry fee if required, and your membership card mints to your wallet
-            immediately — gasless, like every Medialane Launchpad action.
+            immediately — gasless on medialane.io (ChipiPay); on the Starknet app, gas
+            sponsorship depends on whether AVNU sponsorship is currently active.
           </p>
         </Section>
 

@@ -218,7 +218,7 @@ export default function ApiReferencePage() {
         path="/v1/orders"
         description="List all open orders (listings and bids). Supports filtering, sorting, and pagination."
         params={[
-          { name: "status", type: "string", desc: "Filter by status: OPEN | FULFILLED | CANCELLED" },
+          { name: "status", type: "string", desc: "Filter by status: ACTIVE | FULFILLED | CANCELLED | EXPIRED" },
           { name: "nftContract", type: "string", desc: "Filter by NFT contract address" },
           { name: "currency", type: "string", desc: "Filter by payment token: USDC | USDT | ETH | STRK | WBTC" },
           { name: "sort", type: "string", desc: "Sort field: priceRaw | createdAt" },
@@ -226,7 +226,7 @@ export default function ApiReferencePage() {
           { name: "page", type: "number", desc: "Page number (default: 1)" },
           { name: "limit", type: "number", desc: "Items per page (default: 20, max: 100)" },
         ]}
-        curl={`curl "${BASE}/v1/orders?status=OPEN&limit=5" \\
+        curl={`curl "${BASE}/v1/orders?status=ACTIVE&limit=5" \\
   -H "x-api-key: ${KEY}"`}
         response={`{
   "data": [
@@ -237,7 +237,7 @@ export default function ApiReferencePage() {
       "tokenId": "42",
       "price": "500000",
       "currency": "USDC",
-      "status": "OPEN",
+      "status": "ACTIVE",
       "orderType": "LISTING",
       "createdAt": "2026-03-01T10:00:00Z"
     }
@@ -262,7 +262,7 @@ export default function ApiReferencePage() {
   "tokenId": "42",
   "price": "500000",
   "currency": "USDC",
-  "status": "OPEN"
+  "status": "ACTIVE"
 }`}
       />
 
@@ -1454,7 +1454,7 @@ const resumeSource = new EventSource(url, {
       {/* ── COUNTER-OFFERS ── */}
       <DocH2 id="counter-offers" border>Counter-offers</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Sellers can respond to buyer bids with a counter-offer — a new on-chain listing linked to the original bid. The original bid is marked <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">COUNTER_OFFERED</code>. The buyer can then accept (fulfill the counter listing) or ignore it.
+        Sellers can respond to buyer bids with a counter-offer — a new on-chain listing linked to the original bid via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">parentOrderHash</code>. The original bid&apos;s status is unaffected; instead its <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">hasActiveCounterOffer</code> flag is set to <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">true</code> (the legacy <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">COUNTER_OFFERED</code> order status was removed). The buyer can then accept (fulfill the counter listing) or ignore it.
       </p>
 
       <Endpoint

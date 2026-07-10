@@ -6,15 +6,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Fees & Revenue | Medialane Docs",
-  description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
+  description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, creators-fund flow, and Creator's Airdrop governance.",
   openGraph: {
     title: "Fees & Revenue | Medialane Docs",
-    description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
+    description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, creators-fund flow, and Creator's Airdrop governance.",
     url: "https://docs.medialane.io/dev/fees",
   },
   twitter: {
     title: "Fees & Revenue | Medialane Docs",
-    description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, DAO treasury flow, and Creator's Airdrop governance.",
+    description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, creators-fund flow, and Creator's Airdrop governance.",
   },
 };
 
@@ -32,7 +32,7 @@ const PAID_ACTIONS = [
   {
     action: "Buy or sell through the marketplace",
     cost: "1% marketplace fee on completed sales",
-    note: "The fee flows to the Medialane DAO treasury.",
+    note: "The fee flows to the creators fund at the platform layer, never inside the venue contract.",
   },
   {
     action: "Creator royalties",
@@ -79,8 +79,8 @@ export default function FeesPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {[
           { icon: Zap, label: "Creator actions", value: "Gas sponsored", desc: "Most creation and listing actions require no ETH or STRK from users." },
-          { icon: Coins, label: "Marketplace fee", value: CANONICAL.marketplaceFee, desc: "Applied to completed marketplace sales and routed to the DAO treasury." },
-          { icon: Landmark, label: "Allocation", value: "DAO vote", desc: "MDLN holders decide how treasury revenue is used." },
+          { icon: Coins, label: "Marketplace fee", value: CANONICAL.marketplaceFee, desc: "Applied to completed marketplace sales at the platform layer and routed to the creators fund." },
+          { icon: Landmark, label: "Allocation", value: "DAO vote", desc: "MDLN holders decide how creators-fund revenue is used." },
         ].map(({ icon: Icon, label, value, desc }) => (
           <div key={label} className="bento-cell p-5 space-y-2">
             <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -131,16 +131,17 @@ export default function FeesPage() {
         <p>
           Medialane charges a <strong className="text-foreground">{CANONICAL.marketplaceFee} marketplace fee</strong> on
           completed marketplace sales. The fee is separate from creator royalties and flows to the
-          Medialane DAO treasury.
+          creators fund.
         </p>
         <p>
           Example: if an asset sells for 100 USDC, the marketplace fee is 1 USDC. Creator royalties,
           if configured, are applied separately according to the asset&apos;s royalty rules.
         </p>
         <p className="text-sm">
-          This fee is a platform-layer parameter — it is part of how Medialane operates as a service,
-          not a constant of the underlying protocol. The contracts enforce it; the DAO governs the
-          rate and treasury allocation.
+          This fee is a platform-layer parameter, never a rule inside the marketplace venue
+          contracts — the venue protocols themselves are zero-fee. It is computed and applied by
+          the platform (SDK/backend) as a separate transfer alongside settlement. The DAO governs
+          the rate and how the creators fund is allocated.
         </p>
       </Section>
 
@@ -148,8 +149,8 @@ export default function FeesPage() {
         <p>
           Creators set royalty terms in asset metadata at mint time. These terms are readable by any
           marketplace, application, or agent — but the Medialane marketplace contract does not
-          automatically extract or route royalties. The only fee the contract applies is the{" "}
-          {CANONICAL.marketplaceFee} marketplace fee to the DAO treasury.
+          automatically extract or route royalties. The only fee applied alongside a sale is the{" "}
+          {CANONICAL.marketplaceFee} platform-layer marketplace fee to the creators fund.
         </p>
         <p>
           Royalty terms are separate from the marketplace fee and do not mean the same thing. Whether
@@ -158,9 +159,9 @@ export default function FeesPage() {
         </p>
       </Section>
 
-      <Section title="DAO Treasury Allocation">
+      <Section title="Creators Fund Allocation">
         <p>
-          Treasury revenue is community-governed. MDLN holders vote through Snapshot at{" "}
+          Creators-fund revenue is community-governed. MDLN holders vote through Snapshot at{" "}
           <a href={CANONICAL.snapshotUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
             {CANONICAL.snapshotEns} <ExternalLink className="inline h-3 w-3" />
           </a>{" "}
