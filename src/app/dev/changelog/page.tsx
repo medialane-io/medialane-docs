@@ -17,6 +17,17 @@ export const metadata: Metadata = {
 
 const CHANGES = [
   {
+    date: "2026-07-09",
+    title: "IP Tickets, IP Club, IP Sponsorship — Community services live; Rewards 2.0",
+    items: [
+      "IP Tickets, IP Club, and IP Sponsorship are live on Starknet mainnet. Each is a permissionless factory-pattern service: IP Tickets and IP Club each deploy a dedicated ERC-721 contract per creator (the same pattern as IP Collections and POP); IP Sponsorship is a bidding market for sponsorship licenses on assets the creator owns, with direct-settlement payment and no escrow.",
+      "IP Club redesigned to the factory model (SDK 0.58.0): IPClubFactory deploys a per-creator IPClubCollection ERC-721 — each club has its own contract, not a shared registry record. Membership cards are soulbound; the club's open/closed state is set after deploy and can be changed by the owner at any time.",
+      "Rewards 2.0 shipped: a 50-level XP + badge system covering every live service (mint, list, buy, offer, comment, POP/Drop claims, IP Tickets, IP Club, IP Sponsorship, Creator Coins). Scores are computed on the backend every 15 minutes. The /rewards page shows a hero score card, level ladder, badge gallery with locked badges, XP breakdown, recent events, and a leaderboard. Rewards surfaces appear on creator pages, asset pages, collection pages, activities, comments, portfolio, and the sidebar nav.",
+      "Launchpad redesigned as 5 groups + a searchable filter bar: Single Edition, Limited Editions, Coins, Community (POP Protocol, IP Tickets, IP Club, IP Sponsorship), Claims. Cards are 3-per-row on desktop. A live search + group-filter pill bar sits above the grid — matching and filtering is real-time with a result count.",
+      "Wallet hardening (2026-07-02): Cartridge Controller now uses its own RPC instance (Cartridge-hosted RPC) instead of the app's Lava pin — Cartridge's chain-detector requires the RPC path to contain 'starknet/mainnet' and rejected the Lava endpoint. Missing-extension UX: both injected connectors show an 'Install' link instead of a doomed button when the extension isn't present. Privy login failures (blocked OAuth popups) now surface a friendly message with a 45s timeout. Connect-failure errors now re-open the dialog so the user sees the message.",
+    ],
+  },
+  {
     date: "2026-06-20",
     title: "Creator royalties on every resale — MIP collections v0.4.0",
     items: [

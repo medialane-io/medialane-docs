@@ -85,7 +85,7 @@ const SERVICES = [
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    desc: "Membership clubs with an onchain NFT membership card. A single registry tracks every club — open, invite-only, paid, or capped — and issues membership cards from a shared NFT contract.",
+    desc: "Membership clubs with an onchain NFT membership card. A factory deploys one dedicated ERC-721 collection per creator — the same pattern as IP Tickets and IP Collections. Open, invite-only, paid, or capped.",
     caps: ["mint", "subscribe"],
   },
   {

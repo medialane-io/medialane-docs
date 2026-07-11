@@ -29,8 +29,8 @@ export default function LearnIPClubPage() {
         <p className="text-sm text-muted-foreground">
           Service ID:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">ip-club</code>.
-          A single registry contract tracks every club and issues membership cards from a
-          shared NFT contract. See{" "}
+          A factory contract deploys one dedicated ERC-721 collection per creator — the same
+          pattern as IP Tickets and IP Collections. See{" "}
           <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
           for the full capability set.
         </p>
@@ -81,10 +81,10 @@ export default function LearnIPClubPage() {
         <Section title="Creating a Club">
           <p>
             From <strong className="text-foreground">Launchpad → IP Club → Create</strong>,
-            set your club&apos;s name, whether it&apos;s open for anyone to join, an optional
-            entry fee (in any supported token), and an optional member cap. Creating a club is
-            a single onchain transaction — no separate factory deploy step, since every club
-            is a record in the shared registry rather than its own contract.
+            set your club&apos;s name, symbol, and cover image. This deploys a dedicated ERC-721
+            membership collection owned by your wallet — the same factory pattern used for IP
+            Collections and IP Tickets. Once deployed, set whether the club is open for anyone
+            to join, an optional entry fee (in any supported token), and an optional member cap.
           </p>
         </Section>
 
