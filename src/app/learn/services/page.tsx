@@ -75,8 +75,8 @@ const SERVICES = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    desc: "Redeemable, tradeable ERC-721 tickets for events and access. A factory deploys one ticket collection per creator; tickets trade on the marketplace like any NFT until redeemed.",
-    caps: ["mint", "list", "buy", "make_offer", "transfer", "redeem"],
+    desc: "Verifiable on-chain tickets (ERC-1155). A factory deploys one tickets collection per creator; each ticket has its own supply and optional validity window, is verifiable on-chain, and trades on the marketplace like any asset.",
+    caps: ["mint", "list", "buy", "make_offer", "cancel", "transfer", "redeem"],
   },
   {
     id: "ip-club",

@@ -83,8 +83,8 @@ export const CONTRACTS: ContractInfo[] = [
     category: "Collections & Launchpad",
     name: "IP Tickets Factory",
     chain: "Starknet",
-    address: "0x0664c2d6a4da9ee3ff053ceeba7579c01f2fedfd9d2b57b4c07af3734bd4acab",
-    desc: "Ownerless factory deploying one redeemable, tradeable ERC-721 ticket collection per creator. Deployed 2026-07-02.",
+    address: "0x059802639b41e9c6449c3d557703e610ef639a91866dc1dd44216f9f37111ac5",
+    desc: "Ownerless factory deploying one ERC-1155 tickets collection per creator — each ticket carries its own supply, validity window, and royalty, verifiable on-chain and tradeable like any asset. Deployed 2026-07-14.",
   },
   {
     category: "Collections & Launchpad",

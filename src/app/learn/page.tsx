@@ -75,7 +75,7 @@ const TOPICS = [
     href: "/learn/ip-tickets",
     icon: Ticket,
     title: "IP Tickets",
-    description: "Sell redeemable, tradeable ERC-721 tickets for events and access — a real NFT, not a soulbound pass.",
+    description: "Create verifiable on-chain tickets your audience can hold and trade — a real asset, not a soulbound pass.",
   },
   {
     href: "/learn/ip-club",

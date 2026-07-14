@@ -17,6 +17,16 @@ export const metadata: Metadata = {
 
 const CHANGES = [
   {
+    date: "2026-07-14",
+    title: "IP Tickets rebuilt — verifiable tickets as first-class collections",
+    items: [
+      "The IP Tickets contract was redesigned around the ticket as the on-chain primitive (on-chain version() 4.0.0, ERC-1155): each ticket is one token id with its own supply, optional validity window, royalty, and metadata. The factory embeds the collection's identity — name, symbol, and metadata — on-chain in the deploy transaction, and is_valid(ticket, holder) is a public read anyone can verify without trusting a venue or the platform.",
+      "Tickets collections are regular collections: they display on the collection page like every other collection, and tickets trade on the marketplace like any asset. The creator's single entry point is one Mint tickets action on their collection page — pick one of your tickets (read live from the chain, including tickets that haven't minted yet) or create a new one in the same flow.",
+      "The ticket asset page shows the validity window, live status (Upcoming / Valid now / Ended), minted-of-supply, and a holder door panel — \"Valid ticket — ready to present\" — driven by the on-chain check. Identical experience on both apps: the Starknet dapp with your own wallet, and medialane.io with gasless passkey/PIN accounts.",
+      "SDK 0.66.0 ships the new ticket surface (createTicket, getTicket, deployCollection with the on-chain metadata URI) and corrects the ip-tickets registry entry to ERC-1155 with the full marketplace capability set. Collections from the previous factory are preserved read-only as external collections.",
+    ],
+  },
+  {
     date: "2026-07-09",
     title: "IP Tickets, IP Club, IP Sponsorship — Community services live; Rewards 2.0",
     items: [
