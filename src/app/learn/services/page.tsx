@@ -95,8 +95,8 @@ const SERVICES = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    desc: "Open bidding for sponsorship licenses on an asset you own. Sponsors bid, the author accepts, payment settles directly with no escrow. Accepted bids issue a license via the ip-sponsorship-license service.",
-    caps: ["sponsor", "license"],
+    desc: "Sponsorship licenses on assets you own — or ones you'd like to sponsor. An owner opens an offer and sponsors bid, or a sponsor proposes terms directly; either way payment settles directly with no escrow, and the license mints as a standard, transferable ERC-721 the moment a deal is accepted.",
+    caps: ["sponsor", "transfer"],
   },
   {
     id: "creator-coin",

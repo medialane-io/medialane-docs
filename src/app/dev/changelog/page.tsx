@@ -17,6 +17,15 @@ export const metadata: Metadata = {
 
 const CHANGES = [
   {
+    date: "2026-07-16",
+    title: "IP Sponsorship redesigned — symmetric proposals, soft-enforced licenses, one contract",
+    items: [
+      "IP Sponsorship no longer requires an owner to open an offer first: a sponsor can now propose fixed terms directly on any asset they'd like to back, and the asset's current owner accepts or declines. A proposal binds to the asset, not a person — if it changes hands before being answered, the new owner decides. The existing owner-opens-offer, sponsors-bid flow is unchanged.",
+      "The issued license is now a real, standard ERC-721 minted internally by the same IPSponsorship contract — the separate license contract, its one-time minter bootstrap, and the non-authoritative receipt-NFT pattern are gone. License length and resale intent are declarative terms carried in metadata, matching how every other Medialane license already works, rather than a transfer lock the contract enforces — a license moves through an ordinary transfer like any other asset and can be resold on the marketplace with a royalty paid automatically to the author.",
+      "Deployed to Starknet mainnet 2026-07-15, superseding the 2026-07-02 two-contract version (which had zero offers or licenses ever issued, so no migration was needed). New SDK (0.68.0), backend indexing, and shared AssetPicker/LicenseTermsBuilder components ship the same day across both apps — Launchpad → IP Sponsorship now has one Set up a sponsorship page covering both directions.",
+    ],
+  },
+  {
     date: "2026-07-14",
     title: "IP Tickets rebuilt — verifiable tickets as first-class collections",
     items: [

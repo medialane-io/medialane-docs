@@ -88,17 +88,17 @@ export const CONTRACTS: ContractInfo[] = [
   },
   {
     category: "Collections & Launchpad",
-    name: "IP Club Registry",
+    name: "IP Club Factory",
     chain: "Starknet",
-    address: "0x00e189c619b6bb07d78973a149641c59c37eb0716f8584d7520bce12d303eede",
-    desc: "Ownerless registry deploying one soulbound (non-transferable) IP Club NFT membership card per club. Deployed 2026-07-02.",
+    address: "0x05519705345ce225db666253a21cf89d1c675658f16cc6ae4320cefd1a1219a3",
+    desc: "Ownerless factory deploying one soulbound (non-transferable) IP Club membership collection per creator — the same per-creator pattern as IP Tickets and IP Collections. Redeployed 2026-07-15 for a per-token metadata fix; originally shipped as the factory model 2026-07-12.",
   },
   {
     category: "Collections & Launchpad",
     name: "IP Sponsorship",
     chain: "Starknet",
-    address: "0x044d9b9c3bb29b94685b0a3fe27a5e2dfa30a3637ab55979c718ebcd3268bc2f",
-    desc: "Direct-settlement sponsorship bidding — offers, bids, and license validity, no escrow. Deployed 2026-07-02.",
+    address: "0x03729ebe0fedf29ec97fca34db09174772af7f870af26a26e024a61040143e5c",
+    desc: "One contract is both the offer/bid/proposal registry and the license collection — a real, standard ERC-721 minted internally, no separate receipt contract. Either side can start a deal: an owner opens an offer for sponsors to bid on, or a sponsor proposes terms directly. Settlement is always direct, sponsor to author, no escrow. v3 redesign deployed 2026-07-15, superseding the 2026-07-02 two-contract version.",
   },
   {
     category: "Creator Coin",

@@ -129,7 +129,7 @@ export default function LearnCreatorLaunchpadPage() {
               { id: "drop-collection", name: "Collection Drop", desc: "Launch a fixed-supply ERC-721 drop with a timed mint window and optional allowlist." },
               { id: "ip-tickets", name: "IP Tickets", desc: "Create verifiable on-chain tickets with their own supply and validity window — mint them to your audience, trade them like any collection." },
               { id: "ip-club", name: "IP Club", desc: "Run a membership club with an onchain NFT membership card." },
-              { id: "ip-sponsorship", name: "IP Sponsorship", desc: "Sell a direct-settlement sponsorship license on an asset you own." },
+              { id: "ip-sponsorship", name: "IP Sponsorship", desc: "Sell — or propose — a direct-settlement sponsorship license, no escrow." },
               { id: "creator-coin", name: "Creator Coin", desc: "Launch your own fixed-supply coin with permanently locked liquidity, tradeable on a public pool." },
             ].map(({ id, name, desc }) => (
               <div key={id} className="bento-cell px-4 py-3 flex items-start gap-3">
