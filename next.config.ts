@@ -1,7 +1,20 @@
 import type { NextConfig } from "next";
 
+// Global security headers (mirrors medialane-io). No CSP yet — a real
+// Content-Security-Policy needs every embedded domain mapped first; deferred.
+const securityHeaders = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+];
+
 const nextConfig: NextConfig = {
   transpilePackages: ["@medialane/ui", "@medialane/sdk"],
+  async headers() {
+    return [{ source: "/(.*)", headers: securityHeaders }];
+  },
   async redirects() {
     return [
       { source: "/terms",          destination: "/guidelines/terms",          permanent: true },
