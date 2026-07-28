@@ -72,9 +72,9 @@ export default function TokenizationPage() {
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">Tokenization on Medialane</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          When you mint an NFT on Medialane, you&apos;re not just creating a JPEG with a certificate.
-          You&apos;re registering your IP on the Mediolano protocol, attaching programmable license terms,
-          and creating a verifiable ownership record aligned with the Berne Convention.
+          When you mint an NFT on Medialane, you register your IP on the Mediolano protocol,
+          attach programmable license terms, and create a verifiable ownership record aligned
+          with the Berne Convention.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
           Your tokenized IP lives in your portfolio, can be listed on the marketplace, licensed

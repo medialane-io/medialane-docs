@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Users, User, FileText, Eye, Scale, ArrowRight } from "lucide-react";
+import { Users, User, FileText, Eye, Scale, ArrowRight, Megaphone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Guidelines | Medialane",
@@ -46,6 +46,12 @@ const SECTIONS = [
     icon: Scale,
     title: "Compliance",
     description: "KYC/AML policy, securities regulations, IP law alignment (Berne Convention, DMCA), sanctions screening, and data protection.",
+  },
+  {
+    href: "/guidelines/campaign-terms",
+    icon: Megaphone,
+    title: "Campaign Terms",
+    description: "Participation terms for Medialane launch campaigns and the Creator Fund, including the Brazil campaign.",
   },
 ];
 

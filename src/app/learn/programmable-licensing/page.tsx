@@ -114,9 +114,8 @@ export default function LearnProgrammableLicensingPage() {
               terms, they mint a new token. There is no edit path.
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              This is a durability guarantee, not a limitation. Collectors know exactly what
-              they purchased. The terms cannot be changed after the fact — by the creator,
-              by Medialane, or by anyone else.
+              Collectors know exactly what they purchased, since the terms cannot be changed
+              after the fact — by the creator, by Medialane, or by anyone else.
             </p>
           </div>
         </Section>

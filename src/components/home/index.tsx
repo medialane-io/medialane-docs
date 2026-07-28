@@ -24,7 +24,7 @@ const HUBS = [
     name: "Marketplace",
     tagline: "Trade every tokenized asset",
     description:
-      "A high-integrity secondary exchange for buying, selling, auctioning, licensing, and remixing IP. Atomic settlement — payment and asset move in one transaction, or both revert. No custody, no escrow, interoperable with the wider ecosystem, minimal fees.",
+      "A high-integrity secondary exchange for buying, selling, auctioning, licensing, and remixing IP. Atomic settlement — payment and asset move in one transaction, or both revert. Assets stay in your wallet, interoperable with the wider ecosystem, at minimal fees.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
@@ -37,7 +37,7 @@ const PRINCIPLES = [
     icon: Lock,
     title: "The contract is the only authority",
     description:
-      "Immutable Cairo contracts with no admin key, no upgrade path, no pause. If the contract accepts your call, it happens — no one can change the rules, including us.",
+      "Immutable Cairo contracts, deployed without an admin key, upgrade path, or pause switch. If the contract accepts your call, it happens — the rules are fixed, including for us.",
   },
   {
     icon: InfinityIcon,
@@ -55,7 +55,7 @@ const PRINCIPLES = [
     icon: Bot,
     title: "For humans, organizations, and agents",
     description:
-      "Autonomous AI agents are first-class participants — same protocol, same rights, same fees as any person or organization. No special integration, no separate rules.",
+      "Autonomous AI agents are first-class participants — same protocol, same rights, same fees as any person or organization, on the standard integration path.",
   },
   {
     icon: Eye,
@@ -87,7 +87,7 @@ const AGENT_PAYMENT_USE_CASES = [
     bg: "bg-brand-blue/10",
     title: "Businesses & products",
     description:
-      "Usage-based access with no seats, contracts, or invoices. Every call is metered and every payment is on-chain and verifiable — pay only for what you use.",
+      "Usage-based access, billed per call instead of by seat or contract. Every payment is on-chain and verifiable — pay only for what you use.",
   },
   {
     icon: Terminal,
@@ -192,6 +192,7 @@ const TOPIC_GROUPS = [
       { href: "/learn/protect-your-ip", label: "Protect Your IP" },
       { href: "/learn/web3", label: "Web3 & Blockchain" },
       { href: "/learn/zero-knowledge", label: "Zero-Knowledge" },
+      { href: "/learn/privacy", label: "Privacy" },
     ],
   },
   {
@@ -322,7 +323,7 @@ export function HomePage() {
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             A few load-bearing ideas shape everything. They&apos;re what make Medialane a
-            protocol creators can rely on — not a platform that can change the rules underneath them.
+            protocol creators can rely on, with rules fixed at the contract level.
           </p>
         </div>
 
@@ -350,8 +351,8 @@ export function HomePage() {
             Agents are first-class users on Medialane — and they pay like one. The API speaks{" "}
             <strong className="text-foreground">x402</strong>, the open HTTP standard for machine
             payments: a request returns a price, the agent pays per call in USDC on Starknet, and
-            continues. No email, no OAuth, no credit card, no human in the loop — a wallet keypair
-            is the only identity it needs. Designed for machine-to-machine from day one, not retrofitted.
+            continues. A wallet keypair is the identity it needs — signup, login, and billing
+            paperwork drop out of the flow. Built for machine-to-machine payments from day one.
           </p>
         </div>
 

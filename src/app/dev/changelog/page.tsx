@@ -60,7 +60,7 @@ const CHANGES = [
     title: "Trade any coin both ways + the top Starknet memecoins, live",
     items: [
       "Buy and sell on every coin page: a Buy/Sell toggle lets you swap into or out of any coin in one place, showing the live exchange rate, the minimum you'll receive, the price impact, and adjustable price protection. Gas is sponsored; trades settle on the open Ekubo market.",
-      "Coins now have their own home and a plain-language page. Each coin lives at its own address (/coins/…) with a page that explains what a Creator Coin is in three guarantees — you own it (it stays in your wallet, never held by us), the price is set by the open market, and it's safe by design (the trading funds can't be pulled and no extra coins can be minted) — each one verifiable on the block explorer in a tap.",
+      "Coins now have their own home and a plain-language page. Each coin lives at its own address (/coins/…) with a page that explains the Creator Coin mechanics: it stays in your wallet rather than a Medialane-held balance, the price is set by the open market, and the contract fixes the trading funds and supply at deployment — each one verifiable on the block explorer in a tap.",
       "The biggest Starknet memecoins are now on Medialane: STARKNET BROTHER, SISTER, Slinky, Brother Eli (SLAY), SCHIZODIO, and Pain au lait (PAL) are live to trade. Every coin is verified on-chain as a genuine Unruggable launch before it's listed — never an address taken on trust.",
       "Bringing your own coin is friendlier: already launched on Starknet? Connect your wallet right from the claim page, paste your contract, and it's team-reviewed before going live on the Coins page and your creator profile.",
       "A cleaner coin discovery grid: the Marketplace Tokens tab shows real coin identities (a logo, or the symbol's initials when there's no logo yet), consistent labels, and honest stats — no more misleading zeros where a figure isn't available yet.",
@@ -104,7 +104,7 @@ const CHANGES = [
     date: "2026-06-01",
     title: "Permissionless remix and an independent Licensing service",
     items: [
-      "Remixing is now fully permissionless: anyone can mint an attributed derivative of any asset — Medialane-native or external — without owning the parent or asking permission. The parent is linked on-chain; provenance, not permission, is what the protocol guarantees.",
+      "Remixing is now fully permissionless: anyone can mint an attributed derivative of any asset — Medialane-native or external — without owning the parent or asking permission. The parent is linked on-chain; the contract guarantees provenance, not permission.",
       "The platform stays a neutral tool. It honors a creator's explicit \"Derivatives: Not Allowed\" declaration at the application layer only (it doesn't offer a direct remix and points you to Licensing instead) — never on-chain. The contract is always permissionless; assets are surfaced and flagged via reports, never blocked.",
       "Licensing is now its own service with a dedicated flow, separate from Remix. Propose license terms and a fee to a creator; if they accept, the licensed derivative is minted and listed for you. Use it to pay or credit the original creator, get a formal commercial license, or remix a work marked no-derivatives.",
       "Asset pages now show Remix and License as independent actions, and the remix flow is a clean mint (no bundled listing step).",

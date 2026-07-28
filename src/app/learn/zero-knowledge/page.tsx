@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Lock, Eye, Zap, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -51,7 +52,7 @@ export default function ZeroKnowledgePage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
             { icon: Shield, title: "Validity", desc: "ZK proofs guarantee that a computation was performed correctly — no one can submit fake transactions that violate the rules of the protocol." },
-            { icon: Eye, title: "Privacy", desc: "Future applications can prove ownership or eligibility without revealing the underlying data. Prove you own an IP without revealing which specific IP." },
+            { icon: Eye, title: "Privacy", desc: "The same proof mechanics let an application confirm ownership or eligibility without revealing the underlying data — proving you hold a token without revealing which one." },
             { icon: Zap, title: "Scalability", desc: "Starknet bundles thousands of transactions into one ZK-STARK proof verified on Ethereum. This makes gas fees tiny and throughput massive." },
             { icon: Lock, title: "Security", desc: "ZK-STARKs (the variant used by Starknet) are quantum-resistant — unlike older cryptographic systems, they are secure against future quantum computers." },
           ].map(({ icon: Icon, title, desc }) => (
@@ -75,9 +76,9 @@ export default function ZeroKnowledgePage() {
           inherit the full security of Ethereum, regardless of how many transactions are processed.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          As the protocol evolves, ZK technology will enable private licensing (prove you&apos;re licensed to use
-          something without revealing what it is) and selective disclosure (share attributes of an IP without
-          revealing its full content).
+          The same selective-disclosure property extends beyond transaction validity — to what a
+          creator chooses to keep confidential about their own economics. See{" "}
+          <Link href="/learn/privacy" className="text-primary hover:underline">Privacy on Medialane</Link>.
         </p>
       </div>
 

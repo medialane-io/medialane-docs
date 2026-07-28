@@ -40,7 +40,7 @@ The `.next` directory gets rebuilt on each `bun run build`. If the browser shows
 - MDLN is live on Ethereum mainnet and bridgeable to Starknet via StarkGate
 - MDLN supply is fixed at 21,000,000; 100% is DAO-controlled; no VC/team allocation
 - Snapshot governance is `medialane.eth`
-- Revenue framing: 1% marketplace fee → creators fund (platform layer, never in a contract) → MDLN holders vote annually on allocation (amended 2026-05-19, `medialane-core/docs/architecture/00-principles.md §12`; do not say the fee flows to the DAO treasury)
+- Revenue framing: 1% marketplace fee → creators fund (platform layer, never in a contract) → MDLN holders vote on allocation (amended 2026-05-19, `medialane-core/docs/architecture/00-principles.md §12`; do not say the fee flows to the DAO treasury; no cadence is specified — don't state one)
 - Creator's Airdrop is one possible DAO allocation, not a guaranteed or automatic formula
 
 ### Technology framing
@@ -60,7 +60,7 @@ The actual tech stack and their roles:
 | Starknet | The decentralized network (a tool, not the identity) |
 
 ### Multichain — first-class by design
-Chain is a **first-class dimension** of the substrate, never assumed or dropped (`medialane-core/docs/architecture/08-chain-sovereignty.md`, Axiom 07). Starknet, Ethereum, and Solana stand as **peers**, and the set is open-ended — **no chain is the foundation**. Verifiable trust is a *role, not a place*: Starknet currently fills the prover/settlement (trust-anchor) role, behind an interface that can be re-homed.
+Chain is a **first-class dimension** of the substrate, never assumed or dropped (`medialane-core/docs/architecture/00-principles.md §3`). Starknet, Ethereum, and Solana stand as **peers**, and the set is open-ended — **no chain is the foundation**. Verifiable trust is a *role, not a place*: Starknet currently fills the prover/settlement (trust-anchor) role, behind an interface that can be re-homed.
 
 What this means for docs:
 - State chains **factually**: contract addresses are always chain-qualified (e.g. "Starknet"), and the address registry is chain-aware so peers can be added.

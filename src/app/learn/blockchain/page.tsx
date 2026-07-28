@@ -70,8 +70,8 @@ export default function BlockchainPage() {
         <p className="text-sm text-muted-foreground leading-relaxed">
           Medialane is built on <strong className="text-foreground">Starknet</strong>, an Ethereum Layer 2 network
           that uses zero-knowledge proofs to bundle thousands of transactions into a single cryptographic proof
-          verified on Ethereum. This gives Medialane the security guarantees of Ethereum at a fraction of the
-          cost — making gasless transactions feasible.
+          verified on Ethereum. That proof inherits Ethereum's settlement security while keeping per-transaction
+          cost low — making gasless transactions feasible.
         </p>
       </div>
 

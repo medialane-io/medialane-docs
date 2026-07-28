@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Building2, Scroll, Vote, Coins, ExternalLink, ArrowRight, Users, Globe } from "lucide-react";
+import { Building2, Scroll, Vote, Coins, ExternalLink, ArrowRight, Users, Globe, Award } from "lucide-react";
+import { CANONICAL } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "DAO | Medialane",
@@ -34,6 +35,12 @@ const PILLARS = [
     title: "MDLN Token",
     description: "The governance token powering participation, voting rights, and long-term alignment for community members.",
     href: "/dao/token",
+  },
+  {
+    icon: Award,
+    title: CANONICAL.creatorAirdropName,
+    description: "A DAO-decided community allocation from the creators fund — one option among several, not a guaranteed formula.",
+    href: "/dao/airdrop",
   },
 ];
 
@@ -83,8 +90,8 @@ export default function DAOPage() {
 
       {/* Three pillars */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Governance Documents</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <h3 className="text-lg font-semibold">Governance &amp; Treasury</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {PILLARS.map(({ icon: Icon, title, description, href }) => (
             <Link
               key={href}

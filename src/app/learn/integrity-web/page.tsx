@@ -20,7 +20,7 @@ const AXIOMS = [
   {
     num: "01",
     title: "Code is Math, Math is Reality",
-    quote: "Computation is the foundation for integrity. Cryptography is proof, not opinion.",
+    quote: "Computational integrity is the foundation of truth; cryptographic proof is objective reality, not opinion.",
     icon: Layers,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
@@ -31,40 +31,40 @@ const AXIOMS = [
   {
     num: "02",
     title: "Proof Replaces Trust",
-    quote: "Mathematical verification eliminates intermediaries. Validity proofs are the basis for collective confidence.",
+    quote: "Mathematical verification removes the need for intermediaries or gatekeepers; validity proofs create collective confidence.",
     icon: Shield,
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    medialane: "Every Starknet transaction is backed by a ZK-STARK validity proof — not a promise from Medialane, not a signature from a bank, not a certificate from a registrar. You don't trust us. You verify the proof.",
+    medialane: "Every Starknet transaction is backed by a ZK-STARK validity proof, verifiable by anyone independently of Medialane, a bank, or a registrar.",
     highlights: ["ZK-STARK validity proofs for every transaction", "No trusted setup required", "Quantum-resistant cryptography"],
   },
   {
     num: "03",
-    title: "Freedom is a Protocol",
-    quote: "Permissionless participation, open innovation, and censorship-resistance by design.",
+    title: "Freedom in Protocol",
+    quote: "Participation is permissionless, innovation is open, censorship is impossible — guaranteed by technical design.",
     icon: Globe,
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    medialane: "No application, KYC, waitlist, or approval. If you have a wallet, you can mint on Medialane. If you can write code, you can build on the Mediolano protocol. Permissionless is not a marketing claim — it is enforced by the smart contract architecture.",
+    medialane: "No application, KYC, waitlist, or approval. If you have a wallet, you can mint on Medialane. If you can write code, you can build on the Mediolano protocol. Permissionless here means the smart contract architecture enforces it directly.",
     highlights: ["No whitelist or application to mint", "Open Mediolano protocol for builders", "Gasless via ChipiPay — no barriers to entry"],
   },
   {
     num: "04",
     title: "Integrity by Design",
-    quote: "Tamper-proof records, verifiable actions, self-sovereign identity as embedded principles.",
+    quote: "Records cannot be altered, actions are verifiable, and individuals control their own identities.",
     icon: FileCheck,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    medialane: "Every IP record minted on Medialane is permanently anchored on Starknet. The timestamp, creator address, license terms, and provenance chain are tamper-proof. Self-sovereign wallets are the only key — Medialane cannot revoke, freeze, or alter your assets.",
+    medialane: "Every IP record minted on Medialane is anchored on Starknet. The timestamp, creator address, license terms, and provenance chain are tamper-proof, held by your self-sovereign wallet key — outside Medialane's ability to revoke, freeze, or alter.",
     highlights: ["Immutable IP records on Starknet", "Berne Convention-aligned copyright anchoring", "Self-custody — your keys, your NFTs"],
   },
   {
     num: "05",
     title: "Public Goods are Sacred",
-    quote: "Infrastructure, proof systems, and protocols are shared resources serving all intelligences.",
+    quote: "Essential infrastructure — proof systems, identity registries — belongs to the community and serves all intelligences equally.",
     icon: Users,
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
@@ -75,7 +75,7 @@ const AXIOMS = [
   {
     num: "06",
     title: "Privacy is Power",
-    quote: "Zero-knowledge systems as mechanisms for information sovereignty, not secrecy.",
+    quote: "Creators retain ownership of their information; zero-knowledge systems protect autonomy and sovereignty — not secrecy.",
     icon: Eye,
     color: "text-primary",
     bg: "bg-primary/10",
@@ -86,18 +86,18 @@ const AXIOMS = [
   {
     num: "07",
     title: "Decentralization is Resilience",
-    quote: "No single points of control or failure. Distributed power structures.",
+    quote: "Distributed power removes single points of failure; integrity persists with no central controller.",
     icon: Network,
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    medialane: "Medialane's smart contracts on Starknet, Starknet's own decentralized validator network, and the long-term architecture toward fully chain-agnostic, censorship-resistant infrastructure — these are not separate concerns. They are layers of the same resilience strategy. If Medialane's frontend went offline tomorrow, every NFT would still exist and be transferable.",
+    medialane: "Medialane's smart contracts on Starknet, Starknet's own decentralized validator network, and the long-term architecture toward fully chain-agnostic, censorship-resistant infrastructure form layers of one resilience strategy. If Medialane's frontend went offline, every NFT would remain on-chain and transferable through another interface.",
     highlights: ["Assets live on Starknet — survive frontend outages", "Long-term: chain-agnostic, censorship-resistant infrastructure", "ZK proofs + account abstraction make this possible"],
   },
   {
     num: "08",
     title: "Universality of Intelligences",
-    quote: "Humans, AI agents, and future intelligences have equal participation rights.",
+    quote: "Humans, AI agents, and future intelligences share the same right to participate, with equal standing.",
     icon: Bot,
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
@@ -108,7 +108,7 @@ const AXIOMS = [
   {
     num: "09",
     title: "Creativity is Integrity",
-    quote: "Tokenizing knowledge and art as public goods. Creator value preserved without gatekeepers.",
+    quote: "Creative work gains protection through tokenization as a shared resource; creators prosper without institutional gatekeepers.",
     icon: Sparkles,
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
@@ -118,13 +118,13 @@ const AXIOMS = [
   },
   {
     num: "10",
-    title: "The Integrity Web is for Everyone",
-    quote: "Censorship-free, permissionless, universal. The trust foundation of digital civilization.",
+    title: "Integrity for Everyone",
+    quote: "Censorship-free, permissionless, privacy, universal — quantum resistance trust infrastructure for digital civilization.",
     icon: Globe,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    medialane: "A creator in Nairobi, an AI agent in a data center, a collector in São Paulo, a developer in Seoul — all have identical rights on Medialane. No geographic restrictions, no preferential access, no gated tiers. The Integrity Web is the infrastructure of a civilization where creativity is protected by math, not policy.",
+    medialane: "A creator in Nairobi, an AI agent in a data center, a collector in São Paulo, a developer in Seoul — all have identical rights on Medialane, without geographic restriction, preferential access, or gated tiers. Creativity here is protected by the contract's math, applied the same way to everyone.",
     highlights: ["No geographic restrictions on minting or trading", "DAO governance — equal voice for all token holders", "Gasless onboarding removes economic barriers"],
   },
 ];
@@ -167,20 +167,13 @@ export default function IntegrityWebPage() {
         <h2 className="text-xl font-bold">What is the Integrity Web?</h2>
         <p className="text-muted-foreground leading-relaxed">
           The Integrity Web is a philosophical and technical movement defining the principles
-          that make digital systems worthy of trust. It rejects trust in institutions, platforms,
-          and promises — and replaces it with cryptographic proof, open protocols, and
-          mathematical guarantees.
+          that make digital systems worthy of trust. Where trust in institutions, platforms,
+          or promises would normally sit, it substitutes cryptographic proof and open protocols.
         </p>
         <p className="text-muted-foreground leading-relaxed">
-          Its ten axioms are not opinions about what the internet <em>should</em> be. They are
-          engineering constraints that determine what a trustworthy system <em>must</em> implement.
-          Medialane treats them as design requirements.
+          Its ten axioms describe engineering constraints that determine what a trustworthy
+          system <em>must</em> implement. Medialane treats them as design requirements.
         </p>
-        <blockquote className="border-l-4 border-primary pl-5 py-1">
-          <p className="text-sm font-medium text-foreground italic">
-            "Code is the contract. Math is the guarantee."
-          </p>
-        </blockquote>
       </div>
 
       {/* Axioms */}

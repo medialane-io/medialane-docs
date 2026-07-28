@@ -166,9 +166,8 @@ export default function LearnServicesPage() {
         <p className="text-muted-foreground text-lg leading-relaxed">
           Every action on Medialane — minting, trading, dropping, issuing credentials — is
           powered by a service: a registered module that produces assets, venues, or both.
-          Services are how the protocol grows. The set of ways to create and monetize is
-          open-ended and expands by adding services — never by rewriting code, and never a
-          fixed menu.
+          Services are how the protocol grows. The set of ways to create and monetize expands
+          by registering a new service, keeping the list open-ended rather than fixed.
         </p>
       </div>
 

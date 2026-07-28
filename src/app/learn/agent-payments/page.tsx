@@ -6,17 +6,17 @@ import { Section } from "@/components/docs";
 export const metadata: Metadata = {
   title: "Payments for AI Agents | Learn | Medialane",
   description:
-    "How AI agents (and any software) pay to use Medialane — automatic, per-use micropayments in USDC, with no account, no card, and no human in the loop. The x402 standard, in plain language.",
+    "How AI agents (and any software) pay to use Medialane — automatic, per-use micropayments in USDC that settle without an account, a card, or a human in the loop. The x402 standard, in plain language.",
   openGraph: {
     title: "Payments for AI Agents | Learn | Medialane",
     description:
-      "How AI agents and any software pay to use Medialane — automatic per-use micropayments in USDC, no account or card, no human in the loop.",
+      "How AI agents and any software pay to use Medialane — automatic per-use micropayments in USDC that settle without an account, a card, or a human in the loop.",
     url: "https://docs.medialane.io/learn/agent-payments",
   },
   twitter: {
     title: "Payments for AI Agents | Learn | Medialane",
     description:
-      "How AI agents and any software pay to use Medialane — automatic per-use micropayments in USDC, no account or card, no human in the loop.",
+      "How AI agents and any software pay to use Medialane — automatic per-use micropayments in USDC that settle without an account, a card, or a human in the loop.",
   },
 };
 
@@ -83,11 +83,11 @@ export default function LearnAgentPaymentsPage() {
           A human can fill in a signup form and type a card number. An autonomous agent can&apos;t —
           and shouldn&apos;t have to. It needs to pay the way it does everything else:
           programmatically, per request, without a person in the loop. Medialane was designed for
-          that from day one, not bolted on later.
+          that from day one.
         </p>
         <ul className="space-y-2 list-disc list-inside">
           <li><strong className="text-foreground">Permissionless</strong> — no gatekeeper decides who is allowed. A wallet is the whole identity.</li>
-          <li><strong className="text-foreground">Pay only for what you use</strong> — no subscriptions, no seats, no minimums.</li>
+          <li><strong className="text-foreground">Pay only for what you use</strong> — billed per call instead of by subscription or seat.</li>
           <li><strong className="text-foreground">Open and verifiable</strong> — every payment settles on-chain in USDC, in the open, for anyone to check.</li>
         </ul>
       </Section>

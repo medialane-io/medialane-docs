@@ -91,7 +91,7 @@ const DESIGN_CHOICES = [
   {
     icon: Lock,
     title: "No admin keys",
-    desc: "The contracts have no owner role, no upgrade path, and no emergency pause. Once deployed, no one can change the rules — including us.",
+    desc: "The contracts ship without an owner role, an upgrade path, or an emergency pause. Once deployed, the rules are fixed — including for us.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
@@ -105,14 +105,14 @@ const DESIGN_CHOICES = [
   {
     icon: Unlock,
     title: "No approval required",
-    desc: "Any wallet can mint, list, make offers, and deploy collections. There is no whitelist, no application process, and no content moderation at the contract level.",
+    desc: "Any wallet can mint, list, make offers, and deploy collections. The contract level runs without a whitelist, an application process, or content moderation.",
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
   },
   {
     icon: Bot,
     title: "AI agents as first-class users",
-    desc: "The contracts make no distinction between a human and an AI agent. Same API, same fees, same protocol capabilities. No special integration required.",
+    desc: "The contracts make no distinction between a human and an AI agent — same API, same fees, same protocol capabilities, on the standard integration path.",
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
   },
@@ -150,8 +150,8 @@ export default function AboutPage() {
         <div className="relative space-y-5">
           <span className="pill-badge">About Medialane</span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
-            <span className="gradient-text">Built for creators.</span>
-            <br />Built to last.
+            <span className="gradient-text">Built for creators,</span>
+            <br />on rules that don&apos;t change.
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
             Medialane is a monetization hub for the creative economy. Humans, organizations,
@@ -254,8 +254,9 @@ export default function AboutPage() {
           <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">Why Starknet</p>
           <h2 className="text-2xl font-black">The foundation matters.</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Medialane is built on Starknet. Not because it is popular — because its
-            cryptographic properties are uniquely suited to the bigger vision.
+            Medialane is built on Starknet because its cryptographic properties fit the
+            bigger vision: quantum-resistant proofs, no trusted setup, and account
+            abstraction at the protocol level.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -279,8 +280,8 @@ export default function AboutPage() {
         </p>
         <p className="text-muted-foreground leading-relaxed">
           The long-term arc is toward fully chain-agnostic, censorship-resistant infrastructure.
-          Starknet&apos;s ZK proofs and account abstraction are what make that possible — not chain
-          loyalty, but architectural necessity.
+          Starknet&apos;s ZK proofs and account abstraction are the architectural properties
+          that make that possible.
         </p>
         <p className="text-sm text-muted-foreground">
           See{" "}
@@ -320,8 +321,8 @@ export default function AboutPage() {
         </div>
         <p className="text-muted-foreground leading-relaxed">
           The Integrity Web is a set of ten axioms that define what trustworthy digital
-          infrastructure must implement at the architectural level. They are not aspirations —
-          they are engineering constraints. Medialane treats them as design requirements.
+          infrastructure must implement at the architectural level. Medialane treats them
+          as engineering constraints and design requirements.
         </p>
         <Link
           href="/learn/integrity-web"

@@ -23,7 +23,7 @@ const LICENSE_RULES = [
   },
   {
     rule: "Attribution embedded",
-    desc: "The parent asset's ID is written into your derivative's on-chain metadata automatically. The lineage is permanent and publicly verifiable — provenance, not permission, is what the protocol guarantees.",
+    desc: "The parent asset's ID is written into your derivative's on-chain metadata automatically. The lineage is permanent and publicly verifiable — the contract guarantees provenance, not permission.",
   },
   {
     rule: "You set your own license",
@@ -44,10 +44,9 @@ export default function LearnRemixPage() {
         <p className="text-muted-foreground text-lg leading-relaxed">
           A remix is a new IP asset that builds on an existing one. Remixing is
           permissionless — anyone can build on any asset, and the relationship is
-          recorded on-chain permanently and publicly. What no one can change is the
-          record: the parent stays linked to your derivative forever. Need the
-          creator&apos;s blessing or a paid license instead? That&apos;s a separate,
-          optional flow — see{" "}
+          recorded on-chain, publicly and immutably: the parent stays linked to your
+          derivative. Need the creator&apos;s blessing or a paid license instead?
+          That&apos;s a separate, optional flow — see{" "}
           <Link href="/learn/programmable-licensing" className="text-primary hover:underline">Licensing</Link>.
         </p>
       </div>

@@ -117,7 +117,7 @@ const PLATFORM_FEATURES = [
     icon: Lock,
     title: "Immutable Contracts",
     description:
-      "All core contracts — marketplace, IP registry, royalties — are fully immutable with no admin keys and no upgrade path. The rules are in the code and cannot be changed by anyone, including Medialane.",
+      "All core contracts — marketplace, IP registry, royalties — are fully immutable, deployed without admin keys or an upgrade path. The rules live in the code, fixed for every participant including Medialane.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
@@ -133,7 +133,7 @@ const PLATFORM_FEATURES = [
     icon: Lock,
     title: "Zero-Knowledge Security",
     description:
-      "Built on Starknet's ZK-STARK technology. Every transaction is provably valid. Ethereum-level security at a fraction of the cost, with quantum-resistant cryptography.",
+      "Built on Starknet's ZK-STARK technology. Every transaction is provably valid, settled with quantum-resistant cryptography and no trusted setup.",
     color: "text-primary",
     bg: "bg-primary/10",
   },
@@ -157,7 +157,7 @@ const PLATFORM_FEATURES = [
     icon: BookOpen,
     title: "Open Protocol",
     description:
-      "Mediolano — the independent public goods protocol Medialane builds on — is fully open source. Smart contracts, indexer, and SDK are publicly verifiable. No vendor lock-in, ever.",
+      "Mediolano — the independent public goods protocol Medialane builds on — is fully open source. Smart contracts, indexer, and SDK are publicly verifiable, so nothing depends on trusting a vendor.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
@@ -217,9 +217,9 @@ const AUDIENCES = [
 const SC_GUARANTEES = [
   {
     icon: Shield,
-    title: "Total Security",
+    title: "Contract-Executed",
     description:
-      "All critical operations — minting, trading, royalty distribution, licensing — execute inside audited Cairo smart contracts on Starknet. No human can alter the outcome of a transaction after it is submitted. The rules are in the code.",
+      "All critical operations — minting, trading, royalty distribution, licensing — execute inside audited Cairo smart contracts on Starknet. The outcome of a submitted transaction follows the code, not an operator decision.",
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
   },
@@ -227,7 +227,7 @@ const SC_GUARANTEES = [
     icon: Ban,
     title: "Censorship Resistance",
     description:
-      "No company, government, or platform operator can freeze your assets, delist your NFTs, or prevent you from transacting. Your IP lives on a decentralised blockchain — it cannot be taken away.",
+      "Freezing assets, delisting NFTs, or blocking a transaction would require rewriting the chain itself — there is no company, government, or platform operator positioned to do it. Your IP lives on a decentralised blockchain.",
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
   },
@@ -235,15 +235,15 @@ const SC_GUARANTEES = [
     icon: Unlock,
     title: "Permissionless",
     description:
-      "Anyone can mint, list, buy, or build on Medialane — no whitelist, no approval process, no intermediary. The Mediolano protocol is open to every creator and developer on Earth, forever.",
+      "Anyone can mint, list, buy, or build on Medialane by calling the contract directly — no whitelist or approval process sits in front of it. The Mediolano protocol is open to every creator and developer on Earth.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
   {
     icon: Crown,
-    title: "Full Ownership",
+    title: "Self-Custody",
     description:
-      "Your NFTs exist in your wallet — not on Medialane's servers. Your wallet is the only key. If Medialane's frontend went offline tomorrow, your assets would still exist on-chain and remain fully transferable.",
+      "Your NFTs exist in your wallet, not on Medialane's servers. Your wallet key is what signs for them. If Medialane's frontend went offline, your assets would remain on-chain and transferable through any other interface.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
@@ -412,9 +412,8 @@ export default function AppsPage() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Architecture</span>
           <h2 className="text-2xl font-bold">Smart Contract Based</h2>
           <p className="text-muted-foreground text-sm max-w-2xl">
-            Every core operation on Medialane is executed by audited smart contracts on Starknet — not
-            by servers we control. This gives every participant four fundamental guarantees that no
-            centralised platform can offer.
+            Every core operation on Medialane is executed by audited smart contracts on Starknet
+            rather than by servers we control. That shapes four properties of the platform.
           </p>
         </div>
 

@@ -5,7 +5,7 @@ import {
   Image, Globe, Lock, Code2, Coins, Rocket, Store, Award, Package,
   Layers, GitBranch, Shield, FileText, Ticket, Handshake,
   Users, User, Eye, Scale, Scroll, Vote, History, Network, Bot,
-  Terminal, Landmark,
+  Terminal, Landmark, Megaphone,
 } from "lucide-react";
 import { CANONICAL } from "./canonical";
 
@@ -36,6 +36,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "learn-nft",                     label: "What is an NFT?",         icon: Image,      href: "/learn/nft",                      keywords: ["nft", "token", "ip"] },
       { id: "learn-blockchain",              label: "Blockchain",              icon: Globe,      href: "/learn/blockchain",               keywords: ["chain", "starknet", "decentralized"] },
       { id: "learn-zero-knowledge",          label: "Zero Knowledge",          icon: Lock,       href: "/learn/zero-knowledge",           keywords: ["zk", "proofs", "privacy"] },
+      { id: "learn-privacy",                 label: "Privacy",                 icon: Eye,        href: "/learn/privacy",                  keywords: ["privacy", "viewing key", "confidential", "sovereignty"] },
       { id: "learn-programmable-ip",         label: "Programmable IP",         icon: Code2,      href: "/learn/programmable-ip",          keywords: ["ip", "smart", "rights"] },
       { id: "learn-tokenization",            label: "Tokenization",            icon: Coins,      href: "/learn/tokenization",             keywords: ["mint", "token", "rwa"] },
       { id: "learn-creator-launchpad",       label: "Creator Launchpad",       icon: Rocket,     href: "/learn/creator-launchpad",        keywords: ["launchpad", "drop", "mint", "create"] },
@@ -71,7 +72,6 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "docs-fees",         label: "Fees",                  icon: Coins,     href: "/dev/fees",           keywords: ["1%", "creators fund", "platform fee"] },
       { id: "docs-security",     label: "Security",              icon: Shield,    href: "/dev/security",       keywords: ["audit", "immutable", "risk"] },
       { id: "docs-governance",   label: "Governance",            icon: Vote,      href: "/dev/governance",     keywords: ["dao", "snapshot", "voting"] },
-      { id: "docs-compliance",   label: "Compliance",            icon: Scale,     href: "/guidelines/compliance",     keywords: ["legal", "tos", "kyc"] },
       { id: "docs-changelog",    label: "Changelog",             icon: History,   href: "/dev/changelog",      keywords: ["release", "updates", "history"] },
     ],
   },
@@ -83,6 +83,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "guidelines-terms",           label: "Terms of Use",    icon: FileText, href: "/guidelines/terms",           keywords: ["tos", "legal"] },
       { id: "guidelines-privacy",         label: "Privacy Policy",  icon: Eye,      href: "/guidelines/privacy",         keywords: ["privacy", "data"] },
       { id: "guidelines-compliance",      label: "Compliance",      icon: Scale,    href: "/guidelines/compliance",      keywords: ["legal", "compliance"] },
+      { id: "guidelines-campaign-terms",  label: "Campaign Terms",  icon: Megaphone, href: "/guidelines/campaign-terms",  keywords: ["campaign", "creator fund", "airdrop"] },
     ],
   },
   {

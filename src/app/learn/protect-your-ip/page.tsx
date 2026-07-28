@@ -45,7 +45,7 @@ export default function LearnProtectIPPage() {
             {[
               {
                 name: "Automatic Protection",
-                desc: "Copyright is granted the moment a work is fixed in a tangible medium. No registration, no formality, no fee required.",
+                desc: "Copyright is granted the moment a work is fixed in a tangible medium, without registration, formality, or fee.",
               },
               {
                 name: "National Treatment",
@@ -110,16 +110,16 @@ export default function LearnProtectIPPage() {
             When you mint a work on Medialane:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li>An <strong className="text-foreground">immutable timestamped record</strong> is created on Starknet — permanent, public, undeniable proof of existence at a specific point in time.</li>
+            <li>An <strong className="text-foreground">immutable timestamped record</strong> is created on Starknet — a public, verifiable proof of existence at a specific point in time.</li>
             <li>An <strong className="text-foreground">ERC-721 NFT</strong> is minted to your wallet — the token acts as the cryptographic key to your IP. Only the holder of the private key can manage, license, or transfer rights.</li>
-            <li>Your <strong className="text-foreground">license terms</strong> are embedded in the token metadata and stored on IPFS — machine-readable, immutable, and accessible forever independently of the Medialane platform.</li>
-            <li>A <strong className="text-foreground">content hash</strong> of the metadata is committed to the blockchain, linking the on-chain record to the off-chain content permanently.</li>
+            <li>Your <strong className="text-foreground">license terms</strong> are embedded in the token metadata and stored on IPFS — machine-readable and immutable, independent of the Medialane platform.</li>
+            <li>A <strong className="text-foreground">content hash</strong> of the metadata is committed to the blockchain, linking the on-chain record to the off-chain content.</li>
           </ul>
           <p>
-            This creates a timestamped, publicly verifiable record of authorship — without
-            registration, without WIPO filing, and without any fee beyond standard Starknet
-            gas. It is not formal copyright registration, but it is tamper-proof evidence
-            of when a work existed and who created it.
+            This creates a timestamped, publicly verifiable record of authorship, requiring
+            only standard Starknet gas — no registration and no WIPO filing. It functions as
+            tamper-proof evidence of when a work existed and who created it, distinct from
+            formal copyright registration.
           </p>
         </Section>
 

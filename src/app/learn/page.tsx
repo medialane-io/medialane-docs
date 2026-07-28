@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot, Ticket, Users, Handshake } from "lucide-react";
+import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot, Ticket, Users, Handshake, Lock, Code2, Coins, Eye } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Learn | Medialane",
@@ -18,16 +18,46 @@ export const metadata: Metadata = {
 
 const TOPICS = [
   {
+    href: "/learn/integrity-web",
+    icon: Shield,
+    title: "The Integrity Web",
+    description: "The ten axioms that shape Medialane's architecture — proof over trust, permissionless participation, and integrity by design.",
+  },
+  {
     href: "/learn/nft",
     icon: Image,
     title: "What is an NFT?",
     description: "Understand non-fungible tokens — what they are, how they work, and why they matter for creators and IP owners.",
   },
   {
-    href: "/learn/creator-launchpad",
-    icon: Rocket,
-    title: "Creator Launchpad",
-    description: "Learn how to deploy your own collection, mint IP assets, and launch your creative work on Medialane.",
+    href: "/learn/blockchain",
+    icon: Globe,
+    title: "Blockchain Basics",
+    description: "A plain-language introduction to blockchains, wallets, and how Medialane settles on Starknet.",
+  },
+  {
+    href: "/learn/zero-knowledge",
+    icon: Eye,
+    title: "Zero-Knowledge Proofs",
+    description: "How ZK-STARK proofs verify computation without revealing the underlying data, and what that means for Medialane.",
+  },
+  {
+    href: "/learn/privacy",
+    icon: Lock,
+    title: "Privacy on Medialane",
+    description: "Public authorship, private economics — what stays visible on-chain, what a creator can keep confidential, and why.",
+  },
+  {
+    href: "/learn/programmable-ip",
+    icon: Code2,
+    title: "Programmable IP",
+    description: "What it means for intellectual property to carry its rules with it — licenses, royalties, and derivative terms in the metadata.",
+  },
+  {
+    href: "/learn/tokenization",
+    icon: Coins,
+    title: "Tokenization",
+    description: "How minting turns a creative work into a verifiable, ownable on-chain asset — and what that record does and doesn't claim.",
   },
   {
     href: "/learn/services",
@@ -40,6 +70,18 @@ const TOPICS = [
     icon: Fingerprint,
     title: "Identity",
     description: "Wallets, accounts, and profiles — three separate things. Roles, authentication vs. authorization, and AI agent accounts.",
+  },
+  {
+    href: "/learn/creator-launchpad",
+    icon: Rocket,
+    title: "Creator Launchpad",
+    description: "Learn how to deploy your own collection, mint IP assets, and launch your creative work on Medialane.",
+  },
+  {
+    href: "/learn/creator-coin",
+    icon: Coins,
+    title: "Creator Coins",
+    description: "Launch your own fixed-supply coin with permanently locked liquidity, tradeable by your community on a public pool.",
   },
   {
     href: "/learn/marketplace",

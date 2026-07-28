@@ -24,7 +24,7 @@ const FACETS = [
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    def: "The cryptographic key. The only thing that signs transactions. Your wallet is your proof of identity on-chain — no username, no password, no account recovery through Medialane.",
+    def: "The cryptographic key. The only thing that signs transactions. Your wallet is your proof of identity on-chain, standing in for a username and password — with account recovery handled by the wallet, not Medialane.",
     note: "Self-custody: your keys, your assets. Medialane cannot recover a lost wallet.",
   },
   {

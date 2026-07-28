@@ -1,6 +1,6 @@
 import {
   BookOpen, Bot, Building2, Coins, Code2, FileCode2, History,
-  Info, Landmark, Layers, LifeBuoy, Package, Shield, Terminal, Network,
+  Info, Landmark, Layers, LifeBuoy, Package, Shield, Terminal, Network, Vote,
 } from "lucide-react";
 import { CANONICAL } from "@/lib/canonical";
 
@@ -73,6 +73,13 @@ export const DOCS_NAV = [
     title: "Fees & Revenue",
     icon: Coins,
     description: "Canonical fee model — free actions, gas sponsorship, royalties, marketplace fees, DAO treasury flow, and Creator's Airdrop governance.",
+  },
+  {
+    href: "/dev/governance",
+    label: "Governance",
+    title: "Governance",
+    icon: Vote,
+    description: "How the Medialane DAO governs the protocol — Snapshot voting, MDLN, the service registry, and the progressive-decentralization arc.",
   },
   {
     href: "/dev/changelog",
@@ -175,6 +182,7 @@ export const KNOWLEDGE_GROUPS = [
       { href: "/guidelines/compliance", label: "Compliance", desc: "Regulatory and IP compliance overview." },
       { href: "/guidelines/terms", label: "Terms of Use", desc: "Platform terms." },
       { href: "/guidelines/privacy", label: "Privacy Policy", desc: "Data collection, processing, and user rights." },
+      { href: "/guidelines/campaign-terms", label: "Campaign Terms", desc: "Creator Fund and launch-campaign participation terms." },
     ],
   },
 ] as const;
