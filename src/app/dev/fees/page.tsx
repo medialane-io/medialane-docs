@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Coins, ExternalLink, Landmark, Repeat2, ShieldCheck, Zap } from "lucide-react";
+import { Coins, ExternalLink, Landmark, Repeat2, ShieldCheck, Terminal, Zap } from "lucide-react";
 import { CANONICAL } from "@/lib/canonical";
 import { Section } from "@/components/docs";
 
@@ -71,15 +71,17 @@ export default function FeesPage() {
         <h2 className="text-2xl font-bold">Fees & Revenue</h2>
         <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
           Medialane is designed so creators can start without gas or platform fees.
-          Revenue is generated when value moves through marketplace sales, then governed by
-          Medialane DAO members through MDLN voting.
+          Revenue comes from two places: a share of value moving through marketplace sales,
+          and metered API access for developers and agents calling the platform directly.
+          Both are governed by Medialane DAO members through MDLN voting.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { icon: Zap, label: "Creator actions", value: "Gas sponsored", desc: "Most creation and listing actions require no ETH or STRK from users." },
           { icon: Coins, label: "Marketplace fee", value: CANONICAL.marketplaceFee, desc: "Applied to completed marketplace sales at the platform layer and routed to the creators fund." },
+          { icon: Terminal, label: "API access", value: "Pay-per-call", desc: "Developers and agents calling the API directly pay in credits (1 credit = $0.01) via x402 — no free tier." },
           { icon: Landmark, label: "Allocation", value: "DAO vote", desc: "MDLN holders decide how creators-fund revenue is used." },
         ].map(({ icon: Icon, label, value, desc }) => (
           <div key={label} className="bento-cell p-5 space-y-2">
@@ -110,6 +112,28 @@ export default function FeesPage() {
           Sponsorship is not a promise that every possible transaction is always free. Abuse controls,
           unsupported flows, future DAO policy, or direct contract interactions may require users to
           pay Starknet gas.
+        </p>
+      </Section>
+
+      <Section title="API Metering (x402 Credits)">
+        <p>
+          The two revenue streams above (marketplace fee, gas sponsorship) are about using the{" "}
+          <strong className="text-foreground">product</strong> — medialane.io or the Starknet app.
+          A creator or collector in either app never sees a credit balance; the app itself holds one.
+        </p>
+        <p>
+          A developer or AI agent calling the <strong className="text-foreground">API directly</strong>{" "}
+          is a separate case, priced separately: every metered request costs a small number of credits
+          (1 credit = $0.01, paid in USDC via the open x402 standard). There is no free tier — the first
+          unfunded call returns a standard <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">402 Payment Required</code> by
+          design, and an agent can fund itself and continue automatically.
+        </p>
+        <p className="text-sm">
+          Prices are set per action and can change — the{" "}
+          <Link href="/dev/api#credits" className="text-primary hover:underline">live, current table lives on the API Reference</Link>,
+          sourced from the same endpoint every call is actually priced against. See{" "}
+          <Link href="/dev/agents" className="text-primary hover:underline">AI Agents</Link> for the full
+          discovery-and-pay flow.
         </p>
       </Section>
 

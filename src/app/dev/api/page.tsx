@@ -101,14 +101,61 @@ const ERROR_CODES = [
   { code: "500", name: "Server Error", desc: "Internal error — try again or contact support" },
 ]
 
-const CREDIT_COSTS = [
-  { cat: "Read / query", cost: "1", ex: "Get asset, list collections, search, activity" },
-  { cat: "Trade intents", cost: "5", ex: "Create listing, fulfill order, counter-offer" },
-  { cat: "Minting", cost: "10", ex: "Mint token, batch mint" },
-  { cat: "Launchpad / deploy", cost: "100", ex: "Deploy contract, Collection Drop, POP Protocol" },
-]
+// Display order + human labels for known actionKeys. Any actionKey the live
+// API returns that isn't listed here still renders (raw key as the label) —
+// this is presentation only, never a source of truth for what's priced.
+const ACTION_LABELS: Record<string, string> = {
+  "read": "Read / query",
+  "intent:mint": "Mint an asset",
+  "intent:create-collection": "Deploy a collection",
+  "intent:create-tier": "Create a ticket type / membership tier",
+  "intent:listing": "List an asset for sale",
+  "intent:offer": "Make an offer",
+  "intent:cancel": "Cancel an order",
+  "intent:fulfill": "Buy / fulfill an order",
+  "intent:counter-offer": "Counter an offer",
+  "intent:checkout": "Checkout",
+  "metadata:upload-json": "Upload metadata JSON to IPFS",
+  "metadata:upload-file": "Upload a media file to IPFS",
+}
 
-export default function ApiReferencePage() {
+interface PricingRule { actionKey: string; chain: string; service: string; credits: number }
+interface PricingResponse { creditsPerUsdc: number; pricing: { default: number; rules: PricingRule[] } }
+
+// Live pricing, not hardcoded — this endpoint is the same one PATCH
+// /admin/pricing writes to, so the table below can never drift from what
+// callers are actually charged. Revalidates every 5 minutes; a fetch
+// failure degrades to a link instead of a broken page.
+async function getLivePricing(): Promise<PricingResponse | null> {
+  try {
+    const res = await fetch(`${BASE}/v1/pricing`, { next: { revalidate: 300 } })
+    if (!res.ok) return null
+    return (await res.json()) as PricingResponse
+  } catch {
+    return null
+  }
+}
+
+export default async function ApiReferencePage() {
+  const pricing = await getLivePricing()
+  const defaultRules = pricing?.pricing.rules.filter((r) => r.chain === "ALL" && r.service === "ALL") ?? []
+  const knownKeys = Object.keys(ACTION_LABELS)
+  const orderedActionKeys = [
+    ...knownKeys.filter((k) => defaultRules.some((r) => r.actionKey === k)),
+    ...defaultRules.map((r) => r.actionKey).filter((k) => !knownKeys.includes(k)),
+  ]
+  const creditRows = orderedActionKeys.map((actionKey) => {
+    const rule = defaultRules.find((r) => r.actionKey === actionKey)!
+    return { actionKey, label: ACTION_LABELS[actionKey] ?? actionKey, credits: rule.credits }
+  })
+  // Service-specific price *overrides* only — a row identical to the default
+  // isn't a real override yet, so it's skipped rather than shown as noise.
+  const overrideRows = pricing?.pricing.rules.filter((r) => {
+    if (r.chain === "ALL" && r.service === "ALL") return false
+    const base = defaultRules.find((d) => d.actionKey === r.actionKey)
+    return base && base.credits !== r.credits
+  }) ?? []
+
   return (
     <div className="space-y-2">
       <Badge className="bg-primary/10 text-primary border-primary/30 px-3 py-1 text-xs">
@@ -167,22 +214,40 @@ export default function ApiReferencePage() {
       {/* ── CREDITS ── */}
       <DocH2 id="credits" border>Credits &amp; Billing</DocH2>
       <p className="text-muted-foreground mb-3 text-sm">
-        Credits are the billing unit. Top up by depositing USDC on Starknet from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> — credits appear within ~2 minutes and never expire. Different endpoint categories consume different amounts per call:
+        Credits are the billing unit — 1 credit = $0.01. Fund your balance with USDC on Starknet from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> or the <a href="/dev/agents" className="text-primary hover:underline">x402 flow</a> — credits appear within ~2 minutes and never expire. This table is live, pulled from the same endpoint every call is priced against (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/pricing</code>), never a hand-maintained copy:
       </p>
-      <div className="rounded-xl border border-white/10 overflow-hidden mb-3">
-        <div className="grid grid-cols-3 px-5 py-3 bg-white/[0.03] border-b border-white/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-          <span>Category</span>
-          <span className="text-center">Credits</span>
-          <span>Examples</span>
-        </div>
-        {CREDIT_COSTS.map((row, i) => (
-          <div key={row.cat} className={`grid grid-cols-3 px-5 py-3 items-start text-sm ${i < CREDIT_COSTS.length - 1 ? "border-b border-white/5" : ""}`}>
-            <span className="text-white">{row.cat}</span>
-            <span className="text-center font-mono font-bold text-primary">{row.cost}</span>
-            <span className="text-muted-foreground text-xs">{row.ex}</span>
+      {creditRows.length > 0 ? (
+        <>
+          <div className="rounded-xl border border-white/10 overflow-hidden mb-3">
+            <div className="grid grid-cols-3 px-5 py-3 bg-white/[0.03] border-b border-white/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+              <span>Action</span>
+              <span className="text-center">Credits</span>
+              <span className="text-right">USD</span>
+            </div>
+            {creditRows.map((row, i) => (
+              <div key={row.actionKey} className={`grid grid-cols-3 px-5 py-3 items-center text-sm ${i < creditRows.length - 1 ? "border-b border-white/5" : ""}`}>
+                <span className="text-white">{row.label}</span>
+                <span className="text-center font-mono font-bold text-primary">{row.credits}</span>
+                <span className="text-right font-mono text-muted-foreground text-xs">${(row.credits / (pricing?.creditsPerUsdc ?? 100)).toFixed(2)}</span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+          {overrideRows.length > 0 && (
+            <p className="text-muted-foreground text-xs mb-3">
+              Service-specific overrides: {overrideRows.map((r, i) => (
+                <React.Fragment key={`${r.actionKey}-${r.chain}-${r.service}`}>
+                  {i > 0 && ", "}
+                  <code className="font-mono bg-white/10 px-1 py-0.5 rounded">{r.actionKey}</code> on <code className="font-mono bg-white/10 px-1 py-0.5 rounded">{r.service}</code>{r.chain !== "ALL" ? ` (${r.chain})` : ""}: {r.credits} credits
+                </React.Fragment>
+              ))}.
+            </p>
+          )}
+        </>
+      ) : (
+        <p className="text-muted-foreground text-sm mb-3">
+          Live pricing is temporarily unavailable here — see <a href={`${BASE}/v1/pricing`} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">{BASE}/v1/pricing</a> directly.
+        </p>
+      )}
       <p className="text-muted-foreground text-sm">
         When credits run out you receive <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code> with an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining: 0</code> header. An autonomous agent can detect the 402 and top up on its own — see <a href="/dev/agents" className="text-primary hover:underline">AI Agents</a>.
       </p>
@@ -1032,22 +1097,23 @@ const resumeSource = new EventSource(url, {
       {/* ── PORTAL ── */}
       <DocH2 id="portal" border>Portal (Self-service)</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Portal endpoints manage your tenant account: API keys, usage stats, and webhooks (PREMIUM). These calls never count toward your monthly quota.
+        Portal endpoints manage your account: API keys, credit balance, and webhooks (PREMIUM). There is no monthly quota — these calls are simply never metered.
       </p>
 
       <Endpoint
         method="GET"
         path="/v1/portal/me"
-        description="Get your tenant profile: plan, quota usage, and key count."
+        description="Get your account: plan, status, and live credit balance."
         params={[]}
         curl={`curl "${BASE}/v1/portal/me" \\
   -H "x-api-key: ${KEY}"`}
         response={`{
-  "tenantId": "tnt_xxx",
-  "email": "you@example.com",
-  "plan": "FREE",
-  "quota": 50,
-  "usedThisMonth": 12
+  "data": {
+    "id": "acct_abc",
+    "plan": "FREE",
+    "status": "ACTIVE",
+    "creditBalance": 1200
+  }
 }`}
       />
 
