@@ -1306,7 +1306,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/creators/:wallet/profile"
-        description="Get the display profile for a creator wallet (displayName, bio, avatar, banner, social links). Returns null if no profile has been set."
+        description="Get the display profile for a creator wallet (displayName, bio, avatar, social links). Returns null if no profile has been set."
         params={[
           { name: "wallet", type: "string", required: true, desc: "Starknet wallet address" },
         ]}
@@ -1318,7 +1318,6 @@ const resumeSource = new EventSource(url, {
   "displayName": "Kalamaha",
   "bio": "Visual artist on Starknet",
   "avatarImage": "ipfs://bafkrei...",
-  "bannerImage": null,
   "websiteUrl": "https://kalamaha.art",
   "twitterUrl": "https://x.com/kalamaha",
   "discordUrl": null,
@@ -1336,7 +1335,6 @@ const resumeSource = new EventSource(url, {
           { name: "displayName", type: "string", desc: "Display name or handle" },
           { name: "bio", type: "string", desc: "Short bio" },
           { name: "avatarImage", type: "string", desc: "Avatar IPFS URI (ipfs://...)" },
-          { name: "bannerImage", type: "string", desc: "Banner IPFS URI (ipfs://...)" },
           { name: "websiteUrl", type: "string", desc: "Website URL" },
           { name: "twitterUrl", type: "string", desc: "Twitter/X URL" },
           { name: "discordUrl", type: "string", desc: "Discord URL" },
@@ -1371,8 +1369,7 @@ const resumeSource = new EventSource(url, {
       "walletAddress": "0x03d0...",
       "username": "kalamaha",
       "displayName": "Kalamaha",
-      "avatarImage": "ipfs://...",
-      "bannerImage": "ipfs://..."
+      "avatarImage": "ipfs://..."
     }
   ],
   "meta": { "page": 1, "limit": 24, "total": 61 }
