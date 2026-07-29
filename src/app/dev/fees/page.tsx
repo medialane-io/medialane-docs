@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Coins, ExternalLink, Landmark, Repeat2, ShieldCheck, Terminal, Zap } from "lucide-react";
 import { CANONICAL } from "@/lib/canonical";
 import { Section } from "@/components/docs";
+import { PricingTable } from "@/components/docs/pricing-table";
 
 export const metadata: Metadata = {
   title: "Fees & Revenue | Medialane Docs",
@@ -128,12 +129,13 @@ export default function FeesPage() {
           unfunded call returns a standard <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">402 Payment Required</code> by
           design, and an agent can fund itself and continue automatically.
         </p>
+        <PricingTable />
         <p className="text-sm">
-          Prices are set per action and can change — the{" "}
-          <Link href="/dev/api#credits" className="text-primary hover:underline">live, current table lives on the API Reference</Link>,
-          sourced from the same endpoint every call is actually priced against. See{" "}
+          Prices are set per action and can change — this table is live, sourced from the same
+          endpoint (<code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">GET /v1/pricing</code>)
+          every call is actually priced against, never a hand-maintained copy. See{" "}
           <Link href="/dev/agents" className="text-primary hover:underline">AI Agents</Link> for the full
-          discovery-and-pay flow.
+          discovery-and-pay flow, or the <Link href="/dev/api#credits" className="text-primary hover:underline">full API reference</Link>.
         </p>
       </Section>
 
