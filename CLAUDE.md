@@ -139,9 +139,21 @@ All policy/legal pages — community, user-guidelines, compliance, terms, privac
 
 Always run `bun run build` after significant changes and verify:
 - Zero TypeScript/JSX errors. **Strict type-checking is ON** — `typescript.ignoreBuildErrors` was removed (2026-06-01), so type errors now fail the build (no more silently-rotting dead components).
-- All routes prerender as `○` (static)
+- All routes prerender as `○` (static) — a page doing a live `fetch` (see below) still prerenders static with a revalidate window, shown as `○` plus a `revalidate`/`expire` column in the build's route table, not `ƒ`.
 - No missing imports (especially unused icon imports cause lint warnings)
-- `@medialane/sdk` is pinned to an exact version (currently `0.27.0`); only `OPEN_LICENSES` is imported at runtime — the rest are code samples.
+- `@medialane/sdk` is pinned to an exact version (currently `0.71.0`); only `OPEN_LICENSES` is imported at runtime — the rest are code samples.
+
+## Live-fetched content, never hand-copied numbers (added 2026-07-28)
+
+Some facts genuinely change independent of doc edits (x402 credit pricing, chief example) —
+hand-copying a number here is how it goes stale. `/dev/api` and `/dev/fees` render
+`<PricingTable />` (`src/components/docs/pricing-table.tsx`), an async **server component**
+that fetches `GET https://api.medialane.io/v1/pricing` at render time (`next: { revalidate: 300
+} }`), degrading to a link instead of a broken page on fetch failure. Both pages import the
+*same* component rather than each doing their own fetch, so they can't render different numbers
+for the same action — extend `ACTION_LABELS` there when a new actionKey ships, not per-page.
+This is the model for any other content that's actually live state, not documentation: fetch it
+server-side with a short revalidate window, never paste a snapshot into JSX.
 
 ## GitHub
 
