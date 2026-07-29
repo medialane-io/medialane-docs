@@ -1,5 +1,5 @@
 import {
-  BookOpen, Bot, Building2, Coins, Code2, FileCode2, History,
+  BookOpen, Bot, Building2, Coins, Code2, FileCode2,
   Info, Landmark, Layers, LifeBuoy, Package, Shield, Terminal, Network, Vote,
 } from "lucide-react";
 import { CANONICAL } from "@/lib/canonical";
@@ -80,13 +80,6 @@ export const DOCS_NAV = [
     title: "Governance",
     icon: Vote,
     description: "How the Medialane DAO governs the protocol — Snapshot voting, MDLN, the service registry, and the progressive-decentralization arc.",
-  },
-  {
-    href: "/dev/changelog",
-    label: "Changelog",
-    title: "Changelog",
-    icon: History,
-    description: "Protocol, SDK, API, governance, and documentation changes that affect users and builders.",
   },
 ] as const;
 

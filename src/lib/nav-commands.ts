@@ -4,7 +4,7 @@ import {
   Building2, Link2, Search,
   Image, Globe, Lock, Code2, Coins, Rocket, Store, Award, Package,
   Layers, GitBranch, Shield, FileText, Ticket, Handshake,
-  Users, User, Eye, Scale, Scroll, Vote, History, Network, Bot,
+  Users, User, Eye, Scale, Scroll, Vote, Network, Bot,
   Terminal, Landmark, Megaphone,
 } from "lucide-react";
 import { CANONICAL } from "./canonical";
@@ -72,7 +72,6 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "docs-fees",         label: "Fees",                  icon: Coins,     href: "/dev/fees",           keywords: ["1%", "creators fund", "platform fee"] },
       { id: "docs-security",     label: "Security",              icon: Shield,    href: "/dev/security",       keywords: ["audit", "immutable", "risk"] },
       { id: "docs-governance",   label: "Governance",            icon: Vote,      href: "/dev/governance",     keywords: ["dao", "snapshot", "voting"] },
-      { id: "docs-changelog",    label: "Changelog",             icon: History,   href: "/dev/changelog",      keywords: ["release", "updates", "history"] },
     ],
   },
   {

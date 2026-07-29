@@ -85,8 +85,8 @@ const SERVICES = [
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    desc: "Membership clubs with an onchain NFT membership card. A factory deploys one dedicated ERC-721 collection per creator — the same pattern as IP Tickets and IP Collections. Open, invite-only, paid, or capped.",
-    caps: ["mint", "subscribe"],
+    desc: "Membership clubs as tiered ERC-1155 collections. A factory deploys one dedicated collection per creator; each token id is a membership tier with its own supply, optional validity window, and royalty. Memberships mint to holders and trade on the marketplace like any edition.",
+    caps: ["mint", "list", "buy", "make_offer", "cancel", "transfer"],
   },
   {
     id: "ip-sponsorship",

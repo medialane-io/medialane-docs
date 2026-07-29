@@ -219,7 +219,6 @@ const TOPIC_GROUPS = [
       { href: "/dev/developers", label: "Developers" },
       { href: "/dev/fees", label: "Fees" },
       { href: "/dev/security", label: "Security" },
-      { href: "/dev/changelog", label: "Changelog" },
     ],
   },
   {
