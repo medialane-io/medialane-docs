@@ -304,13 +304,18 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/intents/create-collection"
-        description="Register a new NFT collection contract on the Medialane registry."
+        description="Register a new NFT collection, or deploy a new per-creator contract via a service's factory."
         params={[
           { name: "owner", type: "string", required: true, desc: "Requester address" },
           { name: "name", type: "string", required: true, desc: "Collection name" },
           { name: "symbol", type: "string", required: true, desc: "Collection symbol" },
           { name: "baseUri", type: "string", required: true, desc: "Base URI for tokens" },
-          { name: "collectionContract", type: "string", desc: "Optional: registry contract override" },
+          { name: "service", type: "string", desc: 'Omit for the shared registry (mip-erc721/ip-erc721). One of "mip-erc1155" | "ip-tickets" | "ip-club" | "pop-protocol" | "drop-collection" deploys via that service\'s factory instead.' },
+          { name: "collectionContract", type: "string", desc: "Optional: registry contract override (registry path only)" },
+          { name: "claimEndTimestamp", type: "number", desc: "pop-protocol only: unix seconds after which claim() stops working" },
+          { name: "eventType", type: "string", desc: 'pop-protocol only: e.g. "Conference", "Workshop", "Hackathon"' },
+          { name: "maxSupply", type: "string", desc: "drop-collection only: total mintable supply" },
+          { name: "conditions", type: "object", desc: "drop-collection only: { startTime, endTime, price, paymentToken, maxQuantityPerWallet }" },
         ]}
         curl={`curl -X POST "${BASE}/v1/intents/create-collection" \\
   -H "x-api-key: ${KEY}" \\
@@ -400,6 +405,51 @@ export default function ApiReferencePage() {
     "description": "Founding community coin"
   }
 }`}
+      />
+
+      <p className="text-muted-foreground text-sm mb-3 mt-6">
+        Deploying and launching a coin is two intents, one per on-chain transaction — the
+        coin&apos;s address is only known from the deploy receipt, so launch is a separate call
+        made once you have it (same shape as create-tier → mint for tickets/club).
+      </p>
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/create-coin"
+        description="Deploy a fixed-supply Creator Coin (full supply minted to the Factory until launch)."
+        params={[
+          { name: "owner", type: "string", required: true, desc: "Owner of the new coin — the only address allowed to launch it" },
+          { name: "name", type: "string", required: true, desc: "Coin name" },
+          { name: "symbol", type: "string", required: true, desc: "Coin symbol" },
+          { name: "initialSupply", type: "string", required: true, desc: "Full fixed supply, raw units (18 decimals)" },
+          { name: "salt", type: "string", desc: "Deterministic deploy salt. Omitted = timestamp-derived" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/create-coin" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "owner": "0x0591...", "name": "My Coin", "symbol": "COIN", "initialSupply": "1000000000000000000000000" }'`}
+        response={`{ "id": "clm_coin123", "requiresSignature": false, "calls": [...] }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/launch-coin"
+        description="Launch an already-deployed Creator Coin on Ekubo (owner-only — the contract itself is the authority)."
+        params={[
+          { name: "owner", type: "string", required: true, desc: "Wallet that must own the coin" },
+          { name: "creatorCoin", type: "string", required: true, desc: "The deployed CreatorCoin contract, from create-coin's receipt" },
+          { name: "quoteToken", type: "string", required: true, desc: "Quote token (e.g. STRK). Must not itself be a Creator Coin" },
+          { name: "initialHolders", type: "string[]", desc: "Team-allocation recipients (≤10% of supply, summed)" },
+          { name: "initialHoldersAmounts", type: "string[]", desc: "Raw amounts, paired with initialHolders" },
+          { name: "transferRestrictionDelay", type: "number", desc: "Anti-snipe window, seconds. Omitted = none" },
+          { name: "maxPercentageBuyLaunch", type: "number", desc: "Max % of supply buyable per tx during the window, bps" },
+          { name: "quoteFundAmount", type: "string", desc: "Quote (raw units) to transfer to the Factory in the same multicall, to fund the team-allocation buyback" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/launch-coin" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "owner": "0x0591...", "creatorCoin": "0x04c1...", "quoteToken": "0x04718..." }'`}
+        response={`{ "id": "clm_launch123", "requiresSignature": false, "calls": [...] }`}
       />
 
       <p className="text-muted-foreground text-sm mb-3 mt-6">
