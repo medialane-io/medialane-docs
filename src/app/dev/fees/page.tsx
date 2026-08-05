@@ -41,6 +41,11 @@ const PAID_ACTIONS = [
     note: "Creator royalties follow the EIP-2981 standard and are paid on-chain by the marketplace venue at settlement, capped by a royalty limit the seller agrees to when signing. The 1% marketplace fee is separate: it is applied at the platform layer, never inside the venue contract — the venue protocols themselves are zero-fee.",
   },
   {
+    action: "Accept a sponsorship bid or proposal",
+    cost: "1% platform fee on settlement",
+    note: "Same rate and platform-layer mechanism as the marketplace fee — applied when an IP Sponsorship offer or proposal is accepted, never inside the sponsorship contract, which itself never holds funds.",
+  },
+  {
     action: "Remix or license fee",
     cost: "Set by the original creator when applicable",
     note: "Some licenses are free; custom commercial or derivative rights may require payment.",
@@ -168,6 +173,12 @@ export default function FeesPage() {
           contracts — the venue protocols themselves are zero-fee. It is computed and applied by
           the platform (SDK/backend) as a separate transfer alongside settlement. The DAO governs
           the rate and how the creators fund is allocated.
+        </p>
+        <p className="text-sm">
+          The same rate and platform-layer mechanism applies when an{" "}
+          <Link href="/learn/ip-sponsorship" className="text-primary hover:underline">IP Sponsorship</Link>{" "}
+          offer or proposal is accepted — the sponsorship contract, like the marketplace venues,
+          never holds funds or applies a fee itself.
         </p>
       </Section>
 
