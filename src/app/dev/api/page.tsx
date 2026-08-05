@@ -1798,6 +1798,331 @@ const resumeSource = new EventSource(url, {
 }`}
       />
 
+      {/* ── SPONSORSHIP ── */}
+      <DocH2 id="sponsorship" border>IP Sponsorship</DocH2>
+      <p className="text-sm text-muted-foreground mb-6">
+        Direct-settlement sponsorship deals: an asset owner posts an <strong>offer</strong> (open bidding or one invited sponsor) or a sponsor sends a fixed-terms <strong>proposal</strong> on any asset. Acceptance settles payment and mints a <strong>license</strong> — a real, transferable ERC-721 — to the sponsor, atomically, in one transaction. There is no escrow: the contract never holds funds. Every write below is an unsigned intent (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">requiresSignature: false</code>) — see <a href="#intents" className="text-primary hover:underline">Intents</a> for the general shape.
+      </p>
+
+      <Endpoint
+        method="GET"
+        path="/v1/sponsorship/offers"
+        description="List sponsorship offers. Filter by nftContract, author, owner (current holder of the asset), or open status."
+        params={[
+          { name: "nftContract", type: "string", desc: "Filter by asset contract" },
+          { name: "author", type: "string", desc: "Filter by the offer's author" },
+          { name: "owner", type: "string", desc: "Filter to offers on assets currently held by this wallet" },
+          { name: "open", type: "boolean", desc: "\"true\" | \"false\"" },
+          { name: "chain", type: "string", desc: "Chain filter (default STARKNET)" },
+          { name: "page", type: "number", desc: "Page number" },
+          { name: "limit", type: "number", desc: "Items per page" },
+        ]}
+        curl={`curl "${BASE}/v1/sponsorship/offers?open=true" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": [
+    {
+      "chain": "STARKNET",
+      "contractAddress": "0x0372...",
+      "offerId": "12",
+      "author": "0x0591...",
+      "nftContract": "0x05ebd2...",
+      "tokenId": "5",
+      "minAmount": "50000000",
+      "duration": 7776000,
+      "paymentToken": "0x0330...",
+      "licenseTermsUri": "ipfs://...",
+      "transferable": true,
+      "royaltyBps": 250,
+      "specificSponsor": null,
+      "open": true
+    }
+  ],
+  "meta": { "page": 1, "limit": 24, "total": 3 }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/sponsorship/offers/:offerId"
+        description="Fetch a single sponsorship offer by id."
+        params={[{ name: "offerId", type: "string", required: true, desc: "On-chain offer id" }]}
+        curl={`curl "${BASE}/v1/sponsorship/offers/12" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "offerId": "12", "author": "0x0591...", "open": true, "..." : "..." } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/sponsorship/offers/:offerId/bids"
+        description="List standing bids on an offer."
+        params={[{ name: "offerId", type: "string", required: true, desc: "On-chain offer id" }]}
+        curl={`curl "${BASE}/v1/sponsorship/offers/12/bids" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": [
+    { "offerId": "12", "sponsor": "0x06a3...", "amount": "60000000" }
+  ]
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/sponsorship/proposals"
+        description="List sponsor-initiated proposals. Filter by nftContract, proposer, owner (current asset holder), or open status."
+        params={[
+          { name: "nftContract", type: "string", desc: "Filter by asset contract" },
+          { name: "proposer", type: "string", desc: "Filter by the sponsor who proposed" },
+          { name: "owner", type: "string", desc: "Filter to proposals on assets currently held by this wallet" },
+          { name: "open", type: "boolean", desc: "\"true\" | \"false\"" },
+          { name: "chain", type: "string", desc: "Chain filter (default STARKNET)" },
+          { name: "page", type: "number", desc: "Page number" },
+          { name: "limit", type: "number", desc: "Items per page" },
+        ]}
+        curl={`curl "${BASE}/v1/sponsorship/proposals?owner=0x0591..." \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": [
+    {
+      "proposalId": "8",
+      "proposer": "0x06a3...",
+      "nftContract": "0x05ebd2...",
+      "tokenId": "5",
+      "amount": "75000000",
+      "duration": 2592000,
+      "validUntil": "2026-09-01T00:00:00.000Z",
+      "paymentToken": "0x0330...",
+      "transferable": false,
+      "royaltyBps": 500,
+      "open": true,
+      "accepted": null
+    }
+  ],
+  "meta": { "page": 1, "limit": 24, "total": 1 }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/sponsorship/proposals/:proposalId"
+        description="Fetch a single proposal by id."
+        params={[{ name: "proposalId", type: "string", required: true, desc: "On-chain proposal id" }]}
+        curl={`curl "${BASE}/v1/sponsorship/proposals/8" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "proposalId": "8", "proposer": "0x06a3...", "open": true, "..." : "..." } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/sponsorship/licenses"
+        description="List issued sponsorship licenses (the minted ERC-721s). holder filters by current owner; author filters by the original asset owner who issued it."
+        params={[
+          { name: "holder", type: "string", desc: "Current holder wallet address" },
+          { name: "author", type: "string", desc: "Original issuing author" },
+          { name: "assetContract", type: "string", desc: "Filter by the sponsored asset's contract" },
+          { name: "assetTokenId", type: "string", desc: "Filter by the sponsored asset's token id" },
+          { name: "chain", type: "string", desc: "Chain filter (default STARKNET)" },
+          { name: "page", type: "number", desc: "Page number" },
+          { name: "limit", type: "number", desc: "Items per page" },
+        ]}
+        curl={`curl "${BASE}/v1/sponsorship/licenses?holder=0x06a3..." \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": [
+    {
+      "tokenId": "3",
+      "author": "0x0591...",
+      "recipient": "0x06a3...",
+      "assetContract": "0x05ebd2...",
+      "assetTokenId": "5",
+      "expiresAt": "2026-11-01T00:00:00.000Z",
+      "transferable": true,
+      "royaltyBps": 250,
+      "offerId": "12",
+      "proposalId": null
+    }
+  ],
+  "meta": { "page": 1, "limit": 24, "total": 1 }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/sponsorship/licenses/:tokenId"
+        description="Fetch a single license by its token id, including currentHolder resolved from live token-balance ownership (a license is a standard transferable ERC-721 — currentHolder can differ from recipient after a transfer)."
+        params={[{ name: "tokenId", type: "string", required: true, desc: "License token id" }]}
+        curl={`curl "${BASE}/v1/sponsorship/licenses/3" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "tokenId": "3", "recipient": "0x06a3...", "currentHolder": "0x06a3...", "..." : "..." } }`}
+      />
+
+      <p className="text-muted-foreground text-sm mb-3 mt-6">
+        Writes — owner-side (offers):
+      </p>
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/sponsorship-offer"
+        description="Create a sponsorship offer on an asset you own. Open bidding by default; pass specificSponsor to restrict acceptance to one invited address."
+        params={[
+          { name: "author", type: "string", required: true, desc: "Must currently own (nftContract, tokenId) on-chain" },
+          { name: "nftContract", type: "string", required: true, desc: "Asset contract" },
+          { name: "tokenId", type: "string", required: true, desc: "Asset token id" },
+          { name: "minAmount", type: "string", required: true, desc: "Minimum accepted bid, raw token units" },
+          { name: "duration", type: "number", required: true, desc: "License length in seconds, from acceptance" },
+          { name: "paymentToken", type: "string", required: true, desc: "ERC-20 address" },
+          { name: "licenseTermsUri", type: "string", required: true, desc: "IPFS URI for the license terms" },
+          { name: "transferable", type: "boolean", required: true, desc: "Whether the issued license can be transferred" },
+          { name: "royaltyBps", type: "number", desc: "EIP-2981 resale royalty, 0–10000 (default 0)" },
+          { name: "specificSponsor", type: "string", desc: "Restrict acceptance to one sponsor address" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/sponsorship-offer" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "author": "0x0591...", "nftContract": "0x05ebd2...", "tokenId": "5", "minAmount": "50000000", "duration": 7776000, "paymentToken": "0x0330...", "licenseTermsUri": "ipfs://...", "transferable": true, "royaltyBps": 250 }'`}
+        response={`{ "id": "clm_spo123", "requiresSignature": false, "calls": [...] }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/sponsorship-offer-open"
+        description="Toggle an offer open/closed — gates new bids and acceptance only, fully reversible."
+        params={[
+          { name: "author", type: "string", required: true, desc: "Must be the offer's author" },
+          { name: "offerId", type: "string", required: true, desc: "On-chain offer id" },
+          { name: "open", type: "boolean", required: true, desc: "New open state" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/sponsorship-offer-open" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "author": "0x0591...", "offerId": "12", "open": false }'`}
+        response={`{ "id": "clm_soo123", "requiresSignature": false, "calls": [...] }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/sponsorship-bid-accept"
+        description="Accept a standing bid. Author-only, re-verified on-chain. Settles the sponsor's payment (an allowance pulled from their place_bid approval, no escrow) and mints the license, atomically."
+        params={[
+          { name: "author", type: "string", required: true, desc: "Must be the offer's author" },
+          { name: "offerId", type: "string", required: true, desc: "On-chain offer id" },
+          { name: "sponsor", type: "string", required: true, desc: "The bidder whose bid is being accepted" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/sponsorship-bid-accept" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "author": "0x0591...", "offerId": "12", "sponsor": "0x06a3..." }'`}
+        response={`{ "id": "clm_sba123", "requiresSignature": false, "calls": [...] }`}
+      />
+
+      <p className="text-muted-foreground text-sm mb-3 mt-6">
+        Writes — sponsor-side (bids &amp; proposals):
+      </p>
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/sponsorship-bid"
+        description="Place a bid on an open offer. A bid is a signal plus an open ERC-20 allowance — no tokens move until the author accepts. Returns two calls: approve, then place_bid."
+        params={[
+          { name: "sponsor", type: "string", required: true, desc: "The bidding wallet" },
+          { name: "offerId", type: "string", required: true, desc: "On-chain offer id" },
+          { name: "amount", type: "string", required: true, desc: "Bid amount, raw token units" },
+          { name: "paymentToken", type: "string", required: true, desc: "The offer's payment token" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/sponsorship-bid" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "sponsor": "0x06a3...", "offerId": "12", "amount": "60000000", "paymentToken": "0x0330..." }'`}
+        response={`{ "id": "clm_sbi123", "requiresSignature": false, "calls": [...] }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/sponsorship-bid-retract"
+        description="Withdraw a standing bid before it's accepted."
+        params={[
+          { name: "sponsor", type: "string", required: true, desc: "Must be the bidding wallet" },
+          { name: "offerId", type: "string", required: true, desc: "On-chain offer id" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/sponsorship-bid-retract" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "sponsor": "0x06a3...", "offerId": "12" }'`}
+        response={`{ "id": "clm_sbr123", "requiresSignature": false, "calls": [...] }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/sponsorship-proposal"
+        description="Propose fixed sponsorship terms on any asset — no open offer required. Unlike a bid, the amount is take-it-or-leave-it, and the sponsor chooses the payment token."
+        params={[
+          { name: "proposer", type: "string", required: true, desc: "The proposing wallet — pays if accepted" },
+          { name: "nftContract", type: "string", required: true, desc: "Asset contract" },
+          { name: "tokenId", type: "string", required: true, desc: "Asset token id" },
+          { name: "amount", type: "string", required: true, desc: "Fixed offered amount, raw token units" },
+          { name: "duration", type: "number", required: true, desc: "License length in seconds, from acceptance" },
+          { name: "validUntil", type: "number", desc: "Unix seconds acceptance deadline; omit for no deadline" },
+          { name: "paymentToken", type: "string", required: true, desc: "ERC-20 address" },
+          { name: "licenseTermsUri", type: "string", required: true, desc: "IPFS URI for the license terms" },
+          { name: "transferable", type: "boolean", required: true, desc: "Whether the issued license can be transferred" },
+          { name: "royaltyBps", type: "number", desc: "EIP-2981 resale royalty, 0–10000 (default 0)" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/sponsorship-proposal" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "proposer": "0x06a3...", "nftContract": "0x05ebd2...", "tokenId": "5", "amount": "75000000", "duration": 2592000, "paymentToken": "0x0330...", "licenseTermsUri": "ipfs://...", "transferable": false, "royaltyBps": 500 }'`}
+        response={`{ "id": "clm_spr123", "requiresSignature": false, "calls": [...] }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/sponsorship-proposal-withdraw"
+        description="Withdraw a sent proposal before it's accepted or rejected."
+        params={[
+          { name: "proposer", type: "string", required: true, desc: "Must be the proposing wallet" },
+          { name: "proposalId", type: "string", required: true, desc: "On-chain proposal id" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/sponsorship-proposal-withdraw" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "proposer": "0x06a3...", "proposalId": "8" }'`}
+        response={`{ "id": "clm_spw123", "requiresSignature": false, "calls": [...] }`}
+      />
+
+      <p className="text-muted-foreground text-sm mb-3 mt-6">
+        Writes — owner-side (proposal response):
+      </p>
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/sponsorship-proposal-accept"
+        description="Accept a proposal. Asset-owner-only, re-verified on-chain — a proposal binds to the asset, not a person, so whoever owns it at acceptance is paid and issues the license. Settles payment and mints the license atomically, same as accepting a bid."
+        params={[
+          { name: "owner", type: "string", required: true, desc: "Must currently own the sponsored asset" },
+          { name: "proposalId", type: "string", required: true, desc: "On-chain proposal id" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/sponsorship-proposal-accept" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "owner": "0x0591...", "proposalId": "8" }'`}
+        response={`{ "id": "clm_spa123", "requiresSignature": false, "calls": [...] }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/intents/sponsorship-proposal-reject"
+        description="Reject a proposal. Asset-owner-only."
+        params={[
+          { name: "owner", type: "string", required: true, desc: "Must currently own the sponsored asset" },
+          { name: "proposalId", type: "string", required: true, desc: "On-chain proposal id" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/intents/sponsorship-proposal-reject" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "owner": "0x0591...", "proposalId": "8" }'`}
+        response={`{ "id": "clm_spj123", "requiresSignature": false, "calls": [...] }`}
+      />
+
       {/* ── REWARDS ── */}
       <DocH2 id="rewards" border>Rewards</DocH2>
       <p className="text-sm text-muted-foreground mb-6">

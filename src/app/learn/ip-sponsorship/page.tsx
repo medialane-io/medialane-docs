@@ -120,6 +120,22 @@ export default function LearnIPSponsorshipPage() {
           </p>
         </Section>
 
+        <Section title="Fees Are a Platform Layer">
+          <p>
+            The sponsorship contract is <strong className="text-foreground">zero-fee</strong> — it
+            never holds funds and takes no cut of its own. A 1% fee applies when a bid or proposal
+            is accepted, the same rate and platform-layer mechanism as the marketplace fee, and it
+            is routed to the creators fund. Because the fee lives at the platform layer rather than
+            inside the contract, the DAO can evolve it without a contract migration, and anyone
+            interacting with the contract directly is never forced to pay it.
+          </p>
+          <p className="text-sm">
+            See{" "}
+            <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
+            for the canonical breakdown.
+          </p>
+        </Section>
+
         <Section title="License Terms Are Declarative">
           <p>
             A sponsorship license is a real, freely transferable ERC-721 — it moves through an
