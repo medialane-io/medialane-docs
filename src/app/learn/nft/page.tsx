@@ -22,7 +22,7 @@ export default function LearnNFTPage() {
         <h2 className="text-2xl font-bold">What is an NFT?</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           A non-fungible token (NFT) is a unique digital record stored on a blockchain.
-          Unlike cryptocurrencies — where one coin is interchangeable with any other —
+          Unlike cryptocurrencies, where one coin is interchangeable with any other,
           each NFT is distinct and represents ownership of a specific digital or real-world asset.
         </p>
       </div>
@@ -32,25 +32,25 @@ export default function LearnNFTPage() {
           <p>
             When a creator mints an NFT, a new entry is written to the blockchain containing
             a unique identifier, the owner&apos;s wallet address, and a link to the associated
-            metadata — typically an image, video, audio file, or document stored on IPFS.
+            metadata, typically an image, video, audio file, or document stored on IPFS.
           </p>
           <p>
             Ownership is transferred by signing a blockchain transaction. The entire history
-            of ownership — from the first mint to the most recent sale — is permanently recorded
+            of ownership, from the first mint to the most recent sale, is permanently recorded
             and publicly verifiable. No central authority controls this record.
           </p>
         </Section>
 
         <Section title="NFTs and Intellectual Property">
           <p>
-            Traditionally, proving you created something required expensive legal processes —
+            Traditionally, proving you created something required expensive legal processes:
             copyright registration, notarised documents, or contracts with distributors.
             NFTs provide a timestamped, immutable proof of creation that anyone can verify
             instantly, anywhere in the world.
           </p>
           <p>
             On Medialane, every NFT carries a programmable license embedded in its metadata.
-            This license defines how the work can be used — whether it can be reproduced,
+            This license defines how the work can be used: whether it can be reproduced,
             remixed, used commercially, or trained on by AI systems. These terms are part of the
             token metadata and cannot be silently changed after minting.
           </p>
@@ -58,11 +58,11 @@ export default function LearnNFTPage() {
 
         <Section title="Non-Fungibility Explained">
           <p>
-            &ldquo;Fungible&rdquo; means interchangeable. A dollar bill is fungible — you can swap it
+            &ldquo;Fungible&rdquo; means interchangeable. A dollar bill is fungible: you can swap it
             for any other dollar bill and have the same value. Gold is fungible. Bitcoin is fungible.
           </p>
           <p>
-            An NFT is <em>non</em>-fungible — each token has unique properties that make it
+            An NFT is <em>non</em>-fungible: each token has unique properties that make it
             distinct. Two NFTs from the same collection might look similar, but they have
             different token IDs, potentially different attributes, and separate ownership histories.
           </p>
@@ -71,7 +71,7 @@ export default function LearnNFTPage() {
         <Section title="NFTs on Starknet">
           <p>
             Medialane supports two NFT standards on Starknet, both anchored to Ethereum
-            through Starknet&apos;s ZK-rollup architecture — meaning transactions are fast,
+            through Starknet&apos;s ZK-rollup architecture, meaning transactions are fast,
             cheap, and settled with Ethereum-level security.
           </p>
           <p>
@@ -82,16 +82,16 @@ export default function LearnNFTPage() {
           </p>
         </Section>
 
-        <Section title="ERC-721 vs ERC-1155 — Two Token Standards">
+        <Section title="ERC-721 vs ERC-1155: Two Token Standards">
           <p>
             Not all NFTs are the same kind of token. Medialane supports two standards,
             each suited to different creative formats:
           </p>
           <div className="space-y-3">
             <div className="bento-cell px-4 py-3 space-y-2">
-              <p className="text-sm font-semibold text-foreground">ERC-721 — The unique original</p>
+              <p className="text-sm font-semibold text-foreground">ERC-721: The unique original</p>
               <p className="text-xs leading-relaxed">
-                Think of it like a physical painting. There is only one original —
+                Think of it like a physical painting. There is only one original,
                 and no copy will ever carry the same on-chain identity. Each ERC-721 token
                 has exactly one owner at a time. Transferring it passes full, provable ownership
                 of that specific piece. Ideal for 1-of-1 artworks, IP certificates, patents,
@@ -102,24 +102,24 @@ export default function LearnNFTPage() {
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-2">
-              <p className="text-sm font-semibold text-foreground">ERC-1155 — The printing press</p>
+              <p className="text-sm font-semibold text-foreground">ERC-1155: The printing press</p>
               <p className="text-xs leading-relaxed">
                 Think of it like a printing press. You can print 100 identical copies of a
-                magazine — each reader holds an authentic copy, but they are not unique from
+                magazine, each reader holds an authentic copy, but they are not unique from
                 one another. A single ERC-1155 contract can manage unlimited token types and
                 quantities. Mint 50 copies of a music track, 200 editions of a poster, or
-                1,000 membership passes — all in one transaction.
+                1,000 membership passes, all in one transaction.
               </p>
               <p className="text-xs text-muted-foreground/70 italic">
-                Used by: IP Collection 1155 — Medialane&apos;s multi-edition format for music,
+                Used by: IP Collection 1155, Medialane&apos;s multi-edition format for music,
                 art series, and any creative work with multiple copies.
               </p>
             </div>
           </div>
           <p>
             The right choice depends on your creative intent. If scarcity and uniqueness define
-            the value of your work, choose ERC-721. If you want to release editions — letting
-            many people own the same authentic piece — choose ERC-1155 via IP Collection 1155.
+            the value of your work, choose ERC-721. If you want to release editions, letting
+            many people own the same authentic piece, choose ERC-1155 via IP Collection 1155.
           </p>
         </Section>
 
@@ -132,7 +132,7 @@ export default function LearnNFTPage() {
           </p>
           <p>
             <strong className="text-foreground">Can NFTs be copied?</strong><br />
-            The image or file can be copied — but the ownership record cannot. Anyone can
+            The image or file can be copied; the ownership record cannot. Anyone can
             screenshot the Mona Lisa, but the original hangs in the Louvre. The blockchain
             record of ownership is the authentic, provable original.
           </p>

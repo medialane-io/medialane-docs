@@ -4,15 +4,15 @@ import { Code2, GitBranch, Shield, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Programmable IP | Medialane Learn",
-  description: "How programmable intellectual property works — on-chain authorship records, machine-readable licensing terms, and verifiable provenance.",
+  description: "How programmable intellectual property works: on-chain authorship records, machine-readable licensing terms, and verifiable provenance.",
   openGraph: {
     title: "Programmable IP | Medialane Learn",
-    description: "How programmable intellectual property works — on-chain authorship records, machine-readable licensing terms, and verifiable provenance.",
+    description: "How programmable intellectual property works: on-chain authorship records, machine-readable licensing terms, and verifiable provenance.",
     url: "https://docs.medialane.io/learn/programmable-ip",
   },
   twitter: {
     title: "Programmable IP | Medialane Learn",
-    description: "How programmable intellectual property works — on-chain authorship records, machine-readable licensing terms, and verifiable provenance.",
+    description: "How programmable intellectual property works: on-chain authorship records, machine-readable licensing terms, and verifiable provenance.",
   },
 };
 
@@ -25,7 +25,7 @@ export default function ProgrammableIPPage() {
         <p className="text-muted-foreground leading-relaxed">
           Traditional IP is a legal document. Programmable IP is structured data anchored
           onchain. Instead of a license stored in a file or a lawyer&apos;s database, the
-          terms are embedded directly in the token — readable by any application, agent, or
+          terms are embedded directly in the token, readable by any application, agent, or
           contract, and permanent from the moment of minting.
         </p>
         <p className="text-muted-foreground leading-relaxed">
@@ -54,7 +54,7 @@ export default function ProgrammableIPPage() {
             <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> License embedded in the token itself</li>
             <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Timestamped authorship record on-chain</li>
             <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Terms travel with every transfer</li>
-            <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Permissionless — no approval required</li>
+            <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Permissionless, no approval required</li>
             <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Machine-readable by applications and agents</li>
           </ul>
         </div>
@@ -68,7 +68,7 @@ export default function ProgrammableIPPage() {
             {
               icon: FileText,
               title: "License terms as structured data",
-              desc: "When you mint an NFT on Medialane, you attach a license — commercial use, derivative rights, AI training policy, geographic scope — encoded as structured metadata in the token. The terms are permanent and travel with the token through every transfer.",
+              desc: "When you mint an NFT on Medialane, you attach a license (commercial use, derivative rights, AI training policy, geographic scope) encoded as structured metadata in the token. The terms are permanent and travel with the token through every transfer.",
             },
             {
               icon: Code2,
@@ -78,12 +78,12 @@ export default function ProgrammableIPPage() {
             {
               icon: Shield,
               title: "Independent of the platform",
-              desc: "The record exists on Starknet and IPFS — not on Medialane's servers. Even if the platform goes offline, the authorship record and license terms remain accessible and verifiable from the blockchain.",
+              desc: "The record exists on Starknet and IPFS, independent of Medialane's servers. Even if the platform goes offline, the authorship record and license terms remain accessible and verifiable from the blockchain.",
             },
             {
               icon: GitBranch,
               title: "Remix provenance chain",
-              desc: "Derivative works record their parent asset on-chain. This creates a traceable provenance chain from any remix back to the original source — publicly visible and tamper-proof.",
+              desc: "Derivative works record their parent asset on-chain. This creates a traceable provenance chain from any remix back to the original source, publicly visible and tamper-proof.",
             },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bento-cell p-5 space-y-3">
@@ -103,12 +103,12 @@ export default function ProgrammableIPPage() {
         <p className="text-sm text-muted-foreground leading-relaxed">
           The license terms in token metadata are not automatically enforced at the legal level.
           If someone copies your work and uses it outside the terms you set, the marketplace
-          contract does not prevent that — it has no visibility into activity outside of
+          contract does not prevent that; it has no visibility into activity outside of
           on-chain transactions. What the record provides is evidence: a timestamped, immutable,
           publicly verifiable document of your authorship and your stated terms.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Enforcing IP rights against infringement still requires the same tools it always has —
+          Enforcing IP rights against infringement still requires the same tools it always has:
           legal process, takedown requests, and in some cases litigation. The on-chain record
           strengthens your position by providing clear, undeniable evidence of prior authorship.
         </p>
@@ -119,7 +119,7 @@ export default function ProgrammableIPPage() {
         <h3 className="font-semibold text-sm">The Mediolano Protocol</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
           The IP record infrastructure on Medialane is built on the{" "}
-          <strong className="text-foreground">Mediolano protocol</strong> — an open-source,
+          <strong className="text-foreground">Mediolano protocol</strong>, an open-source,
           permissionless, <strong className="text-foreground">zero-fee</strong> IP tokenization
           layer on Starknet, built for compliance with the{" "}
           <strong className="text-foreground">Berne Convention</strong> so authorship is

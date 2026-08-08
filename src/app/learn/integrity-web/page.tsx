@@ -4,15 +4,15 @@ import { ExternalLink, Shield, Lock, Globe, Layers, FileCheck, Eye, Network, Bot
 
 export const metadata: Metadata = {
   title: "The Integrity Web | Learn | Medialane",
-  description: "Understand the Integrity Web — the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
+  description: "Understand the Integrity Web: the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
   openGraph: {
     title: "The Integrity Web | Learn | Medialane",
-    description: "Understand the Integrity Web — the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
+    description: "Understand the Integrity Web: the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
     url: "https://docs.medialane.io/learn/integrity-web",
   },
   twitter: {
     title: "The Integrity Web | Learn | Medialane",
-    description: "Understand the Integrity Web — the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
+    description: "Understand the Integrity Web: the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
   },
 };
 
@@ -25,8 +25,8 @@ const AXIOMS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    medialane: "The v3 marketplace contracts have no admin keys and cannot be upgraded. What they do is determined by the deployed code, which is open source and verifiable by anyone. A listing, an order, a transfer — the rules are fixed at deployment.",
-    highlights: ["ZK-STARK proofs verified on Starknet", "Cairo 2 smart contracts open-sourced", "No admin keys — no upgrades after deploy"],
+    medialane: "The v3 marketplace contracts have no admin keys and cannot be upgraded. What they do is determined by the deployed code, which is open source and verifiable by anyone. A listing, an order, a transfer: the rules are fixed at deployment.",
+    highlights: ["ZK-STARK proofs verified on Starknet", "Cairo 2 smart contracts open-sourced", "Immutable after deployment, no admin keys"],
   },
   {
     num: "02",
@@ -48,7 +48,7 @@ const AXIOMS = [
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
     medialane: "No application, KYC, waitlist, or approval. If you have a wallet, you can mint on Medialane. If you can write code, you can build on the Mediolano protocol. Permissionless here means the smart contract architecture enforces it directly.",
-    highlights: ["No whitelist or application to mint", "Open Mediolano protocol for builders", "Gasless on medialane.io — no barriers to entry"],
+    highlights: ["No whitelist or application to mint", "Open Mediolano protocol for builders", "Gasless on medialane.io, open access from the start"],
   },
   {
     num: "04",
@@ -58,8 +58,8 @@ const AXIOMS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    medialane: "Every IP record minted on Medialane is anchored on Starknet. The timestamp, creator address, license terms, and provenance chain are tamper-proof, held by your self-sovereign wallet key — outside Medialane's ability to revoke, freeze, or alter.",
-    highlights: ["Immutable IP records on Starknet", "Berne Convention-aligned copyright anchoring", "Self-custody — your keys, your NFTs"],
+    medialane: "Every IP record minted on Medialane is anchored on Starknet. The timestamp, creator address, license terms, and provenance chain are tamper-proof, held by your self-sovereign wallet key, entirely outside Medialane's ability to revoke, freeze, or alter.",
+    highlights: ["Immutable IP records on Starknet", "Berne Convention-aligned copyright anchoring", "Self-custody: your keys, your NFTs"],
   },
   {
     num: "05",
@@ -69,8 +69,8 @@ const AXIOMS = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    medialane: "The Mediolano protocol — the independent IP protection and licensing layer Medialane builds on — is a public good. Zero fees. Fully open source. Any creator, developer, or AI agent can use it, fork it, or build on it without permission or payment.",
-    highlights: ["Mediolano protocol: zero fees, open source", "MIT-licensed contracts and SDK", "Permissionless — no approval to build on it"],
+    medialane: "The Mediolano protocol (the independent IP protection and licensing layer Medialane builds on) is a public good. Zero fees. Fully open source. Any creator, developer, or AI agent can use it, fork it, or build on it without permission or payment.",
+    highlights: ["Mediolano protocol: zero fees, open source", "MIT-licensed contracts and SDK", "Permissionless, no approval needed to build on it"],
   },
   {
     num: "06",
@@ -80,7 +80,7 @@ const AXIOMS = [
     color: "text-primary",
     bg: "bg-primary/10",
     border: "border-primary/20",
-    medialane: "ZK-STARK proofs let Medialane verify ownership, license compliance, and transaction validity without exposing private information. Selective disclosure — proving what you need to prove, revealing nothing more — is the cryptographic foundation of creator sovereignty.",
+    medialane: "ZK-STARK proofs let Medialane verify ownership, license compliance, and transaction validity without exposing private information. Selective disclosure (proving what you need to prove, revealing nothing more) is the cryptographic foundation of creator sovereignty.",
     highlights: ["ZK proofs for license verification without exposure", "Selective disclosure of IP metadata", "Privacy-preserving credential systems via POP Protocol"],
   },
   {
@@ -92,7 +92,7 @@ const AXIOMS = [
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
     medialane: "Medialane's smart contracts on Starknet, Starknet's own decentralized validator network, and the long-term architecture toward fully chain-agnostic, censorship-resistant infrastructure form layers of one resilience strategy. If Medialane's frontend went offline, every NFT would remain on-chain and transferable through another interface.",
-    highlights: ["Assets live on Starknet — survive frontend outages", "Long-term: chain-agnostic, censorship-resistant infrastructure", "ZK proofs + account abstraction make this possible"],
+    highlights: ["Assets live on Starknet, surviving frontend outages", "Long-term: chain-agnostic, censorship-resistant infrastructure", "ZK proofs + account abstraction make this possible"],
   },
   {
     num: "08",
@@ -102,7 +102,7 @@ const AXIOMS = [
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    medialane: "The API and smart contracts make no distinction between human users and AI agents. An autonomous agent can register IP, read license terms, and transact in the marketplace — the contracts don't check whether the caller is human. HTTP 402 billing in the Portal is designed for agent-to-agent use cases.",
+    medialane: "The API and smart contracts make no distinction between human users and AI agents. An autonomous agent can register IP, read license terms, and transact in the marketplace; the contracts don't check whether the caller is human. HTTP 402 billing in the Portal is designed for agent-to-agent use cases.",
     highlights: ["AI agents can mint and trade without barriers", "API and SDK designed for agent-to-agent interaction", "HTTP 402 credit billing for autonomous agents"],
   },
   {
@@ -114,7 +114,7 @@ const AXIOMS = [
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
     medialane: "Minting on Medialane creates an immutable record of authorship and embeds license terms in the token itself. The terms travel with every transfer. No gallery, label, or platform can alter the on-chain record. The creator's address and stated terms are permanently verifiable.",
-    highlights: ["Programmable licenses set at mint time", "Immutable authorship record — verifiable by anyone", "Derivative chain recorded on-chain"],
+    highlights: ["Programmable licenses set at mint time", "Immutable authorship record, verifiable by anyone", "Derivative chain recorded on-chain"],
   },
   {
     num: "10",
@@ -124,8 +124,8 @@ const AXIOMS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    medialane: "A creator in Nairobi, an AI agent in a data center, a collector in São Paulo, a developer in Seoul — all have identical rights on Medialane, without geographic restriction, preferential access, or gated tiers. Creativity here is protected by the contract's math, applied the same way to everyone.",
-    highlights: ["No geographic restrictions on minting or trading", "DAO governance — equal voice for all token holders", "Gasless onboarding removes economic barriers"],
+    medialane: "A creator in Nairobi, an AI agent in a data center, a collector in São Paulo, a developer in Seoul all have identical rights on Medialane, without geographic restriction, preferential access, or gated tiers. Creativity here is protected by the contract's math, applied the same way to everyone.",
+    highlights: ["No geographic restrictions on minting or trading", "DAO governance, equal voice for all token holders", "Gasless onboarding removes economic barriers"],
   },
 ];
 
@@ -178,7 +178,7 @@ export default function IntegrityWebPage() {
 
       {/* Axioms */}
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold">The Ten Axioms — Applied to Medialane</h2>
+        <h2 className="text-2xl font-bold">The Ten Axioms, Applied to Medialane</h2>
         <div className="space-y-5">
           {AXIOMS.map(({ num, title, quote, icon: Icon, color, bg, border, medialane, highlights }) => (
             <div key={num} className={`bento-cell border ${border} overflow-hidden`}>
@@ -220,20 +220,20 @@ export default function IntegrityWebPage() {
         <h2 className="text-xl font-bold">Why Starknet Powers the Integrity Web</h2>
         <p className="text-muted-foreground leading-relaxed">
           Starknet's ZK-STARK proofs are uniquely positioned to power an Integrity Web platform.
-          Unlike ZK-SNARKs, STARKs require <strong className="text-foreground">no trusted setup</strong> —
-          there is no ceremony that could be compromised, no secret parameter that could be
-          backdoored. The security is entirely transparent and verifiable by anyone.
+          Unlike ZK-SNARKs, STARKs skip the trusted-setup ceremony entirely, removing any secret
+          parameter that could be backdoored. The security is entirely transparent and verifiable
+          by anyone.
         </p>
         <p className="text-muted-foreground leading-relaxed">
           STARKs are also <strong className="text-foreground">quantum-resistant</strong>. The
           cryptographic assumptions underlying ZK-STARKs (hash functions and information-theoretic
-          arguments) are not broken by quantum computers — unlike elliptic curve cryptography used
+          arguments) remain unbroken by quantum computers, unlike elliptic curve cryptography used
           by most blockchains today. As quantum computing advances, Starknet's proof system remains
           secure. Medialane inherits this resilience by building on Starknet.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
           {[
-            { label: "No trusted setup", desc: "Transparent — nothing to compromise" },
+            { label: "No trusted setup", desc: "Transparent, nothing to compromise" },
             { label: "Quantum-resistant", desc: "Safe from future computing threats" },
             { label: "Trustless by design", desc: "Math replaces intermediaries" },
           ].map(({ label, desc }) => (

@@ -4,15 +4,15 @@ import { CONTRACTS_BY_CATEGORY } from "@/lib/contracts";
 
 export const metadata: Metadata = {
   title: "Contracts | Medialane Docs",
-  description: "Medialane smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
+  description: "Medialane smart contracts on Starknet Mainnet: immutable, permissionless, open source Cairo contracts with real deployed addresses.",
   openGraph: {
     title: "Contracts | Medialane Docs",
-    description: "Medialane smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
+    description: "Medialane smart contracts on Starknet Mainnet: immutable, permissionless, open source Cairo contracts with real deployed addresses.",
     url: "https://docs.medialane.io/dev/contracts",
   },
   twitter: {
     title: "Contracts | Medialane Docs",
-    description: "Medialane smart contracts on Starknet Mainnet — immutable, permissionless, open source Cairo contracts with real deployed addresses.",
+    description: "Medialane smart contracts on Starknet Mainnet: immutable, permissionless, open source Cairo contracts with real deployed addresses.",
   },
 };
 
@@ -28,8 +28,8 @@ export default function ContractsPage() {
         <h2 className="text-2xl font-bold">Contracts</h2>
         <p className="text-muted-foreground leading-relaxed">
           All Medialane contracts are Cairo smart contracts deployed on Starknet Mainnet.
-          The current v3 contracts are fully immutable — no admin keys, no upgrade paths,
-          no emergency pause. Rules are enforced by code.
+          The current v3 contracts are fully immutable: no admin keys, upgrade paths,
+          or emergency pause. Rules are enforced by code.
         </p>
       </div>
 
@@ -42,7 +42,7 @@ export default function ContractsPage() {
         <p className="text-xs text-muted-foreground leading-relaxed">
           The current contracts are fully immutable: no admin account, no{" "}
           <code className="font-mono bg-muted px-1 py-0.5 rounded">UpgradeableComponent</code>, no owner role,
-          no emergency pause. Evolution happens by redeploy, not by upgrade — the class hashes
+          no emergency pause. Evolution happens by redeploy, not by upgrade; the class hashes
           themselves cannot be rotated. The collection factories shipped fresh v0.2.0 / v0.3.0
           deployments on 2026-05-22, and the redesigned marketplace venues
           (Medialane721 / Medialane1155) were redeployed as new immutable contracts on

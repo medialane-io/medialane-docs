@@ -4,15 +4,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Governance | Docs | Medialane",
-  description: "Medialane DAO — governance charter, membership, voting, treasury, and how decisions are made.",
+  description: "Medialane DAO: governance charter, membership, voting, treasury, and how decisions are made.",
   openGraph: {
     title: "Governance | Docs | Medialane",
-    description: "Medialane DAO — governance charter, membership, voting, treasury, and how decisions are made.",
+    description: "Medialane DAO: governance charter, membership, voting, treasury, and how decisions are made.",
     url: "https://docs.medialane.io/dev/governance",
   },
   twitter: {
     title: "Governance | Docs | Medialane",
-    description: "Medialane DAO — governance charter, membership, voting, treasury, and how decisions are made.",
+    description: "Medialane DAO: governance charter, membership, voting, treasury, and how decisions are made.",
   },
 };
 
@@ -32,14 +32,14 @@ export default function DocsGovernancePage() {
         <Section title="The Mediolano Foundation">
           <p>
             Medialane is built on{" "}
-            <strong className="text-foreground">Mediolano</strong> — a permissionless,
+            <strong className="text-foreground">Mediolano</strong>, a permissionless,
             open-source protocol for IP protection and licensing. Mediolano was designed
             as a <strong className="text-foreground">public good</strong>: zero fees,
-            open source, and permissionless — anyone can use or build on it without approval.
+            open source, and permissionless, so anyone can use or build on it without approval.
           </p>
           <p>
             Medialane extends this foundation by adding a full marketplace, creator
-            launchpad, and financial tools — while remaining anchored to Mediolano's
+            launchpad, and financial tools, while remaining anchored to Mediolano's
             integrity infrastructure. The philosophical commitment to creator sovereignty,
             transparent governance, and open protocols carries through from Mediolano
             into every part of Medialane.
@@ -51,7 +51,7 @@ export default function DocsGovernancePage() {
             The <strong className="text-foreground">Medialane DAO</strong> is the governance
             organization for the platform. Creators, collectors, and developers collectively
             own and govern the platform through transparent on-chain processes. Each year, DAO
-            members vote on how Medialane&apos;s revenue is used — sustaining operations and
+            members vote on how Medialane&apos;s revenue is used, sustaining operations and
             funding the platform&apos;s growth.
           </p>
         </Section>
@@ -59,10 +59,10 @@ export default function DocsGovernancePage() {
         <Section title="Mission & Values">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { title: "Sovereignty", desc: "Users own their data, their IP, and their assets. No platform extracting value without consent." },
+              { title: "Sovereignty", desc: "Users own their data, their IP, and their assets, with no platform extracting value without consent." },
               { title: "Transparency", desc: "All governance is open and verifiable. Smart contracts are the source of truth." },
               { title: "Innovation", desc: "Continuous protocol improvement, driven by the community rather than a central team." },
-              { title: "Inclusivity", desc: "Anyone can participate — creators, collectors, developers, organizations, and AI agents." },
+              { title: "Inclusivity", desc: "Anyone can participate: creators, collectors, developers, organizations, and AI agents." },
             ].map(({ title, desc }) => (
               <div key={title} className="bento-cell p-4 space-y-1.5">
                 <p className="text-sm font-semibold text-foreground">{title}</p>
@@ -121,7 +121,7 @@ export default function DocsGovernancePage() {
             Medialane and Mediolano are explicitly designed to support autonomous agents
             as first-class participants. AI entities with cryptographic identifiers and
             verifiable credentials can hold tokens, register IP, license content, and
-            participate in governance — via delegated smart contracts or DAO-approved
+            participate in governance, via delegated smart contracts or DAO-approved
             protocols.
           </p>
           <p>
@@ -134,7 +134,7 @@ export default function DocsGovernancePage() {
 
         <Section title="Public Goods Commitment">
           <p>
-            The Mediolano protocol — the independent public goods protocol Medialane builds on — is{" "}
+            The Mediolano protocol (the independent public goods protocol Medialane builds on) is{" "}
             <strong className="text-foreground">fully open source</strong> (MIT/GPL
             licensed) and operates as a digital public good. The entire codebase, from
             Cairo smart contracts to the indexer and frontend, is publicly verifiable.

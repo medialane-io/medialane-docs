@@ -25,7 +25,7 @@ export default function CampaignTermsPage() {
           <Shield className="h-5 w-5 text-primary" />
           <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Legal</span>
         </div>
-        <h2 className="text-2xl font-bold">Creator Fund — Campaign Terms</h2>
+        <h2 className="text-2xl font-bold">Creator Fund: Campaign Terms</h2>
         <p className="text-muted-foreground leading-relaxed text-sm">
           Applies to all Medialane launch campaigns, including the Brazil campaign at{" "}
           <a href="https://medialane.io/br/mint" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground transition-colors">medialane.io/br/mint</a>{" "}
@@ -57,7 +57,7 @@ export default function CampaignTermsPage() {
           </p>
           <p className="text-muted-foreground leading-relaxed">
             Each year, Medialane DAO members vote on Snapshot on how the platform&apos;s revenue is
-            used — sustaining operations, funding growth, or distributing to participants. Any
+            used, sustaining operations, funding growth, or distributing to participants. Any
             distribution, its amount, eligibility rules, and timing are decided by that governance
             vote. Distributions are not guaranteed.
           </p>
@@ -68,7 +68,7 @@ export default function CampaignTermsPage() {
           <p className="text-muted-foreground leading-relaxed">
             Participants qualify by registering an account and securing it with a passkey.
             Those who also publish original content, engage with other creators, or complete
-            platform activities receive a higher contribution score — which determines their
+            platform activities receive a higher contribution score, which determines their
             proportional share of fund distributions.
           </p>
           <p className="text-muted-foreground leading-relaxed">
@@ -80,7 +80,7 @@ export default function CampaignTermsPage() {
         <section className="space-y-2">
           <h3 className="font-semibold text-base">Participation Certificate</h3>
           <p className="text-muted-foreground leading-relaxed">
-            Upon completing registration, participants may claim a digital participation certificate —
+            Upon completing registration, participants may claim a digital participation certificate,
             a permanent record of their early membership in the Medialane community. This certificate
             is issued on a public decentralized network and may be viewed by anyone. It has no
             inherent monetary value and is not a financial instrument.

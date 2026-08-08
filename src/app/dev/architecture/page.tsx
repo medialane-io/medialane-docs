@@ -5,15 +5,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Architecture | Medialane Docs",
-  description: "The Medialane four-layer authority model — Chain, Indexer, SDK, and Apps. Six core primitives, the rebuild test, and the protocol vs. platform distinction.",
+  description: "The Medialane four-layer authority model: Chain, Indexer, SDK, and Apps. Six core primitives, the rebuild test, and the protocol vs. platform distinction.",
   openGraph: {
     title: "Architecture | Medialane Docs",
-    description: "The Medialane four-layer authority model — Chain, Indexer, SDK, and Apps. Six core primitives, the rebuild test, and the protocol vs. platform distinction.",
+    description: "The Medialane four-layer authority model: Chain, Indexer, SDK, and Apps. Six core primitives, the rebuild test, and the protocol vs. platform distinction.",
     url: "https://docs.medialane.io/dev/architecture",
   },
   twitter: {
     title: "Architecture | Medialane Docs",
-    description: "The Medialane four-layer authority model — Chain, Indexer, SDK, and Apps. Six core primitives, the rebuild test, and the protocol vs. platform distinction.",
+    description: "The Medialane four-layer authority model: Chain, Indexer, SDK, and Apps. Six core primitives, the rebuild test, and the protocol vs. platform distinction.",
   },
 };
 
@@ -26,7 +26,7 @@ const LAYERS = [
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
     role: "Contracts, state, immutable rules, on-chain events",
-    detail: "Deployed Cairo smart contracts on Starknet mainnet. Once deployed, no admin can change the rules. Every state change emits an event. This layer is the only truth — everything above it is a view.",
+    detail: "Deployed Cairo smart contracts on Starknet mainnet. Once deployed, no admin can change the rules. Every state change emits an event. This layer is the only truth; everything above it is a view.",
   },
   {
     num: "02",
@@ -35,8 +35,8 @@ const LAYERS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    role: "Event reducer — reads chain, writes PostgreSQL cache",
-    detail: "The indexer is a deterministic function: it reads on-chain events and produces a queryable cache. Drop the database and it rebuilds from scratch. It adds nothing — it only reduces what the chain already recorded.",
+    role: "Event reducer: reads chain, writes PostgreSQL cache",
+    detail: "The indexer is a deterministic function: it reads on-chain events and produces a queryable cache. Drop the database and it rebuilds from scratch. It adds nothing; it only reduces what the chain already recorded.",
   },
   {
     num: "03",
@@ -46,7 +46,7 @@ const LAYERS = [
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
     role: "Typed lens over the indexer + service registry",
-    detail: "The @medialane/sdk package is a typed interface to the API. The SDK hosts the service registry — the canonical map from service IDs to capability sets.",
+    detail: "The @medialane/sdk package is a typed interface to the API. The SDK hosts the service registry, the canonical map from service IDs to capability sets.",
   },
   {
     num: "04",
@@ -80,7 +80,7 @@ const PRIMITIVES = [
     icon: Package,
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
-    def: "A registered behavior set — what actions a creator can take on an asset. Capabilities: list, buy, mint, transfer, remix, and more. See /learn/services.",
+    def: "A registered behavior set: what actions a creator can take on an asset. Capabilities: list, buy, mint, transfer, remix, and more. See /learn/services.",
   },
   {
     label: "License",
@@ -94,14 +94,14 @@ const PRIMITIVES = [
     icon: ShoppingCart,
     color: "text-primary",
     bg: "bg-primary/10",
-    def: "A signed proposal — one offer, one consideration. The orderHash is permanent on-chain record. Settlement is atomic.",
+    def: "A signed proposal: one offer, one consideration. The orderHash is permanent on-chain record. Settlement is atomic.",
   },
   {
     label: "Event",
     icon: Zap,
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
-    def: "An on-chain occurrence emitted by a contract. The indexer is an event reducer — a deterministic function of the event log.",
+    def: "An on-chain occurrence emitted by a contract. The indexer is an event reducer: a deterministic function of the event log.",
   },
 ];
 
@@ -117,7 +117,7 @@ export default function DocsArchitecturePage() {
         <h2 className="text-2xl font-bold">Architecture</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Medialane is built on a four-layer authority model. Each layer has one job.
-          Authority flows downward only — apps cannot override the SDK, the SDK cannot
+          Authority flows downward only: apps cannot override the SDK, the SDK cannot
           override the indexer, and nothing overrides the contracts.
         </p>
       </div>
@@ -135,7 +135,7 @@ export default function DocsArchitecturePage() {
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className={`text-xs font-mono ${color}`}>{num}</span>
                     <p className="font-bold text-foreground">{label}</p>
-                    <span className="text-xs text-muted-foreground">— {role}</span>
+                    <span className="text-xs text-muted-foreground">: {role}</span>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{detail}</p>
                 </div>
@@ -154,8 +154,8 @@ export default function DocsArchitecturePage() {
             <p className="font-bold text-foreground">Drop the database. Can everything reconstruct?</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
               If a piece of state can be reconstructed by replaying on-chain events and fetching
-              off-chain metadata, it is protocol state. If it cannot — profiles, slugs, API keys,
-              experience points — it is platform state: honestly labeled as off-chain enrichment,
+              off-chain metadata, it is protocol state. If it cannot (profiles, slugs, API keys,
+              experience points), it is platform state: honestly labeled as off-chain enrichment,
               never confused with protocol guarantees.
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -189,7 +189,7 @@ export default function DocsArchitecturePage() {
               <ul className="space-y-1.5 text-sm">
                 {[
                   "Immutable Cairo contracts on Starknet",
-                  "Permissionless — no whitelist to mint or trade",
+                  "Permissionless, no whitelist to mint or trade",
                   "Zero fees at contract level",
                   "Events as the only source of truth",
                   "Governed by math, not policy",
@@ -221,8 +221,8 @@ export default function DocsArchitecturePage() {
           </div>
           <p className="text-sm">
             This distinction is load-bearing. The DAO can update the fee schedule and
-            service registry without touching contracts. Protocol actions — minting,
-            listing, transferring — are always available regardless of platform decisions.
+            service registry without touching contracts. Protocol actions (minting,
+            listing, transferring) are always available regardless of platform decisions.
           </p>
           <p className="text-sm">
             See{" "}

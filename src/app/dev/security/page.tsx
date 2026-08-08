@@ -39,7 +39,7 @@ export default function DocsSecurityPage() {
               {
                 icon: Shield,
                 title: "No custody",
-                desc: "The marketplace never holds funds. Trades settle via atomic swap — both the NFT transfer and the payment happen in the same transaction, or neither does.",
+                desc: "The marketplace never holds funds. Trades settle via atomic swap: both the NFT transfer and the payment happen in the same transaction, or neither does.",
               },
               {
                 icon: Eye,
@@ -49,7 +49,7 @@ export default function DocsSecurityPage() {
               {
                 icon: AlertTriangle,
                 title: "No emergency pause",
-                desc: "There is no pause function or circuit breaker. This is a deliberate design choice — no admin can stop the protocol. It also means bugs cannot be patched once deployed; fixes require redeploying a new contract.",
+                desc: "There is no pause function or circuit breaker. This is a deliberate design choice: no admin can stop the protocol. It also means bugs cannot be patched once deployed; fixes require redeploying a new contract.",
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bento-cell p-4 space-y-2">
@@ -67,7 +67,7 @@ export default function DocsSecurityPage() {
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Backend &amp; SDK — P0/P1/P2 hardening cycle</p>
+                <p className="text-sm font-semibold text-foreground">Backend &amp; SDK: P0/P1/P2 hardening cycle</p>
                 <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Completed May 2026</span>
               </div>
               <p className="text-xs text-muted-foreground">Internal review of medialane-backend (~16k LOC) and @medialane/sdk · May 2026</p>
@@ -81,7 +81,7 @@ export default function DocsSecurityPage() {
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Marketplace &amp; collection contracts — Joint Internal Audit + Remediation</p>
+                <p className="text-sm font-semibold text-foreground">Marketplace &amp; collection contracts: Joint Internal Audit + Remediation</p>
                 <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Fixes deployed June 2026</span>
               </div>
               <p className="text-xs text-muted-foreground">Reviewed by the core development team · audit 2026-06-25, fixes redeployed 2026-06-26</p>
@@ -93,13 +93,13 @@ export default function DocsSecurityPage() {
                 checks-effects-interactions ordering issue in ERC-1155 minting, and three Low
                 findings (on-chain sender derivation, metadata length caps, overflow-checked
                 royalty math). No Critical findings; no user funds or assets were at risk before
-                the fix. This is an internal review, not an independent third-party audit — the
+                the fix. This is an internal review, not an independent third-party audit; the
                 Collection Drop factory and POP factory were not in this cycle&apos;s scope.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Independent Audit — Not yet completed</p>
+                <p className="text-sm font-semibold text-foreground">Independent Audit: Not yet completed</p>
                 <span className="text-[10px] font-medium text-muted-foreground bg-muted px-2 py-0.5 rounded-full">Pending</span>
               </div>
               <p className="text-xs text-muted-foreground">
@@ -113,7 +113,7 @@ export default function DocsSecurityPage() {
         <Section title="Decentralized Storage">
           <p>
             All IP asset media and metadata are stored on{" "}
-            <strong className="text-foreground">IPFS</strong> — a decentralized
+            <strong className="text-foreground">IPFS</strong>, a decentralized
             content-addressed storage network. A hash of every metadata JSON is committed
             to the Starknet blockchain inside the token URI, creating an immutable link
             between the on-chain record and the off-chain content.
@@ -133,8 +133,8 @@ export default function DocsSecurityPage() {
             </p>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Smart contracts carry inherent risks. While the Mediolano protocol and
-              Medialane platform take every precaution — including audits, formal
-              verification, and continuous testing — user funds and IP assets could
+              Medialane platform take every precaution (including audits, formal
+              verification, and continuous testing), user funds and IP assets could
               theoretically be at risk due to unforeseen bugs in the protocol or the
               underlying Starknet network. Use caution and only commit assets whose
               loss you could tolerate.
@@ -142,7 +142,7 @@ export default function DocsSecurityPage() {
             <p className="text-xs text-muted-foreground leading-relaxed">
               Medialane does not take custody of your assets. Your NFTs remain in
               your self-custodied wallet at all times. Marketplace orders are signed
-              intents — your asset does not leave your wallet until a transaction is
+              intents, so your asset does not leave your wallet until a transaction is
               fully executed and settled on Starknet.
             </p>
           </div>

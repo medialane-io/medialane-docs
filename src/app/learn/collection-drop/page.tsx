@@ -26,7 +26,7 @@ export default function LearnCollectionDropPage() {
           individually-licensed</strong> NFTs on Medialane. A creator prepares the works, sets a mint
           window and price, and optionally restricts minting to a whitelist. Collectors mint directly
           from the drop, with settlement handled on Starknet. Every token is its own one-of-one IP
-          asset — distinct artwork and its own license — never an identical copy.
+          asset, with distinct artwork and its own license, never an identical copy.
         </p>
         <p className="text-sm text-muted-foreground">
           Service ID:{" "}
@@ -46,7 +46,7 @@ export default function LearnCollectionDropPage() {
             listing individual assets on the marketplace, an organizer defines:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li>A set of unique works — each becomes its own token (supply equals the number of items)</li>
+            <li>A set of unique works, each becoming its own token (supply equals the number of items)</li>
             <li>Shared licensing terms applied to every item (CC BY-SA by default, fully customizable)</li>
             <li>A mint price (or free mint)</li>
             <li>A mint window (start and end time)</li>
@@ -55,9 +55,9 @@ export default function LearnCollectionDropPage() {
           </ul>
           <p>
             Once the drop is live, eligible collectors mint directly from the drop page.
-            On medialane.io, minting is frictionless — gas is sponsored, start to finish.
+            On medialane.io, minting is frictionless: gas is sponsored, start to finish.
             On the Starknet app, gas sponsorship depends on whether AVNU sponsorship is
-            currently active — real gas may apply.
+            currently active, and real gas may apply.
           </p>
         </Section>
 
@@ -82,14 +82,14 @@ export default function LearnCollectionDropPage() {
 
         <Section title="Launching a Drop">
           <p>
-            Launching a drop is permissionless — any creator can do it. Open the{" "}
+            Launching a drop is permissionless: any creator can do it. Open the{" "}
             <strong className="text-foreground">Create Drop</strong> button in the
             Collection Drop section. When setting up a drop, you configure:
           </p>
           <div className="space-y-2">
             {[
-              ["Items", "Add your artwork — each image becomes a unique token. The drop's supply equals the number of items you add. Each is minted from a fresh ERC-721 contract deployed on Starknet with you as the owner."],
-              ["Licensing & IP", "Shared license terms applied to every item, embedded as immutable IPFS metadata (Berne Convention-compatible). CC BY-SA by default, with IP type and royalty — fully customizable."],
+              ["Items", "Add your artwork; each image becomes a unique token. The drop's supply equals the number of items you add. Each is minted from a fresh ERC-721 contract deployed on Starknet with you as the owner."],
+              ["Licensing & IP", "Shared license terms applied to every item, embedded as immutable IPFS metadata (Berne Convention-compatible). CC BY-SA by default, with IP type and royalty fully customizable."],
               ["Mint Window", "A start and end timestamp defining when minting is open. Mints outside this window are rejected by the contract."],
               ["Price", "Set a mint price in any supported currency (STRK, ETH, USDC, USDT, WBTC), or set to free."],
               ["Whitelist", "Optionally restrict minting to a set of wallet addresses. You can open the drop to everyone later from Manage."],
@@ -107,7 +107,7 @@ export default function LearnCollectionDropPage() {
           <p>
             Collection Drop NFTs use the <strong className="text-foreground">ERC-721</strong> token
             standard with sequential minting. Each mint issues a unique, sequentially-numbered
-            token — a drop of 500 items produces 500 distinct one-of-one NFTs, each with its own
+            token: a drop of 500 items produces 500 distinct one-of-one NFTs, each with its own
             artwork, its own license, its own owner, and its own token ID. A drop token is a
             first-class IP asset, indistinguishable in standard from any other asset on Medialane.
           </p>
@@ -115,17 +115,18 @@ export default function LearnCollectionDropPage() {
             Maximum supply caps the number of tokens that can be minted; the per-wallet limit
             caps how many a single wallet may claim. If you instead want a single work that
             many collectors share, use{" "}
-            <Link href="/learn/ip-collection-1155" className="text-primary hover:underline">NFT Editions</Link>{" "}
-            — an ERC-1155 collection where holders own editions of the same token.
+            <Link href="/learn/ip-collection-1155" className="text-primary hover:underline">NFT Editions</Link>,
+            an ERC-1155 collection where holders own editions of the same token.
           </p>
         </Section>
 
         <Section title="Onchain Settlement">
           <p>
             Collection Drop contracts are deployed on Starknet. Every mint is an onchain
-            transaction — no off-chain allowlist checks, no centralized mint servers. The
-            contract enforces supply caps, time windows, allowlists, and per-wallet limits
-            automatically without any backend intervention.
+            transaction, checked entirely by the contract itself rather than an off-chain
+            allowlist service or a centralized mint server. The contract enforces supply caps,
+            time windows, allowlists, and per-wallet limits automatically without any backend
+            intervention.
           </p>
           <p>
             Royalties configured on the underlying collection are inherited by all assets

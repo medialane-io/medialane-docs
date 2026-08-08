@@ -14,7 +14,7 @@ const HUBS = [
     name: "Launchpad",
     tagline: "Structure capital from your IP",
     description:
-      "Turn creative work into revenue products — collection drops, NFT editions, memberships and subscriptions, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended — never a fixed menu.",
+      "Turn creative work into revenue products: collection drops, NFT editions, memberships and subscriptions, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended, never a fixed menu.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
@@ -24,7 +24,7 @@ const HUBS = [
     name: "Marketplace",
     tagline: "Trade every tokenized asset",
     description:
-      "A high-integrity secondary exchange for buying, selling, auctioning, licensing, and remixing IP. Atomic settlement — payment and asset move in one transaction, or both revert. Assets stay in your wallet, interoperable with the wider ecosystem, at minimal fees.",
+      "A high-integrity secondary exchange for buying, selling, auctioning, licensing, and remixing IP. Atomic settlement: payment and asset move in one transaction, or both revert. Assets stay in your wallet, interoperable with the wider ecosystem, at minimal fees.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
@@ -37,13 +37,13 @@ const PRINCIPLES = [
     icon: Lock,
     title: "The contract is the only authority",
     description:
-      "Immutable Cairo contracts, deployed without an admin key, upgrade path, or pause switch. If the contract accepts your call, it happens — the rules are fixed, including for us.",
+      "Immutable Cairo contracts, deployed without an admin key, upgrade path, or pause switch. If the contract accepts your call, it happens; the rules are fixed, including for us.",
   },
   {
     icon: InfinityIcon,
     title: "Permissionless and open-ended",
     description:
-      "Anyone can create, trade, license, build, and integrate without asking. The protocol grows by adding services — an extensible set of monetization primitives, not a closed list.",
+      "Anyone can create, trade, license, build, and integrate without asking. The protocol grows by adding services, an extensible set of monetization primitives rather than a closed list.",
   },
   {
     icon: ShieldCheck,
@@ -55,7 +55,7 @@ const PRINCIPLES = [
     icon: Bot,
     title: "For humans, organizations, and agents",
     description:
-      "Autonomous AI agents are first-class participants — same protocol, same rights, same fees as any person or organization, on the standard integration path.",
+      "Autonomous AI agents are first-class participants: same protocol, same rights, same fees as any person or organization, on the standard integration path.",
   },
   {
     icon: Eye,
@@ -79,7 +79,7 @@ const AGENT_PAYMENT_USE_CASES = [
     bg: "bg-brand-purple/10",
     title: "Autonomous AI agents",
     description:
-      "An agent funds itself, calls the API, and tops up on-chain when credits run low — discovering prices and settling machine-to-machine, with no operator in the loop.",
+      "An agent funds itself, calls the API, and tops up on-chain when credits run low, discovering prices and settling machine-to-machine, with no operator in the loop.",
   },
   {
     icon: Building2,
@@ -87,7 +87,7 @@ const AGENT_PAYMENT_USE_CASES = [
     bg: "bg-brand-blue/10",
     title: "Businesses & products",
     description:
-      "Usage-based access, billed per call instead of by seat or contract. Every payment is on-chain and verifiable — pay only for what you use.",
+      "Usage-based access, billed per call instead of by seat or contract. Every payment is on-chain and verifiable, so you pay only for what you use.",
   },
   {
     icon: Terminal,
@@ -95,14 +95,14 @@ const AGENT_PAYMENT_USE_CASES = [
     bg: "bg-brand-rose/10",
     title: "Any service that can sign",
     description:
-      "Permissionless by design — a wallet keypair is the whole identity. Any script, backend, or device that can sign a transaction can pay and consume the API.",
+      "Permissionless by design: a wallet keypair is the whole identity. Any script, backend, or device that can sign a transaction can pay and consume the API.",
   },
 ];
 
 const X402_STEPS = [
-  { n: "1", title: "Discover", description: "A machine-readable endpoint publishes prices and payment details — agents read it like code." },
+  { n: "1", title: "Discover", description: "A machine-readable endpoint publishes prices and payment details; agents read it like code." },
   { n: "2", title: "Call", description: "Hit any endpoint with your key. Out of credits? You get a standard 402 with payment instructions." },
-  { n: "3", title: "Pay", description: "Send a USDC micropayment on Starknet to the address in the 402 — settled on-chain in seconds." },
+  { n: "3", title: "Pay", description: "Send a USDC micropayment on Starknet to the address in the 402, settled on-chain in seconds." },
   { n: "4", title: "Continue", description: "Retry with proof of payment; credits apply and the call goes through. Hold MDLN for a bonus." },
 ];
 
@@ -112,7 +112,7 @@ const SECTIONS = [
     href: "/learn",
     icon: BookOpen,
     title: "Learn",
-    description: "Start here. Programmable IP, licensing, remix, tokenization, and zero-knowledge — the concepts behind the protocol.",
+    description: "Start here. Programmable IP, licensing, remix, tokenization, and zero-knowledge: the concepts behind the protocol.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10 group-hover:bg-brand-orange/20",
   },
@@ -168,7 +168,7 @@ const SECTIONS = [
     href: "/links",
     icon: Link2,
     title: "Links",
-    description: "Official channels — X, YouTube, GitHub, Telegram.",
+    description: "Official channels: X, YouTube, GitHub, Telegram.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10 group-hover:bg-brand-orange/20",
   },
@@ -254,7 +254,7 @@ export function HomePage() {
 
           <p className="text-lg text-muted-foreground leading-relaxed">
             Medialane lets humans, organizations, and AI agents turn intellectual property
-            into revenue streams — with full sovereignty over their assets and identity.
+            into revenue streams, with full sovereignty over their assets and identity.
             Open, permissionless, and built on immutable smart contracts. Live on Starknet.
           </p>
 
@@ -292,7 +292,7 @@ export function HomePage() {
           <p className="text-muted-foreground leading-relaxed">
             Medialane builds a commercial layer on top of Mediolano&apos;s zero-fee,
             Berne-aligned tokenization. Both hubs are permissionless, and both protocols
-            are zero-fee — any fee is applied at the platform layer.
+            are zero-fee; any fee is applied at the platform layer.
           </p>
         </div>
 
@@ -347,10 +347,10 @@ export function HomePage() {
             Payments built for <span className="gradient-text">machines</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Agents are first-class users on Medialane — and they pay like one. The API speaks{" "}
+            Agents are first-class users on Medialane, and they pay like one. The API speaks{" "}
             <strong className="text-foreground">x402</strong>, the open HTTP standard for machine
             payments: a request returns a price, the agent pays per call in USDC on Starknet, and
-            continues. A wallet keypair is the identity it needs — signup, login, and billing
+            continues. A wallet keypair is the identity it needs, so signup, login, and billing
             paperwork drop out of the flow. Built for machine-to-machine payments from day one.
           </p>
         </div>

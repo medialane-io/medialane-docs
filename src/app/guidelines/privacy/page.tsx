@@ -44,8 +44,8 @@ export default function PrivacyPage() {
       <div className="space-y-6">
         <Section num="1" title="Information We Collect">
           <p>We collect the following categories of information:</p>
-          <p><strong className="text-foreground">Account information:</strong> Your Starknet wallet address and any profile data you choose to add (display name, bio, avatar, social links). Attaching an email address is optional and separate from creating your wallet — it&apos;s used only for account notices and signing back in.</p>
-          <p><strong className="text-foreground">Wallet information:</strong> Your wallet is self-custody — a private key generated on your device and sealed behind your device&apos;s passkey (Face ID, Touch ID, Windows Hello, or a hardware security key). The key never leaves your device and is never transmitted to us or any third party; we never have access to it.</p>
+          <p><strong className="text-foreground">Account information:</strong> Your Starknet wallet address and any profile data you choose to add (display name, bio, avatar, social links). Attaching an email address is optional and separate from creating your wallet; it&apos;s used only for account notices and signing back in.</p>
+          <p><strong className="text-foreground">Wallet information:</strong> Your wallet is self-custody: a private key generated on your device and sealed behind your device&apos;s passkey (Face ID, Touch ID, Windows Hello, or a hardware security key). The key never leaves your device and is never transmitted to us or any third party; we never have access to it.</p>
           <p><strong className="text-foreground">Transaction data:</strong> Onchain transaction data associated with your wallet address, including NFT mints, listings, purchases, and transfers. This data is publicly available on the Starknet blockchain.</p>
           <p><strong className="text-foreground">Usage data:</strong> Log data including IP address, browser type, pages visited, and timestamps. Collected automatically when you use the Service.</p>
           <p><strong className="text-foreground">Content:</strong> Files, images, and metadata you upload when minting NFTs.</p>
@@ -72,7 +72,7 @@ export default function PrivacyPage() {
           </p>
           <p>
             By using the Medialane marketplace, you acknowledge that your onchain
-            activity — including purchases, listings, and transfers — is publicly
+            activity, including purchases, listings, and transfers, is publicly
             accessible and permanent.
           </p>
         </Section>
@@ -80,9 +80,9 @@ export default function PrivacyPage() {
         <Section num="4" title="Data Sharing">
           <p>We do not sell your personal information. We share data only with:</p>
           <ul className="list-disc list-inside space-y-1">
-            <li><strong className="text-foreground">Pinata</strong> — IPFS pinning service for your uploaded content</li>
-            <li><strong className="text-foreground">Railway</strong> — cloud infrastructure provider hosting our backend</li>
-            <li><strong className="text-foreground">Legal authorities</strong> — when required by law or valid legal process</li>
+            <li><strong className="text-foreground">Pinata</strong>: IPFS pinning service for your uploaded content</li>
+            <li><strong className="text-foreground">Railway</strong>: cloud infrastructure provider hosting our backend</li>
+            <li><strong className="text-foreground">Legal authorities</strong>: when required by law or valid legal process</li>
           </ul>
           <p>
             Each third-party service processes data according to their own privacy policy.
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
             </a>.
           </p>
           <p>
-            Note that blockchain data cannot be deleted or modified by us or you — it is
+            Note that blockchain data cannot be deleted or modified by us or you; it is
             inherent to the nature of public blockchains.
           </p>
         </Section>
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
             We implement industry-standard security measures to protect your personal
             information, including encrypted communications (HTTPS), access controls,
             and session management. However, no method of transmission or storage is
-            100% secure — use the platform at your own risk.
+            100% secure; use the platform at your own risk.
           </p>
         </Section>
 

@@ -38,12 +38,12 @@ const PAID_ACTIONS = [
   {
     action: "Creator royalties",
     cost: "Set by the creator at mint time",
-    note: "Creator royalties follow the EIP-2981 standard and are paid on-chain by the marketplace venue at settlement, capped by a royalty limit the seller agrees to when signing. The 1% marketplace fee is separate: it is applied at the platform layer, never inside the venue contract — the venue protocols themselves are zero-fee.",
+    note: "Creator royalties follow the EIP-2981 standard and are paid on-chain by the marketplace venue at settlement, capped by a royalty limit the seller agrees to when signing. The 1% marketplace fee is separate: it is applied at the platform layer, never inside the venue contract, since the venue protocols themselves are zero-fee.",
   },
   {
     action: "Accept a sponsorship bid or proposal",
     cost: "1% platform fee on settlement",
-    note: "Same rate and platform-layer mechanism as the marketplace fee — applied when an IP Sponsorship offer or proposal is accepted, never inside the sponsorship contract, which itself never holds funds.",
+    note: "Same rate and platform-layer mechanism as the marketplace fee, applied when an IP Sponsorship offer or proposal is accepted, never inside the sponsorship contract, which itself never holds funds.",
   },
   {
     action: "Remix or license fee",
@@ -87,7 +87,7 @@ export default function FeesPage() {
         {[
           { icon: Zap, label: "Creator actions", value: "Gas sponsored", desc: "Most creation and listing actions require no ETH or STRK from users." },
           { icon: Coins, label: "Marketplace fee", value: CANONICAL.marketplaceFee, desc: "Applied to completed marketplace sales at the platform layer and routed to the creators fund." },
-          { icon: Terminal, label: "API access", value: "Pay-per-call", desc: "Developers and agents calling the API directly pay in credits (1 credit = $0.01) via x402 — no free tier." },
+          { icon: Terminal, label: "API access", value: "Pay-per-call", desc: "Developers and agents calling the API directly pay in credits (1 credit = $0.01) via x402, with no free tier." },
           { icon: Landmark, label: "Allocation", value: "DAO vote", desc: "MDLN holders decide how creators-fund revenue is used." },
         ].map(({ icon: Icon, label, value, desc }) => (
           <div key={label} className="bento-cell p-5 space-y-2">
@@ -124,19 +124,19 @@ export default function FeesPage() {
       <Section title="API Metering (x402 Credits)">
         <p>
           The two revenue streams above (marketplace fee, gas sponsorship) are about using the{" "}
-          <strong className="text-foreground">product</strong> — medialane.io or the Starknet app.
+          <strong className="text-foreground">product</strong>, medialane.io or the Starknet app.
           A creator or collector in either app never sees a credit balance; the app itself holds one.
         </p>
         <p>
           A developer or AI agent calling the <strong className="text-foreground">API directly</strong>{" "}
           is a separate case, priced separately: every metered request costs a small number of credits
-          (1 credit = $0.01, paid in USDC via the open x402 standard). There is no free tier — the first
+          (1 credit = $0.01, paid in USDC via the open x402 standard). There is no free tier; the first
           unfunded call returns a standard <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">402 Payment Required</code> by
           design, and an agent can fund itself and continue automatically.
         </p>
         <PricingTable />
         <p className="text-sm">
-          Prices are set per action and can change — this table is live, sourced from the same
+          Prices are set per action and can change; this table is live, sourced from the same
           endpoint (<code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">GET /v1/pricing</code>)
           every call is actually priced against, never a hand-maintained copy. See{" "}
           <Link href="/dev/agents" className="text-primary hover:underline">AI Agents</Link> for the full
@@ -170,14 +170,14 @@ export default function FeesPage() {
         </p>
         <p className="text-sm">
           This fee is a platform-layer parameter, never a rule inside the marketplace venue
-          contracts — the venue protocols themselves are zero-fee. It is computed and applied by
+          contracts, since the venue protocols themselves are zero-fee. It is computed and applied by
           the platform (SDK/backend) as a separate transfer alongside settlement. The DAO governs
           the rate and how the creators fund is allocated.
         </p>
         <p className="text-sm">
           The same rate and platform-layer mechanism applies when an{" "}
           <Link href="/learn/ip-sponsorship" className="text-primary hover:underline">IP Sponsorship</Link>{" "}
-          offer or proposal is accepted — the sponsorship contract, like the marketplace venues,
+          offer or proposal is accepted; the sponsorship contract, like the marketplace venues,
           never holds funds or applies a fee itself.
         </p>
       </Section>
@@ -185,7 +185,7 @@ export default function FeesPage() {
       <Section title="Royalties">
         <p>
           Creators set royalty terms in asset metadata at mint time. These terms are readable by any
-          marketplace, application, or agent — but the Medialane marketplace contract does not
+          marketplace, application, or agent, but the Medialane marketplace contract does not
           automatically extract or route royalties. The only fee applied alongside a sale is the{" "}
           {CANONICAL.marketplaceFee} platform-layer marketplace fee to the creators fund.
         </p>

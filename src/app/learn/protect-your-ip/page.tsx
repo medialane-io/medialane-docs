@@ -23,7 +23,7 @@ export default function LearnProtectIPPage() {
         <h2 className="text-2xl font-bold">Protecting Your Intellectual Property</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Your creative work is automatically protected by international copyright law
-          the moment you create it — this is true regardless of Medialane. What minting
+          the moment you create it, regardless of Medialane. What minting
           adds is a timestamped, immutable, publicly verifiable record of authorship that
           can serve as evidence of when a work existed and who published it.
         </p>
@@ -35,7 +35,7 @@ export default function LearnProtectIPPage() {
           <p>
             The Berne Convention for the Protection of Literary and Artistic Works is
             the foundational international copyright treaty, administered by WIPO and
-            ratified by <strong className="text-foreground">181 signatory countries</strong> —
+            ratified by <strong className="text-foreground">181 signatory countries</strong>,
             including virtually every WTO member via the TRIPS agreement.
           </p>
           <p>
@@ -76,26 +76,27 @@ export default function LearnProtectIPPage() {
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>Music, sound recordings, and audio compositions</li>
             <li>Visual art, illustrations, photographs, and film</li>
-            <li>Literary works — novels, scripts, articles, poetry</li>
+            <li>Literary works: novels, scripts, articles, poetry</li>
             <li>Software and digital media</li>
             <li>AI-generated works where a human creator can be identified</li>
             <li>3D models, datasets, and digital-native formats</li>
           </ul>
           <p>
-            Copyright does <em>not</em> protect ideas, facts, styles, or methods —
-            only the specific expression fixed in a medium.
+            Copyright protects only the specific expression fixed in a medium, not
+            ideas, facts, styles, or methods.
           </p>
         </Section>
 
         <Section title="The Problem with Digital IP">
           <p>
             The internet made copying trivial. A creator publishes music or artwork
-            and within hours it may appear on hundreds of platforms — without attribution,
-            without compensation, and with no practical way to prove original authorship.
+            and within hours it may appear on hundreds of platforms, unattributed and
+            uncompensated, leaving the creator with little practical way to prove
+            original authorship.
           </p>
           <p>
             Traditional copyright enforcement requires timestamps, witnesses, or formal
-            registration — expensive and inaccessible to most independent creators.
+            registration, all expensive and inaccessible to most independent creators.
             And even with copyright established, licensing is fragmented: tracking who
             uses your work, in what context, and whether royalties are being paid
             requires lawyers and contracts built for large corporations.
@@ -105,19 +106,19 @@ export default function LearnProtectIPPage() {
         <Section title="Cryptographic Protection via the Mediolano Protocol">
           <p>
             Medialane is built on the{" "}
-            <strong className="text-foreground">Mediolano protocol</strong> — a
+            <strong className="text-foreground">Mediolano protocol</strong>, a
             permissionless, open-source IP protection infrastructure anchored to Starknet.
             When you mint a work on Medialane:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li>An <strong className="text-foreground">immutable timestamped record</strong> is created on Starknet — a public, verifiable proof of existence at a specific point in time.</li>
-            <li>An <strong className="text-foreground">ERC-721 NFT</strong> is minted to your wallet — the token acts as the cryptographic key to your IP. Only the holder of the private key can manage, license, or transfer rights.</li>
-            <li>Your <strong className="text-foreground">license terms</strong> are embedded in the token metadata and stored on IPFS — machine-readable and immutable, independent of the Medialane platform.</li>
+            <li>An <strong className="text-foreground">immutable timestamped record</strong> is created on Starknet: a public, verifiable proof of existence at a specific point in time.</li>
+            <li>An <strong className="text-foreground">ERC-721 NFT</strong> is minted to your wallet; the token acts as the cryptographic key to your IP. Only the holder of the private key can manage, license, or transfer rights.</li>
+            <li>Your <strong className="text-foreground">license terms</strong> are embedded in the token metadata and stored on IPFS: machine-readable and immutable, independent of the Medialane platform.</li>
             <li>A <strong className="text-foreground">content hash</strong> of the metadata is committed to the blockchain, linking the on-chain record to the off-chain content.</li>
           </ul>
           <p>
             This creates a timestamped, publicly verifiable record of authorship, requiring
-            only standard Starknet gas — no registration and no WIPO filing. It functions as
+            only standard Starknet gas, with no registration and no WIPO filing. It functions as
             tamper-proof evidence of when a work existed and who created it, distinct from
             formal copyright registration.
           </p>
@@ -125,14 +126,14 @@ export default function LearnProtectIPPage() {
 
         <Section title="Decentralized & Censorship-Resistant">
           <p>
-            Your IP record lives on Starknet and IPFS — not on Medialane's servers.
+            Your IP record lives on Starknet and IPFS, independent of Medialane's servers.
             This means:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li><strong className="text-foreground">No vendor lock-in</strong> — your proof of ownership exists independently of the Medialane platform.</li>
-            <li><strong className="text-foreground">No censorship</strong> — no central server can take down or alter your on-chain record.</li>
-            <li><strong className="text-foreground">Perpetual access</strong> — IPFS ensures your metadata remains accessible for the lifetime of the network.</li>
-            <li><strong className="text-foreground">Open source</strong> — the entire Mediolano protocol is publicly verifiable. No hidden backdoors.</li>
+            <li><strong className="text-foreground">Vendor independence</strong>: your proof of ownership exists independently of the Medialane platform.</li>
+            <li><strong className="text-foreground">Censorship resistance</strong>: your on-chain record stands beyond any central server's reach to take down or alter.</li>
+            <li><strong className="text-foreground">Perpetual access</strong>: IPFS ensures your metadata remains accessible for the lifetime of the network.</li>
+            <li><strong className="text-foreground">Open source</strong>: the entire Mediolano protocol is publicly verifiable, with every line auditable.</li>
           </ul>
         </Section>
 
@@ -144,7 +145,7 @@ export default function LearnProtectIPPage() {
             interface, and vote on enforcement actions.
           </p>
           <p>
-            Note that on-chain records are immutable — delisting from the Medialane
+            Note that on-chain records are immutable: delisting from the Medialane
             interface affects platform visibility but does not alter the underlying
             Starknet state. For DMCA takedown requests, contact{" "}
             <a href="mailto:dmca@medialane.io" className="text-primary hover:underline">
@@ -156,7 +157,7 @@ export default function LearnProtectIPPage() {
         <Section title="On-Chain Licensing">
           <p>
             Beyond proof of authorship, you attach your own license terms to every
-            work at mint time — defining in machine-readable form what others can and cannot
+            work at mint time, defining in machine-readable form what others can and cannot
             do with your creation. The terms are embedded in the token metadata and travel
             with every transfer, publicly readable by any application or agent.
           </p>
@@ -174,8 +175,8 @@ export default function LearnProtectIPPage() {
           <p>
             Medialane is not a law firm and does not provide legal advice. Minting a
             work on Medialane does not constitute formal copyright registration in any
-            jurisdiction. For critical IP matters — commercial licensing disputes,
-            enforcement actions, or jurisdictions with registration requirements —
+            jurisdiction. For critical IP matters (commercial licensing disputes,
+            enforcement actions, or jurisdictions with registration requirements),
             consult a qualified intellectual property attorney.
           </p>
         </Section>

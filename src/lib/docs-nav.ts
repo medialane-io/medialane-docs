@@ -23,28 +23,28 @@ export const DOCS_NAV = [
     label: "Protocol",
     title: "Protocol",
     icon: Network,
-    description: "Technical specification of the Mediolano protocol — onchain IP registration, licensing, events, and data structures.",
+    description: "Technical specification of the Mediolano protocol: onchain IP registration, licensing, events, and data structures.",
   },
   {
     href: "/dev/sdk",
     label: "SDK",
     title: "SDK",
     icon: Package,
-    description: "The @medialane/sdk TypeScript package — installation, configuration, asset queries, minting, and marketplace integration.",
+    description: "The @medialane/sdk TypeScript package: installation, configuration, asset queries, minting, and marketplace integration.",
   },
   {
     href: "/dev/api",
     label: "API Reference",
     title: "API Reference",
     icon: Terminal,
-    description: "Full REST API reference — endpoints, authentication, request shapes, rate limits, and response types.",
+    description: "Full REST API reference: endpoints, authentication, request shapes, rate limits, and response types.",
   },
   {
     href: "/dev/contracts",
     label: "Contracts",
     title: "Contracts",
     icon: FileCode2,
-    description: "Cairo smart contracts — marketplace, collection registry, POP Protocol, Collection Drop, and royalty enforcement.",
+    description: "Cairo smart contracts: marketplace, collection registry, POP Protocol, Collection Drop, and royalty enforcement.",
   },
   {
     href: "/dev/developers",
@@ -58,7 +58,7 @@ export const DOCS_NAV = [
     label: "AI Agents",
     title: "AI Agents",
     icon: Bot,
-    description: "Build autonomous agents that read, write, and pay using the Medialane API — x402 pay-per-call micropayments in USDC, machine-readable discovery, and MDLN credit bonuses.",
+    description: "Build autonomous agents that read, write, and pay using the Medialane API: x402 pay-per-call micropayments in USDC, machine-readable discovery, and MDLN credit bonuses.",
   },
   {
     href: "/dev/security",
@@ -72,14 +72,14 @@ export const DOCS_NAV = [
     label: "Fees & Revenue",
     title: "Fees & Revenue",
     icon: Coins,
-    description: "Canonical fee model — free actions, gas sponsorship, royalties, marketplace fees, DAO treasury flow, and Creator's Airdrop governance.",
+    description: "Canonical fee model: free actions, gas sponsorship, royalties, marketplace fees, DAO treasury flow, and Creator's Airdrop governance.",
   },
   {
     href: "/dev/governance",
     label: "Governance",
     title: "Governance",
     icon: Vote,
-    description: "How the Medialane DAO governs the protocol — Snapshot voting, MDLN, the service registry, and the progressive-decentralization arc.",
+    description: "How the Medialane DAO governs the protocol: Snapshot voting, MDLN, the service registry, and the progressive-decentralization arc.",
   },
 ] as const;
 

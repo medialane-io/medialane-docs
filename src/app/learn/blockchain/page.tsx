@@ -23,7 +23,7 @@ export default function BlockchainPage() {
         <span className="pill-badge">Fundamentals</span>
         <h2 className="text-2xl font-bold">What is Blockchain?</h2>
         <p className="text-muted-foreground leading-relaxed">
-          A blockchain is a distributed, append-only ledger — a database that is maintained by thousands
+          A blockchain is a distributed, append-only ledger: a database that is maintained by thousands
           of computers simultaneously, where records can be added but never erased or silently altered.
           This simple property has profound implications for ownership, trust, and intellectual property.
         </p>
@@ -36,8 +36,8 @@ export default function BlockchainPage() {
           {[
             { icon: Layers, title: "Immutability", desc: "Once a record is added to a blockchain, it cannot be changed or deleted. Every transaction, every ownership transfer, every license grant is permanent and auditable." },
             { icon: Globe, title: "Decentralization", desc: "No single party controls the blockchain. Thousands of independent nodes validate and store the data, meaning no government, company, or individual can censor or alter it." },
-            { icon: Shield, title: "Trustlessness", desc: "You don't need to trust any party — you trust the math. Smart contracts execute exactly as written, with no possibility of last-minute changes or hidden clauses." },
-            { icon: Clock, title: "Transparency", desc: "All transactions are publicly visible. Anyone can verify who owns what, when a transfer happened, and what licenses are attached — without asking anyone for permission." },
+            { icon: Shield, title: "Trustlessness", desc: "You don't need to trust any party; you trust the math. Smart contracts execute exactly as written, with no possibility of last-minute changes or hidden clauses." },
+            { icon: Clock, title: "Transparency", desc: "All transactions are publicly visible. Anyone can verify who owns what, when a transfer happened, and what licenses are attached, without asking anyone for permission." },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bento-cell p-5 space-y-3">
               <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -56,7 +56,7 @@ export default function BlockchainPage() {
         <p className="text-sm text-muted-foreground leading-relaxed">
           When you mint an NFT on Medialane, a record is written to the Starknet blockchain stating:
           &ldquo;This wallet address is the owner of this IP asset, registered at this timestamp, with these license terms.&rdquo;
-          That record is cryptographically linked to every record before it — forming an unbroken chain of history.
+          That record is cryptographically linked to every record before it, forming an unbroken chain of history.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
           When you later sell or license the asset, another record is appended: &ldquo;The previous owner transferred
@@ -71,7 +71,7 @@ export default function BlockchainPage() {
           Medialane is built on <strong className="text-foreground">Starknet</strong>, an Ethereum Layer 2 network
           that uses zero-knowledge proofs to bundle thousands of transactions into a single cryptographic proof
           verified on Ethereum. That proof inherits Ethereum's settlement security while keeping per-transaction
-          cost low — making gasless transactions feasible.
+          cost low, making gasless transactions feasible.
         </p>
       </div>
 

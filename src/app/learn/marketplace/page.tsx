@@ -4,15 +4,15 @@ import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Marketplace | Learn | Medialane",
-  description: "How the Medialane marketplace works — venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
+  description: "How the Medialane marketplace works: venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
   openGraph: {
     title: "Marketplace | Learn | Medialane",
-    description: "How the Medialane marketplace works — venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
+    description: "How the Medialane marketplace works: venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
     url: "https://docs.medialane.io/learn/marketplace",
   },
   twitter: {
     title: "Marketplace | Learn | Medialane",
-    description: "How the Medialane marketplace works — venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
+    description: "How the Medialane marketplace works: venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
   },
 };
 
@@ -31,10 +31,10 @@ export default function LearnMarketplacePage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Marketplace</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          The Medialane Marketplace is a venue service — a set of immutable smart contracts
-          where IP assets are listed, offered on, and traded. No custody. No intermediary.
-          Settlement is atomic: the NFT and the payment move in the same transaction,
-          or both revert.
+          The Medialane Marketplace is a venue service: a set of immutable smart contracts
+          where IP assets are listed, offered on, and traded, with no custody and no
+          intermediary. Settlement is atomic: the NFT and the payment move in the same
+          transaction, or both revert.
         </p>
       </div>
 
@@ -44,7 +44,7 @@ export default function LearnMarketplacePage() {
           <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
             <p className="font-bold text-foreground">The marketplace contract never holds your assets.</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              A listing is a signed order — a cryptographic intent that sits on-chain. Your NFT
+              A listing is a signed order: a cryptographic intent that sits on-chain. Your NFT
               stays in your wallet until a buyer fills the order. At that moment, the NFT and
               the payment swap atomically in a single Starknet transaction. If anything fails,
               both revert.
@@ -78,7 +78,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">orderHash</code>{" "}
             is permanently invalidated. A counter-offer is a new order with a{" "}
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">parentOrderHash</code>{" "}
-            reference — both parties can cancel at any time before acceptance.
+            reference; both parties can cancel at any time before acceptance.
           </p>
         </Section>
 
@@ -95,7 +95,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-sm font-semibold text-foreground">Offer (bid)</p>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Click <strong>Make offer</strong> on any asset — listed or not. The offer
+                Click <strong>Make offer</strong> on any asset, listed or not. The offer
                 is a signed on-chain intent. No funds are locked until the creator accepts.
                 Creators receive notifications in Portfolio → Offers received.
               </p>
@@ -111,7 +111,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-sm font-semibold text-foreground">Partial fills (ERC-1155)</p>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Multi-edition assets support partial fills — buy any quantity up to the
+                Multi-edition assets support partial fills: buy any quantity up to the
                 available supply. The order stays ACTIVE after your purchase so other
                 collectors can buy the remaining editions. Total = price per unit × quantity.
               </p>
@@ -136,7 +136,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
 
         <Section title="Fees Are a Platform Layer">
           <p>
-            The marketplace venue contracts are <strong className="text-foreground">zero-fee</strong> —
+            The marketplace venue contracts are <strong className="text-foreground">zero-fee</strong>:
             they take no cut. The 1% fee on completed sales is applied at the{" "}
             <strong className="text-foreground">platform layer</strong> (at settlement), never inside
             the contract, and is routed to the creators fund. Because the fee lives at the
@@ -150,9 +150,9 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             by a limit the seller agrees to when signing the order.
           </p>
           <p className="text-sm">
-            On medialane.io, transactions are frictionless — wallet setup, listing, and offer
+            On medialane.io, transactions are frictionless: wallet setup, listing, and offer
             creation are all gas-sponsored. On the wallet-sovereign Starknet app, gas
-            sponsorship depends on whether AVNU sponsorship is currently active — check the
+            sponsorship depends on whether AVNU sponsorship is currently active; check the
             app for real-time status. See{" "}
             <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
             for the canonical breakdown.
@@ -165,7 +165,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             from Portfolio → Listings / Offers sent. Cancellation is an on-chain
             transaction that permanently invalidates the{" "}
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">orderHash</code>.
-            No funds or assets are lost — a small gas fee applies.
+            No funds or assets are lost, though a small gas fee applies.
           </p>
         </Section>
 

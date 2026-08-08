@@ -6,11 +6,11 @@ import { DOCS_NAV } from "@/lib/docs-nav"
 export const metadata: Metadata = {
   title: "Developers | Medialane Docs",
   description:
-    "Build on Medialane — the protocol, SDK, API, and contracts. Permissionless and verifiable, for people and AI agents alike.",
+    "Build on Medialane: the protocol, SDK, API, and contracts. Permissionless and verifiable, for people and AI agents alike.",
   openGraph: {
     title: "Developers | Medialane Docs",
     description:
-      "Build on Medialane — the protocol, SDK, API, and contracts. Permissionless and verifiable, for people and AI agents alike.",
+      "Build on Medialane: the protocol, SDK, API, and contracts. Permissionless and verifiable, for people and AI agents alike.",
     url: "https://docs.medialane.io/dev",
   },
 }
@@ -20,9 +20,9 @@ export default function DeveloperHubPage() {
     <div className="space-y-10">
       <div className="max-w-2xl">
         <p className="text-muted-foreground leading-relaxed">
-          Medialane is an open protocol — a set of immutable contracts and the SDK and API that
+          Medialane is an open protocol: a set of immutable contracts and the SDK and API that
           expose them. Anyone can build on it without asking, and everything the apps do is
-          available to you and to autonomous agents on the same terms — including paying per call
+          available to you and to autonomous agents on the same terms, including paying per call
           with x402 micropayments in USDC, no account or card required. The contract is the only
           authority; every claim here is something you can verify on-chain.
         </p>

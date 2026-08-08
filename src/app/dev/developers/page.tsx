@@ -5,15 +5,15 @@ import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Developers | Medialane Docs",
-  description: "Developer quickstart — portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
+  description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
   openGraph: {
     title: "Developers | Medialane Docs",
-    description: "Developer quickstart — portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
+    description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
     url: "https://docs.medialane.io/dev/developers",
   },
   twitter: {
     title: "Developers | Medialane Docs",
-    description: "Developer quickstart — portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
+    description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
   },
 };
 
@@ -32,13 +32,13 @@ export default function DocsDevsPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Developer Guide</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Everything you need to integrate with Medialane — from API key setup to
+          Everything you need to integrate with Medialane, from API key setup to
           real-time webhooks and MDLN-boosted quotas.
         </p>
         <p className="text-sm text-muted-foreground">
           The Medialane stack has four layers: immutable contracts on Starknet, an indexer that
           reads chain events, the SDK that wraps both, and apps on top. The API and SDK give you
-          access to everything the apps can do — and nothing they do can override the contracts.
+          access to everything the apps can do, and nothing they do can override the contracts.
           See{" "}
           <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link>{" "}
           for the full model.
@@ -53,7 +53,7 @@ export default function DocsDevsPage() {
             <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
               portal.medialane.io
             </a>.
-            Sign in, create a project, and copy your key. The free tier provides 50 requests per calendar month —
+            Sign in, create a project, and copy your key. The free tier provides 50 requests per calendar month,
             no credit card required.
           </p>
           <Code>{`# Sign in at portal.medialane.io → Projects → New Key
@@ -67,7 +67,7 @@ export MEDIALANE_API_KEY=ml_live_your_key_here`}</Code>
         <Section title="2. Boost Your Quota with MDLN">
           <p>
             Hold MDLN tokens and register them in the portal to unlock a quota multiplier.
-            The multiplier is checked on-chain when your key is registered — you keep the
+            The multiplier is checked on-chain when your key is registered, and you keep the
             boost for the remainder of the billing period.
           </p>
           <div className="space-y-2">

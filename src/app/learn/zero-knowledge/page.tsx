@@ -26,7 +26,7 @@ export default function ZeroKnowledgePage() {
         <p className="text-muted-foreground leading-relaxed">
           A zero-knowledge proof (ZKP) lets you prove that something is true without revealing anything
           about <em>why</em> it is true. Imagine proving you know a secret without ever saying the secret aloud.
-          This seemingly simple idea is the foundation of Starknet — and it has powerful implications for
+          This seemingly simple idea is the foundation of Starknet, and it has powerful implications for
           privacy, scalability, and trust.
         </p>
       </div>
@@ -37,12 +37,12 @@ export default function ZeroKnowledgePage() {
         <p className="text-sm text-muted-foreground leading-relaxed">
           Imagine a maze with two entrances (A and B) that meet in the middle. You want to prove you know the
           secret path through without revealing the path itself. You enter from one side while a verifier picks
-          which exit they want to see you emerge from. Repeat this 100 times — if you always emerge from the
+          which exit they want to see you emerge from. Repeat this 100 times: if you always emerge from the
           correct exit, the verifier is statistically certain you know the path, but you&apos;ve revealed nothing
           about the path itself.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Real ZK proofs work similarly — but with mathematics instead of mazes, and in milliseconds.
+          Real ZK proofs work similarly, but with mathematics instead of mazes, and in milliseconds.
         </p>
       </div>
 
@@ -51,10 +51,10 @@ export default function ZeroKnowledgePage() {
         <h3 className="text-lg font-semibold">Why It Matters</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
-            { icon: Shield, title: "Validity", desc: "ZK proofs guarantee that a computation was performed correctly — no one can submit fake transactions that violate the rules of the protocol." },
-            { icon: Eye, title: "Privacy", desc: "The same proof mechanics let an application confirm ownership or eligibility without revealing the underlying data — proving you hold a token without revealing which one." },
+            { icon: Shield, title: "Validity", desc: "ZK proofs guarantee that a computation was performed correctly, so no one can submit fake transactions that violate the rules of the protocol." },
+            { icon: Eye, title: "Privacy", desc: "The same proof mechanics let an application confirm ownership or eligibility without revealing the underlying data, proving you hold a token without revealing which one." },
             { icon: Zap, title: "Scalability", desc: "Starknet bundles thousands of transactions into one ZK-STARK proof verified on Ethereum. This makes gas fees tiny and throughput massive." },
-            { icon: Lock, title: "Security", desc: "ZK-STARKs (the variant used by Starknet) are quantum-resistant — unlike older cryptographic systems, they are secure against future quantum computers." },
+            { icon: Lock, title: "Security", desc: "ZK-STARKs (the variant used by Starknet) are quantum-resistant, secure against future quantum computers unlike older cryptographic systems." },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bento-cell p-5 space-y-3">
               <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -71,12 +71,12 @@ export default function ZeroKnowledgePage() {
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">ZK Proofs on Medialane</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Every transaction on Medialane — minting an NFT, transferring ownership, executing a marketplace sale —
+          Every transaction on Medialane (minting an NFT, transferring ownership, executing a marketplace sale)
           is included in a batch that Starknet proves to Ethereum with a ZK-STARK. This means your IP records
           inherit the full security of Ethereum, regardless of how many transactions are processed.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          The same selective-disclosure property extends beyond transaction validity — to what a
+          The same selective-disclosure property extends beyond transaction validity, to what a
           creator chooses to keep confidential about their own economics. See{" "}
           <Link href="/learn/privacy" className="text-primary hover:underline">Privacy on Medialane</Link>.
         </p>

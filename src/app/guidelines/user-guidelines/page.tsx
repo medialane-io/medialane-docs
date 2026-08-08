@@ -4,15 +4,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "User Guidelines | Medialane",
-  description: "How to use the Medialane platform responsibly — account rules, content standards, marketplace conduct, and wallet security.",
+  description: "How to use the Medialane platform responsibly: account rules, content standards, marketplace conduct, and wallet security.",
   openGraph: {
     title: "User Guidelines | Medialane",
-    description: "How to use the Medialane platform responsibly — account rules, content standards, marketplace conduct, and wallet security.",
+    description: "How to use the Medialane platform responsibly: account rules, content standards, marketplace conduct, and wallet security.",
     url: "https://docs.medialane.io/guidelines/user-guidelines",
   },
   twitter: {
     title: "User Guidelines | Medialane",
-    description: "How to use the Medialane platform responsibly — account rules, content standards, marketplace conduct, and wallet security.",
+    description: "How to use the Medialane platform responsibly: account rules, content standards, marketplace conduct, and wallet security.",
   },
 };
 
@@ -24,7 +24,7 @@ export default function UserGuidelinesPage() {
         <p className="text-muted-foreground text-lg leading-relaxed">
           Medialane is an open platform built on trust between creators, collectors, and the
           community. These guidelines exist alongside our Terms of Use and apply to all
-          users — creators, collectors, and developers.
+          users: creators, collectors, and developers.
         </p>
         <p className="text-xs text-muted-foreground">Last updated: January 2026</p>
       </div>
@@ -50,7 +50,7 @@ export default function UserGuidelinesPage() {
             <li>You must own or have explicit rights to the content you mint</li>
             <li>Content must not infringe the copyright or trademark of any third party</li>
             <li>Content must not be illegal in your jurisdiction or the jurisdictions of our users</li>
-            <li><strong className="text-foreground">No child sexual abuse material (CSAM)</strong> — zero tolerance, permanent ban</li>
+            <li><strong className="text-foreground">No child sexual abuse material (CSAM)</strong>: zero tolerance, permanent ban</li>
             <li>No non-consensual intimate imagery (NCII)</li>
             <li>No content designed to harass, threaten, or dox specific individuals</li>
             <li>No content that promotes violence against specific groups or individuals</li>
@@ -60,7 +60,7 @@ export default function UserGuidelinesPage() {
         <Section title="Acceptable Use">
           <ul className="list-disc list-inside space-y-1.5 text-sm">
             <li>Use Medialane only for lawful purposes and in accordance with these guidelines.</li>
-            <li>Only mint or list IP to which you hold the rights — plagiarism and infringement are violations.</li>
+            <li>Only mint or list IP to which you hold the rights; plagiarism and infringement are violations.</li>
             <li>NFT metadata (title, description, attributes) must be accurate and not misleading.</li>
             <li>Pricing must reflect genuine intent to sell.</li>
           </ul>
@@ -70,9 +70,9 @@ export default function UserGuidelinesPage() {
           <p>
             By minting content on Medialane you represent and warrant that you are the
             original creator of the work or hold a valid license to mint it as an NFT.
-            Minting content you do not own — including screenshots of others&apos; work,
+            Minting content you do not own, including screenshots of others&apos; work,
             AI-generated content from models trained on unlicensed data, or remixes without
-            appropriate rights — is a violation of these guidelines and may expose you to
+            appropriate rights, is a violation of these guidelines and may expose you to
             legal liability.
           </p>
           <p>
@@ -86,9 +86,9 @@ export default function UserGuidelinesPage() {
         <Section title="Marketplace Conduct">
           <p>All marketplace transactions must be conducted in good faith. The following are prohibited:</p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li>Wash trading — buying and selling to yourself to inflate volume metrics</li>
-            <li>Shill bidding — placing offers you do not intend to honour</li>
-            <li>Misleading listings — misrepresenting the content, rights, or provenance of an asset</li>
+            <li>Wash trading: buying and selling to yourself to inflate volume metrics</li>
+            <li>Shill bidding: placing offers you do not intend to honour</li>
+            <li>Misleading listings: misrepresenting the content, rights, or provenance of an asset</li>
             <li>Manipulation of floor prices through coordinated activity</li>
             <li>Using the platform to launder funds or circumvent financial regulations</li>
             <li>Exploiting platform bugs for financial gain without responsible disclosure</li>
@@ -100,14 +100,14 @@ export default function UserGuidelinesPage() {
           <p>
             Your Medialane wallet is a private key generated on your device and sealed
             behind your device passkey (Face ID, Touch ID, Windows Hello, or a hardware
-            security key). It never leaves your device and is never sent to us — we cannot
+            security key). It never leaves your device and is never sent to us; we cannot
             recover it for you if it&apos;s lost, so keep the device holding it secure.
           </p>
           <p>
             If you suspect unauthorized access to your device, secure it immediately and
             contact support.{" "}
             <strong className="text-foreground">Medialane will never ask for your seed
-            phrase or private key</strong> — by email, chat, or any other channel.
+            phrase or private key</strong>, by email, chat, or any other channel.
           </p>
         </Section>
 

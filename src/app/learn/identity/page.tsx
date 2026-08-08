@@ -5,15 +5,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Identity | Learn | Medialane",
-  description: "How identity works on Medialane — Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
+  description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
   openGraph: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane — Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
+    description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
     url: "https://docs.medialane.io/learn/identity",
   },
   twitter: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane — Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
+    description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
   },
 };
 
@@ -24,7 +24,7 @@ const FACETS = [
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    def: "The cryptographic key. The only thing that signs transactions. Your wallet is your proof of identity on-chain, standing in for a username and password — with account recovery handled by the wallet, not Medialane.",
+    def: "The cryptographic key. The only thing that signs transactions. Your wallet is your proof of identity on-chain, standing in for a username and password, with account recovery handled by the wallet itself, not Medialane.",
     note: "Self-custody: your keys, your assets. Medialane cannot recover a lost wallet.",
   },
   {
@@ -33,7 +33,7 @@ const FACETS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    def: "The logical actor — your own stable identity, not a wallet address. Wallets, social/email logins, and agent keys all attach to it; none of them is the account, and an account does not require a wallet at all (a social-login user with no wallet is still a first-class account). It aggregates the work you have created, assets you have collected, and credentials you have earned across every wallet or login attached to it.",
+    def: "The logical actor: your own stable identity, distinct from any wallet address. Wallets, social/email logins, and agent keys all attach to it; none of them is the account, and an account does not require a wallet at all (a social-login user with no wallet is still a first-class account). It aggregates the work you have created, assets you have collected, and credentials you have earned across every wallet or login attached to it.",
     note: "A wallet declares it belongs to an account via a signed statement; the account can rotate or add wallets without losing its history.",
   },
   {
@@ -42,7 +42,7 @@ const FACETS = [
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    def: "Your public face. Name, bio, avatar, social handles. This is off-chain enrichment — editable, optional, separate from your protocol identity. Losing your profile loses nothing protocol-critical.",
+    def: "Your public face. Name, bio, avatar, social handles. This is off-chain enrichment: editable, optional, separate from your protocol identity. Losing your profile loses nothing protocol-critical.",
     note: "Profiles are platform state, not protocol state. They make you discoverable. They do not define what you own.",
   },
 ];
@@ -50,7 +50,7 @@ const FACETS = [
 const ROLES = [
   { role: "Creator", desc: "Has deployed at least one collection or minted IP assets. Unlocks creation-focused tools in the app UI." },
   { role: "Collector", desc: "Holds IP assets in their wallet. The default role for anyone purchasing or receiving creative work." },
-  { role: "Organization", desc: "A multi-wallet entity — a brand, label, or DAO operating on the platform. Managed through the portal." },
+  { role: "Organization", desc: "A multi-wallet entity: a brand, label, or DAO operating on the platform. Managed through the portal." },
   { role: "Agent", desc: "An AI or automated system operating via the API. Identical protocol capabilities to human accounts." },
 ];
 
@@ -90,7 +90,7 @@ export default function LearnIdentityPage() {
 
         <Section title="Roles">
           <p>
-            Roles describe what you do on Medialane — not what the protocol allows.
+            Roles describe what you do on Medialane, not what the protocol allows.
             Medialane is permissionless: anyone with a wallet can mint, list, or transfer.
             Roles gate what the UI surfaces to you, not what the contracts permit.
           </p>
@@ -114,7 +114,7 @@ export default function LearnIdentityPage() {
                 <p className="font-bold text-foreground text-sm">Authentication</p>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Proving who you are. Every Medialane app uses the same mechanism — SIWS,
+                Proving who you are. Every Medialane app uses the same mechanism, SIWS,
                 Sign In With Starknet: you sign a message with your wallet (unlocked by your
                 device passkey) and the API verifies the signature, no password or
                 third-party identity provider involved anywhere on the platform.
@@ -126,7 +126,7 @@ export default function LearnIdentityPage() {
                 <p className="font-bold text-foreground text-sm">Authorization</p>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Proving what you can do. Authorization is determined by on-chain state —
+                Proving what you can do. Authorization is determined by on-chain state:
                 what assets you hold, what contracts record about your wallet. Medialane does
                 not grant permissions. The contract is the authority.
               </p>

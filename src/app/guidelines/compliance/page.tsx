@@ -4,15 +4,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Compliance | Medialane",
-  description: "Medialane's approach to regulatory compliance — KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
+  description: "Medialane's approach to regulatory compliance: KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
   openGraph: {
     title: "Compliance | Medialane",
-    description: "Medialane's approach to regulatory compliance — KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
+    description: "Medialane's approach to regulatory compliance: KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
     url: "https://docs.medialane.io/guidelines/compliance",
   },
   twitter: {
     title: "Compliance | Medialane",
-    description: "Medialane's approach to regulatory compliance — KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
+    description: "Medialane's approach to regulatory compliance: KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
   },
 };
 
@@ -33,7 +33,7 @@ export default function CompliancePage() {
         <Section title="Overview">
           <p>
             Medialane is built on the{" "}
-            <strong className="text-foreground">Mediolano protocol</strong> — a
+            <strong className="text-foreground">Mediolano protocol</strong>, a
             permissionless, open-source IP protection and licensing infrastructure.
             The decentralized architecture is designed to comply with applicable laws
             while preserving user privacy and sovereignty.
@@ -49,7 +49,7 @@ export default function CompliancePage() {
             {[
               {
                 title: "Berne Convention (1886)",
-                desc: "Administered by WIPO. Ensures automatic copyright protection across 181 signatory countries from the moment a work is fixed — no registration required.",
+                desc: "Administered by WIPO. Ensures automatic copyright protection across 181 signatory countries from the moment a work is fixed, with no registration required.",
               },
               {
                 title: "WIPO Copyright Treaty",
@@ -71,7 +71,7 @@ export default function CompliancePage() {
         <Section title="KYC / AML Policy">
           <p>As a non-custodial platform:</p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li>Medialane <strong className="text-foreground">does not hold user funds</strong> — assets remain in user-controlled wallets at all times.</li>
+            <li>Medialane <strong className="text-foreground">does not hold user funds</strong>; assets remain in user-controlled wallets at all times.</li>
             <li>We do not perform Know Your Customer (KYC) checks on general users.</li>
             <li>We implement wallet screening to block addresses associated with known illicit activity.</li>
           </ul>
@@ -86,7 +86,7 @@ export default function CompliancePage() {
           <p>
             IP tokens generated on Medialane and the Mediolano protocol are{" "}
             <strong className="text-foreground">utility tokens</strong> representing
-            ownership or licensing rights over a specific creative work — not investment
+            ownership or licensing rights over a specific creative work, not investment
             contracts or financial instruments. The MDLN token is a{" "}
             <strong className="text-foreground">governance token</strong> used for DAO
             participation, not an investment product.
@@ -124,14 +124,14 @@ export default function CompliancePage() {
           <p>
             Medialane applies <strong className="text-foreground">GDPR</strong> principles
             to personal data for users in the European Economic Area and follows equivalent
-            standards globally (including <strong className="text-foreground">CCPA</strong>) —
+            standards globally (including <strong className="text-foreground">CCPA</strong>):
             data minimization, purpose limitation, and user rights (access, deletion,
             portability) are core to our data-handling practices.
           </p>
           <p>
-            On-chain data — transactions, wallet addresses, token metadata — is inherently
+            On-chain data (transactions, wallet addresses, token metadata) is inherently
             public and permanent on Starknet. Your wallet's private key never leaves your
-            device — sealed behind your device passkey, it is never transmitted to us or
+            device; sealed behind your device passkey, it is never transmitted to us or
             any third party. See our{" "}
             <Link href="/guidelines/privacy" className="text-primary hover:underline">Privacy Policy</Link>{" "}
             for full details.
