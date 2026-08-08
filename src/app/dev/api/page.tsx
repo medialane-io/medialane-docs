@@ -389,13 +389,13 @@ export default function ApiReferencePage() {
       <Endpoint
         method="PATCH"
         path="/v1/coins/:contract"
-        description="Update a coin's image and/or description. Creator-authed (SIWS or Clerk JWT) — only the coin's on-chain creator may edit. The creator is set trustlessly from the factory event, never from the request body."
+        description="Update a coin's image and/or description. Creator-authed (SIWS token) — only the coin's on-chain creator may edit. The creator is set trustlessly from the factory event, never from the request body."
         params={[
           { name: "image", type: "string", desc: "ipfs:// or https:// URI (body, optional, nullable)" },
           { name: "description", type: "string", desc: "Up to 500 chars (body, optional, nullable)" },
         ]}
         curl={`curl -X PATCH "${BASE}/v1/coins/0x04c1..." \\
-  -H "Authorization: Bearer <SIWS_JWT>" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
   -H "Content-Type: application/json" \\
   -d '{"description": "Founding community coin"}'`}
         response={`{
@@ -1820,7 +1820,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/drop/conditions"
-        description="Store claim conditions after a successful create_drop transaction. Requires a Clerk JWT — only the collection owner (owner or claimedBy) may set conditions. Amounts are integer strings in token base units; set price to '0' for free mints and endTime to 0 for no expiry."
+        description="Store claim conditions after a successful create_drop transaction. Requires a SIWS token — only the collection owner (owner or claimedBy) may set conditions. Amounts are integer strings in token base units; set price to '0' for free mints and endTime to 0 for no expiry."
         params={[
           { name: "collectionAddress", type: "string", required: true, desc: "Drop collection contract address" },
           { name: "maxSupply", type: "string", required: true, desc: "Total supply cap (integer string)" },
@@ -1832,7 +1832,7 @@ const resumeSource = new EventSource(url, {
         ]}
         curl={`curl -X POST "${BASE}/v1/drop/conditions" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <clerk-jwt>" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
   -H "Content-Type: application/json" \\
   -d '{"collectionAddress":"0x03587f...","maxSupply":"1000","price":"1000000","startTime":1740000000,"endTime":1745000000,"maxPerWallet":"5"}'`}
         response={`{
@@ -2271,24 +2271,24 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/users/register"
-        description="Frictionless registration, authenticated by tenant API key (no Clerk JWT). The wallet address is supplied in the body. Idempotent — returns the existing Account if the wallet is already known. Used by medialane-starknet to silently register web3 wallet connections."
+        description="Frictionless registration, authenticated by tenant API key (no SIWS token needed). The wallet address is supplied in the body. Idempotent — returns the existing Account if the wallet is already known. Used by medialane-starknet to silently register web3 wallet connections."
         params={[
           { name: "walletAddress", type: "string", required: true, desc: "Starknet wallet address" },
-          { name: "walletType", type: "string", required: false, desc: "ARGENT | BRAAVOS | CARTRIDGE | PRIVY | CHIPIPAY | INJECTED | UNKNOWN" },
-          { name: "appSource", type: "string", required: false, desc: "MEDIALANE_DAPP | MEDIALANE_IO | MEDIALANE_PORTAL | MEDIALANE_SDK" },
+          { name: "walletType", type: "string", required: false, desc: "Free-form wallet-software label, e.g. \"braavos\" | \"ready\" | \"mediawallet\" | \"cartridge\" — not a closed enum" },
+          { name: "appSource", type: "string", required: false, desc: "MEDIALANE_STARKNET | MEDIALANE_IO | MEDIALANE_PORTAL | MEDIALANE_SDK" },
           { name: "chain", type: "string", required: false, desc: "Defaults to STARKNET" },
         ]}
         curl={`curl -X POST "${BASE}/v1/users/register" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{"walletAddress":"0x0591...","walletType":"ARGENT","appSource":"MEDIALANE_DAPP"}'`}
+  -d '{"walletAddress":"0x0591...","walletType":"braavos","appSource":"MEDIALANE_STARKNET"}'`}
         response={`{
   "accountId": "acc_...",
   "publicId": "ml_...",
   "walletAddress": "0x0591...",
   "chain": "STARKNET",
-  "walletType": "ARGENT",
-  "appSource": "MEDIALANE_DAPP",
+  "walletType": "braavos",
+  "appSource": "MEDIALANE_STARKNET",
   "createdAt": "2026-05-27T12:00:00Z"
 }`}
       />
@@ -2296,7 +2296,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/users/me"
-        description="Upsert the authenticated caller's Account (lazy onboarding for first-touch flows). Identity is taken from the Bearer token — a Clerk JWT (medialane-io) or a SIWS token (medialane-starknet / agents). The wallet address comes from the verified token, never the body."
+        description="Upsert the authenticated caller's Account (lazy onboarding for first-touch flows). Identity is taken from the Bearer token — a SIWS token, the same auth mechanism every Medialane app uses. The wallet address comes from the verified token, never the body."
         params={[
           { name: "walletType", type: "string", required: false, desc: "Defaults to UNKNOWN" },
           { name: "appSource", type: "string", required: false, desc: "Defaults to MEDIALANE_IO" },
@@ -2304,9 +2304,9 @@ const resumeSource = new EventSource(url, {
         ]}
         curl={`curl -X POST "${BASE}/v1/users/me" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <clerk-jwt-or-siws-token>" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
   -H "Content-Type: application/json" \\
-  -d '{"walletType":"CHIPIPAY","appSource":"MEDIALANE_IO","chain":"STARKNET"}'`}
+  -d '{"walletType":"mediawallet","appSource":"MEDIALANE_IO","chain":"STARKNET"}'`}
         response={`{
   "walletAddress": "0x0591..."
 }`}
@@ -2315,11 +2315,11 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/users/me"
-        description="Return the authenticated caller's account identifiers, or 404 if the wallet has no Account yet. Identity from the Bearer token (Clerk JWT or SIWS)."
+        description="Return the authenticated caller's account identifiers, or 404 if the wallet has no Account yet. Identity from the Bearer token (SIWS)."
         params={[]}
         curl={`curl "${BASE}/v1/users/me" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <clerk-jwt-or-siws-token>"`}
+  -H "Authorization: Bearer <SIWS_TOKEN>"`}
         response={`{
   "walletAddress": "0x0591...",
   "accountId": "acc_...",
@@ -2354,13 +2354,13 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/collections/:contract/gated-content"
-        description="Return a collection's holder-only content (title, url, type) to verified holders. Requires a Clerk JWT — the caller's balance is read live from the contract (balance_of for ERC-721, balance_of_batch for ERC-1155), never from the indexer cache, so access reflects current on-chain ownership. Non-holders get 403; the gatedContentUrl is never exposed via the public profile endpoint."
+        description="Return a collection's holder-only content (title, url, type) to verified holders. Requires a SIWS token — the caller's balance is read live from the contract (balance_of for ERC-721, balance_of_batch for ERC-1155), never from the indexer cache, so access reflects current on-chain ownership. Non-holders get 403; the gatedContentUrl is never exposed via the public profile endpoint."
         params={[
           { name: "contract", type: "string", required: true, desc: "Collection contract address" },
         ]}
         curl={`curl "${BASE}/v1/collections/0x076c.../gated-content" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <clerk-jwt>"`}
+  -H "Authorization: Bearer <SIWS_TOKEN>"`}
         response={`{
   "title": "Behind the scenes",
   "url": "https://...",
@@ -2418,7 +2418,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/reports"
-        description="Submit a report. Requires a Clerk JWT or SIWS token (identity auth) in addition to the tenant key. 409 if the caller already reported this target; 429 if the per-wallet hourly limit is hit."
+        description="Submit a report. Requires a SIWS token (identity auth) in addition to the tenant key. 409 if the caller already reported this target; 429 if the per-wallet hourly limit is hit."
         params={[
           { name: "targetType", type: "string", required: true, desc: "COLLECTION | TOKEN | CREATOR | COMMENT" },
           { name: "targetKey", type: "string", required: true, desc: "Stable target key (e.g. COMMENT::<id>)" },
@@ -2430,7 +2430,7 @@ const resumeSource = new EventSource(url, {
         ]}
         curl={`curl -X POST "${BASE}/v1/reports" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <clerk-jwt-or-siws-token>" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
   -H "Content-Type: application/json" \\
   -d '{"targetType":"TOKEN","targetKey":"0x05e7...:42","targetContract":"0x05e7...","targetTokenId":"42","categories":["SCAM_FRAUD"]}'`}
         response={`{
@@ -2446,7 +2446,7 @@ const resumeSource = new EventSource(url, {
       {/* ── NAME & SLUG CLAIMS ── */}
       <DocH2 id="claims-naming" border>Username &amp; Slug Claims</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Vanity usernames (per wallet) and collection slugs (per contract). Availability checks are public; submissions require a Clerk JWT and are reviewed by an admin before the name goes live.
+        Vanity usernames (per wallet) and collection slugs (per contract). Availability checks are public; submissions require a SIWS token and are reviewed by an admin before the name goes live.
       </p>
 
       <Endpoint
@@ -2464,14 +2464,14 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/username-claims"
-        description="Submit a username claim. Requires a Clerk JWT. One pending claim per wallet at a time."
+        description="Submit a username claim. Requires a SIWS token. One pending claim per wallet at a time."
         params={[
           { name: "username", type: "string", required: true, desc: "Requested username" },
           { name: "notifyEmail", type: "string", required: false, desc: "Email to notify on review" },
         ]}
         curl={`curl -X POST "${BASE}/v1/username-claims" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <clerk-jwt>" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
   -H "Content-Type: application/json" \\
   -d '{"username":"satoshi"}'`}
         response={`{
@@ -2487,11 +2487,11 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/username-claims/me"
-        description="Return all username claims submitted by the authenticated wallet. Requires a Clerk JWT."
+        description="Return all username claims submitted by the authenticated wallet. Requires a SIWS token."
         params={[]}
         curl={`curl "${BASE}/v1/username-claims/me" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <clerk-jwt>"`}
+  -H "Authorization: Bearer <SIWS_TOKEN>"`}
         response={`{
   "username": "satoshi",
   "claim": { "id": "ucl_...", "username": "satoshi", "status": "APPROVED" }
@@ -2513,7 +2513,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/collection-slug-claims"
-        description="Submit a collection slug claim. Requires a Clerk JWT — the caller must be the collection owner (owner or claimedBy). One pending claim per collection at a time."
+        description="Submit a collection slug claim. Requires a SIWS token — the caller must be the collection owner (owner or claimedBy). One pending claim per collection at a time."
         params={[
           { name: "contractAddress", type: "string", required: true, desc: "Collection contract address" },
           { name: "slug", type: "string", required: true, desc: "Requested slug" },
@@ -2521,7 +2521,7 @@ const resumeSource = new EventSource(url, {
         ]}
         curl={`curl -X POST "${BASE}/v1/collection-slug-claims" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <clerk-jwt>" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
   -H "Content-Type: application/json" \\
   -d '{"contractAddress":"0x076c...","slug":"genesis"}'`}
         response={`{
@@ -2537,11 +2537,11 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/collection-slug-claims/me"
-        description="Return all collection slug claims submitted by the authenticated wallet. Requires a Clerk JWT."
+        description="Return all collection slug claims submitted by the authenticated wallet. Requires a SIWS token."
         params={[]}
         curl={`curl "${BASE}/v1/collection-slug-claims/me" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <clerk-jwt>"`}
+  -H "Authorization: Bearer <SIWS_TOKEN>"`}
         response={`{
   "claims": [
     { "id": "scl_...", "slug": "genesis", "status": "APPROVED" }

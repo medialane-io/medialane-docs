@@ -32,15 +32,15 @@ export default function UserGuidelinesPage() {
       <div className="space-y-8">
         <Section title="Account Rules">
           <p>
-            Each user may hold one Medialane account, tied to your Clerk authentication
-            identity. Sharing accounts, or using automation to create multiple accounts
+            Each user may hold one Medialane account, tied to your self-custody wallet.
+            Sharing accounts, or using automation to create multiple accounts
             (including to circumvent a ban), is prohibited and may result in permanent
             suspension. Accounts showing signs of bot activity or automated abuse may be
             suspended without notice.
           </p>
           <p>
-            You are responsible for all activity under your account. Keep your credentials
-            (PIN, passkey) secure and never share them.
+            You are responsible for all activity under your account. Keep the device
+            holding your passkey secure and never share access to it.
           </p>
         </Section>
 
@@ -96,18 +96,18 @@ export default function UserGuidelinesPage() {
           </ul>
         </Section>
 
-        <Section title="Wallet &amp; Session Security">
+        <Section title="Wallet Security">
           <p>
-            Your Medialane wallet is derived from your authentication session and secured by
-            your PIN. Session keys are valid for a limited window (typically 6 hours) for your
-            protection. Never share your PIN or session key, or authorize sessions on devices
-            you do not control.
+            Your Medialane wallet is a private key generated on your device and sealed
+            behind your device passkey (Face ID, Touch ID, Windows Hello, or a hardware
+            security key). It never leaves your device and is never sent to us — we cannot
+            recover it for you if it&apos;s lost, so keep the device holding it secure.
           </p>
           <p>
-            If you suspect unauthorized access, revoke all session keys immediately via
-            Portfolio → Settings and contact support.{" "}
-            <strong className="text-foreground">Medialane will never ask for your PIN, seed
-            phrase, private key, or passkey</strong> — by email, chat, or any other channel.
+            If you suspect unauthorized access to your device, secure it immediately and
+            contact support.{" "}
+            <strong className="text-foreground">Medialane will never ask for your seed
+            phrase or private key</strong> — by email, chat, or any other channel.
           </p>
         </Section>
 

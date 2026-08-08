@@ -66,7 +66,7 @@ export default function CampaignTermsPage() {
         <section className="space-y-2">
           <h3 className="font-semibold text-base">Eligibility &amp; Scoring</h3>
           <p className="text-muted-foreground leading-relaxed">
-            Participants qualify by registering an account and securing it with a PIN or passkey.
+            Participants qualify by registering an account and securing it with a passkey.
             Those who also publish original content, engage with other creators, or complete
             platform activities receive a higher contribution score — which determines their
             proportional share of fund distributions.

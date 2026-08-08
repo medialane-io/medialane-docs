@@ -66,17 +66,17 @@ export default function TermsPage() {
             <li>NFT minting and collection deployment tools</li>
             <li>A peer-to-peer marketplace for listing, buying, and selling NFTs</li>
             <li>Onchain licensing metadata and royalty enforcement</li>
-            <li>Wallet management via ChipiPay session keys</li>
+            <li>A self-custody Starknet wallet, sealed behind your device passkey</li>
             <li>An API and SDK for third-party integrations</li>
           </ul>
         </Section>
 
         <Section num="3" title="User Accounts">
           <p>
-            To use certain features of the Service, you must create an account via our
-            authentication provider (Clerk). You are responsible for maintaining the
-            confidentiality of your account credentials and for all activity that occurs
-            under your account.
+            To use certain features of the Service, you set up a self-custody wallet
+            secured by a passkey on your device — no separate account credentials, no
+            password. You are responsible for keeping your device and passkey secure,
+            and for all activity that occurs through your wallet.
           </p>
           <p>
             You agree to provide accurate, current, and complete information during

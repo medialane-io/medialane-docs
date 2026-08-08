@@ -35,10 +35,10 @@ export default function LearnCreatorLaunchpadPage() {
       <div className="space-y-8">
         <Section title="Step 1 — Create an Account">
           <p>
-            Sign in with your email or social account via Clerk. Medialane automatically
-            derives a Starknet wallet from your session — no seed phrases, no browser
-            extensions required. Your wallet address is yours, derived deterministically
-            from your authentication credentials.
+            Set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key)
+            on your device. Medialane generates a self-custody Starknet wallet sealed to
+            that passkey automatically — no seed phrases, no browser extension, and gas-free
+            to set up. The key never leaves your device.
           </p>
         </Section>
 
@@ -99,17 +99,18 @@ export default function LearnCreatorLaunchpadPage() {
           </p>
         </Section>
 
-        <Section title="Gasless Minting">
+        <Section title="Frictionless, Gasless Experience">
           <p>
-            On <strong className="text-foreground">medialane.io</strong>, Medialane uses ChipiPay&apos;s
-            session key system to sponsor gas fees on your behalf. Most actions — minting, listing,
-            accepting offers — require no ETH or STRK from the user there. On the wallet-sovereign
-            Starknet app, gas sponsorship runs through a separate mechanism (AVNU) that may or may
-            not be active at any given time — real transactions there can cost real gas.
+            On <strong className="text-foreground">medialane.io</strong>, everything is
+            frictionless — wallet setup, minting, listing, and accepting offers are all
+            gas-sponsored, so you never need STRK or ETH in your wallet to use the platform.
+            On the wallet-sovereign Starknet app, gas sponsorship runs through a separate
+            mechanism (AVNU) that may or may not be active at any given time — real
+            transactions there can cost real gas.
           </p>
           <p>
-            Sponsorship applies to normal creator workflows and may be limited by abuse controls,
-            unsupported flows, or future DAO policy. See{" "}
+            Sponsorship applies to normal creator workflows and may be limited by abuse
+            controls, unsupported flows, or future DAO policy. See{" "}
             <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
             for the canonical fee model.
           </p>

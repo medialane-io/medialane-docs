@@ -28,7 +28,7 @@ const TIERS = [
     bgClass: "bg-emerald-500/10",
     actions: [
       "Create a free Medialane account",
-      "Secure your account with PIN or passkey",
+      "Secure your account with a passkey",
       "Claim your participation certificate (optional, free)",
     ],
     desc: "Every verified participant who completes sign-up is eligible for the base allocation if a distribution is approved by governance. Signing up is the only requirement for this tier.",
