@@ -9,15 +9,15 @@ import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
   title: "Apps | Medialane",
-  description: "Explore all Medialane applications — marketplace, Web3 dApp, developer portal, and DAO governance.",
+  description: "Explore all Medialane applications: marketplace, Web3 dApp, developer portal, and DAO governance.",
   openGraph: {
     title: "Apps | Medialane",
-    description: "Explore all Medialane applications — marketplace, Web3 dApp, developer portal, and DAO governance.",
+    description: "Explore all Medialane applications: marketplace, Web3 dApp, developer portal, and DAO governance.",
     url: "https://docs.medialane.io/apps",
   },
   twitter: {
     title: "Apps | Medialane",
-    description: "Explore all Medialane applications — marketplace, Web3 dApp, developer portal, and DAO governance.",
+    description: "Explore all Medialane applications: marketplace, Web3 dApp, developer portal, and DAO governance.",
   },
 };
 
@@ -29,13 +29,13 @@ const APPS = [
     url: "https://medialane.io",
     label: "medialane.io",
     description:
-      "The main creator capital markets app and launchpad. Mint, protect, license, and trade creative work — gasless, permissionless, built on Starknet.",
+      "The main creator capital markets app and launchpad. Mint, protect, license, and trade creative work: gasless, permissionless, built on Starknet.",
     features: [
       "Mint & protect IP as NFTs with programmable licenses",
       "List, buy, and sell in the peer-to-peer marketplace",
       "Launch POP Protocol credential campaigns",
       "Deploy collection drops with on-chain allowlists",
-      "Gasless — passkey sign-in, no seed phrases",
+      "Gasless: passkey sign-in, no seed phrases",
     ],
     tags: ["Marketplace", "NFT Minting", "Creator Launchpad", "POP Protocol", "Collection Drop", "Gasless"],
     badge: "Live",
@@ -53,7 +53,7 @@ const APPS = [
       "Web3-native interface for power users and self-custody advocates. Connect any Starknet wallet and interact directly with all platform smart contracts.",
     features: [
       "Connect Argent, Braavos, or any Starknet wallet",
-      "Full self-custody — your keys, your assets",
+      "Full self-custody: your keys, your assets",
       "Direct smart contract interaction",
       "Session key management and permissions",
       "Access all platform features on-chain",
@@ -71,13 +71,13 @@ const APPS = [
     url: "https://portal.medialane.io",
     label: "portal.medialane.io",
     description:
-      "Self-service developer portal for API and SDK access. Generate keys, monitor usage, configure webhooks, and unlock MDLN-boosted quotas — fully permissionless, no approval required.",
+      "Self-service developer portal for API and SDK access. Generate keys, monitor usage, configure webhooks, and unlock MDLN-boosted quotas, fully permissionless, no approval required.",
     features: [
-      "Generate and manage API keys instantly — no approval",
+      "Generate and manage API keys instantly, no approval needed",
       "MDLN token multiplier: up to 2× quota for 5,000 MDLN holders",
       "USDC credit deposits for autonomous AI agent billing (HTTP 402)",
       "Real-time webhook configuration for market events",
-      "Usage dashboard — quota, multiplier, credit balance",
+      "Usage dashboard: quota, multiplier, credit balance",
     ],
     tags: ["API Keys", "MDLN Multiplier", "Webhooks", "AI Agents", "USDC Credits", "Self-Service"],
     badge: "Live",
@@ -117,7 +117,7 @@ const PLATFORM_FEATURES = [
     icon: Lock,
     title: "Immutable Contracts",
     description:
-      "All core contracts — marketplace, IP registry, royalties — are fully immutable, deployed without admin keys or an upgrade path. The rules live in the code, fixed for every participant including Medialane.",
+      "All core contracts (marketplace, IP registry, royalties) are fully immutable, deployed without admin keys or an upgrade path. The rules live in the code, fixed for every participant including Medialane.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
@@ -125,7 +125,7 @@ const PLATFORM_FEATURES = [
     icon: Shield,
     title: "IP Protection",
     description:
-      "Every asset is anchored to the Mediolano protocol — aligned with the Berne Convention for automatic copyright recognition in 181 countries from the moment of creation.",
+      "Every asset is anchored to the Mediolano protocol, aligned with the Berne Convention for automatic copyright recognition in 181 countries from the moment of creation.",
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
   },
@@ -141,7 +141,7 @@ const PLATFORM_FEATURES = [
     icon: FileText,
     title: "Programmable Licensing",
     description:
-      "Define license terms at mint time — commercial rights, derivatives, distribution. Terms are enforced automatically by smart contracts on every trade. Royalties flow instantly.",
+      "Define license terms at mint time: commercial rights, derivatives, distribution. Terms are enforced automatically by smart contracts on every trade. Royalties flow instantly.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
@@ -157,7 +157,7 @@ const PLATFORM_FEATURES = [
     icon: BookOpen,
     title: "Open Protocol",
     description:
-      "Mediolano — the independent public goods protocol Medialane builds on — is fully open source. Smart contracts, indexer, and SDK are publicly verifiable, so nothing depends on trusting a vendor.",
+      "Mediolano (the independent public goods protocol Medialane builds on) is fully open source. Smart contracts, indexer, and SDK are publicly verifiable, so nothing depends on trusting a vendor.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
@@ -176,7 +176,7 @@ const AUDIENCES = [
       "Set programmable licenses and royalty rates",
       "Launch collections and timed drops",
       "Issue POP credentials to your community",
-      "No gas fees — gasless by default",
+      "No gas fees, gasless by default",
     ],
     cta: { label: "Start creating", href: "https://medialane.io", external: true },
   },
@@ -202,10 +202,10 @@ const AUDIENCES = [
     bg: "bg-brand-orange/10",
     items: [
       "REST API with comprehensive coverage",
-      "TypeScript SDK — @medialane/sdk",
+      "TypeScript SDK: @medialane/sdk",
       "Open-source Cairo smart contracts",
       "Webhook support for real-time events",
-      "Mediolano protocol — build on the base layer",
+      "Mediolano protocol: build on the base layer",
       "Portal for API key management and docs",
     ],
     cta: { label: "View developer docs", href: "/dev/developers", external: false },
@@ -219,7 +219,7 @@ const SC_GUARANTEES = [
     icon: Shield,
     title: "Contract-Executed",
     description:
-      "All critical operations — minting, trading, royalty distribution, licensing — execute inside audited Cairo smart contracts on Starknet. The outcome of a submitted transaction follows the code, not an operator decision.",
+      "All critical operations (minting, trading, royalty distribution, licensing) execute inside audited Cairo smart contracts on Starknet. The outcome of a submitted transaction follows the code, not an operator decision.",
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
   },
@@ -227,7 +227,7 @@ const SC_GUARANTEES = [
     icon: Ban,
     title: "Censorship Resistance",
     description:
-      "Freezing assets, delisting NFTs, or blocking a transaction would require rewriting the chain itself — there is no company, government, or platform operator positioned to do it. Your IP lives on a decentralised blockchain.",
+      "Freezing assets, delisting NFTs, or blocking a transaction would require rewriting the chain itself, with no company, government, or platform operator positioned to do it. Your IP lives on a decentralised blockchain.",
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
   },
@@ -235,7 +235,7 @@ const SC_GUARANTEES = [
     icon: Unlock,
     title: "Permissionless",
     description:
-      "Anyone can mint, list, buy, or build on Medialane by calling the contract directly — no whitelist or approval process sits in front of it. The Mediolano protocol is open to every creator and developer on Earth.",
+      "Anyone can mint, list, buy, or build on Medialane by calling the contract directly, with no whitelist or approval process sitting in front of it. The Mediolano protocol is open to every creator and developer on Earth.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
@@ -254,13 +254,13 @@ const SC_GUARANTEES = [
 const REPOS = [
   {
     name: "medialane-io/medialane-io",
-    description: "Main Next.js marketplace app — creator launchpad, marketplace, portfolio.",
+    description: "Main Next.js marketplace app: creator launchpad, marketplace, portfolio.",
     url: "https://github.com/medialane-io/medialane-io",
     label: "medialane-io",
   },
   {
     name: "medialane-io/medialane-contracts",
-    description: "Cairo smart contracts — marketplace, IP registry, POP Protocol, Collection Drop, royalties.",
+    description: "Cairo smart contracts: marketplace, IP registry, POP Protocol, Collection Drop, royalties.",
     url: "https://github.com/medialane-io/medialane-contracts",
     label: "medialane-contracts",
   },
@@ -272,7 +272,7 @@ const REPOS = [
   },
   {
     name: "medialane-io/medialane-ui",
-    description: "Shared component library — @medialane/ui on npm. Design system used across all apps.",
+    description: "Shared component library: @medialane/ui on npm. Design system used across all apps.",
     url: "https://github.com/medialane-io/medialane-ui",
     label: "medialane-ui",
   },
@@ -301,7 +301,7 @@ export default function AppsPage() {
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
           A suite of applications for creators, collectors, developers, and governance
-          participants — all built on the Mediolano protocol and Starknet.
+          participants, all built on the Mediolano protocol and Starknet.
         </p>
       </div>
 
@@ -452,7 +452,7 @@ export default function AppsPage() {
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Built for Everyone</h2>
-          <p className="text-muted-foreground text-sm">Whether you create, collect, or build — Medialane has dedicated tools for you.</p>
+          <p className="text-muted-foreground text-sm">Whether you create, collect, or build, Medialane has dedicated tools for you.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
