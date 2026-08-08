@@ -5,7 +5,7 @@ import {
   Image, Globe, Lock, Code2, Coins, Rocket, Store, Award, Package,
   Layers, GitBranch, Shield, FileText, Ticket, Handshake,
   Users, User, Eye, Scale, Scroll, Vote, Network, Bot,
-  Terminal, Landmark, Megaphone,
+  Terminal, Landmark, Megaphone, KeyRound,
 } from "lucide-react";
 import { CANONICAL } from "./canonical";
 
@@ -54,6 +54,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "learn-programmable-licensing",  label: "Programmable Licensing",  icon: FileText,   href: "/learn/programmable-licensing",   keywords: ["license", "cc", "license type"] },
       { id: "learn-services",                label: "Services",                icon: Layers,     href: "/learn/services",                 keywords: ["service id", "registry", "capabilities"] },
       { id: "learn-identity",                label: "Identity",                icon: User,       href: "/learn/identity",                 keywords: ["account", "wallet", "profile"] },
+      { id: "learn-media-wallet",             label: "Media Wallet",            icon: KeyRound,   href: "/learn/media-wallet",             keywords: ["wallet", "self-custody", "passkey", "account", "non-custodial", "seedless"] },
       { id: "learn-integrity-web",           label: "Integrity Web",           icon: Shield,     href: "/learn/integrity-web",            keywords: ["axioms", "integrity", "philosophy"] },
       { id: "learn-web3",                    label: "Web3",                    icon: Globe,      href: "/learn/web3",                     keywords: ["web3", "decentralized", "intro"] },
     ],

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot, Ticket, Users, Handshake, Lock, Code2, Coins, Eye } from "lucide-react";
+import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot, Ticket, Users, Handshake, Lock, Code2, Coins, Eye, KeyRound } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Learn | Medialane",
@@ -70,6 +70,12 @@ const TOPICS = [
     icon: Fingerprint,
     title: "Identity",
     description: "Wallets, accounts, and profiles: three separate things. Roles, authentication vs. authorization, and AI agent accounts.",
+  },
+  {
+    href: "/learn/media-wallet",
+    icon: KeyRound,
+    title: "Media Wallet",
+    description: "Medialane's self-custody account contract on Starknet: passkey-based keys, no seed phrase, live on mainnet.",
   },
   {
     href: "/learn/creator-launchpad",

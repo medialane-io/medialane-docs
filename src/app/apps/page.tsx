@@ -29,7 +29,7 @@ const APPS = [
     url: "https://medialane.io",
     label: "medialane.io",
     description:
-      "The main creator capital markets app and launchpad. Mint, protect, license, and trade creative work: gasless, permissionless, built on Starknet.",
+      "The main creator capital markets app and launchpad. Mint, protect, license, and trade creative work: gasless, permissionless, built on Starknet. Includes a built-in Media Wallet, a self-custody account secured by a device passkey.",
     features: [
       "Mint & protect IP as NFTs with programmable licenses",
       "List, buy, and sell in the peer-to-peer marketplace",
@@ -47,8 +47,8 @@ const APPS = [
   },
   {
     name: "Medialane dApp",
-    url: "https://app.medialane.io",
-    label: "app.medialane.io",
+    url: "https://starknet.medialane.io",
+    label: "starknet.medialane.io",
     description:
       "Web3-native interface for power users and self-custody advocates. Connect any Starknet wallet and interact directly with all platform smart contracts.",
     features: [
