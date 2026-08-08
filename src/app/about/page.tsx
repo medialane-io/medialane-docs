@@ -9,22 +9,22 @@ import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
   title: "About | Medialane",
-  description: "Medialane is a monetization hub for the creative economy — turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
+  description: "Medialane is a monetization hub for the creative economy: turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
   openGraph: {
     title: "About | Medialane",
-    description: "Medialane is a monetization hub for the creative economy — turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
+    description: "Medialane is a monetization hub for the creative economy: turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
     url: "https://docs.medialane.io/about",
   },
   twitter: {
     title: "About | Medialane",
-    description: "Medialane is a monetization hub for the creative economy — turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
+    description: "Medialane is a monetization hub for the creative economy: turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
   },
 };
 
 const HUBS = [
   {
     label: "Launchpad",
-    desc: "Structure capital from your IP — collection drops, NFT editions, memberships, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
+    desc: "Structure capital from your IP: collection drops, NFT editions, memberships, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
     href: "/learn/creator-launchpad",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
@@ -32,7 +32,7 @@ const HUBS = [
   },
   {
     label: "Marketplace",
-    desc: "Trade every tokenized asset — buy, sell, auction, license, and remix. Atomic settlement: payment and asset move in one transaction, or both revert. No escrow, no custody.",
+    desc: "Trade every tokenized asset: buy, sell, auction, license, and remix. Atomic settlement: payment and asset move in one transaction, or both revert. No escrow, no custody.",
     href: "/learn/marketplace",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
@@ -67,7 +67,7 @@ const LAYERS = [
     icon: Database,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
-    desc: "Reads chain events, builds a queryable cache. Drop the database — it rebuilds from scratch.",
+    desc: "Reads chain events, builds a queryable cache. Drop the database and it rebuilds from scratch.",
   },
   {
     num: "03",
@@ -91,14 +91,14 @@ const DESIGN_CHOICES = [
   {
     icon: Lock,
     title: "No admin keys",
-    desc: "The contracts ship without an owner role, an upgrade path, or an emergency pause. Once deployed, the rules are fixed — including for us.",
+    desc: "The contracts ship without an owner role, an upgrade path, or an emergency pause. Once deployed, the rules are fixed, including for us.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
   {
     icon: Zap,
     title: "No custody",
-    desc: "Sales settle via atomic swap. The marketplace contract never holds buyer funds — the payment and the NFT transfer in the same transaction, or both revert.",
+    desc: "Sales settle via atomic swap. The marketplace contract never holds buyer funds; the payment and the NFT transfer in the same transaction, or both revert.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
@@ -112,7 +112,7 @@ const DESIGN_CHOICES = [
   {
     icon: Bot,
     title: "AI agents as first-class users",
-    desc: "The contracts make no distinction between a human and an AI agent — same API, same fees, same protocol capabilities, on the standard integration path.",
+    desc: "The contracts make no distinction between a human and an AI agent: same API, same fees, same protocol capabilities, on the standard integration path.",
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
   },
@@ -136,7 +136,7 @@ const STARKNET_REASONS = [
   { label: "Quantum-resistant", desc: "ZK-STARK proofs rely on hash functions, not elliptic curves. Safe from future quantum computing threats." },
   { label: "No trusted setup", desc: "No ceremony that could be compromised. The security is fully transparent and verifiable by anyone." },
   { label: "Account abstraction", desc: "Native AA means session keys, gasless UX, and smart wallet capabilities at the protocol level." },
-  { label: "Verifiable computation", desc: "Every transaction is backed by a validity proof — math, not trust." },
+  { label: "Verifiable computation", desc: "Every transaction is backed by a validity proof: math, not trust." },
 ];
 
 export default function AboutPage() {
@@ -155,7 +155,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
             Medialane is a monetization hub for the creative economy. Humans, organizations,
-            and AI agents turn intellectual property into revenue streams — with full sovereignty
+            and AI agents turn intellectual property into revenue streams, with full sovereignty
             over their assets and identity. Open, permissionless, immutable. Built on Mediolano&apos;s
             zero-fee tokenization and live on Starknet.
           </p>
@@ -185,7 +185,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-black">Two hubs, one protocol.</h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl">
             Medialane builds a commercial layer on Mediolano&apos;s zero-fee, Berne-aligned
-            tokenization — two integrated hubs, expressed through one open protocol.
+            tokenization: two integrated hubs, expressed through one open protocol.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -199,7 +199,7 @@ export default function AboutPage() {
         </div>
         <div className="space-y-2">
           <p className="text-sm text-muted-foreground">
-            The protocol grows by adding <span className="text-foreground font-medium">services</span> —
+            The protocol grows by adding <span className="text-foreground font-medium">services</span>,
             an open, extensible set of monetization primitives, never a fixed menu. A few of them:
           </p>
           <div className="flex flex-wrap gap-2">
@@ -275,7 +275,7 @@ export default function AboutPage() {
         <h2 className="text-xl font-black">Starknet-first. Designed for more.</h2>
         <p className="text-muted-foreground leading-relaxed">
           The Medialane protocol runs on Starknet today. The Medialane DAO is deployed on
-          Ethereum — for security and liquidity — with MDLN bridgeable to Starknet via
+          Ethereum for security and liquidity, with MDLN bridgeable to Starknet via
           StarkGate, the same model used by the STRK token.
         </p>
         <p className="text-muted-foreground leading-relaxed">
