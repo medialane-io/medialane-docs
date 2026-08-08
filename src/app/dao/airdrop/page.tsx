@@ -7,22 +7,22 @@ import {
 
 export const metadata: Metadata = {
   title: "Creator's Airdrop | Medialane DAO",
-  description: "The Medialane Creator's Airdrop — a DAO-governed program distributing rewards to creators and early participants.",
+  description: "The Medialane Creator's Airdrop: a DAO-governed program distributing rewards to creators and early participants.",
   openGraph: {
     title: "Creator's Airdrop | Medialane DAO",
-    description: "The Medialane Creator's Airdrop — a DAO-governed program distributing rewards to creators and early participants.",
+    description: "The Medialane Creator's Airdrop: a DAO-governed program distributing rewards to creators and early participants.",
     url: "https://docs.medialane.io/dao/airdrop",
   },
   twitter: {
     title: "Creator's Airdrop | Medialane DAO",
-    description: "The Medialane Creator's Airdrop — a DAO-governed program distributing rewards to creators and early participants.",
+    description: "The Medialane Creator's Airdrop: a DAO-governed program distributing rewards to creators and early participants.",
   },
 };
 
 const TIERS = [
   {
     icon: UserCheck,
-    tier: "Sign up — you're in",
+    tier: "Sign up: you're in",
     label: "Base tier",
     colorClass: "text-emerald-400",
     bgClass: "bg-emerald-500/10",
@@ -74,7 +74,7 @@ const PHASES = [
     items: [
       "Each year, DAO members vote on Snapshot how Medialane's finances are used",
       "The choice sustains operations and funds the platform's growth",
-      "Airdrop, buyback, burn, development, or operations — the members decide",
+      "Airdrop, buyback, burn, development, or operations: the members decide",
     ],
   },
   {
@@ -100,7 +100,7 @@ export default function AirdropPage() {
         </div>
         <h2 className="text-2xl font-bold">Creator&apos;s Airdrop</h2>
         <p className="text-muted-foreground leading-relaxed">
-          The Creator&apos;s Airdrop rewards the people who build and use the platform — creators,
+          The Creator&apos;s Airdrop rewards the people who build and use the platform: creators,
           collectors, and early participants. Every distribution is subject to DAO governance
           and verified on-chain. Signing up is enough to qualify for the base reward.
         </p>
@@ -114,7 +114,7 @@ export default function AirdropPage() {
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
           A 1% marketplace fee flows to the creators fund at the platform layer. Each year, MDLN holders vote on
-          Snapshot to decide how that revenue is used — Creator&apos;s Airdrop, token buyback, token burn,
+          Snapshot to decide how that revenue is used: Creator&apos;s Airdrop, token buyback, token burn,
           protocol development, or operations. No predetermined formula. The Creator&apos;s Airdrop is one
           option among several, not a guarantee. See{" "}
           <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
@@ -138,7 +138,7 @@ export default function AirdropPage() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors pt-1"
         >
-          Track the Creator&apos;s Fund — live balance &amp; airdrops <ArrowRight className="h-4 w-4" />
+          Track the Creator&apos;s Fund: live balance &amp; airdrops <ArrowRight className="h-4 w-4" />
         </a>
       </div>
 

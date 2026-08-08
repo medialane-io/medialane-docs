@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://docs.medialane.io"),
   title: {
-    default: "Medialane Docs — Knowledge Hub",
+    default: "Medialane Docs: Knowledge Hub",
     template: "%s | Medialane Docs",
   },
   description: "Documentation, guides, support, and institutional content for the Medialane creator capital markets platform on Starknet.",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Medialane Docs — Knowledge Hub",
+    title: "Medialane Docs: Knowledge Hub",
     description: "Documentation, guides, and institutional content for Medialane creator capital markets on Starknet.",
     siteName: "Medialane Docs",
     url: "https://docs.medialane.io",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@medialane_io",
     creator: "@medialane_io",
-    title: "Medialane Docs — Knowledge Hub",
+    title: "Medialane Docs: Knowledge Hub",
     description: "Documentation, guides, and institutional content for Medialane creator capital markets on Starknet.",
   },
 };

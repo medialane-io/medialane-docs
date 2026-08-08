@@ -74,7 +74,7 @@ export default function TermsPage() {
         <Section num="3" title="User Accounts">
           <p>
             To use certain features of the Service, you set up a self-custody wallet
-            secured by a passkey on your device — no separate account credentials, no
+            secured by a passkey on your device, with no separate account credentials and no
             password. You are responsible for keeping your device and passkey secure,
             and for all activity that occurs through your wallet.
           </p>

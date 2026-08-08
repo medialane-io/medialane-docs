@@ -44,7 +44,7 @@ export default function CommunityGuidelinesPage() {
           <p>
             We believe in creator sovereignty, transparent markets, and open technology.
             Medialane should be a place where original work is celebrated, ownership is
-            verifiable, and transactions are honest. Communicate honestly — share genuine
+            verifiable, and transactions are honest. Communicate honestly, sharing genuine
             feedback and accurate information; attribution and credit matter. These values
             shape every rule below.
           </p>
@@ -78,9 +78,9 @@ export default function CommunityGuidelinesPage() {
         <Section title="Fair Markets">
           <p>We are committed to fair and transparent markets. Prohibited market activities include:</p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li>Wash trading — transacting with yourself to inflate volume or price history</li>
+            <li>Wash trading: transacting with yourself to inflate volume or price history</li>
             <li>Coordinated price manipulation</li>
-            <li>Shill bidding — placing offers you never intend to honour</li>
+            <li>Shill bidding: placing offers you never intend to honour</li>
             <li>Artificially inflating floor prices through collusion</li>
           </ul>
         </Section>
@@ -111,7 +111,7 @@ export default function CommunityGuidelinesPage() {
             <a href="mailto:trust@medialane.io" className="text-primary hover:underline">trust@medialane.io</a>{" "}
             (or{" "}
             <a href="mailto:community@medialane.io" className="text-primary hover:underline">community@medialane.io</a>)
-            with as much detail as possible — asset links, transaction hashes, or screenshots
+            with as much detail as possible: asset links, transaction hashes, or screenshots
             where relevant. Do not engage or escalate directly.
           </p>
           <p>
@@ -123,10 +123,10 @@ export default function CommunityGuidelinesPage() {
         <Section title="Enforcement">
           <p>
             Violations are handled on a case-by-case basis. Actions may include content
-            removal, temporary suspension, or permanent ban — severity, intent, and prior
-            history are all considered. Serious violations (illegal content, fraud, abuse)
+            removal, temporary suspension, or permanent ban, weighed by severity, intent, and prior
+            history. Serious violations (illegal content, fraud, abuse)
             result in immediate permanent removal. We do not remove content based solely on
-            subjective taste — only clear violations of these guidelines.
+            subjective taste, only clear violations of these guidelines.
           </p>
           <p>
             Appeals can be submitted to{" "}

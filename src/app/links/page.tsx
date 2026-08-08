@@ -4,15 +4,15 @@ import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
   title: "Links | Medialane",
-  description: "Connect with Medialane — official social media, community channels, and developer resources.",
+  description: "Connect with Medialane: official social media, community channels, and developer resources.",
   openGraph: {
     title: "Links | Medialane",
-    description: "Connect with Medialane — official social media, community channels, and developer resources.",
+    description: "Connect with Medialane: official social media, community channels, and developer resources.",
     url: "https://docs.medialane.io/links",
   },
   twitter: {
     title: "Links | Medialane",
-    description: "Connect with Medialane — official social media, community channels, and developer resources.",
+    description: "Connect with Medialane: official social media, community channels, and developer resources.",
   },
 };
 
@@ -31,7 +31,7 @@ const LINKS = [
       {
         name: "Telegram",
         handle: "IntegrityWeb",
-        description: "Join the Integrity Web community — creators, developers, and collectors.",
+        description: "Join the Integrity Web community: creators, developers, and collectors.",
         url: "https://t.me/IntegrityWeb",
         color: "text-brand-blue",
         bg: "bg-brand-blue/10 group-hover:bg-brand-blue/15",
@@ -55,7 +55,7 @@ const LINKS = [
     category: "Developers",
     items: [
       {
-        name: "GitHub — medialane-io",
+        name: "GitHub: medialane-io",
         handle: "medialane-io",
         description: "Open-source contracts, SDK, and protocol repositories.",
         url: "https://github.com/medialane-io",
@@ -63,7 +63,7 @@ const LINKS = [
         bg: "bg-foreground/10 group-hover:bg-foreground/15",
       },
       {
-        name: "NPM — @medialane/sdk",
+        name: "NPM: @medialane/sdk",
         handle: "@medialane/sdk",
         description: "The official TypeScript SDK for the Medialane platform.",
         url: "https://www.npmjs.com/package/@medialane/sdk",

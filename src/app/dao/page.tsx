@@ -5,15 +5,15 @@ import { CANONICAL } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "DAO | Medialane",
-  description: "Medialane DAO — community governance, constitution, MDLN token, and the path to full platform autonomy.",
+  description: "Medialane DAO: community governance, constitution, MDLN token, and the path to full platform autonomy.",
   openGraph: {
     title: "DAO | Medialane",
-    description: "Medialane DAO — community governance, constitution, MDLN token, and the path to full platform autonomy.",
+    description: "Medialane DAO: community governance, constitution, MDLN token, and the path to full platform autonomy.",
     url: "https://docs.medialane.io/dao",
   },
   twitter: {
     title: "DAO | Medialane",
-    description: "Medialane DAO — community governance, constitution, MDLN token, and the path to full platform autonomy.",
+    description: "Medialane DAO: community governance, constitution, MDLN token, and the path to full platform autonomy.",
   },
 };
 
@@ -21,13 +21,13 @@ const PILLARS = [
   {
     icon: Scroll,
     title: "Constitution",
-    description: "The founding document of Medialane DAO — defining its mission, membership structure, and core values.",
+    description: "The founding document of Medialane DAO, defining its mission, membership structure, and core values.",
     href: "/dao/constitution",
   },
   {
     icon: Vote,
     title: "Governance Charter",
-    description: "The operational rulebook — how proposals are submitted, discussed, voted on, and executed.",
+    description: "The operational rulebook: how proposals are submitted, discussed, voted on, and executed.",
     href: "/dao/governance",
   },
   {
@@ -39,7 +39,7 @@ const PILLARS = [
   {
     icon: Award,
     title: CANONICAL.creatorAirdropName,
-    description: "A DAO-decided community allocation from the creators fund — one option among several, not a guaranteed formula.",
+    description: "A DAO-decided community allocation from the creators fund, one option among several, not a guaranteed formula.",
     href: "/dao/airdrop",
   },
 ];
@@ -58,7 +58,7 @@ export default function DAOPage() {
           Medialane DAO
         </h2>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">
-          Medialane DAO is the governance structure for the platform — bridging on-chain token voting
+          Medialane DAO is the governance structure for the platform, bridging on-chain token voting
           with community-driven decision making over protocol development, treasury, and the future of
           creator capital markets.
         </p>
@@ -121,8 +121,8 @@ export default function DAOPage() {
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
           Today, Medialane DAO governs through MDLN token voting on Snapshot and a multi-sig treasury.
-          The goal is to progressively transfer platform decisions — treasury allocation, fee changes,
-          protocol direction — to MDLN holders as the community grows and governance tooling matures.
+          The goal is to progressively transfer platform decisions (treasury allocation, fee changes,
+          protocol direction) to MDLN holders as the community grows and governance tooling matures.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
           Fully on-chain governance is a goal, not the current state. The constitution and governance

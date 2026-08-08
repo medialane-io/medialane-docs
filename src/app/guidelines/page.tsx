@@ -21,13 +21,13 @@ const SECTIONS = [
     href: "/guidelines/community",
     icon: Users,
     title: "Community Guidelines",
-    description: "Standards for participation in the Medialane community — respectful interaction, content moderation, and how violations are handled.",
+    description: "Standards for participation in the Medialane community: respectful interaction, content moderation, and how violations are handled.",
   },
   {
     href: "/guidelines/user-guidelines",
     icon: User,
     title: "User Guidelines",
-    description: "How to use the Medialane platform responsibly — account rules, content standards, prohibited activities, and best practices.",
+    description: "How to use the Medialane platform responsibly: account rules, content standards, prohibited activities, and best practices.",
   },
   {
     href: "/guidelines/terms",
@@ -39,7 +39,7 @@ const SECTIONS = [
     href: "/guidelines/privacy",
     icon: Eye,
     title: "Privacy Policy",
-    description: "How Medialane collects, uses, and protects your personal data — GDPR alignment, data retention, and your rights.",
+    description: "How Medialane collects, uses, and protects your personal data: GDPR alignment, data retention, and your rights.",
   },
   {
     href: "/guidelines/compliance",

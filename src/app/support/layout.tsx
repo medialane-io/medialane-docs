@@ -3,17 +3,17 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Support | Medialane",
   description:
-    "Get help with Medialane — frequently asked questions about wallets, passkeys, marketplace, minting, POP Protocol, and Collection Drop.",
+    "Get help with Medialane: frequently asked questions about wallets, passkeys, marketplace, minting, POP Protocol, and Collection Drop.",
   openGraph: {
     title: "Support | Medialane",
     description:
-      "Get help with Medialane — FAQs, wallet and passkey troubleshooting, marketplace help, and support tickets.",
+      "Get help with Medialane: FAQs, wallet and passkey troubleshooting, marketplace help, and support tickets.",
     url: "https://docs.medialane.io/support",
   },
   twitter: {
     title: "Support | Medialane",
     description:
-      "Get help with Medialane — FAQs, wallet and passkey troubleshooting, marketplace help, and support tickets.",
+      "Get help with Medialane: FAQs, wallet and passkey troubleshooting, marketplace help, and support tickets.",
   },
 }
 

@@ -3,15 +3,15 @@ import { Vote, ExternalLink, Clock, CheckCircle2, Users, Landmark } from "lucide
 
 export const metadata: Metadata = {
   title: "Governance Charter | Medialane DAO",
-  description: "How Medialane DAO governance works — proposals, voting, quorum, and execution.",
+  description: "How Medialane DAO governance works: proposals, voting, quorum, and execution.",
   openGraph: {
     title: "Governance Charter | Medialane DAO",
-    description: "How Medialane DAO governance works — proposals, voting, quorum, and execution.",
+    description: "How Medialane DAO governance works: proposals, voting, quorum, and execution.",
     url: "https://docs.medialane.io/dao/governance",
   },
   twitter: {
     title: "Governance Charter | Medialane DAO",
-    description: "How Medialane DAO governance works — proposals, voting, quorum, and execution.",
+    description: "How Medialane DAO governance works: proposals, voting, quorum, and execution.",
   },
 };
 
@@ -67,12 +67,12 @@ export default function GovernancePage() {
         </div>
         <h2 className="text-2xl font-bold">Governance Charter</h2>
         <p className="text-muted-foreground leading-relaxed">
-          The Governance Charter defines how Medialane DAO makes decisions — the proposal lifecycle,
+          The Governance Charter defines how Medialane DAO makes decisions: the proposal lifecycle,
           voting mechanics, quorum requirements, and execution process.
         </p>
         <p className="text-sm text-muted-foreground">
           The DAO governs the platform layer: marketplace fees, treasury allocation, service registry
-          parameters, and community initiatives. It does not govern the underlying contracts — those
+          parameters, and community initiatives. It does not govern the underlying contracts; those
           are immutable by design and have no admin keys or upgrade path.
         </p>
         <p className="text-xs text-muted-foreground">Ratified April 7, 2026 · Snapshot: medialane.eth</p>

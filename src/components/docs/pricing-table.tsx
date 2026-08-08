@@ -63,7 +63,7 @@ export async function PricingTable() {
   if (creditRows.length === 0) {
     return (
       <p className="text-muted-foreground text-sm">
-        Live pricing is temporarily unavailable here — see{" "}
+        Live pricing is temporarily unavailable here; see{" "}
         <a href={`${BASE}/v1/pricing`} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">{BASE}/v1/pricing</a> directly.
       </p>
     )

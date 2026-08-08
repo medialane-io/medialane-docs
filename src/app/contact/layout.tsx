@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with the Medialane team — support, partnerships, and press inquiries.",
+  description: "Get in touch with the Medialane team: support, partnerships, and press inquiries.",
   openGraph: {
     title: "Contact Medialane",
-    description: "Get in touch with the Medialane team — support, partnerships, and press inquiries.",
+    description: "Get in touch with the Medialane team: support, partnerships, and press inquiries.",
     url: "https://docs.medialane.io/contact",
   },
   twitter: {

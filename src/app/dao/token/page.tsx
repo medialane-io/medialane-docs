@@ -5,15 +5,15 @@ import { CANONICAL } from "@/lib/canonical";
 
 export const metadata: Metadata = {
   title: "MDLN Token | Medialane DAO",
-  description: "The MDLN governance token — fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
+  description: "The MDLN governance token: fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
   openGraph: {
     title: "MDLN Token | Medialane DAO",
-    description: "The MDLN governance token — fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
+    description: "The MDLN governance token: fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
     url: "https://docs.medialane.io/dao/token",
   },
   twitter: {
     title: "MDLN Token | Medialane DAO",
-    description: "The MDLN governance token — fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
+    description: "The MDLN governance token: fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
   },
 };
 
@@ -41,7 +41,7 @@ const UTILITIES = [
   {
     icon: Zap,
     title: "Platform Multiplier",
-    description: "MDLN holders receive a boosted API quota on the developer portal — 1.2× at 500 MDLN, 1.5× at 2,000, and 2× at 5,000. Autonomous AI agents holding MDLN benefit on equal terms.",
+    description: "MDLN holders receive a boosted API quota on the developer portal: 1.2× at 500 MDLN, 1.5× at 2,000, and 2× at 5,000. Autonomous AI agents holding MDLN benefit on equal terms.",
   },
   {
     icon: TrendingUp,
@@ -82,7 +82,7 @@ export default function TokenPage() {
         <h2 className="text-2xl font-bold">MDLN Token</h2>
         <p className="text-muted-foreground leading-relaxed">
           MDLN is the governance token of Medialane DAO. Holders vote directly on platform
-          decisions — treasury allocations, protocol changes, community initiatives, and governance rules.
+          decisions: treasury allocations, protocol changes, community initiatives, and governance rules.
         </p>
         <div className="flex items-center gap-3">
           <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
@@ -189,14 +189,14 @@ export default function TokenPage() {
         <h3 className="text-lg font-semibold">Ethereum Deployment &amp; StarkGate Bridge</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
           MDLN is deployed on Ethereum mainnet as an ERC-20 token and bridgeable to Starknet
-          via StarkGate — the same model used by the STRK token. Ethereum was chosen for the
+          via StarkGate, the same model used by the STRK token. Ethereum was chosen for the
           DAO&apos;s primary token deployment because of its security, deep liquidity, and the
           maturity of its governance tooling.
         </p>
         <div className="space-y-2">
           {[
             { label: "Ethereum", desc: "Primary deployment. ERC-20. Where MDLN is minted, held, and voted with on Snapshot." },
-            { label: "StarkGate bridge", desc: "The canonical bridge between Ethereum and Starknet — the same infrastructure used by the Starknet Foundation for STRK. Trustless, no custodian." },
+            { label: "StarkGate bridge", desc: "The canonical bridge between Ethereum and Starknet, the same infrastructure used by the Starknet Foundation for STRK. Trustless, no custodian." },
             { label: "Starknet", desc: "Bridged MDLN (ERC-20) for use in developer portal multipliers, on-chain tooling, and future protocol integrations." },
             { label: "Ekubo", desc: "Liquidity pool on Starknet. Bridged MDLN is tradeable onchain without returning to Ethereum." },
           ].map(({ label, desc }) => (
@@ -218,7 +218,7 @@ export default function TokenPage() {
         <h3 className="text-lg font-semibold">{CANONICAL.creatorAirdropName}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
           A {CANONICAL.marketplaceFee} marketplace fee flows to the creators fund at the platform layer. Each year, MDLN holders vote on
-          Snapshot to decide how that revenue is used — {CANONICAL.creatorAirdropName}, token buyback, token burn,
+          Snapshot to decide how that revenue is used: {CANONICAL.creatorAirdropName}, token buyback, token burn,
           protocol development, or operations. The {CANONICAL.creatorAirdropName} is one option, not a guarantee.
           See <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
           for the canonical breakdown.
@@ -233,7 +233,7 @@ export default function TokenPage() {
             {
               phase: "Annual cycle",
               trigger: "Snapshot vote each year",
-              desc: `Each year, DAO members vote on whether revenue funds the ${CANONICAL.creatorAirdropName}, buyback, burn, development, operations, or another approved use — sustaining operations and funding growth.`,
+              desc: `Each year, DAO members vote on whether revenue funds the ${CANONICAL.creatorAirdropName}, buyback, burn, development, operations, or another approved use, sustaining operations and funding growth.`,
             },
           ].map(({ phase, trigger, desc }) => (
             <div key={phase} className="bento-cell p-5 space-y-2">

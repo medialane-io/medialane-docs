@@ -10,15 +10,15 @@ import { PageContainer } from "@/components/page-container";
 const FAQS = [
   {
     q: "How do I create a wallet on Medialane?",
-    a: "Set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key) on your device — Medialane deploys a self-custody Starknet wallet sealed to that passkey automatically, no email, no browser extension, no seed phrase, and no separate password or PIN to remember. You can attach an email later from Settings if you want one for account notices.",
+    a: "Set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key) on your device. Medialane deploys a self-custody Starknet wallet sealed to that passkey automatically: gas-free, with nothing to write down, install, or type as a password. You can attach an email later from Settings if you want one for account notices.",
   },
   {
     q: "Where is my private key stored? Is it safe?",
-    a: "Your private key is generated and encrypted directly in your browser, sealed to your device's passkey. It never leaves your device and is never sent to or stored on Medialane's servers — Medialane has no way to access or recover it on your behalf.",
+    a: "Your private key is generated and encrypted directly in your browser, sealed to your device's passkey. It never leaves your device and is never sent to or stored on Medialane's servers; Medialane has no way to access or recover it on your behalf.",
   },
   {
     q: "What happens if I lose my device or clear my browser data?",
-    a: "Your wallet's signing key lives only in that specific browser — losing the device or clearing its site data means losing access to that wallet today. Cross-device wallet recovery is planned but not available yet, so avoid clearing site data for medialane.io on a device you're actively using.",
+    a: "Your wallet's signing key lives only in that specific browser; losing the device or clearing its site data means losing access to that wallet today. Cross-device wallet recovery is planned but not available yet, so avoid clearing site data for medialane.io on a device you're actively using.",
   },
   {
     q: "My NFT minted but doesn't appear in my Portfolio.",
@@ -42,7 +42,7 @@ const FAQS = [
   },
   {
     q: "How do royalties work?",
-    a: "Royalties are configured by the creator at mint time and enforced by the marketplace smart contract on every sale. They are distributed automatically to the creator's wallet at settlement — no manual claim required.",
+    a: "Royalties are configured by the creator at mint time and enforced by the marketplace smart contract on every sale. They are distributed automatically to the creator's wallet at settlement, with no manual claim required.",
   },
   {
     q: "I think someone copied my work. How do I report it?",
@@ -50,11 +50,11 @@ const FAQS = [
   },
   {
     q: "What is the POP Protocol and how do I claim a credential?",
-    a: "The POP Protocol issues soulbound (non-transferable) NFTs as proof-of-participation for events, communities, and milestones. To claim one, go to Launchpad → POP Protocol, find an active event you participated in, and click Claim. It's free — gas is sponsored. Claimed credentials appear in your Portfolio.",
+    a: "The POP Protocol issues soulbound (non-transferable) NFTs as proof-of-participation for events, communities, and milestones. To claim one, go to Launchpad → POP Protocol, find an active event you participated in, and click Claim. It's free, gas is sponsored. Claimed credentials appear in your Portfolio.",
   },
   {
     q: "How do I participate in a Collection Drop?",
-    a: "Go to Launchpad → Collection Drop to see active and upcoming drops. Click Mint on a drop you're eligible for and confirm with your passkey, and the NFT is sent to your wallet. Drop eligibility is enforced onchain — if your wallet is on the allowlist, you'll see the option automatically.",
+    a: "Go to Launchpad → Collection Drop to see active and upcoming drops. Click Mint on a drop you're eligible for and confirm with your passkey, and the NFT is sent to your wallet. Drop eligibility is enforced onchain; if your wallet is on the allowlist, you'll see the option automatically.",
   },
   {
     q: "Is Medialane available worldwide?",

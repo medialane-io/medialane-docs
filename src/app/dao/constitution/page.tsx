@@ -3,15 +3,15 @@ import { Scroll } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Constitution | Medialane DAO",
-  description: "The founding document of Medialane DAO — mission, membership, and core values.",
+  description: "The founding document of Medialane DAO: mission, membership, and core values.",
   openGraph: {
     title: "Constitution | Medialane DAO",
-    description: "The founding document of Medialane DAO — mission, membership, and core values.",
+    description: "The founding document of Medialane DAO: mission, membership, and core values.",
     url: "https://docs.medialane.io/dao/constitution",
   },
   twitter: {
     title: "Constitution | Medialane DAO",
-    description: "The founding document of Medialane DAO — mission, membership, and core values.",
+    description: "The founding document of Medialane DAO: mission, membership, and core values.",
   },
 };
 
@@ -20,7 +20,7 @@ const ARTICLES = [
     article: "Article I",
     title: "Name and Purpose",
     content:
-      "The organization shall be known as Medialane DAO, a Decentralized Autonomous Organization. Its purpose is to govern, fund, and advance Medialane creator capital markets and the open protocol infrastructure they depend on — ensuring that intellectual property ownership, licensing, and trading remain transparent, permissionless, and creator-first.",
+      "The organization shall be known as Medialane DAO, a Decentralized Autonomous Organization. Its purpose is to govern, fund, and advance Medialane creator capital markets and the open protocol infrastructure they depend on, ensuring that intellectual property ownership, licensing, and trading remain transparent, permissionless, and creator-first.",
   },
   {
     article: "Article II",
@@ -38,7 +38,7 @@ const ARTICLES = [
     article: "Article IV",
     title: "Governance",
     content:
-      "Governance shall be conducted through the mechanisms defined in the Governance Charter. All significant decisions affecting the platform — including treasury allocations, protocol upgrades, and policy changes — must go through the on-chain or Snapshot governance process. The DAO shall not act unilaterally against the expressed will of a properly constituted governance vote.",
+      "Governance shall be conducted through the mechanisms defined in the Governance Charter. All significant decisions affecting the platform, including treasury allocations, protocol upgrades, and policy changes, must go through the on-chain or Snapshot governance process. The DAO shall not act unilaterally against the expressed will of a properly constituted governance vote.",
   },
   {
     article: "Article V",
