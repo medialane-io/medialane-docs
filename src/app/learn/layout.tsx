@@ -16,6 +16,7 @@ const LEARN_NAV = [
   { label: "Tokenization",           href: "/learn/tokenization" },
   { label: "Services",               href: "/learn/services" },
   { label: "Identity",               href: "/learn/identity" },
+  { label: "Media Wallet",           href: "/learn/media-wallet" },
   { label: "Creator Launchpad",      href: "/learn/creator-launchpad" },
   { label: "Creator Coins",          href: "/learn/creator-coin" },
   { label: "Marketplace",            href: "/learn/marketplace" },
