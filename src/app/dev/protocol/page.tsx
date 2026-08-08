@@ -6,24 +6,24 @@ import { CONTRACTS } from "@/lib/contracts";
 
 export const metadata: Metadata = {
   title: "Protocol | Medialane Docs",
-  description: "Technical specification of the Medialane onchain protocol — contracts, event model, order lifecycle, service registry, and indexer design.",
+  description: "Technical specification of the Medialane onchain protocol: contracts, event model, order lifecycle, service registry, and indexer design.",
   openGraph: {
     title: "Protocol | Medialane Docs",
-    description: "Technical specification of the Medialane onchain protocol — contracts, event model, order lifecycle, service registry, and indexer design.",
+    description: "Technical specification of the Medialane onchain protocol: contracts, event model, order lifecycle, service registry, and indexer design.",
     url: "https://docs.medialane.io/dev/protocol",
   },
   twitter: {
     title: "Protocol | Medialane Docs",
-    description: "Technical specification of the Medialane onchain protocol — contracts, event model, order lifecycle, service registry, and indexer design.",
+    description: "Technical specification of the Medialane onchain protocol: contracts, event model, order lifecycle, service registry, and indexer design.",
   },
 };
 
 const EVENTS = [
   { name: "Transfer (ERC-721)", desc: "Single-token ownership change. Emitted on mint, sale, and manual transfer." },
   { name: "TransferSingle (ERC-1155)", desc: "Single-edition transfer with from, to, id, and value. Used for ERC-1155 balance tracking." },
-  { name: "TransferBatch (ERC-1155)", desc: "Batch ERC-1155 transfer — multiple token IDs and values in one event." },
+  { name: "TransferBatch (ERC-1155)", desc: "Batch ERC-1155 transfer: multiple token IDs and values in one event." },
   { name: "OrderCreated", desc: "New listing or offer activated on the marketplace contract. Contains orderHash, offerer, offer, and consideration." },
-  { name: "OrderFulfilled", desc: "Listing purchased or offer accepted. The orderHash is permanently fulfilled — no further fills possible." },
+  { name: "OrderFulfilled", desc: "Listing purchased or offer accepted. The orderHash is permanently fulfilled, with no further fills possible." },
   { name: "OrderCancelled", desc: "Order revoked by the offerer. The orderHash is permanently invalidated." },
   { name: "CollectionDeployed", desc: "Emitted by factory contracts when a new collection, drop, or POP campaign is deployed." },
 ];
@@ -67,7 +67,7 @@ export default function DocsProtocolPage() {
         <Section title="Event Model">
           <p>
             On-chain events are the source of truth. The indexer is a deterministic event
-            reducer — a function that reads the event log and produces a queryable cache.
+            reducer: a function that reads the event log and produces a queryable cache.
             Every state change in the protocol is expressed as an event; the database
             is a reduction of those events, rebuildable at any time.
           </p>
@@ -117,11 +117,11 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
             The SDK exposes a{" "}
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">getService(serviceId)</code>{" "}
             function that returns the full capability set and contract configuration for a
-            given service ID. Service IDs are stable across contract upgrades — no{" "}
+            given service ID. Service IDs are stable across contract upgrades, with no{" "}
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">-v3</code> suffix, ever.
           </p>
           <p>
-            The registry lives in the SDK — the canonical map from service IDs to their
+            The registry lives in the SDK, the canonical map from service IDs to their
             capabilities. See{" "}
             <Link href="/learn/services" className="text-primary hover:underline">Services</Link> for
             the full registry and capability set.
@@ -137,7 +137,7 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 The indexer polls Starknet for new events, parses them with per-event handlers,
-                and writes a normalized PostgreSQL cache. It holds no state of its own — everything
+                and writes a normalized PostgreSQL cache. It holds no state of its own; everything
                 it knows came from the chain.
               </p>
             </div>
@@ -148,13 +148,13 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Drop the database. The indexer replays events from genesis and reconstructs
-                the full state. This is not a disaster-recovery feature — it is the protocol
+                the full state. This is not a disaster-recovery feature; it is the protocol
                 invariant that proves the DB is a cache, not a source of truth.
               </p>
             </div>
           </div>
           <p className="text-sm">
-            Platform state — profiles, slugs, API keys — cannot be reconstructed from events.
+            Platform state (profiles, slugs, API keys) cannot be reconstructed from events.
             It is honestly classified as off-chain enrichment and stored in a separate namespace.
             See{" "}
             <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link> for

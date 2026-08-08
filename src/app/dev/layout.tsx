@@ -14,7 +14,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
       <div>
         <h1 className="text-3xl font-bold">Developers</h1>
         <p className="text-muted-foreground mt-1 text-sm">
-          Build on Medialane — the protocol, SDK, API, and contracts. For people and AI agents alike.
+          Build on Medialane: the protocol, SDK, API, and contracts. For people and AI agents alike.
         </p>
       </div>
 
