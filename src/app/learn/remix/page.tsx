@@ -4,34 +4,34 @@ import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Remix & Derivatives | Learn | Medialane",
-  description: "How derivative works flow through Medialane — on-chain attribution, license propagation, soft enforcement, and the remix graph.",
+  description: "How derivative works flow through Medialane: on-chain attribution, license propagation, soft enforcement, and the remix graph.",
   openGraph: {
     title: "Remix & Derivatives | Learn | Medialane",
-    description: "How derivative works flow through Medialane — on-chain attribution, license propagation, soft enforcement, and the remix graph.",
+    description: "How derivative works flow through Medialane: on-chain attribution, license propagation, soft enforcement, and the remix graph.",
     url: "https://docs.medialane.io/learn/remix",
   },
   twitter: {
     title: "Remix & Derivatives | Learn | Medialane",
-    description: "How derivative works flow through Medialane — on-chain attribution, license propagation, soft enforcement, and the remix graph.",
+    description: "How derivative works flow through Medialane: on-chain attribution, license propagation, soft enforcement, and the remix graph.",
   },
 };
 
 const LICENSE_RULES = [
   {
     rule: "Permissionless by default",
-    desc: "Anyone can create a derivative of any asset — you don't need to own the parent or ask permission. Your remix is your own asset, minted into your own collection.",
+    desc: "Anyone can create a derivative of any asset; you don't need to own the parent or ask permission. Your remix is your own asset, minted into your own collection.",
   },
   {
     rule: "Attribution embedded",
-    desc: "The parent asset's ID is written into your derivative's on-chain metadata automatically. The lineage is permanent and publicly verifiable — the contract guarantees provenance, not permission.",
+    desc: "The parent asset's ID is written into your derivative's on-chain metadata automatically. The lineage is permanent and publicly verifiable; the contract records provenance, but it makes no permission claim.",
   },
   {
     rule: "You set your own license",
-    desc: "You choose the license for your derivative. The parent's declared terms are surfaced for transparency, but Medialane doesn't force them onto your work — honoring them is your responsibility as the creator.",
+    desc: "You choose the license for your derivative. The parent's declared terms are surfaced for transparency, but Medialane doesn't force them onto your work; honoring them is your responsibility as the creator.",
   },
   {
     rule: "No-derivatives → request a license",
-    desc: "If the parent declares Derivatives: Not Allowed, Medialane doesn't offer a direct remix in the app — instead you can request a license from the creator. This is an application-layer courtesy that respects the creator's stated wishes; the contract itself stays fully permissionless.",
+    desc: "If the parent declares Derivatives: Not Allowed, Medialane doesn't offer a direct remix in the app; instead, you can request a license from the creator. This is an application-layer courtesy that respects the creator's stated wishes; the contract itself stays fully permissionless.",
   },
 ];
 
@@ -43,10 +43,10 @@ export default function LearnRemixPage() {
         <h2 className="text-2xl font-bold">Remix &amp; Derivatives</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           A remix is a new IP asset that builds on an existing one. Remixing is
-          permissionless — anyone can build on any asset, and the relationship is
-          recorded on-chain, publicly and immutably: the parent stays linked to your
-          derivative. Need the creator&apos;s blessing or a paid license instead?
-          That&apos;s a separate, optional flow — see{" "}
+          permissionless: anyone can build on any asset, and the relationship is
+          recorded on-chain, publicly and immutably, with the parent staying linked to
+          your derivative. Need the creator&apos;s blessing or a paid license instead?
+          That&apos;s a separate, optional flow; see{" "}
           <Link href="/learn/programmable-licensing" className="text-primary hover:underline">Licensing</Link>.
         </p>
       </div>
@@ -57,7 +57,7 @@ export default function LearnRemixPage() {
           <p>
             When a creator remixes an asset, the parent asset's ID is embedded in the
             new token's on-chain metadata. This creates a directed graph of creative
-            lineage — traceable from any asset back to its root.
+            lineage, traceable from any asset back to its root.
           </p>
           <Code>{`Asset A  (root)
   └─ Asset B  (remix of A — links to A)
@@ -65,7 +65,7 @@ export default function LearnRemixPage() {
             └─ Asset D  (remix of C — links to C)`}</Code>
           <p>
             Every node in the graph is a token on Starknet. The edges between them
-            are on-chain records — tamper-proof and permanently verifiable by anyone.
+            are on-chain records, tamper-proof and permanently verifiable by anyone.
           </p>
         </Section>
 
@@ -75,8 +75,8 @@ export default function LearnRemixPage() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               The same principle that governs licensing generally applies to remixes:
               enforcement is social and legal, not automatic contract reversion. The
-              application layer prevents obvious violations at the UI level. But the
-              on-chain record is the evidence — it establishes what license the parent
+              application layer prevents obvious violations at the UI level. The
+              on-chain record is the evidence: it establishes what license the parent
               carried, when it was minted, and what terms the derivative was expected
               to follow.
             </p>
@@ -94,9 +94,9 @@ export default function LearnRemixPage() {
 
         <Section title="What Medialane Surfaces and Honors">
           <p>
-            License terms are attributes on the parent token — readable by any third party.
+            License terms are attributes on the parent token, readable by any third party.
             Before minting a remix, the application surfaces the parent&apos;s terms so you can
-            make an informed choice. The platform stays neutral and permissionless — it only
+            make an informed choice. The platform stays neutral and permissionless: it only
             honors the creator&apos;s explicit no-derivatives declaration (at the app layer), and
             always embeds attribution:
           </p>
@@ -117,9 +117,9 @@ export default function LearnRemixPage() {
           </p>
           <ol className="list-decimal list-inside space-y-1.5 text-sm text-muted-foreground">
             <li>Upload your derivative work (image, audio, video, or other format).</li>
-            <li>Set metadata — name, description, IP type.</li>
-            <li>Choose the license for your remix — you decide your own terms.</li>
-            <li>Sign and mint — the parent asset&apos;s ID is embedded in your new token&apos;s metadata.</li>
+            <li>Set metadata: name, description, IP type.</li>
+            <li>Choose the license for your remix; you decide your own terms.</li>
+            <li>Sign and mint; the parent asset&apos;s ID is embedded in your new token&apos;s metadata.</li>
           </ol>
           <p>
             Minting a remix carries the same gas model as any other IP asset mint.
@@ -133,13 +133,13 @@ export default function LearnRemixPage() {
           </p>
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Remix — free, permissionless</p>
+              <p className="text-sm font-semibold text-foreground">Remix: free, permissionless</p>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Mint your own attributed derivative. No payment, no approval — your work, your license.
+                Mint your own attributed derivative. Free and permissionless: your work, your license.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Licensing — optional, by agreement</p>
+              <p className="text-sm font-semibold text-foreground">Licensing: optional, by agreement</p>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Propose a license deal to the creator: your terms plus a fee. If they accept, the
                 licensed derivative is minted and listed for you. Use it to pay or credit the
@@ -157,7 +157,7 @@ export default function LearnRemixPage() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               When attribution is required by the parent's license, the original creator's
               wallet address and asset ID are written into the derivative token's structured
-              metadata — not a freeform description field. This makes the attribution
+              metadata, not a freeform description field. This makes the attribution
               machine-readable, queryable, and as permanent as the token itself.
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -174,7 +174,7 @@ export default function LearnRemixPage() {
             agent can query for assets with{" "}
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">derivatives: allowed</code>,
             generate a derivative work, and mint it with the parent ID linked automatically.
-            The contracts make no distinction between a human and an agent — same API,
+            The contracts make no distinction between a human and an agent: same API,
             same protocol capabilities.
           </p>
           <p className="text-sm">
@@ -186,7 +186,7 @@ export default function LearnRemixPage() {
 
         <Section title="Viewing Remix History">
           <p>
-            Every asset page shows its lineage — original or remix, and a link to trace
+            Every asset page shows its lineage, original or remix, and a link to trace
             the full provenance chain back to the root. The history is publicly verifiable
             on Starknet. It cannot be altered or deleted.
           </p>

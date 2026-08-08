@@ -21,7 +21,7 @@ export default function LearnWeb3Page() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Web3 & Starknet</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Medialane is built on Starknet — a Layer 2 blockchain secured by zero-knowledge
+          Medialane is built on Starknet, a Layer 2 blockchain secured by zero-knowledge
           proofs. This page explains what that means and why it matters for creators.
         </p>
       </div>
@@ -30,9 +30,9 @@ export default function LearnWeb3Page() {
         <Section title="What is a Blockchain?">
           <p>
             A blockchain is a shared database maintained by thousands of computers worldwide.
-            Once data is written to a blockchain, it cannot be altered or deleted — every
-            entry is permanent and publicly visible. No single company, government, or
-            person controls it.
+            Once data is written to a blockchain, it cannot be altered or deleted: every
+            entry is permanent and publicly visible, with no single company, government, or
+            person in control.
           </p>
           <p>
             This makes blockchains ideal for recording ownership. If your name is on the
@@ -44,12 +44,12 @@ export default function LearnWeb3Page() {
         <Section title="What is Web3?">
           <p>
             Web3 is the name for the emerging internet built on public blockchains. In Web2
-            (the current internet), your data is owned by platforms — Instagram, YouTube,
+            (the current internet), your data is owned by platforms: Instagram, YouTube,
             Spotify. In Web3, your assets and identity are stored onchain and you carry
             them with you across applications.
           </p>
           <p>
-            A wallet address on a blockchain is like an email address — but instead of a
+            A wallet address on a blockchain is like an email address, except instead of a
             company controlling the account, you control it through a cryptographic key pair.
             Medialane generates this key pair on your own device and seals it behind your
             device passkey (Face ID, Touch ID, Windows Hello), so you get real Web3
@@ -62,7 +62,7 @@ export default function LearnWeb3Page() {
             Starknet is a Layer 2 (L2) network built on top of Ethereum. Ethereum is the
             most secure public blockchain in the world, but it can be slow and expensive
             to use directly. Starknet processes transactions off-chain in batches and
-            submits a single cryptographic proof to Ethereum — inheriting its security
+            submits a single cryptographic proof to Ethereum, inheriting its security
             at a fraction of the cost.
           </p>
           <p>
@@ -76,7 +76,7 @@ export default function LearnWeb3Page() {
           <p>
             A zero-knowledge proof (ZKP) is a cryptographic technique that lets one party
             prove to another that something is true without revealing the underlying
-            information. Starknet uses STARK proofs — a specific type of ZKP — to prove
+            information. Starknet uses STARK proofs, a specific type of ZKP, to prove
             that all transactions in a batch are valid without re-executing every one
             on Ethereum.
           </p>
@@ -90,7 +90,7 @@ export default function LearnWeb3Page() {
         <Section title="Smart Contracts and Cairo">
           <p>
             Smart contracts are programs that run on the blockchain. They execute automatically
-            when certain conditions are met — no intermediary required. The Medialane
+            when certain conditions are met, with no intermediary required. The Medialane
             marketplace contract validates signatures and executes asset transfers entirely
             through code, not through a human decision.
           </p>
@@ -103,17 +103,17 @@ export default function LearnWeb3Page() {
 
         <Section title="Account Abstraction">
           <p>
-            Starknet natively supports account abstraction — a model where wallets are
+            Starknet natively supports account abstraction, a model where wallets are
             smart contracts themselves, not just key pairs. Medialane&apos;s wallet is
             exactly this: a smart-contract account with a single passkey-sealed owner key.
             The standalone MediaWallet app deploys and operates it permissionlessly, funded
-            by you, with no dependency on any Medialane-run service — first-principles
+            by you, with no dependency on any Medialane-run service, true first-principles
             self-custody. medialane.io is built for a different audience: every transaction
             there is gas-sponsored, so you never need STRK or ETH in your wallet to use the
-            platform — a frictionless experience layered on top of the same account model.
+            platform, a frictionless experience layered on top of the same account model.
           </p>
           <p>
-            Every action you take — minting, listing, buying — is signed directly by your
+            Every action you take (minting, listing, buying) is signed directly by your
             device passkey, no separate password or PIN. Nothing is delegated to a third
             party: your device is the only place your key ever exists.
           </p>

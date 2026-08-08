@@ -5,10 +5,10 @@ import { PricingTable } from "@/components/docs/pricing-table"
 
 export const metadata: Metadata = {
   title: "API Reference | Medialane Docs",
-  description: "Full REST API reference for Medialane — orders, collections, minting, tokens, intents, profiles, comments, and more.",
+  description: "Full REST API reference for Medialane: orders, collections, minting, tokens, intents, profiles, comments, and more.",
   openGraph: {
     title: "API Reference | Medialane Docs",
-    description: "Full REST API reference for Medialane — orders, collections, minting, tokens, intents, profiles, comments, and more.",
+    description: "Full REST API reference for Medialane: orders, collections, minting, tokens, intents, profiles, comments, and more.",
     url: "https://docs.medialane.io/dev/api",
   },
 }
@@ -93,12 +93,12 @@ const KEY = "ml_live_YOUR_KEY"
 const ERROR_CODES = [
   { code: "400", name: "Bad Request", desc: "Missing or invalid parameters" },
   { code: "401", name: "Unauthorized", desc: "Missing or invalid x-api-key" },
-  { code: "402", name: "Payment Required", desc: "Credit balance is zero — deposit USDC to continue" },
+  { code: "402", name: "Payment Required", desc: "Credit balance is zero; deposit USDC to continue" },
   { code: "403", name: "Forbidden", desc: "Key exists but lacks required permission" },
   { code: "404", name: "Not Found", desc: "Resource does not exist" },
   { code: "409", name: "Conflict", desc: "Duplicate resource or state conflict" },
   { code: "429", name: "Too Many Requests", desc: "Per-minute rate limit exceeded" },
-  { code: "500", name: "Server Error", desc: "Internal error — try again or contact support" },
+  { code: "500", name: "Server Error", desc: "Internal error; try again or contact support" },
 ]
 
 export default function ApiReferencePage() {
@@ -115,7 +115,7 @@ export default function ApiReferencePage() {
       {/* ── AUTHENTICATION ── */}
       <DocH2 id="authentication" border>Authentication</DocH2>
       <p className="text-muted-foreground mb-3">
-        Every request carries an API key in the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">x-api-key</code> header. Keys are self-service from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> — for people and agents alike.
+        Every request carries an API key in the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">x-api-key</code> header. Keys are self-service from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a>, for people and agents alike.
       </p>
       <DocCodeBlock lang="bash">{`curl "${BASE}/v1/orders" \\
   -H "x-api-key: ${KEY}"
@@ -123,7 +123,7 @@ export default function ApiReferencePage() {
 # Bearer token also accepted:
 # -H "Authorization: Bearer ${KEY}"`}</DocCodeBlock>
       <p className="text-muted-foreground text-sm">
-        Keys are prefixed <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret — treat them like passwords.
+        Keys are prefixed <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret, and treat them like passwords.
       </p>
 
       {/* ── RESPONSE FORMAT ── */}
@@ -160,11 +160,11 @@ export default function ApiReferencePage() {
       {/* ── CREDITS ── */}
       <DocH2 id="credits" border>Credits &amp; Billing</DocH2>
       <p className="text-muted-foreground mb-3 text-sm">
-        Credits are the billing unit — 1 credit = $0.01. Fund your balance with USDC on Starknet from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> or the <a href="/dev/agents" className="text-primary hover:underline">x402 flow</a> — credits appear within ~2 minutes and never expire. This table is live, pulled from the same endpoint every call is priced against (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/pricing</code>), never a hand-maintained copy:
+        Credits are the billing unit: 1 credit = $0.01. Fund your balance with USDC on Starknet from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> or the <a href="/dev/agents" className="text-primary hover:underline">x402 flow</a>; credits appear within ~2 minutes and never expire. This table is live, pulled from the same endpoint every call is priced against (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/pricing</code>), never a hand-maintained copy:
       </p>
       <PricingTable />
       <p className="text-muted-foreground text-sm">
-        When credits run out you receive <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code> with an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining: 0</code> header. An autonomous agent can detect the 402 and top up on its own — see <a href="/dev/agents" className="text-primary hover:underline">AI Agents</a>.
+        When credits run out you receive <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code> with an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining: 0</code> header. An autonomous agent can detect the 402 and top up on its own; see <a href="/dev/agents" className="text-primary hover:underline">AI Agents</a>.
       </p>
 
       {/* ── HEALTH ── */}
@@ -327,7 +327,7 @@ export default function ApiReferencePage() {
       {/* ── CREATOR COINS ── */}
       <DocH2 id="coins" border>Creator Coins</DocH2>
       <p className="text-muted-foreground text-sm mb-3">
-        Fungible coins are their own resource (since the 2026-06-14 split) — <strong>not</strong> collections.
+        Fungible coins are their own resource (since the 2026-06-14 split), distinct from collections.
         A coin has service <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">creator-coin</code> (or
         <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">external-erc20</code> for claimed coins) and
         <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code>. List them with
@@ -389,7 +389,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="PATCH"
         path="/v1/coins/:contract"
-        description="Update a coin's image and/or description. Creator-authed (SIWS token) — only the coin's on-chain creator may edit. The creator is set trustlessly from the factory event, never from the request body."
+        description="Update a coin's image and/or description. Creator-authed (SIWS token); only the coin's on-chain creator may edit. The creator is set trustlessly from the factory event, never from the request body."
         params={[
           { name: "image", type: "string", desc: "ipfs:// or https:// URI (body, optional, nullable)" },
           { name: "description", type: "string", desc: "Up to 500 chars (body, optional, nullable)" },
@@ -408,7 +408,7 @@ export default function ApiReferencePage() {
       />
 
       <p className="text-muted-foreground text-sm mb-3 mt-6">
-        Deploying and launching a coin is two intents, one per on-chain transaction — the
+        Deploying and launching a coin is two intents, one per on-chain transaction. The
         coin&apos;s address is only known from the deploy receipt, so launch is a separate call
         made once you have it (same shape as create-tier → mint for tickets/club).
       </p>
@@ -418,7 +418,7 @@ export default function ApiReferencePage() {
         path="/v1/intents/create-coin"
         description="Deploy a fixed-supply Creator Coin (full supply minted to the Factory until launch)."
         params={[
-          { name: "owner", type: "string", required: true, desc: "Owner of the new coin — the only address allowed to launch it" },
+          { name: "owner", type: "string", required: true, desc: "Owner of the new coin; the only address allowed to launch it" },
           { name: "name", type: "string", required: true, desc: "Coin name" },
           { name: "symbol", type: "string", required: true, desc: "Coin symbol" },
           { name: "initialSupply", type: "string", required: true, desc: "Full fixed supply, raw units (18 decimals)" },
@@ -434,7 +434,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/intents/launch-coin"
-        description="Launch an already-deployed Creator Coin on Ekubo (owner-only — the contract itself is the authority)."
+        description="Launch an already-deployed Creator Coin on Ekubo (owner-only; the contract itself is the authority)."
         params={[
           { name: "owner", type: "string", required: true, desc: "Wallet that must own the coin" },
           { name: "creatorCoin", type: "string", required: true, desc: "The deployed CreatorCoin contract, from create-coin's receipt" },
@@ -492,7 +492,7 @@ export default function ApiReferencePage() {
           { name: "owner", type: "string", desc: "Filter by collection owner address" },
           { name: "isKnown", type: "boolean", desc: "true = featured collections only" },
           { name: "sort", type: "string", desc: '"recent" (default) | "supply" | "floor" | "volume" | "name"' },
-          { name: "service", type: "string", desc: 'Filter by service id (e.g. "mip-erc721", "pop-protocol"). Coins are NOT collections — use /v1/coins' },
+          { name: "service", type: "string", desc: 'Filter by service id (e.g. "mip-erc721", "pop-protocol"). Coins are a separate resource: use /v1/coins' },
           { name: "standard", type: "string", desc: 'Filter by token standard, CSV ok: "ERC721,ERC1155" (NFT-only; coins live at /v1/coins)' },
         ]}
         curl={`curl "${BASE}/v1/collections?owner=0x0591..." \\
@@ -633,7 +633,7 @@ export default function ApiReferencePage() {
         path="/v1/tokens/batch"
         description="Fetch multiple tokens by contract and tokenId pairs. Returns the same shape as the single token endpoint but as an array."
         params={[
-          { name: "items", type: "string", required: true, desc: "Comma-separated contract:tokenId pairs — e.g. 0x05e7...:1,0x05e7...:2 (max 50 pairs)" },
+          { name: "items", type: "string", required: true, desc: "Comma-separated contract:tokenId pairs, e.g. 0x05e7...:1,0x05e7...:2 (max 50 pairs)" },
         ]}
         curl={`curl "${BASE}/v1/tokens/batch?items=0x05e7...:1,0x05e7...:2" \\
   -H "x-api-key: ${KEY}"`}
@@ -705,7 +705,7 @@ export default function ApiReferencePage() {
       {/* ── INTENTS ── */}
       <DocH2 id="intents" border>Intents</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Intents orchestrate marketplace transactions. Every create-intent response carries a <code>requiresSignature</code> flag. When <code>true</code> (listing, offer, cancel) the response includes <code>typedData</code> to sign client-side (SNIP-12); submit the signature to <code>/v1/intents/:id/signature</code> to get the executable calls. When <code>false</code> (fulfil, mint, create-collection) the response returns fully-populated <code>calls</code> directly — there is no signing step, because the caller is the fulfiller.
+        Intents orchestrate marketplace transactions. Every create-intent response carries a <code>requiresSignature</code> flag. When <code>true</code> (listing, offer, cancel) the response includes <code>typedData</code> to sign client-side (SNIP-12); submit the signature to <code>/v1/intents/:id/signature</code> to get the executable calls. When <code>false</code> (fulfil, mint, create-collection) the response returns fully-populated <code>calls</code> directly, with no signing step, because the caller is the fulfiller.
       </p>
 
       <Endpoint
@@ -762,7 +762,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/intents/fulfill"
-        description="Create a fulfillment intent to buy a listing or accept an offer. Unsigned — the caller is the fulfiller, so the response returns executable calls directly (no signing step)."
+        description="Create a fulfillment intent to buy a listing or accept an offer. Unsigned, since the caller is the fulfiller, so the response returns executable calls directly with no signing step."
         params={[
           { name: "orderHash", type: "string", required: true, desc: "Hash of the order to fulfill" },
           { name: "fulfiller", type: "string", required: true, desc: "Fulfiller Starknet address" },
@@ -835,7 +835,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/intents/checkout"
-        description="Batch fulfill intent creation. Accepts up to 20 order hashes. Per-item error handling — failed items return { orderHash, error } instead of rejecting the entire request."
+        description="Batch fulfill intent creation. Accepts up to 20 order hashes. Per-item error handling: failed items return { orderHash, error } instead of rejecting the entire request."
         params={[
           { name: "fulfiller", type: "string", required: true, desc: "Fulfiller Starknet address" },
           { name: "orderHashes", type: "string[]", required: true, desc: "Array of order hashes to fulfill (max 20)" },
@@ -964,8 +964,8 @@ export default function ApiReferencePage() {
         path="/v1/events"
         description="Open a Server-Sent Events stream. The server sends transfer, order.created, order.fulfilled, order.cancelled, and ping (keepalive every 15s) events. Automatically reconnects after 10 minutes via a reconnect event."
         params={[
-          { name: "apiKey", type: "string", required: true, desc: "Your API key (query param — required because EventSource cannot send custom headers)" },
-          { name: "since", type: "string", desc: "ISO 8601 timestamp — resume stream from this point in time" },
+          { name: "apiKey", type: "string", required: true, desc: "Your API key (query param, required because EventSource cannot send custom headers)" },
+          { name: "since", type: "string", desc: "ISO 8601 timestamp; resume stream from this point in time" },
         ]}
         curl={`# Open the stream (cURL streams until closed)
 curl -N "${BASE}/v1/events?apiKey=${KEY}"
@@ -1062,7 +1062,7 @@ const resumeSource = new EventSource(url, {
       {/* ── PORTAL ── */}
       <DocH2 id="portal" border>Portal (Self-service)</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Portal endpoints manage your account: API keys, credit balance, and webhooks (PREMIUM). There is no monthly quota — these calls are simply never metered.
+        Portal endpoints manage your account: API keys, credit balance, and webhooks (PREMIUM). These calls are simply never metered, with no monthly quota.
       </p>
 
       <Endpoint
@@ -1257,7 +1257,7 @@ const resumeSource = new EventSource(url, {
         description="Path 2 (step 2): Submit the SNIP-12 signature from the challenge step. If valid, the collection is marked as claimed by the wallet."
         params={[
           { name: "challengeId", type: "string", required: true, desc: "Challenge ID from /claim/challenge" },
-          { name: "signature", type: "object", required: true, desc: '{ r: string; s: string } — starknet.js signature object' },
+          { name: "signature", type: "object", required: true, desc: '{ r: string; s: string }, a starknet.js signature object' },
         ]}
         curl={`curl -X POST "${BASE}/v1/collections/claim/verify" \\
   -H "x-api-key: ${KEY}" \\
@@ -1272,7 +1272,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/collections/claim/request"
-        description="Path 3: Submit a manual claim request for admin review. No wallet signature required — our team will verify and reach out by email."
+        description="Path 3: Submit a manual claim request for admin review. Requires no wallet signature; our team will verify and reach out by email."
         params={[
           { name: "contractAddress", type: "string", required: true, desc: "The ERC-721 contract address to claim" },
           { name: "email", type: "string", required: true, desc: "Email address for review correspondence" },
@@ -1327,7 +1327,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="PATCH"
         path="/v1/collections/:contract/profile"
-        description="Update the display profile for a collection. Requires a SIWS session JWT — the authenticated wallet must be the claimedBy address for this collection."
+        description="Update the display profile for a collection. Requires a SIWS session JWT; the authenticated wallet must be the claimedBy address for this collection."
         params={[
           { name: "contract", type: "string", required: true, desc: "NFT contract address (URL param)" },
           { name: "displayName", type: "string", desc: "Display name (overrides on-chain name)" },
@@ -1379,7 +1379,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="PATCH"
         path="/v1/creators/:wallet/profile"
-        description="Update a creator profile. Requires a SIWS session JWT — the authenticated wallet must match the wallet URL parameter."
+        description="Update a creator profile. Requires a SIWS session JWT; the authenticated wallet must match the wallet URL parameter."
         params={[
           { name: "wallet", type: "string", required: true, desc: "Starknet wallet address (URL param)" },
           { name: "displayName", type: "string", desc: "Display name or handle" },
@@ -1482,7 +1482,7 @@ const resumeSource = new EventSource(url, {
       {/* ── COUNTER-OFFERS ── */}
       <DocH2 id="counter-offers" border>Counter-offers</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Sellers can respond to buyer bids with a counter-offer — a new on-chain listing linked to the original bid via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">parentOrderHash</code>. The original bid&apos;s status is unaffected; instead its <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">hasActiveCounterOffer</code> flag is set to <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">true</code> (the legacy <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">COUNTER_OFFERED</code> order status was removed). The buyer can then accept (fulfill the counter listing) or ignore it.
+        Sellers can respond to buyer bids with a counter-offer: a new on-chain listing linked to the original bid via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">parentOrderHash</code>. The original bid&apos;s status is unaffected; instead its <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">hasActiveCounterOffer</code> flag is set to <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">true</code> (the legacy <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">COUNTER_OFFERED</code> order status was removed). The buyer can then accept (fulfill the counter listing) or ignore it.
       </p>
 
       <Endpoint
@@ -1490,8 +1490,8 @@ const resumeSource = new EventSource(url, {
         path="/v1/orders/counter-offers"
         description="List counter-offer listings. Pass originalOrderHash for the buyer's view (one counter per bid) or sellerAddress for the seller's view (all counters they have sent). At least one query param is required."
         params={[
-          { name: "originalOrderHash", type: "string", desc: "Original bid order hash — returns the counter-offer for this specific bid" },
-          { name: "sellerAddress", type: "string", desc: "Seller address — returns all counter-offers sent by this seller" },
+          { name: "originalOrderHash", type: "string", desc: "Original bid order hash; returns the counter-offer for this specific bid" },
+          { name: "sellerAddress", type: "string", desc: "Seller address; returns all counter-offers sent by this seller" },
           { name: "page", type: "number", desc: "Page number (default: 1)" },
           { name: "limit", type: "number", desc: "Results per page (default: 20)" },
         ]}
@@ -1518,7 +1518,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/intents/counter-offer"
-        description="Create a counter-offer intent. The seller proposes a new price for the NFT in response to a buyer's active bid. Currency is derived server-side from the original bid token — do not pass a currency field. Requires a SIWS session JWT for authentication; the seller address must match the consideration.recipient of the original bid."
+        description="Create a counter-offer intent. The seller proposes a new price for the NFT in response to a buyer's active bid. Currency is derived server-side from the original bid token, so omit the currency field. Requires a SIWS session JWT for authentication; the seller address must match the consideration.recipient of the original bid."
         params={[
           { name: "sellerAddress", type: "string", required: true, desc: "Seller's wallet address" },
           { name: "originalOrderHash", type: "string", required: true, desc: "Order hash of the original buyer bid" },
@@ -1556,7 +1556,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/tokens/:contract/:tokenId/remixes"
-        description="List public remixes of a token. Price and currency fields are omitted — this is a public endpoint. Returns minted remixes only."
+        description="List public remixes of a token. Price and currency fields are omitted, since this is a public endpoint. Returns minted remixes only."
         params={[
           { name: "contract", type: "string", required: true, desc: "Original NFT contract address" },
           { name: "tokenId", type: "string", required: true, desc: "Original token ID" },
@@ -1634,7 +1634,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/remix-offers/auto"
-        description="Submit an auto remix offer for a token with an open license (CC0, CC BY, CC BY-SA, CC BY-NC). Auto-approved immediately — no creator action needed. Requires SIWS session JWT."
+        description="Submit an auto remix offer for a token with an open license (CC0, CC BY, CC BY-SA, CC BY-NC). Auto-approved immediately, with no creator action needed. Requires SIWS session JWT."
         params={[
           { name: "originalContract", type: "string", required: true, desc: "Original NFT contract address" },
           { name: "originalTokenId", type: "string", required: true, desc: "Original token ID" },
@@ -1651,7 +1651,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/remix-offers/self/confirm"
-        description="Record a self-remix — the token owner remixing their own asset. Call after the remix has been minted on-chain. Requires SIWS session JWT."
+        description="Record a self-remix: the token owner remixing their own asset. Call after the remix has been minted on-chain. Requires SIWS session JWT."
         params={[
           { name: "originalContract", type: "string", required: true, desc: "Original NFT contract address" },
           { name: "originalTokenId", type: "string", required: true, desc: "Original token ID" },
@@ -1691,7 +1691,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/remix-offers/:id/confirm"
-        description="Creator approves a pending remix offer and records the minted remix on-chain coordinates. Requires SIWS session JWT — caller must be the creator of the original token."
+        description="Creator approves a pending remix offer and records the minted remix on-chain coordinates. Requires SIWS session JWT; caller must be the creator of the original token."
         params={[
           { name: "id", type: "string", required: true, desc: "Remix offer ID (URL param)" },
           { name: "approvedCollection", type: "string", required: true, desc: "Collection contract where the remix will be minted" },
@@ -1710,7 +1710,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/remix-offers/:id/reject"
-        description="Creator rejects a pending remix offer. Requires SIWS session JWT — caller must be the creator of the original token."
+        description="Creator rejects a pending remix offer. Requires SIWS session JWT; caller must be the creator of the original token."
         params={[
           { name: "id", type: "string", required: true, desc: "Remix offer ID (URL param)" },
         ]}
@@ -1723,7 +1723,7 @@ const resumeSource = new EventSource(url, {
       {/* ── POP PROTOCOL ── */}
       <DocH2 id="pop-protocol" border>POP Protocol</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Proof of Participation claim collections for events — conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. On-chain minting is handled via the SDK <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.pop</code>.
+        Proof of Participation claim collections for events: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. On-chain minting is handled via the SDK <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.pop</code>.
       </p>
 
       <Endpoint
@@ -1748,7 +1748,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/pop/eligibility/:collection"
-        description="Batch eligibility check — pass up to 100 wallet addresses as a comma-separated wallets query param."
+        description="Batch eligibility check: pass up to 100 wallet addresses as a comma-separated wallets query param."
         params={[
           { name: "collection", type: "string", required: true, desc: "POP collection contract address (URL param)" },
           { name: "wallets", type: "string", required: true, desc: "Comma-separated wallet addresses (max 100)" },
@@ -1820,7 +1820,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/drop/conditions"
-        description="Store claim conditions after a successful create_drop transaction. Requires a SIWS token — only the collection owner (owner or claimedBy) may set conditions. Amounts are integer strings in token base units; set price to '0' for free mints and endTime to 0 for no expiry."
+        description="Store claim conditions after a successful create_drop transaction. Requires a SIWS token; only the collection owner (owner or claimedBy) may set conditions. Amounts are integer strings in token base units; set price to '0' for free mints and endTime to 0 for no expiry."
         params={[
           { name: "collectionAddress", type: "string", required: true, desc: "Drop collection contract address" },
           { name: "maxSupply", type: "string", required: true, desc: "Total supply cap (integer string)" },
@@ -1851,7 +1851,7 @@ const resumeSource = new EventSource(url, {
       {/* ── SPONSORSHIP ── */}
       <DocH2 id="sponsorship" border>IP Sponsorship</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Direct-settlement sponsorship deals: an asset owner posts an <strong>offer</strong> (open bidding or one invited sponsor) or a sponsor sends a fixed-terms <strong>proposal</strong> on any asset. Acceptance settles payment and mints a <strong>license</strong> — a real, transferable ERC-721 — to the sponsor, atomically, in one transaction. There is no escrow: the contract never holds funds. Every write below is an unsigned intent (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">requiresSignature: false</code>) — see <a href="#intents" className="text-primary hover:underline">Intents</a> for the general shape.
+        Direct-settlement sponsorship deals: an asset owner posts an <strong>offer</strong> (open bidding or one invited sponsor) or a sponsor sends a fixed-terms <strong>proposal</strong> on any asset. Acceptance settles payment and mints a <strong>license</strong> (a real, transferable ERC-721) to the sponsor, atomically, in one transaction. The contract never holds funds; there is no escrow. Every write below is an unsigned intent (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">requiresSignature: false</code>); see <a href="#intents" className="text-primary hover:underline">Intents</a> for the general shape.
       </p>
 
       <Endpoint
@@ -1999,7 +1999,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/sponsorship/licenses/:tokenId"
-        description="Fetch a single license by its token id, including currentHolder resolved from live token-balance ownership (a license is a standard transferable ERC-721 — currentHolder can differ from recipient after a transfer)."
+        description="Fetch a single license by its token id, including currentHolder resolved from live token-balance ownership (a license is a standard transferable ERC-721, so currentHolder can differ from recipient after a transfer)."
         params={[{ name: "tokenId", type: "string", required: true, desc: "License token id" }]}
         curl={`curl "${BASE}/v1/sponsorship/licenses/3" \\
   -H "x-api-key: ${KEY}"`}
@@ -2007,7 +2007,7 @@ const resumeSource = new EventSource(url, {
       />
 
       <p className="text-muted-foreground text-sm mb-3 mt-6">
-        Writes — owner-side (offers):
+        Writes, owner-side (offers):
       </p>
 
       <Endpoint
@@ -2036,7 +2036,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/intents/sponsorship-offer-open"
-        description="Toggle an offer open/closed — gates new bids and acceptance only, fully reversible."
+        description="Toggle an offer open/closed. Gates new bids and acceptance only, fully reversible."
         params={[
           { name: "author", type: "string", required: true, desc: "Must be the offer's author" },
           { name: "offerId", type: "string", required: true, desc: "On-chain offer id" },
@@ -2066,13 +2066,13 @@ const resumeSource = new EventSource(url, {
       />
 
       <p className="text-muted-foreground text-sm mb-3 mt-6">
-        Writes — sponsor-side (bids &amp; proposals):
+        Writes, sponsor-side (bids &amp; proposals):
       </p>
 
       <Endpoint
         method="POST"
         path="/v1/intents/sponsorship-bid"
-        description="Place a bid on an open offer. A bid is a signal plus an open ERC-20 allowance — no tokens move until the author accepts. Returns two calls: approve, then place_bid."
+        description="Place a bid on an open offer. A bid is a signal plus an open ERC-20 allowance; tokens move only once the author accepts. Returns two calls: approve, then place_bid."
         params={[
           { name: "sponsor", type: "string", required: true, desc: "The bidding wallet" },
           { name: "offerId", type: "string", required: true, desc: "On-chain offer id" },
@@ -2104,9 +2104,9 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/intents/sponsorship-proposal"
-        description="Propose fixed sponsorship terms on any asset — no open offer required. Unlike a bid, the amount is take-it-or-leave-it, and the sponsor chooses the payment token."
+        description="Propose fixed sponsorship terms on any asset, with no open offer required. Unlike a bid, the amount is take-it-or-leave-it, and the sponsor chooses the payment token."
         params={[
-          { name: "proposer", type: "string", required: true, desc: "The proposing wallet — pays if accepted" },
+          { name: "proposer", type: "string", required: true, desc: "The proposing wallet; pays if accepted" },
           { name: "nftContract", type: "string", required: true, desc: "Asset contract" },
           { name: "tokenId", type: "string", required: true, desc: "Asset token id" },
           { name: "amount", type: "string", required: true, desc: "Fixed offered amount, raw token units" },
@@ -2140,13 +2140,13 @@ const resumeSource = new EventSource(url, {
       />
 
       <p className="text-muted-foreground text-sm mb-3 mt-6">
-        Writes — owner-side (proposal response):
+        Writes, owner-side (proposal response):
       </p>
 
       <Endpoint
         method="POST"
         path="/v1/intents/sponsorship-proposal-accept"
-        description="Accept a proposal. Asset-owner-only, re-verified on-chain — a proposal binds to the asset, not a person, so whoever owns it at acceptance is paid and issues the license. Settles payment and mints the license atomically, same as accepting a bid."
+        description="Accept a proposal. Asset-owner-only, re-verified on-chain. A proposal binds to the asset rather than a person, so whoever owns it at acceptance is paid and issues the license. Settles payment and mints the license atomically, same as accepting a bid."
         params={[
           { name: "owner", type: "string", required: true, desc: "Must currently own the sponsored asset" },
           { name: "proposalId", type: "string", required: true, desc: "On-chain proposal id" },
@@ -2238,7 +2238,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/rewards/:address/events"
-        description="Point-event history for one address — each scored action with its base XP, multiplier, and final XP."
+        description="Point-event history for one address: each scored action with its base XP, multiplier, and final XP."
         params={[
           { name: "address", type: "string", required: true, desc: "Wallet address" },
           { name: "page", type: "number", required: false, desc: "Page number (default 1)" },
@@ -2265,16 +2265,16 @@ const resumeSource = new EventSource(url, {
       {/* ── ACCOUNTS ── */}
       <DocH2 id="accounts" border>Accounts</DocH2>
       <p className="text-sm text-muted-foreground mb-6">
-        Account onboarding and lookup. An Account is the logical actor (one per human/agent/org); a Wallet is its signing key; an Identity is its auth-provider record. There is one kind of user across the whole platform — these endpoints register and read that single Account model regardless of which app the user came from.
+        Account onboarding and lookup. An Account is the logical actor (one per human/agent/org); a Wallet is its signing key; an Identity is its auth-provider record. These endpoints register and read that single Account model regardless of which app the user came from.
       </p>
 
       <Endpoint
         method="POST"
         path="/v1/users/register"
-        description="Frictionless registration, authenticated by tenant API key (no SIWS token needed). The wallet address is supplied in the body. Idempotent — returns the existing Account if the wallet is already known. Used by medialane-starknet to silently register web3 wallet connections."
+        description="Frictionless registration, authenticated by tenant API key (no SIWS token needed). The wallet address is supplied in the body. Idempotent: returns the existing Account if the wallet is already known. Used by medialane-starknet to silently register web3 wallet connections."
         params={[
           { name: "walletAddress", type: "string", required: true, desc: "Starknet wallet address" },
-          { name: "walletType", type: "string", required: false, desc: "Free-form wallet-software label, e.g. \"braavos\" | \"ready\" | \"mediawallet\" | \"cartridge\" — not a closed enum" },
+          { name: "walletType", type: "string", required: false, desc: "Free-form wallet-software label, e.g. \"braavos\" | \"ready\" | \"mediawallet\" | \"cartridge\"; not a closed enum" },
           { name: "appSource", type: "string", required: false, desc: "MEDIALANE_STARKNET | MEDIALANE_IO | MEDIALANE_PORTAL | MEDIALANE_SDK" },
           { name: "chain", type: "string", required: false, desc: "Defaults to STARKNET" },
         ]}
@@ -2296,7 +2296,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/users/me"
-        description="Upsert the authenticated caller's Account (lazy onboarding for first-touch flows). Identity is taken from the Bearer token — a SIWS token, the same auth mechanism every Medialane app uses. The wallet address comes from the verified token, never the body."
+        description="Upsert the authenticated caller's Account (lazy onboarding for first-touch flows). Identity is taken from the Bearer token, a SIWS token, the same auth mechanism every Medialane app uses. The wallet address comes from the verified token, never the body."
         params={[
           { name: "walletType", type: "string", required: false, desc: "Defaults to UNKNOWN" },
           { name: "appSource", type: "string", required: false, desc: "Defaults to MEDIALANE_IO" },
@@ -2335,7 +2335,7 @@ const resumeSource = new EventSource(url, {
           { name: "chain", type: "string", required: false, desc: "Filter by wallet chain" },
           { name: "appSource", type: "string", required: false, desc: "Filter by identity app source" },
           { name: "walletType", type: "string", required: false, desc: "Filter by wallet type" },
-          { name: "since", type: "string", required: false, desc: "ISO date — count accounts created on/after" },
+          { name: "since", type: "string", required: false, desc: "ISO date; count accounts created on/after" },
         ]}
         curl={`curl "${BASE}/v1/users/count?appSource=MEDIALANE_IO&since=2026-05-01" \\
   -H "x-api-key: ${KEY}"`}
@@ -2354,7 +2354,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/collections/:contract/gated-content"
-        description="Return a collection's holder-only content (title, url, type) to verified holders. Requires a SIWS token — the caller's balance is read live from the contract (balance_of for ERC-721, balance_of_batch for ERC-1155), never from the indexer cache, so access reflects current on-chain ownership. Non-holders get 403; the gatedContentUrl is never exposed via the public profile endpoint."
+        description="Return a collection's holder-only content (title, url, type) to verified holders. Requires a SIWS token; the caller's balance is read live from the contract (balance_of for ERC-721, balance_of_batch for ERC-1155), never from the indexer cache, so access reflects current on-chain ownership. Non-holders get 403; the gatedContentUrl is never exposed via the public profile endpoint."
         params={[
           { name: "contract", type: "string", required: true, desc: "Collection contract address" },
         ]}
@@ -2513,7 +2513,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/collection-slug-claims"
-        description="Submit a collection slug claim. Requires a SIWS token — the caller must be the collection owner (owner or claimedBy). One pending claim per collection at a time."
+        description="Submit a collection slug claim. Requires a SIWS token; the caller must be the collection owner (owner or claimedBy). One pending claim per collection at a time."
         params={[
           { name: "contractAddress", type: "string", required: true, desc: "Collection contract address" },
           { name: "slug", type: "string", required: true, desc: "Requested slug" },
@@ -2564,7 +2564,7 @@ const resumeSource = new EventSource(url, {
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-2">Address Normalization</h3>
       <p className="text-sm text-muted-foreground mb-4">
-        The API normalizes all addresses server-side to 64-character lowercase hex strings (prefixed with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">0x</code>). You can pass any valid Starknet address format — short, long, or mixed-case — and the API will handle normalization automatically. The <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">@medialane/sdk</code> also normalizes addresses before every API call.
+        The API normalizes all addresses server-side to 64-character lowercase hex strings (prefixed with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">0x</code>). You can pass any valid Starknet address format (short, long, or mixed-case) and the API will handle normalization automatically. The <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">@medialane/sdk</code> also normalizes addresses before every API call.
       </p>
     </div>
   )

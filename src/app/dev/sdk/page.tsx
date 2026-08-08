@@ -182,7 +182,7 @@ const usage = await client.api.getUsage()`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-3">Accounts</h3>
       <p className="text-muted-foreground text-sm mb-3">
-        One Account model across the whole platform. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">registerUser</code> uses a tenant key (web3 wallet connect); the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">*MyWallet</code> pair uses a SIWS token (Sign In With Starknet — every app authenticates this way, no third-party identity provider).
+        One Account model across the whole platform. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">registerUser</code> uses a tenant key (web3 wallet connect); the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">*MyWallet</code> pair uses a SIWS token (Sign In With Starknet), the same mechanism every app relies on instead of a third-party identity provider.
       </p>
       <DocCodeBlock>{`// Tenant-key registration (e.g. wallet connect) — idempotent
 await client.api.registerUser({
@@ -318,7 +318,7 @@ await client.api.getCollections(1, 20, true, sort)`}</DocCodeBlock>
       {/* POP Protocol */}
       <DocH2 id="pop-protocol" border>POP Protocol (Proof of Participation)</DocH2>
       <p className="text-muted-foreground text-sm mb-3">
-        POP collections are event-based claim drops — conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.pop</code> for on-chain interactions and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> for eligibility checks.
+        POP collections are event-based claim drops: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.pop</code> for on-chain interactions and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> for eligibility checks.
       </p>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-3">Check eligibility and claim</h3>
@@ -385,7 +385,7 @@ console.log("Deployed:", txHash)`}</DocCodeBlock>
       {/* Collection Drop */}
       <DocH2 id="collection-drop" border>Collection Drop</DocH2>
       <p className="text-muted-foreground text-sm mb-3">
-        Collection Drops are public minting campaigns with configurable claim conditions — price, supply cap, time window, and per-wallet limits. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.drop</code> for on-chain interactions and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> for status queries.
+        Collection Drops are public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.drop</code> for on-chain interactions and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> for status queries.
       </p>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-3">Claim (public mint)</h3>
@@ -497,7 +497,7 @@ await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "
       <DocH2 id="creator-coins" border>Creator Coins</DocH2>
       <p className="text-muted-foreground text-sm mb-3">
         Fixed-supply standard ERC-20s with permanently-locked Ekubo liquidity (audited unruggable.meme fork).
-        Launch price is fixed at 0.01 quote/coin — supply sets the market cap. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.creatorCoin</code> executes
+        Launch price is fixed at 0.01 quote/coin; supply sets the market cap. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.creatorCoin</code> executes
         with a starknet.js account; the account-free <strong>call builders</strong> (0.35+) return raw calls for custom
         execution pipelines (paymasters, session keys, batchers). The <strong>coin-launch math module</strong> (0.36)
         is the single source for validation and allocation math.
@@ -545,7 +545,7 @@ const price = await getCreatorCoinPrice(coinAddress, provider) // { quotePerCoin
       {/* Platform fee */}
       <DocH2 id="platform-fee" border>Platform Fee</DocH2>
       <p className="text-muted-foreground text-sm mb-3">
-        The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer — never an on-chain protocol rule. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or no fund address is configured, so a missing config simply means no fee.
+        The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer, distinct from any on-chain protocol rule. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or unconfigured, treating a missing config as a zero fee.
       </p>
       <DocCodeBlock>{`import { buildFeeCall, resolveFeeConfig } from "@medialane/sdk"
 
@@ -635,7 +635,7 @@ try {
 
       <div className="mt-10 p-5 rounded-xl border border-primary/20 bg-primary/5">
         <p className="text-sm text-muted-foreground">
-          <span className="font-semibold text-white">Full API reference</span> — all REST endpoints, parameters, and response schemas are documented in the{" "}
+          <span className="font-semibold text-white">Full API reference</span>: all REST endpoints, parameters, and response schemas are documented in the{" "}
           <Link href="/dev/api" className="text-primary hover:underline">API Reference</Link>.
         </p>
       </div>
@@ -701,7 +701,7 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
           <p className="text-xs font-mono text-muted-foreground">starknet.medialane.io</p>
           <p className="text-sm font-semibold text-white">Permissionless dApp</p>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Activities, Trade Intents, Asset Metadata. Direct starknet.js reads — no backend dependency for browsing.
+            Activities, Trade Intents, Asset Metadata. Reads directly via starknet.js, with no backend dependency for browsing.
           </p>
         </div>
       </div>

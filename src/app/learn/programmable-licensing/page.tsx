@@ -4,15 +4,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Programmable Licensing | Learn | Medialane",
-  description: "Medialane's onchain licensing system — license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
+  description: "Medialane's onchain licensing system: license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
   openGraph: {
     title: "Programmable Licensing | Learn | Medialane",
-    description: "Medialane's onchain licensing system — license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
+    description: "Medialane's onchain licensing system: license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
     url: "https://docs.medialane.io/learn/programmable-licensing",
   },
   twitter: {
     title: "Programmable Licensing | Learn | Medialane",
-    description: "Medialane's onchain licensing system — license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
+    description: "Medialane's onchain licensing system: license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
   },
 };
 
@@ -27,10 +27,10 @@ function LicenseRow({ name, description }: { name: string; description: string }
 
 const CORE_TRAITS = [
   { trait: "License", desc: "The preset: CC BY-SA (default), CC BY, CC0, All Rights Reserved, or Custom." },
-  { trait: "Commercial Use", desc: "Whether the work may be used commercially — and by whom." },
+  { trait: "Commercial Use", desc: "Whether the work may be used commercially, and by whom." },
   { trait: "Derivatives", desc: "Whether derivative works are permitted, and under what conditions." },
   { trait: "Attribution", desc: "Whether credit to the original creator is required." },
-  { trait: "Territory", desc: "Geographic scope of the license — worldwide or specific regions." },
+  { trait: "Territory", desc: "Geographic scope of the license: worldwide or specific regions." },
   { trait: "AI Policy", desc: "Explicit declaration on AI training use: allowed, not allowed, or with permission only." },
 ];
 
@@ -42,7 +42,7 @@ export default function LearnProgrammableLicensingPage() {
         <h2 className="text-2xl font-bold">Programmable Licensing</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Every IP asset minted on Medialane carries a machine-readable license embedded
-          in its on-chain metadata. The terms travel with the asset — to any marketplace,
+          in its on-chain metadata. The terms travel with the asset to any marketplace,
           viewer, or aggregator that reads metadata.
         </p>
       </div>
@@ -51,14 +51,14 @@ export default function LearnProgrammableLicensingPage() {
 
         <Section title="License as Metadata">
           <p>
-            License terms are encoded as plain attributes on the token — the same attribute
+            License terms are encoded as plain attributes on the token, the same attribute
             format that OpenSea, Rarible, and any other NFT viewer reads. This means the
             terms are portable: visible wherever the asset appears, not just on Medialane.
           </p>
           <p>
             Medialane extends the OpenSea metadata baseline with a structured license object.
             Third parties that don&apos;t understand the extension can still read the plain
-            attributes. The floor is always the OpenSea baseline — it is never lowered.
+            attributes. The OpenSea baseline is always the floor and stays fixed there.
           </p>
         </Section>
 
@@ -66,7 +66,7 @@ export default function LearnProgrammableLicensingPage() {
           <div className="bento-cell border border-brand-orange/20 bg-brand-orange/5 p-5 space-y-3">
             <p className="font-bold text-foreground">The contract does not revert on license violation.</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Enforcement of license terms is social, legal, and jurisdictional — the same
+              Enforcement of license terms is social, legal, and jurisdictional, the same
               mechanisms that enforce traditional copyright. This is intentional: encoding
               jurisdiction-specific law into immutable contracts would make them globally
               unusable. Soft enforcement gives the system worldwide durability.
@@ -74,7 +74,7 @@ export default function LearnProgrammableLicensingPage() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               The on-chain record is evidence. It establishes what the creator stated, when
               they stated it, and what terms apply. That record is tamper-proof and permanently
-              verifiable — which is exactly what you need for legal enforcement, even without
+              verifiable, exactly what legal enforcement needs, even without
               automatic contract reversion.
             </p>
           </div>
@@ -97,8 +97,8 @@ export default function LearnProgrammableLicensingPage() {
 
         <Section title="License Presets">
           <div className="space-y-2">
-            <LicenseRow name="CC BY-SA" description="Attribution + ShareAlike — the default. Free to use and adapt with credit. Derivatives must carry the same license. The most creator-protective open license." />
-            <LicenseRow name="CC BY" description="Attribution — free to use and adapt with credit. Derivatives can use any license." />
+            <LicenseRow name="CC BY-SA" description="Attribution + ShareAlike, the default. Free to use and adapt with credit. Derivatives must carry the same license. The most creator-protective open license." />
+            <LicenseRow name="CC BY" description="Attribution: free to use and adapt with credit. Derivatives can use any license." />
             <LicenseRow name="CC0" description="Public Domain dedication. Creator waives all rights. Anyone can use for any purpose, without attribution." />
             <LicenseRow name="ARR" description="All Rights Reserved. Full copyright retained by the creator. No use permitted beyond viewing." />
             <LicenseRow name="Custom" description="Creator-defined terms specified as freeform text alongside the structured attributes." />
@@ -110,12 +110,12 @@ export default function LearnProgrammableLicensingPage() {
             <p className="font-bold text-foreground">Terms cannot be edited after minting.</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Once a token is minted, its license terms are fixed. The metadata lives on IPFS
-              or Arweave — content-addressed and immutable. If a creator wants to offer different
+              or Arweave, content-addressed and immutable. If a creator wants to offer different
               terms, they mint a new token. There is no edit path.
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Collectors know exactly what they purchased, since the terms cannot be changed
-              after the fact — by the creator, by Medialane, or by anyone else.
+              Collectors know exactly what they purchased, since the terms stay fixed
+              after the fact for the creator, for Medialane, and for anyone else.
             </p>
           </div>
         </Section>
@@ -146,16 +146,16 @@ export default function LearnProgrammableLicensingPage() {
 
         <Section title="Requesting a License">
           <p>
-            Licenses on Medialane are declarations, not gates — anyone can read them, and
-            remixing is permissionless. When you want the creator&apos;s explicit agreement —
+            Licenses on Medialane are declarations rather than gates: anyone can read them, and
+            remixing is permissionless. When you want the creator&apos;s explicit agreement,
             to pay or credit them, secure a formal commercial license, or use a work the
-            creator marked <span className="font-mono text-xs">no-derivatives</span> — you
+            creator marked <span className="font-mono text-xs">no-derivatives</span>, you
             can <strong className="text-foreground">request a license</strong> directly.
           </p>
           <div className="space-y-2">
             {[
               { name: "Propose terms + a fee", desc: "From an asset page, choose License. You set the proposed license (commercial use, derivatives, royalty) and a fee you're offering the creator, plus an optional message." },
-              { name: "The creator decides", desc: "The request goes to the creator. They can accept or decline — nothing is minted or charged unless they accept. It's a voluntary agreement, never enforced by the platform." },
+              { name: "The creator decides", desc: "The request goes to the creator. They can accept or decline; nothing is minted or charged unless they accept. It's a voluntary agreement, never enforced by the platform." },
               { name: "Licensed derivative is delivered", desc: "On acceptance, the licensed derivative is minted and listed for you to complete. Track requests under Portfolio → Licensing." },
             ].map(({ name, desc }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
@@ -165,7 +165,7 @@ export default function LearnProgrammableLicensingPage() {
             ))}
           </div>
           <p className="text-sm">
-            Licensing is a distinct, optional service — separate from the free, permissionless{" "}
+            Licensing is a distinct, optional service, separate from the free, permissionless{" "}
             <Link href="/learn/remix" className="text-primary hover:underline">Remix</Link>.
           </p>
         </Section>

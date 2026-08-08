@@ -5,15 +5,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Services | Learn | Medialane",
-  description: "How Medialane services work — the registry that defines what creators can do, canonical service IDs, and the full capability set.",
+  description: "How Medialane services work: the registry that defines what creators can do, canonical service IDs, and the full capability set.",
   openGraph: {
     title: "Services | Learn | Medialane",
-    description: "How Medialane services work — the registry that defines what creators can do, canonical service IDs, and the full capability set.",
+    description: "How Medialane services work: the registry that defines what creators can do, canonical service IDs, and the full capability set.",
     url: "https://docs.medialane.io/learn/services",
   },
   twitter: {
     title: "Services | Learn | Medialane",
-    description: "How Medialane services work — the registry that defines what creators can do, canonical service IDs, and the full capability set.",
+    description: "How Medialane services work: the registry that defines what creators can do, canonical service IDs, and the full capability set.",
   },
 };
 
@@ -45,7 +45,7 @@ const SERVICES = [
     color: "text-primary",
     bg: "bg-primary/10",
     border: "border-primary/20",
-    desc: "Programmable IP on a single shared genesis contract — many creators mint pieces into one collection. Distinct from per-creator IP Collections, which deploy a contract per creator.",
+    desc: "Programmable IP on a single shared genesis contract, where many creators mint pieces into one collection. Distinct from per-creator IP Collections, which deploy a contract per creator.",
     caps: ["mint", "list", "buy", "make_offer", "transfer", "remix", "license"],
   },
   {
@@ -95,7 +95,7 @@ const SERVICES = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    desc: "Sponsorship licenses on assets you own — or ones you'd like to sponsor. An owner opens an offer and sponsors bid, or a sponsor proposes terms directly; either way payment settles directly with no escrow, and the license mints as a standard, transferable ERC-721 the moment a deal is accepted.",
+    desc: "Sponsorship licenses on assets you own, or ones you'd like to sponsor. An owner opens an offer and sponsors bid, or a sponsor proposes terms directly; either way payment settles directly with no escrow, and the license mints as a standard, transferable ERC-721 the moment a deal is accepted.",
     caps: ["sponsor", "transfer"],
   },
   {
@@ -105,7 +105,7 @@ const SERVICES = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    desc: "Your own fixed-supply standard ERC-20 with permanently-locked Ekubo liquidity (audited unruggable.meme fork). Launch price fixed at 0.01 quote/coin; up to 10% creator allocation, funded by the creator. Ownership renounced at launch — the contract is the only authority.",
+    desc: "Your own fixed-supply standard ERC-20 with permanently-locked Ekubo liquidity (audited unruggable.meme fork). Launch price fixed at 0.01 quote/coin; up to 10% creator allocation, funded by the creator. Ownership renounced at launch: the contract is the only authority.",
     caps: ["launch", "swap", "transfer"],
   },
   {
@@ -115,7 +115,7 @@ const SERVICES = [
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    desc: "Coins launched outside Medialane (unruggable.meme or partner launches), brought in by owner claim with team review — never bulk-indexed. Listed on the Coins page with live Ekubo prices.",
+    desc: "Coins launched outside Medialane (unruggable.meme or partner launches), brought in individually by owner claim with team review, never bulk-indexed. Listed on the Coins page with live Ekubo prices.",
     caps: ["swap", "transfer"],
   },
   {
@@ -135,7 +135,7 @@ const SERVICES = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    desc: "The ERC-1155 trading venue. Supports partial fills — collectors can buy any quantity of a multi-edition listing.",
+    desc: "The ERC-1155 trading venue. Supports partial fills: collectors can buy any quantity of a multi-edition listing.",
     caps: ["list", "buy", "make_offer", "cancel"],
   },
 ];
@@ -164,7 +164,7 @@ export default function LearnServicesPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Services</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Every action on Medialane — minting, trading, dropping, issuing credentials — is
+          Every action on Medialane (minting, trading, dropping, issuing credentials) is
           powered by a service: a registered module that produces assets, venues, or both.
           Services are how the protocol grows. The set of ways to create and monetize expands
           by registering a new service, keeping the list open-ended rather than fixed.
@@ -180,8 +180,8 @@ export default function LearnServicesPage() {
             marketplace handles a listing, it operates as a service with marketplace capabilities.
           </p>
           <p>
-            This design means adding a new capability to Medialane — a new collection type,
-            a new marketplace, a new credential system — is a registry update, not a contract
+            This design means adding a new capability to Medialane (a new collection type,
+            a new marketplace, a new credential system) is a registry update, not a contract
             rewrite. Existing integrations keep working without changes.
           </p>
           <div className="bento-cell border border-brand-blue/20 bg-brand-blue/5 p-4 space-y-1">
@@ -189,14 +189,14 @@ export default function LearnServicesPage() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               The registry lives in the{" "}
               <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">@medialane/sdk</code>{" "}
-              package — the canonical map from service IDs to their capabilities. Anyone can read it.
+              package, the canonical map from service IDs to their capabilities. Anyone can read it.
             </p>
           </div>
         </Section>
 
         <Section title="Services Available Today">
           <p>
-            These are the services live on mainnet now. The catalog is not fixed — new
+            These are the services live on mainnet now. The catalog stays open-ended: new
             monetization primitives (commissions, auctions, subscriptions, and more) are
             added as new services over time, each a registry entry rather than a protocol
             change.
@@ -228,7 +228,7 @@ export default function LearnServicesPage() {
 
         <Section title="The Capability Set">
           <p>
-            Every service declares a bounded set of capabilities — the actions it enables.
+            Every service declares a bounded set of capabilities: the actions it enables.
             The set is fixed; services pick from it. This prevents free-form extension
             while keeping the system open to new services.
           </p>
@@ -251,8 +251,8 @@ export default function LearnServicesPage() {
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">-v3</code> suffixes.
           </p>
           <p>
-            This means your integration — whether you are a developer reading the SDK or
-            an AI agent querying the API — keeps working after upgrades. The contract
+            This means your integration, whether you are a developer reading the SDK or
+            an AI agent querying the API, keeps working after upgrades. The contract
             address changes; the service ID does not.
           </p>
           <p className="text-sm">

@@ -23,7 +23,7 @@ export default function LearnPOPPage() {
         <h2 className="text-2xl font-bold">POP Protocol</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           The POP Protocol (Proof of Participation) allows event organisers, communities,
-          and platforms to issue verifiable on-chain credentials to participants — permanently
+          and platforms to issue verifiable on-chain credentials to participants, permanently
           anchored on Starknet.
         </p>
         <p className="text-sm text-muted-foreground">
@@ -39,7 +39,7 @@ export default function LearnPOPPage() {
       <div className="space-y-8">
         <Section title="What is a POP Credential?">
           <p>
-            A POP credential is a <strong className="text-foreground">soulbound NFT</strong> — a
+            A POP credential is a <strong className="text-foreground">soulbound NFT</strong>: a
             non-transferable token that acts as a verifiable record of an event or achievement.
             Unlike regular NFTs, soulbound tokens cannot be sold or transferred. They are
             permanently associated with the wallet that claimed them.
@@ -66,8 +66,8 @@ export default function LearnPOPPage() {
               <p className="text-sm font-semibold text-foreground">Providers (Event Creators)</p>
               <p className="text-xs text-muted-foreground">
                 Approved providers can create POP events. Each event has a name, description,
-                image, and an optional claim window. Providers define who is eligible to claim
-                — open events allow anyone with the link, while gated events require provider
+                image, and an optional claim window. Providers define who is eligible to claim:
+                open events allow anyone with the link, while gated events require provider
                 approval or an allowlist.
               </p>
             </div>
@@ -92,7 +92,7 @@ export default function LearnPOPPage() {
           </p>
           <p>
             Each credential can only be claimed once per wallet. Duplicate claims are
-            rejected by the smart contract. On medialane.io there is no cost to claim — gas
+            rejected by the smart contract. On medialane.io there is no cost to claim: gas
             is sponsored. On the Starknet app, gas sponsorship depends on whether AVNU
             sponsorship is currently active.
           </p>
@@ -119,7 +119,7 @@ export default function LearnPOPPage() {
 
         <Section title="Why On-Chain Credentials?">
           <p>
-            Traditional credentials — conference badges, certificates, Discord roles — are
+            Traditional credentials (conference badges, certificates, Discord roles) are
             controlled by the platform that issued them. If that platform disappears or
             revokes your access, the credential is gone. On-chain credentials are permanent
             and self-sovereign: they live in your wallet and cannot be taken away.
@@ -127,7 +127,7 @@ export default function LearnPOPPage() {
           <p>
             POP credentials are publicly verifiable. Any application can query the Starknet
             blockchain (or the Medialane API) to confirm whether a wallet holds a specific
-            credential — opening up token-gated experiences, DAO voting, and reputation
+            credential, opening up token-gated experiences, DAO voting, and reputation
             systems built on trustless proof.
           </p>
         </Section>
