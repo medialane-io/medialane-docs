@@ -10,15 +10,15 @@ import { PageContainer } from "@/components/page-container";
 const FAQS = [
   {
     q: "How do I create a wallet on Medialane?",
-    a: "Sign in with your email or social account. Medialane automatically creates a Starknet wallet for you via ChipiPay — no browser extension or seed phrase required. You'll be prompted to set a PIN during onboarding.",
+    a: "Enter your email, then set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key) on your device. Medialane deploys a self-custody Starknet wallet sealed to that passkey automatically — no browser extension, no seed phrase, and no separate password or PIN to remember.",
   },
   {
-    q: "I forgot my PIN. What do I do?",
-    a: "Your PIN is used to encrypt your session key. If you forget it, you can generate a new session key from the onboarding flow. Your wallet and assets are never lost — they are tied to your authentication identity, not your PIN. If your device supports biometrics, you can also set up Passkey authentication to sign transactions without a PIN.",
+    q: "Where is my private key stored? Is it safe?",
+    a: "Your private key is generated and encrypted directly in your browser, sealed to your device's passkey. It never leaves your device and is never sent to or stored on Medialane's servers — Medialane has no way to access or recover it on your behalf.",
   },
   {
-    q: "Can I use passkeys instead of a PIN?",
-    a: "Yes. If your device supports WebAuthn (Face ID, Touch ID, Windows Hello, or a hardware security key), you can authenticate transactions with a passkey instead of entering your PIN each time. Set it up from Portfolio → Settings or during the session setup flow.",
+    q: "What happens if I lose my device or clear my browser data?",
+    a: "Your wallet's signing key lives only in that specific browser — losing the device or clearing its site data means losing access to that wallet today. Cross-device wallet recovery is planned but not available yet, so avoid clearing site data for medialane.io on a device you're actively using.",
   },
   {
     q: "My NFT minted but doesn't appear in my Portfolio.",
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "My session expired. Do I lose my assets?",
-    a: "No. Session keys expire for security (typically after 6 hours) but have no effect on your assets or wallet. Simply re-enter your PIN to start a new session and continue trading.",
+    a: "No. Sign-in sessions expire after 24 hours for security but have no effect on your assets or wallet. You'll just be prompted for a quick passkey confirmation to start a new session and continue trading.",
   },
   {
     q: "What currencies does Medialane support?",
