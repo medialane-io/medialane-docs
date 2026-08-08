@@ -51,8 +51,9 @@ export default function LearnWeb3Page() {
           <p>
             A wallet address on a blockchain is like an email address — but instead of a
             company controlling the account, you control it through a cryptographic key pair.
-            Medialane uses ChipiPay to derive this wallet from your existing email login,
-            so you get Web3 ownership without the complexity of managing keys yourself.
+            Medialane generates this key pair on your own device and seals it behind your
+            device passkey (Face ID, Touch ID, Windows Hello), so you get real Web3
+            ownership without ever having to write down or manage a seed phrase yourself.
           </p>
         </Section>
 
@@ -103,15 +104,18 @@ export default function LearnWeb3Page() {
         <Section title="Account Abstraction">
           <p>
             Starknet natively supports account abstraction — a model where wallets are
-            smart contracts themselves, not just key pairs. This enables features like
-            session keys (SNIP-9), which allow applications to sign a limited set of
-            transactions on your behalf for a defined period.
+            smart contracts themselves, not just key pairs. Medialane&apos;s wallet is
+            exactly this: a smart-contract account with a single passkey-sealed owner key.
+            The standalone MediaWallet app deploys and operates it permissionlessly, funded
+            by you, with no dependency on any Medialane-run service — first-principles
+            self-custody. medialane.io is built for a different audience: every transaction
+            there is gas-sponsored, so you never need STRK or ETH in your wallet to use the
+            platform — a frictionless experience layered on top of the same account model.
           </p>
           <p>
-            Medialane uses session keys to let you approve a session once with your PIN
-            and then execute multiple marketplace actions — minting, listing, buying —
-            without re-entering your credentials each time. Sessions expire automatically
-            for security.
+            Every action you take — minting, listing, buying — is signed directly by your
+            device passkey, no separate password or PIN. Nothing is delegated to a third
+            party: your device is the only place your key ever exists.
           </p>
         </Section>
       </div>

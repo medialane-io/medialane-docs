@@ -130,8 +130,9 @@ export default function CompliancePage() {
           </p>
           <p>
             On-chain data — transactions, wallet addresses, token metadata — is inherently
-            public and permanent on Starknet. Off-platform user data (email, authentication)
-            is handled by Clerk in accordance with their privacy policies. See our{" "}
+            public and permanent on Starknet. Your wallet's private key never leaves your
+            device — sealed behind your device passkey, it is never transmitted to us or
+            any third party. See our{" "}
             <Link href="/guidelines/privacy" className="text-primary hover:underline">Privacy Policy</Link>{" "}
             for full details.
           </p>

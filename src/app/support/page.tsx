@@ -10,7 +10,7 @@ import { PageContainer } from "@/components/page-container";
 const FAQS = [
   {
     q: "How do I create a wallet on Medialane?",
-    a: "Enter your email, then set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key) on your device. Medialane deploys a self-custody Starknet wallet sealed to that passkey automatically — no browser extension, no seed phrase, and no separate password or PIN to remember.",
+    a: "Set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key) on your device — Medialane deploys a self-custody Starknet wallet sealed to that passkey automatically, no email, no browser extension, no seed phrase, and no separate password or PIN to remember. You can attach an email later from Settings if you want one for account notices.",
   },
   {
     q: "Where is my private key stored? Is it safe?",
@@ -54,7 +54,7 @@ const FAQS = [
   },
   {
     q: "How do I participate in a Collection Drop?",
-    a: "Go to Launchpad → Collection Drop to see active and upcoming drops. Click Mint on a drop you're eligible for, confirm with your PIN, and the NFT is sent to your wallet. Drop eligibility is enforced onchain — if your wallet is on the allowlist, you'll see the option automatically.",
+    a: "Go to Launchpad → Collection Drop to see active and upcoming drops. Click Mint on a drop you're eligible for and confirm with your passkey, and the NFT is sent to your wallet. Drop eligibility is enforced onchain — if your wallet is on the allowlist, you'll see the option automatically.",
   },
   {
     q: "Is Medialane available worldwide?",
@@ -167,7 +167,7 @@ export default function SupportPage() {
             >
               <option value="" disabled>Select a category</option>
               <option value="account">Account / login</option>
-              <option value="wallet">Wallet / PIN</option>
+              <option value="wallet">Wallet / passkey</option>
               <option value="minting">Minting issue</option>
               <option value="marketplace">Marketplace / trading</option>
               <option value="missing">Missing asset or listing</option>

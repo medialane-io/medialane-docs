@@ -87,14 +87,14 @@ export default function LearnPOPPage() {
             To claim a credential, navigate to the POP Protocol section under{" "}
             <strong className="text-foreground">Launchpad → POP Protocol</strong>. You will
             see a list of active events. Click <strong className="text-foreground">Claim</strong>{" "}
-            on any event you participated in, confirm with your PIN, and the credential is
-            minted to your wallet.
+            on any event you participated in, confirm with your device passkey, and the
+            credential is minted to your wallet.
           </p>
           <p>
             Each credential can only be claimed once per wallet. Duplicate claims are
             rejected by the smart contract. On medialane.io there is no cost to claim — gas
-            fees are sponsored via ChipiPay. On the Starknet app, gas sponsorship depends on
-            whether AVNU sponsorship is currently active.
+            is sponsored. On the Starknet app, gas sponsorship depends on whether AVNU
+            sponsorship is currently active.
           </p>
         </Section>
 

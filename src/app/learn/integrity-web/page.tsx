@@ -48,7 +48,7 @@ const AXIOMS = [
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
     medialane: "No application, KYC, waitlist, or approval. If you have a wallet, you can mint on Medialane. If you can write code, you can build on the Mediolano protocol. Permissionless here means the smart contract architecture enforces it directly.",
-    highlights: ["No whitelist or application to mint", "Open Mediolano protocol for builders", "Gasless via ChipiPay — no barriers to entry"],
+    highlights: ["No whitelist or application to mint", "Open Mediolano protocol for builders", "Gasless on medialane.io — no barriers to entry"],
   },
   {
     num: "04",

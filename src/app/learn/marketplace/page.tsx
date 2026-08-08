@@ -150,9 +150,10 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             by a limit the seller agrees to when signing the order.
           </p>
           <p className="text-sm">
-            Listing and offer creation are gas-sponsored on medialane.io (ChipiPay). On the
-            wallet-sovereign Starknet app, gas sponsorship depends on whether AVNU sponsorship
-            is currently active — check the app for real-time status. See{" "}
+            On medialane.io, transactions are frictionless — wallet setup, listing, and offer
+            creation are all gas-sponsored. On the wallet-sovereign Starknet app, gas
+            sponsorship depends on whether AVNU sponsorship is currently active — check the
+            app for real-time status. See{" "}
             <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
             for the canonical breakdown.
           </p>

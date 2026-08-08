@@ -182,20 +182,20 @@ const usage = await client.api.getUsage()`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-3">Accounts</h3>
       <p className="text-muted-foreground text-sm mb-3">
-        One Account model across the whole platform. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">registerUser</code> uses a tenant key (web3 wallet connect); the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">*MyWallet</code> pair uses a Clerk JWT.
+        One Account model across the whole platform. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">registerUser</code> uses a tenant key (web3 wallet connect); the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">*MyWallet</code> pair uses a SIWS token (Sign In With Starknet — every app authenticates this way, no third-party identity provider).
       </p>
       <DocCodeBlock>{`// Tenant-key registration (e.g. wallet connect) — idempotent
 await client.api.registerUser({
   walletAddress: "0x0591...",
-  walletType: "ARGENT",      // ARGENT | BRAAVOS | CARTRIDGE | PRIVY | CHIPIPAY | INJECTED | UNKNOWN
-  appSource: "MEDIALANE_DAPP",
+  walletType: "braavos",     // free-form wallet-software label, e.g. "braavos" | "ready" | "mediawallet" | "cartridge" — not a closed enum
+  appSource: "MEDIALANE_STARKNET",
 })
 
-// Clerk-JWT lazy onboarding (medialane-io). Wallet comes from the token.
-await client.api.upsertMyWallet(clerkToken, { walletType: "CHIPIPAY", appSource: "MEDIALANE_IO" })
+// SIWS lazy onboarding (medialane-io). Wallet comes from the token.
+await client.api.upsertMyWallet(siwsToken, { walletType: "mediawallet", appSource: "MEDIALANE_IO" })
 
 // Read the caller's stored wallet (null until onboarded)
-const me = await client.api.getMyWallet(clerkToken)`}</DocCodeBlock>
+const me = await client.api.getMyWallet(siwsToken)`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-3">Creator &amp; collection profiles</h3>
       <DocCodeBlock>{`// Public reads
@@ -204,22 +204,22 @@ const creator  = await client.api.getCreatorByUsername("kalamaha")
 const profile  = await client.api.getCreatorProfile("0x03d0...")
 const colProfile = await client.api.getCollectionProfile("0x076c...")
 
-// Owner-only writes (require a Clerk JWT)
-await client.api.updateCreatorProfile("0x03d0...", { displayName: "Kalamaha", bio: "..." }, clerkToken)
-await client.api.updateCollectionProfile("0x076c...", { displayName: "Genesis" }, clerkToken)
+// Owner-only writes (require a SIWS token)
+await client.api.updateCreatorProfile("0x03d0...", { displayName: "Kalamaha", bio: "..." }, siwsToken)
+await client.api.updateCollectionProfile("0x076c...", { displayName: "Genesis" }, siwsToken)
 
 // Collection ownership claim — Path 1 (on-chain) or Path 3 (manual review)
-await client.api.claimCollection("0x076c...", "0x0591...", clerkToken)
+await client.api.claimCollection("0x076c...", "0x0591...", siwsToken)
 await client.api.requestCollectionClaim({ contractAddress: "0x076c...", email: "me@x.com" })`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-3">Vanity slugs</h3>
       <DocCodeBlock>{`// Resolve an approved slug to a full collection
 const col = await client.api.getCollectionBySlug("genesis")
 
-// Availability check (public) + submit a claim (owner, Clerk JWT)
+// Availability check (public) + submit a claim (owner, SIWS token)
 const { available } = await client.api.checkCollectionSlugAvailability("genesis")
-await client.api.submitCollectionSlugClaim("0x076c...", "genesis", clerkToken)
-const mine = await client.api.getMyCollectionSlugClaims(clerkToken)`}</DocCodeBlock>
+await client.api.submitCollectionSlugClaim("0x076c...", "genesis", siwsToken)
+const mine = await client.api.getMyCollectionSlugClaims(siwsToken)`}</DocCodeBlock>
 
       <DocH2 id="comments" border>On-chain Comments</DocH2>
       <DocCodeBlock>{`// Fetch permanent on-chain comments for a token
@@ -466,7 +466,7 @@ await client.marketplace1155.createListing(account, {
 await client.marketplace1155.fulfillOrder(account, { orderHash: "0x04f7a1...", amount: "3" })
 await client.marketplace1155.cancelOrder(account, { orderHash: "0x04f7a1..." })
 
-// For ChipiPay / custom signers — get the SNIP-12 typed data only
+// For custom signers — get the SNIP-12 typed data only
 const typedData = client.marketplace1155.buildListingTypedData(params, chainId)`}</DocCodeBlock>
 
       {/* ERC-1155 collection service */}
@@ -694,7 +694,7 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
           <p className="text-sm font-semibold text-white">Creator Launchpad</p>
           <p className="text-xs text-muted-foreground leading-relaxed">
             Collections, Orders, Minting, Remix Licensing, POP, Collection Drop, On-chain Comments.
-            Invisible wallet UX via ChipiPay.
+            Frictionless, fully gas-sponsored self-custody wallet UX.
           </p>
         </div>
         <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5 space-y-2">

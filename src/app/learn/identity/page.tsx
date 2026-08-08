@@ -114,12 +114,10 @@ export default function LearnIdentityPage() {
                 <p className="font-bold text-foreground text-sm">Authentication</p>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Proving who you are. On the wallet-sovereign Starknet app, authentication is
-                SIWS — Sign In With Starknet: you sign a message with your wallet and the API
-                verifies the signature, no password or third-party provider involved. On
-                medialane.io, authentication is email/social login via Clerk, with a wallet
-                created invisibly behind it — a different identity scheme attached to the same
-                underlying account model.
+                Proving who you are. Every Medialane app uses the same mechanism — SIWS,
+                Sign In With Starknet: you sign a message with your wallet (unlocked by your
+                device passkey) and the API verifies the signature, no password or
+                third-party identity provider involved anywhere on the platform.
               </p>
             </div>
             <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">

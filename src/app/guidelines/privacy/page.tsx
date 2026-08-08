@@ -44,8 +44,8 @@ export default function PrivacyPage() {
       <div className="space-y-6">
         <Section num="1" title="Information We Collect">
           <p>We collect the following categories of information:</p>
-          <p><strong className="text-foreground">Account information:</strong> Email address, name, and profile data provided to our authentication provider (Clerk) when you create an account.</p>
-          <p><strong className="text-foreground">Wallet information:</strong> Your Starknet wallet address, derived from your authentication session via ChipiPay. We do not store your private keys — they are managed client-side by ChipiPay&apos;s infrastructure.</p>
+          <p><strong className="text-foreground">Account information:</strong> Your Starknet wallet address and any profile data you choose to add (display name, bio, avatar, social links). Attaching an email address is optional and separate from creating your wallet — it&apos;s used only for account notices and signing back in.</p>
+          <p><strong className="text-foreground">Wallet information:</strong> Your wallet is self-custody — a private key generated on your device and sealed behind your device&apos;s passkey (Face ID, Touch ID, Windows Hello, or a hardware security key). The key never leaves your device and is never transmitted to us or any third party; we never have access to it.</p>
           <p><strong className="text-foreground">Transaction data:</strong> Onchain transaction data associated with your wallet address, including NFT mints, listings, purchases, and transfers. This data is publicly available on the Starknet blockchain.</p>
           <p><strong className="text-foreground">Usage data:</strong> Log data including IP address, browser type, pages visited, and timestamps. Collected automatically when you use the Service.</p>
           <p><strong className="text-foreground">Content:</strong> Files, images, and metadata you upload when minting NFTs.</p>
@@ -80,8 +80,6 @@ export default function PrivacyPage() {
         <Section num="4" title="Data Sharing">
           <p>We do not sell your personal information. We share data only with:</p>
           <ul className="list-disc list-inside space-y-1">
-            <li><strong className="text-foreground">Clerk</strong> — our authentication provider, for identity management</li>
-            <li><strong className="text-foreground">ChipiPay</strong> — our wallet infrastructure provider</li>
             <li><strong className="text-foreground">Pinata</strong> — IPFS pinning service for your uploaded content</li>
             <li><strong className="text-foreground">Railway</strong> — cloud infrastructure provider hosting our backend</li>
             <li><strong className="text-foreground">Legal authorities</strong> — when required by law or valid legal process</li>
@@ -107,9 +105,9 @@ export default function PrivacyPage() {
 
         <Section num="6" title="Cookies and Tracking">
           <p>
-            Medialane uses session cookies necessary for authentication and platform
-            functionality. We do not use third-party advertising trackers or sell
-            behavioural data to ad networks.
+            Sign-in uses a signed message from your wallet (no separate password or
+            session cookie), stored locally in your browser. We do not use third-party
+            advertising trackers or sell behavioural data to ad networks.
           </p>
         </Section>
 

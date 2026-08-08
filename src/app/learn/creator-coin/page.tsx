@@ -79,7 +79,7 @@ export default function LearnCreatorCoinPage() {
           </ul>
           <p>
             On medialane.io the launch is gasless — two on-chain steps confirmed with your
-            PIN or passkey. On the web3 dApp your own wallet signs each step.
+            passkey. On the web3 dApp your own wallet signs each step.
           </p>
         </Section>
 

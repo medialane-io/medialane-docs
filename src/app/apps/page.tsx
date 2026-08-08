@@ -35,7 +35,7 @@ const APPS = [
       "List, buy, and sell in the peer-to-peer marketplace",
       "Launch POP Protocol credential campaigns",
       "Deploy collection drops with on-chain allowlists",
-      "Gasless — email/social login, no seed phrases",
+      "Gasless — passkey sign-in, no seed phrases",
     ],
     tags: ["Marketplace", "NFT Minting", "Creator Launchpad", "POP Protocol", "Collection Drop", "Gasless"],
     badge: "Live",
