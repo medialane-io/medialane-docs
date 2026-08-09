@@ -18,6 +18,11 @@ const ACTION_LABELS: Record<string, string> = {
   "intent:checkout": "Checkout",
   "metadata:upload-json": "Upload metadata JSON to IPFS",
   "metadata:upload-file": "Upload a media file to IPFS",
+  "rpc:call": "On-chain RPC call (nonce / fee estimate / submit / receipt)",
+  "paymaster:invoke-build": "Build a gas-sponsored transaction (io wallet)",
+  "paymaster:invoke-execute": "Execute a gas-sponsored transaction (io wallet)",
+  "paymaster:deploy-build": "Build a gas-sponsored wallet deployment (io wallet)",
+  "paymaster:deploy-execute": "Deploy a wallet, gas-sponsored (io wallet)",
 }
 
 interface PricingRule { actionKey: string; chain: string; service: string; credits: number }
