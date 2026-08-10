@@ -10,7 +10,11 @@ import { PageContainer } from "@/components/page-container";
 const FAQS = [
   {
     q: "How do I create a wallet on Medialane?",
-    a: "Set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key) on your device. Medialane deploys a self-custody Starknet wallet sealed to that passkey automatically: gas-free, with nothing to write down, install, or type as a password. You can attach an email later from Settings if you want one for account notices.",
+    a: "Enter your email to connect. If it's your first time, we'll create your account and send you straight to set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key). Medialane deploys a self-custody Starknet wallet sealed to that passkey automatically: gas-free, with nothing to write down or type as a password.",
+  },
+  {
+    q: "I didn't receive my verification code.",
+    a: "Check your spam or junk folder first. Once 60 seconds have passed you can request a new code from the same screen. If it still doesn't arrive, email dao@medialane.org and we'll help you get signed in.",
   },
   {
     q: "Where is my private key stored? Is it safe?",
