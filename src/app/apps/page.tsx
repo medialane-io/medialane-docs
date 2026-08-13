@@ -33,11 +33,13 @@ const APPS = [
     features: [
       "Mint & protect IP as NFTs with programmable licenses",
       "List, buy, and sell in the peer-to-peer marketplace",
+      "See every price in USD, side by side with the asset's listed currency",
+      "Buy with any token in your wallet — the right amount is exchanged automatically as part of the purchase",
       "Launch POP Protocol credential campaigns",
       "Deploy collection drops with on-chain allowlists",
       "Gasless: passkey sign-in, no seed phrases",
     ],
-    tags: ["Marketplace", "NFT Minting", "Creator Launchpad", "POP Protocol", "Collection Drop", "Gasless"],
+    tags: ["Marketplace", "NFT Minting", "Creator Launchpad", "POP Protocol", "Collection Drop", "Gasless", "USD Pricing"],
     badge: "Live",
     badgeColor: "bg-green-500/15 text-green-400 border-green-500/30",
     accent: "from-brand-blue/20 to-brand-blue/5 border-brand-blue/20",
@@ -54,6 +56,8 @@ const APPS = [
     features: [
       "Connect Argent, Braavos, or any Starknet wallet",
       "Full self-custody: your keys, your assets",
+      "See every price in USD, side by side with the asset's listed currency",
+      "Buy with any token in your wallet — the right amount is exchanged automatically as part of the purchase",
       "Direct smart contract interaction",
       "Session key management and permissions",
       "Access all platform features on-chain",

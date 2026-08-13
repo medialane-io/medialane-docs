@@ -134,6 +134,25 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
           </p>
         </Section>
 
+        <Section title="Buy With Any Token You Hold">
+          <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
+            <p className="font-bold text-foreground">Every price shows in USD, next to its listed currency.</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              You don&apos;t need to know what STRK or ETH is worth to buy an asset —
+              the USD value sits right alongside the price, at all times.
+            </p>
+          </div>
+          <p>
+            If an asset is listed in a currency you don&apos;t hold enough of, you can
+            still buy it with whatever else is in your wallet. Pick an alternative
+            currency, and the right amount is exchanged for the listing&apos;s currency
+            automatically, in the same transaction as the purchase itself: one
+            approval, one signature, no separate exchange step. If the trade can&apos;t
+            go through, the whole transaction reverts — you&apos;re never left holding
+            half a swap.
+          </p>
+        </Section>
+
         <Section title="Fees Are a Platform Layer">
           <p>
             The marketplace venue contracts are <strong className="text-foreground">zero-fee</strong>:
