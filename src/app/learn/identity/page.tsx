@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Key, Star, User, Shield, Eye, Bot } from "lucide-react";
+import { Key, Star, User, Shield, Eye, Bot, Mail, CheckCircle2 } from "lucide-react";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   title: "Identity | Learn | Medialane",
-  description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
+  description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, email verification, and AI agent accounts.",
   openGraph: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
+    description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, email verification, and AI agent accounts.",
     url: "https://docs.medialane.io/learn/identity",
   },
   twitter: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, and AI agent accounts.",
+    description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, email verification, and AI agent accounts.",
   },
 };
 
@@ -136,6 +136,44 @@ export default function LearnIdentityPage() {
             These are separate concerns. Authentication identifies you. Authorization
             checks the chain. Medialane can verify who you are without controlling
             what you can do.
+          </p>
+        </Section>
+
+        <Section title="Email Verification">
+          <p>
+            An email address on your account is optional at sign-up but recommended.
+            Verifying it protects the people who trust your public identity: a claimed
+            username or collection name should mean the account behind it can actually
+            be reached.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-brand-orange" />
+                <p className="font-bold text-foreground text-sm">Claiming a name</p>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Claiming a username or a collection slug is a public identity claim, so
+                it requires a verified email. A short code sent to your inbox confirms
+                it in seconds, from Settings.
+              </p>
+            </div>
+            <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-brand-blue" />
+                <p className="font-bold text-foreground text-sm">Listing for sale</p>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Listing an asset on the marketplace also benefits from a verified email,
+                the same trust signal for anyone considering a purchase from you.
+              </p>
+            </div>
+          </div>
+          <p className="text-sm">
+            Everything else on the platform stays wide open: holding assets, sending
+            and receiving, browsing, connecting a wallet. Verification is scoped to the
+            two actions above, at your own pace, with a grace period after adding an
+            email before either is asked for.
           </p>
         </Section>
 
