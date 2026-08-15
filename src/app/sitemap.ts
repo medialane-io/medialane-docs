@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/learn/services`,                   changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/identity`,                   changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/media-wallet`,               changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/learn/funding-your-account`,       changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/creator-launchpad`,          changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/creator-coin`,               changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/learn/marketplace`,                changeFrequency: "monthly", priority: 0.7 },
