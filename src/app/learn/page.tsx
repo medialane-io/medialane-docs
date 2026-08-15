@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot, Ticket, Users, Handshake, Lock, Code2, Coins, Eye, KeyRound } from "lucide-react";
+import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot, Ticket, Users, Handshake, Lock, Code2, Coins, Eye, KeyRound, Wallet } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Learn | Medialane",
@@ -76,6 +76,12 @@ const TOPICS = [
     icon: KeyRound,
     title: "Media Wallet",
     description: "Medialane's self-custody account contract on Starknet: passkey-based keys, no seed phrase, live on mainnet.",
+  },
+  {
+    href: "/learn/funding-your-account",
+    icon: Wallet,
+    title: "Funding Your Account",
+    description: "How to get tokens onto Starknet and into your Medialane account: on-ramps, exchange withdrawals, and cross-chain bridges.",
   },
   {
     href: "/learn/creator-launchpad",
