@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/support" },
   title: "Support | Medialane",
   description:
     "Get help with Medialane: frequently asked questions about wallets, passkeys, marketplace, minting, POP Protocol, and Collection Drop.",

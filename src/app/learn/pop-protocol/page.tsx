@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/pop-protocol" },
   title: "POP Protocol | Learn | Medialane",
   description: "Learn how the POP Protocol issues on-chain proof-of-participation credentials for events, communities, and milestones.",
   openGraph: {

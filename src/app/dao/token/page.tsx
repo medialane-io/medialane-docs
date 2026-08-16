@@ -4,6 +4,7 @@ import { Coins, Vote, Lock, Users, TrendingUp, Gift, Zap } from "lucide-react";
 import { CANONICAL } from "@/lib/canonical";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dao/token" },
   title: "MDLN Token | Medialane DAO",
   description: "The MDLN governance token: fixed supply, DAO treasury, voting rights, and participation for Medialane DAO members.",
   openGraph: {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/web3" },
   title: "Web3 & Starknet | Learn | Medialane",
   description: "A beginner-friendly introduction to blockchain, Web3, Starknet, and zero-knowledge proof technology.",
   openGraph: {

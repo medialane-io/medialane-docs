@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/links" },
   title: "Links | Medialane",
   description: "Connect with Medialane: official social media, community channels, and developer resources.",
   openGraph: {

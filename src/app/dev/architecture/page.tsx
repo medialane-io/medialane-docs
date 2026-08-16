@@ -4,6 +4,7 @@ import { Layers, Database, Package, Monitor, Lock, Box, FileText, ShoppingCart, 
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/architecture" },
   title: "Architecture | Medialane Docs",
   description: "The Medialane four-layer authority model: Chain, Indexer, SDK, and Apps. Six core primitives, the rebuild test, and the protocol vs. platform distinction.",
   openGraph: {

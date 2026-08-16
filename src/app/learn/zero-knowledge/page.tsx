@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Lock, Eye, Zap, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/zero-knowledge" },
   title: "Zero Knowledge | Medialane Learn",
   description: "Learn how zero-knowledge proofs power Starknet and what they mean for IP privacy and scalability.",
   openGraph: {

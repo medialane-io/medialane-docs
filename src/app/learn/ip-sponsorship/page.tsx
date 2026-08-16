@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/ip-sponsorship" },
   title: "IP Sponsorship | Learn | Medialane",
   description: "Learn how IP Sponsorship lets either side start a deal: creators sell direct-settlement sponsorship licenses, sponsors can propose terms directly, with no escrow.",
   openGraph: {

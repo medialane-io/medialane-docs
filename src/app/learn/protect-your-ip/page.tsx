@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/protect-your-ip" },
   title: "Protect Your IP | Learn | Medialane",
   description: "Understand the Berne Convention, cryptographic IP protection, and how Medialane and the Mediolano protocol protect creators in 181 countries.",
   openGraph: {

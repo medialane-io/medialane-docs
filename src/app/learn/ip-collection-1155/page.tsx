@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/ip-collection-1155" },
   title: "IP Collection 1155 | Learn | Medialane",
   description: "Learn how to deploy a multi-edition ERC-1155 IP collection on Medialane: mint music tracks, art series, and creative editions.",
   openGraph: {

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Users, User, FileText, Eye, Scale, ArrowRight, Megaphone } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/guidelines" },
   title: "Guidelines | Medialane",
   description: "Community standards, user policies, terms of use, privacy policy, and compliance guidelines for the Medialane platform.",
   openGraph: {

@@ -4,6 +4,7 @@ import { DocH2, DocH3, DocCodeBlock } from "@/components/docs/typography"
 import { PricingTable } from "@/components/docs/pricing-table"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/api" },
   title: "API Reference | Medialane Docs",
   description: "Full REST API reference for Medialane: orders, collections, minting, tokens, intents, profiles, comments, and more.",
   openGraph: {

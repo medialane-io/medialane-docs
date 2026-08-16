@@ -4,6 +4,7 @@ import { Fingerprint, KeyRound, Lock, Wallet, Smartphone, Shield } from "lucide-
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/media-wallet" },
   title: "Media Wallet | Learn | Medialane",
   description: "Media Wallet: Medialane's self-custody account contract on Starknet, passkey-based keys, no seed phrase, live on mainnet.",
   openGraph: {

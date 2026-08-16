@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Coins, Layers, DollarSign, Users } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/tokenization" },
   title: "Tokenization | Medialane Learn",
   description: "What tokenization means for intellectual property: turning creative works into tradeable digital assets.",
   openGraph: {

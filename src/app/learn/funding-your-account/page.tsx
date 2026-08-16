@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/funding-your-account" },
   title: "Funding Your Account | Learn | Medialane",
   description: "How to get tokens into your Medialane account on Starknet: buying with a card through an on-ramp, withdrawing from an exchange, or moving assets in from another chain.",
   openGraph: {

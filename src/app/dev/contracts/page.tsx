@@ -3,6 +3,7 @@ import { FileCode2, ExternalLink, Shield, Lock } from "lucide-react";
 import { CONTRACTS_BY_CATEGORY } from "@/lib/contracts";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/contracts" },
   title: "Contracts | Medialane Docs",
   description: "Medialane smart contracts on Starknet Mainnet: immutable, permissionless, open source Cairo contracts with real deployed addresses.",
   openGraph: {

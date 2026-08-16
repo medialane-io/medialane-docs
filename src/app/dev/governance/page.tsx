@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/governance" },
   title: "Governance | Docs | Medialane",
   description: "Medialane DAO: governance charter, membership, voting, treasury, and how decisions are made.",
   openGraph: {

@@ -3,6 +3,7 @@ import { Shield, Eye, Lock, AlertTriangle } from "lucide-react";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/security" },
   title: "Security | Docs | Medialane",
   description: "Security architecture, audit reports, risk disclosure, and monitoring for the Medialane protocol.",
   openGraph: {

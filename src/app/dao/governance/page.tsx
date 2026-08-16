@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Vote, ExternalLink, Clock, CheckCircle2, Users, Landmark } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dao/governance" },
   title: "Governance Charter | Medialane DAO",
   description: "How Medialane DAO governance works: proposals, voting, quorum, and execution.",
   openGraph: {

@@ -1,6 +1,6 @@
 export const CANONICAL = {
   docsUrl: "https://docs.medialane.io",
-  appUrl: "https://medialane.io",
+  appUrl: "https://www.medialane.io",
   daoUrl: "https://medialane.org",
   githubOrgUrl: "https://github.com/medialane-io",
   daoRepoUrl: "https://github.com/medialane-io/medialane-dao",

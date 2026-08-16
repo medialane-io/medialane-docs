@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/guidelines/user-guidelines" },
   title: "User Guidelines | Medialane",
   description: "How to use the Medialane platform responsibly: account rules, content standards, marketplace conduct, and wallet security.",
   openGraph: {

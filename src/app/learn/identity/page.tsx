@@ -4,6 +4,7 @@ import { Key, Star, User, Shield, Eye, Bot, Mail, CheckCircle2 } from "lucide-re
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/identity" },
   title: "Identity | Learn | Medialane",
   description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, email verification, and AI agent accounts.",
   openGraph: {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { HomePage } from "@/components/home";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io" },
   title: "Medialane Docs: Knowledge Hub",
   description:
     "Documentation, guides, support, and institutional content for Medialane creator capital markets on Starknet.",

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { DocH2, DocH3, DocCodeBlock } from "@/components/docs/typography"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/agents" },
   title: "AI Agents | Medialane Docs",
   description: "Build autonomous AI agents on Medialane: wallet identity, pay-per-use x402 micropayments in USDC on Starknet, and MDLN credit bonuses. No email, no OAuth, no human in the loop.",
   openGraph: {

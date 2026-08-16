@@ -6,6 +6,7 @@ import { Section } from "@/components/docs";
 import { PricingTable } from "@/components/docs/pricing-table";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/fees" },
   title: "Fees & Revenue | Medialane Docs",
   description: "Canonical guide to Medialane fees, gas sponsorship, marketplace revenue, creators-fund flow, and Creator's Airdrop governance.",
   openGraph: {

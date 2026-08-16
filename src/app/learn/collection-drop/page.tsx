@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/collection-drop" },
   title: "Collection Drop | Learn | Medialane",
   description: "Learn how to launch and participate in time-limited NFT Collection Drops on Medialane.",
   openGraph: {

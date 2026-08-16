@@ -5,6 +5,7 @@ import Link from "next/link"
 import { DocH2, DocH3, DocCodeBlock } from "@/components/docs/typography"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/sdk" },
   title: "SDK | Medialane Docs",
   description: "@medialane/sdk: TypeScript client for the Medialane API and on-chain marketplace, minting, POP Protocol, and Collection Drop.",
   openGraph: {

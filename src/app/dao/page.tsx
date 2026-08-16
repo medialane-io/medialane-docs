@@ -4,6 +4,7 @@ import { Building2, Scroll, Vote, Coins, ExternalLink, ArrowRight, Users, Globe,
 import { CANONICAL } from "@/lib/canonical";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dao" },
   title: "DAO | Medialane",
   description: "Medialane DAO: community governance, constitution, MDLN token, and the path to full platform autonomy.",
   openGraph: {

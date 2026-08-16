@@ -6,6 +6,7 @@ import { LinkCard } from "@/components/ui/link-card";
 import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/search" },
   title: "Knowledge Index",
   description: "Find Medialane docs, guides, support, governance summaries, and canonical external sources.",
   robots: { index: false },

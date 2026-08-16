@@ -8,6 +8,7 @@ import {
 import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/apps" },
   title: "Apps | Medialane",
   description: "Explore all Medialane applications: marketplace, Web3 dApp, developer portal, and DAO governance.",
   openGraph: {

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Code2, GitBranch, Shield, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/programmable-ip" },
   title: "Programmable IP | Medialane Learn",
   description: "How programmable intellectual property works: on-chain authorship records, machine-readable licensing terms, and verifiable provenance.",
   openGraph: {

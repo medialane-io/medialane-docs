@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/nft" },
   title: "What is an NFT? | Learn | Medialane",
   description: "Learn what NFTs are, how they work on blockchain, and why they are powerful tools for creators protecting intellectual property.",
   openGraph: {

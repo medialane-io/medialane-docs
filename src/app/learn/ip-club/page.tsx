@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/ip-club" },
   title: "IP Club | Learn | Medialane",
   description: "Learn how IP Club lets creators run membership clubs as tiered, tradeable on-chain assets on Medialane.",
   openGraph: {

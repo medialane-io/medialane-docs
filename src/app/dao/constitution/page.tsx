@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Scroll } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dao/constitution" },
   title: "Constitution | Medialane DAO",
   description: "The founding document of Medialane DAO: mission, membership, and core values.",
   openGraph: {

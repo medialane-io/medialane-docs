@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/guidelines/compliance" },
   title: "Compliance | Medialane",
   description: "Medialane's approach to regulatory compliance: KYC/AML, IP law, securities, taxation, sanctions, data protection, and DAO liability.",
   openGraph: {

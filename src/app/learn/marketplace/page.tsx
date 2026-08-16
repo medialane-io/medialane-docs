@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/marketplace" },
   title: "Marketplace | Learn | Medialane",
   description: "How the Medialane marketplace works: venue-as-service, order lifecycle, atomic settlement, and fees at the platform layer.",
   openGraph: {

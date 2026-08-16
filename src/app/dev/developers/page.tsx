@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/developers" },
   title: "Developers | Medialane Docs",
   description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
   openGraph: {

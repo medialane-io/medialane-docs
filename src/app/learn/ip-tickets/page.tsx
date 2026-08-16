@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/ip-tickets" },
   title: "IP Tickets | Learn | Medialane",
   description: "Learn how IP Tickets let creators issue verifiable on-chain tickets: mint them to your audience, trade them like any collection.",
   openGraph: {

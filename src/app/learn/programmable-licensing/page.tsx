@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/programmable-licensing" },
   title: "Programmable Licensing | Learn | Medialane",
   description: "Medialane's onchain licensing system: license terms in metadata, soft enforcement as the default, the immutable-at-mint invariant, and when contracts enforce.",
   openGraph: {

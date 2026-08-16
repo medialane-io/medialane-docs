@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Globe, Layers, Shield, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/blockchain" },
   title: "Blockchain | Medialane Learn",
   description: "Understand how blockchain technology works and why it matters for intellectual property and digital ownership.",
   openGraph: {

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/guidelines/community" },
   title: "Community Guidelines | Medialane",
   description: "Rules for community participation, content standards, fair markets, moderation, and how violations are handled on Medialane.",
   openGraph: {

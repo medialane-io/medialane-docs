@@ -5,6 +5,7 @@ import { Section, Code } from "@/components/docs";
 import { CONTRACTS } from "@/lib/contracts";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev/protocol" },
   title: "Protocol | Medialane Docs",
   description: "Technical specification of the Medialane onchain protocol: contracts, event model, order lifecycle, service registry, and indexer design.",
   openGraph: {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Eye } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/guidelines/privacy" },
   title: "Privacy Policy | Medialane",
   description: "Privacy Policy for the Medialane platform.",
   openGraph: {

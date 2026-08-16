@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react"
 import { DOCS_NAV } from "@/lib/docs-nav"
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dev" },
   title: "Developers | Medialane Docs",
   description:
     "Build on Medialane: the protocol, SDK, API, and contracts. Permissionless and verifiable, for people and AI agents alike.",

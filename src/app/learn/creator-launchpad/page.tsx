@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/creator-launchpad" },
   title: "Creator Launchpad | Learn | Medialane",
   description: "Learn how to deploy collections, mint IP assets, and launch your creative work on Medialane.",
   openGraph: {

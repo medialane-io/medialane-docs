@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Shield } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/guidelines/campaign-terms" },
   title: "Campaign Terms | Medialane",
   description: "Medialane Creator Fund campaign participation terms and disclaimer.",
   openGraph: {

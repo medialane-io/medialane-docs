@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Lock, Eye, ShieldCheck, KeyRound, ScrollText, Users } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/privacy" },
   title: "Privacy on Medialane | Learn",
   description:
     "Public authorship, private economics: what stays visible on-chain, what a creator can keep confidential, and why.",

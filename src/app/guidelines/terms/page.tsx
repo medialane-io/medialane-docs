@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FileText } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/guidelines/terms" },
   title: "Terms of Use | Medialane",
   description: "Terms of Use for the Medialane platform.",
   openGraph: {

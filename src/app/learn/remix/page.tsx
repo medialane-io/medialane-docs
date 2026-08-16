@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/remix" },
   title: "Remix & Derivatives | Learn | Medialane",
   description: "How derivative works flow through Medialane: on-chain attribution, license propagation, soft enforcement, and the remix graph.",
   openGraph: {

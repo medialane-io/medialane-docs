@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/dao/airdrop" },
   title: "Creator's Airdrop | Medialane DAO",
   description: "The Medialane Creator's Airdrop: a DAO-governed program distributing rewards to creators and early participants.",
   openGraph: {

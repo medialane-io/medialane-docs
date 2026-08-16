@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, Award, Package, GitBranch, Layers, ArrowRight, Bot, Ticket, Users, Handshake, Lock, Code2, Coins, Eye, KeyRound, Wallet } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn" },
   title: "Learn | Medialane",
   description: "Learn about NFTs, IP protection, blockchain technology, and how the Medialane platform works.",
   openGraph: {

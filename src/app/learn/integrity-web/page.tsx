@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ExternalLink, Shield, Lock, Globe, Layers, FileCheck, Eye, Network, Bot, Sparkles, Users } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/integrity-web" },
   title: "The Integrity Web | Learn | Medialane",
   description: "Understand the Integrity Web: the 10 axioms of digital freedom and how Medialane embodies each one through ZK proofs, smart contracts, and permissionless design.",
   openGraph: {

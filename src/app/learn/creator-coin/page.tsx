@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/creator-coin" },
   title: "Creator Coins | Learn | Medialane",
   description: "Launch your own coin with permanently-locked liquidity, or claim a coin you already launched on Starknet.",
   openGraph: {

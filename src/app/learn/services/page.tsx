@@ -4,6 +4,7 @@ import { Package, Image, Music, Award, Clock, Store, TrendingUp, Coins, Ticket, 
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/services" },
   title: "Services | Learn | Medialane",
   description: "How Medialane services work: the registry that defines what creators can do, canonical service IDs, and the full capability set.",
   openGraph: {

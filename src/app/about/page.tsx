@@ -8,6 +8,7 @@ import {
 import { PageContainer } from "@/components/page-container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/about" },
   title: "About | Medialane",
   description: "Medialane is a monetization hub for the creative economy: turn intellectual property into revenue streams with full sovereignty. Open, permissionless, immutable. Live on Starknet.",
   openGraph: {

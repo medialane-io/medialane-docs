@@ -4,6 +4,7 @@ import { Bot, Building2, Terminal, Coins, Sparkles } from "lucide-react";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://docs.medialane.io/learn/agent-payments" },
   title: "Payments for AI Agents | Learn | Medialane",
   description:
     "How AI agents (and any software) pay to use Medialane: automatic, per-use micropayments in USDC that settle without an account, a card, or a human in the loop. The x402 standard, in plain language.",
