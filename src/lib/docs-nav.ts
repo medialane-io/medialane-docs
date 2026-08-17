@@ -140,6 +140,7 @@ export const KNOWLEDGE_GROUPS = [
     links: [
       { href: "/learn/creator-launchpad", label: "Creator Launchpad", desc: "Collections, minting, gasless creation, and launchpad services." },
       { href: "/learn/marketplace", label: "Marketplace", desc: "Listings, offers, purchases, royalties, and supported currencies." },
+      { href: "/learn/rewards", label: "Rewards", desc: "How XP works, what earns it, and the Creator's Fund distribution." },
       { href: "/learn/collection-drop", label: "Collection Drop", desc: "Timed drops, supply caps, allowlists, and mint windows." },
       { href: "/learn/pop-protocol", label: "POP Protocol", desc: "Soulbound proof-of-participation credentials." },
       { href: "/learn/remix", label: "Remix & Derivatives", desc: "Licensed derivative works and attribution chains." },

@@ -20,42 +20,39 @@ export const metadata: Metadata = {
   },
 };
 
-const TIERS = [
+const WAYS_TO_EARN = [
   {
     icon: UserCheck,
-    tier: "Sign up: you're in",
-    label: "Base tier",
+    tier: "Get started",
     colorClass: "text-emerald-400",
     bgClass: "bg-emerald-500/10",
     actions: [
       "Create a free Medialane account with your email",
-      "Claim your participation certificate (optional, free)",
+      "Claim your participation certificate, an optional XP-earning action among many",
     ],
-    desc: "Every verified participant who completes sign-up is eligible for the base allocation in the running year-one campaign. Signing up is the only requirement for this tier.",
+    desc: "Creating your account is all it takes to be included. Every action from here adds to the same running XP total.",
   },
   {
     icon: PenLine,
     tier: "Create",
-    label: "Bonus tier",
     colorClass: "text-purple-400",
     bgClass: "bg-purple-500/10",
     actions: [
-      "Publish at least one original piece of content",
+      "Publish original content (digital assets, collections)",
       "Launch a collection or creator profile",
     ],
-    desc: "Creators who publish original work are eligible for a bonus allocation on top of the base tier.",
+    desc: "Publishing and building earns XP toward your share, same as any other action.",
   },
   {
     icon: ShoppingCart,
-    tier: "Trade & Collect",
-    label: "Bonus tier",
+    tier: "Trade & engage",
     colorClass: "text-orange-400",
     bgClass: "bg-orange-500/10",
     actions: [
       "Buy, sell, or make offers on the marketplace",
-      "Collaborate or remix with other creators",
+      "Collaborate, remix, or comment",
     ],
-    desc: "Active participants who engage across creating and trading are eligible for an additional bonus tier.",
+    desc: "Trading and engaging earns XP too, rolling into the same total.",
   },
 ];
 
@@ -73,7 +70,7 @@ const PHASES = [
     trigger: "Now through July 1, 2027",
     items: [
       "Currently adopted: all platform-layer fee revenue routes to the Creator's Fund automatically",
-      "Not pending a vote — this is the operative arrangement for the campaign window",
+      "This is the operative arrangement for the campaign window",
       "Shares are weighted by participation across creating and trading (XP)",
     ],
   },
@@ -100,9 +97,9 @@ export default function AirdropPage() {
         </div>
         <h2 className="text-2xl font-bold">Creator&apos;s Airdrop</h2>
         <p className="text-muted-foreground leading-relaxed">
-          The Creator&apos;s Airdrop rewards the people who build and use the platform: creators,
-          collectors, and early participants. Every distribution is subject to DAO governance
-          and verified on-chain. Signing up is enough to qualify for the base reward.
+          The Creator&apos;s Airdrop rewards the people who build and use the platform. Every action
+          is verified on-chain. Signing up is enough to be included, and every real interaction from
+          there earns XP toward your share.
         </p>
       </div>
 
@@ -113,9 +110,9 @@ export default function AirdropPage() {
           <h3 className="font-semibold text-sm">The Model</h3>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          A 1% marketplace fee flows to the creators fund at the platform layer. For year one — now
-          through July 1, 2027 — that revenue routes automatically to the Creator&apos;s Airdrop; this
-          isn&apos;t pending a vote, it&apos;s the currently adopted arrangement. From year two, MDLN
+          A 1% marketplace fee flows to the creators fund at the platform layer. For year one, now
+          through July 1, 2027, that revenue routes automatically to the Creator&apos;s Airdrop as the
+          currently adopted arrangement. From year two, MDLN
           holders vote annually on Snapshot to decide how revenue is used: Creator&apos;s Airdrop, token
           buyback, token burn, protocol development, or operations. No predetermined formula. See{" "}
           <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
@@ -125,7 +122,7 @@ export default function AirdropPage() {
           {[
             { label: "Revenue source", value: "1% marketplace fee" },
             { label: "Governed by",    value: "Snapshot DAO vote" },
-            { label: "Cycle",          value: "Annual DAO vote" },
+            { label: "Cycle",          value: "Threshold-triggered" },
           ].map(({ label, value }) => (
             <div key={label} className="bg-muted/30 rounded-lg px-4 py-3 space-y-1">
               <p className="text-xs text-muted-foreground">{label}</p>
@@ -147,21 +144,18 @@ export default function AirdropPage() {
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">How It Works</h3>
         <p className="text-sm text-muted-foreground">
-          Signing up makes you eligible for the base tier. Creating and trading activity
-          makes you eligible for bonus tiers, weighted by XP.
+          Every real interaction earns XP, and your total XP decides your share. Signing up is
+          all it takes to be included; everything below adds to the same running total.
         </p>
         <div className="space-y-4">
-          {TIERS.map(({ icon: Icon, tier, label, colorClass, bgClass, actions, desc }) => (
+          {WAYS_TO_EARN.map(({ icon: Icon, tier, colorClass, bgClass, actions, desc }) => (
             <div key={tier} className="bento-cell p-5 space-y-3">
               <div className="flex items-start gap-3">
                 <div className={`h-9 w-9 rounded-lg ${bgClass} flex items-center justify-center shrink-0 mt-0.5`}>
                   <Icon className={`h-4 w-4 ${colorClass}`} />
                 </div>
                 <div className="space-y-0.5 flex-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="font-semibold text-sm">{tier}</p>
-                    <span className={`text-xs font-medium ${colorClass}`}>{label}</span>
-                  </div>
+                  <p className="font-semibold text-sm">{tier}</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
                 </div>
               </div>
@@ -209,7 +203,7 @@ export default function AirdropPage() {
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
           The year-one Creator&apos;s Airdrop (through July 1, 2027) is already the DAO&apos;s adopted
-          arrangement — it doesn&apos;t require a per-round vote. From year two, each year&apos;s use of
+          arrangement, standing without a vote each time it distributes. From year two, each year&apos;s use of
           platform revenue is ratified by a community governance vote on Snapshot before it happens.
           MDLN token holders decide the amount, the rules, and the timing going forward.
         </p>

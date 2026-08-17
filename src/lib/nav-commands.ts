@@ -2,7 +2,7 @@ import type { NavCommandGroup } from "@medialane/ui";
 import {
   Zap, Info, LayoutGrid, BookOpen, FileCode2, FileCheck, LifeBuoy,
   Building2, Link2, Search,
-  Image, Globe, Lock, Code2, Coins, Rocket, Store, Award, Package,
+  Image, Globe, Lock, Code2, Coins, Rocket, Store, Award, Package, Trophy,
   Layers, GitBranch, Shield, FileText, Ticket, Handshake,
   Users, User, Eye, Scale, Scroll, Vote, Network, Bot,
   Terminal, Landmark, Megaphone, KeyRound,
@@ -42,6 +42,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "learn-creator-launchpad",       label: "Creator Launchpad",       icon: Rocket,     href: "/learn/creator-launchpad",        keywords: ["launchpad", "drop", "mint", "create"] },
       { id: "learn-creator-coin",            label: "Creator Coins",           icon: Coins,      href: "/learn/creator-coin",             keywords: ["coin", "token", "memecoin", "launch", "liquidity"] },
       { id: "learn-marketplace",             label: "Marketplace",             icon: Store,      href: "/learn/marketplace",              keywords: ["trade", "buy", "sell", "orders"] },
+      { id: "learn-rewards",                 label: "Rewards",                 icon: Trophy,     href: "/learn/rewards",                  keywords: ["rewards", "xp", "score", "airdrop", "creators fund", "level", "badge"] },
       { id: "learn-agent-payments",          label: "AI Agent Payments",       icon: Bot,        href: "/learn/agent-payments",           keywords: ["agents", "x402", "payments", "micropayments", "ai", "machine"] },
       { id: "learn-pop-protocol",            label: "POP Protocol",            icon: Award,      href: "/learn/pop-protocol",             keywords: ["pop", "proof of participation", "event"] },
       { id: "learn-collection-drop",         label: "Collection Drop",         icon: Package,    href: "/learn/collection-drop",          keywords: ["drop", "timed", "fixed supply"] },
