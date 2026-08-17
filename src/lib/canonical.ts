@@ -20,5 +20,6 @@ export const CANONICAL = {
   },
   marketplaceFee: "1%",
   creatorAirdropName: "Creator's Airdrop",
+  creatorAirdropWindow: "through July 1, 2027",
 } as const;
 

@@ -40,7 +40,7 @@ const PILLARS = [
   {
     icon: Award,
     title: CANONICAL.creatorAirdropName,
-    description: "A DAO-decided community allocation from the creators fund, one option among several, not a guaranteed formula.",
+    description: `The DAO's adopted use of the creators fund for year one, ${CANONICAL.creatorAirdropWindow}.`,
     href: "/dao/airdrop",
   },
 ];

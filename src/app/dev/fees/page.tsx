@@ -199,11 +199,14 @@ export default function FeesPage() {
 
       <Section title="Creators Fund Allocation">
         <p>
-          Creators-fund revenue is community-governed. MDLN holders vote through Snapshot at{" "}
+          For year one, {CANONICAL.creatorAirdropWindow}, creators-fund revenue routes automatically to
+          the <Link href="/dao/airdrop" className="text-primary hover:underline">{CANONICAL.creatorAirdropName}</Link>,
+          already the DAO&apos;s adopted arrangement. From year two, allocation is community-governed:
+          MDLN holders vote annually through Snapshot at{" "}
           <a href={CANONICAL.snapshotUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
             {CANONICAL.snapshotEns} <ExternalLink className="inline h-3 w-3" />
           </a>{" "}
-          to decide how revenue should be used.
+          on how revenue is used.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {REVENUE_OPTIONS.map((option) => (
@@ -213,10 +216,6 @@ export default function FeesPage() {
             </div>
           ))}
         </div>
-        <p>
-          The <Link href="/dao/airdrop" className="text-primary hover:underline">{CANONICAL.creatorAirdropName}</Link>{" "}
-          is one possible allocation. It is not automatic, guaranteed, or pre-funded outside DAO approval.
-        </p>
       </Section>
 
       <div className="bento-cell p-5 text-sm text-muted-foreground leading-relaxed">

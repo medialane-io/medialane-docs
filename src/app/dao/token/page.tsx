@@ -47,7 +47,7 @@ const UTILITIES = [
   {
     icon: TrendingUp,
     title: "Creators Fund Governance",
-    description: `The ${CANONICAL.marketplaceFee} marketplace fee flows to the creators fund at the platform layer. MDLN holders vote on allocation: ${CANONICAL.creatorAirdropName}, buyback, burn, development, or operations.`,
+    description: `The ${CANONICAL.marketplaceFee} marketplace fee flows to the creators fund at the platform layer, funding the ${CANONICAL.creatorAirdropName} for year one. From year two, MDLN holders vote annually on allocation: ${CANONICAL.creatorAirdropName}, buyback, burn, development, or operations.`,
   },
 ];
 
@@ -218,23 +218,25 @@ export default function TokenPage() {
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">{CANONICAL.creatorAirdropName}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          A {CANONICAL.marketplaceFee} marketplace fee flows to the creators fund at the platform layer. Each year, MDLN holders vote on
-          Snapshot to decide how that revenue is used: {CANONICAL.creatorAirdropName}, token buyback, token burn,
-          protocol development, or operations. The {CANONICAL.creatorAirdropName} is one option, not a guarantee.
+          A {CANONICAL.marketplaceFee} marketplace fee flows to the creators fund at the platform layer.
+          For year one, {CANONICAL.creatorAirdropWindow}, that revenue routes automatically to the{" "}
+          {CANONICAL.creatorAirdropName}, already the DAO&apos;s adopted arrangement. From year two, MDLN
+          holders vote annually on Snapshot to decide how revenue is used: {CANONICAL.creatorAirdropName},
+          token buyback, token burn, protocol development, or operations.
           See <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
           for the canonical breakdown.
         </p>
         <div className="space-y-3">
           {[
             {
-              phase: "Revenue to the creators fund",
-              trigger: `${CANONICAL.marketplaceFee} marketplace fee`,
-              desc: "Platform revenue flows to the creators fund at the platform layer, held transparently on-chain with allocation governed by MDLN holders.",
+              phase: `${CANONICAL.creatorAirdropName} (year one)`,
+              trigger: CANONICAL.creatorAirdropWindow,
+              desc: "The marketplace fee routes automatically to the creators fund, airdropped to participants as it accrues. This is the operative arrangement now, not pending a vote.",
             },
             {
               phase: "Annual cycle",
-              trigger: "Snapshot vote each year",
-              desc: `Each year, DAO members vote on whether revenue funds the ${CANONICAL.creatorAirdropName}, buyback, burn, development, operations, or another approved use, sustaining operations and funding growth.`,
+              trigger: "From year two onward",
+              desc: `Each year after the campaign, DAO members vote on Snapshot on whether revenue funds the ${CANONICAL.creatorAirdropName}, buyback, burn, development, operations, or another approved use.`,
             },
           ].map(({ phase, trigger, desc }) => (
             <div key={phase} className="bento-cell p-5 space-y-2">

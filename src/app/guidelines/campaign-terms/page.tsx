@@ -52,29 +52,29 @@ export default function CampaignTermsPage() {
           <p className="text-muted-foreground leading-relaxed">
             The Medialane Creator Fund is a community-governed initiative that distributes resources
             to platform participants based on their activity and creative contributions. The fund is
-            managed by Medialane DAO and all distributions are subject to community governance
-            votes via{" "}
-            <a href="https://snapshot.org" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground transition-colors">Snapshot</a>.
+            managed by Medialane DAO.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            Each year, Medialane DAO members vote on Snapshot on how the platform&apos;s revenue is
-            used, sustaining operations, funding growth, or distributing to participants. Any
-            distribution, its amount, eligibility rules, and timing are decided by that governance
-            vote. Distributions are not guaranteed.
+            For year one, running through July 1, 2027, platform revenue routes to the fund and
+            distributes automatically once it reaches its threshold; this is the DAO&apos;s adopted
+            arrangement, not pending a vote. See the{" "}
+            <a href="https://medialane.org/creators-fund" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground transition-colors">live fund balance</a>.
+            From year two, Medialane DAO members vote annually on Snapshot on how the platform&apos;s
+            revenue is used, sustaining operations, funding growth, or distributing to participants.
+            The exact amount of any distribution is never guaranteed in advance.
           </p>
         </section>
 
         <section className="space-y-2">
           <h3 className="font-semibold text-base">Eligibility &amp; Scoring</h3>
           <p className="text-muted-foreground leading-relaxed">
-            Participants qualify by registering an account and securing it with a passkey.
-            Those who also publish original content, engage with other creators, or complete
-            platform activities receive a higher contribution score, which determines their
-            proportional share of fund distributions.
+            Participants qualify by registering an account. Every real interaction from there,
+            publishing original content, trading, engaging with other creators, earns XP, and total
+            XP determines a participant&apos;s proportional share of fund distributions.
           </p>
           <p className="text-muted-foreground leading-relaxed">
             Medialane reserves the right to disqualify accounts found to be using automated tools,
-            duplicate registrations, or other means to artificially inflate participation scores.
+            duplicate registrations, or other means to artificially inflate XP.
           </p>
         </section>
 
@@ -125,10 +125,13 @@ export default function CampaignTermsPage() {
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Resumo em Português</p>
         <p className="text-sm text-muted-foreground leading-relaxed">
           A participação na campanha Medialane é gratuita, sem necessidade de compra ou pagamento.
-          O Fundo de Criadores é gerido pela comunidade Medialane DAO e as distribuições dependem
-          de votos de governança. Esta campanha não é um produto financeiro, investimento, loteria
-          ou serviço de apostas. O certificado de participação é um registro digital permanente
-          de filiação à comunidade, sem valor monetário intrínseco.
+          O Fundo de Criadores é gerido pela comunidade Medialane DAO. No primeiro ano, até 1º de
+          julho de 2027, a receita da plataforma é distribuída automaticamente ao atingir o limite
+          do fundo, o valor exato de cada distribuição nunca é garantido. A partir do segundo ano,
+          o uso da receita passa a depender de votos de governança anuais. Esta campanha não é um
+          produto financeiro, investimento, loteria ou serviço de apostas. O certificado de
+          participação é um registro digital permanente de filiação à comunidade, sem valor
+          monetário intrínseco.
         </p>
       </div>
 
