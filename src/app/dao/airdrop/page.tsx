@@ -28,11 +28,10 @@ const TIERS = [
     colorClass: "text-emerald-400",
     bgClass: "bg-emerald-500/10",
     actions: [
-      "Create a free Medialane account",
-      "Secure your account with a passkey",
+      "Create a free Medialane account with your email",
       "Claim your participation certificate (optional, free)",
     ],
-    desc: "Every verified participant who completes sign-up is eligible for the base allocation if a distribution is approved by governance. Signing up is the only requirement for this tier.",
+    desc: "Every verified participant who completes sign-up is eligible for the base allocation in the running year-one campaign. Signing up is the only requirement for this tier.",
   },
   {
     icon: PenLine,
@@ -44,7 +43,7 @@ const TIERS = [
       "Publish at least one original piece of content",
       "Launch a collection or creator profile",
     ],
-    desc: "Creators who publish original work are eligible for a bonus allocation on top of the base tier, subject to DAO approval of the distribution.",
+    desc: "Creators who publish original work are eligible for a bonus allocation on top of the base tier.",
   },
   {
     icon: ShoppingCart,
@@ -56,7 +55,7 @@ const TIERS = [
       "Buy, sell, or make offers on the marketplace",
       "Collaborate or remix with other creators",
     ],
-    desc: "Active participants who engage across creating and trading are eligible for an additional bonus tier, subject to DAO approval of the distribution.",
+    desc: "Active participants who engage across creating and trading are eligible for an additional bonus tier.",
   },
 ];
 
@@ -70,21 +69,21 @@ const PHASES = [
     ],
   },
   {
-    phase: "Annual governance vote",
-    trigger: "Every year",
+    phase: "The Creator's Airdrop (year one)",
+    trigger: "Now through July 1, 2027",
     items: [
-      "Each year, DAO members vote on Snapshot how Medialane's finances are used",
-      "The choice sustains operations and funds the platform's growth",
-      "Airdrop, buyback, burn, development, or operations: the members decide",
+      "Currently adopted: all platform-layer fee revenue routes to the Creator's Fund automatically",
+      "Not pending a vote — this is the operative arrangement for the campaign window",
+      "Shares are weighted by participation across creating and trading (XP)",
     ],
   },
   {
-    phase: "The Creator's Airdrop",
-    trigger: "One possible allocation",
+    phase: "Annual governance vote",
+    trigger: "From year two onward",
     items: [
-      "Returning revenue to creators and participants is one option members can choose",
-      "It is not a guaranteed or automatic formula",
-      "When approved, shares are weighted by participation across creating and trading",
+      "Each year after the campaign, DAO members vote on Snapshot how Medialane's finances are used",
+      "The choice sustains operations and funds the platform's growth",
+      "Airdrop, buyback, burn, development, or operations: the members decide",
     ],
   },
 ];
@@ -114,10 +113,11 @@ export default function AirdropPage() {
           <h3 className="font-semibold text-sm">The Model</h3>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          A 1% marketplace fee flows to the creators fund at the platform layer. Each year, MDLN holders vote on
-          Snapshot to decide how that revenue is used: Creator&apos;s Airdrop, token buyback, token burn,
-          protocol development, or operations. No predetermined formula. The Creator&apos;s Airdrop is one
-          option among several, not a guarantee. See{" "}
+          A 1% marketplace fee flows to the creators fund at the platform layer. For year one — now
+          through July 1, 2027 — that revenue routes automatically to the Creator&apos;s Airdrop; this
+          isn&apos;t pending a vote, it&apos;s the currently adopted arrangement. From year two, MDLN
+          holders vote annually on Snapshot to decide how revenue is used: Creator&apos;s Airdrop, token
+          buyback, token burn, protocol development, or operations. No predetermined formula. See{" "}
           <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
           for the canonical fee model.
         </p>
@@ -148,7 +148,7 @@ export default function AirdropPage() {
         <h3 className="text-lg font-semibold">How It Works</h3>
         <p className="text-sm text-muted-foreground">
           Signing up makes you eligible for the base tier. Creating and trading activity
-          makes you eligible for bonus tiers. All distributions require a DAO governance vote.
+          makes you eligible for bonus tiers, weighted by XP.
         </p>
         <div className="space-y-4">
           {TIERS.map(({ icon: Icon, tier, label, colorClass, bgClass, actions, desc }) => (
@@ -208,10 +208,10 @@ export default function AirdropPage() {
           <h3 className="font-semibold text-sm">Community Governance</h3>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Every distribution is ratified by a community governance vote on Snapshot before
-          it happens. MDLN token holders decide the amount, the rules, and the timing.
-          If the community votes to fund, increase, decrease, or skip an airdrop for a given year,
-          that decision stands.
+          The year-one Creator&apos;s Airdrop (through July 1, 2027) is already the DAO&apos;s adopted
+          arrangement — it doesn&apos;t require a per-round vote. From year two, each year&apos;s use of
+          platform revenue is ratified by a community governance vote on Snapshot before it happens.
+          MDLN token holders decide the amount, the rules, and the timing going forward.
         </p>
         <Link
           href="/dao/governance"
