@@ -105,9 +105,7 @@ export default function LearnCreatorLaunchpadPage() {
             On <strong className="text-foreground">medialane.io</strong>, everything is
             frictionless: wallet setup, minting, listing, and accepting offers are all
             gas-sponsored, so you never need STRK or ETH in your wallet to use the platform.
-            On the wallet-sovereign Starknet app, gas sponsorship runs through a separate
-            mechanism (AVNU) that may or may not be active at any given time, and real
-            transactions there can cost real gas.
+            On the wallet-sovereign Starknet app, users pay their own gas.
           </p>
           <p>
             Sponsorship applies to normal creator workflows and may be limited by abuse

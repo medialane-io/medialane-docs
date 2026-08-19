@@ -57,8 +57,7 @@ export default function LearnCollectionDropPage() {
           <p>
             Once the drop is live, eligible collectors mint directly from the drop page.
             On medialane.io, minting is frictionless: gas is sponsored, start to finish.
-            On the Starknet app, gas sponsorship depends on whether AVNU sponsorship is
-            currently active, and real gas may apply.
+            On the Starknet app, users pay their own gas.
           </p>
         </Section>
 

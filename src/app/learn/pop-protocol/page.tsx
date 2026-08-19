@@ -94,8 +94,7 @@ export default function LearnPOPPage() {
           <p>
             Each credential can only be claimed once per wallet. Duplicate claims are
             rejected by the smart contract. On medialane.io there is no cost to claim: gas
-            is sponsored. On the Starknet app, gas sponsorship depends on whether AVNU
-            sponsorship is currently active.
+            is sponsored. On the Starknet app, users pay their own gas.
           </p>
         </Section>
 

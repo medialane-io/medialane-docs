@@ -171,9 +171,8 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
           </p>
           <p className="text-sm">
             On medialane.io, transactions are frictionless: wallet setup, listing, and offer
-            creation are all gas-sponsored. On the wallet-sovereign Starknet app, gas
-            sponsorship depends on whether AVNU sponsorship is currently active; check the
-            app for real-time status. See{" "}
+            creation are all gas-sponsored. On the wallet-sovereign Starknet app, users pay
+            their own gas. See{" "}
             <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
             for the canonical breakdown.
           </p>

@@ -53,8 +53,8 @@ const PAID_ACTIONS = [
   },
   {
     action: "Network gas",
-    cost: "Usually sponsored for creator actions",
-    note: "Gas sponsorship can vary by action, campaign, abuse controls, or future DAO-approved policy.",
+    cost: "Sponsored on medialane.io; self-funded on the Starknet app",
+    note: "On medialane.io, gas sponsorship can still vary by action, campaign, abuse controls, or future DAO-approved policy. On the wallet-sovereign Starknet app, users pay their own gas.",
   },
 ];
 
@@ -86,7 +86,7 @@ export default function FeesPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { icon: Zap, label: "Creator actions", value: "Gas sponsored", desc: "Most creation and listing actions require no ETH or STRK from users." },
+          { icon: Zap, label: "Creator actions", value: "Gas sponsored on io", desc: "On medialane.io, most creation and listing actions require no ETH or STRK. On the Starknet app, users pay their own gas." },
           { icon: Coins, label: "Marketplace fee", value: CANONICAL.marketplaceFee, desc: "Applied to completed marketplace sales at the platform layer and routed to the creators fund." },
           { icon: Terminal, label: "API access", value: "Pay-per-call", desc: "Developers and agents calling the API directly pay in credits (1 credit = $0.01) via x402, with no free tier." },
           { icon: Landmark, label: "Allocation", value: "DAO vote", desc: "MDLN holders decide how creators-fund revenue is used." },
@@ -104,8 +104,10 @@ export default function FeesPage() {
 
       <Section title="Free Or Sponsored Actions">
         <p>
-          The following actions are intended to be free to use from the product interface, with
-          gas sponsored for normal creator and collector workflows:
+          On <strong className="text-foreground">medialane.io</strong>, the following actions are
+          intended to be free to use from the product interface, with gas sponsored for normal
+          creator and collector workflows. On the wallet-sovereign Starknet app, users pay their
+          own gas for all of these:
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {FREE_ACTIONS.map((action) => (
@@ -116,9 +118,9 @@ export default function FeesPage() {
           ))}
         </div>
         <p className="text-sm">
-          Sponsorship is not a promise that every possible transaction is always free. Abuse controls,
-          unsupported flows, future DAO policy, or direct contract interactions may require users to
-          pay Starknet gas.
+          On medialane.io, sponsorship is not a promise that every possible transaction is always
+          free. Abuse controls, unsupported flows, or future DAO policy may require users to pay
+          Starknet gas there too.
         </p>
       </Section>
 
