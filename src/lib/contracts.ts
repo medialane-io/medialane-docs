@@ -15,7 +15,7 @@
  * Upstream source of truth is `@medialane/sdk` `src/chains.ts` (`getCoordinates("STARKNET")`).
  * This repo pins an old SDK, so the addresses are mirrored here as literals;
  * after any contract redeploy, reconcile this file against the SDK constants.
- * Last reconciled against SDK 0.51.0 (2026-07-06).
+ * Last reconciled against SDK 0.85.10 (2026-08-19).
  */
 
 export type ContractCategory = "Marketplace" | "Collections & Launchpad" | "Creator Coin";
@@ -83,15 +83,15 @@ export const CONTRACTS: ContractInfo[] = [
     category: "Collections & Launchpad",
     name: "IP Tickets Factory",
     chain: "Starknet",
-    address: "0x059802639b41e9c6449c3d557703e610ef639a91866dc1dd44216f9f37111ac5",
-    desc: "Ownerless factory deploying one ERC-1155 tickets collection per creator: each ticket carries its own supply, validity window, and royalty, verifiable on-chain and tradeable like any asset. Deployed 2026-07-14.",
+    address: "0x0767bf5b57e1f812463159b5ed683183e1b0c3f942b74871b5c6cd6a93c15e99",
+    desc: "Ownerless factory deploying one ERC-1155 tickets collection per creator: each ticket carries its own supply, validity window, and royalty, verifiable on-chain and tradeable like any asset. A validity window gates whether a ticket is valid, not whether it can be minted. Redeployed 2026-07-16 (v5), superseding the 2026-07-14 factory.",
   },
   {
     category: "Collections & Launchpad",
     name: "IP Club Factory",
     chain: "Starknet",
-    address: "0x05519705345ce225db666253a21cf89d1c675658f16cc6ae4320cefd1a1219a3",
-    desc: "Ownerless factory deploying one soulbound (non-transferable) IP Club membership collection per creator, the same per-creator pattern as IP Tickets and IP Collections. Redeployed 2026-07-15 for a per-token metadata fix; originally shipped as the factory model 2026-07-12.",
+    address: "0x06a0b0be16d70c78f2e18119dbf90e5911cbfd5d8d484bc555dc61d96f56a2b9",
+    desc: "Ownerless factory deploying one ERC-1155 IP Club membership collection per creator, the same per-creator pattern as IP Tickets and IP Collections. Membership cards are tradeable like any collectible, not soulbound — a validity window gates membership, not minting or trading. Rebuilt 2026-07-16, superseding the 2026-07-12/07-15 factories.",
   },
   {
     category: "Collections & Launchpad",
