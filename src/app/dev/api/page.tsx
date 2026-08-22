@@ -836,17 +836,21 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/intents/checkout"
-        description="Batch fulfill intent creation. Accepts up to 20 order hashes. Per-item error handling: failed items return { orderHash, error } instead of rejecting the entire request."
+        description="Batch fulfill intent creation. Accepts up to 20 items, each an order hash with an optional quantity for ERC-1155 editions. Per-item error handling: failed items return { orderHash, error } instead of rejecting the entire request."
         params={[
           { name: "fulfiller", type: "string", required: true, desc: "Fulfiller Starknet address" },
-          { name: "orderHashes", type: "string[]", required: true, desc: "Array of order hashes to fulfill (max 20)" },
+          { name: "items", type: "{ orderHash: string, quantity?: string }[]", required: false, desc: "Orders to fulfill (max 20). quantity applies to ERC-1155 editions and defaults to 1; ERC-721 ignores it. Provide items or orderHashes." },
+          { name: "orderHashes", type: "string[]", required: false, desc: "Order hashes to fulfill (max 20). Equivalent to items with no quantity. Provide items or orderHashes." },
         ]}
         curl={`curl -X POST "${BASE}/v1/intents/checkout" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
   -d '{
     "fulfiller": "0x0482...",
-    "orderHashes": ["0xabc...", "0xdef..."]
+    "items": [
+      { "orderHash": "0xabc..." },
+      { "orderHash": "0xdef...", "quantity": "3" }
+    ]
   }'`}
         response={`{
   "data": [
@@ -933,6 +937,111 @@ export default function ApiReferencePage() {
       />
 
       {/* ── SEARCH ── */}
+      {/* ── INFRASTRUCTURE ── */}
+      <DocH2 id="infrastructure" border>Infrastructure</DocH2>
+
+      <Endpoint
+        method="POST"
+        path="/v1/rpc"
+        description="Starknet JSON-RPC, forwarded to Medialane's providers and returned verbatim. Methods are restricted to a read and transaction-submission allowlist. Every call is metered, so an integration needs no node of its own."
+        params={[
+          { name: "jsonrpc", type: "string", required: true, desc: 'Always "2.0"' },
+          { name: "method", type: "string", required: true, desc: "Allowlisted Starknet method, e.g. starknet_call" },
+          { name: "params", type: "object | array", required: false, desc: "Method parameters, passed through unchanged" },
+          { name: "id", type: "number", required: true, desc: "JSON-RPC request id, echoed back" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/rpc" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"jsonrpc":"2.0","method":"starknet_chainId","id":1}'`}
+        response={`{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x534e5f4d41494e"
+}`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/swap/quote"
+        description="Best available swap quote from the AVNU aggregator. Give exactly one of sellAmountRaw or buyAmountRaw, and identify each token by catalogue symbol or contract address."
+        params={[
+          { name: "sellSymbol", type: "string", required: false, desc: "Catalogue symbol, e.g. STRK. Use this or sellTokenAddress" },
+          { name: "sellTokenAddress", type: "string", required: false, desc: "Contract address, for a coin outside the catalogue" },
+          { name: "buySymbol", type: "string", required: false, desc: "Catalogue symbol. Use this or buyTokenAddress" },
+          { name: "buyTokenAddress", type: "string", required: false, desc: "Contract address" },
+          { name: "sellAmountRaw", type: "string", required: false, desc: "Amount in base units, fixing the sell side" },
+          { name: "buyAmountRaw", type: "string", required: false, desc: "Amount in base units, fixing the buy side" },
+          { name: "takerAddress", type: "string", required: false, desc: "Taker address, improves routing" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/swap/quote" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"sellSymbol":"STRK","buySymbol":"USDC","sellAmountRaw":"1000000000000000000"}'`}
+        response={`{
+  "quote": {
+    "quoteId": "04175217-...",
+    "sellTokenAddress": "0x0471...",
+    "buyTokenAddress": "0x0330...",
+    "sellAmount": "1000000000000000000",
+    "buyAmount": "421000"
+  }
+}`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/swap/build"
+        description="Build the calls for a swap. Same parameters as the quote endpoint, plus a required takerAddress. Returns calls ready to sign and execute."
+        params={[
+          { name: "takerAddress", type: "string", required: true, desc: "Address that will execute the swap" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/swap/build" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"sellSymbol":"STRK","buySymbol":"USDC","sellAmountRaw":"1000000000000000000","takerAddress":"0x0482..."}'`}
+        response={`{
+  "calls": [ { "contractAddress": "0x...", "entrypoint": "approve", "calldata": ["..."] } ],
+  "chainId": "0x534e5f4d41494e",
+  "quote": { "quoteId": "04175217-..." }
+}`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/paymaster/invoke/build"
+        description="Build a gas-sponsored invoke. Returns typed data for the account to sign. The account must already be deployed; a call for an undeployed account returns 422."
+        params={[
+          { name: "userAddress", type: "string", required: true, desc: "Account that will sign and execute" },
+          { name: "calls", type: "Call[]", required: true, desc: "One or more calls to execute in a single sponsored transaction" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/paymaster/invoke/build" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"userAddress":"0x0482...","calls":[{"contractAddress":"0x0471...","entrypoint":"transfer","calldata":["0x0482...","0x1","0x0"]}]}'`}
+        response={`{
+  "typedData": { "types": { }, "primaryType": "Invoke", "domain": { }, "message": { } }
+}`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/paymaster/invoke/execute"
+        description="Execute a gas-sponsored invoke using the signature over the typed data returned by the build call."
+        params={[
+          { name: "userAddress", type: "string", required: true, desc: "Account that signed" },
+          { name: "typedData", type: "object", required: true, desc: "Typed data returned by the build call" },
+          { name: "signature", type: "string[]", required: true, desc: "Signature over the typed data" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/paymaster/invoke/execute" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"userAddress":"0x0482...","typedData":{},"signature":["0x1","0x2"]}'`}
+        response={`{
+  "transactionHash": "0x06f2..."
+}`}
+      />
+
       <DocH2 id="search" border>Search</DocH2>
 
       <Endpoint
@@ -1791,7 +1900,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/drop/:contract/info"
-        description="Collection metadata merged with stored claim conditions. Public. Returns conditions: null if the drop has not had conditions set yet."
+        description="Collection metadata for a drop. Public. Claim conditions are read from chain via /v1/drop/:contract/state."
         params={[
           { name: "contract", type: "string", required: true, desc: "Drop collection contract address" },
         ]}
@@ -1805,49 +1914,11 @@ const resumeSource = new EventSource(url, {
     "description": "...",
     "image": "ipfs://...",
     "owner": "0x0591...",
-    "totalMinted": 347,
-    "conditions": {
-      "maxSupply": "1000",
-      "price": "1000000",
-      "paymentToken": "0x0330...",
-      "startTime": "1740000000",
-      "endTime": "1745000000",
-      "maxPerWallet": "5"
-    }
+    "totalMinted": 347
   }
 }`}
       />
 
-      <Endpoint
-        method="POST"
-        path="/v1/drop/conditions"
-        description="Store claim conditions after a successful create_drop transaction. Requires a SIWS token; only the collection owner (owner or claimedBy) may set conditions. Amounts are integer strings in token base units; set price to '0' for free mints and endTime to 0 for no expiry."
-        params={[
-          { name: "collectionAddress", type: "string", required: true, desc: "Drop collection contract address" },
-          { name: "maxSupply", type: "string", required: true, desc: "Total supply cap (integer string)" },
-          { name: "price", type: "string", required: false, desc: "Mint price in token base units (default '0')" },
-          { name: "paymentToken", type: "string", required: false, desc: "ERC-20 address, or '0x0' for native (default '0x0')" },
-          { name: "startTime", type: "number", required: true, desc: "Unix seconds; mint window open" },
-          { name: "endTime", type: "number", required: true, desc: "Unix seconds; 0 for no expiry" },
-          { name: "maxPerWallet", type: "string", required: false, desc: "Per-wallet cap (default '1')" },
-        ]}
-        curl={`curl -X POST "${BASE}/v1/drop/conditions" \\
-  -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <SIWS_TOKEN>" \\
-  -H "Content-Type: application/json" \\
-  -d '{"collectionAddress":"0x03587f...","maxSupply":"1000","price":"1000000","startTime":1740000000,"endTime":1745000000,"maxPerWallet":"5"}'`}
-        response={`{
-  "data": {
-    "collectionAddress": "0x03587f...",
-    "maxSupply": "1000",
-    "price": "1000000",
-    "paymentToken": "0x0330...",
-    "startTime": "1740000000",
-    "endTime": "1745000000",
-    "maxPerWallet": "5"
-  }
-}`}
-      />
 
       {/* ── SPONSORSHIP ── */}
       <DocH2 id="sponsorship" border>IP Sponsorship</DocH2>
