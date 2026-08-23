@@ -43,39 +43,40 @@ export default function LearnCreatorCoinPage() {
           <p>
             A Creator Coin is a standard ERC-20 token with a fixed supply, deployed from
             Medialane&apos;s audited Creator Coin Factory (a faithful fork of the
-            unruggable.meme model). At launch, the entire supply is paired with a public
-            liquidity pool on Ekubo, and that liquidity is <strong>permanently locked</strong>.
-            No one can pull it, including the creator or Medialane.
+            unruggable.meme model). At launch, the entire supply pairs with a public
+            liquidity pool on Ekubo, and that liquidity locks permanently in a dedicated
+            locker contract, with only trading fees left collectible.
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li><strong>Standard token</strong>: ordinary ERC-20 behavior everywhere, with no hidden switches.</li>
-            <li><strong>Locked liquidity</strong>: the pool can never be drained ("rugged"), enforced by the contract itself.</li>
-            <li><strong>Renounced ownership</strong>: after launch, the coin has no admin. The contract is the only authority.</li>
+            <li><strong>Fixed supply forever</strong>: minting is disabled the moment the coin is created; the contract exposes no mint function beyond that.</li>
+            <li><strong>Purchased at market price</strong>: the creator&apos;s allocation is capped at 10% and bought from the pool at the coin&apos;s own launch price, not minted for free.</li>
+            <li><strong>Ownership renounced</strong>: control transfers away automatically at launch, verifiable on any explorer.</li>
+            <li><strong>Creator-chosen pair</strong>: the creator sets both the launch price and the quote currency.</li>
             <li><strong>Tradable immediately</strong>: the market opens the moment the coin launches.</li>
           </ul>
         </Section>
 
         <Section title="Launching your coin">
           <p>
-            The Launch Studio walks you through three steps, design, economics, launch,
-            with a live preview of your coin as you type:
+            The Launch Studio walks through a coin&apos;s design, its economics, and the
+            launch itself, with a live preview updating as you type:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
             <li>
               <strong>Your coin</strong>: name, symbol, a feature image, and a description.
-              The image and description live on your coin&apos;s Medialane page (you can edit
-              them anytime); the name and symbol are recorded on-chain forever.
+              The image and description live on your coin&apos;s Medialane page and can be
+              edited anytime; the name and symbol are recorded on-chain forever.
             </li>
             <li>
-              <strong>Economics</strong>: choose the total supply and the quote currency
-              (STRK or ETH). The launch price is fixed at 0.01 quote per coin, so your supply
-              sets the starting market cap: 1,000,000 coins opens at a 10,000 STRK market cap.
+              <strong>Economics</strong>: choose the total supply, the launch price, and the
+              quote currency (STRK, ETH, WBTC, USDC, or USDT). Supply and price together set
+              the starting market cap.
             </li>
             <li>
-              <strong>Your allocation</strong>: up to 10% of the supply can go straight to
-              your wallet at launch. You fund this share yourself (it is bought out of the
-              pool at the launch price), which keeps the launch fair for everyone else.
-              The rest belongs to the market.
+              <strong>Your allocation</strong>: up to 10% of the supply can go to the
+              creator&apos;s wallet at launch, capped and bought from the pool at the coin&apos;s
+              own launch price. That purchase is what funds the coin&apos;s starting
+              liquidity. The rest belongs to the market.
             </li>
           </ul>
           <p>
@@ -96,16 +97,21 @@ export default function LearnCreatorCoinPage() {
         <Section title="Trading & discovery">
           <p>
             Coins are listed on the Coins page with live prices read directly from
-            their Ekubo pool: price, supply, and market cap. Trading settles on Ekubo,
-            an external public exchange: Medialane never holds your coins or your funds.
+            their Ekubo pool: price, supply, and market cap. Trading settles on Ekubo, an
+            external public exchange, with Medialane holding no custody of coins or funds.
           </p>
         </Section>
 
-        <Section title="What the Contract Guarantees">
+        <Section title="What the contract guarantees">
+          <p className="text-sm text-muted-foreground">
+            Every guarantee below is enforced by the Creator Coin Factory contract itself,
+            verifiable on any Starknet explorer, not a claim made by Medialane.
+          </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li>Your coins live in your wallet; the pool lives on Ekubo, never in Medialane&apos;s custody.</li>
-            <li>Launched coins have no owner and cannot be changed, with no admin keys.</li>
-            <li>The coin itself is a clean, standard token, with no fees built into the contract.</li>
+            <li>Fixed supply: minting is disabled the moment a coin is created, permanently.</li>
+            <li>Creator allocation capped at 10%, purchased from the pool at market price.</li>
+            <li>Ownership renounces automatically at launch.</li>
+            <li>Liquidity locks permanently in a dedicated locker contract; only trading fees stay collectible.</li>
             <li>Launching is permissionless, open to anyone, with the contract as the only authority.</li>
           </ul>
         </Section>
