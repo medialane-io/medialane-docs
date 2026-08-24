@@ -76,15 +76,15 @@ export async function PricingTable() {
 
   return (
     <>
-      <div className="rounded-xl border border-white/10 overflow-hidden mb-3">
-        <div className="grid grid-cols-3 px-5 py-3 bg-white/[0.03] border-b border-white/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+      <div className="rounded-xl border border-foreground/10 overflow-hidden mb-3">
+        <div className="grid grid-cols-3 px-5 py-3 bg-foreground/[0.03] border-b border-foreground/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
           <span>Action</span>
           <span className="text-center">Credits</span>
           <span className="text-right">USD</span>
         </div>
         {creditRows.map((row, i) => (
-          <div key={row.actionKey} className={`grid grid-cols-3 px-5 py-3 items-center text-sm ${i < creditRows.length - 1 ? "border-b border-white/5" : ""}`}>
-            <span className="text-white">{row.label}</span>
+          <div key={row.actionKey} className={`grid grid-cols-3 px-5 py-3 items-center text-sm ${i < creditRows.length - 1 ? "border-b border-foreground/5" : ""}`}>
+            <span className="text-foreground">{row.label}</span>
             <span className="text-center font-mono font-bold text-primary">{row.credits}</span>
             <span className="text-right font-mono text-muted-foreground text-xs">${(row.credits / (pricing?.creditsPerUsdc ?? 100)).toFixed(2)}</span>
           </div>
@@ -95,7 +95,7 @@ export async function PricingTable() {
           Service-specific overrides: {overrideRows.map((r, i) => (
             <React.Fragment key={`${r.actionKey}-${r.chain}-${r.service}`}>
               {i > 0 && ", "}
-              <code className="font-mono bg-white/10 px-1 py-0.5 rounded">{r.actionKey}</code> on <code className="font-mono bg-white/10 px-1 py-0.5 rounded">{r.service}</code>{r.chain !== "ALL" ? ` (${r.chain})` : ""}: {r.credits} credits
+              <code className="font-mono bg-foreground/10 px-1 py-0.5 rounded">{r.actionKey}</code> on <code className="font-mono bg-foreground/10 px-1 py-0.5 rounded">{r.service}</code>{r.chain !== "ALL" ? ` (${r.chain})` : ""}: {r.credits} credits
             </React.Fragment>
           ))}.
         </p>

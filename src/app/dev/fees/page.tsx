@@ -69,7 +69,7 @@ const REVENUE_OPTIONS = [
 
 export default function FeesPage() {
   return (
-    <div className="space-y-10 max-w-4xl lg:max-w-none">
+    <div className="space-y-10">
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <Coins className="h-5 w-5 text-primary" />

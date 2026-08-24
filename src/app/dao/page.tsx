@@ -47,7 +47,7 @@ const PILLARS = [
 
 export default function DAOPage() {
   return (
-    <div className="space-y-12 max-w-4xl lg:max-w-none">
+    <div className="space-y-12">
 
       {/* Intro */}
       <div className="space-y-4">
@@ -55,7 +55,7 @@ export default function DAOPage() {
           <Building2 className="h-5 w-5 text-primary" />
           <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Decentralized Autonomous Organization</span>
         </div>
-        <h2 className="text-3xl font-bold leading-tight">
+        <h2 className="text-2xl font-bold">
           Medialane DAO
         </h2>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">

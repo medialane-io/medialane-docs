@@ -87,7 +87,7 @@ const PHASES = [
 
 export default function AirdropPage() {
   return (
-    <div className="space-y-12 max-w-3xl lg:max-w-none">
+    <div className="space-y-12">
 
       {/* Hero */}
       <div className="space-y-3">

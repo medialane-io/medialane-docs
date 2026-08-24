@@ -27,7 +27,7 @@ function Section({ num, title, children }: { num: string; title: string; childre
 
 export default function TermsPage() {
   return (
-    <div className="space-y-8 max-w-3xl lg:max-w-none">
+    <div className="space-y-8">
 
       <div className="space-y-3">
         <div className="flex items-center gap-2">
