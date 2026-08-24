@@ -121,7 +121,7 @@ export default function LinksPage() {
                     <ExternalLink className={`h-4 w-4 ${color}`} />
                   </div>
                   <div className="flex-1 min-w-0 space-y-0.5">
-                    <p className="font-semibold text-sm">{name}</p>
+                    <p className="font-semibold text-base">{name}</p>
                     <p className="text-xs text-muted-foreground">{description}</p>
                   </div>
                   <span className={`text-xs font-mono shrink-0 ${color} opacity-70 group-hover:opacity-100 transition-opacity hidden sm:block`}>

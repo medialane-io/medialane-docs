@@ -35,14 +35,14 @@ export default function ZeroKnowledgePage() {
       {/* Simple analogy */}
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">The Intuition</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Imagine a maze with two entrances (A and B) that meet in the middle. You want to prove you know the
           secret path through without revealing the path itself. You enter from one side while a verifier picks
           which exit they want to see you emerge from. Repeat this 100 times: if you always emerge from the
           correct exit, the verifier is statistically certain you know the path, but you&apos;ve revealed nothing
           about the path itself.
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Real ZK proofs work similarly, but with mathematics instead of mazes, and in milliseconds.
         </p>
       </div>
@@ -61,8 +61,8 @@ export default function ZeroKnowledgePage() {
               <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Icon className="h-4 w-4 text-primary" />
               </div>
-              <h4 className="font-semibold text-sm">{title}</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <h4 className="font-semibold text-base">{title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -71,12 +71,12 @@ export default function ZeroKnowledgePage() {
       {/* Starknet connection */}
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">ZK Proofs on Medialane</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Every transaction on Medialane (minting an NFT, transferring ownership, executing a marketplace sale)
           is included in a batch that Starknet proves to Ethereum with a ZK-STARK. This means your IP records
           inherit the full security of Ethereum, regardless of how many transactions are processed.
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           The same selective-disclosure property extends beyond transaction validity, to what a
           creator chooses to keep confidential about their own economics. See{" "}
           <Link href="/learn/privacy" className="text-primary hover:underline">Privacy on Medialane</Link>.

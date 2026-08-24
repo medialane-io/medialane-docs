@@ -17,7 +17,7 @@ export default function DAOLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <PageContainer width="wide" className="pb-16">
-      <div className="pb-6 border-b border-border/50">
+      <div className="pb-6">
         <p className="text-xs font-semibold uppercase tracking-widest text-primary/70 mb-2">Governance</p>
         <h1 className="text-2xl font-bold">Medialane DAO</h1>
         <p className="text-muted-foreground mt-1 text-sm max-w-xl">

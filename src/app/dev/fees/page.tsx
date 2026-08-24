@@ -97,7 +97,7 @@ export default function FeesPage() {
             </div>
             <p className="text-xs text-muted-foreground">{label}</p>
             <p className="text-2xl font-black">{value}</p>
-            <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
@@ -220,7 +220,7 @@ export default function FeesPage() {
         </div>
       </Section>
 
-      <div className="bento-cell p-5 text-sm text-muted-foreground leading-relaxed">
+      <div className="bento-cell p-5 text-base text-muted-foreground leading-relaxed">
         For canonical DAO, MDLN, treasury, and governance records, use{" "}
         <a href={CANONICAL.daoUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
           medialane.org <ExternalLink className="inline h-3 w-3" />

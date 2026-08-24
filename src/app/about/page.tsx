@@ -193,7 +193,7 @@ export default function AboutPage() {
           {HUBS.map(({ label, desc, href, color, border }) => (
             <Link key={label} href={href} className={`bento-cell border ${border} p-6 space-y-2 hover:bg-muted/20 transition-colors group`}>
               <p className={`font-black text-base ${color}`}>{label}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
               <p className={`text-xs font-semibold ${color} group-hover:underline`}>Learn more →</p>
             </Link>
           ))}
@@ -238,7 +238,7 @@ export default function AboutPage() {
                 <span className={`text-xs font-mono ${color}`}>{num}</span>
                 <p className={`font-bold text-sm ${color}`}>{label}</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -264,7 +264,7 @@ export default function AboutPage() {
           {STARKNET_REASONS.map(({ label, desc }) => (
             <div key={label} className="bento-cell p-5 space-y-1">
               <p className="font-bold text-sm text-brand-purple">{label}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -308,7 +308,7 @@ export default function AboutPage() {
                 </div>
                 <p className={`font-black text-sm ${color}`}>{title}</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

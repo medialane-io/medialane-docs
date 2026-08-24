@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
  * Width presets:
  *   - narrow  (max-w-3xl) — long-form lists, link directories
  *   - default (max-w-5xl) — most marketing + hub pages (home, about, apps)
- *   - wide    (max-w-6xl) — section layouts (/docs, /learn, /guidelines, /dao, /contact)
+ *   - wide    (max-w-7xl) — section layouts (/docs, /learn, /guidelines, /dao, /contact)
  *
  * Gutter (px-4 sm:px-6 lg:px-8) matches medialane-io's NavTrigger offset
  * so content edges align with the trigger button on every breakpoint.
@@ -21,7 +21,7 @@ type PageWidth = "narrow" | "default" | "wide";
 const WIDTH: Record<PageWidth, string> = {
   narrow: "max-w-3xl",
   default: "max-w-5xl",
-  wide: "max-w-6xl",
+  wide: "max-w-7xl",
 };
 
 interface PageContainerProps {

@@ -138,7 +138,7 @@ export default function DocsArchitecturePage() {
                     <p className="font-bold text-foreground">{label}</p>
                     <span className="text-xs text-muted-foreground">: {role}</span>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{detail}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{detail}</p>
                 </div>
               </div>
             ))}
@@ -153,13 +153,13 @@ export default function DocsArchitecturePage() {
         <Section title="The Rebuild Test">
           <div className="bento-cell border border-brand-orange/20 bg-brand-orange/5 p-5 space-y-3">
             <p className="font-bold text-foreground">Drop the database. Can everything reconstruct?</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               If a piece of state can be reconstructed by replaying on-chain events and fetching
               off-chain metadata, it is protocol state. If it cannot (profiles, slugs, API keys,
               experience points), it is platform state: honestly labeled as off-chain enrichment,
               never confused with protocol guarantees.
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               The rebuild test is the architectural decision rule for every new piece of state
               added to the system. Anything that fails it belongs to the platform layer, not
               the protocol.
@@ -177,7 +177,7 @@ export default function DocsArchitecturePage() {
                   </div>
                   <p className={`font-bold text-sm ${color}`}>{label}</p>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{def}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{def}</p>
               </div>
             ))}
           </div>

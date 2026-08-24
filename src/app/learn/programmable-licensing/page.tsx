@@ -21,7 +21,7 @@ function LicenseRow({ name, description }: { name: string; description: string }
   return (
     <div className="bento-cell px-4 py-3 flex items-start gap-3">
       <span className="font-mono text-xs bg-primary/10 text-primary px-2 py-1 rounded-md shrink-0 mt-0.5">{name}</span>
-      <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+      <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
     </div>
   );
 }
@@ -66,13 +66,13 @@ export default function LearnProgrammableLicensingPage() {
         <Section title="Soft Enforcement Is the Default">
           <div className="bento-cell border border-brand-orange/20 bg-brand-orange/5 p-5 space-y-3">
             <p className="font-bold text-foreground">The contract does not revert on license violation.</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               Enforcement of license terms is social, legal, and jurisdictional, the same
               mechanisms that enforce traditional copyright. This is intentional: encoding
               jurisdiction-specific law into immutable contracts would make them globally
               unusable. Soft enforcement gives the system worldwide durability.
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               The on-chain record is evidence. It establishes what the creator stated, when
               they stated it, and what terms apply. That record is tamper-proof and permanently
               verifiable, exactly what legal enforcement needs, even without
@@ -90,7 +90,7 @@ export default function LearnProgrammableLicensingPage() {
             {CORE_TRAITS.map(({ trait, desc }) => (
               <div key={trait} className="bento-cell px-4 py-3 flex items-start gap-3">
                 <span className="font-mono text-xs bg-primary/10 text-primary px-2 py-1 rounded-md shrink-0 mt-0.5">{trait}</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -109,12 +109,12 @@ export default function LearnProgrammableLicensingPage() {
         <Section title="Immutable at Mint">
           <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
             <p className="font-bold text-foreground">Terms cannot be edited after minting.</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               Once a token is minted, its license terms are fixed. The metadata lives on IPFS
               or Arweave, content-addressed and immutable. If a creator wants to offer different
               terms, they mint a new token. There is no edit path.
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               Collectors know exactly what they purchased, since the terms stay fixed
               after the fact for the creator, for Medialane, and for anyone else.
             </p>
@@ -134,7 +134,7 @@ export default function LearnProgrammableLicensingPage() {
             ].map(({ name, desc }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
                 <p className="text-sm font-semibold text-foreground">{name}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -161,7 +161,7 @@ export default function LearnProgrammableLicensingPage() {
             ].map(({ name, desc }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
                 <p className="text-sm font-semibold text-foreground">{name}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>

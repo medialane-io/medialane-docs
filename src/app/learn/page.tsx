@@ -198,10 +198,10 @@ export default function LearnPage() {
               </div>
               <div className="space-y-1 flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
-                  <p className="font-semibold text-sm">{title}</p>
+                  <p className="font-semibold text-base">{title}</p>
                   <ArrowRight className="h-4 w-4 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </div>
           </Link>

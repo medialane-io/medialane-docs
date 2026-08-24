@@ -100,7 +100,7 @@ export default function CommunityGuidelinesPage() {
             {PROHIBITED.map((rule, i) => (
               <div key={i} className="flex items-start gap-3 px-4 py-3 rounded-lg border border-border/60 bg-muted/20">
                 <span className="text-xs font-mono text-muted-foreground/60 pt-0.5 shrink-0">{String(i + 1).padStart(2, "0")}</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">{rule}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{rule}</p>
               </div>
             ))}
           </div>

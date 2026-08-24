@@ -345,7 +345,7 @@ export default function AppsPage() {
 
                 {/* Body */}
                 <div className="p-5 space-y-4 flex flex-col flex-1">
-                  <p className="text-sm text-muted-foreground leading-relaxed">{app.description}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{app.description}</p>
 
                   {/* Feature checklist */}
                   <ul className="space-y-1.5 flex-1">
@@ -404,8 +404,8 @@ export default function AppsPage() {
               <div className={`h-10 w-10 rounded-xl ${bg} flex items-center justify-center`}>
                 <Icon className={`h-5 w-5 ${color}`} />
               </div>
-              <h3 className="font-semibold text-sm">{title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+              <h3 className="font-semibold text-base">{title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
@@ -429,7 +429,7 @@ export default function AppsPage() {
                 <Icon className={`h-5 w-5 ${color}`} />
               </div>
               <h3 className="font-semibold">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
@@ -467,7 +467,7 @@ export default function AppsPage() {
                 <div className={`h-9 w-9 rounded-lg ${bg} flex items-center justify-center shrink-0`}>
                   <Icon className={`h-4 w-4 ${color}`} />
                 </div>
-                <h3 className="font-semibold text-sm">{title}</h3>
+                <h3 className="font-semibold text-base">{title}</h3>
               </div>
 
               <ul className="space-y-1.5 flex-1">
@@ -515,7 +515,7 @@ export default function AppsPage() {
             </div>
             <div className="space-y-1">
               <p className="font-bold">@medialane/sdk</p>
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+              <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
                 Open-source TypeScript SDK. Query assets, manage minting, interact with the marketplace,
                 and build your own interfaces on top of the Mediolano protocol. MIT licensed.
               </p>
@@ -583,7 +583,7 @@ export default function AppsPage() {
               <GitBranch className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5 group-hover:text-primary transition-colors" />
               <div className="space-y-1 flex-1 min-w-0">
                 <p className="text-sm font-mono font-medium text-foreground/80 group-hover:text-primary transition-colors truncate">{label}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
               </div>
               <ExternalLink className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-primary shrink-0 transition-colors mt-0.5" />
             </a>

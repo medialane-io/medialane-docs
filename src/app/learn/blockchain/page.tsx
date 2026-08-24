@@ -44,8 +44,8 @@ export default function BlockchainPage() {
               <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Icon className="h-4 w-4 text-primary" />
               </div>
-              <h4 className="font-semibold text-sm">{title}</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <h4 className="font-semibold text-base">{title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -54,12 +54,12 @@ export default function BlockchainPage() {
       {/* How it works */}
       <div className="bento-cell p-6 space-y-4">
         <h3 className="font-semibold">How It Works</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           When you mint an NFT on Medialane, a record is written to the Starknet blockchain stating:
           &ldquo;This wallet address is the owner of this IP asset, registered at this timestamp, with these license terms.&rdquo;
           That record is cryptographically linked to every record before it, forming an unbroken chain of history.
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           When you later sell or license the asset, another record is appended: &ldquo;The previous owner transferred
           ownership to this new wallet address.&rdquo; The full provenance history is always visible and cannot be falsified.
         </p>
@@ -68,7 +68,7 @@ export default function BlockchainPage() {
       {/* Starknet context */}
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">Medialane & Starknet</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Medialane is built on <strong className="text-foreground">Starknet</strong>, an Ethereum Layer 2 network
           that uses zero-knowledge proofs to bundle thousands of transactions into a single cryptographic proof
           verified on Ethereum. That proof inherits Ethereum's settlement security while keeping per-transaction

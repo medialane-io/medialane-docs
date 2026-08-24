@@ -136,7 +136,7 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
                 <Database className="h-4 w-4 text-brand-blue" />
                 <p className="font-bold text-foreground text-sm">Off-chain event reducer</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 The indexer polls Starknet for new events, parses them with per-event handlers,
                 and writes a normalized PostgreSQL cache. It holds no state of its own; everything
                 it knows came from the chain.
@@ -147,7 +147,7 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
                 <Package className="h-4 w-4 text-brand-orange" />
                 <p className="font-bold text-foreground text-sm">Rebuild guarantee</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Drop the database. The indexer replays events from genesis and reconstructs
                 the full state. This is not a disaster-recovery feature; it is the protocol
                 invariant that proves the DB is a cache, not a source of truth.

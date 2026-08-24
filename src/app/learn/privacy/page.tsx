@@ -90,7 +90,7 @@ export default function LearnPrivacyPage() {
           <ShieldCheck className="h-5 w-5 text-primary" />
           <p className="font-semibold">Information sovereignty, not secrecy</p>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           This is the Integrity Web&apos;s sixth axiom, <em>Privacy is Power</em>: a creator
           retains ownership of their own information, and cryptographic tools protect that
           ownership. Provenance and trade history stay public because that&apos;s what makes
@@ -106,7 +106,7 @@ export default function LearnPrivacyPage() {
       {/* Worked example: gated content */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">A live example: token-gated content</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           A creator can attach holder-only content to a collection (a video, a link, a file)
           visible only to wallets that actually hold a token from it. The mechanism separates two
           questions:
@@ -116,7 +116,7 @@ export default function LearnPrivacyPage() {
           <div><span className="text-primary">2. authorize</span>: does that wallet actually hold a token, read live from the contract?</div>
           <div className="pt-1 text-foreground/80">Only a request that passes both receives the content.</div>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           The balance check reads the contract directly at request time, never a cached database
           value, and the content URL is never included in any public profile response. If someone
           isn&apos;t a current holder, the request is declined regardless of who they claim to be:
@@ -133,7 +133,7 @@ export default function LearnPrivacyPage() {
           <KeyRound className="h-5 w-5 text-brand-purple" />
           <p className="font-semibold">Where this is heading</p>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           The same split (provable on-chain facts versus information a creator controls) is
           the design basis for confidential creator economics: subscription and sponsorship
           tooling that shows a total raised or a membership count without exposing who paid what.

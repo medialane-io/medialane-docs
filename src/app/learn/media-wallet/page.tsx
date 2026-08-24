@@ -86,7 +86,7 @@ export default function LearnMediaWalletPage() {
                   </div>
                   <p className={`font-bold ${color}`}>{label}</p>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{def}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{def}</p>
               </div>
             ))}
           </div>
@@ -103,7 +103,7 @@ export default function LearnMediaWalletPage() {
               <Smartphone className="h-5 w-5 text-brand-rose" />
               <p className="font-bold text-foreground">medialane.io, today&apos;s client</p>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               medialane.io&apos;s built-in wallet creates and manages accounts under this
               contract for anyone signing up there. A standalone Media Wallet app is
               planned as a second client of the same contract, later.
@@ -118,7 +118,7 @@ export default function LearnMediaWalletPage() {
                 <Wallet className="h-4 w-4 text-brand-blue" />
                 <p className="font-bold text-foreground text-sm">starknet.medialane.io</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Connects to a wallet you already have: Ready, Braavos, an injected
                 extension, Cartridge, or Privy. You choose and control the wallet.
               </p>
@@ -128,7 +128,7 @@ export default function LearnMediaWalletPage() {
                 <Shield className="h-4 w-4 text-brand-purple" />
                 <p className="font-bold text-foreground text-sm">Media Wallet</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Is the account: created from a passkey, self-custody by construction,
                 with no separate wallet app to install or connect.
               </p>
