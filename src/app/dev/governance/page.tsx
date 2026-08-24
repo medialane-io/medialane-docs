@@ -66,8 +66,8 @@ export default function DocsGovernancePage() {
               { title: "Inclusivity", desc: "Anyone can participate: creators, collectors, developers, organizations, and AI agents." },
             ].map(({ title, desc }) => (
               <div key={title} className="bento-cell p-4 space-y-1.5">
-                <p className="text-sm font-semibold text-foreground">{title}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-base font-semibold text-foreground">{title}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -89,8 +89,8 @@ export default function DocsGovernancePage() {
                   {i + 1}
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-foreground">{step}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{desc}</p>
+                  <p className="text-base font-semibold text-foreground">{step}</p>
+                  <p className="text-base text-muted-foreground mt-0.5">{desc}</p>
                 </div>
               </div>
             ))}

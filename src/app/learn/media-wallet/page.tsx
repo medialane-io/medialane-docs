@@ -90,7 +90,7 @@ export default function LearnMediaWalletPage() {
               </div>
             ))}
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             The account address is counterfactual: it can be computed, and funded,
             before the account is ever deployed on-chain. The first signed transaction
             deploys it.
@@ -116,7 +116,7 @@ export default function LearnMediaWalletPage() {
             <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <Wallet className="h-4 w-4 text-brand-blue" />
-                <p className="font-bold text-foreground text-sm">starknet.medialane.io</p>
+                <p className="font-bold text-foreground text-base">starknet.medialane.io</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Connects to a wallet you already have: Ready, Braavos, an injected
@@ -126,7 +126,7 @@ export default function LearnMediaWalletPage() {
             <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <Shield className="h-4 w-4 text-brand-purple" />
-                <p className="font-bold text-foreground text-sm">Media Wallet</p>
+                <p className="font-bold text-foreground text-base">Media Wallet</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Is the account: created from a passkey, self-custody by construction,

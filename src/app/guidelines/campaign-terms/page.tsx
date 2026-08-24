@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function CampaignTermsPage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <div className="flex items-center gap-2">
@@ -27,13 +27,13 @@ export default function CampaignTermsPage() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Legal</span>
         </div>
         <h2 className="text-2xl font-bold">Creator Fund: Campaign Terms</h2>
-        <p className="text-muted-foreground leading-relaxed text-sm">
+        <p className="text-muted-foreground leading-relaxed text-base">
           Applies to all Medialane launch campaigns, including the Brazil campaign at{" "}
           <a href="https://medialane.io/br/mint" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground transition-colors">medialane.io/br/mint</a>{" "}
           and the global campaign at{" "}
           <a href="https://medialane.io/mint" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground transition-colors">medialane.io/mint</a>.
         </p>
-        <p className="text-xs text-muted-foreground">Last updated: May 2026</p>
+        <p className="text-base text-muted-foreground">Last updated: May 2026</p>
       </div>
 
       <div className="space-y-7 text-sm">
@@ -122,7 +122,7 @@ export default function CampaignTermsPage() {
 
       {/* Portuguese summary */}
       <div className="border-t border-border/50 pt-8 space-y-3">
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Resumo em Português</p>
+        <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground">Resumo em Português</p>
         <p className="text-base text-muted-foreground leading-relaxed">
           A participação na campanha Medialane é gratuita, sem necessidade de compra ou pagamento.
           O Fundo de Criadores é gerido pela comunidade Medialane DAO. No primeiro ano, até 1º de

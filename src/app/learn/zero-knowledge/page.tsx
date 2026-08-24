@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ZeroKnowledgePage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <span className="pill-badge">Cryptography</span>
@@ -62,7 +62,7 @@ export default function ZeroKnowledgePage() {
                 <Icon className="h-4 w-4 text-primary" />
               </div>
               <h4 className="font-semibold text-base">{title}</h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

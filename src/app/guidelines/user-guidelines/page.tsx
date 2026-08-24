@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function UserGuidelinesPage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">User Guidelines</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
@@ -27,7 +27,7 @@ export default function UserGuidelinesPage() {
           community. These guidelines exist alongside our Terms of Use and apply to all
           users: creators, collectors, and developers.
         </p>
-        <p className="text-xs text-muted-foreground">Last updated: January 2026</p>
+        <p className="text-base text-muted-foreground">Last updated: January 2026</p>
       </div>
 
       <div className="space-y-8">

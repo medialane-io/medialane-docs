@@ -87,7 +87,7 @@ const PHASES = [
 
 export default function AirdropPage() {
   return (
-    <div className="space-y-12 max-w-3xl">
+    <div className="space-y-12 max-w-3xl lg:max-w-4xl">
 
       {/* Hero */}
       <div className="space-y-3">
@@ -125,8 +125,8 @@ export default function AirdropPage() {
             { label: "Cycle",          value: "Threshold-triggered" },
           ].map(({ label, value }) => (
             <div key={label} className="bg-muted/30 rounded-lg px-4 py-3 space-y-1">
-              <p className="text-xs text-muted-foreground">{label}</p>
-              <p className="text-sm font-semibold">{value}</p>
+              <p className="text-base text-muted-foreground">{label}</p>
+              <p className="text-base font-semibold">{value}</p>
             </div>
           ))}
         </div>
@@ -143,7 +143,7 @@ export default function AirdropPage() {
       {/* How it works */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">How It Works</h3>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Every real interaction earns XP, and your total XP decides your share. Signing up is
           all it takes to be included; everything below adds to the same running total.
         </p>
@@ -156,7 +156,7 @@ export default function AirdropPage() {
                 </div>
                 <div className="space-y-0.5 flex-1">
                   <p className="font-semibold text-base">{tier}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
                 </div>
               </div>
               <ul className="space-y-1.5 pl-12">
@@ -219,9 +219,9 @@ export default function AirdropPage() {
       <div className="bento-cell p-5 space-y-2">
         <div className="flex items-center gap-2">
           <Shield className="h-4 w-4 text-muted-foreground" />
-          <h3 className="font-semibold text-sm text-muted-foreground">Legal</h3>
+          <h3 className="font-semibold text-base text-muted-foreground">Legal</h3>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           This campaign is not a financial product, investment scheme, lottery, or gambling service.
           Participation does not guarantee any financial return. Distributions are made at the sole
           discretion of Medialane DAO governance. See the{" "}
@@ -244,7 +244,7 @@ export default function AirdropPage() {
           >
             <div>
               <p className="font-semibold text-base">Global campaign</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Register and claim your participation record</p>
+              <p className="text-base text-muted-foreground mt-0.5">Register and claim your participation record</p>
             </div>
             <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
           </a>
@@ -256,7 +256,7 @@ export default function AirdropPage() {
           >
             <div>
               <p className="font-semibold text-base">Campanha Brasil</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Registre-se e participe do fundo de criadores</p>
+              <p className="text-base text-muted-foreground mt-0.5">Registre-se e participe do fundo de criadores</p>
             </div>
             <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
           </a>

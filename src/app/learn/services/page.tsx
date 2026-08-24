@@ -186,7 +186,7 @@ export default function LearnServicesPage() {
             rewrite. Existing integrations keep working without changes.
           </p>
           <div className="bento-cell border border-brand-blue/20 bg-brand-blue/5 p-4 space-y-1">
-            <p className="text-sm font-semibold text-foreground">The service registry</p>
+            <p className="text-base font-semibold text-foreground">The service registry</p>
             <p className="text-base text-muted-foreground leading-relaxed">
               The registry lives in the{" "}
               <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">@medialane/sdk</code>{" "}
@@ -210,7 +210,7 @@ export default function LearnServicesPage() {
                     <Icon className={`h-4 w-4 ${color}`} />
                   </div>
                   <div className="space-y-0.5">
-                    <p className="font-bold text-foreground text-sm">{label}</p>
+                    <p className="font-bold text-foreground text-base">{label}</p>
                     <p className={`font-mono text-xs ${color}`}>{id}</p>
                   </div>
                 </div>
@@ -237,7 +237,7 @@ export default function LearnServicesPage() {
             {ALL_CAPS.map(({ cap, desc }) => (
               <div key={cap} className="bento-cell px-4 py-3 flex items-center gap-3">
                 <code className="text-xs font-mono text-primary bg-primary/10 px-2 py-0.5 rounded shrink-0">{cap}</code>
-                <span className="text-xs text-muted-foreground">{desc}</span>
+                <span className="text-sm text-muted-foreground">{desc}</span>
               </div>
             ))}
           </div>
@@ -256,7 +256,7 @@ export default function LearnServicesPage() {
             an AI agent querying the API, keeps working after upgrades. The contract
             address changes; the service ID does not.
           </p>
-          <p className="text-sm">
+          <p className="text-base">
             For developers: see{" "}
             <Link href="/dev/sdk" className="text-primary hover:underline">SDK documentation</Link>
             {" "}for{" "}

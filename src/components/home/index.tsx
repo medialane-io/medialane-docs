@@ -305,10 +305,10 @@ export function HomePage() {
                 </div>
                 <div>
                   <p className={`font-black text-base ${color}`}>{name}</p>
-                  <p className="text-xs text-muted-foreground">{tagline}</p>
+                  <p className="text-base text-muted-foreground">{tagline}</p>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
@@ -332,8 +332,8 @@ export function HomePage() {
               <div className="h-10 w-10 rounded-xl bg-muted flex items-center justify-center">
                 <Icon className="h-4.5 w-4.5 text-primary" />
               </div>
-              <h3 className="font-bold text-sm">{title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+              <h3 className="font-bold text-base">{title}</h3>
+              <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
@@ -361,8 +361,8 @@ export function HomePage() {
               <div className={`h-10 w-10 rounded-xl ${bg} flex items-center justify-center`}>
                 <Icon className={`h-4.5 w-4.5 ${color}`} />
               </div>
-              <h3 className="font-bold text-sm">{title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+              <h3 className="font-bold text-base">{title}</h3>
+              <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
@@ -372,9 +372,9 @@ export function HomePage() {
             <div key={n} className="bento-cell p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <span className="h-6 w-6 rounded-lg bg-primary/10 text-primary text-xs font-black flex items-center justify-center shrink-0">{n}</span>
-                <h3 className="font-bold text-sm">{title}</h3>
+                <h3 className="font-bold text-base">{title}</h3>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
@@ -411,10 +411,10 @@ export function HomePage() {
                 </div>
                 <div className="space-y-1 flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2">
-                    <p className={`font-bold text-sm ${color}`}>{title}</p>
+                    <p className={`font-bold text-base ${color}`}>{title}</p>
                     <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
                   </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
                 </div>
               </div>
             </Link>
@@ -423,7 +423,7 @@ export function HomePage() {
 
         {/* Browse by topic — full directory */}
         <div className="space-y-4 pt-4">
-          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">Browse by topic</p>
+          <p className="text-base font-bold uppercase tracking-widest text-muted-foreground/60">Browse by topic</p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-7">
             {TOPIC_GROUPS.map(({ heading, color, links }) => (
               <div key={heading} className="space-y-2.5">

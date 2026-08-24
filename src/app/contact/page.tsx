@@ -52,7 +52,7 @@ export default function ContactPage() {
             <div className="flex flex-col items-center justify-center py-16 space-y-4 text-center">
               <CheckCircle className="h-12 w-12 text-green-500" />
               <h2 className="text-lg font-semibold">Message sent!</h2>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-base text-muted-foreground">
                 Thank you for reaching out. We&apos;ll get back to you as soon as possible.
               </p>
               <Button variant="outline" onClick={() => setStep("form")}>Send another message</Button>
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   <Mail className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Email</p>
+                  <p className="text-base font-medium">Email</p>
                   <a href="mailto:dao@medialane.org" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     dao@medialane.org
                   </a>
@@ -150,7 +150,7 @@ export default function ContactPage() {
                   <Twitter className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">X (Twitter)</p>
+                  <p className="text-base font-medium">X (Twitter)</p>
                   <a href="https://x.com/medialane_io" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     @medialane_io
                   </a>
@@ -162,7 +162,7 @@ export default function ContactPage() {
                   <Send className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Telegram</p>
+                  <p className="text-base font-medium">Telegram</p>
                   <a href="https://t.me/integrityweb" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     @IntegrityWeb
                   </a>
@@ -172,7 +172,7 @@ export default function ContactPage() {
           </div>
 
           <div className="bento-cell p-5 space-y-2">
-            <p className="text-sm font-medium">Our contacts</p>
+            <p className="text-base font-medium">Our contacts</p>
             <div className="space-y-1.5 text-sm text-muted-foreground">
               <p><a href="mailto:dao@medialane.org" className="text-primary hover:underline">dao@medialane.org</a></p>
               <p><a href="mailto:medialaneio@gmail.com" className="text-primary hover:underline">medialaneio@gmail.com</a></p>

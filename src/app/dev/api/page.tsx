@@ -50,11 +50,11 @@ function Endpoint({
         <code className="font-mono text-sm text-white">{path}</code>
       </div>
       <div className="px-5 py-4 space-y-4">
-        <p className="text-sm text-muted-foreground">{description}</p>
+        <p className="text-base text-muted-foreground">{description}</p>
 
         {params && params.length > 0 && (
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">Parameters</p>
+            <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground mb-2">Parameters</p>
             <div className="rounded-lg border border-white/10 overflow-hidden">
               {params.map((p, i) => (
                 <div key={p.name} className={`grid grid-cols-[auto_auto_1fr] gap-3 px-4 py-2.5 text-xs items-start ${i < params.length - 1 ? "border-b border-white/5" : ""}`}>
@@ -66,19 +66,19 @@ function Endpoint({
                 </div>
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-1">* required</p>
+            <p className="text-base text-muted-foreground mt-1">* required</p>
           </div>
         )}
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">cURL</p>
+          <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground mb-2">cURL</p>
           <div className="rounded-lg bg-black/50 border border-white/10">
             <pre className="p-4 text-xs font-mono text-green-300/90 overflow-x-auto whitespace-pre">{curl}</pre>
           </div>
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">Response</p>
+          <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground mb-2">Response</p>
           <div className="rounded-lg bg-black/50 border border-white/10">
             <pre className="p-4 text-xs font-mono text-cyan-300/90 overflow-x-auto whitespace-pre">{response}</pre>
           </div>
@@ -123,7 +123,7 @@ export default function ApiReferencePage() {
 
 # Bearer token also accepted:
 # -H "Authorization: Bearer ${KEY}"`}</DocCodeBlock>
-      <p className="text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-base">
         Keys are prefixed <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret, and treat them like passwords.
       </p>
 
@@ -160,17 +160,17 @@ export default function ApiReferencePage() {
 
       {/* ── CREDITS ── */}
       <DocH2 id="credits" border>Credits &amp; Billing</DocH2>
-      <p className="text-muted-foreground mb-3 text-sm">
+      <p className="text-muted-foreground mb-3 text-base">
         Credits are the billing unit: 1 credit = $0.01. Fund your balance with USDC on Starknet from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> or the <a href="/dev/agents" className="text-primary hover:underline">x402 flow</a>; credits appear within ~2 minutes and never expire. This table is live, pulled from the same endpoint every call is priced against (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/pricing</code>), never a hand-maintained copy:
       </p>
       <PricingTable />
-      <p className="text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-base">
         When credits run out you receive <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code> with an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining: 0</code> header. An autonomous agent can detect the 402 and top up on its own; see <a href="/dev/agents" className="text-primary hover:underline">AI Agents</a>.
       </p>
 
       {/* ── HEALTH ── */}
       <DocH2 id="health" border>Health</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Public uptime and system status. Use this to monitor indexer lag and database connectivity.
       </p>
 
@@ -280,7 +280,7 @@ export default function ApiReferencePage() {
 
       {/* ── MINTING ── */}
       <DocH2 id="minting" border>Minting</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Directly mint assets into existing collections or register new collection contracts. These operations return fully-populated calldata for immediate on-chain execution.
       </p>
 
@@ -327,7 +327,7 @@ export default function ApiReferencePage() {
 
       {/* ── CREATOR COINS ── */}
       <DocH2 id="coins" border>Creator Coins</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         Fungible coins are their own resource (since the 2026-06-14 split), distinct from collections.
         A coin has service <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">creator-coin</code> (or
         <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">external-erc20</code> for claimed coins) and
@@ -408,7 +408,7 @@ export default function ApiReferencePage() {
 }`}
       />
 
-      <p className="text-muted-foreground text-sm mb-3 mt-6">
+      <p className="text-muted-foreground text-base mb-3 mt-6">
         Deploying and launching a coin is two intents, one per on-chain transaction. The
         coin&apos;s address is only known from the deploy receipt, so launch is a separate call
         made once you have it (same shape as create-tier → mint for tickets/club).
@@ -453,7 +453,7 @@ export default function ApiReferencePage() {
         response={`{ "id": "clm_launch123", "requiresSignature": false, "calls": [...] }`}
       />
 
-      <p className="text-muted-foreground text-sm mb-3 mt-6">
+      <p className="text-muted-foreground text-base mb-3 mt-6">
         On-demand indexing for a freshly-launched coin:
       </p>
 
@@ -625,7 +625,7 @@ export default function ApiReferencePage() {
 
       {/* ── BATCH TOKENS ── */}
       <DocH2 id="batch-tokens" border>Batch Tokens</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Fetch up to 50 tokens in a single request by providing contract+tokenId pairs. More efficient than individual token lookups when hydrating a list or cart.
       </p>
 
@@ -705,7 +705,7 @@ export default function ApiReferencePage() {
 
       {/* ── INTENTS ── */}
       <DocH2 id="intents" border>Intents</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Intents orchestrate marketplace transactions. Every create-intent response carries a <code>requiresSignature</code> flag. When <code>true</code> (listing, offer, cancel) the response includes <code>typedData</code> to sign client-side (SNIP-12); submit the signature to <code>/v1/intents/:id/signature</code> to get the executable calls. When <code>false</code> (fulfil, mint, create-collection) the response returns fully-populated <code>calls</code> directly, with no signing step, because the caller is the fulfiller.
       </p>
 
@@ -829,7 +829,7 @@ export default function ApiReferencePage() {
 
       {/* ── CHECKOUT INTENT ── */}
       <DocH2 id="checkout-intent" border>Checkout Intent</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Create fulfillment intents for multiple orders in a single request. Useful for cart-style checkout flows. Failed items return an error field rather than aborting the whole batch.
       </p>
 
@@ -1065,7 +1065,7 @@ export default function ApiReferencePage() {
 
       {/* ── EVENTS (SSE) ── */}
       <DocH2 id="events" border>Events (SSE)</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Subscribe to a real-time Server-Sent Events stream for transfers, order lifecycle events, and keepalive pings. Authentication uses a query parameter since browsers cannot send custom headers with the native <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">EventSource</code> API. PREMIUM plan recommended for sustained connections.
       </p>
 
@@ -1111,7 +1111,7 @@ data: {}`}
       />
 
       <div className="mb-10 space-y-4">
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Browser (native EventSource)</p>
+        <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground">Browser (native EventSource)</p>
         <div className="rounded-lg bg-black/50 border border-white/10">
           <pre className="p-4 text-xs font-mono text-green-300/90 overflow-x-auto whitespace-pre">{`const url = \`${BASE}/v1/events?apiKey=\${YOUR_KEY}\`
 const source = new EventSource(url)
@@ -1140,7 +1140,7 @@ source.addEventListener("error", () => {
 })`}</pre>
         </div>
 
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mt-4">Node.js (eventsource npm package)</p>
+        <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground mt-4">Node.js (eventsource npm package)</p>
         <div className="rounded-lg bg-black/50 border border-white/10">
           <pre className="p-4 text-xs font-mono text-green-300/90 overflow-x-auto whitespace-pre">{`import EventSource from "eventsource"
 
@@ -1171,7 +1171,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── PORTAL ── */}
       <DocH2 id="portal" border>Portal (Self-service)</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Portal endpoints manage your account: API keys, credit balance, and webhooks (PREMIUM). These calls are simply never metered, with no monthly quota.
       </p>
 
@@ -1316,7 +1316,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── COLLECTION CLAIMS ── */}
       <DocH2 id="claims" border>Collection Claims</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Claim ownership of an existing Starknet ERC-721 collection. Three verification paths available: automatic on-chain check (requires SIWS session JWT), SNIP-12 signature challenge, or manual email review.
       </p>
 
@@ -1406,7 +1406,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── PROFILES ── */}
       <DocH2 id="profiles" border>Profiles</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Enriched display metadata for collections and creators. Collection profiles can only be updated by the wallet that claimed the collection (requires SIWS session JWT). Creator profiles can be updated by the profile owner.
       </p>
 
@@ -1555,7 +1555,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── COMMENTS ── */}
       <DocH2 id="comments" border>On-chain Comments</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Permanent on-chain comments posted to the NFTComments contract on Starknet. Comments are indexed by the backend and surfaced here. The Cairo contract enforces a 60-second per-address rate limit and comments cannot be deleted on-chain, only hidden at the application layer after reports.
       </p>
 
@@ -1591,7 +1591,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── COUNTER-OFFERS ── */}
       <DocH2 id="counter-offers" border>Counter-offers</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Sellers can respond to buyer bids with a counter-offer: a new on-chain listing linked to the original bid via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">parentOrderHash</code>. The original bid&apos;s status is unaffected; instead its <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">hasActiveCounterOffer</code> flag is set to <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">true</code> (the legacy <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">COUNTER_OFFERED</code> order status was removed). The buyer can then accept (fulfill the counter listing) or ignore it.
       </p>
 
@@ -1659,7 +1659,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── REMIX LICENSING ── */}
       <DocH2 id="remix-licensing" border>Remix Licensing</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Creators can allow others to remix their NFTs under specific license terms. Open licenses (CC0, CC BY, CC BY-SA, CC BY-NC) are auto-approved. Custom terms require creator approval before the requester can mint. All endpoints require a SIWS session JWT except the public remixes list.
       </p>
 
@@ -1832,7 +1832,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── POP PROTOCOL ── */}
       <DocH2 id="pop-protocol" border>POP Protocol</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Proof of Participation claim collections for events: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. On-chain minting is handled via the SDK <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.pop</code>.
       </p>
 
@@ -1875,7 +1875,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── COLLECTION DROP ── */}
       <DocH2 id="collection-drop" border>Collection Drop</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. On-chain minting and configuration are handled via the SDK <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.drop</code>.
       </p>
 
@@ -1922,7 +1922,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── SPONSORSHIP ── */}
       <DocH2 id="sponsorship" border>IP Sponsorship</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Direct-settlement sponsorship deals: an asset owner posts an <strong>offer</strong> (open bidding or one invited sponsor) or a sponsor sends a fixed-terms <strong>proposal</strong> on any asset. Acceptance settles payment and mints a <strong>license</strong> (a real, transferable ERC-721) to the sponsor, atomically, in one transaction. The contract never holds funds; there is no escrow. Every write below is an unsigned intent (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">requiresSignature: false</code>); see <a href="#intents" className="text-primary hover:underline">Intents</a> for the general shape.
       </p>
 
@@ -2078,7 +2078,7 @@ const resumeSource = new EventSource(url, {
         response={`{ "data": { "tokenId": "3", "recipient": "0x06a3...", "currentHolder": "0x06a3...", "..." : "..." } }`}
       />
 
-      <p className="text-muted-foreground text-sm mb-3 mt-6">
+      <p className="text-muted-foreground text-base mb-3 mt-6">
         Writes, owner-side (offers):
       </p>
 
@@ -2137,7 +2137,7 @@ const resumeSource = new EventSource(url, {
         response={`{ "id": "clm_sba123", "requiresSignature": false, "calls": [...] }`}
       />
 
-      <p className="text-muted-foreground text-sm mb-3 mt-6">
+      <p className="text-muted-foreground text-base mb-3 mt-6">
         Writes, sponsor-side (bids &amp; proposals):
       </p>
 
@@ -2211,7 +2211,7 @@ const resumeSource = new EventSource(url, {
         response={`{ "id": "clm_spw123", "requiresSignature": false, "calls": [...] }`}
       />
 
-      <p className="text-muted-foreground text-sm mb-3 mt-6">
+      <p className="text-muted-foreground text-base mb-3 mt-6">
         Writes, owner-side (proposal response):
       </p>
 
@@ -2247,7 +2247,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── REWARDS ── */}
       <DocH2 id="rewards" border>Rewards</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         The 50-level DAO-managed XP and badge system. Scores are computed off-chain from on-chain activity (mints, sales, comments, remixes). All weights live in DAO-adjustable tables. Reads are public (tenant key); writes are admin-only.
       </p>
 
@@ -2336,7 +2336,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── ACCOUNTS ── */}
       <DocH2 id="accounts" border>Accounts</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Account onboarding and lookup. An Account is the logical actor (one per human/agent/org); a Wallet is its signing key; an Identity is its auth-provider record. These endpoints register and read that single Account model regardless of which app the user came from.
       </p>
 
@@ -2419,7 +2419,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── GATED CONTENT & SLUGS ── */}
       <DocH2 id="gated-content" border>Gated Content &amp; Slugs</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Holder-only collection content and vanity-slug resolution.
       </p>
 
@@ -2461,7 +2461,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── STATS ── */}
       <DocH2 id="stats" border>Stats</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Platform-wide aggregate counts. Publicly cacheable.
       </p>
 
@@ -2483,7 +2483,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── REPORTS ── */}
       <DocH2 id="reports" border>Reports</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Community moderation. Any authenticated wallet can report a collection, token, creator, or comment. After 3 unique reports a target is auto-hidden. Rate-limited to 5 reports per wallet per hour.
       </p>
 
@@ -2517,7 +2517,7 @@ const resumeSource = new EventSource(url, {
 
       {/* ── NAME & SLUG CLAIMS ── */}
       <DocH2 id="claims-naming" border>Username &amp; Slug Claims</DocH2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-base text-muted-foreground mb-6">
         Vanity usernames (per wallet) and collection slugs (per contract). Availability checks are public; submissions require a SIWS token and are reviewed by an admin before the name goes live.
       </p>
 
@@ -2625,7 +2625,7 @@ const resumeSource = new EventSource(url, {
       <DocH2 id="technical" border>Technical Details</DocH2>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-2">SNIP-12 Domain</h3>
-      <p className="text-sm text-muted-foreground mb-4">
+      <p className="text-base text-muted-foreground mb-4">
         Medialane uses SNIP-12 for off-chain message signing. If you are building your own signer, use the following domain:
       </p>
       <DocCodeBlock>{`{
@@ -2635,7 +2635,7 @@ const resumeSource = new EventSource(url, {
 }`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-2">Address Normalization</h3>
-      <p className="text-sm text-muted-foreground mb-4">
+      <p className="text-base text-muted-foreground mb-4">
         The API normalizes all addresses server-side to 64-character lowercase hex strings (prefixed with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">0x</code>). You can pass any valid Starknet address format (short, long, or mixed-case) and the API will handle normalization automatically. The <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">@medialane/sdk</code> also normalizes addresses before every API call.
       </p>
     </div>

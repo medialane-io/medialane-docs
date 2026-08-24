@@ -27,7 +27,7 @@ function Section({ num, title, children }: { num: string; title: string; childre
 
 export default function PrivacyPage() {
   return (
-    <div className="space-y-8 max-w-3xl">
+    <div className="space-y-8 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <div className="flex items-center gap-2">
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
           This Privacy Policy describes how Medialane DAO collects, uses, and protects
           your personal information when you use the Medialane platform.
         </p>
-        <p className="text-xs text-muted-foreground">Last updated: March 14, 2026</p>
+        <p className="text-base text-muted-foreground">Last updated: March 14, 2026</p>
       </div>
 
       <div className="space-y-6">

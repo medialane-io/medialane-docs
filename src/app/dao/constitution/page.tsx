@@ -63,7 +63,7 @@ const ARTICLES = [
 
 export default function ConstitutionPage() {
   return (
-    <div className="space-y-8 max-w-3xl">
+    <div className="space-y-8 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <div className="flex items-center gap-2">
@@ -86,7 +86,7 @@ export default function ConstitutionPage() {
         {ARTICLES.map(({ article, title, content }) => (
           <div key={article} className="bento-cell p-6 space-y-3">
             <div className="space-y-1">
-              <p className="text-xs font-semibold text-primary/70 uppercase tracking-widest">{article}</p>
+              <p className="text-base font-semibold text-primary/70 uppercase tracking-widest">{article}</p>
               <h3 className="font-bold text-base">{title}</h3>
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">{content}</p>

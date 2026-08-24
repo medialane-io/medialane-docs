@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function BlockchainPage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <span className="pill-badge">Fundamentals</span>
@@ -45,7 +45,7 @@ export default function BlockchainPage() {
                 <Icon className="h-4 w-4 text-primary" />
               </div>
               <h4 className="font-semibold text-base">{title}</h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

@@ -73,7 +73,7 @@ const MEMBERSHIP_TIERS = [
 
 export default function TokenPage() {
   return (
-    <div className="space-y-12 max-w-3xl">
+    <div className="space-y-12 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <div className="flex items-center gap-2">
@@ -102,7 +102,7 @@ export default function TokenPage() {
           { label: "Max Supply", value: CANONICAL.mdln.totalSupply },
         ].map(({ label, value }) => (
           <div key={label} className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-xs text-muted-foreground">{label}</p>
+            <p className="text-base text-muted-foreground">{label}</p>
             <p className="font-semibold text-base">{value}</p>
           </div>
         ))}
@@ -119,7 +119,7 @@ export default function TokenPage() {
               </div>
               <div className="space-y-1">
                 <h4 className="font-semibold text-base">{title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </div>
           ))}
@@ -129,14 +129,14 @@ export default function TokenPage() {
       {/* Distribution */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Token Distribution</h3>
-        <p className="text-sm text-muted-foreground">MDLN has a fixed {CANONICAL.mdln.totalSupply} token supply. 100% is DAO-controlled, with no VC allocation, no team allocation, and no insider pre-mine.</p>
+        <p className="text-base text-muted-foreground">MDLN has a fixed {CANONICAL.mdln.totalSupply} token supply. 100% is DAO-controlled, with no VC allocation, no team allocation, and no insider pre-mine.</p>
         <div className="space-y-2">
           {DISTRIBUTION.map(({ category, pct, desc }) => (
             <div key={category} className="bento-cell p-4 flex items-start gap-4">
               <span className="text-sm font-bold text-primary shrink-0 w-12">{pct}</span>
               <div className="space-y-0.5">
-                <p className="text-sm font-semibold">{category}</p>
-                <p className="text-xs text-muted-foreground">{desc}</p>
+                <p className="text-base font-semibold">{category}</p>
+                <p className="text-base text-muted-foreground">{desc}</p>
               </div>
             </div>
           ))}
@@ -151,8 +151,8 @@ export default function TokenPage() {
             <div key={tier} className="bento-cell p-4 flex items-start gap-4">
               <span className="text-xs font-mono text-primary shrink-0 w-20">{requirement}</span>
               <div className="space-y-0.5">
-                <p className="text-sm font-semibold">{tier}</p>
-                <p className="text-xs text-muted-foreground">{rights}</p>
+                <p className="text-base font-semibold">{tier}</p>
+                <p className="text-base text-muted-foreground">{rights}</p>
               </div>
             </div>
           ))}
@@ -179,7 +179,7 @@ export default function TokenPage() {
             </div>
           ))}
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           The multiplier is read on-chain at key registration time. Increasing your MDLN
           balance and re-registering upgrades your tier immediately.
         </p>
@@ -202,12 +202,12 @@ export default function TokenPage() {
             { label: "Ekubo", desc: "Liquidity pool on Starknet. Bridged MDLN is tradeable onchain without returning to Ethereum." },
           ].map(({ label, desc }) => (
             <div key={label} className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">{label}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base font-semibold text-foreground">{label}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           The Medialane protocol runs on Starknet. The DAO is anchored on Ethereum for security
           and liquidity. Censorship resistance comes from Starknet&apos;s ZK proofs and account
           abstraction, with immutable contracts that no party can alter.
@@ -244,7 +244,7 @@ export default function TokenPage() {
                 <p className="font-semibold text-base">{phase}</p>
                 <span className="text-xs text-muted-foreground shrink-0">{trigger}</span>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -252,7 +252,7 @@ export default function TokenPage() {
 
       {/* Disclaimer */}
       <div className="bento-cell p-5 text-sm text-muted-foreground leading-relaxed space-y-2">
-        <p className="font-semibold text-foreground text-sm">Disclaimer</p>
+        <p className="font-semibold text-foreground text-base">Disclaimer</p>
         <p>
           MDLN is a governance token intended for participation in Medialane DAO governance. It is not
           intended to be an investment or security. Token holders should understand applicable regulations

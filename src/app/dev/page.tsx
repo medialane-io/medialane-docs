@@ -43,7 +43,7 @@ export default function DeveloperHubPage() {
               <span className="font-semibold text-white">{title}</span>
               <ArrowUpRight className="ml-auto size-4 text-muted-foreground/40 transition-colors group-hover:text-white" />
             </div>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground">{description}</p>
           </Link>
         ))}
       </div>

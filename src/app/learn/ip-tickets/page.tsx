@@ -29,7 +29,7 @@ export default function LearnIPTicketsPage() {
           any other collection, and anyone can verify a holder&apos;s ticket on-chain,
           without trusting a venue or a platform.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Service ID:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">ip-tickets</code>.
           A factory contract deploys one tickets collection per creator, the same
@@ -68,8 +68,8 @@ export default function LearnIPTicketsPage() {
           </p>
           <div className="space-y-3">
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Creators</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base font-semibold text-foreground">Creators</p>
+              <p className="text-base text-muted-foreground">
                 Any creator can create a tickets collection, no approval required. The
                 collection is a contract owned by your wallet; inside it you create
                 tickets (each with its supply and validity window) and mint them
@@ -78,8 +78,8 @@ export default function LearnIPTicketsPage() {
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Holders</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base font-semibold text-foreground">Holders</p>
+              <p className="text-base text-muted-foreground">
                 Any Medialane user can hold and trade a ticket like any other asset.
                 The ticket&apos;s asset page shows a live validity check: hold a valid
                 ticket inside its window and the page says so, verifiably, straight from

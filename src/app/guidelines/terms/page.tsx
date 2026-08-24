@@ -27,7 +27,7 @@ function Section({ num, title, children }: { num: string; title: string; childre
 
 export default function TermsPage() {
   return (
-    <div className="space-y-8 max-w-3xl">
+    <div className="space-y-8 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <div className="flex items-center gap-2">
@@ -39,7 +39,7 @@ export default function TermsPage() {
           Please read these Terms of Use carefully before using the Medialane platform.
           By accessing or using Medialane, you agree to be bound by these terms.
         </p>
-        <p className="text-xs text-muted-foreground">Last updated: March 14, 2026</p>
+        <p className="text-base text-muted-foreground">Last updated: March 14, 2026</p>
       </div>
 
       <div className="space-y-6">

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function TokenizationPage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <span className="pill-badge">Concepts</span>
@@ -41,7 +41,7 @@ export default function TokenizationPage() {
             { label: "Credentials", desc: "Participation records (POP Protocol): proof you attended an event, joined a community, or reached a milestone." },
           ].map(({ label, desc }) => (
             <div key={label} className="flex items-start gap-3">
-              <span className="text-xs font-semibold text-primary shrink-0 pt-0.5 w-20">{label}</span>
+              <span className="text-sm font-semibold text-primary shrink-0 pt-0.5 w-20">{label}</span>
               <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
@@ -63,7 +63,7 @@ export default function TokenizationPage() {
                 <Icon className="h-4 w-4 text-primary" />
               </div>
               <h4 className="font-semibold text-base">{title}</h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

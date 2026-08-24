@@ -39,9 +39,9 @@ export default function LearnLayout({ children }: { children: React.ReactNode })
     <PageContainer width="wide" className="pb-16">
       {/* Header */}
       <div className="pb-6">
-        <p className="text-xs font-semibold uppercase tracking-widest text-primary/70 mb-2">Education</p>
+        <p className="text-base font-semibold uppercase tracking-widest text-primary/70 mb-2">Education</p>
         <h1 className="text-2xl font-bold">Learn</h1>
-        <p className="text-muted-foreground mt-1 text-sm max-w-xl">
+        <p className="text-muted-foreground mt-1 text-base max-w-xl">
           Understand IP ownership, blockchain technology, and how Medialane works.
         </p>
       </div>

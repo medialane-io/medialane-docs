@@ -90,28 +90,28 @@ export default function LearnNFTPage() {
           </p>
           <div className="space-y-3">
             <div className="bento-cell px-4 py-3 space-y-2">
-              <p className="text-sm font-semibold text-foreground">ERC-721: The unique original</p>
-              <p className="text-xs leading-relaxed">
+              <p className="text-base font-semibold text-foreground">ERC-721: The unique original</p>
+              <p className="text-base leading-relaxed">
                 Think of it like a physical painting. There is only one original,
                 and no copy will ever carry the same on-chain identity. Each ERC-721 token
                 has exactly one owner at a time. Transferring it passes full, provable ownership
                 of that specific piece. Ideal for 1-of-1 artworks, IP certificates, patents,
                 and anything where uniqueness is the point.
               </p>
-              <p className="text-xs text-muted-foreground/70 italic">
+              <p className="text-base text-muted-foreground/70 italic">
                 Used by: IP Assets, Creator Collections, POP Protocol credentials, Collection Drops.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-2">
-              <p className="text-sm font-semibold text-foreground">ERC-1155: The printing press</p>
-              <p className="text-xs leading-relaxed">
+              <p className="text-base font-semibold text-foreground">ERC-1155: The printing press</p>
+              <p className="text-base leading-relaxed">
                 Think of it like a printing press. You can print 100 identical copies of a
                 magazine, each reader holds an authentic copy, but they are not unique from
                 one another. A single ERC-1155 contract can manage unlimited token types and
                 quantities. Mint 50 copies of a music track, 200 editions of a poster, or
                 1,000 membership passes, all in one transaction.
               </p>
-              <p className="text-xs text-muted-foreground/70 italic">
+              <p className="text-base text-muted-foreground/70 italic">
                 Used by: IP Collection 1155, Medialane&apos;s multi-edition format for music,
                 art series, and any creative work with multiple copies.
               </p>

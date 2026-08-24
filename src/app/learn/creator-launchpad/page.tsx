@@ -27,7 +27,7 @@ export default function LearnCreatorLaunchpadPage() {
           individual IP assets, and bring your creative work onchain yourself, with no coding
           or prior blockchain experience.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           For gas sponsorship, marketplace fees, royalties, and creators-fund flow, see{" "}
           <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>.
         </p>
@@ -53,16 +53,16 @@ export default function LearnCreatorLaunchpadPage() {
             Medialane supports two collection formats, each deployed from the Launchpad:
           </p>
           <div className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-sm font-semibold text-foreground">ERC-721 Collection</p>
-            <p className="text-xs leading-relaxed">
+            <p className="text-base font-semibold text-foreground">ERC-721 Collection</p>
+            <p className="text-base leading-relaxed">
               From <strong>Create → Collection</strong>, choose a name, symbol, and cover image.
               Medialane deploys an ERC-721 contract and registers it in the onchain registry.
               Each asset you mint into it will be a unique, 1-of-1 token with its own owner.
             </p>
           </div>
           <div className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-sm font-semibold text-foreground">IP Collection 1155: Multi-Edition</p>
-            <p className="text-xs leading-relaxed">
+            <p className="text-base font-semibold text-foreground">IP Collection 1155: Multi-Edition</p>
+            <p className="text-base leading-relaxed">
               From <strong>Launchpad → IP Collection 1155 → Create Collection</strong>, deploy an
               ERC-1155 contract for multi-edition releases. Once deployed, the collection appears
               in your Launchpad with a <em>Mint</em> button, letting you mint new token editions
@@ -135,8 +135,8 @@ export default function LearnCreatorLaunchpadPage() {
               <div key={id} className="bento-cell px-4 py-3 flex items-start gap-3">
                 <span className="font-mono text-xs bg-primary/10 text-primary px-2 py-1 rounded-md shrink-0 mt-0.5">{id}</span>
                 <div className="space-y-0.5">
-                  <p className="text-sm font-semibold text-foreground">{name}</p>
-                  <p className="text-xs text-muted-foreground">{desc}</p>
+                  <p className="text-base font-semibold text-foreground">{name}</p>
+                  <p className="text-base text-muted-foreground">{desc}</p>
                 </div>
               </div>
             ))}

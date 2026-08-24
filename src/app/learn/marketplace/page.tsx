@@ -86,32 +86,32 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
         <Section title="Listings and Offers">
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Fixed-price listing</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base font-semibold text-foreground">Fixed-price listing</p>
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Navigate to any asset page and click <strong>List for sale</strong>. Set a price
                 in any supported currency. The listing is signed with SNIP-12 typed data and
                 recorded on the marketplace contract. Your asset stays in your wallet.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Offer (bid)</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base font-semibold text-foreground">Offer (bid)</p>
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Click <strong>Make offer</strong> on any asset, listed or not. The offer
                 is a signed on-chain intent. No funds are locked until the creator accepts.
                 Creators receive notifications in Portfolio → Offers received.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Counter-offer</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base font-semibold text-foreground">Counter-offer</p>
+              <p className="text-base text-muted-foreground leading-relaxed">
                 When you receive an offer, you can counter with a different price. A
                 counter-offer is a new order referencing the original. Both parties can
                 cancel at any point before acceptance. Managed from Portfolio → Offers received.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Partial fills (ERC-1155)</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base font-semibold text-foreground">Partial fills (ERC-1155)</p>
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Multi-edition assets support partial fills: buy any quantity up to the
                 available supply. The order stays ACTIVE after your purchase so other
                 collectors can buy the remaining editions. Total = price per unit × quantity.
@@ -125,11 +125,11 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             {CURRENCIES.map(({ symbol, desc }) => (
               <div key={symbol} className="bento-cell px-4 py-3 flex items-center gap-3">
                 <span className="font-mono text-xs bg-primary/10 text-primary px-2 py-1 rounded-md shrink-0">{symbol}</span>
-                <p className="text-sm text-muted-foreground">{desc}</p>
+                <p className="text-base text-muted-foreground">{desc}</p>
               </div>
             ))}
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             All prices are entered in human-readable units. The protocol handles
             precision conversion automatically.
           </p>
@@ -169,7 +169,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             <strong className="text-foreground">on-chain by the venue at settlement</strong>, capped
             by a limit the seller agrees to when signing the order.
           </p>
-          <p className="text-sm">
+          <p className="text-base">
             On medialane.io, transactions are frictionless: wallet setup, listing, and offer
             creation are all gas-sponsored. On the wallet-sovereign Starknet app, users pay
             their own gas. See{" "}

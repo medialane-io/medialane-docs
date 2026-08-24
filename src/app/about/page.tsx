@@ -182,7 +182,7 @@ export default function AboutPage() {
       {/* What We Build */}
       <div className="space-y-6">
         <div className="space-y-1">
-          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">What We Build</p>
+          <p className="text-base font-black uppercase tracking-widest text-muted-foreground">What We Build</p>
           <h2 className="text-2xl font-black">Two hubs, one protocol.</h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl">
             Medialane builds a commercial layer on Mediolano&apos;s zero-fee, Berne-aligned
@@ -199,7 +199,7 @@ export default function AboutPage() {
           ))}
         </div>
         <div className="space-y-2">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-base text-muted-foreground">
             The protocol grows by adding <span className="text-foreground font-medium">services</span>,
             an open, extensible set of monetization primitives, never a fixed menu. A few of them:
           </p>
@@ -220,7 +220,7 @@ export default function AboutPage() {
       {/* How It Works */}
       <div className="space-y-6">
         <div className="space-y-1">
-          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">How It Works</p>
+          <p className="text-base font-black uppercase tracking-widest text-muted-foreground">How It Works</p>
           <h2 className="text-2xl font-black">Four layers. Authority flows downward.</h2>
           <p className="text-muted-foreground leading-relaxed">
             Contracts set immutable rules. The indexer reads the chain. The SDK gives builders
@@ -236,13 +236,13 @@ export default function AboutPage() {
                   <Icon className={`h-4 w-4 ${color}`} />
                 </div>
                 <span className={`text-xs font-mono ${color}`}>{num}</span>
-                <p className={`font-bold text-sm ${color}`}>{label}</p>
+                <p className={`font-bold text-base ${color}`}>{label}</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           See the full{" "}
           <Link href="/dev/architecture" className="text-primary hover:underline">Architecture documentation</Link>
           {" "}for the rebuild test, six core primitives, and the protocol vs. platform distinction.
@@ -252,7 +252,7 @@ export default function AboutPage() {
       {/* Why Starknet */}
       <div className="space-y-6">
         <div className="space-y-1">
-          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">Why Starknet</p>
+          <p className="text-base font-black uppercase tracking-widest text-muted-foreground">Why Starknet</p>
           <h2 className="text-2xl font-black">The foundation matters.</h2>
           <p className="text-muted-foreground leading-relaxed">
             Medialane is built on Starknet because its cryptographic properties fit the
@@ -263,7 +263,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {STARKNET_REASONS.map(({ label, desc }) => (
             <div key={label} className="bento-cell p-5 space-y-1">
-              <p className="font-bold text-sm text-brand-purple">{label}</p>
+              <p className="font-bold text-base text-brand-purple">{label}</p>
               <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
@@ -272,7 +272,7 @@ export default function AboutPage() {
 
       {/* Built to Grow */}
       <div className="bento-cell border border-brand-blue/20 p-8 space-y-4">
-        <p className="text-xs font-black uppercase tracking-widest text-brand-blue">Built to Grow</p>
+        <p className="text-base font-black uppercase tracking-widest text-brand-blue">Built to Grow</p>
         <h2 className="text-xl font-black">Starknet-first. Designed for more.</h2>
         <p className="text-muted-foreground leading-relaxed">
           The Medialane protocol runs on Starknet today. The Medialane DAO is deployed on
@@ -284,7 +284,7 @@ export default function AboutPage() {
           Starknet&apos;s ZK proofs and account abstraction are the architectural properties
           that make that possible.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           See{" "}
           <Link href="/dao/token" className="text-primary hover:underline">MDLN Token</Link>
           {" "}for the Ethereum deployment and bridge details, and{" "}
@@ -296,7 +296,7 @@ export default function AboutPage() {
       {/* Design Choices */}
       <div className="space-y-6">
         <div className="space-y-1">
-          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">Design Choices</p>
+          <p className="text-base font-black uppercase tracking-widest text-muted-foreground">Design Choices</p>
           <h2 className="text-2xl font-black">Why it&apos;s built this way.</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -306,7 +306,7 @@ export default function AboutPage() {
                 <div className={`h-9 w-9 rounded-xl ${bg} flex items-center justify-center`}>
                   <Icon className={`h-5 w-5 ${color}`} />
                 </div>
-                <p className={`font-black text-sm ${color}`}>{title}</p>
+                <p className={`font-black text-base ${color}`}>{title}</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>

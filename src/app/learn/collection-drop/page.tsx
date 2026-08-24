@@ -29,7 +29,7 @@ export default function LearnCollectionDropPage() {
           from the drop, with settlement handled on Starknet. Every token is its own one-of-one IP
           asset, with distinct artwork and its own license, never an identical copy.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Service ID:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">drop-collection</code>.
           Each drop is an independent smart contract deployed from the Collection Drop Factory.
@@ -96,8 +96,8 @@ export default function LearnCollectionDropPage() {
               ["Per-wallet Limit", "Optionally cap how many NFTs a single wallet can mint from this drop."],
             ].map(([title, desc]) => (
               <div key={title} className="bento-cell px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-foreground">{title}</p>
-                <p className="text-xs text-muted-foreground">{desc}</p>
+                <p className="text-base font-semibold text-foreground">{title}</p>
+                <p className="text-base text-muted-foreground">{desc}</p>
               </div>
             ))}
           </div>

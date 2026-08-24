@@ -36,7 +36,7 @@ export default function DocsDevsPage() {
           Everything you need to integrate with Medialane, from API key setup to
           real-time webhooks and MDLN-boosted quotas.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           The Medialane stack has four layers: immutable contracts on Starknet, an indexer that
           reads chain events, the SDK that wraps both, and apps on top. The API and SDK give you
           access to everything the apps can do, and nothing they do can override the contracts.
@@ -86,7 +86,7 @@ export MEDIALANE_API_KEY=ml_live_your_key_here`}</Code>
               </div>
             ))}
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             For higher-volume use cases, deposit USDC credits in the portal for pay-per-call billing
             on top of your base quota. This is the primary billing model for AI agents.
             See the <Link href="/dev/agents" className="text-primary hover:underline">AI Agents guide</Link>.
@@ -151,18 +151,18 @@ app.post("/webhooks/medialane", async (req) => {
   // handle event...
 });`}</Code>
           <div className="space-y-2">
-            <p className="text-sm font-medium text-foreground">Available event types:</p>
+            <p className="text-base font-medium text-foreground">Available event types:</p>
             {WEBHOOK_EVENTS.map(({ event, desc }) => (
               <div key={event} className="bento-cell px-4 py-2.5 flex items-center gap-3">
                 <code className="text-xs font-mono text-foreground/80 shrink-0 w-36">{event}</code>
-                <span className="text-xs text-muted-foreground">{desc}</span>
+                <span className="text-sm text-muted-foreground">{desc}</span>
               </div>
             ))}
           </div>
         </Section>
 
         <Section title="5. Common Integration Patterns">
-          <p className="font-medium text-foreground text-sm">Display a collection with floor price and token grid</p>
+          <p className="font-medium text-foreground text-base">Display a collection with floor price and token grid</p>
           <Code>{`const { data: collection } = await client.api.getCollection("0x<contract>");
 const { data: tokens }     = await client.api.getCollectionTokens("0x<contract>");
 const { data: listings }   = await client.api.getActiveOrdersForToken("0x<contract>", tokens[0].tokenId);
@@ -171,7 +171,7 @@ console.log(collection.name, collection.floorPrice);
 console.log(tokens.length, "tokens");
 console.log(listings[0]?.price, "cheapest listing");`}</Code>
 
-          <p className="font-medium text-foreground text-sm mt-4">Check if a wallet holds a specific token (token gating)</p>
+          <p className="font-medium text-foreground text-base mt-4">Check if a wallet holds a specific token (token gating)</p>
           <Code>{`const { data: token } = await client.api.getToken("0x<contract>", "1");
 
 // ERC-721 — single owner
@@ -182,12 +182,12 @@ const holding = token.balances?.find(b => b.owner === walletAddress);
 const amount  = holding ? parseInt(holding.amount, 10) : 0;
 const hasAccess = amount > 0;`}</Code>
 
-          <p className="font-medium text-foreground text-sm mt-4">Fetch all orders for a portfolio page</p>
+          <p className="font-medium text-foreground text-base mt-4">Fetch all orders for a portfolio page</p>
           <Code>{`const { data: orders } = await client.api.getOrdersByUser("0x<wallet>");
 const listings = orders.filter(o => o.offerer === walletAddress && o.status === "ACTIVE");
 const offers   = orders.filter(o => o.offerer !== walletAddress && o.status === "ACTIVE");`}</Code>
 
-          <p className="font-medium text-foreground text-sm mt-4">Resolve a collection from a vanity slug</p>
+          <p className="font-medium text-foreground text-base mt-4">Resolve a collection from a vanity slug</p>
           <Code>{`// Check slug availability before claiming
 const available = await client.api.checkCollectionSlugAvailability("my-brand");
 

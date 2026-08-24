@@ -36,13 +36,13 @@ export function LinkCard({
         <div className="space-y-1 flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2">
             <div className="min-w-0">
-              <p className="font-semibold text-sm">{title}</p>
-              {eyebrow && <p className="text-xs font-mono text-primary/70 mt-1">{eyebrow}</p>}
+              <p className="font-semibold text-base">{title}</p>
+              {eyebrow && <p className="text-base font-mono text-primary/70 mt-1">{eyebrow}</p>}
             </div>
             {external && <ExternalLink className="h-3.5 w-3.5 text-muted-foreground/50 shrink-0" />}
             {showArrow && <ArrowRight className="h-4 w-4 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />}
           </div>
-          <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+          <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
         </div>
       </div>
     </div>

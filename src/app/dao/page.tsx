@@ -47,7 +47,7 @@ const PILLARS = [
 
 export default function DAOPage() {
   return (
-    <div className="space-y-12 max-w-4xl">
+    <div className="space-y-12 max-w-4xl lg:max-w-5xl">
 
       {/* Intro */}
       <div className="space-y-4">
@@ -69,7 +69,7 @@ export default function DAOPage() {
       <div className="bento-cell p-6 space-y-4">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-          <p className="text-sm font-semibold">Status: Live governance</p>
+          <p className="text-base font-semibold">Status: Live governance</p>
         </div>
         <p className="text-base text-muted-foreground leading-relaxed">
           Medialane DAO operates through MDLN token governance. The constitution was ratified on
@@ -82,8 +82,8 @@ export default function DAOPage() {
             { label: "Governance", value: "MDLN + Snapshot" },
           ].map(({ label, value }) => (
             <div key={label} className="bg-muted/30 rounded-lg px-4 py-3 space-y-1">
-              <p className="text-xs text-muted-foreground">{label}</p>
-              <p className="text-sm font-semibold">{value}</p>
+              <p className="text-base text-muted-foreground">{label}</p>
+              <p className="text-base font-semibold">{value}</p>
             </div>
           ))}
         </div>
@@ -107,7 +107,7 @@ export default function DAOPage() {
                   <p className="font-semibold text-base">{title}</p>
                   <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </Link>
           ))}
@@ -146,7 +146,7 @@ export default function DAOPage() {
           >
             <div>
               <p className="font-semibold text-base">Snapshot Voting</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Off-chain governance votes using MDLN</p>
+              <p className="text-base text-muted-foreground mt-0.5">Off-chain governance votes using MDLN</p>
             </div>
             <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
           </a>
@@ -158,7 +158,7 @@ export default function DAOPage() {
           >
             <div>
               <p className="font-semibold text-base">DAO Hub</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Open medialane.org for live DAO details</p>
+              <p className="text-base text-muted-foreground mt-0.5">Open medialane.org for live DAO details</p>
             </div>
             <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
           </a>

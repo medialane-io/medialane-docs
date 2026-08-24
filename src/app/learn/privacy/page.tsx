@@ -35,7 +35,7 @@ const CREATOR_DECIDES = [
 
 export default function LearnPrivacyPage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <span className="pill-badge">Privacy</span>

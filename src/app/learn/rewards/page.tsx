@@ -53,8 +53,8 @@ export default function LearnRewardsPage() {
           <div className="space-y-2">
             {EARN_GROUPS.map(({ title, items }) => (
               <div key={title} className="bento-cell px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-foreground">{title}</p>
-                <p className="text-xs leading-relaxed text-muted-foreground">{items.join(", ")}</p>
+                <p className="text-base font-semibold text-foreground">{title}</p>
+                <p className="text-base leading-relaxed text-muted-foreground">{items.join(", ")}</p>
               </div>
             ))}
           </div>

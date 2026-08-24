@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ContractsPage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <div className="flex items-center gap-2">
@@ -40,7 +40,7 @@ export default function ContractsPage() {
           <Lock className="h-4 w-4 text-primary" />
           <h3 className="font-semibold text-base">Immutable &amp; Permissionless by Design</h3>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           The current contracts are fully immutable: no admin account, no{" "}
           <code className="font-mono bg-muted px-1 py-0.5 rounded">UpgradeableComponent</code>, no owner role,
           no emergency pause. Evolution happens by redeploy, not by upgrade; the class hashes
@@ -65,7 +65,7 @@ export default function ContractsPage() {
             {items.map(({ name, chain, address, desc }) => (
               <div key={name} className="bento-cell p-5 space-y-2">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <p className="text-sm font-semibold text-foreground">{name}</p>
+                  <p className="text-base font-semibold text-foreground">{name}</p>
                   <span className="pill-badge text-[10px] uppercase tracking-widest">{chain}</span>
                 </div>
                 <a
@@ -77,7 +77,7 @@ export default function ContractsPage() {
                   {address}
                   <ExternalLink className="h-3 w-3 shrink-0" />
                 </a>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{desc}</p>
+                <p className="text-base text-muted-foreground mt-1 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>

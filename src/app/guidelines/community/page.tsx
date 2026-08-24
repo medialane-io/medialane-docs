@@ -30,14 +30,14 @@ const PROHIBITED = [
 
 export default function CommunityGuidelinesPage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Community Guidelines</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Medialane is a creative community. These guidelines exist to keep it respectful,
           fair, and valuable for every creator, collector, and developer who participates.
         </p>
-        <p className="text-xs text-muted-foreground">Last updated: January 2026</p>
+        <p className="text-base text-muted-foreground">Last updated: January 2026</p>
       </div>
 
       <div className="space-y-8">
