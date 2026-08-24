@@ -58,7 +58,7 @@ export default function DocsSecurityPage() {
                   <Icon className="h-4 w-4 text-primary" />
                   <p className="text-sm font-semibold text-foreground">{title}</p>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -151,7 +151,7 @@ export default function DocsSecurityPage() {
               <AlertTriangle className="h-4 w-4 text-amber-500" />
               Important Notice
             </p>
-            <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Smart contracts carry inherent risks. While the Mediolano protocol and
               Medialane platform take every precaution (including audits, formal
               verification, and continuous testing), user funds and IP assets could
@@ -159,7 +159,7 @@ export default function DocsSecurityPage() {
               underlying Starknet network. Use caution and only commit assets whose
               loss you could tolerate.
             </p>
-            <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Medialane does not take custody of your assets. Your NFTs remain in
               your self-custodied wallet at all times. Marketplace orders are signed
               intents, so your asset does not leave your wallet until a transaction is

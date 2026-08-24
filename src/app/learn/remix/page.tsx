@@ -73,7 +73,7 @@ export default function LearnRemixPage() {
         <Section title="Soft Enforcement in Derivative Chains">
           <div className="bento-cell border border-brand-orange/20 bg-brand-orange/5 p-5 space-y-3">
             <p className="font-bold text-foreground">The contract does not revert on license violation.</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               The same principle that governs licensing generally applies to remixes:
               enforcement is social and legal, not automatic contract reversion. The
               application layer prevents obvious violations at the UI level. The
@@ -81,7 +81,7 @@ export default function LearnRemixPage() {
               carried, when it was minted, and what terms the derivative was expected
               to follow.
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               That record is tamper-proof. It is exactly what you need for legal
               enforcement without encoding jurisdiction-specific law into immutable contracts.
             </p>
@@ -105,7 +105,7 @@ export default function LearnRemixPage() {
             {LICENSE_RULES.map(({ rule, desc }) => (
               <div key={rule} className="bento-cell px-4 py-3 space-y-1">
                 <p className="text-sm font-semibold text-foreground">{rule}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -135,13 +135,13 @@ export default function LearnRemixPage() {
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-sm font-semibold text-foreground">Remix: free, permissionless</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Mint your own attributed derivative. Free and permissionless: your work, your license.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-sm font-semibold text-foreground">Licensing: optional, by agreement</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Propose a license deal to the creator: your terms plus a fee. If they accept, the
                 licensed derivative is minted and listed for you. Use it to pay or credit the
                 original creator, get a formal commercial license, or remix a work the creator
@@ -155,13 +155,13 @@ export default function LearnRemixPage() {
         <Section title="Attribution on Immutable Records">
           <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
             <p className="font-bold text-foreground">Attribution is embedded in the token, not the description.</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               When attribution is required by the parent's license, the original creator's
               wallet address and asset ID are written into the derivative token's structured
               metadata, not a freeform description field. This makes the attribution
               machine-readable, queryable, and as permanent as the token itself.
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               Because the metadata is content-addressed on IPFS or Arweave and linked
               immutably from the token, the attribution cannot be edited after minting.
               This is the same immutable-at-mint invariant that applies to license terms.

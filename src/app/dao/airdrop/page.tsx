@@ -107,9 +107,9 @@ export default function AirdropPage() {
       <div className="bento-cell p-6 space-y-3">
         <div className="flex items-center gap-2">
           <Repeat2 className="h-4 w-4 text-primary" />
-          <h3 className="font-semibold text-sm">The Model</h3>
+          <h3 className="font-semibold text-base">The Model</h3>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           A 1% marketplace fee flows to the creators fund at the platform layer. For year one, now
           through July 1, 2027, that revenue routes automatically to the Creator&apos;s Airdrop as the
           currently adopted arrangement. From year two, MDLN
@@ -155,8 +155,8 @@ export default function AirdropPage() {
                   <Icon className={`h-4 w-4 ${colorClass}`} />
                 </div>
                 <div className="space-y-0.5 flex-1">
-                  <p className="font-semibold text-sm">{tier}</p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                  <p className="font-semibold text-base">{tier}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
                 </div>
               </div>
               <ul className="space-y-1.5 pl-12">
@@ -179,7 +179,7 @@ export default function AirdropPage() {
           {PHASES.map(({ phase, trigger, items }) => (
             <div key={phase} className="bento-cell p-5 space-y-3">
               <div className="flex items-start justify-between gap-3">
-                <p className="font-semibold text-sm">{phase}</p>
+                <p className="font-semibold text-base">{phase}</p>
                 <span className="text-xs text-muted-foreground shrink-0">{trigger}</span>
               </div>
               <ul className="space-y-1.5">
@@ -199,9 +199,9 @@ export default function AirdropPage() {
       <div className="bento-cell p-5 space-y-3">
         <div className="flex items-center gap-2">
           <Vote className="h-4 w-4 text-primary" />
-          <h3 className="font-semibold text-sm">Community Governance</h3>
+          <h3 className="font-semibold text-base">Community Governance</h3>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           The year-one Creator&apos;s Airdrop (through July 1, 2027) is already the DAO&apos;s adopted
           arrangement, standing without a vote each time it distributes. From year two, each year&apos;s use of
           platform revenue is ratified by a community governance vote on Snapshot before it happens.
@@ -221,7 +221,7 @@ export default function AirdropPage() {
           <Shield className="h-4 w-4 text-muted-foreground" />
           <h3 className="font-semibold text-sm text-muted-foreground">Legal</h3>
         </div>
-        <p className="text-xs text-muted-foreground leading-relaxed">
+        <p className="text-sm text-muted-foreground leading-relaxed">
           This campaign is not a financial product, investment scheme, lottery, or gambling service.
           Participation does not guarantee any financial return. Distributions are made at the sole
           discretion of Medialane DAO governance. See the{" "}
@@ -243,7 +243,7 @@ export default function AirdropPage() {
             className="group bento-cell p-4 hover:border-primary/40 transition-colors flex items-center justify-between gap-3"
           >
             <div>
-              <p className="font-semibold text-sm">Global campaign</p>
+              <p className="font-semibold text-base">Global campaign</p>
               <p className="text-xs text-muted-foreground mt-0.5">Register and claim your participation record</p>
             </div>
             <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
@@ -255,7 +255,7 @@ export default function AirdropPage() {
             className="group bento-cell p-4 hover:border-primary/40 transition-colors flex items-center justify-between gap-3"
           >
             <div>
-              <p className="font-semibold text-sm">Campanha Brasil</p>
+              <p className="font-semibold text-base">Campanha Brasil</p>
               <p className="text-xs text-muted-foreground mt-0.5">Registre-se e participe do fundo de criadores</p>
             </div>
             <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />

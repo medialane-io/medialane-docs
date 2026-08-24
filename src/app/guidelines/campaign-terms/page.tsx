@@ -123,7 +123,7 @@ export default function CampaignTermsPage() {
       {/* Portuguese summary */}
       <div className="border-t border-border/50 pt-8 space-y-3">
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Resumo em Português</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           A participação na campanha Medialane é gratuita, sem necessidade de compra ou pagamento.
           O Fundo de Criadores é gerido pela comunidade Medialane DAO. No primeiro ano, até 1º de
           julho de 2027, a receita da plataforma é distribuída automaticamente ao atingir o limite

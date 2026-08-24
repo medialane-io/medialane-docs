@@ -695,7 +695,7 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-5 space-y-2">
           <p className="text-xs font-mono text-muted-foreground">medialane.io</p>
           <p className="text-sm font-semibold text-white">Creator Launchpad</p>
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Collections, Orders, Minting, Remix Licensing, POP, Collection Drop, On-chain Comments.
             Frictionless, fully gas-sponsored self-custody wallet UX.
           </p>
@@ -703,7 +703,7 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
         <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5 space-y-2">
           <p className="text-xs font-mono text-muted-foreground">starknet.medialane.io</p>
           <p className="text-sm font-semibold text-white">Permissionless dApp</p>
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Activities, Trade Intents, Asset Metadata. Reads directly via starknet.js, with no backend dependency for browsing.
           </p>
         </div>

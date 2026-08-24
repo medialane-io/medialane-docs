@@ -91,8 +91,8 @@ export default function ProgrammableIPPage() {
               <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Icon className="h-4 w-4 text-primary" />
               </div>
-              <h4 className="font-semibold text-sm">{title}</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <h4 className="font-semibold text-base">{title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -100,15 +100,15 @@ export default function ProgrammableIPPage() {
 
       {/* What it doesn't do */}
       <div className="bento-cell p-6 space-y-3 border-amber-500/20 border">
-        <h3 className="font-semibold text-sm">What programmable IP does not do</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <h3 className="font-semibold text-base">What programmable IP does not do</h3>
+        <p className="text-base text-muted-foreground leading-relaxed">
           The license terms in token metadata are not automatically enforced at the legal level.
           If someone copies your work and uses it outside the terms you set, the marketplace
           contract does not prevent that; it has no visibility into activity outside of
           on-chain transactions. What the record provides is evidence: a timestamped, immutable,
           publicly verifiable document of your authorship and your stated terms.
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Enforcing IP rights against infringement still requires the same tools it always has:
           legal process, takedown requests, and in some cases litigation. The on-chain record
           strengthens your position by providing clear, undeniable evidence of prior authorship.
@@ -117,8 +117,8 @@ export default function ProgrammableIPPage() {
 
       {/* Mediolano */}
       <div className="bento-cell p-6 space-y-3">
-        <h3 className="font-semibold text-sm">The Mediolano Protocol</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <h3 className="font-semibold text-base">The Mediolano Protocol</h3>
+        <p className="text-base text-muted-foreground leading-relaxed">
           The IP record infrastructure on Medialane is built on the{" "}
           <strong className="text-foreground">Mediolano protocol</strong>, an open-source,
           permissionless, <strong className="text-foreground">zero-fee</strong> IP tokenization
@@ -129,7 +129,7 @@ export default function ProgrammableIPPage() {
           Its records exist on-chain regardless of whether Medialane continues to operate, and
           any developer can build on it without permission or payment.
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Learn more about{" "}
           <Link href="/learn/protect-your-ip" className="text-primary hover:underline">IP protection &amp; the Berne Convention</Link>{" "}
           and{" "}

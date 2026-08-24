@@ -67,7 +67,7 @@ export default function DocsGovernancePage() {
             ].map(({ title, desc }) => (
               <div key={title} className="bento-cell p-4 space-y-1.5">
                 <p className="text-sm font-semibold text-foreground">{title}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>

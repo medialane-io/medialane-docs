@@ -44,7 +44,7 @@ export default function LearnMarketplacePage() {
         <Section title="A Venue, Not a Custodian">
           <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
             <p className="font-bold text-foreground">The marketplace contract never holds your assets.</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               A listing is a signed order: a cryptographic intent that sits on-chain. Your NFT
               stays in your wallet until a buyer fills the order. At that moment, the NFT and
               the payment swap atomically in a single Starknet transaction. If anything fails,
@@ -87,7 +87,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-sm font-semibold text-foreground">Fixed-price listing</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Navigate to any asset page and click <strong>List for sale</strong>. Set a price
                 in any supported currency. The listing is signed with SNIP-12 typed data and
                 recorded on the marketplace contract. Your asset stays in your wallet.
@@ -95,7 +95,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-sm font-semibold text-foreground">Offer (bid)</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Click <strong>Make offer</strong> on any asset, listed or not. The offer
                 is a signed on-chain intent. No funds are locked until the creator accepts.
                 Creators receive notifications in Portfolio → Offers received.
@@ -103,7 +103,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-sm font-semibold text-foreground">Counter-offer</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 When you receive an offer, you can counter with a different price. A
                 counter-offer is a new order referencing the original. Both parties can
                 cancel at any point before acceptance. Managed from Portfolio → Offers received.
@@ -111,7 +111,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-sm font-semibold text-foreground">Partial fills (ERC-1155)</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Multi-edition assets support partial fills: buy any quantity up to the
                 available supply. The order stays ACTIVE after your purchase so other
                 collectors can buy the remaining editions. Total = price per unit × quantity.
@@ -138,7 +138,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
         <Section title="Buy With Any Token You Hold">
           <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
             <p className="font-bold text-foreground">Every price shows in USD, next to its listed currency.</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               You don&apos;t need to know what STRK or ETH is worth to buy an asset —
               the USD value sits right alongside the price, at all times.
             </p>

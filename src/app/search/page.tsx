@@ -53,7 +53,7 @@ export default function SearchPage() {
         <LifeBuoy className="h-5 w-5 text-primary shrink-0 mt-0.5" />
         <div className="space-y-1">
           <p className="text-sm font-semibold">Still looking?</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-base text-muted-foreground leading-relaxed">
             Start with <Link href="/support" className="text-primary hover:underline">Support</Link> or{" "}
             <Link href="/contact" className="text-primary hover:underline">Contact</Link> and include any wallet address,
             transaction hash, collection address, token ID, or order hash relevant to your question.

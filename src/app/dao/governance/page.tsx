@@ -87,8 +87,8 @@ export default function GovernancePage() {
             <div key={step} className="flex items-start gap-4 bento-cell p-5">
               <span className="text-2xl font-bold text-primary/30 font-mono shrink-0 leading-none pt-0.5">{step}</span>
               <div className="space-y-1.5">
-                <h4 className="font-semibold text-sm">{title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+                <h4 className="font-semibold text-base">{title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </div>
           ))}
@@ -133,8 +133,8 @@ export default function GovernancePage() {
               <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Icon className="h-4 w-4 text-primary" />
               </div>
-              <p className="font-semibold text-sm">{title}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="font-semibold text-base">{title}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -144,7 +144,7 @@ export default function GovernancePage() {
       <div className="bento-cell p-5 space-y-3">
         <div className="flex items-center gap-2">
           <Clock className="h-4 w-4 text-primary" />
-          <h3 className="font-semibold text-sm">Standard Timeline</h3>
+          <h3 className="font-semibold text-base">Standard Timeline</h3>
         </div>
         <p className="text-xs text-muted-foreground">Temperature check (5d) → Draft & feedback (7d) → Deliberation (7d) → Voting (5d) → Execution queue (48h)</p>
         <p className="text-xs text-muted-foreground">Total minimum: ~26 days from idea to execution for standard proposals.</p>

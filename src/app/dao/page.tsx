@@ -71,7 +71,7 @@ export default function DAOPage() {
           <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
           <p className="text-sm font-semibold">Status: Live governance</p>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Medialane DAO operates through MDLN token governance. The constitution was ratified on
           April 7, 2026, Snapshot voting is live at medialane.eth, and the MDLN token is active on
           Ethereum mainnet with Starknet bridging through StarkGate.
@@ -104,10 +104,10 @@ export default function DAOPage() {
               </div>
               <div className="space-y-1">
                 <div className="flex items-center justify-between gap-2">
-                  <p className="font-semibold text-sm">{title}</p>
+                  <p className="font-semibold text-base">{title}</p>
                   <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </Link>
           ))}
@@ -120,12 +120,12 @@ export default function DAOPage() {
           <Globe className="h-4 w-4 text-primary" />
           <h3 className="font-semibold">Direction</h3>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Today, Medialane DAO governs through MDLN token voting on Snapshot and a multi-sig treasury.
           The goal is to progressively transfer platform decisions (treasury allocation, fee changes,
           protocol direction) to MDLN holders as the community grows and governance tooling matures.
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Fully on-chain governance is a goal, not the current state. The constitution and governance
           charter define the process for getting there without centralizing control along the way.
         </p>
@@ -145,7 +145,7 @@ export default function DAOPage() {
             className="group bento-cell p-4 hover:border-primary/40 transition-colors flex items-center justify-between gap-3"
           >
             <div>
-              <p className="font-semibold text-sm">Snapshot Voting</p>
+              <p className="font-semibold text-base">Snapshot Voting</p>
               <p className="text-xs text-muted-foreground mt-0.5">Off-chain governance votes using MDLN</p>
             </div>
             <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
@@ -157,7 +157,7 @@ export default function DAOPage() {
             className="group bento-cell p-4 hover:border-primary/40 transition-colors flex items-center justify-between gap-3"
           >
             <div>
-              <p className="font-semibold text-sm">DAO Hub</p>
+              <p className="font-semibold text-base">DAO Hub</p>
               <p className="text-xs text-muted-foreground mt-0.5">Open medialane.org for live DAO details</p>
             </div>
             <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />

@@ -80,7 +80,7 @@ export default function LearnIdentityPage() {
                   </div>
                   <p className={`font-bold ${color}`}>{label}</p>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{def}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{def}</p>
                 <div className="border-t border-border/40 pt-2">
                   <p className="text-xs text-muted-foreground italic">{note}</p>
                 </div>
@@ -101,7 +101,7 @@ export default function LearnIdentityPage() {
                 <span className="text-xs font-black uppercase tracking-widest text-primary bg-primary/10 px-2 py-1 rounded shrink-0 mt-0.5">
                   {role}
                 </span>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -114,7 +114,7 @@ export default function LearnIdentityPage() {
                 <Eye className="h-4 w-4 text-brand-blue" />
                 <p className="font-bold text-foreground text-sm">Authentication</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Proving who you are. Every Medialane app uses the same mechanism, SIWS,
                 Sign In With Starknet: you sign a message with your wallet (unlocked by your
                 device passkey) and the API verifies the signature, no password or
@@ -126,7 +126,7 @@ export default function LearnIdentityPage() {
                 <Shield className="h-4 w-4 text-brand-purple" />
                 <p className="font-bold text-foreground text-sm">Authorization</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Proving what you can do. Authorization is determined by on-chain state:
                 what assets you hold, what contracts record about your wallet. Medialane does
                 not grant permissions. The contract is the authority.
@@ -153,7 +153,7 @@ export default function LearnIdentityPage() {
                 <Mail className="h-4 w-4 text-brand-orange" />
                 <p className="font-bold text-foreground text-sm">Claiming a name</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Claiming a username or a collection slug is a public identity claim, so
                 it requires a verified email. A short code sent to your inbox confirms
                 it in seconds, from Settings.
@@ -164,7 +164,7 @@ export default function LearnIdentityPage() {
                 <CheckCircle2 className="h-4 w-4 text-brand-blue" />
                 <p className="font-bold text-foreground text-sm">Listing for sale</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Listing an asset on the marketplace also benefits from a verified email,
                 the same trust signal for anyone considering a purchase from you.
               </p>
@@ -184,12 +184,12 @@ export default function LearnIdentityPage() {
               <Bot className="h-5 w-5 text-brand-rose" />
               <p className="font-bold text-foreground">First-class accounts</p>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               An AI agent&apos;s wallet is a first-class Medialane account. The contracts make
               no distinction between a human signing a transaction and an agent doing the same.
               Same API surface. Same fee model. Same protocol capabilities.
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               Agents authenticate with SIWS and use the same REST API as human users.
               The developer portal adds HTTP 402 credit billing for agent-to-agent automation.
               See{" "}

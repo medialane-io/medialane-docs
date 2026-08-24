@@ -187,7 +187,7 @@ export default function LearnServicesPage() {
           </p>
           <div className="bento-cell border border-brand-blue/20 bg-brand-blue/5 p-4 space-y-1">
             <p className="text-sm font-semibold text-foreground">The service registry</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               The registry lives in the{" "}
               <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">@medialane/sdk</code>{" "}
               package, the canonical map from service IDs to their capabilities. Anyone can read it.
@@ -214,7 +214,7 @@ export default function LearnServicesPage() {
                     <p className={`font-mono text-xs ${color}`}>{id}</p>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {caps.map((cap) => (
                     <span key={cap} className={`text-xs px-2 py-0.5 rounded-full ${bg} ${color} font-mono border ${border}`}>

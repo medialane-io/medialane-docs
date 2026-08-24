@@ -89,7 +89,7 @@ export default function ConstitutionPage() {
               <p className="text-xs font-semibold text-primary/70 uppercase tracking-widest">{article}</p>
               <h3 className="font-bold text-base">{title}</h3>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">{content}</p>
+            <p className="text-base text-muted-foreground leading-relaxed">{content}</p>
           </div>
         ))}
       </div>

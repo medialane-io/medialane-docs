@@ -103,7 +103,7 @@ export default function TokenPage() {
         ].map(({ label, value }) => (
           <div key={label} className="bento-cell px-4 py-3 space-y-1">
             <p className="text-xs text-muted-foreground">{label}</p>
-            <p className="font-semibold text-sm">{value}</p>
+            <p className="font-semibold text-base">{value}</p>
           </div>
         ))}
       </div>
@@ -118,8 +118,8 @@ export default function TokenPage() {
                 <Icon className="h-4 w-4 text-primary" />
               </div>
               <div className="space-y-1">
-                <h4 className="font-semibold text-sm">{title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+                <h4 className="font-semibold text-base">{title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </div>
           ))}
@@ -162,7 +162,7 @@ export default function TokenPage() {
       {/* Platform multiplier */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Developer Portal Multiplier</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           MDLN holders automatically receive a boosted API quota when they register their
           wallet in the{" "}
           <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
@@ -188,7 +188,7 @@ export default function TokenPage() {
       {/* Ethereum + StarkGate */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Ethereum Deployment &amp; StarkGate Bridge</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           MDLN is deployed on Ethereum mainnet as an ERC-20 token and bridgeable to Starknet
           via StarkGate, the same model used by the STRK token. Ethereum was chosen for the
           DAO&apos;s primary token deployment because of its security, deep liquidity, and the
@@ -203,7 +203,7 @@ export default function TokenPage() {
           ].map(({ label, desc }) => (
             <div key={label} className="bento-cell px-4 py-3 space-y-1">
               <p className="text-sm font-semibold text-foreground">{label}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -217,7 +217,7 @@ export default function TokenPage() {
       {/* Creator's Airdrop */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">{CANONICAL.creatorAirdropName}</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           A {CANONICAL.marketplaceFee} marketplace fee flows to the creators fund at the platform layer.
           For year one, {CANONICAL.creatorAirdropWindow}, that revenue routes automatically to the{" "}
           {CANONICAL.creatorAirdropName}, already the DAO&apos;s adopted arrangement. From year two, MDLN
@@ -241,17 +241,17 @@ export default function TokenPage() {
           ].map(({ phase, trigger, desc }) => (
             <div key={phase} className="bento-cell p-5 space-y-2">
               <div className="flex items-start justify-between gap-3">
-                <p className="font-semibold text-sm">{phase}</p>
+                <p className="font-semibold text-base">{phase}</p>
                 <span className="text-xs text-muted-foreground shrink-0">{trigger}</span>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Disclaimer */}
-      <div className="bento-cell p-5 text-xs text-muted-foreground leading-relaxed space-y-2">
+      <div className="bento-cell p-5 text-sm text-muted-foreground leading-relaxed space-y-2">
         <p className="font-semibold text-foreground text-sm">Disclaimer</p>
         <p>
           MDLN is a governance token intended for participation in Medialane DAO governance. It is not

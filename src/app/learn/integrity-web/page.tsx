@@ -199,7 +199,7 @@ export default function IntegrityWebPage() {
 
               {/* Body */}
               <div className="p-6 space-y-4">
-                <p className="text-sm text-muted-foreground leading-relaxed">{medialane}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{medialane}</p>
                 <div className="flex flex-wrap gap-2">
                   {highlights.map((h) => (
                     <span

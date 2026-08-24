@@ -101,7 +101,7 @@ export default function LearnAgentPaymentsPage() {
                 <Icon className={`h-4.5 w-4.5 ${color}`} />
               </div>
               <p className="font-bold text-sm text-foreground">{title}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -115,7 +115,7 @@ export default function LearnAgentPaymentsPage() {
                 <span className="h-6 w-6 rounded-lg bg-primary/10 text-primary text-xs font-black flex items-center justify-center shrink-0">{n}</span>
                 <p className="font-bold text-sm text-foreground">{title}</p>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

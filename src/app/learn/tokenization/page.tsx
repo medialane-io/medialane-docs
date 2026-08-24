@@ -42,7 +42,7 @@ export default function TokenizationPage() {
           ].map(({ label, desc }) => (
             <div key={label} className="flex items-start gap-3">
               <span className="text-xs font-semibold text-primary shrink-0 pt-0.5 w-20">{label}</span>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -62,8 +62,8 @@ export default function TokenizationPage() {
               <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Icon className="h-4 w-4 text-primary" />
               </div>
-              <h4 className="font-semibold text-sm">{title}</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+              <h4 className="font-semibold text-base">{title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -72,12 +72,12 @@ export default function TokenizationPage() {
       {/* Medialane context */}
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">Tokenization on Medialane</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           When you mint an NFT on Medialane, you register your IP on the Mediolano protocol,
           attach programmable license terms, and create a verifiable ownership record aligned
           with the Berne Convention.
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-base text-muted-foreground leading-relaxed">
           Your tokenized IP lives in your portfolio, can be listed on the marketplace, licensed
           to other creators, or passed to the next generation of owners, with your authorship record
           and license terms permanently attached and publicly readable.
