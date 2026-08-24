@@ -12,7 +12,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
     <PageContainer width="wide" className="pt-20 pb-16 space-y-8">
       <div>
         <h1 className="text-3xl font-bold">Developers</h1>
-        <p className="text-muted-foreground mt-1 text-sm">
+        <p className="text-muted-foreground mt-1 text-base">
           Build on Medialane: the protocol, SDK, API, and contracts. For people and AI agents alike.
         </p>
       </div>

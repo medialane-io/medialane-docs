@@ -59,7 +59,7 @@ const THRESHOLDS = [
 
 export default function GovernancePage() {
   return (
-    <div className="space-y-12 max-w-3xl">
+    <div className="space-y-12 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <div className="flex items-center gap-2">
@@ -71,12 +71,12 @@ export default function GovernancePage() {
           The Governance Charter defines how Medialane DAO makes decisions: the proposal lifecycle,
           voting mechanics, quorum requirements, and execution process.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           The DAO governs the platform layer: marketplace fees, treasury allocation, service registry
           parameters, and community initiatives. It does not govern the underlying contracts; those
           are immutable by design and have no admin keys or upgrade path.
         </p>
-        <p className="text-xs text-muted-foreground">Ratified April 7, 2026 · Snapshot: medialane.eth</p>
+        <p className="text-base text-muted-foreground">Ratified April 7, 2026 · Snapshot: medialane.eth</p>
       </div>
 
       {/* Governance process */}
@@ -88,7 +88,7 @@ export default function GovernancePage() {
               <span className="text-2xl font-bold text-primary/30 font-mono shrink-0 leading-none pt-0.5">{step}</span>
               <div className="space-y-1.5">
                 <h4 className="font-semibold text-base">{title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </div>
           ))}
@@ -134,7 +134,7 @@ export default function GovernancePage() {
                 <Icon className="h-4 w-4 text-primary" />
               </div>
               <p className="font-semibold text-base">{title}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -146,8 +146,8 @@ export default function GovernancePage() {
           <Clock className="h-4 w-4 text-primary" />
           <h3 className="font-semibold text-base">Standard Timeline</h3>
         </div>
-        <p className="text-xs text-muted-foreground">Temperature check (5d) → Draft & feedback (7d) → Deliberation (7d) → Voting (5d) → Execution queue (48h)</p>
-        <p className="text-xs text-muted-foreground">Total minimum: ~26 days from idea to execution for standard proposals.</p>
+        <p className="text-base text-muted-foreground">Temperature check (5d) → Draft & feedback (7d) → Deliberation (7d) → Voting (5d) → Execution queue (48h)</p>
+        <p className="text-base text-muted-foreground">Total minimum: ~26 days from idea to execution for standard proposals.</p>
       </div>
 
       {/* Snapshot link */}

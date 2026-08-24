@@ -136,14 +136,14 @@ export default function DocsArchitecturePage() {
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className={`text-xs font-mono ${color}`}>{num}</span>
                     <p className="font-bold text-foreground">{label}</p>
-                    <span className="text-xs text-muted-foreground">: {role}</span>
+                    <span className="text-sm text-muted-foreground">: {role}</span>
                   </div>
                   <p className="text-base text-muted-foreground leading-relaxed">{detail}</p>
                 </div>
               </div>
             ))}
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             Authority flows downward only. An app cannot change what a contract does. An SDK
             cannot invent data the indexer did not produce. The chain is ground truth;
             everything above is a view.
@@ -175,9 +175,9 @@ export default function DocsArchitecturePage() {
                   <div className={`h-7 w-7 rounded-lg ${bg} flex items-center justify-center`}>
                     <Icon className={`h-4 w-4 ${color}`} />
                   </div>
-                  <p className={`font-bold text-sm ${color}`}>{label}</p>
+                  <p className={`font-bold text-base ${color}`}>{label}</p>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{def}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{def}</p>
               </div>
             ))}
           </div>
@@ -220,12 +220,12 @@ export default function DocsArchitecturePage() {
               </ul>
             </div>
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             This distinction is load-bearing. The DAO can update the fee schedule and
             service registry without touching contracts. Protocol actions (minting,
             listing, transferring) are always available regardless of platform decisions.
           </p>
-          <p className="text-sm">
+          <p className="text-base">
             See{" "}
             <Link href="/dev/protocol" className="text-primary hover:underline">Protocol Specification</Link>
             {" "}for contract addresses and the event model, and{" "}

@@ -314,7 +314,7 @@ export default function AppsPage() {
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Applications</h2>
-          <p className="text-muted-foreground text-sm">Four dedicated apps for every participant in the Medialane ecosystem.</p>
+          <p className="text-muted-foreground text-base">Four dedicated apps for every participant in the Medialane ecosystem.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -333,7 +333,7 @@ export default function AppsPage() {
                         <Icon className={`h-4.5 w-4.5 ${app.iconColor}`} />
                       </div>
                       <div>
-                        <p className="font-bold text-sm">{app.name}</p>
+                        <p className="font-bold text-base">{app.name}</p>
                         <p className={`text-xs font-mono ${app.iconColor} opacity-80`}>{app.label}</p>
                       </div>
                     </div>
@@ -395,7 +395,7 @@ export default function AppsPage() {
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Platform Features</h2>
-          <p className="text-muted-foreground text-sm">Capabilities shared across every Medialane application.</p>
+          <p className="text-muted-foreground text-base">Capabilities shared across every Medialane application.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -405,7 +405,7 @@ export default function AppsPage() {
                 <Icon className={`h-5 w-5 ${color}`} />
               </div>
               <h3 className="font-semibold text-base">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
@@ -416,7 +416,7 @@ export default function AppsPage() {
         <div className="space-y-2">
           <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Architecture</span>
           <h2 className="text-2xl font-bold">Smart Contract Based</h2>
-          <p className="text-muted-foreground text-sm max-w-2xl">
+          <p className="text-muted-foreground text-base max-w-2xl">
             Every core operation on Medialane is executed by audited smart contracts on Starknet
             rather than by servers we control. That shapes four properties of the platform.
           </p>
@@ -437,7 +437,7 @@ export default function AppsPage() {
         <div className="bento-cell p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <div className="flex items-center gap-3 flex-1">
             <Globe className="h-4 w-4 text-primary shrink-0" />
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-muted-foreground">
               <strong className="text-foreground">Verified on-chain.</strong> All Medialane smart contracts are open source,
               publicly audited, and deployed on Starknet mainnet.
             </p>
@@ -457,7 +457,7 @@ export default function AppsPage() {
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Built for Everyone</h2>
-          <p className="text-muted-foreground text-sm">Whether you create, collect, or build, Medialane has dedicated tools for you.</p>
+          <p className="text-muted-foreground text-base">Whether you create, collect, or build, Medialane has dedicated tools for you.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -505,7 +505,7 @@ export default function AppsPage() {
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">SDK & Developer Tools</h2>
-          <p className="text-muted-foreground text-sm">Everything you need to build on top of the Medialane platform.</p>
+          <p className="text-muted-foreground text-base">Everything you need to build on top of the Medialane platform.</p>
         </div>
 
         <div className="bento-cell p-6 space-y-6">
@@ -563,7 +563,7 @@ export default function AppsPage() {
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Open Source</h2>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-base">
             All core repositories are public under the{" "}
             <a href="https://github.com/medialane-io" target="_blank" rel="noopener noreferrer"
               className="text-primary hover:underline">medialane-io</a>{" "}
@@ -582,8 +582,8 @@ export default function AppsPage() {
             >
               <GitBranch className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5 group-hover:text-primary transition-colors" />
               <div className="space-y-1 flex-1 min-w-0">
-                <p className="text-sm font-mono font-medium text-foreground/80 group-hover:text-primary transition-colors truncate">{label}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+                <p className="text-base font-mono font-medium text-foreground/80 group-hover:text-primary transition-colors truncate">{label}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{description}</p>
               </div>
               <ExternalLink className="h-3.5 w-3.5 text-muted-foreground/40 group-hover:text-primary shrink-0 transition-colors mt-0.5" />
             </a>

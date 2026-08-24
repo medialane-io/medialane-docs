@@ -27,7 +27,7 @@ export default function LearnPOPPage() {
           and platforms to issue verifiable on-chain credentials to participants, permanently
           anchored on Starknet.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Service ID:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">pop-protocol</code>.
           The factory contract deploys one soulbound ERC-721 collection per event.
@@ -64,8 +64,8 @@ export default function LearnPOPPage() {
           </p>
           <div className="space-y-3">
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Providers (Event Creators)</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base font-semibold text-foreground">Providers (Event Creators)</p>
+              <p className="text-base text-muted-foreground">
                 Approved providers can create POP events. Each event has a name, description,
                 image, and an optional claim window. Providers define who is eligible to claim:
                 open events allow anyone with the link, while gated events require provider
@@ -73,8 +73,8 @@ export default function LearnPOPPage() {
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Participants (Claimants)</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base font-semibold text-foreground">Participants (Claimants)</p>
+              <p className="text-base text-muted-foreground">
                 Any Medialane user can claim a POP credential for an active event they
                 participated in. Claims are free (gas-sponsored) and completed in seconds.
                 The credential appears immediately in the holder's wallet and portfolio.

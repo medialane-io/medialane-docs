@@ -28,7 +28,7 @@ export default function LearnIPClubPage() {
           application can verify it directly from the chain, with no centralized member list
           to lose or leak.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Service ID:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">ip-club</code>.
           A factory deploys one dedicated ERC-1155 collection per creator; each token id is
@@ -62,8 +62,8 @@ export default function LearnIPClubPage() {
           </p>
           <div className="space-y-3">
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Creators</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base font-semibold text-foreground">Creators</p>
+              <p className="text-base text-muted-foreground">
                 Any creator can create a club, no approval required. A club is a tier
                 definition: a supply, an optional validity window (season/annual; unset
                 means lifetime), a royalty rate, and its own metadata. The creator mints
@@ -73,8 +73,8 @@ export default function LearnIPClubPage() {
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Members</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base font-semibold text-foreground">Members</p>
+              <p className="text-base text-muted-foreground">
                 A membership card is a standard tradeable asset: buy one on the marketplace,
                 receive one directly from the creator, or resell it like any collection item.
                 Holding a card inside its tier&apos;s validity window is what makes you a

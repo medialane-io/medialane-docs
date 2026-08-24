@@ -69,7 +69,7 @@ const REVENUE_OPTIONS = [
 
 export default function FeesPage() {
   return (
-    <div className="space-y-10 max-w-4xl">
+    <div className="space-y-10 max-w-4xl lg:max-w-5xl">
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <Coins className="h-5 w-5 text-primary" />
@@ -95,9 +95,9 @@ export default function FeesPage() {
             <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
               <Icon className="h-5 w-5 text-primary" />
             </div>
-            <p className="text-xs text-muted-foreground">{label}</p>
+            <p className="text-base text-muted-foreground">{label}</p>
             <p className="text-2xl font-black">{value}</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
@@ -113,11 +113,11 @@ export default function FeesPage() {
           {FREE_ACTIONS.map((action) => (
             <div key={action} className="bento-cell px-4 py-3 flex items-start gap-3">
               <ShieldCheck className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-              <p className="text-sm text-foreground">{action}</p>
+              <p className="text-base text-foreground">{action}</p>
             </div>
           ))}
         </div>
-        <p className="text-sm">
+        <p className="text-base">
           On medialane.io, sponsorship is not a promise that every possible transaction is always
           free. Abuse controls, unsupported flows, or future DAO policy may require users to pay
           Starknet gas there too.
@@ -138,7 +138,7 @@ export default function FeesPage() {
           design, and an agent can fund itself and continue automatically.
         </p>
         <PricingTable />
-        <p className="text-sm">
+        <p className="text-base">
           Prices are set per action and can change; this table is live, sourced from the same
           endpoint (<code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">GET /v1/pricing</code>)
           every call is actually priced against, never a hand-maintained copy. See{" "}
@@ -152,10 +152,10 @@ export default function FeesPage() {
           {PAID_ACTIONS.map(({ action, cost, note }) => (
             <div key={action} className="bento-cell p-4 grid gap-2 sm:grid-cols-[1fr_220px]">
               <div className="space-y-1">
-                <p className="text-sm font-semibold text-foreground">{action}</p>
-                <p className="text-xs text-muted-foreground">{note}</p>
+                <p className="text-base font-semibold text-foreground">{action}</p>
+                <p className="text-base text-muted-foreground">{note}</p>
               </div>
-              <p className="text-sm font-mono text-primary sm:text-right">{cost}</p>
+              <p className="text-base font-mono text-primary sm:text-right">{cost}</p>
             </div>
           ))}
         </div>
@@ -171,13 +171,13 @@ export default function FeesPage() {
           Example: if an asset sells for 100 USDC, the marketplace fee is 1 USDC. Creator royalties,
           if configured, are applied separately according to the asset&apos;s royalty rules.
         </p>
-        <p className="text-sm">
+        <p className="text-base">
           This fee is a platform-layer parameter, never a rule inside the marketplace venue
           contracts, since the venue protocols themselves are zero-fee. It is computed and applied by
           the platform (SDK/backend) as a separate transfer alongside settlement. The DAO governs
           the rate and how the creators fund is allocated.
         </p>
-        <p className="text-sm">
+        <p className="text-base">
           The same rate and platform-layer mechanism applies when an{" "}
           <Link href="/learn/ip-sponsorship" className="text-primary hover:underline">IP Sponsorship</Link>{" "}
           offer or proposal is accepted; the sponsorship contract, like the marketplace venues,
@@ -214,7 +214,7 @@ export default function FeesPage() {
           {REVENUE_OPTIONS.map((option) => (
             <div key={option} className="bento-cell px-4 py-3 flex items-start gap-3">
               <Repeat2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-              <p className="text-sm text-foreground">{option}</p>
+              <p className="text-base text-foreground">{option}</p>
             </div>
           ))}
         </div>

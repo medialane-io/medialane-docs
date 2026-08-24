@@ -22,7 +22,7 @@ export default function GlobalError({
       </div>
       <div className="space-y-2">
         <h1 className="text-2xl font-bold">Something went wrong</h1>
-        <p className="text-muted-foreground text-sm max-w-xs">
+        <p className="text-muted-foreground text-base max-w-xs">
           An unexpected error occurred. Please try again or refresh the page.
         </p>
         {error.digest && (

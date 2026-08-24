@@ -29,7 +29,7 @@ export default function LearnIPSponsorshipPage() {
           way, payment settles directly from sponsor to creator the instant a deal is
           accepted. There is no escrow: the contract never holds funds.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Service ID:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">ip-sponsorship</code>.
           One contract is both the offer/bid/proposal registry and the license collection: the
@@ -62,8 +62,8 @@ export default function LearnIPSponsorshipPage() {
           </p>
           <div className="space-y-3">
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Authors open an offer</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base font-semibold text-foreground">Authors open an offer</p>
+              <p className="text-base text-muted-foreground">
                 Only the current owner of an asset can open a sponsorship offer on it,
                 verified onchain both when the offer is created and again when a bid is
                 accepted. Set a minimum bid, a payment token, a license length, a resale
@@ -71,8 +71,8 @@ export default function LearnIPSponsorshipPage() {
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Sponsors bid, or propose</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base font-semibold text-foreground">Sponsors bid, or propose</p>
+              <p className="text-base text-muted-foreground">
                 Anyone can place a bid on an open offer, meeting or exceeding the minimum, and
                 retract it any time before it&apos;s accepted. A sponsor can also skip waiting
                 for an offer and propose fixed terms directly on any asset they&apos;d like to
@@ -130,7 +130,7 @@ export default function LearnIPSponsorshipPage() {
             inside the contract, the DAO can evolve it without a contract migration, and anyone
             interacting with the contract directly is never forced to pay it.
           </p>
-          <p className="text-sm">
+          <p className="text-base">
             See{" "}
             <Link href="/dev/fees" className="text-primary hover:underline">Fees &amp; Revenue</Link>{" "}
             for the canonical breakdown.

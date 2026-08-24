@@ -62,7 +62,7 @@ function Shell({ children }: { children: React.ReactNode }) {
               <Link href="/links" className="hover:text-foreground transition-colors">Links</Link>
               <a href="https://x.com/medialane_io" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">X</a>
             </nav>
-            <p className="text-xs">© {new Date().getFullYear()} Medialane DAO</p>
+            <p className="text-base">© {new Date().getFullYear()} Medialane DAO</p>
           </div>
         </footer>
       </div>

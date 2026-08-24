@@ -193,7 +193,7 @@ export default function IntegrityWebPage() {
                     <span className={`text-xs font-mono font-bold ${color}`}>{num}</span>
                     <h3 className="font-bold text-base">{title}</h3>
                   </div>
-                  <p className="text-sm text-muted-foreground italic leading-relaxed">{quote}</p>
+                  <p className="text-base text-muted-foreground italic leading-relaxed">{quote}</p>
                 </div>
               </div>
 
@@ -239,8 +239,8 @@ export default function IntegrityWebPage() {
             { label: "Trustless by design", desc: "Math replaces intermediaries" },
           ].map(({ label, desc }) => (
             <div key={label} className="bento-cell p-4 space-y-1">
-              <p className="text-sm font-semibold text-foreground">{label}</p>
-              <p className="text-xs text-muted-foreground">{desc}</p>
+              <p className="text-base font-semibold text-foreground">{label}</p>
+              <p className="text-base text-muted-foreground">{desc}</p>
             </div>
           ))}
         </div>

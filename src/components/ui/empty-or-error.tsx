@@ -52,7 +52,7 @@ export function EmptyOrError({
           <AlertCircle className="h-7 w-7 text-destructive" />
         </div>
         <p className="font-semibold text-lg">Something went wrong</p>
-        <p className="text-sm text-muted-foreground max-w-xs mx-auto">
+        <p className="text-base text-muted-foreground max-w-xs mx-auto">
           {error instanceof Error ? error.message : "Failed to load data. Please try again."}
         </p>
         {onRetry && (
@@ -75,7 +75,7 @@ export function EmptyOrError({
         )}
         <p className="font-semibold text-lg">{emptyTitle}</p>
         {emptyDescription && (
-          <p className="text-sm text-muted-foreground max-w-xs mx-auto">{emptyDescription}</p>
+          <p className="text-base text-muted-foreground max-w-xs mx-auto">{emptyDescription}</p>
         )}
         <div className="flex items-center justify-center gap-3">
           {onRetry && (

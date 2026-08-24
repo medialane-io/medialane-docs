@@ -36,13 +36,13 @@ npm install @medialane/sdk starknet
 
 # yarn
 yarn add @medialane/sdk starknet`}</DocCodeBlock>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-base text-muted-foreground">
         Peer dependency: <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">starknet@^6</code>
       </p>
 
       {/* Configure */}
       <DocH2 id="configure" border>Configure</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         Create a <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneClient</code> with your network and API key.
       </p>
       <DocCodeBlock>{`import { MedialaneClient } from "@medialane/sdk"
@@ -61,13 +61,13 @@ const client = new MedialaneClient({
     maxDelayMs: 5000,    // default
   },
 })`}</DocCodeBlock>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-base text-muted-foreground">
         The <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">apiKey</code> is sent as <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">x-api-key</code> on every request. Get your key at <Link href="https://portal.medialane.io/account" className="text-primary hover:underline">/account</Link>.
       </p>
 
       {/* Minting */}
       <DocH2 id="minting" border>Minting & Launchpad</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         The SDK provides two ways to mint assets: direct on-chain calls (requires signer) and backend-orchestrated intents.
       </p>
 
@@ -106,7 +106,7 @@ const { intentId, calls } = await client.api.createCollectionIntent({
 
       {/* Marketplace */}
       <DocH2 id="marketplace" border>Marketplace (on-chain)</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.marketplace</code> provides typed wrappers for direct contract calls via starknet.js.
       </p>
       <DocCodeBlock>{`// Get order details directly from the contract
@@ -117,7 +117,7 @@ const counter = await client.marketplace.getCounter("0x0591...")`}</DocCodeBlock
 
       {/* API client */}
       <DocH2 id="api-client" border>API Client (REST)</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> mirrors the full REST API surface.
       </p>
 
@@ -182,7 +182,7 @@ console.log(newKey.data.key) // shown once — save it!
 const usage = await client.api.getUsage()`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-white mt-6 mb-3">Accounts</h3>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         One Account model across the whole platform. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">registerUser</code> uses a tenant key (web3 wallet connect); the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">*MyWallet</code> pair uses a SIWS token (Sign In With Starknet), the same mechanism every app relies on instead of a third-party identity provider.
       </p>
       <DocCodeBlock>{`// Tenant-key registration (e.g. wallet connect) — idempotent
@@ -318,7 +318,7 @@ await client.api.getCollections(1, 20, true, sort)`}</DocCodeBlock>
 
       {/* POP Protocol */}
       <DocH2 id="pop-protocol" border>POP Protocol (Proof of Participation)</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         POP collections are event-based claim drops: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.pop</code> for on-chain interactions and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> for eligibility checks.
       </p>
 
@@ -385,7 +385,7 @@ console.log("Deployed:", txHash)`}</DocCodeBlock>
 
       {/* Collection Drop */}
       <DocH2 id="collection-drop" border>Collection Drop</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         Collection Drops are public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.drop</code> for on-chain interactions and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> for status queries.
       </p>
 
@@ -450,7 +450,7 @@ await client.services.drop.withdrawPayments(account, { collection: "0x03587f..."
 
       {/* ERC-1155 marketplace */}
       <DocH2 id="marketplace-1155" border>ERC-1155 Marketplace (on-chain)</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.marketplace1155</code> handles multi-edition orders against the redesigned Medialane1155 venue. SNIP-12 domain version <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">3</code>: listings carry an edition quantity; listing/offer and cancellation are signed, while fulfillment is an unsigned call by the buyer. All write methods take a starknet.js <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">AccountInterface</code>.
       </p>
       <DocCodeBlock>{`// List N editions for sale (auto-grants set_approval_for_all if needed)
@@ -472,7 +472,7 @@ const typedData = client.marketplace1155.buildListingTypedData(params, chainId)`
 
       {/* ERC-1155 collection service */}
       <DocH2 id="erc1155-collection" border>ERC-1155 Collections (on-chain)</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.erc1155Collection</code> deploys and manages multi-edition IP collections with ERC-2981 royalties.
       </p>
       <DocCodeBlock>{`// Deploy a new ERC-1155 collection via the factory
@@ -496,7 +496,7 @@ await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "
 
       {/* Creator Coins */}
       <DocH2 id="creator-coins" border>Creator Coins</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         Fixed-supply standard ERC-20s with permanently-locked Ekubo liquidity (audited unruggable.meme fork).
         The creator sets both the launch price and the quote token (STRK, ETH, WBTC, USDC, or USDT); supply
         and price together set the market cap. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.creatorCoin</code> executes
@@ -536,7 +536,7 @@ const launchCalls = buildLaunchOnEkuboCalls({
 // Or let the service execute both with an account:
 await client.services.creatorCoin.createCreatorCoin(account, { owner, name, symbol, initialSupply: supplyRaw })
 await client.services.creatorCoin.launchOnEkubo(account, { creatorCoin, quoteToken, ekubo, initialHolders: [], initialHoldersAmounts: [] })`}</DocCodeBlock>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         Index a fresh launch instantly with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">POST /v1/coins/sync</code>; the
         factory event poller is the backstop. Coins index as collections (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code>);
         filter lists with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/collections?standard=ERC20</code>. A coin&apos;s image and
@@ -547,7 +547,7 @@ await client.services.creatorCoin.launchOnEkubo(account, { creatorCoin, quoteTok
 
       {/* Platform fee */}
       <DocH2 id="platform-fee" border>Platform Fee</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer, distinct from any on-chain protocol rule. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or unconfigured, treating a missing config as a zero fee.
       </p>
       <DocCodeBlock>{`import { buildFeeCall, resolveFeeConfig } from "@medialane/sdk"
@@ -570,7 +570,7 @@ await account.execute(calls)`}</DocCodeBlock>
 
       {/* Error Handling */}
       <DocH2 id="errors" border>Error Handling</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         The SDK throws <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneError</code> for marketplace issues and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneApiError</code> for REST API failures. Both carry a typed <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">.code</code> field from the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneErrorCode</code> union.
       </p>
       <DocCodeBlock>{`import { MedialaneError, MedialaneApiError } from "@medialane/sdk"
@@ -587,7 +587,7 @@ try {
 }`}</DocCodeBlock>
 
       <DocH2 id="error-codes" border>Error Codes</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         All errors expose a <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneErrorCode</code> typed union:
       </p>
       <DocCodeBlock>{`type MedialaneErrorCode =
@@ -632,12 +632,12 @@ try {
         </div>
       </div>
 
-      <p className="text-sm text-muted-foreground mt-3">
+      <p className="text-base text-muted-foreground mt-3">
         Note: 4xx errors are <span className="text-white font-medium">not retried</span> automatically. Only transient network and 5xx errors trigger the retry logic configured via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">retryOptions</code>.
       </p>
 
       <div className="mt-10 p-5 rounded-xl border border-primary/20 bg-primary/5">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           <span className="font-semibold text-white">Full API reference</span>: all REST endpoints, parameters, and response schemas are documented in the{" "}
           <Link href="/dev/api" className="text-primary hover:underline">API Reference</Link>.
         </p>
@@ -645,7 +645,7 @@ try {
 
       {/* Use case examples */}
       <DocH2 id="examples" border>Use Case Examples</DocH2>
-      <p className="text-muted-foreground text-sm mb-3">
+      <p className="text-muted-foreground text-base mb-3">
         Common patterns you can build with the SDK:
       </p>
 
@@ -688,30 +688,30 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
 });`}</DocCodeBlock>
 
       <DocH2 id="consumer-apps" border>Built with the SDK</DocH2>
-      <p className="text-muted-foreground text-sm mb-4">
+      <p className="text-muted-foreground text-base mb-4">
         Both Medialane consumer apps use the same SDK you&apos;re integrating:
       </p>
       <div className="grid md:grid-cols-2 gap-4">
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-5 space-y-2">
-          <p className="text-xs font-mono text-muted-foreground">medialane.io</p>
-          <p className="text-sm font-semibold text-white">Creator Launchpad</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-base font-mono text-muted-foreground">medialane.io</p>
+          <p className="text-base font-semibold text-white">Creator Launchpad</p>
+          <p className="text-base text-muted-foreground leading-relaxed">
             Collections, Orders, Minting, Remix Licensing, POP, Collection Drop, On-chain Comments.
             Frictionless, fully gas-sponsored self-custody wallet UX.
           </p>
         </div>
         <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5 space-y-2">
-          <p className="text-xs font-mono text-muted-foreground">starknet.medialane.io</p>
-          <p className="text-sm font-semibold text-white">Permissionless dApp</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-base font-mono text-muted-foreground">starknet.medialane.io</p>
+          <p className="text-base font-semibold text-white">Permissionless dApp</p>
+          <p className="text-base text-muted-foreground leading-relaxed">
             Activities, Trade Intents, Asset Metadata. Reads directly via starknet.js, with no backend dependency for browsing.
           </p>
         </div>
       </div>
 
       <div className="mt-6 pt-6 border-t border-white/10 space-y-2">
-        <p className="text-sm font-semibold text-white">Full SDK documentation</p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base font-semibold text-white">Full SDK documentation</p>
+        <p className="text-base text-muted-foreground">
           Complete method reference, type definitions, and advanced usage are on{" "}
           <a href="https://docs.medialane.io/dev/sdk" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
             docs.medialane.io/dev/sdk

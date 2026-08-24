@@ -58,8 +58,8 @@ export default function LearnProtectIPPage() {
               },
             ].map(({ name, desc }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-foreground">{name}</p>
-                <p className="text-xs text-muted-foreground">{desc}</p>
+                <p className="text-base font-semibold text-foreground">{name}</p>
+                <p className="text-base text-muted-foreground">{desc}</p>
               </div>
             ))}
           </div>

@@ -56,9 +56,9 @@ export default function DocsSecurityPage() {
               <div key={title} className="bento-cell p-4 space-y-2">
                 <div className="flex items-center gap-2">
                   <Icon className="h-4 w-4 text-primary" />
-                  <p className="text-sm font-semibold text-foreground">{title}</p>
+                  <p className="text-base font-semibold text-foreground">{title}</p>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -68,11 +68,11 @@ export default function DocsSecurityPage() {
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Backend &amp; app-server: SSRF, request-size, and metering hardening</p>
+                <p className="text-base font-semibold text-foreground">Backend &amp; app-server: SSRF, request-size, and metering hardening</p>
                 <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Completed August 2026</span>
               </div>
-              <p className="text-xs text-muted-foreground">Internal review of medialane-backend and the app-server (BFF) layer of all first-party apps · August 2026</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base text-muted-foreground">Internal review of medialane-backend and the app-server (BFF) layer of all first-party apps · August 2026</p>
+              <p className="text-base text-muted-foreground">
                 Closed a gap in the indexer&apos;s outbound-fetch guard (added DNS-resolution
                 checking alongside the existing literal-hostname allowlist, and a response-size
                 cap, for collection metadata fetches) and tightened payment settlement to require
@@ -87,11 +87,11 @@ export default function DocsSecurityPage() {
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Backend &amp; SDK: P0/P1/P2 hardening cycle</p>
+                <p className="text-base font-semibold text-foreground">Backend &amp; SDK: P0/P1/P2 hardening cycle</p>
                 <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Completed May 2026</span>
               </div>
-              <p className="text-xs text-muted-foreground">Internal review of medialane-backend (~16k LOC) and @medialane/sdk · May 2026</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base text-muted-foreground">Internal review of medialane-backend (~16k LOC) and @medialane/sdk · May 2026</p>
+              <p className="text-base text-muted-foreground">
                 Three-batch hardening pass: P0 correctness (webhook fanout, indexer stall vectors,
                 BFF proxy allowlist), P1 atomicity (rate-limit single round-trip, intent batch
                 lookup, transaction atomicity), P2 hygiene (SSRF integer/hex/octal block, SIWS iat
@@ -101,11 +101,11 @@ export default function DocsSecurityPage() {
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Marketplace &amp; collection contracts: Joint Internal Audit + Remediation</p>
+                <p className="text-base font-semibold text-foreground">Marketplace &amp; collection contracts: Joint Internal Audit + Remediation</p>
                 <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Fixes deployed June 2026</span>
               </div>
-              <p className="text-xs text-muted-foreground">Reviewed by the core development team · audit 2026-06-25, fixes redeployed 2026-06-26</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base text-muted-foreground">Reviewed by the core development team · audit 2026-06-25, fixes redeployed 2026-06-26</p>
+              <p className="text-base text-muted-foreground">
                 All four core protocol contracts (Medialane721, Medialane1155, the MIP
                 IPCollection registry, and the IP-Programmable ERC-1155 factory) were audited
                 together and redeployed as a coordinated release with fixes for a High-severity
@@ -119,10 +119,10 @@ export default function DocsSecurityPage() {
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-foreground">Independent Audit: Not yet completed</p>
+                <p className="text-base font-semibold text-foreground">Independent Audit: Not yet completed</p>
                 <span className="text-[10px] font-medium text-muted-foreground bg-muted px-2 py-0.5 rounded-full">Pending</span>
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-base text-muted-foreground">
                 A third-party audit has not been completed. Users should take this into account
                 when deciding how much to trust the contracts with valuable assets.
               </p>
@@ -147,11 +147,11 @@ export default function DocsSecurityPage() {
 
         <Section title="Risk Disclosure">
           <div className="bento-cell p-4 border-amber-500/30 bg-amber-500/5 space-y-2">
-            <p className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <p className="text-base font-semibold text-foreground flex items-center gap-2">
               <AlertTriangle className="h-4 w-4 text-amber-500" />
               Important Notice
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               Smart contracts carry inherent risks. While the Mediolano protocol and
               Medialane platform take every precaution (including audits, formal
               verification, and continuous testing), user funds and IP assets could
@@ -159,7 +159,7 @@ export default function DocsSecurityPage() {
               underlying Starknet network. Use caution and only commit assets whose
               loss you could tolerate.
             </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               Medialane does not take custody of your assets. Your NFTs remain in
               your self-custodied wallet at all times. Marketplace orders are signed
               intents, so your asset does not leave your wallet until a transaction is

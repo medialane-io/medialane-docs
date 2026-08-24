@@ -51,8 +51,8 @@ export default function LearnIPCollection1155Page() {
             whenever you have new creative work to release.
           </p>
           <div className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-sm font-semibold text-foreground">Step 1: Deploy a collection</p>
-            <p className="text-xs leading-relaxed">
+            <p className="text-base font-semibold text-foreground">Step 1: Deploy a collection</p>
+            <p className="text-base leading-relaxed">
               From <strong>Launchpad → IP Collection 1155 → Create Collection</strong>, choose a name,
               symbol, and upload a collection image. Medialane deploys an ERC-1155 contract
               to Starknet mainnet, owned entirely by your wallet. The collection appears
@@ -60,8 +60,8 @@ export default function LearnIPCollection1155Page() {
             </p>
           </div>
           <div className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-sm font-semibold text-foreground">Step 2: Mint token editions</p>
-            <p className="text-xs leading-relaxed">
+            <p className="text-base font-semibold text-foreground">Step 2: Mint token editions</p>
+            <p className="text-base leading-relaxed">
               Click <strong>Mint</strong> next to your collection on the Launchpad. Upload
               the asset file, set a title, description, and supply: how many copies of
               this edition should exist. Each mint call writes a new token ID to your
@@ -89,15 +89,15 @@ export default function LearnIPCollection1155Page() {
         <Section title="ERC-1155 vs ERC-721: When to Choose Which">
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Choose ERC-721 when uniqueness is the value</p>
-              <p className="text-xs leading-relaxed">
+              <p className="text-base font-semibold text-foreground">Choose ERC-721 when uniqueness is the value</p>
+              <p className="text-base leading-relaxed">
                 1-of-1 artworks, IP certificates, high-value collectibles where provable
                 scarcity is the point. Each collector owns something no one else can.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Choose ERC-1155 when editions are the format</p>
-              <p className="text-xs leading-relaxed">
+              <p className="text-base font-semibold text-foreground">Choose ERC-1155 when editions are the format</p>
+              <p className="text-base leading-relaxed">
                 Creative work you want many people to own authentically: music, prints,
                 passes. Every holder owns a real, on-chain copy of the same edition.
               </p>

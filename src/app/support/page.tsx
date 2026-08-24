@@ -131,7 +131,7 @@ export default function SupportPage() {
       <div className="space-y-5">
         <div className="space-y-1">
           <h2 className="text-xl font-bold">Still need help?</h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-base text-muted-foreground">
             Submit a support ticket and a team member will respond within 1–2 business days.
           </p>
         </div>
@@ -202,7 +202,7 @@ export default function SupportPage() {
         </form>
       </div>
 
-      <p className="text-xs text-muted-foreground">
+      <p className="text-base text-muted-foreground">
         For copyright / DMCA notices email{" "}
         <a href="mailto:dmca@medialane.io" className="text-primary hover:underline">dmca@medialane.io</a>.
         For general contact see the{" "}

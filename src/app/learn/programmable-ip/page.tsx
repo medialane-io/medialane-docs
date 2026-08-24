@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ProgrammableIPPage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
 
       <div className="space-y-3">
         <h2 className="text-2xl font-semibold">Programmable IP</h2>
@@ -40,7 +40,7 @@ export default function ProgrammableIPPage() {
       {/* Contrast */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="bento-cell p-5 space-y-3">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">Traditional IP</p>
+          <p className="text-base font-semibold text-muted-foreground uppercase tracking-widest">Traditional IP</p>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2"><span className="text-destructive shrink-0">✗</span> License stored in a document or database</li>
             <li className="flex items-start gap-2"><span className="text-destructive shrink-0">✗</span> Authorship requires witnesses or registration</li>
@@ -50,7 +50,7 @@ export default function ProgrammableIPPage() {
           </ul>
         </div>
         <div className="bento-cell p-5 space-y-3">
-          <p className="text-xs font-semibold text-primary uppercase tracking-widest">Programmable IP</p>
+          <p className="text-base font-semibold text-primary uppercase tracking-widest">Programmable IP</p>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> License embedded in the token itself</li>
             <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Timestamped authorship record on-chain</li>
@@ -92,7 +92,7 @@ export default function ProgrammableIPPage() {
                 <Icon className="h-4 w-4 text-primary" />
               </div>
               <h4 className="font-semibold text-base">{title}</h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

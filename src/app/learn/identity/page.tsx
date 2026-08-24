@@ -82,7 +82,7 @@ export default function LearnIdentityPage() {
                 </div>
                 <p className="text-base text-muted-foreground leading-relaxed">{def}</p>
                 <div className="border-t border-border/40 pt-2">
-                  <p className="text-xs text-muted-foreground italic">{note}</p>
+                  <p className="text-base text-muted-foreground italic">{note}</p>
                 </div>
               </div>
             ))}
@@ -112,7 +112,7 @@ export default function LearnIdentityPage() {
             <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <Eye className="h-4 w-4 text-brand-blue" />
-                <p className="font-bold text-foreground text-sm">Authentication</p>
+                <p className="font-bold text-foreground text-base">Authentication</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Proving who you are. Every Medialane app uses the same mechanism, SIWS,
@@ -124,7 +124,7 @@ export default function LearnIdentityPage() {
             <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <Shield className="h-4 w-4 text-brand-purple" />
-                <p className="font-bold text-foreground text-sm">Authorization</p>
+                <p className="font-bold text-foreground text-base">Authorization</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Proving what you can do. Authorization is determined by on-chain state:
@@ -133,7 +133,7 @@ export default function LearnIdentityPage() {
               </p>
             </div>
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             These are separate concerns. Authentication identifies you. Authorization
             checks the chain. Medialane can verify who you are without controlling
             what you can do.
@@ -151,7 +151,7 @@ export default function LearnIdentityPage() {
             <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-brand-orange" />
-                <p className="font-bold text-foreground text-sm">Claiming a name</p>
+                <p className="font-bold text-foreground text-base">Claiming a name</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Claiming a username or a collection slug is a public identity claim, so
@@ -162,7 +162,7 @@ export default function LearnIdentityPage() {
             <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-brand-blue" />
-                <p className="font-bold text-foreground text-sm">Listing for sale</p>
+                <p className="font-bold text-foreground text-base">Listing for sale</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Listing an asset on the marketplace also benefits from a verified email,
@@ -170,7 +170,7 @@ export default function LearnIdentityPage() {
               </p>
             </div>
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             Everything else on the platform stays wide open: holding assets, sending
             and receiving, browsing, connecting a wallet. Verification is scoped to the
             two actions above, at your own pace, with a grace period after adding an

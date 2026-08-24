@@ -60,7 +60,7 @@ export default function LearnAgentPaymentsPage() {
     <div className="space-y-10">
 
       <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-widest text-primary/70">Payments</p>
+        <p className="text-base font-semibold uppercase tracking-widest text-primary/70">Payments</p>
         <h2 className="text-2xl font-bold">Payments for AI Agents</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Medialane lets software pay for what it uses: automatically, in seconds, with no
@@ -100,8 +100,8 @@ export default function LearnAgentPaymentsPage() {
               <div className={`h-10 w-10 rounded-xl ${bg} flex items-center justify-center`}>
                 <Icon className={`h-4.5 w-4.5 ${color}`} />
               </div>
-              <p className="font-bold text-sm text-foreground">{title}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="font-bold text-base text-foreground">{title}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -113,9 +113,9 @@ export default function LearnAgentPaymentsPage() {
             <div key={n} className="rounded-xl border border-white/10 bg-white/[0.02] p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <span className="h-6 w-6 rounded-lg bg-primary/10 text-primary text-xs font-black flex items-center justify-center shrink-0">{n}</span>
-                <p className="font-bold text-sm text-foreground">{title}</p>
+                <p className="font-bold text-base text-foreground">{title}</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -137,8 +137,8 @@ export default function LearnAgentPaymentsPage() {
       </Section>
 
       <div className="rounded-xl border border-primary/20 bg-primary/[0.04] p-5">
-        <p className="text-sm font-bold text-foreground mb-1">Building an agent?</p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base font-bold text-foreground mb-1">Building an agent?</p>
+        <p className="text-base text-muted-foreground">
           The <Link href="/dev/agents" className="text-primary hover:underline">Agent Quickstart</Link> walks
           through it in code: discovery, handling the payment request, and paying in USDC.
         </p>

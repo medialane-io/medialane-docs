@@ -27,7 +27,7 @@ export default function LearnCreatorCoinPage() {
           launched with a public liquidity pool that is locked forever. Your community can
           back you by holding it; you stay in control of what it means.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Service IDs:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">creator-coin</code>{" "}
           (launched on Medialane) and{" "}
@@ -103,7 +103,7 @@ export default function LearnCreatorCoinPage() {
         </Section>
 
         <Section title="What the contract guarantees">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-base text-muted-foreground">
             Every guarantee below is enforced by the Creator Coin Factory contract itself,
             verifiable on any Starknet explorer, not a claim made by Medialane.
           </p>

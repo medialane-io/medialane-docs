@@ -86,7 +86,7 @@ export default function LearnRemixPage() {
               enforcement without encoding jurisdiction-specific law into immutable contracts.
             </p>
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             See{" "}
             <Link href="/learn/programmable-licensing" className="text-primary hover:underline">Programmable Licensing</Link>{" "}
             for the full soft enforcement model.
@@ -104,8 +104,8 @@ export default function LearnRemixPage() {
           <div className="space-y-2">
             {LICENSE_RULES.map(({ rule, desc }) => (
               <div key={rule} className="bento-cell px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-foreground">{rule}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-base font-semibold text-foreground">{rule}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -134,14 +134,14 @@ export default function LearnRemixPage() {
           </p>
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Remix: free, permissionless</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base font-semibold text-foreground">Remix: free, permissionless</p>
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Mint your own attributed derivative. Free and permissionless: your work, your license.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-sm font-semibold text-foreground">Licensing: optional, by agreement</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base font-semibold text-foreground">Licensing: optional, by agreement</p>
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Propose a license deal to the creator: your terms plus a fee. If they accept, the
                 licensed derivative is minted and listed for you. Use it to pay or credit the
                 original creator, get a formal commercial license, or remix a work the creator
@@ -178,7 +178,7 @@ export default function LearnRemixPage() {
             The contracts make no distinction between a human and an agent: same API,
             same protocol capabilities.
           </p>
-          <p className="text-sm">
+          <p className="text-base">
             See{" "}
             <Link href="/dev/agents" className="text-primary hover:underline">AI Agents</Link>{" "}
             for the agent account model and HTTP 402 billing.

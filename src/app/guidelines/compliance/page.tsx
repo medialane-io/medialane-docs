@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function CompliancePage() {
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Compliance</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
@@ -27,7 +27,7 @@ export default function CompliancePage() {
           property law, and global financial regulation. These guidelines outline our
           approach to compliance and what it means for users of the platform.
         </p>
-        <p className="text-xs text-muted-foreground">Last updated: January 2026</p>
+        <p className="text-base text-muted-foreground">Last updated: January 2026</p>
       </div>
 
       <div className="space-y-8">
@@ -62,8 +62,8 @@ export default function CompliancePage() {
               },
             ].map(({ title, desc }) => (
               <div key={title} className="bento-cell px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-foreground">{title}</p>
-                <p className="text-xs text-muted-foreground">{desc}</p>
+                <p className="text-base font-semibold text-foreground">{title}</p>
+                <p className="text-base text-muted-foreground">{desc}</p>
               </div>
             ))}
           </div>

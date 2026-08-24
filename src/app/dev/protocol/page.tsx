@@ -53,12 +53,12 @@ export default function DocsProtocolPage() {
           <div className="space-y-2">
             {CONTRACTS.map(({ name, address }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-foreground">{name}</p>
-                <p className="font-mono text-xs text-primary/70 break-all">{address}</p>
+                <p className="text-base font-semibold text-foreground">{name}</p>
+                <p className="font-mono text-base text-primary/70 break-all">{address}</p>
               </div>
             ))}
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             These contracts have no admin key and no upgrade path. Once deployed, the rules
             are fixed. Canonical addresses are also published in the{" "}
             <Link href="/dev/contracts" className="text-primary hover:underline">Contracts</Link> reference.
@@ -75,8 +75,8 @@ export default function DocsProtocolPage() {
           <div className="space-y-2">
             {EVENTS.map(({ name, desc }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-foreground">{name}</p>
-                <p className="text-xs text-muted-foreground">{desc}</p>
+                <p className="text-base font-semibold text-foreground">{name}</p>
+                <p className="text-base text-muted-foreground">{desc}</p>
               </div>
             ))}
           </div>
@@ -134,7 +134,7 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
             <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <Database className="h-4 w-4 text-brand-blue" />
-                <p className="font-bold text-foreground text-sm">Off-chain event reducer</p>
+                <p className="font-bold text-foreground text-base">Off-chain event reducer</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 The indexer polls Starknet for new events, parses them with per-event handlers,
@@ -145,7 +145,7 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
             <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <Package className="h-4 w-4 text-brand-orange" />
-                <p className="font-bold text-foreground text-sm">Rebuild guarantee</p>
+                <p className="font-bold text-foreground text-base">Rebuild guarantee</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Drop the database. The indexer replays events from genesis and reconstructs
@@ -154,7 +154,7 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
               </p>
             </div>
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             Platform state (profiles, slugs, API keys) cannot be reconstructed from events.
             It is honestly classified as off-chain enrichment and stored in a separate namespace.
             See{" "}

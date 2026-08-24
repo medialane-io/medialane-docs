@@ -133,12 +133,12 @@ export default function LearnProgrammableLicensingPage() {
               { name: "Revocation", desc: "Some service types support on-chain revocation for specific license categories." },
             ].map(({ name, desc }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-foreground">{name}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-base font-semibold text-foreground">{name}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             See{" "}
             <Link href="/learn/remix" className="text-primary hover:underline">Remix &amp; Derivatives</Link>
             {" "}for how remixing and on-chain attribution work.
@@ -160,12 +160,12 @@ export default function LearnProgrammableLicensingPage() {
               { name: "Licensed derivative is delivered", desc: "On acceptance, the licensed derivative is minted and listed for you to complete. Track requests under Portfolio → Licensing." },
             ].map(({ name, desc }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
-                <p className="text-sm font-semibold text-foreground">{name}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-base font-semibold text-foreground">{name}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
-          <p className="text-sm">
+          <p className="text-base">
             Licensing is a distinct, optional service, separate from the free, permissionless{" "}
             <Link href="/learn/remix" className="text-primary hover:underline">Remix</Link>.
           </p>
