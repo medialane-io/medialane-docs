@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { PortfolioChipFilter } from "@medialane/ui";
 import { PageContainer } from "@/components/page-container";
 
 const LEARN_NAV = [
@@ -47,31 +46,14 @@ export default function LearnLayout({ children }: { children: React.ReactNode })
         </p>
       </div>
 
-      {/* Pill tab nav */}
-      <nav className="overflow-x-auto scrollbar-hide py-4">
-        <div className="flex items-center gap-1.5 min-w-max">
-          {LEARN_NAV.map((item) => {
-            const active =
-              item.href === "/learn"
-                ? pathname === "/learn"
-                : pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "px-3 py-1.5 text-sm rounded-full whitespace-nowrap transition-all font-medium",
-                  active
-                    ? "bg-foreground text-background"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </div>
-      </nav>
+      <div className="py-4">
+        <PortfolioChipFilter
+          options={LEARN_NAV.map((item) => ({ key: item.href, href: item.href, label: item.label }))}
+          value={pathname}
+          onChange={() => {}}
+          showAll={false}
+        />
+      </div>
 
       {/* Content */}
       <div className="pt-2">{children}</div>
