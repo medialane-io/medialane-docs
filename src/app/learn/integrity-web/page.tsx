@@ -137,9 +137,9 @@ export default function IntegrityWebPage() {
       {/* Hero */}
       <div className="space-y-5">
         <span className="pill-badge">Philosophy</span>
-        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
+        <h2 className="text-2xl font-bold">
           The Integrity Web
-        </h1>
+        </h2>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
           The Integrity Web is a set of ten axioms that define what trustworthy digital
           infrastructure must implement at the architectural level. This page explains
@@ -165,7 +165,7 @@ export default function IntegrityWebPage() {
 
       {/* Intro */}
       <div className="bento-cell p-8 space-y-4">
-        <h2 className="text-xl font-bold">What is the Integrity Web?</h2>
+        <h2 className="text-2xl font-bold">What is the Integrity Web?</h2>
         <p className="text-muted-foreground leading-relaxed">
           The Integrity Web is a philosophical and technical movement defining the principles
           that make digital systems worthy of trust. Where trust in institutions, platforms,
@@ -218,7 +218,7 @@ export default function IntegrityWebPage() {
 
       {/* Why Starknet */}
       <div className="bento-cell p-8 space-y-4">
-        <h2 className="text-xl font-bold">Why Starknet Powers the Integrity Web</h2>
+        <h2 className="text-2xl font-bold">Why Starknet Powers the Integrity Web</h2>
         <p className="text-muted-foreground leading-relaxed">
           Starknet's ZK-STARK proofs are uniquely positioned to power an Integrity Web platform.
           Unlike ZK-SNARKs, STARKs skip the trusted-setup ceremony entirely, removing any secret

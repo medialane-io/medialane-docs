@@ -34,14 +34,14 @@ export default function DeveloperHubPage() {
           <Link
             key={href}
             href={href}
-            className="group rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:border-white/20 hover:bg-white/[0.04]"
+            className="group rounded-xl border border-foreground/10 bg-foreground/[0.02] p-5 transition-colors hover:border-foreground/20 hover:bg-foreground/[0.04]"
           >
             <div className="flex items-center gap-3">
               <span className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <Icon className="size-4" />
               </span>
-              <span className="font-semibold text-white">{title}</span>
-              <ArrowUpRight className="ml-auto size-4 text-muted-foreground/40 transition-colors group-hover:text-white" />
+              <span className="font-semibold text-foreground">{title}</span>
+              <ArrowUpRight className="ml-auto size-4 text-muted-foreground/40 transition-colors group-hover:text-foreground" />
             </div>
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">{description}</p>
           </Link>

@@ -21,12 +21,12 @@ export default function AgentsPage() {
         Agents
       </Badge>
 
-      <h1 className="text-4xl font-extrabold text-white leading-tight">
+      <h2 className="text-2xl font-bold">
         Agent Quickstart
-      </h1>
+      </h2>
 
       <p className="text-muted-foreground text-lg mt-2 mb-8">
-        The Medialane API is built to be consumed by autonomous AI agents. A wallet keypair is your identity, you pay per request in USDC on Starknet, and billing speaks the open <strong className="text-white">x402</strong> standard: machine-readable <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code>, no human in the loop.
+        The Medialane API is built to be consumed by autonomous AI agents. A wallet keypair is your identity, you pay per request in USDC on Starknet, and billing speaks the open <strong className="text-foreground">x402</strong> standard: machine-readable <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402 Payment Required</code>, no human in the loop.
       </p>
 
       {/* Why agents */}
@@ -35,17 +35,17 @@ export default function AgentsPage() {
         Traditional API platforms require email, OAuth, or a credit card, all designed for humans. Medialane uses permissionless primitives instead:
       </p>
       <ul className="space-y-2 text-sm text-muted-foreground mb-6 list-disc list-inside">
-        <li><strong className="text-white">Identity</strong>: a Starknet wallet keypair, with no email, no OAuth provider, no third-party dependency.</li>
-        <li><strong className="text-white">Payment</strong>: USDC on Starknet, paid per use. Your wallet pays the API directly.</li>
-        <li><strong className="text-white">Billing protocol</strong>: the open <strong className="text-white">x402</strong> standard, where an unfunded request returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402</code> with machine-readable payment instructions, your agent pays and retries.</li>
-        <li><strong className="text-white">Pay only for what you use</strong>: no gate, no free tier. The first unfunded call returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402</code> by design, which is the protocol working as intended.</li>
-        <li><strong className="text-white">MDLN bonus</strong>: hold MDLN in the paying wallet and your credits-per-USDC multiply automatically (see below).</li>
+        <li><strong className="text-foreground">Identity</strong>: a Starknet wallet keypair, with no email, no OAuth provider, no third-party dependency.</li>
+        <li><strong className="text-foreground">Payment</strong>: USDC on Starknet, paid per use. Your wallet pays the API directly.</li>
+        <li><strong className="text-foreground">Billing protocol</strong>: the open <strong className="text-foreground">x402</strong> standard, where an unfunded request returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> with machine-readable payment instructions, your agent pays and retries.</li>
+        <li><strong className="text-foreground">Pay only for what you use</strong>: no gate, no free tier. The first unfunded call returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> by design, which is the protocol working as intended.</li>
+        <li><strong className="text-foreground">MDLN bonus</strong>: hold MDLN in the paying wallet and your credits-per-USDC multiply automatically (see below).</li>
       </ul>
 
       {/* API key */}
       <DocH2 id="api-key">Get an API key</DocH2>
       <p className="text-muted-foreground mb-4 text-base">
-        Create a tenant API key at <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">portal.medialane.io</a>: connect a Starknet wallet and create a key in the API Keys tab. The key is shown once; store it securely. Keys look like <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">ml_live_…</code> and authenticate every request:
+        Create a tenant API key at <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">portal.medialane.io</a>: connect a Starknet wallet and create a key in the API Keys tab. The key is shown once; store it securely. Keys look like <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ml_live_…</code> and authenticate every request:
       </p>
       <DocCodeBlock lang="ts">{`const BASE = "https://api.medialane.io";
 const headers = { "x-api-key": process.env.ML_API_KEY! };`}</DocCodeBlock>
@@ -66,13 +66,13 @@ const headers = { "x-api-key": process.env.ML_API_KEY! };`}</DocCodeBlock>
   "pricing": { "default": 1 }
 }`}</DocCodeBlock>
       <p className="text-muted-foreground mb-4 text-base">
-        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">asset</code> is USDC on Starknet, <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">payTo</code> is where you send it, and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">1 USDC = 100 credits</code> (1 credit per read; some operations cost more).
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">asset</code> is USDC on Starknet, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">payTo</code> is where you send it, and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">1 USDC = 100 credits</code> (1 credit per read; some operations cost more).
       </p>
 
       {/* The flow */}
       <DocH2 id="flow">Pay-per-use with x402</DocH2>
       <p className="text-muted-foreground mb-4 text-base">
-        Call any endpoint with your key. If your balance can&apos;t cover the call, you get <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402</code> with a <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">paymentRequirements</code> body:
+        Call any endpoint with your key. If your balance can&apos;t cover the call, you get <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> with a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">paymentRequirements</code> body:
       </p>
       <DocCodeBlock lang="json">{`HTTP/1.1 402 Payment Required
 X-Credits-Remaining: 0
@@ -92,7 +92,7 @@ X-Credits-Remaining: 0
 
       <DocH3>Handle it: pay, then retry with X-PAYMENT</DocH3>
       <p className="text-muted-foreground mb-4 text-base">
-        Send USDC to <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">payTo</code>, then retry the <em>same</em> request with an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-PAYMENT</code> header (base64 JSON). The API verifies the transfer on-chain, credits your tenant, and serves the response. One on-chain transfer credits exactly once, safe to retry the same proof.
+        Send USDC to <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">payTo</code>, then retry the <em>same</em> request with an <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">X-PAYMENT</code> header (base64 JSON). The API verifies the transfer on-chain, credits your tenant, and serves the response. One on-chain transfer credits exactly once, safe to retry the same proof.
       </p>
       <DocCodeBlock lang="ts">{`const BASE = "https://api.medialane.io";
 
@@ -144,7 +144,7 @@ async function payUsdc(payTo: string, amountAtomic: bigint): Promise<string> {
   return transaction_hash;
 }`}</DocCodeBlock>
       <p className="text-muted-foreground mb-4 text-base">
-        After funding, subsequent calls return <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">200</code> and spend down your balance, no payment per call. Check it any time via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/portal/me</code> (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">creditBalance</code>) and your payment history via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/portal/credits/history</code>.
+        After funding, subsequent calls return <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">200</code> and spend down your balance, no payment per call. Check it any time via <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/portal/me</code> (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">creditBalance</code>) and your payment history via <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/portal/credits/history</code>.
       </p>
 
       {/* MDLN multipliers */}
@@ -152,8 +152,8 @@ async function payUsdc(payTo: string, amountAtomic: bigint): Promise<string> {
       <p className="text-muted-foreground mb-4 text-base">
         If the wallet that paid holds MDLN, the multiplier is applied automatically when your payment is credited, with no configuration needed. The on-chain balance is read at credit time.
       </p>
-      <div className="rounded-xl border border-white/10 overflow-hidden bg-white/[0.02] text-sm">
-        <div className="grid grid-cols-3 px-5 py-3 bg-white/[0.03] border-b border-white/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+      <div className="rounded-xl border border-foreground/10 overflow-hidden bg-foreground/[0.02] text-sm">
+        <div className="grid grid-cols-3 px-5 py-3 bg-foreground/[0.03] border-b border-foreground/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
           <span>MDLN held</span>
           <span className="text-center">Multiplier</span>
           <span className="text-center">Credits per $1 USDC</span>
@@ -164,16 +164,16 @@ async function payUsdc(payTo: string, amountAtomic: bigint): Promise<string> {
           ["2,000+ MDLN", "1.5×", "150"],
           ["5,000+ MDLN", "2.0×", "200"],
         ].map(([range, mult, credits], i, arr) => (
-          <div key={range} className={`grid grid-cols-3 px-5 py-3 items-center ${i < arr.length - 1 ? "border-b border-white/5" : ""}`}>
+          <div key={range} className={`grid grid-cols-3 px-5 py-3 items-center ${i < arr.length - 1 ? "border-b border-foreground/5" : ""}`}>
             <span className="text-muted-foreground">{range}</span>
-            <span className="text-center text-white font-medium">{mult}</span>
+            <span className="text-center text-foreground font-medium">{mult}</span>
             <span className="text-center text-primary font-medium">{credits}</span>
           </div>
         ))}
       </div>
       <p className="text-base text-muted-foreground mt-3">
         Learn more about MDLN at{" "}
-        <a href="https://medialane.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+        <a href="https://medialane.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
           medialane.org
         </a>. Hold MDLN in the same wallet you pay from.
       </p>

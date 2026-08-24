@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 
 export default function ProgrammableIPPage() {
   return (
-    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
+    <div className="space-y-10">
 
       <div className="space-y-3">
-        <h2 className="text-2xl font-semibold">Programmable IP</h2>
+        <h2 className="text-2xl font-bold">Programmable IP</h2>
         <p className="text-muted-foreground leading-relaxed">
           Traditional IP is a legal document. Programmable IP is structured data anchored
           onchain. Instead of a license stored in a file or a lawyer&apos;s database, the

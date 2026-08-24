@@ -12,7 +12,7 @@ export function DocH2({
   return (
     <h2
       id={id}
-      className={`text-2xl font-bold text-white mt-12 mb-4 scroll-mt-24${border ? " border-b border-white/10 pb-3 flex items-center gap-3 mt-14 mb-5" : ""}`}
+      className={`text-2xl font-bold text-foreground mt-12 mb-4 scroll-mt-24${border ? " border-b border-white/10 pb-3 flex items-center gap-3 mt-14 mb-5" : ""}`}
     >
       {children}
     </h2>
@@ -20,7 +20,7 @@ export function DocH2({
 }
 
 export function DocH3({ children }: { children: React.ReactNode }) {
-  return <h3 className="text-lg font-semibold text-white mt-6 mb-3">{children}</h3>
+  return <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">{children}</h3>
 }
 
 export function DocCodeBlock({ children, lang = "ts" }: { children: string; lang?: string }) {

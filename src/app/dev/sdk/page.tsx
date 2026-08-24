@@ -21,7 +21,7 @@ export default function SdkPage() {
       <Badge className="bg-primary/10 text-primary border-primary/30 px-3 py-1 text-xs">
         SDK
       </Badge>
-      <h1 className="text-4xl font-extrabold text-white">@medialane/sdk</h1>
+      <h2 className="text-2xl font-bold">@medialane/sdk</h2>
       <p className="text-muted-foreground text-lg mb-8">
         Framework-agnostic TypeScript SDK for the Medialane API. Bundles a full REST client and on-chain marketplace helpers in one package.
       </p>
@@ -37,13 +37,13 @@ npm install @medialane/sdk starknet
 # yarn
 yarn add @medialane/sdk starknet`}</DocCodeBlock>
       <p className="text-base text-muted-foreground">
-        Peer dependency: <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">starknet@^6</code>
+        Peer dependency: <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">starknet@^6</code>
       </p>
 
       {/* Configure */}
       <DocH2 id="configure" border>Configure</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        Create a <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneClient</code> with your network and API key.
+        Create a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneClient</code> with your network and API key.
       </p>
       <DocCodeBlock>{`import { MedialaneClient } from "@medialane/sdk"
 
@@ -62,7 +62,7 @@ const client = new MedialaneClient({
   },
 })`}</DocCodeBlock>
       <p className="text-base text-muted-foreground">
-        The <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">apiKey</code> is sent as <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">x-api-key</code> on every request. Get your key at <Link href="https://portal.medialane.io/account" className="text-primary hover:underline">/account</Link>.
+        The <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">apiKey</code> is sent as <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-api-key</code> on every request. Get your key at <Link href="https://portal.medialane.io/account" className="text-primary hover:underline">/account</Link>.
       </p>
 
       {/* Minting */}
@@ -71,7 +71,7 @@ const client = new MedialaneClient({
         The SDK provides two ways to mint assets: direct on-chain calls (requires signer) and backend-orchestrated intents.
       </p>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Mint an asset into a collection</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Mint an asset into a collection</h3>
       <DocCodeBlock>{`// 1. Direct on-chain (client.marketplace)
 await client.marketplace.mint(account, {
   collectionId: "42",
@@ -88,7 +88,7 @@ const { intentId, calls } = await client.api.createMintIntent({
   tokenUri: "ipfs://...",
 })`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Register a new collection</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Register a new collection</h3>
       <DocCodeBlock>{`// 1. Direct on-chain
 await client.marketplace.createCollection(account, {
   name: "My Collection",
@@ -107,7 +107,7 @@ const { intentId, calls } = await client.api.createCollectionIntent({
       {/* Marketplace */}
       <DocH2 id="marketplace" border>Marketplace (on-chain)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.marketplace</code> provides typed wrappers for direct contract calls via starknet.js.
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.marketplace</code> provides typed wrappers for direct contract calls via starknet.js.
       </p>
       <DocCodeBlock>{`// Get order details directly from the contract
 const order = await client.marketplace.getOrderDetails("0x04f7a1...")
@@ -118,20 +118,20 @@ const counter = await client.marketplace.getCounter("0x0591...")`}</DocCodeBlock
       {/* API client */}
       <DocH2 id="api-client" border>API Client (REST)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> mirrors the full REST API surface.
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> mirrors the full REST API surface.
       </p>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">List open orders</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">List open orders</h3>
       <DocCodeBlock>{`const orders = await client.api.getOrders({ status: "ACTIVE", limit: 20 })
 
 console.log(orders.data[0].orderHash, orders.data[0].price)`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Get a token with metadata</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Get a token with metadata</h3>
       <DocCodeBlock>{`const token = await client.api.getToken("0x05e7...", "42")
 
 console.log(token.data.metadata?.name)`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Get collections by owner</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Get collections by owner</h3>
       <DocCodeBlock>{`// Fetch collections owned by a wallet address
 // Addresses are normalized automatically — pass any valid Starknet format
 const result = await client.api.getCollectionsByOwner("0x0591...")
@@ -139,7 +139,7 @@ result.data.forEach((col) => {
   console.log(col.name, col.collectionId) // collectionId = on-chain registry ID
 })`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Create a listing intent</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Create a listing intent</h3>
       <DocCodeBlock>{`import { toSignatureArray } from "@medialane/sdk"
 
 // 1. Create the intent — get typed data back
@@ -165,12 +165,12 @@ await client.api.submitIntentSignature(intent.data.id, toSignatureArray(signatur
 // create-collection are false — their .calls are returned ready to execute,
 // with no signing step (the caller is the fulfiller).`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Search</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Search</h3>
       <DocCodeBlock>{`const results = await client.api.search("genesis", 10)
 results.data.tokens.forEach((t) => console.log(t.metadata?.name))
 results.data.collections.forEach((c) => console.log(c.name))`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Portal: manage keys</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Portal: manage keys</h3>
       <DocCodeBlock>{`// List your API keys
 const keys = await client.api.getApiKeys()
 
@@ -181,9 +181,9 @@ console.log(newKey.data.key) // shown once — save it!
 // Get usage
 const usage = await client.api.getUsage()`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Accounts</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Accounts</h3>
       <p className="text-muted-foreground text-base mb-3">
-        One Account model across the whole platform. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">registerUser</code> uses a tenant key (web3 wallet connect); the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">*MyWallet</code> pair uses a SIWS token (Sign In With Starknet), the same mechanism every app relies on instead of a third-party identity provider.
+        One Account model across the whole platform. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">registerUser</code> uses a tenant key (web3 wallet connect); the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">*MyWallet</code> pair uses a SIWS token (Sign In With Starknet), the same mechanism every app relies on instead of a third-party identity provider.
       </p>
       <DocCodeBlock>{`// Tenant-key registration (e.g. wallet connect) — idempotent
 await client.api.registerUser({
@@ -198,7 +198,7 @@ await client.api.upsertMyWallet(siwsToken, { walletType: "mediawallet", appSourc
 // Read the caller's stored wallet (null until onboarded)
 const me = await client.api.getMyWallet(siwsToken)`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Creator &amp; collection profiles</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Creator &amp; collection profiles</h3>
       <DocCodeBlock>{`// Public reads
 const creators = await client.api.getCreators({ page: 1, limit: 24 })
 const creator  = await client.api.getCreatorByUsername("kalamaha")
@@ -213,7 +213,7 @@ await client.api.updateCollectionProfile("0x076c...", { displayName: "Genesis" }
 await client.api.claimCollection("0x076c...", "0x0591...", siwsToken)
 await client.api.requestCollectionClaim({ contractAddress: "0x076c...", email: "me@x.com" })`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Vanity slugs</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Vanity slugs</h3>
       <DocCodeBlock>{`// Resolve an approved slug to a full collection
 const col = await client.api.getCollectionBySlug("genesis")
 
@@ -309,7 +309,7 @@ const outgoing = await client.api.getRemixOffers({ role: "requester" }, siwsToke
 const remixes = await client.api.getTokenRemixes("0x05e7...", "42")
 remixes.data.forEach((r) => console.log(r.remixContract, r.remixTokenId, r.licenseType))`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">CollectionSort: typed sort options</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">CollectionSort: typed sort options</h3>
       <DocCodeBlock>{`import type { CollectionSort } from "@medialane/sdk"
 
 // "recent" | "supply" | "floor" | "volume" | "name"
@@ -319,10 +319,10 @@ await client.api.getCollections(1, 20, true, sort)`}</DocCodeBlock>
       {/* POP Protocol */}
       <DocH2 id="pop-protocol" border>POP Protocol (Proof of Participation)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        POP collections are event-based claim drops: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.pop</code> for on-chain interactions and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> for eligibility checks.
+        POP collections are event-based claim drops: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. Use <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.pop</code> for on-chain interactions and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> for eligibility checks.
       </p>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Check eligibility and claim</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Check eligibility and claim</h3>
       <DocCodeBlock>{`// Check if a wallet is eligible to claim from a POP collection
 const status = await client.api.getPopEligibility(
   "0x00b32c...",   // POP collection address
@@ -336,7 +336,7 @@ if (status.isEligible && !status.hasClaimed) {
   console.log("Claimed:", txHash)
 }`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Batch eligibility check</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Batch eligibility check</h3>
       <DocCodeBlock>{`// Check up to 100 wallets in one request
 const results = await client.api.getPopEligibilityBatch(
   "0x00b32c...",          // POP collection address
@@ -345,12 +345,12 @@ const results = await client.api.getPopEligibilityBatch(
 // results: Array<{ wallet, isEligible, hasClaimed, tokenId }>
 results.forEach((r) => console.log(r.wallet, r.isEligible))`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">List POP collections</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">List POP collections</h3>
       <DocCodeBlock>{`// Fetch all POP Protocol collections
 const pops = await client.api.getPopCollections({ page: 1, limit: 20, sort: "recent" })
 pops.data.forEach((col) => console.log(col.name, col.source)) // source: "POP_PROTOCOL"`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Admin: mint and allowlist</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Admin: mint and allowlist</h3>
       <DocCodeBlock>{`// Gift a token to a specific wallet (bypass eligibility check)
 await client.services.pop.adminMint(account, {
   collection: "0x00b32c...",
@@ -370,7 +370,7 @@ await client.services.pop.batchAddToAllowlist(account, {
   addresses: ["0x0591...", "0x06a3...", /* ... */],
 })`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Deploy a new POP collection</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Deploy a new POP collection</h3>
       <DocCodeBlock>{`import type { CreatePopCollectionParams } from "@medialane/sdk"
 
 const params: CreatePopCollectionParams = {
@@ -386,10 +386,10 @@ console.log("Deployed:", txHash)`}</DocCodeBlock>
       {/* Collection Drop */}
       <DocH2 id="collection-drop" border>Collection Drop</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        Collection Drops are public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. Use <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.drop</code> for on-chain interactions and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.api</code> for status queries.
+        Collection Drops are public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. Use <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.drop</code> for on-chain interactions and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> for status queries.
       </p>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Claim (public mint)</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Claim (public mint)</h3>
       <DocCodeBlock>{`// Check mint status for a wallet before claiming
 const status = await client.api.getDropMintStatus(
   "0x03587f...",   // Drop collection address
@@ -403,11 +403,11 @@ const { txHash } = await client.services.drop.claim(account, "0x03587f...")
 // Claim multiple tokens
 await client.services.drop.claim(account, "0x03587f...", 3)`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">List Drop collections</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">List Drop collections</h3>
       <DocCodeBlock>{`const drops = await client.api.getDropCollections({ page: 1, limit: 20, sort: "recent" })
 drops.data.forEach((col) => console.log(col.name, col.source)) // source: "COLLECTION_DROP"`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Deploy a new Drop</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Deploy a new Drop</h3>
       <DocCodeBlock>{`import type { CreateDropParams, ClaimConditions } from "@medialane/sdk"
 
 const conditions: ClaimConditions = {
@@ -428,7 +428,7 @@ const params: CreateDropParams = {
 const { txHash } = await client.services.drop.createDrop(account, params)
 console.log("Drop deployed:", txHash)`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-3">Manage an active Drop</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Manage an active Drop</h3>
       <DocCodeBlock>{`// Update claim conditions (price, time window, wallet limits)
 await client.services.drop.setClaimConditions(account, {
   collection: "0x03587f...",
@@ -451,7 +451,7 @@ await client.services.drop.withdrawPayments(account, { collection: "0x03587f..."
       {/* ERC-1155 marketplace */}
       <DocH2 id="marketplace-1155" border>ERC-1155 Marketplace (on-chain)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.marketplace1155</code> handles multi-edition orders against the redesigned Medialane1155 venue. SNIP-12 domain version <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">3</code>: listings carry an edition quantity; listing/offer and cancellation are signed, while fulfillment is an unsigned call by the buyer. All write methods take a starknet.js <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">AccountInterface</code>.
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.marketplace1155</code> handles multi-edition orders against the redesigned Medialane1155 venue. SNIP-12 domain version <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">3</code>: listings carry an edition quantity; listing/offer and cancellation are signed, while fulfillment is an unsigned call by the buyer. All write methods take a starknet.js <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">AccountInterface</code>.
       </p>
       <DocCodeBlock>{`// List N editions for sale (auto-grants set_approval_for_all if needed)
 await client.marketplace1155.createListing(account, {
@@ -473,7 +473,7 @@ const typedData = client.marketplace1155.buildListingTypedData(params, chainId)`
       {/* ERC-1155 collection service */}
       <DocH2 id="erc1155-collection" border>ERC-1155 Collections (on-chain)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.erc1155Collection</code> deploys and manages multi-edition IP collections with ERC-2981 royalties.
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.erc1155Collection</code> deploys and manages multi-edition IP collections with ERC-2981 royalties.
       </p>
       <DocCodeBlock>{`// Deploy a new ERC-1155 collection via the factory
 await client.services.erc1155Collection.deployCollection(account, {
@@ -499,7 +499,7 @@ await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "
       <p className="text-muted-foreground text-base mb-3">
         Fixed-supply standard ERC-20s with permanently-locked Ekubo liquidity (audited unruggable.meme fork).
         The creator sets both the launch price and the quote token (STRK, ETH, WBTC, USDC, or USDT); supply
-        and price together set the market cap. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.creatorCoin</code> executes
+        and price together set the market cap. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.creatorCoin</code> executes
         with a starknet.js account; the account-free <strong>call builders</strong> (0.35+) return raw calls for custom
         execution pipelines (paymasters, session keys, batchers). The <strong>coin-launch math module</strong> (0.36)
         is the single source for validation and allocation math.
@@ -537,18 +537,18 @@ const launchCalls = buildLaunchOnEkuboCalls({
 await client.services.creatorCoin.createCreatorCoin(account, { owner, name, symbol, initialSupply: supplyRaw })
 await client.services.creatorCoin.launchOnEkubo(account, { creatorCoin, quoteToken, ekubo, initialHolders: [], initialHoldersAmounts: [] })`}</DocCodeBlock>
       <p className="text-muted-foreground text-base mb-3">
-        Index a fresh launch instantly with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">POST /v1/coins/sync</code>; the
-        factory event poller is the backstop. Coins index as collections (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code>);
-        filter lists with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/collections?standard=ERC20</code>. A coin&apos;s image and
+        Index a fresh launch instantly with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">POST /v1/coins/sync</code>; the
+        factory event poller is the backstop. Coins index as collections (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code>);
+        filter lists with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/collections?standard=ERC20</code>. A coin&apos;s image and
         description live on its collection profile (platform layer) and ride along on list responses. Live
-        prices come from one place, <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/coins/prices</code>, backed by AVNU.
+        prices come from one place, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/coins/prices</code>, backed by AVNU.
         Per-coin on-chain price reads were removed in favor of this single source.
       </p>
 
       {/* Platform fee */}
       <DocH2 id="platform-fee" border>Platform Fee</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer, distinct from any on-chain protocol rule. <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or unconfigured, treating a missing config as a zero fee.
+        The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer, distinct from any on-chain protocol rule. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or unconfigured, treating a missing config as a zero fee.
       </p>
       <DocCodeBlock>{`import { buildFeeCall, resolveFeeConfig } from "@medialane/sdk"
 
@@ -571,7 +571,7 @@ await account.execute(calls)`}</DocCodeBlock>
       {/* Error Handling */}
       <DocH2 id="errors" border>Error Handling</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        The SDK throws <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneError</code> for marketplace issues and <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneApiError</code> for REST API failures. Both carry a typed <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">.code</code> field from the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneErrorCode</code> union.
+        The SDK throws <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneError</code> for marketplace issues and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneApiError</code> for REST API failures. Both carry a typed <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">.code</code> field from the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneErrorCode</code> union.
       </p>
       <DocCodeBlock>{`import { MedialaneError, MedialaneApiError } from "@medialane/sdk"
 
@@ -588,7 +588,7 @@ try {
 
       <DocH2 id="error-codes" border>Error Codes</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        All errors expose a <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">MedialaneErrorCode</code> typed union:
+        All errors expose a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneErrorCode</code> typed union:
       </p>
       <DocCodeBlock>{`type MedialaneErrorCode =
   | "TOKEN_NOT_FOUND"
@@ -604,9 +604,9 @@ try {
   | "UNAUTHORIZED"
   | "UNKNOWN"`}</DocCodeBlock>
 
-      <div className="mt-4 rounded-lg border border-white/10 overflow-hidden">
+      <div className="mt-4 rounded-lg border border-foreground/10 overflow-hidden">
         <div className="grid grid-cols-[auto_1fr] text-xs">
-          <div className="grid grid-cols-subgrid col-span-2 bg-white/5 border-b border-white/10 px-4 py-2 font-semibold text-white">
+          <div className="grid grid-cols-subgrid col-span-2 bg-foreground/5 border-b border-foreground/10 px-4 py-2 font-semibold text-foreground">
             <span>Code</span>
             <span>Trigger</span>
           </div>
@@ -624,7 +624,7 @@ try {
             ["UNAUTHORIZED", "401/403: missing or invalid API key"],
             ["UNKNOWN", "Unexpected errors"],
           ].map(([code, trigger], i, arr) => (
-            <div key={code} className={`grid grid-cols-subgrid col-span-2 px-4 py-2.5 items-start ${i < arr.length - 1 ? "border-b border-white/5" : ""}`}>
+            <div key={code} className={`grid grid-cols-subgrid col-span-2 px-4 py-2.5 items-start ${i < arr.length - 1 ? "border-b border-foreground/5" : ""}`}>
               <code className="font-mono text-primary whitespace-nowrap mr-6">{code}</code>
               <span className="text-muted-foreground">{trigger}</span>
             </div>
@@ -633,12 +633,12 @@ try {
       </div>
 
       <p className="text-base text-muted-foreground mt-3">
-        Note: 4xx errors are <span className="text-white font-medium">not retried</span> automatically. Only transient network and 5xx errors trigger the retry logic configured via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">retryOptions</code>.
+        Note: 4xx errors are <span className="text-foreground font-medium">not retried</span> automatically. Only transient network and 5xx errors trigger the retry logic configured via <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">retryOptions</code>.
       </p>
 
       <div className="mt-10 p-5 rounded-xl border border-primary/20 bg-primary/5">
         <p className="text-base text-muted-foreground">
-          <span className="font-semibold text-white">Full API reference</span>: all REST endpoints, parameters, and response schemas are documented in the{" "}
+          <span className="font-semibold text-foreground">Full API reference</span>: all REST endpoints, parameters, and response schemas are documented in the{" "}
           <Link href="/dev/api" className="text-primary hover:underline">API Reference</Link>.
         </p>
       </div>
@@ -694,7 +694,7 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
       <div className="grid md:grid-cols-2 gap-4">
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-5 space-y-2">
           <p className="text-base font-mono text-muted-foreground">medialane.io</p>
-          <p className="text-base font-semibold text-white">Creator Launchpad</p>
+          <p className="text-base font-semibold text-foreground">Creator Launchpad</p>
           <p className="text-base text-muted-foreground leading-relaxed">
             Collections, Orders, Minting, Remix Licensing, POP, Collection Drop, On-chain Comments.
             Frictionless, fully gas-sponsored self-custody wallet UX.
@@ -702,15 +702,15 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
         </div>
         <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5 space-y-2">
           <p className="text-base font-mono text-muted-foreground">starknet.medialane.io</p>
-          <p className="text-base font-semibold text-white">Permissionless dApp</p>
+          <p className="text-base font-semibold text-foreground">Permissionless dApp</p>
           <p className="text-base text-muted-foreground leading-relaxed">
             Activities, Trade Intents, Asset Metadata. Reads directly via starknet.js, with no backend dependency for browsing.
           </p>
         </div>
       </div>
 
-      <div className="mt-6 pt-6 border-t border-white/10 space-y-2">
-        <p className="text-base font-semibold text-white">Full SDK documentation</p>
+      <div className="mt-6 pt-6 border-t border-foreground/10 space-y-2">
+        <p className="text-base font-semibold text-foreground">Full SDK documentation</p>
         <p className="text-base text-muted-foreground">
           Complete method reference, type definitions, and advanced usage are on{" "}
           <a href="https://docs.medialane.io/dev/sdk" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">

@@ -44,10 +44,10 @@ function Endpoint({
   response: string
 }) {
   return (
-    <div className="mb-10 rounded-xl border border-white/10 bg-white/[0.02] overflow-hidden">
-      <div className="px-5 py-4 border-b border-white/10 flex items-center gap-3">
+    <div className="mb-10 rounded-xl border border-foreground/10 bg-foreground/[0.02] overflow-hidden">
+      <div className="px-5 py-4 border-b border-foreground/10 flex items-center gap-3">
         <MethodBadge method={method} />
-        <code className="font-mono text-sm text-white">{path}</code>
+        <code className="font-mono text-sm text-foreground">{path}</code>
       </div>
       <div className="px-5 py-4 space-y-4">
         <p className="text-base text-muted-foreground">{description}</p>
@@ -55,9 +55,9 @@ function Endpoint({
         {params && params.length > 0 && (
           <div>
             <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground mb-2">Parameters</p>
-            <div className="rounded-lg border border-white/10 overflow-hidden">
+            <div className="rounded-lg border border-foreground/10 overflow-hidden">
               {params.map((p, i) => (
-                <div key={p.name} className={`grid grid-cols-[auto_auto_1fr] gap-3 px-4 py-2.5 text-xs items-start ${i < params.length - 1 ? "border-b border-white/5" : ""}`}>
+                <div key={p.name} className={`grid grid-cols-[auto_auto_1fr] gap-3 px-4 py-2.5 text-xs items-start ${i < params.length - 1 ? "border-b border-foreground/5" : ""}`}>
                   <code className="font-mono text-primary whitespace-nowrap">{p.name}</code>
                   <span className={`font-mono text-muted-foreground whitespace-nowrap ${p.required ? "text-red-400" : ""}`}>
                     {p.type}{p.required ? " *" : ""}
@@ -72,14 +72,14 @@ function Endpoint({
 
         <div>
           <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground mb-2">cURL</p>
-          <div className="rounded-lg bg-black/50 border border-white/10">
+          <div className="rounded-lg bg-black/50 border border-foreground/10">
             <pre className="p-4 text-xs font-mono text-green-300/90 overflow-x-auto whitespace-pre">{curl}</pre>
           </div>
         </div>
 
         <div>
           <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground mb-2">Response</p>
-          <div className="rounded-lg bg-black/50 border border-white/10">
+          <div className="rounded-lg bg-black/50 border border-foreground/10">
             <pre className="p-4 text-xs font-mono text-cyan-300/90 overflow-x-auto whitespace-pre">{response}</pre>
           </div>
         </div>
@@ -108,15 +108,15 @@ export default function ApiReferencePage() {
       <Badge className="bg-primary/10 text-primary border-primary/30 px-3 py-1 text-xs">
         API Reference
       </Badge>
-      <h1 className="text-4xl font-extrabold text-white">API Reference</h1>
+      <h2 className="text-2xl font-bold">API Reference</h2>
       <p className="text-muted-foreground text-lg mb-8">
-        Full endpoint reference for the Medialane REST API. Base URL: <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">{BASE}</code>. All endpoints are versioned under <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">/v1/</code>.
+        Full endpoint reference for the Medialane REST API. Base URL: <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">{BASE}</code>. All endpoints are versioned under <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">/v1/</code>.
       </p>
 
       {/* ── AUTHENTICATION ── */}
       <DocH2 id="authentication" border>Authentication</DocH2>
       <p className="text-muted-foreground mb-3">
-        Every request carries an API key in the <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">x-api-key</code> header. Keys are self-service from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a>, for people and agents alike.
+        Every request carries an API key in the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-api-key</code> header. Keys are self-service from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a>, for people and agents alike.
       </p>
       <DocCodeBlock lang="bash">{`curl "${BASE}/v1/orders" \\
   -H "x-api-key: ${KEY}"
@@ -124,12 +124,12 @@ export default function ApiReferencePage() {
 # Bearer token also accepted:
 # -H "Authorization: Bearer ${KEY}"`}</DocCodeBlock>
       <p className="text-muted-foreground text-base">
-        Keys are prefixed <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret, and treat them like passwords.
+        Keys are prefixed <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret, and treat them like passwords.
       </p>
 
       {/* ── RESPONSE FORMAT ── */}
       <DocH2 id="response-format" border>Response Format</DocH2>
-      <p className="text-muted-foreground mb-3">All responses are JSON. List responses wrap rows in a <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">data</code> array with pagination in <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">meta</code>.</p>
+      <p className="text-muted-foreground mb-3">All responses are JSON. List responses wrap rows in a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">data</code> array with pagination in <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">meta</code>.</p>
       <DocH3>Success</DocH3>
       <DocCodeBlock>{`{
   "data": [...],
@@ -143,16 +143,16 @@ export default function ApiReferencePage() {
 
       {/* ── ERROR CODES ── */}
       <DocH2 id="error-codes" border>Error Codes</DocH2>
-      <div className="rounded-xl border border-white/10 overflow-hidden mb-2">
-        <div className="grid grid-cols-3 px-5 py-3 bg-white/[0.03] border-b border-white/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+      <div className="rounded-xl border border-foreground/10 overflow-hidden mb-2">
+        <div className="grid grid-cols-3 px-5 py-3 bg-foreground/[0.03] border-b border-foreground/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
           <span>Code</span>
           <span>Name</span>
           <span>Description</span>
         </div>
         {ERROR_CODES.map((row, i) => (
-          <div key={row.code} className={`grid grid-cols-3 px-5 py-3 items-center text-sm ${i < ERROR_CODES.length - 1 ? "border-b border-white/5" : ""}`}>
+          <div key={row.code} className={`grid grid-cols-3 px-5 py-3 items-center text-sm ${i < ERROR_CODES.length - 1 ? "border-b border-foreground/5" : ""}`}>
             <span className="font-mono font-semibold text-red-400">{row.code}</span>
-            <span className="text-white">{row.name}</span>
+            <span className="text-foreground">{row.name}</span>
             <span className="text-muted-foreground">{row.desc}</span>
           </div>
         ))}
@@ -161,11 +161,11 @@ export default function ApiReferencePage() {
       {/* ── CREDITS ── */}
       <DocH2 id="credits" border>Credits &amp; Billing</DocH2>
       <p className="text-muted-foreground mb-3 text-base">
-        Credits are the billing unit: 1 credit = $0.01. Fund your balance with USDC on Starknet from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> or the <a href="/dev/agents" className="text-primary hover:underline">x402 flow</a>; credits appear within ~2 minutes and never expire. This table is live, pulled from the same endpoint every call is priced against (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/pricing</code>), never a hand-maintained copy:
+        Credits are the billing unit: 1 credit = $0.01. Fund your balance with USDC on Starknet from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> or the <a href="/dev/agents" className="text-primary hover:underline">x402 flow</a>; credits appear within ~2 minutes and never expire. This table is live, pulled from the same endpoint every call is priced against (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/pricing</code>), never a hand-maintained copy:
       </p>
       <PricingTable />
       <p className="text-muted-foreground text-base">
-        When credits run out you receive <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">402 Payment Required</code> with an <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">X-Credits-Remaining: 0</code> header. An autonomous agent can detect the 402 and top up on its own; see <a href="/dev/agents" className="text-primary hover:underline">AI Agents</a>.
+        When credits run out you receive <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402 Payment Required</code> with an <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">X-Credits-Remaining: 0</code> header. An autonomous agent can detect the 402 and top up on its own; see <a href="/dev/agents" className="text-primary hover:underline">AI Agents</a>.
       </p>
 
       {/* ── HEALTH ── */}
@@ -329,11 +329,11 @@ export default function ApiReferencePage() {
       <DocH2 id="coins" border>Creator Coins</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         Fungible coins are their own resource (since the 2026-06-14 split), distinct from collections.
-        A coin has service <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">creator-coin</code> (or
-        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">external-erc20</code> for claimed coins) and
-        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code>. List them with
-        <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">GET /v1/coins</code>. A coin&apos;s image and
-        description live on the coin (platform layer) and are editable by its creator via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">PATCH /v1/coins/:contract</code>.
+        A coin has service <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">creator-coin</code> (or
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">external-erc20</code> for claimed coins) and
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code>. List them with
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/coins</code>. A coin&apos;s image and
+        description live on the coin (platform layer) and are editable by its creator via <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">PATCH /v1/coins/:contract</code>.
       </p>
 
       <Endpoint
@@ -1066,7 +1066,7 @@ export default function ApiReferencePage() {
       {/* ── EVENTS (SSE) ── */}
       <DocH2 id="events" border>Events (SSE)</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Subscribe to a real-time Server-Sent Events stream for transfers, order lifecycle events, and keepalive pings. Authentication uses a query parameter since browsers cannot send custom headers with the native <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">EventSource</code> API. PREMIUM plan recommended for sustained connections.
+        Subscribe to a real-time Server-Sent Events stream for transfers, order lifecycle events, and keepalive pings. Authentication uses a query parameter since browsers cannot send custom headers with the native <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">EventSource</code> API. PREMIUM plan recommended for sustained connections.
       </p>
 
       <Endpoint
@@ -1112,7 +1112,7 @@ data: {}`}
 
       <div className="mb-10 space-y-4">
         <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground">Browser (native EventSource)</p>
-        <div className="rounded-lg bg-black/50 border border-white/10">
+        <div className="rounded-lg bg-black/50 border border-foreground/10">
           <pre className="p-4 text-xs font-mono text-green-300/90 overflow-x-auto whitespace-pre">{`const url = \`${BASE}/v1/events?apiKey=\${YOUR_KEY}\`
 const source = new EventSource(url)
 
@@ -1141,7 +1141,7 @@ source.addEventListener("error", () => {
         </div>
 
         <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground mt-4">Node.js (eventsource npm package)</p>
-        <div className="rounded-lg bg-black/50 border border-white/10">
+        <div className="rounded-lg bg-black/50 border border-foreground/10">
           <pre className="p-4 text-xs font-mono text-green-300/90 overflow-x-auto whitespace-pre">{`import EventSource from "eventsource"
 
 const url = \`${BASE}/v1/events?apiKey=\${YOUR_KEY}\`
@@ -1592,7 +1592,7 @@ const resumeSource = new EventSource(url, {
       {/* ── COUNTER-OFFERS ── */}
       <DocH2 id="counter-offers" border>Counter-offers</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Sellers can respond to buyer bids with a counter-offer: a new on-chain listing linked to the original bid via <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">parentOrderHash</code>. The original bid&apos;s status is unaffected; instead its <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">hasActiveCounterOffer</code> flag is set to <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">true</code> (the legacy <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">COUNTER_OFFERED</code> order status was removed). The buyer can then accept (fulfill the counter listing) or ignore it.
+        Sellers can respond to buyer bids with a counter-offer: a new on-chain listing linked to the original bid via <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">parentOrderHash</code>. The original bid&apos;s status is unaffected; instead its <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">hasActiveCounterOffer</code> flag is set to <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">true</code> (the legacy <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">COUNTER_OFFERED</code> order status was removed). The buyer can then accept (fulfill the counter listing) or ignore it.
       </p>
 
       <Endpoint
@@ -1833,7 +1833,7 @@ const resumeSource = new EventSource(url, {
       {/* ── POP PROTOCOL ── */}
       <DocH2 id="pop-protocol" border>POP Protocol</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Proof of Participation claim collections for events: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. On-chain minting is handled via the SDK <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.pop</code>.
+        Proof of Participation claim collections for events: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. On-chain minting is handled via the SDK <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.pop</code>.
       </p>
 
       <Endpoint
@@ -1876,7 +1876,7 @@ const resumeSource = new EventSource(url, {
       {/* ── COLLECTION DROP ── */}
       <DocH2 id="collection-drop" border>Collection Drop</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. On-chain minting and configuration are handled via the SDK <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">client.services.drop</code>.
+        Public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. On-chain minting and configuration are handled via the SDK <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.drop</code>.
       </p>
 
       <Endpoint
@@ -1923,7 +1923,7 @@ const resumeSource = new EventSource(url, {
       {/* ── SPONSORSHIP ── */}
       <DocH2 id="sponsorship" border>IP Sponsorship</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Direct-settlement sponsorship deals: an asset owner posts an <strong>offer</strong> (open bidding or one invited sponsor) or a sponsor sends a fixed-terms <strong>proposal</strong> on any asset. Acceptance settles payment and mints a <strong>license</strong> (a real, transferable ERC-721) to the sponsor, atomically, in one transaction. The contract never holds funds; there is no escrow. Every write below is an unsigned intent (<code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">requiresSignature: false</code>); see <a href="#intents" className="text-primary hover:underline">Intents</a> for the general shape.
+        Direct-settlement sponsorship deals: an asset owner posts an <strong>offer</strong> (open bidding or one invited sponsor) or a sponsor sends a fixed-terms <strong>proposal</strong> on any asset. Acceptance settles payment and mints a <strong>license</strong> (a real, transferable ERC-721) to the sponsor, atomically, in one transaction. The contract never holds funds; there is no escrow. Every write below is an unsigned intent (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">requiresSignature: false</code>); see <a href="#intents" className="text-primary hover:underline">Intents</a> for the general shape.
       </p>
 
       <Endpoint
@@ -2624,7 +2624,7 @@ const resumeSource = new EventSource(url, {
       {/* ── TECHNICAL DETAILS ── */}
       <DocH2 id="technical" border>Technical Details</DocH2>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-2">SNIP-12 Domain</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">SNIP-12 Domain</h3>
       <p className="text-base text-muted-foreground mb-4">
         Medialane uses SNIP-12 for off-chain message signing. If you are building your own signer, use the following domain:
       </p>
@@ -2634,9 +2634,9 @@ const resumeSource = new EventSource(url, {
   "revision": "1"
 }`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-white mt-6 mb-2">Address Normalization</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Address Normalization</h3>
       <p className="text-base text-muted-foreground mb-4">
-        The API normalizes all addresses server-side to 64-character lowercase hex strings (prefixed with <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">0x</code>). You can pass any valid Starknet address format (short, long, or mixed-case) and the API will handle normalization automatically. The <code className="font-mono text-xs bg-white/10 px-1.5 py-0.5 rounded">@medialane/sdk</code> also normalizes addresses before every API call.
+        The API normalizes all addresses server-side to 64-character lowercase hex strings (prefixed with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">0x</code>). You can pass any valid Starknet address format (short, long, or mixed-case) and the API will handle normalization automatically. The <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">@medialane/sdk</code> also normalizes addresses before every API call.
       </p>
     </div>
   )

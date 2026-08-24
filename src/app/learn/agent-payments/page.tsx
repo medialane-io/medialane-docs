@@ -96,7 +96,7 @@ export default function LearnAgentPaymentsPage() {
       <Section title="Who it's for">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose">
           {WHO.map(({ icon: Icon, title, desc, color, bg, border }) => (
-            <div key={title} className={`rounded-xl border ${border} bg-white/[0.02] p-5 space-y-3`}>
+            <div key={title} className={`rounded-xl border ${border} bg-foreground/[0.02] p-5 space-y-3`}>
               <div className={`h-10 w-10 rounded-xl ${bg} flex items-center justify-center`}>
                 <Icon className={`h-4.5 w-4.5 ${color}`} />
               </div>
@@ -110,7 +110,7 @@ export default function LearnAgentPaymentsPage() {
       <Section title="How it works">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 not-prose">
           {STEPS.map(({ n, title, desc }) => (
-            <div key={n} className="rounded-xl border border-white/10 bg-white/[0.02] p-5 space-y-2">
+            <div key={n} className="rounded-xl border border-foreground/10 bg-foreground/[0.02] p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <span className="h-6 w-6 rounded-lg bg-primary/10 text-primary text-xs font-black flex items-center justify-center shrink-0">{n}</span>
                 <p className="font-bold text-base text-foreground">{title}</p>
