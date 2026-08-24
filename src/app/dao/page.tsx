@@ -47,7 +47,7 @@ const PILLARS = [
 
 export default function DAOPage() {
   return (
-    <div className="space-y-12 max-w-4xl lg:max-w-5xl">
+    <div className="space-y-12 max-w-4xl lg:max-w-none">
 
       {/* Intro */}
       <div className="space-y-4">

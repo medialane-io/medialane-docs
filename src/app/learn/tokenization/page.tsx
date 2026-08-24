@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function TokenizationPage() {
   return (
-    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-none">
 
       <div className="space-y-3">
         <span className="pill-badge">Concepts</span>

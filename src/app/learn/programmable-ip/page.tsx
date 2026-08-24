@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ProgrammableIPPage() {
   return (
-    <div className="space-y-10 max-w-3xl lg:max-w-4xl">
+    <div className="space-y-10 max-w-3xl lg:max-w-none">
 
       <div className="space-y-3">
         <h2 className="text-2xl font-semibold">Programmable IP</h2>
