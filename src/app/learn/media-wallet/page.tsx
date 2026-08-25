@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Fingerprint, KeyRound, Lock, Wallet, Smartphone, Shield } from "lucide-react";
+import { Fingerprint, KeyRound, Lock, Wallet, Smartphone, Shield, UserCheck } from "lucide-react";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
@@ -95,6 +95,33 @@ export default function LearnMediaWalletPage() {
             before the account is ever deployed on-chain. The first signed transaction
             deploys it.
           </p>
+        </Section>
+
+        <Section title="Recovery">
+          <p>
+            Every Media Wallet supports an optional guardian: a second Stark-curve key,
+            typically another device&apos;s Media Wallet, that you register from{" "}
+            Settings → Account → Security &amp; Recovery. Once set, the guardian
+            co-signs every transaction alongside your owner key, not just recovery
+            actions, since that is what makes it a real safeguard against a stolen or
+            phished device rather than a passive fallback.
+          </p>
+          <div className="bento-cell border border-brand-orange/20 bg-brand-orange/5 p-5 space-y-3">
+            <div className="flex items-center gap-2">
+              <UserCheck className="h-5 w-5 text-brand-orange" />
+              <p className="font-bold text-foreground">If you lose the device</p>
+            </div>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              From any device, generate a new owner key and share it with your guardian.
+              Your guardian starts the recovery from their own device at{" "}
+              <a href="https://medialane.io/recover" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                medialane.io/recover
+              </a>
+              , and completes it once the wallet&apos;s security delay (seven days by
+              default) has passed. Without a guardian registered in advance, a lost
+              device&apos;s wallet cannot be recovered.
+            </p>
+          </div>
         </Section>
 
         <Section title="Where You Meet It Today">
