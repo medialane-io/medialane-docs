@@ -40,6 +40,7 @@ export default function LearnRewardsPage() {
         <p className="text-muted-foreground text-lg leading-relaxed">
           Every real interaction with Medialane earns XP. Your total XP sets your level, unlocks
           badges, and decides your share of the Creator&apos;s Fund each time it distributes.
+          Scores and badges are recalculated weekly.
         </p>
       </div>
 
