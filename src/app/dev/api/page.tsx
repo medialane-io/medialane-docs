@@ -1010,7 +1010,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/paymaster/invoke/build"
-        description="Build a gas-sponsored invoke. Returns typed data for the account to sign. The account must already be deployed; a call for an undeployed account returns 422."
+        description="Build a gas-sponsored invoke. Returns typed data for the account to sign. The account must already be deployed; a call for an undeployed account returns 422. Both the entrypoint and the target contract must be eligible for sponsorship (a fixed registry contract, or — for per-creator entrypoints like mint — a contract the indexer knows was deployed by a Medialane factory); an ineligible call returns 400."
         params={[
           { name: "userAddress", type: "string", required: true, desc: "Account that will sign and execute" },
           { name: "calls", type: "Call[]", required: true, desc: "One or more calls to execute in a single sponsored transaction" },
@@ -1027,16 +1027,57 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/paymaster/invoke/execute"
-        description="Execute a gas-sponsored invoke using the signature over the typed data returned by the build call."
+        description="Execute a gas-sponsored invoke using the signature over the typed data returned by the build call. calls must be byte-for-byte the same array passed to build — the typed data is checked to encode exactly those calls before anything is submitted."
         params={[
           { name: "userAddress", type: "string", required: true, desc: "Account that signed" },
           { name: "typedData", type: "object", required: true, desc: "Typed data returned by the build call" },
           { name: "signature", type: "string[]", required: true, desc: "Signature over the typed data" },
+          { name: "calls", type: "Call[]", required: true, desc: "The same calls array passed to the build call" },
         ]}
         curl={`curl -X POST "${BASE}/v1/paymaster/invoke/execute" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{"userAddress":"0x0482...","typedData":{},"signature":["0x1","0x2"]}'`}
+  -d '{"userAddress":"0x0482...","typedData":{},"signature":["0x1","0x2"],"calls":[{"contractAddress":"0x0471...","entrypoint":"transfer","calldata":["0x0482...","0x1","0x0"]}]}'`}
+        response={`{
+  "transactionHash": "0x06f2..."
+}`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/paymaster/deploy/build"
+        description="Build a gas-sponsored Media Wallet deployment. Returns typed data to sign plus the deployment payload and calls, both of which must be echoed back verbatim to the execute call."
+        params={[
+          { name: "ownerPubkey", type: "string", required: true, desc: "The account's owner public key" },
+          { name: "ownerAddress", type: "string", required: true, desc: "The counterfactual address being deployed to" },
+          { name: "salt", type: "string", desc: "Deployment salt. Defaults to 0x0." },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/paymaster/deploy/build" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"ownerPubkey":"0x02c1...","ownerAddress":"0x0482..."}'`}
+        response={`{
+  "typedData": { "types": { }, "primaryType": "Invoke", "domain": { }, "message": { } },
+  "deployment": { "address": "0x0482...", "class_hash": "0x...", "salt": "0x0", "calldata": ["..."], "version": 1 },
+  "calls": [ { "contractAddress": "0x...", "entrypoint": "transfer", "calldata": ["..."] } ]
+}`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/paymaster/deploy/execute"
+        description="Execute a gas-sponsored Media Wallet deployment. deployment and calls must be exactly what the build call returned — a deployment for any class hash other than Media Wallet's, or one whose address doesn't match ownerAddress, is rejected."
+        params={[
+          { name: "ownerAddress", type: "string", required: true, desc: "The address being deployed" },
+          { name: "typedData", type: "object", required: true, desc: "Typed data returned by the build call" },
+          { name: "signature", type: "string[]", required: true, desc: "Signature over the typed data" },
+          { name: "deployment", type: "object", required: true, desc: "The deployment payload returned by the build call" },
+          { name: "calls", type: "Call[]", required: true, desc: "The same calls array returned by the build call" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/paymaster/deploy/execute" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"ownerAddress":"0x0482...","typedData":{},"signature":["0x1","0x2"],"deployment":{},"calls":[]}'`}
         response={`{
   "transactionHash": "0x06f2..."
 }`}
