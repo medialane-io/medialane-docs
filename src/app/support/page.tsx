@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "What happens if I lose my device or clear my browser data?",
-    a: "Your wallet's signing key lives only in that specific browser; losing the device or clearing its site data means losing access to that wallet today. Cross-device wallet recovery is planned but not available yet, so avoid clearing site data for medialane.io on a device you're actively using.",
+    a: "Your wallet's signing key lives only in that specific browser, so losing the device or clearing its site data means losing access unless you've set up a guardian. Add one from Settings → Account → Security & Recovery before you need it: on a lost device, a wallet you've registered as a guardian for can start recovery from /recover, subject to the wallet's security delay. Without a guardian set up in advance, that access is not recoverable, so avoid clearing site data for medialane.io on a device you're actively using.",
   },
   {
     q: "My NFT minted but doesn't appear in my Portfolio.",
