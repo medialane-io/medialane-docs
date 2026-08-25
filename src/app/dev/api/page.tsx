@@ -2289,7 +2289,7 @@ const resumeSource = new EventSource(url, {
       {/* ── REWARDS ── */}
       <DocH2 id="rewards" border>Rewards</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        The 50-level DAO-managed XP and badge system. Scores are computed off-chain from on-chain activity (mints, sales, comments, remixes). All weights live in DAO-adjustable tables. Reads are public (tenant key); writes are admin-only.
+        The 50-level DAO-managed XP and badge system. Scores are computed off-chain from on-chain activity (mints, sales, comments, remixes). All weights live in DAO-adjustable tables. Reads are public (tenant key); writes are admin-only. Scores and badges are recalculated weekly, not live per request.
       </p>
 
       <Endpoint
