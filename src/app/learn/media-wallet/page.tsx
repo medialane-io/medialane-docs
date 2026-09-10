@@ -63,8 +63,8 @@ export default function LearnMediaWalletPage() {
         <Section title="The Account Contract">
           <p>
             The Media Wallet contract is an audited fork of Argent&apos;s v0.5.0 account,
-            live on Starknet mainnet. Every account it creates has a single Stark-curve
-            owner key, an optional guardian for recovery, support for session keys, and
+            live on Starknet mainnet. Every account it creates accepts one or more owner
+            keys, an optional guardian for recovery, support for session keys, and
             SNIP-9 outside execution, the mechanism that lets a transaction be signed
             without the signer paying gas directly.
           </p>
@@ -99,6 +99,12 @@ export default function LearnMediaWalletPage() {
 
         <Section title="Recovery">
           <p>
+            An account accepts several owner keys, one per device. A new phone or browser
+            generates its own key and is added as an owner by a device that already holds
+            one, so the key itself never moves between them. Either device signs on its
+            own afterwards, and losing one leaves the account reachable from the other.
+          </p>
+          <p>
             Every Media Wallet supports an optional guardian: a second Stark-curve key,
             typically another device&apos;s Media Wallet, that you register from{" "}
             Settings → Account → Security &amp; Recovery. Once set, the guardian
@@ -118,8 +124,8 @@ export default function LearnMediaWalletPage() {
                 medialane.io/recover
               </a>
               , and completes it once the wallet&apos;s security delay (seven days by
-              default) has passed. Without a guardian registered in advance, a lost
-              device&apos;s wallet cannot be recovered.
+              default) has passed. A guardian covers the case where every device is
+              gone, alongside the exported recovery key.
             </p>
           </div>
         </Section>
