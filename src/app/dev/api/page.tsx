@@ -1213,7 +1213,7 @@ const resumeSource = new EventSource(url, {
       {/* ── PORTAL ── */}
       <DocH2 id="portal" border>Portal (Self-service)</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Portal endpoints manage your account: API keys, credit balance, and webhooks (PREMIUM). These calls are simply never metered, with no monthly quota.
+        Portal endpoints manage your account: API keys, credit balance, spend history, and webhooks (PREMIUM). These calls are simply never metered.
       </p>
 
       <Endpoint
@@ -1229,6 +1229,28 @@ const resumeSource = new EventSource(url, {
     "plan": "FREE",
     "status": "ACTIVE",
     "creditBalance": 1200
+  }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/portal/credits/spend"
+        description="See what your credits were spent on: recent actions, totals grouped by action, and what you have been credited against what you have used."
+        params={[]}
+        curl={`curl "${BASE}/v1/portal/credits/spend" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": {
+    "recent": [
+      { "id": "use_abc", "actionKey": "wallet:deploy", "service": "ALL", "units": 12, "credits": 60, "createdAt": "..." }
+    ],
+    "byAction": [
+      { "actionKey": "wallet:deploy", "credits": 60, "units": 12 }
+    ],
+    "credited": 2800,
+    "spent": 1600,
+    "drift": 0
   }
 }`}
       />

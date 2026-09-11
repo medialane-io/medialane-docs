@@ -42,7 +42,7 @@ const UTILITIES = [
   {
     icon: Zap,
     title: "Platform Multiplier",
-    description: "MDLN holders receive a boosted API quota on the developer portal: 1.2× at 500 MDLN, 1.5× at 2,000, and 2× at 5,000. Autonomous AI agents holding MDLN benefit on equal terms.",
+    description: "MDLN holders receive more credits for what they deposit: 1.2× at 100,000 MDLN, 1.5× at 200,000, and 2× at 500,000. Autonomous AI agents holding MDLN benefit on equal terms.",
   },
   {
     icon: TrendingUp,
@@ -59,10 +59,10 @@ const DISTRIBUTION = [
 ];
 
 const PLATFORM_MULTIPLIER_TIERS = [
-  { label: "Free",    mdln: "0 MDLN",    mult: "1×",   quota: "50 req / month" },
-  { label: "Starter", mdln: "500 MDLN",  mult: "1.2×", quota: "60 req / month" },
-  { label: "Builder", mdln: "2,000 MDLN",mult: "1.5×", quota: "75 req / month" },
-  { label: "Pro",     mdln: "5,000 MDLN",mult: "2×",   quota: "100 req / month" },
+  { label: "Base",    mdln: "0 MDLN",       mult: "1×",   rate: "$0.010 / credit" },
+  { label: "Starter", mdln: "100,000 MDLN", mult: "1.2×", rate: "$0.0083 / credit" },
+  { label: "Builder", mdln: "200,000 MDLN", mult: "1.5×", rate: "$0.0067 / credit" },
+  { label: "Pro",     mdln: "500,000 MDLN", mult: "2×",   rate: "$0.0050 / credit" },
 ];
 
 const MEMBERSHIP_TIERS = [
@@ -163,25 +163,25 @@ export default function TokenPage() {
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Developer Portal Multiplier</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
-          MDLN holders automatically receive a boosted API quota when they register their
-          wallet in the{" "}
+          MDLN holders receive more credits for the same deposit. The multiplier applies
+          the moment credits are added in the{" "}
           <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
             developer portal
           </a>. The multiplier applies equally to human developers and autonomous AI agents.
         </p>
         <div className="space-y-2">
-          {PLATFORM_MULTIPLIER_TIERS.map(({ label, mdln, mult, quota }) => (
+          {PLATFORM_MULTIPLIER_TIERS.map(({ label, mdln, mult, rate }) => (
             <div key={label} className="bento-cell px-4 py-3 flex items-center gap-4 flex-wrap text-sm">
               <span className="font-semibold w-16 shrink-0">{label}</span>
               <span className="text-muted-foreground font-mono flex-1">{mdln}</span>
               <span className="font-bold font-mono text-primary">{mult}</span>
-              <span className="text-xs text-muted-foreground w-32 text-right">{quota}</span>
+              <span className="text-xs text-muted-foreground w-32 text-right">{rate}</span>
             </div>
           ))}
         </div>
         <p className="text-base text-muted-foreground">
-          The multiplier is read on-chain at key registration time. Increasing your MDLN
-          balance and re-registering upgrades your tier immediately.
+          Your MDLN balance on Starknet is read on-chain each time credits are added, so a
+          larger balance applies to your next deposit with nothing to lock up or stake.
         </p>
       </div>
 
