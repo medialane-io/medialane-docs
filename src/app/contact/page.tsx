@@ -35,7 +35,6 @@ export default function ContactPage() {
 
   return (
     <PageContainer width="wide" className="pb-16 space-y-12">
-      {/* Header */}
       <div className="space-y-3">
         <h1 className="text-3xl font-bold">Reach Us</h1>
         <p className="text-muted-foreground leading-relaxed max-w-xl">
@@ -46,7 +45,6 @@ export default function ContactPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* Form */}
         <div>
           {step === "success" ? (
             <div className="flex flex-col items-center justify-center py-16 space-y-4 text-center">
@@ -128,7 +126,6 @@ export default function ContactPage() {
           )}
         </div>
 
-        {/* Contact info */}
         <div className="space-y-6 pt-2">
           <div className="space-y-4">
             <h2 className="text-lg font-semibold">Get in touch</h2>

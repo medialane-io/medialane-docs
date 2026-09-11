@@ -86,8 +86,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
-        {/* Google Translate — loaded once, triggered by TranslateButton */}
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateInit" />
         <script
           dangerouslySetInnerHTML={{
@@ -116,7 +114,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         `}</style>
       </head>
       <body className={inter.className}>
-        {/* Hidden anchor for Google Translate widget */}
         <div id="google_translate_element" />
         <Providers>{children}</Providers>
       </body>

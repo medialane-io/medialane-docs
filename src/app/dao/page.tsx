@@ -49,7 +49,6 @@ export default function DAOPage() {
   return (
     <div className="space-y-12">
 
-      {/* Intro */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
           <Building2 className="h-5 w-5 text-primary" />
@@ -65,7 +64,6 @@ export default function DAOPage() {
         </p>
       </div>
 
-      {/* Status */}
       <div className="bento-cell p-6 space-y-4">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -89,7 +87,6 @@ export default function DAOPage() {
         </div>
       </div>
 
-      {/* Three pillars */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Governance &amp; Treasury</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -114,7 +111,6 @@ export default function DAOPage() {
         </div>
       </div>
 
-      {/* Vision */}
       <div className="bento-cell p-6 space-y-4">
         <div className="flex items-center gap-2">
           <Globe className="h-4 w-4 text-primary" />
@@ -131,7 +127,6 @@ export default function DAOPage() {
         </p>
       </div>
 
-      {/* Participation */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
           <Users className="h-4 w-4 text-primary" />

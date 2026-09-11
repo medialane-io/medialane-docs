@@ -11,11 +11,6 @@ import { TranslateButton } from "@/components/translate-button";
 import { Aurora } from "@/components/ui/aurora";
 import { MedialaneLogo } from "@/components/brand/medialane-logo";
 
-/**
- * Trigger button at the top-left that opens the command menu.
- * Identical pattern to medialane-io's NavTrigger so muscle memory carries
- * between docs.medialane.io and medialane.io.
- */
 function NavTrigger() {
   const { open } = useNavCommandMenu();
   return (
@@ -24,19 +19,12 @@ function NavTrigger() {
       className="flex items-center gap-1.5 focus-visible:outline-none group"
       aria-label="Open navigation"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/icon.png" alt="Medialane" className="h-8 w-8 opacity-90 group-hover:opacity-100 transition-opacity" />
       <Menu className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors" />
     </button>
   );
 }
 
-/**
- * App shell — full-width canvas, no sidebar. Navigation lives entirely in
- * the cmdk-powered NavCommandMenu (open via the trigger or ⌘K). Migrated
- * from the previous SidebarProvider/AppSidebar pattern 2026-05-27 to
- * match medialane-io.
- */
 function Shell({ children }: { children: React.ReactNode }) {
   return (
     <>

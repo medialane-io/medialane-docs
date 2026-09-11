@@ -32,7 +32,6 @@ export default function ZeroKnowledgePage() {
         </p>
       </div>
 
-      {/* Simple analogy */}
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">The Intuition</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
@@ -47,7 +46,6 @@ export default function ZeroKnowledgePage() {
         </p>
       </div>
 
-      {/* Properties */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Why It Matters</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -68,7 +66,6 @@ export default function ZeroKnowledgePage() {
         </div>
       </div>
 
-      {/* Starknet connection */}
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">ZK Proofs on Medialane</h3>
         <p className="text-base text-muted-foreground leading-relaxed">

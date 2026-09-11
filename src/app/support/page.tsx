@@ -105,7 +105,6 @@ export default function SupportPage() {
 
   return (
     <PageContainer className="pb-16 space-y-12">
-      {/* Header */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <LifeBuoy className="h-6 w-6 text-primary" />
@@ -117,7 +116,6 @@ export default function SupportPage() {
         </p>
       </div>
 
-      {/* FAQ */}
       <div className="space-y-4">
         <h2 className="text-xl font-bold">Frequently Asked Questions</h2>
         <div className="space-y-2">
@@ -127,7 +125,6 @@ export default function SupportPage() {
         </div>
       </div>
 
-      {/* Ticket form */}
       <div className="space-y-5">
         <div className="space-y-1">
           <h2 className="text-xl font-bold">Still need help?</h2>

@@ -22,8 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ── App data ──────────────────────────────────────────────────────────────────
-
 const APPS = [
   {
     name: "Medialane",
@@ -115,8 +113,6 @@ const APPS = [
   },
 ];
 
-// ── Platform features ─────────────────────────────────────────────────────────
-
 const PLATFORM_FEATURES = [
   {
     icon: Lock,
@@ -168,8 +164,6 @@ const PLATFORM_FEATURES = [
   },
 ];
 
-// ── Audience ──────────────────────────────────────────────────────────────────
-
 const AUDIENCES = [
   {
     icon: Sparkles,
@@ -217,8 +211,6 @@ const AUDIENCES = [
   },
 ];
 
-// ── Smart contract guarantees ─────────────────────────────────────────────────
-
 const SC_GUARANTEES = [
   {
     icon: Shield,
@@ -254,8 +246,6 @@ const SC_GUARANTEES = [
   },
 ];
 
-// ── Open source repos ─────────────────────────────────────────────────────────
-
 const REPOS = [
   {
     name: "medialane-io/medialane-io",
@@ -283,8 +273,6 @@ const REPOS = [
   },
 ];
 
-// ── SDK ───────────────────────────────────────────────────────────────────────
-
 const INSTALL_COMMANDS = [
   { label: "npm", cmd: "npm install @medialane/sdk" },
   { label: "bun", cmd: "bun add @medialane/sdk" },
@@ -292,13 +280,10 @@ const INSTALL_COMMANDS = [
   { label: "pnpm", cmd: "pnpm add @medialane/sdk" },
 ];
 
-// ── Page ──────────────────────────────────────────────────────────────────────
-
 export default function AppsPage() {
   return (
     <PageContainer className="space-y-20">
 
-      {/* ── Hero ── */}
       <div className="space-y-5">
         <span className="pill-badge">Platform</span>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
@@ -310,7 +295,6 @@ export default function AppsPage() {
         </p>
       </div>
 
-      {/* ── App cards ── */}
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Applications</h2>
@@ -325,7 +309,6 @@ export default function AppsPage() {
                 key={app.name}
                 className={`bento-cell flex flex-col overflow-hidden`}
               >
-                {/* Accent header */}
                 <div className={`bg-gradient-to-r ${app.accent} px-5 pt-5 pb-4 border-b border-border/40`}>
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
@@ -343,11 +326,9 @@ export default function AppsPage() {
                   </div>
                 </div>
 
-                {/* Body */}
                 <div className="p-5 space-y-4 flex flex-col flex-1">
                   <p className="text-base text-muted-foreground leading-relaxed">{app.description}</p>
 
-                  {/* Feature checklist */}
                   <ul className="space-y-1.5 flex-1">
                     {app.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm">
@@ -357,7 +338,6 @@ export default function AppsPage() {
                     ))}
                   </ul>
 
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-1.5 pt-1">
                     {app.tags.map((tag) => (
                       <span
@@ -369,7 +349,6 @@ export default function AppsPage() {
                     ))}
                   </div>
 
-                  {/* CTA */}
                   {app.badge !== "Coming soon" ? (
                     <a
                       href={app.url}
@@ -391,7 +370,6 @@ export default function AppsPage() {
         </div>
       </div>
 
-      {/* ── Platform features ── */}
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Platform Features</h2>
@@ -411,7 +389,6 @@ export default function AppsPage() {
         </div>
       </div>
 
-      {/* ── Smart contract guarantees ── */}
       <div className="space-y-6">
         <div className="space-y-2">
           <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Architecture</span>
@@ -453,7 +430,6 @@ export default function AppsPage() {
         </div>
       </div>
 
-      {/* ── Audience ── */}
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Built for Everyone</h2>
@@ -501,7 +477,6 @@ export default function AppsPage() {
         </div>
       </div>
 
-      {/* ── SDK ── */}
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">SDK & Developer Tools</h2>
@@ -522,7 +497,6 @@ export default function AppsPage() {
             </div>
           </div>
 
-          {/* Install commands */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {INSTALL_COMMANDS.map(({ label, cmd }) => (
               <div key={label} className="flex items-center gap-3 bg-muted/40 border border-border/60 rounded-lg px-4 py-2.5">
@@ -532,7 +506,6 @@ export default function AppsPage() {
             ))}
           </div>
 
-          {/* Quick example */}
           <div className="bg-muted/30 border border-border/60 rounded-lg p-4 font-mono text-xs space-y-1 text-muted-foreground overflow-x-auto">
             <div><span className="text-primary">import</span> {"{ MedialaneClient }"} <span className="text-primary">from</span> <span className="text-brand-orange">&apos;@medialane/sdk&apos;</span>;</div>
             <div className="pt-1"><span className="text-primary">const</span> client = <span className="text-primary">new</span> <span className="text-brand-blue">MedialaneClient</span>{"({ apiKey, network: "}<span className="text-brand-orange">&apos;mainnet&apos;</span>{"})"};</div>
@@ -559,7 +532,6 @@ export default function AppsPage() {
         </div>
       </div>
 
-      {/* ── Open source ── */}
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Open Source</h2>

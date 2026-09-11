@@ -89,7 +89,6 @@ export default function AirdropPage() {
   return (
     <div className="space-y-12">
 
-      {/* Hero */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <Gift className="h-5 w-5 text-primary" />
@@ -103,7 +102,6 @@ export default function AirdropPage() {
         </p>
       </div>
 
-      {/* The model */}
       <div className="bento-cell p-6 space-y-3">
         <div className="flex items-center gap-2">
           <Repeat2 className="h-4 w-4 text-primary" />
@@ -140,7 +138,6 @@ export default function AirdropPage() {
         </a>
       </div>
 
-      {/* How it works */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">How It Works</h3>
         <p className="text-base text-muted-foreground">
@@ -172,7 +169,6 @@ export default function AirdropPage() {
         </div>
       </div>
 
-      {/* Distribution phases */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">How Revenue Is Decided</h3>
         <div className="space-y-3">
@@ -195,7 +191,6 @@ export default function AirdropPage() {
         </div>
       </div>
 
-      {/* Governance */}
       <div className="bento-cell p-5 space-y-3">
         <div className="flex items-center gap-2">
           <Vote className="h-4 w-4 text-primary" />
@@ -215,7 +210,6 @@ export default function AirdropPage() {
         </Link>
       </div>
 
-      {/* Legal note */}
       <div className="bento-cell p-5 space-y-2">
         <div className="flex items-center gap-2">
           <Shield className="h-4 w-4 text-muted-foreground" />
@@ -232,7 +226,6 @@ export default function AirdropPage() {
         </p>
       </div>
 
-      {/* CTAs */}
       <div className="space-y-3">
         <h3 className="text-base font-semibold">Join the campaign</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

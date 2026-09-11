@@ -1,28 +1,8 @@
-/**
- * Canonical Medialane contract addresses.
- *
- * Chain is a first-class dimension of the protocol — every entry is
- * chain-qualified, never assumed (see
- * `medialane-core/docs/architecture/08-chain-sovereignty.md`). Today's
- * deployments live on Starknet (the chain currently filling the
- * prover/trust-anchor role); the registry is structured so peer chains can be
- * added without restructuring. Do not publish chain sequencing/roadmap.
- *
- * Single source for the Contracts (`/dev/contracts`) and Protocol
- * (`/dev/protocol`) reference pages — render from here, never re-list
- * addresses inline.
- *
- * Upstream source of truth is `@medialane/sdk` `src/chains.ts` (`getCoordinates("STARKNET")`).
- * This repo pins an old SDK, so the addresses are mirrored here as literals;
- * after any contract redeploy, reconcile this file against the SDK constants.
- * Last reconciled against SDK 0.85.10 (2026-08-19).
- */
 
 export type ContractCategory = "Marketplace" | "Collections & Launchpad" | "Creator Coin";
 
 export interface ContractInfo {
   name: string;
-  /** Chain the contract is deployed on (first-class, never assumed). */
   chain: string;
   address: string;
   category: ContractCategory;
@@ -121,7 +101,6 @@ export interface ContractGroup {
   items: ContractInfo[];
 }
 
-/** `CONTRACTS` grouped by category, preserving first-seen category order. */
 export const CONTRACTS_BY_CATEGORY: ContractGroup[] = CONTRACTS.reduce<ContractGroup[]>(
   (groups, contract) => {
     const group = groups.find((g) => g.category === contract.category);

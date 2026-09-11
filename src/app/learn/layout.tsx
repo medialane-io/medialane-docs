@@ -37,7 +37,6 @@ export default function LearnLayout({ children }: { children: React.ReactNode })
 
   return (
     <PageContainer width="wide" className="pb-16">
-      {/* Header */}
       <div className="pb-6">
         <p className="text-base font-semibold uppercase tracking-widest text-primary/70 mb-2">Education</p>
         <h1 className="text-2xl font-bold">Learn</h1>
@@ -55,7 +54,6 @@ export default function LearnLayout({ children }: { children: React.ReactNode })
         />
       </div>
 
-      {/* Content */}
       <div className="pt-2">{children}</div>
     </PageContainer>
   );

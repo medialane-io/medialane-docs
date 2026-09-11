@@ -30,7 +30,6 @@ export default function TokenizationPage() {
         </p>
       </div>
 
-      {/* What gets tokenized */}
       <div className="bento-cell p-6 space-y-4">
         <h3 className="font-semibold">What Gets Tokenized on Medialane?</h3>
         <div className="space-y-3">
@@ -48,7 +47,6 @@ export default function TokenizationPage() {
         </div>
       </div>
 
-      {/* Why it matters */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Why Tokenization Matters for Creators</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -69,7 +67,6 @@ export default function TokenizationPage() {
         </div>
       </div>
 
-      {/* Medialane context */}
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">Tokenization on Medialane</h3>
         <p className="text-base text-muted-foreground leading-relaxed">

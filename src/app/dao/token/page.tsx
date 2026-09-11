@@ -93,7 +93,6 @@ export default function TokenPage() {
         </div>
       </div>
 
-      {/* Token basics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
           { label: "Ticker",     value: "MDLN" },
@@ -108,7 +107,6 @@ export default function TokenPage() {
         ))}
       </div>
 
-      {/* Utilities */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Token Utility</h3>
         <div className="space-y-3">
@@ -126,7 +124,6 @@ export default function TokenPage() {
         </div>
       </div>
 
-      {/* Distribution */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Token Distribution</h3>
         <p className="text-base text-muted-foreground">MDLN has a fixed {CANONICAL.mdln.totalSupply} token supply. 100% is DAO-controlled, with no VC allocation, no team allocation, and no insider pre-mine.</p>
@@ -143,7 +140,6 @@ export default function TokenPage() {
         </div>
       </div>
 
-      {/* Membership */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Membership Tiers</h3>
         <div className="space-y-2">
@@ -159,7 +155,6 @@ export default function TokenPage() {
         </div>
       </div>
 
-      {/* Platform multiplier */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Developer Portal Multiplier</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
@@ -185,7 +180,6 @@ export default function TokenPage() {
         </p>
       </div>
 
-      {/* Ethereum + StarkGate */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Ethereum Deployment &amp; StarkGate Bridge</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
@@ -214,7 +208,6 @@ export default function TokenPage() {
         </p>
       </div>
 
-      {/* Creator's Airdrop */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">{CANONICAL.creatorAirdropName}</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
@@ -250,7 +243,6 @@ export default function TokenPage() {
         </div>
       </div>
 
-      {/* Disclaimer */}
       <div className="bento-cell p-5 text-sm text-muted-foreground leading-relaxed space-y-2">
         <p className="font-semibold text-foreground text-base">Disclaimer</p>
         <p>

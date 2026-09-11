@@ -30,7 +30,6 @@ export default function BlockchainPage() {
         </p>
       </div>
 
-      {/* Core properties */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Core Properties</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -51,7 +50,6 @@ export default function BlockchainPage() {
         </div>
       </div>
 
-      {/* How it works */}
       <div className="bento-cell p-6 space-y-4">
         <h3 className="font-semibold">How It Works</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
@@ -65,7 +63,6 @@ export default function BlockchainPage() {
         </p>
       </div>
 
-      {/* Starknet context */}
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">Medialane & Starknet</h3>
         <p className="text-base text-muted-foreground leading-relaxed">

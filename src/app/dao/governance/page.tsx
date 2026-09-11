@@ -79,7 +79,6 @@ export default function GovernancePage() {
         <p className="text-base text-muted-foreground">Ratified April 7, 2026 · Snapshot: medialane.eth</p>
       </div>
 
-      {/* Governance process */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Proposal Lifecycle</h3>
         <div className="space-y-3">
@@ -95,7 +94,6 @@ export default function GovernancePage() {
         </div>
       </div>
 
-      {/* Voting thresholds */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Voting Thresholds</h3>
         <div className="overflow-x-auto">
@@ -120,7 +118,6 @@ export default function GovernancePage() {
         </div>
       </div>
 
-      {/* Key roles */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Key Roles</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -140,7 +137,6 @@ export default function GovernancePage() {
         </div>
       </div>
 
-      {/* Timeframes */}
       <div className="bento-cell p-5 space-y-3">
         <div className="flex items-center gap-2">
           <Clock className="h-4 w-4 text-primary" />
@@ -150,7 +146,6 @@ export default function GovernancePage() {
         <p className="text-base text-muted-foreground">Total minimum: ~26 days from idea to execution for standard proposals.</p>
       </div>
 
-      {/* Snapshot link */}
       <a
         href="https://snapshot.org/#/s:medialane.eth"
         target="_blank"

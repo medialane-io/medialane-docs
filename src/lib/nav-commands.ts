@@ -9,19 +9,7 @@ import {
 } from "lucide-react";
 import { CANONICAL } from "./canonical";
 
-/**
- * Top-level navigation for medialane-docs.
- *
- * Migrated from the previous sidebar (`AppSidebar`) to the shared
- * `NavCommandMenu` pattern used by medialane-io. Authority over the route
- * set still lives in this file — sub-pages register themselves here, not
- * in the menu component.
- *
- * Same shape as io's `NAV_COMMANDS`: ungrouped primary items render first
- * and emphasised; each subsequent group has a heading.
- */
 export const NAV_COMMANDS: NavCommandGroup[] = [
-  // Primary destinations — no heading, rendered first and emphasised.
   {
     items: [
       { id: "start", label: "Start", icon: Zap,        href: "/",     keywords: ["home", "frontpage", "main"] },

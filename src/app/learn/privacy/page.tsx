@@ -48,7 +48,6 @@ export default function LearnPrivacyPage() {
         </p>
       </div>
 
-      {/* The two halves */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="bento-cell p-6 space-y-3 border border-brand-blue/20">
           <div className="flex items-center gap-3">
@@ -84,7 +83,6 @@ export default function LearnPrivacyPage() {
         </div>
       </div>
 
-      {/* Axiom framing */}
       <div className="bento-cell p-6 space-y-3">
         <div className="flex items-center gap-3">
           <ShieldCheck className="h-5 w-5 text-primary" />
@@ -103,7 +101,6 @@ export default function LearnPrivacyPage() {
         </Link>
       </div>
 
-      {/* Worked example: gated content */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">A live example: token-gated content</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
@@ -127,7 +124,6 @@ export default function LearnPrivacyPage() {
         </Link>
       </div>
 
-      {/* Related */}
       <div className="bento-cell p-6 space-y-3">
         <div className="flex items-center gap-3">
           <KeyRound className="h-5 w-5 text-brand-purple" />

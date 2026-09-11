@@ -2,9 +2,6 @@ import React from "react"
 
 const BASE = "https://api.medialane.io"
 
-// Display order + human labels for known actionKeys. Any actionKey the live
-// API returns that isn't listed here still renders (raw key as the label) —
-// this is presentation only, never a source of truth for what's priced.
 const ACTION_LABELS: Record<string, string> = {
   "read": "Read / query",
   "intent:mint": "Mint an asset",
@@ -28,12 +25,6 @@ const ACTION_LABELS: Record<string, string> = {
 interface PricingRule { actionKey: string; chain: string; service: string; credits: number }
 interface PricingResponse { creditsPerUsdc: number; pricing: { default: number; rules: PricingRule[] } }
 
-// Live pricing, not hardcoded — this endpoint is the same one PATCH
-// /admin/pricing writes to, so the table below can never drift from what
-// callers are actually charged. Revalidates every 5 minutes; a fetch
-// failure degrades to a link instead of a broken page. Next.js dedupes
-// identical fetches (same URL + options) across a render, so using this
-// component on more than one page doesn't mean more than one real request.
 async function getLivePricing(): Promise<PricingResponse | null> {
   try {
     const res = await fetch(`${BASE}/v1/pricing`, { next: { revalidate: 300 } })
@@ -44,7 +35,6 @@ async function getLivePricing(): Promise<PricingResponse | null> {
   }
 }
 
-/** The live credit-cost table — used on both /dev/api and /dev/fees so the two never say different numbers. */
 export async function PricingTable() {
   const pricing = await getLivePricing()
   const defaultRules = pricing?.pricing.rules.filter((r) => r.chain === "ALL" && r.service === "ALL") ?? []
@@ -57,8 +47,6 @@ export async function PricingTable() {
     const rule = defaultRules.find((r) => r.actionKey === actionKey)!
     return { actionKey, label: ACTION_LABELS[actionKey] ?? actionKey, credits: rule.credits }
   })
-  // Service-specific price *overrides* only — a row identical to the default
-  // isn't a real override yet, so it's skipped rather than shown as noise.
   const overrideRows = pricing?.pricing.rules.filter((r) => {
     if (r.chain === "ALL" && r.service === "ALL") return false
     const base = defaultRules.find((d) => d.actionKey === r.actionKey)

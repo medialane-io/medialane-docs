@@ -41,7 +41,6 @@ const HUBS = [
   },
 ];
 
-// The Launchpad's products are open-ended services, not a fixed set (architecture 05).
 const SERVICE_LINKS = [
   { href: "/learn/services", label: "Services model" },
   { href: "/learn/creator-launchpad", label: "Creator Launchpad" },
@@ -144,7 +143,6 @@ export default function AboutPage() {
   return (
     <PageContainer className="space-y-16">
 
-      {/* Hero */}
       <div className="relative overflow-hidden rounded-3xl bento-cell p-10 sm:p-14 space-y-5">
         <div className="aurora-purple w-[500px] h-[500px] -top-32 -right-20 animate-blob" style={{ position: "absolute" }} />
         <div className="aurora-blue w-[300px] h-[300px] bottom-0 left-0 animate-blob-slow" style={{ position: "absolute" }} />
@@ -179,7 +177,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* What We Build */}
       <div className="space-y-6">
         <div className="space-y-1">
           <p className="text-base font-black uppercase tracking-widest text-muted-foreground">What We Build</p>
@@ -217,7 +214,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* How It Works */}
       <div className="space-y-6">
         <div className="space-y-1">
           <p className="text-base font-black uppercase tracking-widest text-muted-foreground">How It Works</p>
@@ -249,7 +245,6 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* Why Starknet */}
       <div className="space-y-6">
         <div className="space-y-1">
           <p className="text-base font-black uppercase tracking-widest text-muted-foreground">Why Starknet</p>
@@ -270,7 +265,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Built to Grow */}
       <div className="bento-cell border border-brand-blue/20 p-8 space-y-4">
         <p className="text-base font-black uppercase tracking-widest text-brand-blue">Built to Grow</p>
         <h2 className="text-xl font-black">Starknet-first. Designed for more.</h2>
@@ -293,7 +287,6 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* Design Choices */}
       <div className="space-y-6">
         <div className="space-y-1">
           <p className="text-base font-black uppercase tracking-widest text-muted-foreground">Design Choices</p>
@@ -314,7 +307,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Integrity Web */}
       <div className="bento-cell border border-primary/20 p-8 space-y-4">
         <div className="flex items-center gap-3">
           <Shield className="h-5 w-5 text-primary" />

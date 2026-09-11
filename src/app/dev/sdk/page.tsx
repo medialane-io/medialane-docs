@@ -26,7 +26,6 @@ export default function SdkPage() {
         Framework-agnostic TypeScript SDK for the Medialane API. Bundles a full REST client and on-chain marketplace helpers in one package.
       </p>
 
-      {/* Install */}
       <DocH2 id="install" border>Install</DocH2>
       <DocCodeBlock lang="bash">{`# bun
 bun add @medialane/sdk starknet
@@ -40,7 +39,6 @@ yarn add @medialane/sdk starknet`}</DocCodeBlock>
         Peer dependency: <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">starknet@^6</code>
       </p>
 
-      {/* Configure */}
       <DocH2 id="configure" border>Configure</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         Create a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneClient</code> with your network and API key.
@@ -65,7 +63,6 @@ const client = new MedialaneClient({
         The <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">apiKey</code> is sent as <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-api-key</code> on every request. Get your key at <Link href="https://portal.medialane.io/account" className="text-primary hover:underline">/account</Link>.
       </p>
 
-      {/* Minting */}
       <DocH2 id="minting" border>Minting & Launchpad</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         The SDK provides two ways to mint assets: direct on-chain calls (requires signer) and backend-orchestrated intents.
@@ -104,7 +101,6 @@ const { intentId, calls } = await client.api.createCollectionIntent({
   baseUri: "ipfs://...",
 })`}</DocCodeBlock>
 
-      {/* Marketplace */}
       <DocH2 id="marketplace" border>Marketplace (on-chain)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.marketplace</code> provides typed wrappers for direct contract calls via starknet.js.
@@ -115,7 +111,6 @@ const order = await client.marketplace.getOrderDetails("0x04f7a1...")
 // Get the offerer's order counter (replaces the removed nonce in 0.26.0)
 const counter = await client.marketplace.getCounter("0x0591...")`}</DocCodeBlock>
 
-      {/* API client */}
       <DocH2 id="api-client" border>API Client (REST)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> mirrors the full REST API surface.
@@ -316,7 +311,6 @@ remixes.data.forEach((r) => console.log(r.remixContract, r.remixTokenId, r.licen
 const sort: CollectionSort = "floor"
 await client.api.getCollections(1, 20, true, sort)`}</DocCodeBlock>
 
-      {/* POP Protocol */}
       <DocH2 id="pop-protocol" border>POP Protocol (Proof of Participation)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         POP collections are event-based claim drops: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. Use <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.pop</code> for on-chain interactions and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> for eligibility checks.
@@ -383,7 +377,6 @@ const params: CreatePopCollectionParams = {
 const { txHash } = await client.services.pop.createCollection(account, params)
 console.log("Deployed:", txHash)`}</DocCodeBlock>
 
-      {/* Collection Drop */}
       <DocH2 id="collection-drop" border>Collection Drop</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         Collection Drops are public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. Use <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.drop</code> for on-chain interactions and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> for status queries.
@@ -448,7 +441,6 @@ await client.services.drop.batchAddToAllowlist(account, {
 // Withdraw ERC-20 proceeds
 await client.services.drop.withdrawPayments(account, { collection: "0x03587f..." })`}</DocCodeBlock>
 
-      {/* ERC-1155 marketplace */}
       <DocH2 id="marketplace-1155" border>ERC-1155 Marketplace (on-chain)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.marketplace1155</code> handles multi-edition orders against the redesigned Medialane1155 venue. SNIP-12 domain version <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">3</code>: listings carry an edition quantity; listing/offer and cancellation are signed, while fulfillment is an unsigned call by the buyer. All write methods take a starknet.js <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">AccountInterface</code>.
@@ -470,7 +462,6 @@ await client.marketplace1155.cancelOrder(account, { orderHash: "0x04f7a1..." })
 // For custom signers — get the SNIP-12 typed data only
 const typedData = client.marketplace1155.buildListingTypedData(params, chainId)`}</DocCodeBlock>
 
-      {/* ERC-1155 collection service */}
       <DocH2 id="erc1155-collection" border>ERC-1155 Collections (on-chain)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.erc1155Collection</code> deploys and manages multi-edition IP collections with ERC-2981 royalties.
@@ -494,7 +485,6 @@ await client.services.erc1155Collection.batchMintItem(account, {
 await client.services.erc1155Collection.setDefaultRoyalty(account, { collection: "0x067064...", receiver: "0x0591...", feeBasisPoints: 500 })
 await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "0x067064...", tokenId: "7", receiver: "0x0591...", feeBasisPoints: 250 })`}</DocCodeBlock>
 
-      {/* Creator Coins */}
       <DocH2 id="creator-coins" border>Creator Coins</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         Fixed-supply standard ERC-20s with permanently-locked Ekubo liquidity (audited unruggable.meme fork).
@@ -545,7 +535,6 @@ await client.services.creatorCoin.launchOnEkubo(account, { creatorCoin, quoteTok
         Per-coin on-chain price reads were removed in favor of this single source.
       </p>
 
-      {/* Platform fee */}
       <DocH2 id="platform-fee" border>Platform Fee</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer, distinct from any on-chain protocol rule. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or unconfigured, treating a missing config as a zero fee.
@@ -568,7 +557,6 @@ const feeCall = buildFeeCall(
 const calls = feeCall ? [...tradeCalls, feeCall] : tradeCalls
 await account.execute(calls)`}</DocCodeBlock>
 
-      {/* Error Handling */}
       <DocH2 id="errors" border>Error Handling</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         The SDK throws <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneError</code> for marketplace issues and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneApiError</code> for REST API failures. Both carry a typed <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">.code</code> field from the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneErrorCode</code> union.
@@ -643,7 +631,6 @@ try {
         </p>
       </div>
 
-      {/* Use case examples */}
       <DocH2 id="examples" border>Use Case Examples</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         Common patterns you can build with the SDK:

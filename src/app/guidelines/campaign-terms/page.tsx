@@ -120,7 +120,6 @@ export default function CampaignTermsPage() {
 
       </div>
 
-      {/* Portuguese summary */}
       <div className="border-t border-border/50 pt-8 space-y-3">
         <p className="text-base font-semibold uppercase tracking-widest text-muted-foreground">Resumo em Português</p>
         <p className="text-base text-muted-foreground leading-relaxed">

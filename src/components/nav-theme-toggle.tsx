@@ -5,16 +5,10 @@ import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/**
- * Compact Light/Dark segmented toggle for the nav menu footer.
- * Passed to NavCommandMenu via its `footerSlot` prop so next-themes
- * stays app-side (the shared UI package is framework-agnostic).
- */
 export function NavThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // next-themes can't know the theme until mounted — avoid hydration mismatch.
   useEffect(() => setMounted(true), []);
 
   const isDark = mounted ? resolvedTheme === "dark" : true;

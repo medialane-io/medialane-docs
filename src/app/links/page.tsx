@@ -92,7 +92,6 @@ export default function LinksPage() {
   return (
     <PageContainer width="narrow" className="space-y-14">
 
-      {/* Header */}
       <div className="space-y-4">
         <span className="pill-badge">Community</span>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
@@ -103,7 +102,6 @@ export default function LinksPage() {
         </p>
       </div>
 
-      {/* Link groups */}
       <div className="space-y-10">
         {LINKS.map(({ category, items }) => (
           <div key={category} className="space-y-3">
@@ -134,7 +132,6 @@ export default function LinksPage() {
         ))}
       </div>
 
-      {/* Warning note */}
       <div className="bento-cell p-4 text-sm text-muted-foreground">
         <strong className="text-foreground">Verify before you click.</strong> Medialane only operates through the links above.
         We will never DM you asking for seed phrases, private keys, or funds. If you receive unsolicited messages claiming to be Medialane, they are scams.

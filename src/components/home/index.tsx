@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import { PageContainer } from "@/components/page-container";
 
-// ── The two commercial hubs (core-model §Context) ──
 const HUBS = [
   {
     icon: Rocket,
@@ -31,7 +30,6 @@ const HUBS = [
   },
 ];
 
-// ── How Medialane works (principles 00, distilled) ──
 const PRINCIPLES = [
   {
     icon: Lock,
@@ -71,7 +69,6 @@ const PRINCIPLES = [
   },
 ];
 
-// ── Machine-native payments — x402 (principles 00 §6, foundations 10 §15) ──
 const AGENT_PAYMENT_USE_CASES = [
   {
     icon: Bot,
@@ -106,7 +103,6 @@ const X402_STEPS = [
   { n: "4", title: "Continue", description: "Retry with proof of payment; credits apply and the call goes through. Hold MDLN for a bonus." },
 ];
 
-// ── Knowledge hub — where to go next ──
 const SECTIONS = [
   {
     href: "/learn",
@@ -174,7 +170,6 @@ const SECTIONS = [
   },
 ];
 
-// ── Browse-by-topic directory (every learn/docs page, grouped by intent) ──
 const TOPIC_GROUPS = [
   {
     heading: "Learn",
@@ -239,7 +234,6 @@ export function HomePage() {
   return (
     <PageContainer className="pt-8 space-y-20">
 
-      {/* ── Hero ── */}
       <div className="relative overflow-hidden rounded-3xl">
         <div className="aurora-purple w-[460px] h-[460px] -top-28 -left-20 animate-blob" style={{ position: "absolute" }} />
         <div className="aurora-blue w-[360px] h-[360px] -top-12 right-0 animate-blob-slow" style={{ position: "absolute" }} />
@@ -283,7 +277,6 @@ export function HomePage() {
         </div>
       </div>
 
-      {/* ── Two hubs ── */}
       <div className="space-y-6">
         <div className="space-y-3 max-w-2xl">
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
@@ -314,7 +307,6 @@ export function HomePage() {
         </div>
       </div>
 
-      {/* ── How it works ── */}
       <div className="space-y-6">
         <div className="space-y-3 max-w-2xl">
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
@@ -339,7 +331,6 @@ export function HomePage() {
         </div>
       </div>
 
-      {/* ── Machine-native payments (x402) ── */}
       <div className="space-y-6">
         <div className="space-y-3 max-w-2xl">
           <span className="pill-badge">x402 · pay-per-call</span>
@@ -387,7 +378,6 @@ export function HomePage() {
         </Link>
       </div>
 
-      {/* ── Knowledge hub ── */}
       <div className="space-y-6">
         <div className="space-y-3 max-w-2xl">
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
@@ -421,7 +411,6 @@ export function HomePage() {
           ))}
         </div>
 
-        {/* Browse by topic — full directory */}
         <div className="space-y-4 pt-4">
           <p className="text-base font-bold uppercase tracking-widest text-muted-foreground/60">Browse by topic</p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-7">

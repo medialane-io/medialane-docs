@@ -37,7 +37,6 @@ export default function ProgrammableIPPage() {
         </p>
       </div>
 
-      {/* Contrast */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="bento-cell p-5 space-y-3">
           <p className="text-base font-semibold text-muted-foreground uppercase tracking-widest">Traditional IP</p>
@@ -61,7 +60,6 @@ export default function ProgrammableIPPage() {
         </div>
       </div>
 
-      {/* How it works */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">What it actually does</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -98,7 +96,6 @@ export default function ProgrammableIPPage() {
         </div>
       </div>
 
-      {/* What it doesn't do */}
       <div className="bento-cell p-6 space-y-3 border-amber-500/20 border">
         <h3 className="font-semibold text-base">What programmable IP does not do</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
@@ -115,7 +112,6 @@ export default function ProgrammableIPPage() {
         </p>
       </div>
 
-      {/* Mediolano */}
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold text-base">The Mediolano Protocol</h3>
         <p className="text-base text-muted-foreground leading-relaxed">

@@ -38,7 +38,6 @@ export function TranslateButton() {
   const [ready, setReady] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Poll until Google Translate injects its select element
   useEffect(() => {
     const id = setInterval(() => {
       if (document.querySelector(".goog-te-combo")) {
@@ -49,7 +48,6 @@ export function TranslateButton() {
     return () => clearInterval(id);
   }, []);
 
-  // Close on outside click
   useEffect(() => {
     function handler(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
@@ -60,7 +58,6 @@ export function TranslateButton() {
 
   function select(code: string) {
     if (code === "") {
-      // Google Translate has no programmatic restore — clear the cookie and reload
       const expiry = "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       document.cookie = `googtrans=; ${expiry}`;
       document.cookie = `googtrans=; ${expiry} domain=${window.location.hostname}`;

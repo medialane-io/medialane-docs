@@ -1,6 +1,5 @@
 "use client";
 
-// Ambient aurora background — place in layout, renders behind all content
 export function Aurora({ intensity = "normal" }: { intensity?: "subtle" | "normal" | "vivid" }) {
   const scale = intensity === "subtle" ? 0.6 : intensity === "vivid" ? 1.4 : 1;
 
@@ -9,7 +8,6 @@ export function Aurora({ intensity = "normal" }: { intensity?: "subtle" | "norma
       aria-hidden
       className="fixed inset-0 -z-10 overflow-hidden pointer-events-none"
     >
-      {/* Purple — top-left quadrant */}
       <div
         className="aurora-purple animate-blob"
         style={{
@@ -19,7 +17,6 @@ export function Aurora({ intensity = "normal" }: { intensity?: "subtle" | "norma
           left: "-10vw",
         }}
       />
-      {/* Blue — top-right quadrant */}
       <div
         className="aurora-blue animate-blob-slow"
         style={{
@@ -29,7 +26,6 @@ export function Aurora({ intensity = "normal" }: { intensity?: "subtle" | "norma
           right: "-15vw",
         }}
       />
-      {/* Rose — bottom-left */}
       <div
         className="aurora-rose animate-blob"
         style={{
@@ -40,7 +36,6 @@ export function Aurora({ intensity = "normal" }: { intensity?: "subtle" | "norma
           animationDelay: "3s",
         }}
       />
-      {/* Orange — bottom-right */}
       <div
         className="aurora-orange animate-blob-slow"
         style={{

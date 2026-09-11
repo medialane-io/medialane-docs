@@ -134,7 +134,6 @@ export default function IntegrityWebPage() {
   return (
     <div className="space-y-16">
 
-      {/* Hero */}
       <div className="space-y-5">
         <span className="pill-badge">Philosophy</span>
         <h2 className="text-2xl font-bold">
@@ -163,7 +162,6 @@ export default function IntegrityWebPage() {
         </div>
       </div>
 
-      {/* Intro */}
       <div className="bento-cell p-8 space-y-4">
         <h2 className="text-2xl font-bold">What is the Integrity Web?</h2>
         <p className="text-muted-foreground leading-relaxed">
@@ -177,13 +175,11 @@ export default function IntegrityWebPage() {
         </p>
       </div>
 
-      {/* Axioms */}
       <div className="space-y-6">
         <h2 className="text-2xl font-bold">The Ten Axioms, Applied to Medialane</h2>
         <div className="space-y-5">
           {AXIOMS.map(({ num, title, quote, icon: Icon, color, bg, border, medialane, highlights }) => (
             <div key={num} className={`bento-cell border ${border} overflow-hidden`}>
-              {/* Header */}
               <div className={`px-6 pt-5 pb-4 border-b border-border/40 flex items-start gap-4`}>
                 <div className={`h-10 w-10 rounded-xl ${bg} flex items-center justify-center shrink-0 mt-0.5`}>
                   <Icon className={`h-5 w-5 ${color}`} />
@@ -197,7 +193,6 @@ export default function IntegrityWebPage() {
                 </div>
               </div>
 
-              {/* Body */}
               <div className="p-6 space-y-4">
                 <p className="text-base text-muted-foreground leading-relaxed">{medialane}</p>
                 <div className="flex flex-wrap gap-2">
@@ -216,7 +211,6 @@ export default function IntegrityWebPage() {
         </div>
       </div>
 
-      {/* Why Starknet */}
       <div className="bento-cell p-8 space-y-4">
         <h2 className="text-2xl font-bold">Why Starknet Powers the Integrity Web</h2>
         <p className="text-muted-foreground leading-relaxed">
@@ -246,7 +240,6 @@ export default function IntegrityWebPage() {
         </div>
       </div>
 
-      {/* CTA */}
       <div className="bento-cell p-8 space-y-4 text-center">
         <h2 className="text-2xl font-bold">
           Ready to build on the Integrity Web?

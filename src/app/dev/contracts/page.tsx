@@ -34,7 +34,6 @@ export default function ContractsPage() {
         </p>
       </div>
 
-      {/* Immutable design callout */}
       <div className="bento-cell p-5 space-y-3 border-primary/20">
         <div className="flex items-center gap-2">
           <Lock className="h-4 w-4 text-primary" />
@@ -84,7 +83,6 @@ export default function ContractsPage() {
         </div>
       ))}
 
-      {/* Standards */}
       <div className="bento-cell p-5 space-y-3">
         <div className="flex items-center gap-2">
           <Shield className="h-4 w-4 text-muted-foreground" />

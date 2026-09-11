@@ -21,7 +21,6 @@ export default function Image() {
         fontFamily: "sans-serif",
       }}
     >
-      {/* Purple gradient blob top-right */}
       <div
         style={{
           position: "absolute",
@@ -34,7 +33,6 @@ export default function Image() {
             "radial-gradient(circle, rgba(124,58,237,0.35) 0%, rgba(124,58,237,0.08) 55%, transparent 75%)",
         }}
       />
-      {/* Faint grid lines */}
       <div
         style={{
           position: "absolute",
@@ -45,7 +43,6 @@ export default function Image() {
         }}
       />
 
-      {/* Logotype row */}
       <div
         style={{
           display: "flex",
@@ -103,7 +100,6 @@ export default function Image() {
         </div>
       </div>
 
-      {/* Headline */}
       <div style={{ display: "flex", flexDirection: "column", gap: 18, zIndex: 1 }}>
         <span
           style={{
@@ -130,7 +126,6 @@ export default function Image() {
         </span>
       </div>
 
-      {/* Bottom-right URL */}
       <span
         style={{
           position: "absolute",

@@ -49,7 +49,6 @@ export const Shelf = React.forwardRef<HTMLDivElement, ShelfProps>(
                     <div className="snap-start shrink-0 w-6 sm:w-10 lg:w-16" />
                 </div>
 
-                {/* Right edge fade for affordance */}
                 <div className="pointer-events-none absolute right-0 top-0 bottom-8 w-12 sm:w-24 bg-gradient-to-l from-background to-transparent opacity-80 z-10" />
             </div>
         )
