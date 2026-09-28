@@ -574,6 +574,27 @@ try {
   }
 }`}</DocCodeBlock>
 
+      <DocH3>Showing an error to a user</DocH3>
+      <p className="text-muted-foreground text-base mb-3">
+        Three types carry text written for someone to read: <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneApiError</code>, whose message is the reason the API gave or a plain statement of the status; <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">UserFacingError</code>, raised when the SDK got partway and stopped; and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">PasskeyCancelledError</code>, where the prompt was dismissed and nothing was submitted.
+      </p>
+      <DocCodeBlock>{`import { MedialaneApiError, PasskeyCancelledError, UserFacingError } from "@medialane/sdk"
+
+function describe(err: unknown, fallback: string): string {
+  if (err instanceof PasskeyCancelledError) return "Request not completed. Nothing was submitted."
+  if (err instanceof UserFacingError) return err.message
+  if (err instanceof MedialaneApiError) return err.message
+  return fallback
+}
+
+catch (err) {
+  console.error(err)
+  setError(describe(err, "We couldn't create that listing. Please try again."))
+}`}</DocCodeBlock>
+      <p className="text-muted-foreground text-base mb-3">
+        The fallback carries the weight. An error matching none of those types says nothing a reader can act on, and its text is as likely to be a gateway response as a sentence. Your call site knows which action was attempted, so that is the message worth showing. A response body that is not ours stays in <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">err.details</code>, available while debugging without reaching a reader.
+      </p>
+
       <DocH2 id="error-codes" border>Error Codes</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         All errors expose a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneErrorCode</code> typed union:
