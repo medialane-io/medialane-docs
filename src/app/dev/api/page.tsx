@@ -1253,19 +1253,21 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/portal/keys"
-        description="Create a new API key (max 5 per account)."
+        description="Create a new API key."
         params={[
-          { name: "name", type: "string", required: true, desc: "A label for this key" },
+          { name: "label", type: "string", required: false, desc: "A label for this key (max 64 chars)" },
         ]}
         curl={`curl -X POST "${BASE}/v1/portal/keys" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{ "name": "My Agent Key" }'`}
+  -d '{ "label": "My Agent Key" }'`}
         response={`{
-  "id": "key_new",
-  "name": "My Agent Key",
-  "key": "ml_live_FULL_KEY_SHOWN_ONCE",
-  "createdAt": "..."
+  "data": {
+    "id": "key_new",
+    "prefix": "ml_live_xxxx",
+    "label": "My Agent Key",
+    "plaintext": "ml_live_FULL_KEY_SHOWN_ONCE"
+  }
 }`}
       />
 
