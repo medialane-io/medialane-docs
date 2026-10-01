@@ -2923,14 +2923,13 @@ const resumeSource = new EventSource(url, {
         path="/v1/business/provisioning"
         description="Give a recipient a wallet: reuses the one they already have (200, reusedExistingWallet), or deploys a new one (201)."
         params={[
-          { name: "recipientScheme", type: "string", required: true, desc: "\"email\"" },
-          { name: "recipientValue", type: "string", required: true, desc: "The email address" },
+          { name: "email", type: "string", required: true, desc: "The recipient's email address" },
           { name: "chain", type: "string", required: false, desc: "STARKNET" },
         ]}
         curl={`curl -X POST "${BASE}/v1/business/provisioning" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{"recipientScheme":"email","recipientValue":"ana@example.com"}'`}
+  -d '{"email":"ana@example.com"}'`}
         response={`{ "data": { "chain": "STARKNET", "walletAddress": "0x0abc..." } }`}
       />
 
@@ -2941,8 +2940,7 @@ const resumeSource = new EventSource(url, {
         params={[
           { name: "service", type: "string", required: true, desc: "A minting service id" },
           { name: "owner", type: "string", required: true, desc: "Your wallet, the collection owner" },
-          { name: "recipients", type: "string[]", required: true, desc: "Up to 500, e.g. emails" },
-          { name: "recipientScheme", type: "string", required: false, desc: "Defaults to email" },
+          { name: "recipients", type: "string[]", required: true, desc: "Up to 500 recipient emails" },
           { name: "collectionId", type: "string", required: false, desc: "Collection to mint into" },
           { name: "tokenUri", type: "string", required: false, desc: "Token metadata" },
           { name: "batchSize", type: "number", required: false, desc: "Calls per batch, 1 to 100" },
