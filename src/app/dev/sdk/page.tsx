@@ -189,7 +189,7 @@ const siwsToken = await requestSiwsToken({ backendUrl, walletAddress, signer, ap
 
 // Email sign-in: a 6-digit code, then an account session
 await client.api.requestEmailCode("ana@example.com")
-const { waitingWallets } = await client.api.verifyEmailCode("ana@example.com", "482913")`}</DocCodeBlock>
+await client.api.verifyEmailCode("ana@example.com", "482913")`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Accounts</h3>
       <p className="text-muted-foreground text-base mb-3">

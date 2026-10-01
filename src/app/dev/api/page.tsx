@@ -2726,7 +2726,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/auth/email/verify-code"
-        description="Verify the code. Marks the email verified, creates the account if this app has none for it, and returns an account session plus any wallets a business provisioned for this email."
+        description="Verify the code. Marks the email verified, creates the account if this app has none for it, and returns an account session."
         params={[
           { name: "email", type: "string", required: true, desc: "The address" },
           { name: "code", type: "string", required: true, desc: "The 6-digit code" },
@@ -2735,19 +2735,19 @@ const resumeSource = new EventSource(url, {
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
   -d '{ "email": "ana@example.com", "code": "482913" }'`}
-        response={`{ "accountToken": "...", "waitingWallets": ["0x0abc..."] }`}
+        response={`{ "accountToken": "..." }`}
       />
 
       <Endpoint
         method="GET"
         path="/v1/auth/email/exists"
-        description="Whether this app has an account for the email, and whether a provisioned wallet is waiting for it."
+        description="Whether this app has an account for the email."
         params={[
           { name: "email", type: "string", required: true, desc: "The address" },
         ]}
         curl={`curl "${BASE}/v1/auth/email/exists?email=ana@example.com" \\
   -H "x-api-key: ${KEY}"`}
-        response={`{ "exists": false, "walletWaiting": true }`}
+        response={`{ "exists": true }`}
       />
 
       <Endpoint
@@ -2843,7 +2843,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/users/me/wallet"
-        description="The wallet of the account behind an account session, or null if it has none yet."
+        description="The wallet of the account behind an account session, or null if it has none yet. When needsKeySetup is true, set up the user's key with /v1/users/me/wallet/key."
         params={[
           { name: "accountToken", type: "string", required: true, desc: "Account session from email sign-in" },
         ]}
@@ -2851,7 +2851,7 @@ const resumeSource = new EventSource(url, {
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
   -d '{"accountToken":"..."}'`}
-        response={`{ "walletAddress": "0x0591..." }`}
+        response={`{ "walletAddress": "0x0591...", "needsKeySetup": false }`}
       />
 
       <Endpoint
@@ -2871,18 +2871,19 @@ const resumeSource = new EventSource(url, {
 
       <Endpoint
         method="POST"
-        path="/v1/users/me/claim-wallet"
-        description="Take ownership of wallets a business provisioned for the user's email: Medialane hands each wallet over to the user's own key. Call after verifying the email."
+        path="/v1/users/me/wallet/key"
+        description="Make the user's key the only owner of the account's wallet. Returns 409 when the wallet is already set up."
         params={[
           { name: "accountToken", type: "string", required: true, desc: "Account session from email sign-in" },
           { name: "newOwnerPubkey", type: "string", required: true, desc: "The user's own owner key" },
-          { name: "proofs", type: "object[]", required: true, desc: "One per waiting wallet: { walletAddress, signature, expiration }" },
+          { name: "signature", type: "string[]", required: true, desc: "The new key's owner-alive signature for the wallet" },
+          { name: "expiration", type: "number", required: true, desc: "Expiry of the owner-alive signature (unix seconds)" },
         ]}
-        curl={`curl -X POST "${BASE}/v1/users/me/claim-wallet" \\
+        curl={`curl -X POST "${BASE}/v1/users/me/wallet/key" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{"accountToken":"...","newOwnerPubkey":"0x...","proofs":[{"walletAddress":"0x0abc...","signature":["0x..","0x.."],"expiration":1790000000}]}'`}
-        response={`{ "claimed": ["0x0abc..."] }`}
+  -d '{"accountToken":"...","newOwnerPubkey":"0x...","signature":["0x..","0x.."],"expiration":1790000000}'`}
+        response={`{ "walletAddress": "0x0abc..." }`}
       />
 
       <Endpoint
@@ -2915,34 +2916,22 @@ const resumeSource = new EventSource(url, {
 
       <DocH2 id="business" border>Business</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        A business can give people wallets and assets before they have signed up. A provisioned wallet is deployed by Medialane and handed to the user when they sign in with the email it was issued to; a person who already has a wallet keeps getting assets in it.
+        A business can give people wallets and assets before they have signed up. A person who already has a wallet keeps getting assets in it.
       </p>
       <Endpoint
         method="POST"
         path="/v1/business/provisioning"
         description="Give a recipient a wallet: reuses the one they already have (200, reusedExistingWallet), or deploys a new one (201)."
         params={[
-          { name: "recipientScheme", type: "string", required: true, desc: "How the recipient is identified, e.g. \"email\"" },
-          { name: "recipientValue", type: "string", required: true, desc: "e.g. the email address" },
+          { name: "recipientScheme", type: "string", required: true, desc: "\"email\"" },
+          { name: "recipientValue", type: "string", required: true, desc: "The email address" },
           { name: "chain", type: "string", required: false, desc: "STARKNET" },
         ]}
         curl={`curl -X POST "${BASE}/v1/business/provisioning" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
   -d '{"recipientScheme":"email","recipientValue":"ana@example.com"}'`}
-        response={`{ "data": { "id": "...", "walletAddress": "0x0abc...", "recipientScheme": "email", "recipientValue": "ana@example.com", "status": "DEPLOYED" } }`}
-      />
-
-      <Endpoint
-        method="GET"
-        path="/v1/business/provisioning"
-        description="Wallets you provisioned, optionally by status."
-        params={[
-          { name: "status", type: "string", required: false, desc: "DEPLOYED | REUSED | HANDOFF | TRANSFERRED" },
-        ]}
-        curl={`curl "${BASE}/v1/business/provisioning" \\
-  -H "x-api-key: ${KEY}"`}
-        response={`{ "data": [{ "id": "...", "walletAddress": "0x0abc...", "status": "TRANSFERRED" }] }`}
+        response={`{ "data": { "chain": "STARKNET", "walletAddress": "0x0abc..." } }`}
       />
 
       <Endpoint
