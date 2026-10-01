@@ -43,7 +43,7 @@ export default function AgentsPage() {
 
       <DocH2 id="api-key">Get an API key</DocH2>
       <p className="text-muted-foreground mb-4 text-base">
-        Create a tenant API key at <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">portal.medialane.io</a>: connect a Starknet wallet and create a key in the API Keys tab. The key is shown once; store it securely. Keys look like <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ml_live_…</code> and authenticate every request:
+        Create an API key at <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">portal.medialane.io</a>: connect a Starknet wallet and create a key in the API Keys tab. The key is shown once; store it securely. Keys look like <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ml_live_…</code> and authenticate every request:
       </p>
       <DocCodeBlock lang="ts">{`const BASE = "https://api.medialane.io";
 const headers = { "x-api-key": process.env.ML_API_KEY! };`}</DocCodeBlock>
@@ -88,7 +88,7 @@ X-Credits-Remaining: 0
 
       <DocH3>Handle it: pay, then retry with X-PAYMENT</DocH3>
       <p className="text-muted-foreground mb-4 text-base">
-        Send USDC to <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">payTo</code>, then retry the <em>same</em> request with an <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">X-PAYMENT</code> header (base64 JSON). The API verifies the transfer on-chain, credits your tenant, and serves the response. One on-chain transfer credits exactly once, safe to retry the same proof.
+        Send USDC to <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">payTo</code>, then retry the <em>same</em> request with an <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">X-PAYMENT</code> header (base64 JSON). The API verifies the transfer on-chain, credits your account, and serves the response. One on-chain transfer credits exactly once, safe to retry the same proof.
       </p>
       <DocCodeBlock lang="ts">{`const BASE = "https://api.medialane.io";
 

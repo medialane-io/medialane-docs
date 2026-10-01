@@ -93,12 +93,12 @@ const KEY = "ml_live_YOUR_KEY"
 
 const ERROR_CODES = [
   { code: "400", name: "Bad Request", desc: "Missing or invalid parameters" },
-  { code: "401", name: "Unauthorized", desc: "Missing or invalid x-api-key" },
+  { code: "401", name: "Unauthorized", desc: "Missing or invalid x-api-key, or a missing or expired sign-in token" },
   { code: "402", name: "Payment Required", desc: "Credit balance is zero; deposit USDC to continue" },
   { code: "403", name: "Forbidden", desc: "Key exists but lacks required permission" },
   { code: "404", name: "Not Found", desc: "Resource does not exist" },
   { code: "409", name: "Conflict", desc: "Duplicate resource or state conflict" },
-  { code: "429", name: "Too Many Requests", desc: "Per-minute rate limit exceeded" },
+  { code: "429", name: "Too Many Requests", desc: "Sent only by reports, remix offers and repeated wrong email codes; nothing happened, so it is safe to retry" },
   { code: "500", name: "Server Error", desc: "Internal error; try again or contact support" },
 ]
 
@@ -124,6 +124,9 @@ export default function ApiReferencePage() {
 # -H "Authorization: Bearer ${KEY}"`}</DocCodeBlock>
       <p className="text-muted-foreground text-base">
         Keys are prefixed <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret, and treat them like passwords.
+      </p>
+      <p className="text-muted-foreground text-base">
+        The API key identifies the app that is calling: every app is a client holding its own keys, and an account belongs to the client it registered through. When a request acts for a user, it also carries that user&apos;s sign-in, either a wallet sign-in token (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer siws_...</code>) or an account session from email sign-in. See <a href="#sign-in" className="text-primary hover:underline">Sign-in</a>.
       </p>
 
       <DocH2 id="response-format" border>Response Format</DocH2>
@@ -270,6 +273,19 @@ export default function ApiReferencePage() {
   "data": [...],
   "meta": { "total": 7, "page": 1, "limit": 20 }
 }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/orders/received/:address"
+        description="Offers others made on the address's assets."
+        params={[
+          { name: "page", type: "number", required: false, desc: "Page, from 1" },
+          { name: "limit", type: "number", required: false, desc: "Up to 100" },
+        ]}
+        curl={`curl "${BASE}/v1/orders/received/0x0591..." \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": [{ "orderHash": "0x...", "status": "ACTIVE" }] }`}
       />
 
       <DocH2 id="minting" border>Minting</DocH2>
@@ -472,6 +488,30 @@ export default function ApiReferencePage() {
 }`}
       />
 
+      <Endpoint
+        method="GET"
+        path="/v1/coins/prices"
+        description="USDC price of every Creator Coin with a live market, by coin address."
+        curl={`curl "${BASE}/v1/coins/prices" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "0x0abc...": { "usdc": 0.012 } } }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/coins/claim"
+        description="Claim a Creator Coin you created, to edit its profile. Checked on-chain against the coin's owner."
+        params={[
+          { name: "coinAddress", type: "string", required: true, desc: "The coin contract" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/coins/claim" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"coinAddress":"0x0abc..."}'`}
+        response={`{ "verified": true }`}
+      />
+
       <DocH2 id="collections" border>Collections</DocH2>
 
       <Endpoint
@@ -611,6 +651,30 @@ export default function ApiReferencePage() {
     }
   ]
 }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/tokens"
+        description="List tokens, newest first, filtered by IP type or remixability."
+        params={[
+          { name: "page", type: "number", required: false, desc: "Page, from 1" },
+          { name: "limit", type: "number", required: false, desc: "Up to 48" },
+          { name: "ipType", type: "string", required: false, desc: "IP type slug, e.g. \"music\"" },
+          { name: "derivatives", type: "string", required: false, desc: "\"allowed\" for tokens that may be remixed" },
+        ]}
+        curl={`curl "${BASE}/v1/tokens?derivatives=allowed&limit=24" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": [{ "contractAddress": "0x...", "tokenId": "1", "metadata": { "name": "..." } }], "meta": { "page": 1, "limit": 24, "total": 300 } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/ipnft/:contract/:tokenId"
+        description="On-chain registration data of a Programmable IP token: owner, metadata URI, original creator, registration time; null if unreadable."
+        curl={`curl "${BASE}/v1/ipnft/0x.../1" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "owner": "0x...", "metadataUri": "ipfs://...", "originalCreator": "0x...", "registeredAt": 1780000000 } }`}
       />
 
       <DocH2 id="batch-tokens" border>Batch Tokens</DocH2>
@@ -814,6 +878,20 @@ export default function ApiReferencePage() {
 }`}
       />
 
+      <Endpoint
+        method="POST"
+        path="/v1/tx/sync"
+        description="Index a transaction now instead of waiting for the indexer, e.g. right after a mint."
+        params={[
+          { name: "txHash", type: "string", required: true, desc: "The transaction" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/tx/sync" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"txHash":"0x..."}'`}
+        response={`{ "data": { "applied": 2, "contracts": ["0x..."], "pending": false } }`}
+      />
+
       <DocH2 id="checkout-intent" border>Checkout Intent</DocH2>
       <p className="text-base text-muted-foreground mb-6">
         Create fulfillment intents for multiple orders in a single request. Useful for cart-style checkout flows. Failed items return an error field rather than aborting the whole batch.
@@ -919,6 +997,20 @@ export default function ApiReferencePage() {
   "description": "...",
   "image": "ipfs://QmAbc..."
 }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/metadata/upload-directory"
+        description="Pin several JSON files as one IPFS directory, e.g. a drop's token metadata. Up to 5 MB in total."
+        params={[
+          { name: "files", type: "{ name, content }[]", required: true, desc: "File names use letters, digits, dot, dash and underscore" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/metadata/upload-directory" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"files":[{"name":"1.json","content":{"name":"Token 1"}}]}'`}
+        response={`{ "data": { "cid": "bafy...", "baseUri": "ipfs://bafy.../" } }`}
       />
 
       <DocH2 id="infrastructure" border>Infrastructure</DocH2>
@@ -1194,7 +1286,7 @@ const resumeSource = new EventSource(url, {
 
       <DocH2 id="portal" border>Portal (Self-service)</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Portal endpoints manage your account: API keys, credit balance, spend history, and webhooks (PREMIUM). These calls are simply never metered.
+        Portal endpoints manage your account: API keys, credits, top-ups, launchpad runs and webhooks (PREMIUM). They act for a signed-in user, so every call also carries <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer</code> with a wallet sign-in token or an account session. Creating or deleting a key needs a recent sign-in (within 10 minutes). These calls are never metered.
       </p>
 
       <Endpoint
@@ -1203,7 +1295,8 @@ const resumeSource = new EventSource(url, {
         description="Get your account: plan, status, and live credit balance."
         params={[]}
         curl={`curl "${BASE}/v1/portal/me" \\
-  -H "x-api-key: ${KEY}"`}
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
         response={`{
   "data": {
     "id": "acct_abc",
@@ -1220,7 +1313,8 @@ const resumeSource = new EventSource(url, {
         description="See what your credits were spent on: recent actions, totals grouped by action, and what you have been credited against what you have used."
         params={[]}
         curl={`curl "${BASE}/v1/portal/credits/spend" \\
-  -H "x-api-key: ${KEY}"`}
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
         response={`{
   "data": {
     "recent": [
@@ -1242,7 +1336,8 @@ const resumeSource = new EventSource(url, {
         description="List all API keys for your account."
         params={[]}
         curl={`curl "${BASE}/v1/portal/keys" \\
-  -H "x-api-key: ${KEY}"`}
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
         response={`{
   "data": [
     { "id": "key_abc", "name": "Production", "prefix": "ml_live_abc...", "createdAt": "..." }
@@ -1259,6 +1354,7 @@ const resumeSource = new EventSource(url, {
         ]}
         curl={`curl -X POST "${BASE}/v1/portal/keys" \\
   -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>" \\
   -H "Content-Type: application/json" \\
   -d '{ "label": "My Agent Key" }'`}
         response={`{
@@ -1279,39 +1375,38 @@ const resumeSource = new EventSource(url, {
           { name: "id", type: "string", required: true, desc: "Key ID" },
         ]}
         curl={`curl -X DELETE "${BASE}/v1/portal/keys/key_abc" \\
-  -H "x-api-key: ${KEY}"`}
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
         response={`{ "success": true }`}
       />
 
       <Endpoint
         method="GET"
-        path="/v1/portal/usage"
-        description="Get 30-day daily usage breakdown."
-        params={[]}
-        curl={`curl "${BASE}/v1/portal/usage" \\
-  -H "x-api-key: ${KEY}"`}
+        path="/v1/portal/credits/history"
+        description="Your last 20 credit deposits: asset, amount, credits added and status."
+        curl={`curl "${BASE}/v1/portal/credits/history" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
         response={`{
   "data": [
-    { "date": "2026-03-01", "requests": 8 },
-    { "date": "2026-02-28", "requests": 4 }
+    { "id": "pay_...", "asset": "USDC", "amountAtomic": "5000000", "creditedAmount": 500, "mdlnMultiplier": 1, "txHash": "0x...", "status": "CREDITED", "createdAt": "..." }
   ]
 }`}
       />
 
       <Endpoint
-        method="GET"
-        path="/v1/portal/usage/recent"
-        description="Get the last N request log entries."
+        method="POST"
+        path="/v1/portal/credits/check"
+        description="Credit a USDC deposit you already sent, by its transaction hash. Safe to repeat: a transfer is only counted once."
         params={[
-          { name: "limit", type: "number", desc: "Max entries (default: 20)" },
+          { name: "txHash", type: "string", required: true, desc: "The deposit transaction" },
         ]}
-        curl={`curl "${BASE}/v1/portal/usage/recent?limit=5" \\
-  -H "x-api-key: ${KEY}"`}
-        response={`{
-  "data": [
-    { "method": "GET", "path": "/v1/orders", "status": 200, "ts": "2026-03-01T10:01:00Z" }
-  ]
-}`}
+        curl={`curl -X POST "${BASE}/v1/portal/credits/check" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "txHash": "0x..." }'`}
+        response={`{ "data": { "deposits": 1 } }`}
       />
 
       <Endpoint
@@ -1320,7 +1415,8 @@ const resumeSource = new EventSource(url, {
         description="List registered webhooks. PREMIUM only."
         params={[]}
         curl={`curl "${BASE}/v1/portal/webhooks" \\
-  -H "x-api-key: ${KEY}"`}
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
         response={`{
   "data": [
     { "id": "wh_abc", "url": "https://yourapp.com/hook", "events": ["ORDER_CREATED"], "active": true }
@@ -1338,6 +1434,7 @@ const resumeSource = new EventSource(url, {
         ]}
         curl={`curl -X POST "${BASE}/v1/portal/webhooks" \\
   -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>" \\
   -H "Content-Type: application/json" \\
   -d '{ "url": "https://yourapp.com/hook", "events": ["ORDER_CREATED", "TRANSFER"] }'`}
         response={`{
@@ -1356,8 +1453,87 @@ const resumeSource = new EventSource(url, {
           { name: "id", type: "string", required: true, desc: "Webhook ID" },
         ]}
         curl={`curl -X DELETE "${BASE}/v1/portal/webhooks/wh_abc" \\
-  -H "x-api-key: ${KEY}"`}
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
         response={`{ "success": true }`}
+      />
+
+      <DocH3>Top-ups</DocH3>
+      <p className="text-muted-foreground mb-6 text-base">
+        A top-up pays for credits with a method from <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">/methods</code>: create it, sign the challenge with the paying wallet, send the payment, then submit. Request bodies depend on the method; the SDK&apos;s <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getFundingMethods</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">createFunding</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getFundingChallenge</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">authorizeFunding</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">submitFunding</code> and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">cancelFunding</code> build them for you. An account can have any number of top-ups open.
+      </p>
+      <Endpoint
+        method="GET"
+        path="/v1/portal/funding/methods"
+        description="The payment methods available for a top-up."
+        curl={`curl "${BASE}/v1/portal/funding/methods" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
+        response={`{ "data": [{ "id": "chain-transfer", "...": "..." }] }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/portal/funding"
+        description="Open a top-up."
+        params={[
+          { name: "method", type: "string", required: true, desc: "A method id from /methods" },
+          { name: "params", type: "object", required: true, desc: "Method-specific, e.g. { \"amountUsdc\": \"5\" } for chain-transfer" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/portal/funding" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "method": "chain-transfer", "params": { "amountUsdc": "5" } }'`}
+        response={`{ "data": { "id": "fi_...", "method": "chain-transfer", "status": "PENDING", "expiresAt": "..." } }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/portal/funding/:id/submit"
+        description="Report that the payment was sent. Returns 202 while the payment is not yet visible on-chain; call again until it is SETTLED."
+        curl={`curl -X POST "${BASE}/v1/portal/funding/fi_.../submit" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "txHash": "0x..." }'`}
+        response={`{ "data": { "status": "SETTLED", "credited": 500 } }`}
+      />
+
+      <DocH3>Launchpad runs</DocH3>
+      <p className="text-muted-foreground mb-6 text-base">
+        A run is a paid, multi-step launch (data tokenization, IP ticketing) for your account: create it with a spec, check out with credits or a settled top-up, then execute its steps. The SDK&apos;s <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">createLaunchpadRunsClient</code> wraps every step; the routes live under <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">/v1/portal/runs</code>.
+      </p>
+      <Endpoint
+        method="POST"
+        path="/v1/portal/runs"
+        description="Create a run in DRAFT with its quote."
+        params={[
+          { name: "service", type: "string", required: true, desc: "\"data-tokenization-erc721\" | \"ip-ticketing\"" },
+          { name: "spec", type: "object", required: true, desc: "What to launch; validated per service" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/portal/runs" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "service": "ip-ticketing", "spec": { "...": "..." } }'`}
+        response={`{ "data": { "id": "run_...", "service": "ip-ticketing", "status": "DRAFT", "quote": { "lines": [], "total": 120 } } }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/portal/runs/:id/checkout"
+        description="Pay for a run with credits, or from a settled top-up."
+        params={[
+          { name: "method", type: "string", required: true, desc: "\"credits\" | \"wallet\"" },
+          { name: "intentId", type: "string", required: false, desc: "The settled top-up, when method is \"wallet\"" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/portal/runs/run_.../checkout" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIGN_IN_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "method": "credits" }'`}
+        response={`{ "data": { "id": "run_...", "status": "PAID", "next": { "kind": "collection" } } }`}
       />
 
       <DocH2 id="claims" border>Collection Claims</DocH2>
@@ -1368,7 +1544,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/collections/claim"
-        description="Path 1: Auto-verify ownership on-chain. Requires both a tenant API key and a SIWS session JWT in the Authorization header. The API checks that the authenticated wallet is the on-chain owner of the contract."
+        description="Path 1: Auto-verify ownership on-chain. Requires both an API key and a SIWS session JWT in the Authorization header. The API checks that the authenticated wallet is the on-chain owner of the contract."
         params={[
           { name: "contractAddress", type: "string", required: true, desc: "The ERC-721 contract address to claim" },
           { name: "walletAddress", type: "string", required: true, desc: "The Starknet wallet address claiming ownership" },
@@ -1595,6 +1771,15 @@ const resumeSource = new EventSource(url, {
   "displayName": "Kalamaha",
   "bio": "Visual artist on Starknet"
 }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/creators/:wallet/hidden"
+        description="Whether a creator page is hidden by moderation."
+        curl={`curl "${BASE}/v1/creators/0x0591.../hidden" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "isHidden": false }`}
       />
 
       <DocH2 id="comments" border>On-chain Comments</DocH2>
@@ -1871,6 +2056,31 @@ const resumeSource = new EventSource(url, {
         response={`{ "data": { "id": "rxo_01j...", "status": "REJECTED", ... } }`}
       />
 
+      <Endpoint
+        method="GET"
+        path="/v1/remix-offers/:id"
+        description="One remix offer; price and message are shown only to its two parties."
+        curl={`curl "${BASE}/v1/remix-offers/ro_..." \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>"`}
+        response={`{ "data": { "id": "ro_...", "status": "PENDING", "price": { "raw": "5", "formatted": "5", "currency": "STRK", "decimals": 18 } } }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/remix-offers/:id/extend"
+        description="Give a pending offer more time."
+        params={[
+          { name: "days", type: "number", required: true, desc: "1 to 30" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/remix-offers/ro_.../extend" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"days":7}'`}
+        response={`{ "data": { "id": "ro_...", "expiresAt": "..." } }`}
+      />
+
       <DocH2 id="pop-protocol" border>POP Protocol</DocH2>
       <p className="text-base text-muted-foreground mb-6">
         Proof of Participation claim collections for events: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. On-chain minting is handled via the SDK <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.pop</code>.
@@ -1956,6 +2166,64 @@ const resumeSource = new EventSource(url, {
     "totalMinted": 347
   }
 }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/drop/:contract/state"
+        description="A drop's live on-chain state: claim conditions, minted, supply, allowlist and pause."
+        curl={`curl "${BASE}/v1/drop/0x.../state" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "conditions": { "maxSupply": "1000", "price": "0", "paymentToken": "0x0", "startTime": 1780000000, "endTime": 1790000000, "maxPerWallet": "5" }, "totalMinted": 120, "maxSupply": 1000, "allowlistEnabled": false, "paused": false } }`}
+      />
+
+      <DocH2 id="tickets-club" border>IP Tickets &amp; IP Club</DocH2>
+      <p className="text-base text-muted-foreground mb-6">
+        Ticket types and membership tiers are read from their contracts. Tiers are numbered from 1 with no gaps, so a count tells you every id; counts are never cached, since apps use them to choose the next id.
+      </p>
+      <Endpoint
+        method="GET"
+        path="/v1/tickets/:contract/count"
+        description="How many ticket types the collection has."
+        curl={`curl "${BASE}/v1/tickets/0x.../count" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "count": 3 } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/tickets/:contract/:tokenId"
+        description="One ticket type: supply, minted, sale window, royalty. Amounts are decimal strings."
+        curl={`curl "${BASE}/v1/tickets/0x.../1" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "maxSupply": "200", "minted": "12", "startTime": 1780000000, "endTime": null, "royaltyBps": 500 } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/club/:contract/count"
+        description="How many membership tiers the club has."
+        curl={`curl "${BASE}/v1/club/0x.../count" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "count": 2 } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/club/:contract/:tokenId"
+        description="One membership tier, in the same shape as a ticket type."
+        curl={`curl "${BASE}/v1/club/0x.../1" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "maxSupply": "100", "minted": "40", "startTime": null, "endTime": null, "royaltyBps": 0 } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/club/:contract/:tokenId/member/:wallet"
+        description="Whether a wallet holds the tier."
+        curl={`curl "${BASE}/v1/club/0x.../1/member/0x0591..." \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "isMember": true } }`}
       />
 
       <DocH2 id="sponsorship" border>IP Sponsorship</DocH2>
@@ -2284,7 +2552,7 @@ const resumeSource = new EventSource(url, {
 
       <DocH2 id="rewards" border>Rewards</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        The 50-level DAO-managed XP and badge system. Scores are computed off-chain from on-chain activity (mints, sales, comments, remixes). All weights live in DAO-adjustable tables. Reads are public (tenant key); writes are admin-only. Scores and badges are recalculated weekly, not live per request.
+        The 50-level DAO-managed XP and badge system. Scores are computed off-chain from on-chain activity (mints, sales, comments, remixes). All weights live in DAO-adjustable tables. Reads need only an API key; scores are computed by the platform on a schedule. Scores and badges are recalculated weekly, not live per request.
       </p>
 
       <Endpoint
@@ -2370,86 +2638,331 @@ const resumeSource = new EventSource(url, {
 }`}
       />
 
-      <DocH2 id="accounts" border>Accounts</DocH2>
+      <Endpoint
+        method="GET"
+        path="/v1/rewards/config"
+        description="Reward levels, actions and badges."
+        curl={`curl "${BASE}/v1/rewards/config" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "levels": [], "actions": [], "badges": [] } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/rewards/batch"
+        description="Rewards for up to 50 addresses at once."
+        params={[
+          { name: "addresses", type: "string", required: true, desc: "Comma-separated, 1 to 50" },
+        ]}
+        curl={`curl "${BASE}/v1/rewards/batch?addresses=0x0591...,0x0abc..." \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": [{ "address": "0x0591...", "totalXp": 120, "currentLevel": 2, "currentLevelName": "...", "badgeColor": "#64748b" }] }`}
+      />
+
+      <DocH2 id="sign-in" border>Sign-in</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Account onboarding and lookup. An Account is the logical actor (one per human/agent/org); a Wallet is its signing key; an Identity is its auth-provider record. These endpoints register and read that single Account model regardless of which app the user came from.
+        Users sign in through the app they use, and every call carries that app&apos;s API key. Wallet sign-in (SIWS) proves control of a wallet and returns a token used as <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer</code>. Email sign-in sends a 6-digit code and returns an account session.
       </p>
+      <Endpoint
+        method="POST"
+        path="/v1/auth/siws/nonce"
+        description="Start a wallet sign-in: returns a nonce and the typed data the wallet signs."
+        params={[
+          { name: "walletAddress", type: "string", required: true, desc: "The signing wallet" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/auth/siws/nonce" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "walletAddress": "0x0591..." }'`}
+        response={`{ "nonce": "...", "typedData": { "...": "..." } }`}
+      />
 
       <Endpoint
         method="POST"
+        path="/v1/auth/siws/verify"
+        description="Finish a wallet sign-in. The signature is checked on-chain by the wallet contract. With appSource, the app also registers the account at sign-in and gets an account session back."
+        params={[
+          { name: "walletAddress", type: "string", required: true, desc: "The signing wallet" },
+          { name: "nonce", type: "string", required: true, desc: "From /nonce" },
+          { name: "signature", type: "string[]", required: true, desc: "The wallet's signature over the typed data" },
+          { name: "appSource", type: "string", required: false, desc: "The app declaring the registration, e.g. MEDIALANE_IO, MEDIALANE_PORTAL, MEDIALANE_STARKNET" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/auth/siws/verify" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "walletAddress": "0x0591...", "nonce": "...", "signature": ["0x..", "0x.."], "appSource": "MEDIALANE_STARKNET" }'`}
+        response={`{
+  "token": "siws_...",
+  "accountId": "...",
+  "apiClientId": "...",
+  "accountToken": "..."
+}`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/auth/siws/keys"
+        description="Mint a session API key for the signed-in wallet's account, replacing its previous session key."
+        curl={`curl -X POST "${BASE}/v1/auth/siws/keys" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>"`}
+        response={`{ "data": { "id": "...", "prefix": "ml_live_xxxx", "label": "portal-session", "plaintext": "ml_live_..." } }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/auth/email/request-code"
+        description="Send a 6-digit code to an email address, from the name of the app that asked."
+        params={[
+          { name: "email", type: "string", required: true, desc: "The address to verify" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/auth/email/request-code" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "email": "ana@example.com" }'`}
+        response={`{ "ok": true }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/auth/email/verify-code"
+        description="Verify the code. Marks the email verified, creates the account if this app has none for it, and returns an account session plus any wallets a business provisioned for this email."
+        params={[
+          { name: "email", type: "string", required: true, desc: "The address" },
+          { name: "code", type: "string", required: true, desc: "The 6-digit code" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/auth/email/verify-code" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "email": "ana@example.com", "code": "482913" }'`}
+        response={`{ "accountToken": "...", "waitingWallets": ["0x0abc..."] }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/auth/email/exists"
+        description="Whether this app has an account for the email, and whether a provisioned wallet is waiting for it."
+        params={[
+          { name: "email", type: "string", required: true, desc: "The address" },
+        ]}
+        curl={`curl "${BASE}/v1/auth/email/exists?email=ana@example.com" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "exists": false, "walletWaiting": true }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/auth/email/register-account"
+        description="Create an account for an email in this app before it is verified. The account is PENDING until the email is verified with a code. Returns 409 if the account exists; sign in with a code instead."
+        params={[
+          { name: "email", type: "string", required: true, desc: "The address" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/auth/email/register-account" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{ "email": "ana@example.com" }'`}
+        response={`{ "accountToken": "..." }`}
+      />
+
+      <DocH2 id="accounts" border>Accounts</DocH2>
+      <p className="text-base text-muted-foreground mb-6">
+        An account is its own record, defined by no wallet, email or app. Each registration through an app is its own account in that app: the same email or wallet registered in two apps is two accounts. An account holds its sign-in records (its wallets and email) and a status: <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ACTIVE</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">PENDING</code> (an email account whose email is not yet verified) or <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">INACTIVE</code> (refused). Accounts have no type and no roles.
+      </p>
+      <Endpoint
+        method="POST"
         path="/v1/users/register"
-        description="Frictionless registration, authenticated by tenant API key (no SIWS token needed). The wallet address is supplied in the body. Idempotent: returns the existing Account if the wallet is already known. Used by medialane-starknet to silently register web3 wallet connections."
+        description="Register a wallet in the calling app, authenticated by the API key alone. Idempotent: returns the existing account if this app already has the wallet."
         params={[
           { name: "walletAddress", type: "string", required: true, desc: "Starknet wallet address" },
-          { name: "walletType", type: "string", required: false, desc: "Free-form wallet-software label, e.g. \"braavos\" | \"ready\" | \"mediawallet\" | \"cartridge\"; not a closed enum" },
-          { name: "appSource", type: "string", required: false, desc: "MEDIALANE_STARKNET | MEDIALANE_IO | MEDIALANE_PORTAL | MEDIALANE_SDK" },
+          { name: "walletType", type: "string", required: false, desc: "Free-form wallet-software label, e.g. \"braavos\" | \"ready\" | \"mediawallet\" | \"cartridge\"" },
           { name: "chain", type: "string", required: false, desc: "Defaults to STARKNET" },
         ]}
         curl={`curl -X POST "${BASE}/v1/users/register" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{"walletAddress":"0x0591...","walletType":"braavos","appSource":"MEDIALANE_STARKNET"}'`}
+  -d '{"walletAddress":"0x0591...","walletType":"braavos"}'`}
         response={`{
-  "accountId": "acc_...",
-  "publicId": "ml_...",
+  "accountId": "...",
+  "publicId": "acc_...",
   "walletAddress": "0x0591...",
   "chain": "STARKNET",
-  "walletType": "braavos",
-  "appSource": "MEDIALANE_STARKNET",
-  "createdAt": "2026-05-27T12:00:00Z"
+  "provider": "braavos",
+  "createdAt": "2026-10-01T12:00:00Z"
 }`}
       />
 
       <Endpoint
         method="POST"
         path="/v1/users/me"
-        description="Upsert the authenticated caller's Account (lazy onboarding for first-touch flows). Identity is taken from the Bearer token, a SIWS token, the same auth mechanism every Medialane app uses. The wallet address comes from the verified token, never the body."
+        description="Register the signed-in wallet in the calling app (the wallet comes from the token, never the body). Pass an accountToken to add the wallet to an existing account, such as one created by email sign-in. Pass email to attach an email and send it a code."
         params={[
           { name: "walletType", type: "string", required: false, desc: "Defaults to UNKNOWN" },
-          { name: "appSource", type: "string", required: false, desc: "Defaults to MEDIALANE_IO" },
           { name: "chain", type: "string", required: false, desc: "STARKNET only in v1" },
+          { name: "accountToken", type: "string", required: false, desc: "Account session from email sign-in" },
+          { name: "email", type: "string", required: false, desc: "An email to attach and verify" },
         ]}
         curl={`curl -X POST "${BASE}/v1/users/me" \\
   -H "x-api-key: ${KEY}" \\
   -H "Authorization: Bearer <SIWS_TOKEN>" \\
   -H "Content-Type: application/json" \\
-  -d '{"walletType":"mediawallet","appSource":"MEDIALANE_IO","chain":"STARKNET"}'`}
-        response={`{
-  "walletAddress": "0x0591..."
-}`}
+  -d '{"walletType":"mediawallet","chain":"STARKNET"}'`}
+        response={`{ "walletAddress": "0x0591..." }`}
       />
 
       <Endpoint
         method="GET"
         path="/v1/users/me"
-        description="Return the authenticated caller's account identifiers, or 404 if the wallet has no Account yet. Identity from the Bearer token (SIWS)."
-        params={[]}
+        description="The signed-in wallet's account in the calling app, with its email and whether it is verified; 404 if the app has no account for the wallet."
         curl={`curl "${BASE}/v1/users/me" \\
   -H "x-api-key: ${KEY}" \\
   -H "Authorization: Bearer <SIWS_TOKEN>"`}
         response={`{
   "walletAddress": "0x0591...",
-  "accountId": "acc_...",
-  "publicId": "ml_..."
+  "accountId": "...",
+  "publicId": "acc_...",
+  "email": "ana@example.com",
+  "emailVerified": true
 }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/users/me/email"
+        description="Change the account's email; a code is sent to the new address. 409 if another account in this app already uses it."
+        params={[
+          { name: "email", type: "string", required: true, desc: "The new address" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/users/me/email" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"email":"ana@example.com"}'`}
+        response={`{ "email": "ana@example.com", "emailVerified": false }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/users/me/wallet"
+        description="The wallet of the account behind an account session, or null if it has none yet."
+        params={[
+          { name: "accountToken", type: "string", required: true, desc: "Account session from email sign-in" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/users/me/wallet" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"accountToken":"..."}'`}
+        response={`{ "walletAddress": "0x0591..." }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/users/me/generate-wallet"
+        description="Replace the account's wallet with a new one the user has just created and signed in with. Assets stay in the old wallet."
+        params={[
+          { name: "newWalletSiwsToken", type: "string", required: true, desc: "Sign-in token of the new wallet" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/users/me/generate-wallet" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Authorization: Bearer <SIWS_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"newWalletSiwsToken":"siws_..."}'`}
+        response={`{ "walletAddress": "0x0def..." }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/users/me/claim-wallet"
+        description="Take ownership of wallets a business provisioned for the user's email: Medialane hands each wallet over to the user's own key. Call after verifying the email."
+        params={[
+          { name: "accountToken", type: "string", required: true, desc: "Account session from email sign-in" },
+          { name: "newOwnerPubkey", type: "string", required: true, desc: "The user's own owner key" },
+          { name: "proofs", type: "object[]", required: true, desc: "One per waiting wallet: { walletAddress, signature, expiration }" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/users/me/claim-wallet" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"accountToken":"...","newOwnerPubkey":"0x...","proofs":[{"walletAddress":"0x0abc...","signature":["0x..","0x.."],"expiration":1790000000}]}'`}
+        response={`{ "claimed": ["0x0abc..."] }`}
       />
 
       <Endpoint
         method="GET"
         path="/v1/users/count"
-        description="Account count with optional filters. Tenant key only. Used for grant reporting. An Account with any matching Wallet/Identity is counted once."
+        description="Number of accounts, with optional filters. An account with any matching sign-in record is counted once."
         params={[
           { name: "chain", type: "string", required: false, desc: "Filter by wallet chain" },
-          { name: "appSource", type: "string", required: false, desc: "Filter by identity app source" },
+          { name: "clientId", type: "string", required: false, desc: "Filter by the app the account registered through" },
           { name: "walletType", type: "string", required: false, desc: "Filter by wallet type" },
-          { name: "since", type: "string", required: false, desc: "ISO date; count accounts created on/after" },
+          { name: "since", type: "string", required: false, desc: "ISO date; accounts created on or after" },
         ]}
-        curl={`curl "${BASE}/v1/users/count?appSource=MEDIALANE_IO&since=2026-05-01" \\
+        curl={`curl "${BASE}/v1/users/count?since=2026-10-01" \\
   -H "x-api-key: ${KEY}"`}
-        response={`{
-  "count": 61,
-  "filters": { "chain": null, "appSource": "MEDIALANE_IO", "walletType": null, "since": "2026-05-01" }
-}`}
+        response={`{ "count": 166, "filters": { "since": "2026-10-01" } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/wallet-activity"
+        description="A wallet's recent activity: SEND, RECEIVE, SWAP, DEPLOY and guardian changes."
+        params={[
+          { name: "address", type: "string", required: true, desc: "The wallet" },
+          { name: "chain", type: "string", required: false, desc: "Defaults to STARKNET" },
+        ]}
+        curl={`curl "${BASE}/v1/wallet-activity?address=0x0591..." \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": [{ "type": "RECEIVE", "tokenAddress": "0x...", "amount": "5000000", "counterparty": "0x...", "txHash": "0x...", "blockNumber": "123456", "timestamp": "..." }] }`}
+      />
+
+      <DocH2 id="business" border>Business</DocH2>
+      <p className="text-base text-muted-foreground mb-6">
+        A business can give people wallets and assets before they have signed up. A provisioned wallet is deployed by Medialane and handed to the user when they sign in with the email it was issued to; a person who already has a wallet keeps getting assets in it.
+      </p>
+      <Endpoint
+        method="POST"
+        path="/v1/business/provisioning"
+        description="Give a recipient a wallet: reuses the one they already have (200, reusedExistingWallet), or deploys a new one (201)."
+        params={[
+          { name: "recipientScheme", type: "string", required: true, desc: "How the recipient is identified, e.g. \"email\"" },
+          { name: "recipientValue", type: "string", required: true, desc: "e.g. the email address" },
+          { name: "chain", type: "string", required: false, desc: "STARKNET" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/business/provisioning" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"recipientScheme":"email","recipientValue":"ana@example.com"}'`}
+        response={`{ "data": { "id": "...", "walletAddress": "0x0abc...", "recipientScheme": "email", "recipientValue": "ana@example.com", "status": "DEPLOYED" } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/business/provisioning"
+        description="Wallets you provisioned, optionally by status."
+        params={[
+          { name: "status", type: "string", required: false, desc: "DEPLOYED | REUSED | HANDOFF | TRANSFERRED" },
+        ]}
+        curl={`curl "${BASE}/v1/business/provisioning" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": [{ "id": "...", "walletAddress": "0x0abc...", "status": "TRANSFERRED" }] }`}
+      />
+
+      <Endpoint
+        method="POST"
+        path="/v1/business/issuance/emission"
+        description="Build the mint calls that issue an asset to up to 500 provisioned recipients, in batches to execute from your wallet."
+        params={[
+          { name: "service", type: "string", required: true, desc: "A minting service id" },
+          { name: "owner", type: "string", required: true, desc: "Your wallet, the collection owner" },
+          { name: "recipients", type: "string[]", required: true, desc: "Up to 500, e.g. emails" },
+          { name: "recipientScheme", type: "string", required: false, desc: "Defaults to email" },
+          { name: "collectionId", type: "string", required: false, desc: "Collection to mint into" },
+          { name: "tokenUri", type: "string", required: false, desc: "Token metadata" },
+          { name: "batchSize", type: "number", required: false, desc: "Calls per batch, 1 to 100" },
+        ]}
+        curl={`curl -X POST "${BASE}/v1/business/issuance/emission" \\
+  -H "x-api-key: ${KEY}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"service":"mip-erc721","owner":"0x0591...","recipients":["ana@example.com"],"tokenUri":"ipfs://..."}'`}
+        response={`{ "data": { "service": "mip-erc721", "recipientCount": 1, "callCount": 1, "batches": [[{ "contractAddress": "0x...", "entrypoint": "mint", "calldata": [] }]] } }`}
       />
 
       <DocH2 id="gated-content" border>Gated Content &amp; Slugs</DocH2>
@@ -2522,7 +3035,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/reports"
-        description="Submit a report. Requires a SIWS token (identity auth) in addition to the tenant key. 409 if the caller already reported this target; 429 if the per-wallet hourly limit is hit."
+        description="Submit a report. Requires a SIWS token (identity auth) in addition to the API key. 409 if the caller already reported this target; 429 if the per-wallet hourly limit is hit."
         params={[
           { name: "targetType", type: "string", required: true, desc: "COLLECTION | TOKEN | CREATOR | COMMENT" },
           { name: "targetKey", type: "string", required: true, desc: "Stable target key (e.g. COMMENT::<id>)" },

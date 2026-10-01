@@ -162,35 +162,49 @@ await client.api.submitIntentSignature(intent.data.id, toSignatureArray(signatur
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Search</h3>
       <DocCodeBlock>{`const results = await client.api.search("genesis", 10)
-results.data.tokens.forEach((t) => console.log(t.metadata?.name))
+results.data.tokens.forEach((t) => console.log(t.name))
 results.data.collections.forEach((c) => console.log(c.name))`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Portal: manage keys</h3>
-      <DocCodeBlock>{`// List your API keys
-const keys = await client.api.getApiKeys()
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Portal: keys and credits</h3>
+      <DocCodeBlock>{`// Portal calls act for the signed-in user: pass their SIWS token (see Sign-in below)
+// List your API keys
+const keys = await client.api.getApiKeys(siwsToken)
 
-// Create a new key
-const newKey = await client.api.createApiKey("Agent Key")
-console.log(newKey.data.key) // shown once — save it!
+// Create a new key: as many as you need
+const newKey = await client.api.createApiKey({ label: "Agent Key" }, siwsToken)
+console.log(newKey.data.plaintext) // shown once — save it!
 
-// Get usage
-const usage = await client.api.getUsage()`}</DocCodeBlock>
+// What your credits were spent on, and your deposits
+const spend = await client.api.getSpend(siwsToken)
+const deposits = await client.api.getCreditHistory(siwsToken)`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Sign-in</h3>
+      <p className="text-muted-foreground text-base mb-3">
+        Every call carries your app&apos;s API key, which identifies the app. A user signs in with their wallet (SIWS) or with an email code; an account belongs to the app it registered through.
+      </p>
+      <DocCodeBlock>{`import { requestSiwsToken } from "@medialane/sdk/starknet"
+
+// Wallet sign-in: appSource makes the backend register the account at sign-in
+const siwsToken = await requestSiwsToken({ backendUrl, walletAddress, signer, appSource: "MEDIALANE_STARKNET" })
+
+// Email sign-in: a 6-digit code, then an account session
+await client.api.requestEmailCode("ana@example.com")
+const { waitingWallets } = await client.api.verifyEmailCode("ana@example.com", "482913")`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Accounts</h3>
       <p className="text-muted-foreground text-base mb-3">
-        One Account model across the whole platform. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">registerUser</code> uses a tenant key (web3 wallet connect); the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">*MyWallet</code> pair uses a SIWS token (Sign In With Starknet), the same mechanism every app relies on instead of a third-party identity provider.
+        An account is defined by no wallet, email or app: each registration through an app is its own account, holding its wallets and email. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">registerUser</code> uses the API key alone (e.g. on wallet connect); <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">upsertMyWallet</code> and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getMyWallet</code> use the user&apos;s SIWS token.
       </p>
-      <DocCodeBlock>{`// Tenant-key registration (e.g. wallet connect) — idempotent
+      <DocCodeBlock>{`// Register a connected wallet in your app — idempotent
 await client.api.registerUser({
   walletAddress: "0x0591...",
-  walletType: "braavos",     // free-form wallet-software label, e.g. "braavos" | "ready" | "mediawallet" | "cartridge" — not a closed enum
-  appSource: "MEDIALANE_STARKNET",
+  walletType: "braavos",     // free-form wallet-software label, e.g. "braavos" | "ready" | "mediawallet" | "cartridge"
 })
 
-// SIWS lazy onboarding (medialane-io). Wallet comes from the token.
-await client.api.upsertMyWallet(siwsToken, { walletType: "mediawallet", appSource: "MEDIALANE_IO" })
+// Register the signed-in wallet; add it to an email account with its accountToken
+await client.api.upsertMyWallet(siwsToken, { walletType: "mediawallet", accountToken })
 
-// Read the caller's stored wallet (null until onboarded)
+// Read the caller's account: wallet, email, emailVerified (null until registered)
 const me = await client.api.getMyWallet(siwsToken)`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Creator &amp; collection profiles</h3>
@@ -535,6 +549,29 @@ await client.services.creatorCoin.launchOnEkubo(account, { creatorCoin, quoteTok
         Per-coin on-chain price reads were removed in favor of this single source.
       </p>
 
+      <DocH2 id="tickets-club" border>IP Tickets &amp; IP Club</DocH2>
+      <p className="text-muted-foreground text-base mb-3">
+        Ticket types and membership tiers are numbered from 1 with no gaps, so a count gives every id. Counts are read fresh, so you can use them to choose the next id right before creating one.
+      </p>
+      <DocCodeBlock>{`const ticketTypes = await client.api.getTicketCount(ticketContract)
+const ticket      = await client.api.getTicket(ticketContract, "1")  // { maxSupply, minted, startTime, endTime, royaltyBps }
+
+const tiers    = await client.api.getClubMembershipCount(clubContract)
+const tier     = await client.api.getClubMembership(clubContract, "1")
+const isMember = await client.api.isClubMember(clubContract, "1", wallet)`}</DocCodeBlock>
+
+      <DocH2 id="launchpad-runs" border>Launchpad Runs</DocH2>
+      <p className="text-muted-foreground text-base mb-3">
+        A run is a paid, multi-step launch (data tokenization, IP ticketing) for your account. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">createLaunchpadRunsClient</code> creates, pays for and executes it step by step; point <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">baseUrl</code> at the backend, or at your app&apos;s proxy to it.
+      </p>
+      <DocCodeBlock>{`import { createLaunchpadRunsClient } from "@medialane/sdk"
+
+const runs = createLaunchpadRunsClient({ baseUrl: "https://api.medialane.io", getToken: async () => siwsToken })
+
+const run  = await runs.create("ip-ticketing", spec)   // DRAFT, with its quote
+await runs.checkoutWithCredits(run.id)                // or checkoutFromWallet(run.id, topUpId)
+const next = (await runs.get(run.id)).next              // what the run asks for next`}</DocCodeBlock>
+
       <DocH2 id="platform-fee" border>Platform Fee</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer, distinct from any on-chain protocol rule. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or unconfigured, treating a missing config as a zero fee.
@@ -573,6 +610,11 @@ try {
     console.error(err.code, err.status, err.message) // e.g. "TOKEN_NOT_FOUND", 404
   }
 }`}</DocCodeBlock>
+
+      <DocH3>Retries</DocH3>
+      <p className="text-muted-foreground text-base mb-3">
+        Reads are retried on server errors, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">429</code> and network failures. A write is retried only on <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">429</code>, which means nothing happened. After a server error or a dropped connection the first attempt may already have taken effect, so the SDK reports the error instead of repeating the write. Check the result (e.g. read the intent or order) before trying again.
+      </p>
 
       <DocH3>Showing an error to a user</DocH3>
       <p className="text-muted-foreground text-base mb-3">

@@ -37,7 +37,7 @@ export const DOCS_NAV = [
     label: "API Reference",
     title: "API Reference",
     icon: Terminal,
-    description: "Full REST API reference: endpoints, authentication, request shapes, rate limits, and response types.",
+    description: "Full REST API reference: endpoints, authentication and sign-in, request shapes, and response types.",
   },
   {
     href: "/dev/contracts",

@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Key, Star, User, Shield, Eye, Bot, Mail, CheckCircle2 } from "lucide-react";
+import { Key, Star, User, Shield, Eye, Bot, Mail } from "lucide-react";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/identity" },
   title: "Identity | Learn | Medialane",
-  description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, email verification, and AI agent accounts.",
+  description: "How identity works on Medialane: Wallet, Account, and Profile, accounts per app, signing in with a wallet or an email code, wallets set up for you by a business, and AI agent accounts.",
   openGraph: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, email verification, and AI agent accounts.",
+    description: "How identity works on Medialane: Wallet, Account, and Profile, accounts per app, signing in with a wallet or an email code, wallets set up for you by a business, and AI agent accounts.",
     url: "https://docs.medialane.io/learn/identity",
   },
   twitter: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane: Wallet, Account, and Profile, roles, authentication vs. authorization, email verification, and AI agent accounts.",
+    description: "How identity works on Medialane: Wallet, Account, and Profile, accounts per app, signing in with a wallet or an email code, wallets set up for you by a business, and AI agent accounts.",
   },
 };
 
@@ -34,7 +34,7 @@ const FACETS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    def: "The logical actor: your own stable identity, distinct from any wallet address. Wallets, social/email logins, and agent keys all attach to it; none of them is the account, and an account does not require a wallet at all (a social-login user with no wallet is still a first-class account). It aggregates the work you have created, assets you have collected, and credentials you have earned across every wallet or login attached to it.",
+    def: "The logical actor: your own stable identity, distinct from any wallet address. Wallets, social/email logins, and agent keys all attach to it; none of them is the account, and an account does not require a wallet at all (a social-login user with no wallet is still a first-class account). It aggregates the work you have created, assets you have collected, and credentials you have earned across every wallet or login attached to it. Each app you sign up with gives you an account in that app.",
     note: "A wallet declares it belongs to an account via a signed statement; the account can rotate or add wallets without losing its history.",
   },
   {
@@ -46,13 +46,6 @@ const FACETS = [
     def: "Your public face. Name, bio, avatar, social handles. This is off-chain enrichment: editable, optional, separate from your protocol identity. Losing your profile loses nothing protocol-critical.",
     note: "Profiles are platform state, not protocol state. They make you discoverable. They do not define what you own.",
   },
-];
-
-const ROLES = [
-  { role: "Creator", desc: "Has deployed at least one collection or minted IP assets. Unlocks creation-focused tools in the app UI." },
-  { role: "Collector", desc: "Holds IP assets in their wallet. The default role for anyone purchasing or receiving creative work." },
-  { role: "Organization", desc: "A multi-wallet entity: a brand, label, or DAO operating on the platform. Managed through the portal." },
-  { role: "Agent", desc: "An AI or automated system operating via the API. Identical protocol capabilities to human accounts." },
 ];
 
 export default function LearnIdentityPage() {
@@ -89,22 +82,19 @@ export default function LearnIdentityPage() {
           </div>
         </Section>
 
-        <Section title="Roles">
+        <Section title="Accounts per app">
           <p>
-            Roles describe what you do on Medialane, not what the protocol allows.
-            Medialane is permissionless: anyone with a wallet can mint, list, or transfer.
-            Roles gate what the UI surfaces to you, not what the contracts permit.
+            An account is not defined by a wallet, an email or an app. When you sign up
+            with an app, that registration is your account in that app; signing up with
+            another app gives you a separate account there, even with the same email or
+            wallet. Every account is the same kind of thing: there are no account types
+            or roles.
           </p>
-          <div className="space-y-2">
-            {ROLES.map(({ role, desc }) => (
-              <div key={role} className="bento-cell px-4 py-3 flex items-start gap-3">
-                <span className="text-xs font-black uppercase tracking-widest text-primary bg-primary/10 px-2 py-1 rounded shrink-0 mt-0.5">
-                  {role}
-                </span>
-                <p className="text-base text-muted-foreground leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
+          <p>
+            Being a creator or a collector is something you do, not a label on your
+            account: what you have created or collected is read from the chain. Medialane
+            is permissionless: anyone with a wallet can mint, list, or transfer.
+          </p>
         </Section>
 
         <Section title="Authentication vs. Authorization">
@@ -115,10 +105,11 @@ export default function LearnIdentityPage() {
                 <p className="font-bold text-foreground text-base">Authentication</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Proving who you are. Every Medialane app uses the same mechanism, SIWS,
-                Sign In With Starknet: you sign a message with your wallet (unlocked by your
-                device passkey) and the API verifies the signature, no password or
-                third-party identity provider involved anywhere on the platform.
+                Proving who you are. You sign in with your wallet, SIWS (Sign In With
+                Starknet): you sign a message (unlocked by your device passkey) and the
+                API verifies the signature. Or you sign in with your email: a 6-digit code
+                sent to your inbox. No password or third-party identity provider is
+                involved anywhere on the platform.
               </p>
             </div>
             <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
@@ -140,42 +131,25 @@ export default function LearnIdentityPage() {
           </p>
         </Section>
 
-        <Section title="Email Verification">
+        <Section title="Email sign-in">
           <p>
-            An email address on your account is optional at sign-up but recommended.
-            Verifying it protects the people who trust your public identity: a claimed
-            username or collection name should mean the account behind it can actually
-            be reached.
+            When you sign up with an email, a short code sent to your inbox confirms the
+            address is yours. Nothing else on the platform waits on it: holding assets,
+            sending and receiving, browsing and listing are open to every account.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-brand-orange" />
-                <p className="font-bold text-foreground text-base">Claiming a name</p>
-              </div>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Claiming a username or a collection slug is a public identity claim, so
-                it requires a verified email. A short code sent to your inbox confirms
-                it in seconds, from Settings.
-              </p>
+          <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
+            <div className="flex items-center gap-2">
+              <Mail className="h-4 w-4 text-brand-orange" />
+              <p className="font-bold text-foreground text-base">A wallet set up for you</p>
             </div>
-            <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-brand-blue" />
-                <p className="font-bold text-foreground text-base">Listing for sale</p>
-              </div>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Listing an asset on the marketplace also benefits from a verified email,
-                the same trust signal for anyone considering a purchase from you.
-              </p>
-            </div>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              A business can send you a ticket, a membership or any other asset before you
+              have signed up: Medialane creates a wallet for your email and the assets go
+              there. When you sign in with that email and confirm the code, the wallet is
+              handed over to your own key, so it is fully yours. If you already have a
+              wallet, new assets simply arrive in it.
+            </p>
           </div>
-          <p className="text-base">
-            Everything else on the platform stays wide open: holding assets, sending
-            and receiving, browsing, connecting a wallet. Verification is scoped to the
-            two actions above, at your own pace, with a grace period after adding an
-            email before either is asked for.
-          </p>
         </Section>
 
         <Section title="AI Agents">
