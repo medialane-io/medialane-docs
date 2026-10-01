@@ -129,7 +129,7 @@ console.log(token.data.metadata?.name)`}</DocCodeBlock>
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Get collections by owner</h3>
       <DocCodeBlock>{`// Fetch collections owned by a wallet address
 // Addresses are normalized automatically — pass any valid Starknet format
-const result = await client.api.getCollectionsByOwner("0x0591...")
+const result = await client.api.listCollections({ owner: "0x0591..." })
 result.data.forEach((col) => {
   console.log(col.name, col.collectionId) // collectionId = on-chain registry ID
 })`}</DocCodeBlock>
@@ -309,7 +309,7 @@ remixes.data.forEach((r) => console.log(r.remixContract, r.remixTokenId, r.licen
 
 // "recent" | "supply" | "floor" | "volume" | "name"
 const sort: CollectionSort = "floor"
-await client.api.getCollections(1, 20, true, sort)`}</DocCodeBlock>
+await client.api.listCollections({ page: 1, limit: 20, isFeatured: true, sort })`}</DocCodeBlock>
 
       <DocH2 id="pop-protocol" border>POP Protocol (Proof of Participation)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
@@ -341,7 +341,7 @@ results.forEach((r) => console.log(r.wallet, r.isEligible))`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">List POP collections</h3>
       <DocCodeBlock>{`// Fetch all POP Protocol collections
-const pops = await client.api.getPopCollections({ page: 1, limit: 20, sort: "recent" })
+const pops = await client.api.listCollections({ service: "pop-protocol", page: 1, limit: 20, sort: "recent" })
 pops.data.forEach((col) => console.log(col.name, col.source)) // source: "POP_PROTOCOL"`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Admin: mint and allowlist</h3>
@@ -397,7 +397,7 @@ const { txHash } = await client.services.drop.claim(account, "0x03587f...")
 await client.services.drop.claim(account, "0x03587f...", 3)`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">List Drop collections</h3>
-      <DocCodeBlock>{`const drops = await client.api.getDropCollections({ page: 1, limit: 20, sort: "recent" })
+      <DocCodeBlock>{`const drops = await client.api.listCollections({ service: "drop-collection", page: 1, limit: 20, sort: "recent" })
 drops.data.forEach((col) => console.log(col.name, col.source)) // source: "COLLECTION_DROP"`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Deploy a new Drop</h3>

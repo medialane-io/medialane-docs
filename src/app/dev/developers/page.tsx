@@ -104,7 +104,7 @@ const client = new MedialaneClient({
 });
 
 // Fetch newest collections (sort: "recent" | "supply" | "floor" | "volume" | "name")
-const { data: collections } = await client.api.getCollections(1, 20, undefined, "recent");
+const { data: collections } = await client.api.listCollections({ page: 1, limit: 20, sort: "recent" });
 
 // Fetch tokens owned by a wallet
 const { data: tokens } = await client.api.getTokensByOwner("0x<wallet>");
