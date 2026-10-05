@@ -76,7 +76,7 @@ const APPS = [
     description:
       "Self-service developer portal for API and SDK access. Generate keys, monitor usage, and unlock MDLN-boosted quotas, fully permissionless, no approval required.",
     features: [
-      "Generate and manage API keys instantly, no approval needed",
+      "Create your API key instantly, no approval needed",
       "MDLN token multiplier: up to 2× quota for 5,000 MDLN holders",
       "USDC credit deposits for autonomous AI agent billing (HTTP 402)",
       "Usage dashboard: quota, multiplier, credit balance",
