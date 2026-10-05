@@ -126,7 +126,7 @@ export default function ApiReferencePage() {
         Keys are prefixed <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret, and treat them like passwords.
       </p>
       <p className="text-muted-foreground text-base">
-        The API key is how an app is metered, and each app also sends its registered name in the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-app-source</code> header (for example <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MEDIALANE_IO</code>). An account belongs to the app it registered through, and an account has at most one wallet and one email. When a request acts for a user, it also carries that user&apos;s sign-in, either a wallet sign-in token (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer siws_...</code>) or an account session from email sign-in. See <a href="#sign-in" className="text-primary hover:underline">Sign-in</a>.
+        The API key identifies the app that is calling: every app is a client holding its own key, and an account belongs to the client it registered through. An account has at most one wallet and one email. When a request acts for a user, it also carries that user&apos;s sign-in, either a wallet sign-in token (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer siws_...</code>) or an account session from email sign-in. See <a href="#sign-in" className="text-primary hover:underline">Sign-in</a>.
       </p>
 
       <DocH2 id="response-format" border>Response Format</DocH2>
