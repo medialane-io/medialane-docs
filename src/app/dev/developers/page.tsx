@@ -6,26 +6,17 @@ import { Section, Code } from "@/components/docs";
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/dev/developers" },
   title: "Developers | Medialane Docs",
-  description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
+  description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, and Medialane API patterns.",
   openGraph: {
     title: "Developers | Medialane Docs",
-    description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
+    description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, and Medialane API patterns.",
     url: "https://docs.medialane.io/dev/developers",
   },
   twitter: {
     title: "Developers | Medialane Docs",
-    description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, webhooks, and Medialane API patterns.",
+    description: "Developer quickstart: portal setup, SDK integration, MDLN multiplier, and Medialane API patterns.",
   },
 };
-
-const WEBHOOK_EVENTS = [
-  { event: "order.created",     desc: "A new listing or offer is activated." },
-  { event: "order.fulfilled",   desc: "A listing is purchased or offer accepted." },
-  { event: "order.cancelled",   desc: "An order is cancelled by the offerer." },
-  { event: "token.minted",      desc: "A new NFT is minted in any indexed collection." },
-  { event: "token.transferred", desc: "Token ownership changes hands (non-sale transfer)." },
-  { event: "comment.posted",    desc: "An on-chain comment is posted to a token." },
-];
 
 export default function DocsDevsPage() {
   return (
@@ -34,7 +25,7 @@ export default function DocsDevsPage() {
         <h2 className="text-2xl font-bold">Developer Guide</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           Everything you need to integrate with Medialane, from API key setup to
-          real-time webhooks and MDLN-boosted quotas.
+          MDLN-boosted quotas.
         </p>
         <p className="text-base text-muted-foreground">
           The Medialane stack has four layers: immutable contracts on Starknet, an indexer that
@@ -113,54 +104,7 @@ const currencies = getListableTokens();
 // → [{ symbol: "USDC", address: "0x...", decimals: 6 }, ...]`}</Code>
         </Section>
 
-        <Section title="4. Set Up Webhooks">
-          <p>
-            Register a webhook endpoint in the portal to receive real-time push events
-            whenever activity occurs on the platform. The indexer delivers events within
-            seconds of on-chain confirmation.
-          </p>
-          <Code>{`// Register a webhook via API
-POST https://api.medialane.io/v1/portal/webhooks
-x-api-key: ml_live_...
-Content-Type: application/json
-
-{
-  "url": "https://your-app.com/webhooks/medialane",
-  "events": ["order.created", "order.fulfilled", "token.minted"],
-  "secret": "whsec_your_signing_secret"
-}`}</Code>
-          <p>All webhook payloads are signed with HMAC-SHA256 using your webhook secret:</p>
-          <Code>{`// Verify webhook signature (Node.js / Bun)
-import { createHmac } from "crypto";
-
-function verifyWebhook(body: string, sig: string, secret: string) {
-  const expected = createHmac("sha256", secret)
-    .update(body)
-    .digest("hex");
-  return sig === \`sha256=\${expected}\`;
-}
-
-// Express / Hono handler
-app.post("/webhooks/medialane", async (req) => {
-  const sig = req.headers["x-medialane-signature"];
-  if (!verifyWebhook(req.rawBody, sig, process.env.WEBHOOK_SECRET!)) {
-    return res.status(401).send("Invalid signature");
-  }
-  const event = req.body;  // { type, data, timestamp }
-  // handle event...
-});`}</Code>
-          <div className="space-y-2">
-            <p className="text-base font-medium text-foreground">Available event types:</p>
-            {WEBHOOK_EVENTS.map(({ event, desc }) => (
-              <div key={event} className="bento-cell px-4 py-2.5 flex items-center gap-3">
-                <code className="text-xs font-mono text-foreground/80 shrink-0 w-36">{event}</code>
-                <span className="text-sm text-muted-foreground">{desc}</span>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section title="5. Common Integration Patterns">
+        <Section title="4. Common Integration Patterns">
           <p className="font-medium text-foreground text-base">Display a collection with floor price and token grid</p>
           <Code>{`const { data: collection } = await client.api.getCollection("0x<contract>");
 const { data: tokens }     = await client.api.getCollectionTokens("0x<contract>");
