@@ -54,10 +54,10 @@ export default function DocsDevsPage() {
             <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
               portal.medialane.io
             </a>.
-            Sign in, create a project, and copy your key. The free tier provides 50 requests per calendar month,
-            no credit card required.
+            Sign in and create your key. An account has one key, and creating a new one replaces the current key.
+            Every request is paid from your account&apos;s credits, which you fund with USDC in the portal.
           </p>
-          <Code>{`# Sign in at portal.medialane.io → Projects → New Key
+          <Code>{`# Sign in at portal.medialane.io → Account → Create key
 # Copy your key, then store it securely:
 export MEDIALANE_API_KEY=ml_live_your_key_here`}</Code>
           <p>Pass the key on every request:</p>
@@ -65,30 +65,29 @@ export MEDIALANE_API_KEY=ml_live_your_key_here`}</Code>
   -H "x-api-key: $MEDIALANE_API_KEY"`}</Code>
         </Section>
 
-        <Section title="2. Boost Your Quota with MDLN">
+        <Section title="2. Credits and MDLN">
           <p>
-            Hold MDLN tokens and register them in the portal to unlock a quota multiplier.
-            The multiplier is checked on-chain when your key is registered, and you keep the
-            boost for the remainder of the billing period.
+            Credits are the billing unit: 1 credit is $0.01, and every endpoint is metered in credits.
+            Hold MDLN in the wallet you pay from and a multiplier is applied automatically when your
+            payment is credited. The balance is read on-chain at that moment.
           </p>
           <div className="space-y-2">
             {[
-              { label: "Free",    mdln: "0 MDLN",    mult: "1×",   limit: "50 req / month" },
-              { label: "Starter", mdln: "500 MDLN",  mult: "1.2×", limit: "60 req / month" },
-              { label: "Builder", mdln: "2,000 MDLN",mult: "1.5×", limit: "75 req / month" },
-              { label: "Pro",     mdln: "5,000 MDLN",mult: "2×",   limit: "100 req / month" },
-            ].map(({ label, mdln, mult, limit }) => (
+              { label: "Base",    mdln: "0 MDLN",     mult: "1×",   credits: "100 credits per $1" },
+              { label: "Starter", mdln: "500 MDLN",   mult: "1.2×", credits: "120 credits per $1" },
+              { label: "Builder", mdln: "2,000 MDLN", mult: "1.5×", credits: "150 credits per $1" },
+              { label: "Pro",     mdln: "5,000 MDLN", mult: "2×",   credits: "200 credits per $1" },
+            ].map(({ label, mdln, mult, credits }) => (
               <div key={label} className="bento-cell px-4 py-2.5 flex items-center gap-4 flex-wrap text-sm">
                 <span className="font-semibold w-16 shrink-0">{label}</span>
                 <span className="text-muted-foreground font-mono">{mdln}</span>
                 <span className="font-bold font-mono text-primary ml-auto">{mult}</span>
-                <span className="text-muted-foreground text-xs w-32 text-right">{limit}</span>
+                <span className="text-muted-foreground text-xs w-40 text-right">{credits}</span>
               </div>
             ))}
           </div>
           <p className="text-base">
-            For higher-volume use cases, deposit USDC credits in the portal for pay-per-call billing
-            on top of your base quota. This is the primary billing model for AI agents.
+            Deposit USDC in the portal to add credits. This is also the billing model for AI agents.
             See the <Link href="/dev/agents" className="text-primary hover:underline">AI Agents guide</Link>.
           </p>
         </Section>
