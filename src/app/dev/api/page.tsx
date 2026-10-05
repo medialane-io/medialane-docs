@@ -2881,7 +2881,7 @@ const resumeSource = new EventSource(url, {
         description="Number of accounts, with optional filters. An account with any matching sign-in record is counted once."
         params={[
           { name: "chain", type: "string", required: false, desc: "Filter by wallet chain" },
-          { name: "clientId", type: "string", required: false, desc: "Filter by the app the account registered through" },
+          { name: "appId", type: "string", required: false, desc: "Filter by the app the account registered through, e.g. MEDIALANE_IO" },
           { name: "walletType", type: "string", required: false, desc: "Filter by wallet type" },
           { name: "since", type: "string", required: false, desc: "ISO date; accounts created on or after" },
         ]}
