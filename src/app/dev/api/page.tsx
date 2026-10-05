@@ -1181,7 +1181,7 @@ export default function ApiReferencePage() {
 
       <DocH2 id="events" border>Events (SSE)</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Subscribe to a real-time Server-Sent Events stream for transfers, order lifecycle events, and keepalive pings. Authentication uses a query parameter since browsers cannot send custom headers with the native <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">EventSource</code> API. PREMIUM plan recommended for sustained connections.
+        Subscribe to a real-time Server-Sent Events stream for transfers, order lifecycle events, and keepalive pings. Authentication uses a query parameter since browsers cannot send custom headers with the native <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">EventSource</code> API.
       </p>
 
       <Endpoint
@@ -1286,13 +1286,13 @@ const resumeSource = new EventSource(url, {
 
       <DocH2 id="portal" border>Portal (Self-service)</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Portal endpoints manage your account: API keys, credits, top-ups, launchpad runs and webhooks (PREMIUM). They act for a signed-in user, so every call also carries <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer</code> with a wallet sign-in token or an account session. Creating or deleting a key needs a recent sign-in (within 10 minutes). These calls are never metered.
+        Portal endpoints manage your account: API keys, credits, top-ups, launchpad runs. They act for a signed-in user, so every call also carries <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer</code> with a wallet sign-in token or an account session. Creating or deleting a key needs a recent sign-in (within 10 minutes). These calls are never metered.
       </p>
 
       <Endpoint
         method="GET"
         path="/v1/portal/me"
-        description="Get your account: plan, status, and live credit balance."
+        description="Get your account: status and live credit balance."
         params={[]}
         curl={`curl "${BASE}/v1/portal/me" \\
   -H "x-api-key: ${KEY}" \\
@@ -1300,7 +1300,6 @@ const resumeSource = new EventSource(url, {
         response={`{
   "data": {
     "id": "acct_abc",
-    "plan": "FREE",
     "status": "ACTIVE",
     "creditBalance": 1200
   }
@@ -1407,55 +1406,6 @@ const resumeSource = new EventSource(url, {
   -H "Content-Type: application/json" \\
   -d '{ "txHash": "0x..." }'`}
         response={`{ "data": { "deposits": 1 } }`}
-      />
-
-      <Endpoint
-        method="GET"
-        path="/v1/portal/webhooks"
-        description="List registered webhooks. PREMIUM only."
-        params={[]}
-        curl={`curl "${BASE}/v1/portal/webhooks" \\
-  -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
-        response={`{
-  "data": [
-    { "id": "wh_abc", "url": "https://yourapp.com/hook", "events": ["ORDER_CREATED"], "active": true }
-  ]
-}`}
-      />
-
-      <Endpoint
-        method="POST"
-        path="/v1/portal/webhooks"
-        description="Register a new webhook endpoint. PREMIUM only."
-        params={[
-          { name: "url", type: "string", required: true, desc: "HTTPS endpoint to receive events" },
-          { name: "events", type: "string[]", required: true, desc: "ORDER_CREATED | ORDER_FULFILLED | ORDER_CANCELLED | TRANSFER" },
-        ]}
-        curl={`curl -X POST "${BASE}/v1/portal/webhooks" \\
-  -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <SIGN_IN_TOKEN>" \\
-  -H "Content-Type: application/json" \\
-  -d '{ "url": "https://yourapp.com/hook", "events": ["ORDER_CREATED", "TRANSFER"] }'`}
-        response={`{
-  "id": "wh_new",
-  "url": "https://yourapp.com/hook",
-  "events": ["ORDER_CREATED", "TRANSFER"],
-  "secret": "whsec_SHOWN_ONCE"
-}`}
-      />
-
-      <Endpoint
-        method="DELETE"
-        path="/v1/portal/webhooks/:id"
-        description="Delete a webhook."
-        params={[
-          { name: "id", type: "string", required: true, desc: "Webhook ID" },
-        ]}
-        curl={`curl -X DELETE "${BASE}/v1/portal/webhooks/wh_abc" \\
-  -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
-        response={`{ "success": true }`}
       />
 
       <DocH3>Top-ups</DocH3>
