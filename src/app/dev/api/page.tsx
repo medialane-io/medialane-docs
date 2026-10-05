@@ -1377,7 +1377,7 @@ const resumeSource = new EventSource(url, {
         curl={`curl -X DELETE "${BASE}/v1/portal/keys/key_abc" \\
   -H "x-api-key: ${KEY}" \\
   -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
-        response={`{ "data": { "id": "key_abc", "status": "REVOKED" } }`}
+        response={`{ "data": { "id": "key_abc" } }`}
       />
 
       <Endpoint
