@@ -115,7 +115,7 @@ export default function ApiReferencePage() {
 
       <DocH2 id="authentication" border>Authentication</DocH2>
       <p className="text-muted-foreground mb-3">
-        Every request carries an API key in the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-api-key</code> header. Keys are self-service from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a>, for people and agents alike.
+        Every request carries an API key in the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-api-key</code> header. Keys are self-service from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a>. An account has one key; creating a new key replaces the current one.
       </p>
       <DocCodeBlock lang="bash">{`curl "${BASE}/v1/orders" \\
   -H "x-api-key: ${KEY}"
@@ -126,7 +126,7 @@ export default function ApiReferencePage() {
         Keys are prefixed <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret, and treat them like passwords.
       </p>
       <p className="text-muted-foreground text-base">
-        The API key identifies the app that is calling: every app is a client holding its own keys, and an account belongs to the client it registered through. When a request acts for a user, it also carries that user&apos;s sign-in, either a wallet sign-in token (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer siws_...</code>) or an account session from email sign-in. See <a href="#sign-in" className="text-primary hover:underline">Sign-in</a>.
+        The API key is how an app is metered, and each app also sends its registered name in the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-app-source</code> header (for example <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MEDIALANE_IO</code>). An account belongs to the app it registered through, and an account has at most one wallet and one email. When a request acts for a user, it also carries that user&apos;s sign-in, either a wallet sign-in token (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer siws_...</code>) or an account session from email sign-in. See <a href="#sign-in" className="text-primary hover:underline">Sign-in</a>.
       </p>
 
       <DocH2 id="response-format" border>Response Format</DocH2>
@@ -1333,14 +1333,14 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/portal/keys"
-        description="List all API keys for your account."
+        description="The account's API key. The list holds at most one key."
         params={[]}
         curl={`curl "${BASE}/v1/portal/keys" \\
   -H "x-api-key: ${KEY}" \\
   -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
         response={`{
   "data": [
-    { "id": "key_abc", "name": "Production", "prefix": "ml_live_abc...", "createdAt": "..." }
+    { "id": "key_abc", "prefix": "ml_live_abc", "label": null, "lastUsedAt": "...", "createdAt": "..." }
   ]
 }`}
       />
@@ -1348,7 +1348,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/portal/keys"
-        description="Create a new API key."
+        description="Create the account's API key. If the account already has a key, it is replaced: the current key stops working immediately."
         params={[
           { name: "label", type: "string", required: false, desc: "A label for this key (max 64 chars)" },
         ]}
@@ -1370,14 +1370,14 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="DELETE"
         path="/v1/portal/keys/:id"
-        description="Delete an API key. This action is irreversible."
+        description="Delete the account's API key. The key stops working immediately. This action is irreversible."
         params={[
           { name: "id", type: "string", required: true, desc: "Key ID" },
         ]}
         curl={`curl -X DELETE "${BASE}/v1/portal/keys/key_abc" \\
   -H "x-api-key: ${KEY}" \\
   -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
-        response={`{ "success": true }`}
+        response={`{ "data": { "id": "key_abc", "status": "REVOKED" } }`}
       />
 
       <Endpoint
@@ -2694,19 +2694,8 @@ const resumeSource = new EventSource(url, {
         response={`{
   "token": "siws_...",
   "accountId": "...",
-  "apiClientId": "...",
   "accountToken": "..."
 }`}
-      />
-
-      <Endpoint
-        method="POST"
-        path="/v1/auth/siws/keys"
-        description="Mint a session API key for the signed-in wallet's account, replacing its previous session key."
-        curl={`curl -X POST "${BASE}/v1/auth/siws/keys" \\
-  -H "x-api-key: ${KEY}" \\
-  -H "Authorization: Bearer <SIWS_TOKEN>"`}
-        response={`{ "data": { "id": "...", "prefix": "ml_live_xxxx", "label": "portal-session", "plaintext": "ml_live_..." } }`}
       />
 
       <Endpoint
@@ -2794,7 +2783,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/users/me"
-        description="Register the signed-in wallet in the calling app (the wallet comes from the token, never the body). Pass an accountToken to add the wallet to an existing account, such as one created by email sign-in. Pass email to attach an email and send it a code."
+        description="Register the signed-in wallet in the calling app (the wallet comes from the token, never the body). Pass an accountToken to add the wallet to an existing account, such as one created by email sign-in. Pass email to attach an email and send it a code. Returns 409 wallet_already_attached when the account in the session already has a wallet; use generate-wallet to replace it."
         params={[
           { name: "walletType", type: "string", required: false, desc: "Defaults to UNKNOWN" },
           { name: "chain", type: "string", required: false, desc: "STARKNET only in v1" },
