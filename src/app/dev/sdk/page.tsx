@@ -204,7 +204,7 @@ await client.api.registerUser({
 // Register the signed-in wallet; add it to an email account with its accountToken
 await client.api.upsertMyWallet(siwsToken, { walletType: "mediawallet", accountToken })
 
-// Read the caller's account: wallet, email, emailVerified (null until registered)
+// Read the caller's account: wallet, email, emailDeadline (null until registered)
 const me = await client.api.getMyWallet(siwsToken)`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Creator &amp; collection profiles</h3>

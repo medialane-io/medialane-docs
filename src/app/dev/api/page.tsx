@@ -2760,7 +2760,7 @@ const resumeSource = new EventSource(url, {
   "accountId": "...",
   "publicId": "acc_...",
   "email": "ana@example.com",
-  "emailVerified": true
+  "emailDeadline": null
 }`}
       />
 
@@ -2776,7 +2776,7 @@ const resumeSource = new EventSource(url, {
   -H "Authorization: Bearer <SIWS_TOKEN>" \\
   -H "Content-Type: application/json" \\
   -d '{"email":"ana@example.com"}'`}
-        response={`{ "email": "ana@example.com", "emailVerified": false }`}
+        response={`{ "email": "ana@example.com" }`}
       />
 
       <Endpoint
