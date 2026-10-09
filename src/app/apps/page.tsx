@@ -505,10 +505,11 @@ export default function AppsPage() {
           </div>
 
           <div className="bg-muted/30 border border-border/60 rounded-lg p-4 font-mono text-xs space-y-1 text-muted-foreground overflow-x-auto">
-            <div><span className="text-primary">import</span> {"{ MedialaneClient }"} <span className="text-primary">from</span> <span className="text-brand-orange">&apos;@medialane/sdk&apos;</span>;</div>
-            <div className="pt-1"><span className="text-primary">const</span> client = <span className="text-primary">new</span> <span className="text-brand-blue">MedialaneClient</span>{"({ apiKey, network: "}<span className="text-brand-orange">&apos;mainnet&apos;</span>{"})"};</div>
-            <div className="pt-1"><span className="text-primary">const</span> asset = <span className="text-primary">await</span> client.assets.<span className="text-brand-blue">getAsset</span>(<span className="text-brand-orange">&apos;0x1234...&apos;</span>);</div>
-            <div><span className="text-primary">const</span> listing = <span className="text-primary">await</span> client.marketplace.<span className="text-brand-blue">createListing</span>(params);</div>
+            <div><span className="text-primary">import</span> {"{ MedialaneClient, executeIntent }"} <span className="text-primary">from</span> <span className="text-brand-orange">&apos;@medialane/sdk/starknet&apos;</span>;</div>
+            <div className="pt-1"><span className="text-primary">const</span> client = <span className="text-primary">new</span> <span className="text-brand-blue">MedialaneClient</span>{"({ backendUrl, apiKey })"};</div>
+            <div className="pt-1"><span className="text-primary">const</span> token = <span className="text-primary">await</span> client.api.<span className="text-brand-blue">getToken</span>(<span className="text-brand-orange">&apos;0x1234...&apos;</span>, <span className="text-brand-orange">&apos;42&apos;</span>);</div>
+            <div><span className="text-primary">const</span> {"{ data: intent }"} = <span className="text-primary">await</span> client.api.<span className="text-brand-blue">createListingIntent</span>(params);</div>
+            <div><span className="text-primary">await</span> <span className="text-brand-blue">executeIntent</span>(provider, signer, client, intent);</div>
           </div>
 
           <div className="flex flex-wrap gap-4">

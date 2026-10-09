@@ -56,8 +56,8 @@ export const CONTRACTS: ContractInfo[] = [
     category: "Collections & Launchpad",
     name: "POP Protocol Factory",
     chain: "Starknet",
-    address: "0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111",
-    desc: "Factory for Proof-of-Participation campaigns. Each campaign deploys a soulbound (non-transferable) ERC-721 credential contract. Credentials are claimable by eligible wallets and permanently on-chain.",
+    address: "0x06af6ffdde310991a40570716dc3681acc7effc610aeb548ea0baa02d4208d5f",
+    desc: "Ownerless, non-upgradeable factory for Proof-of-Participation collections. Anyone can create a collection and becomes its organizer. Each collection is a soulbound (non-transferable) ERC-721: eligible addresses claim with a Merkle allowlist proof, the organizer can issue directly, one badge per address, and only the holder can burn their own badge. Deployed 2026-10-09, superseding the previous POP factory.",
   },
   {
     category: "Collections & Launchpad",

@@ -86,7 +86,8 @@ export MEDIALANE_API_KEY=ml_live_your_key_here`}</Code>
         <Section title="3. Install the SDK">
           <Code>{`bun add @medialane/sdk starknet
 # or: npm install @medialane/sdk starknet`}</Code>
-          <Code>{`import { MedialaneClient, getListableTokens } from "@medialane/sdk";
+          <Code>{`import { getListableTokens } from "@medialane/sdk";
+import { MedialaneClient } from "@medialane/sdk/starknet";
 
 const client = new MedialaneClient({
   backendUrl: "https://api.medialane.io",
