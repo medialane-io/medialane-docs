@@ -36,22 +36,21 @@ npm install @medialane/sdk starknet
 # yarn
 yarn add @medialane/sdk starknet`}</DocCodeBlock>
       <p className="text-base text-muted-foreground">
-        Peer dependency: <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">starknet@^6</code>
+        Peer dependency: <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">starknet &gt;= 6</code>. Chain-agnostic helpers and types import from <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">@medialane/sdk</code>; the Starknet client, services and signing helpers import from <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">@medialane/sdk/starknet</code>.
       </p>
 
       <DocH2 id="configure" border>Configure</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        Create a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneClient</code> with your network and API key.
+        Create a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneClient</code> with your chain and API key.
       </p>
-      <DocCodeBlock>{`import { MedialaneClient } from "@medialane/sdk"
+      <DocCodeBlock>{`import { MedialaneClient } from "@medialane/sdk/starknet"
 
 const client = new MedialaneClient({
-  network: "mainnet",        // "mainnet" | "sepolia"
-  rpcUrl: "https://starknet-mainnet.g.alchemy.com/starknet/version/rpc/v0_7/YOUR_KEY",
+  chain: "STARKNET",                   // default
+  rpcUrl: "https://your-starknet-rpc", // optional, defaults to the chain's registry RPC
   backendUrl: "https://api.medialane.io",
   apiKey: "ml_live_YOUR_KEY",
-  // marketplaceContract — optional, defaults to mainnet contract
-  // collectionContract  — optional, defaults to mainnet collection registry
+  // Contract addresses default to the current mainnet registry
   // Optional: configure retry for transient failures
   retryOptions: {
     maxAttempts: 3,      // default
@@ -65,51 +64,48 @@ const client = new MedialaneClient({
 
       <DocH2 id="minting" border>Minting & Launchpad</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        The SDK provides two ways to mint assets: direct on-chain calls (requires signer) and backend-orchestrated intents.
+        Every onchain action (mint, create a collection, list, offer, buy, cancel, checkout) starts as an <strong>intent</strong> from the API. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">executeIntent</code> signs it when it needs a signature and executes the resulting calls from the user&apos;s own account. Nothing is signed or sent on the user&apos;s behalf.
       </p>
 
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Mint an asset into a collection</h3>
-      <DocCodeBlock>{`// 1. Direct on-chain (client.marketplace)
-await client.marketplace.mint(account, {
-  collectionId: "42",
-  recipient: "0x0591...",
-  tokenUri: "ipfs://...",
-})
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">A signer for executeIntent</h3>
+      <DocCodeBlock>{`import { stark } from "starknet"
 
-// 2. Via backend intent (client.api)
-// No SNIP-12 signing required for mint/create-collection intents
-const { intentId, calls } = await client.api.createMintIntent({
-  owner: "0x0591...", // collection owner
+const signer = {
+  address: account.address,
+  signTypedData: async (data) => stark.formatSignature(await account.signMessage(data)),
+  execute: async (calls) => ({ txHash: (await account.execute(calls)).transaction_hash }),
+}`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Mint an asset into a collection</h3>
+      <DocCodeBlock>{`import { executeIntent } from "@medialane/sdk/starknet"
+
+const { data: intent } = await client.api.createMintIntent({
+  owner: "0x0591...",       // collection owner
   collectionId: "42",
   recipient: "0x0592...",
   tokenUri: "ipfs://...",
-})`}</DocCodeBlock>
+})
+const { txHash } = await executeIntent(provider, signer, client, intent)`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Register a new collection</h3>
-      <DocCodeBlock>{`// 1. Direct on-chain
-await client.marketplace.createCollection(account, {
-  name: "My Collection",
-  symbol: "MYC",
-  baseUri: "ipfs://...",
-})
-
-// 2. Via backend intent
-const { intentId, calls } = await client.api.createCollectionIntent({
+      <DocCodeBlock>{`const { data: intent } = await client.api.createCollectionIntent({
   owner: "0x0591...",
   name: "My Collection",
   symbol: "MYC",
   baseUri: "ipfs://...",
-})`}</DocCodeBlock>
+})
+await executeIntent(provider, signer, client, intent)`}</DocCodeBlock>
 
-      <DocH2 id="marketplace" border>Marketplace (on-chain)</DocH2>
+      <DocH2 id="marketplace" border>Marketplace (on-chain reads)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.marketplace</code> provides typed wrappers for direct contract calls via starknet.js.
+        Read an order or an offerer&apos;s counter directly from the marketplace contract.
       </p>
-      <DocCodeBlock>{`// Get order details directly from the contract
-const order = await client.marketplace.getOrderDetails("0x04f7a1...")
+      <DocCodeBlock>{`import { resolveConfig } from "@medialane/sdk"
+import { getOrderDetails, getCounter } from "@medialane/sdk/starknet"
 
-// Get the offerer's order counter (replaces the removed nonce in 0.26.0)
-const counter = await client.marketplace.getCounter("0x0591...")`}</DocCodeBlock>
+const config = resolveConfig({ chain: "STARKNET" })
+const order   = await getOrderDetails("0x04f7a1...", config)
+const counter = await getCounter("0x0591...", config)`}</DocCodeBlock>
 
       <DocH2 id="api-client" border>API Client (REST)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
@@ -135,10 +131,10 @@ result.data.forEach((col) => {
 })`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Create a listing intent</h3>
-      <DocCodeBlock>{`import { toSignatureArray } from "@medialane/sdk"
+      <DocCodeBlock>{`import { executeIntent } from "@medialane/sdk/starknet"
 
-// 1. Create the intent — get typed data back
-const intent = await client.api.createListingIntent({
+// 1. Create the intent
+const { data: intent } = await client.api.createListingIntent({
   nftContract: "0x05e7...",
   tokenId: "42",
   price: "500000",
@@ -147,18 +143,12 @@ const intent = await client.api.createListingIntent({
   endTime: Math.floor(Date.now() / 1000) + 86400 * 30,
 })
 
-// 2. Sign with starknet.js
-import { Account } from "starknet"
-const account = new Account(provider, walletAddress, privateKey)
-const signature = await account.signMessage(intent.data.typedData)
+// 2. Sign (when intent.requiresSignature) and execute from the user's account
+const { txHash } = await executeIntent(provider, signer, client, intent)
 
-// 3. Submit the signature → returns executable calls
-await client.api.submitIntentSignature(intent.data.id, toSignatureArray(signature))
-
-// Note: every create-intent response carries intent.data.requiresSignature.
-// Listings/offers/cancels are true (sign typedData, as above). Fulfil/mint/
-// create-collection are false — their .calls are returned ready to execute,
-// with no signing step (the caller is the fulfiller).`}</DocCodeBlock>
+// Every create-intent response carries requiresSignature. Listings, offers and
+// cancels are true: executeIntent signs the typed data and submits it. Fulfil,
+// mint and create-collection are false: their calls are ready to execute.`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Search</h3>
       <DocCodeBlock>{`const results = await client.api.search("genesis", 10)
@@ -170,7 +160,7 @@ results.data.collections.forEach((c) => console.log(c.name))`}</DocCodeBlock>
 // List your API keys
 const keys = await client.api.getApiKeys(siwsToken)
 
-// Create a new key: as many as you need
+// Create your API key
 const newKey = await client.api.createApiKey({ label: "Agent Key" }, siwsToken)
 console.log(newKey.data.plaintext) // shown once — save it!
 
@@ -327,69 +317,48 @@ await client.api.listCollections({ page: 1, limit: 20, isFeatured: true, sort })
 
       <DocH2 id="pop-protocol" border>POP Protocol (Proof of Participation)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        POP collections are event-based claim drops: conferences, workshops, hackathons, bootcamps. Each collection has one claimable token per eligible wallet. Use <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.pop</code> for on-chain interactions and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> for eligibility checks.
+        POP collections are soulbound badges for events and communities: conferences, workshops, hackathons, memberships. Anyone can create a collection and becomes its organizer. Each address can hold one badge, it cannot be transferred, and only its holder can burn it. Eligibility is a Merkle allowlist the organizer publishes onchain; the organizer can also issue badges directly. Use <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.pop</code>.
       </p>
 
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Check eligibility and claim</h3>
-      <DocCodeBlock>{`// Check if a wallet is eligible to claim from a POP collection
-const status = await client.api.getPopEligibility(
-  "0x00b32c...",   // POP collection address
-  "0x0591...",     // wallet address
-)
-// status: { isEligible: boolean; hasClaimed: boolean; tokenId: string | null }
-
-if (status.isEligible && !status.hasClaimed) {
-  // Claim on-chain (requires starknet.js AccountInterface)
-  const { txHash } = await client.services.pop.claim(account, "0x00b32c...")
-  console.log("Claimed:", txHash)
-}`}</DocCodeBlock>
-
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Batch eligibility check</h3>
-      <DocCodeBlock>{`// Check up to 100 wallets in one request
-const results = await client.api.getPopEligibilityBatch(
-  "0x00b32c...",          // POP collection address
-  ["0x0591...", "0x06a3..."],
-)
-// results: Array<{ wallet, isEligible, hasClaimed, tokenId }>
-results.forEach((r) => console.log(r.wallet, r.isEligible))`}</DocCodeBlock>
-
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">List POP collections</h3>
-      <DocCodeBlock>{`// Fetch all POP Protocol collections
-const pops = await client.api.listCollections({ service: "pop-protocol", page: 1, limit: 20, sort: "recent" })
-pops.data.forEach((col) => console.log(col.name, col.source)) // source: "POP_PROTOCOL"`}</DocCodeBlock>
-
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Admin: mint and allowlist</h3>
-      <DocCodeBlock>{`// Gift a token to a specific wallet (bypass eligibility check)
-await client.services.pop.adminMint(account, {
-  collection: "0x00b32c...",
-  recipient: "0x0591...",
-  customUri: "ipfs://...",  // optional override
-})
-
-// Add a single wallet to the allowlist
-await client.services.pop.addToAllowlist(account, {
-  collection: "0x00b32c...",
-  address: "0x0591...",
-})
-
-// Add up to 200 wallets per tx
-await client.services.pop.batchAddToAllowlist(account, {
-  collection: "0x00b32c...",
-  addresses: ["0x0591...", "0x06a3...", /* ... */],
-})`}</DocCodeBlock>
-
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Deploy a new POP collection</h3>
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Create a collection</h3>
       <DocCodeBlock>{`import type { CreatePopCollectionParams } from "@medialane/sdk"
 
 const params: CreatePopCollectionParams = {
-  name: "ETHDenver 2026",
-  symbol: "ETHDEN26",
+  name: "Starknet Summit 2026",
+  symbol: "SUMMIT26",
   baseUri: "ipfs://...",
-  claimEndTime: Math.floor(Date.now() / 1000) + 86400 * 7,  // 7 days
-  eventType: "Conference",  // "Conference" | "Bootcamp" | "Workshop" | "Hackathon" | "Meetup" | "Course" | "Other"
+  claimEndTime: Math.floor(Date.now() / 1000) + 86400 * 7,  // 0 = no deadline
 }
-const { txHash } = await client.services.pop.createCollection(account, params)
-console.log("Deployed:", txHash)`}</DocCodeBlock>
+const { txHash } = await client.services.pop.createCollection(account, params)`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Publish an allowlist and share claim links</h3>
+      <DocCodeBlock>{`import { collectionHref, normalizeAddress } from "@medialane/sdk"
+import { buildPopAllowlist, encodePopClaimFragment } from "@medialane/sdk/starknet"
+
+const allowlist = buildPopAllowlist(["0x0591...", "0x06a3..."])
+await client.services.pop.setAllowlistRoot(account, { collection, root: allowlist.root })  // "0x0" closes claims
+
+// Each address claims with its own proof, carried in its claim link's fragment
+const proof = allowlist.proofs[normalizeAddress("STARKNET", "0x0591...")]
+const link  = "https://medialane.io" + collectionHref("STARKNET", collection) + encodePopClaimFragment(proof)`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Claim, issue and burn</h3>
+      <DocCodeBlock>{`import { decodePopClaimFragment, popHasClaimed } from "@medialane/sdk/starknet"
+
+// A listed address claims with the proof from its link
+const proof = decodePopClaimFragment(window.location.hash) ?? []
+if (!(await popHasClaimed(provider, collection, account.address))) {
+  await client.services.pop.claim(account, { collection, proof })
+}
+
+// The organizer issues a badge directly (empty tokenUri uses the collection URI)
+await client.services.pop.issue(account, { collection, recipient: "0x0591...", tokenUri: "" })
+
+// The holder burns their own badge; that address cannot receive another
+await client.services.pop.burn(account, { collection, tokenId: "1" })`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">List POP collections</h3>
+      <DocCodeBlock>{`const pops = await client.api.listCollections({ service: "pop-protocol", page: 1, limit: 20, sort: "recent" })`}</DocCodeBlock>
 
       <DocH2 id="collection-drop" border>Collection Drop</DocH2>
       <p className="text-muted-foreground text-base mb-3">
@@ -455,26 +424,29 @@ await client.services.drop.batchAddToAllowlist(account, {
 // Withdraw ERC-20 proceeds
 await client.services.drop.withdrawPayments(account, { collection: "0x03587f..." })`}</DocCodeBlock>
 
-      <DocH2 id="marketplace-1155" border>ERC-1155 Marketplace (on-chain)</DocH2>
+      <DocH2 id="marketplace-1155" border>ERC-1155 Marketplace</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.marketplace1155</code> handles multi-edition orders against the redesigned Medialane1155 venue. SNIP-12 domain version <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">3</code>: listings carry an edition quantity; listing/offer and cancellation are signed, while fulfillment is an unsigned call by the buyer. All write methods take a starknet.js <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">AccountInterface</code>.
+        Multi-edition orders use the same intents with a quantity. Listings carry an edition amount and can be partly filled; listing, offer and cancellation are signed, while fulfillment is an unsigned call by the buyer.
       </p>
-      <DocCodeBlock>{`// List N editions for sale (auto-grants set_approval_for_all if needed)
-await client.marketplace1155.createListing(account, {
+      <DocCodeBlock>{`import { executeIntent, build1155OrderTypedData } from "@medialane/sdk/starknet"
+
+// List 10 editions at 50 USDC each
+const { data: listing } = await client.api.createListingIntent({
+  offerer: account.address,
   nftContract: "0x067064...",
   tokenId: "7",
-  amount: "10",            // editions to list
+  amount: "10",
   currency: "USDC",
-  price: "50000000",        // per-edition base units
+  price: "50000000",        // per edition, base units
   endTime: Math.floor(Date.now() / 1000) + 86400 * 30,
 })
+await executeIntent(provider, signer, client, listing)
 
-// Buy editions, cancel an order
-await client.marketplace1155.fulfillOrder(account, { orderHash: "0x04f7a1...", amount: "3" })
-await client.marketplace1155.cancelOrder(account, { orderHash: "0x04f7a1..." })
+// Buy 3 editions, or cancel the order
+const { data: buy } = await client.api.createFulfillIntent({ fulfiller: account.address, orderHash: "0x04f7a1...", tokenStandard: "ERC1155", quantity: "3" })
+const { data: cancel } = await client.api.createCancelIntent({ offerer: account.address, orderHash: "0x04f7a1...", tokenStandard: "ERC1155" })
 
-// For custom signers — get the SNIP-12 typed data only
-const typedData = client.marketplace1155.buildListingTypedData(params, chainId)`}</DocCodeBlock>
+// For custom signers: build1155OrderTypedData / build1155CancellationTypedData`}</DocCodeBlock>
 
       <DocH2 id="erc1155-collection" border>ERC-1155 Collections (on-chain)</DocH2>
       <p className="text-muted-foreground text-base mb-3">
@@ -488,16 +460,16 @@ await client.services.erc1155Collection.deployCollection(account, {
 })
 
 // Mint a single edition / batch mint
-await client.services.erc1155Collection.mintItem(account, {
-  collection: "0x067064...", tokenId: "7", recipient: "0x0591...", amount: "10", tokenUri: "ipfs://...",
+await client.services.erc1155Collection.mintEdition(account, {
+  collection: "0x067064...", to: "0x0591...", value: "10", tokenUri: "ipfs://...",
 })
-await client.services.erc1155Collection.batchMintItem(account, {
-  collection: "0x067064...", tokenIds: ["7", "8"], recipients: ["0x0591...", "0x06a3..."], amounts: ["1", "1"],
+await client.services.erc1155Collection.batchMintEdition(account, {
+  collection: "0x067064...", to: "0x0591...", items: [{ value: "1", tokenUri: "ipfs://..." }, { value: "1", tokenUri: "ipfs://..." }],
 })
 
 // ERC-2981 royalties
-await client.services.erc1155Collection.setDefaultRoyalty(account, { collection: "0x067064...", receiver: "0x0591...", feeBasisPoints: 500 })
-await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "0x067064...", tokenId: "7", receiver: "0x0591...", feeBasisPoints: 250 })`}</DocCodeBlock>
+await client.services.erc1155Collection.setDefaultRoyalty(account, { collection: "0x067064...", receiver: "0x0591...", feeNumerator: 500 })
+await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "0x067064...", tokenId: "7", receiver: "0x0591...", feeNumerator: 250 })`}</DocCodeBlock>
 
       <DocH2 id="creator-coins" border>Creator Coins</DocH2>
       <p className="text-muted-foreground text-base mb-3">
@@ -513,7 +485,7 @@ await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "
   validateCoinName, validateCoinSymbol, validateCoinSupply,
   coinToRaw, teamCoinsRaw, buybackQuoteRaw, fdvHuman,
   priceToEkuboParams, validatePrice,
-} from "@medialane/sdk"
+} from "@medialane/sdk/starknet"
 
 // 1. Validate + derive the economics (pure, no chain access)
 validateCoinSupply("1000000")                          // null = valid (1e3–1e12)
@@ -541,12 +513,7 @@ const launchCalls = buildLaunchOnEkuboCalls({
 await client.services.creatorCoin.createCreatorCoin(account, { owner, name, symbol, initialSupply: supplyRaw })
 await client.services.creatorCoin.launchOnEkubo(account, { creatorCoin, quoteToken, ekubo, initialHolders: [], initialHoldersAmounts: [] })`}</DocCodeBlock>
       <p className="text-muted-foreground text-base mb-3">
-        Index a fresh launch instantly with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">POST /v1/coins/sync</code>; the
-        factory event poller is the backstop. Coins index as collections (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">standard: "ERC20"</code>);
-        filter lists with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/collections?standard=ERC20</code>. A coin&apos;s image and
-        description live on its collection profile (platform layer) and ride along on list responses. Live
-        prices come from one place, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/coins/prices</code>, backed by AVNU.
-        Per-coin on-chain price reads were removed in favor of this single source.
+        Coins have their own model, separate from NFT collections: list them with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api.getCoins()</code> or <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/coins</code>, and read one with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getCoin(contract)</code>. Index a fresh launch instantly with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api.syncCoin(coinAddress)</code>; the factory event poller is the backstop. Live prices come from one place, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api.getCoinPrices()</code>.
       </p>
 
       <DocH2 id="tickets-club" border>IP Tickets &amp; IP Club</DocH2>
@@ -576,7 +543,8 @@ const next = (await runs.get(run.id)).next              // what the run asks for
       <p className="text-muted-foreground text-base mb-3">
         The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer, distinct from any on-chain protocol rule. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or unconfigured, treating a missing config as a zero fee.
       </p>
-      <DocCodeBlock>{`import { buildFeeCall, resolveFeeConfig } from "@medialane/sdk"
+      <DocCodeBlock>{`import { resolveFeeConfig } from "@medialane/sdk"
+import { buildFeeCall } from "@medialane/sdk/starknet"
 
 const feeConfig = resolveFeeConfig({
   enabled: true,
@@ -598,10 +566,11 @@ await account.execute(calls)`}</DocCodeBlock>
       <p className="text-muted-foreground text-base mb-3">
         The SDK throws <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneError</code> for marketplace issues and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneApiError</code> for REST API failures. Both carry a typed <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">.code</code> field from the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneErrorCode</code> union.
       </p>
-      <DocCodeBlock>{`import { MedialaneError, MedialaneApiError } from "@medialane/sdk"
+      <DocCodeBlock>{`import { MedialaneApiError } from "@medialane/sdk"
+import { MedialaneError, executeIntent } from "@medialane/sdk/starknet"
 
 try {
-  await client.marketplace.mint(account, params)
+  await executeIntent(provider, signer, client, intent)
 } catch (err) {
   if (err instanceof MedialaneError) {
     console.error(err.code, err.message) // e.g. "TRANSACTION_FAILED"
@@ -712,9 +681,9 @@ const isRemixable = OPEN_LICENSES.includes(token.metadata?.licenseType ?? "");
 // OPEN_LICENSES → ["CC0", "CC BY", "CC BY-SA", "CC BY-NC", ...]`}</DocCodeBlock>
 
       <DocH3>Create and sign a listing intent (no private key exposure)</DocH3>
-      <DocCodeBlock lang="ts">{`import { toSignatureArray } from "@medialane/sdk";
+      <DocCodeBlock lang="ts">{`import { executeIntent } from "@medialane/sdk/starknet";
 
-// 1. Create the intent — backend returns SNIP-12 typed data to sign
+// 1. Create the intent — the API returns SNIP-12 typed data to sign
 const { data: intent } = await client.api.createListingIntent({
   offerer: "0x05f9...",
   nftContract: "0x04a...",
@@ -724,11 +693,8 @@ const { data: intent } = await client.api.createListingIntent({
   endTime: Math.floor(Date.now() / 1000) + 86400,
 });
 
-// 2. Sign the typed data off-chain
-const sig = await account.signMessage(intent.typedData);
-
-// 3. Submit the signature — backend populates the calldata
-await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</DocCodeBlock>
+// 2. Sign in the user's wallet and execute — the key never leaves it
+const { txHash } = await executeIntent(provider, signer, client, intent);`}</DocCodeBlock>
 
       <DocH3>Stream on-chain activity</DocH3>
       <DocCodeBlock lang="ts">{`const activity = await client.api.getActivities({
@@ -747,7 +713,7 @@ await client.api.submitIntentSignature(intent.id, toSignatureArray(sig));`}</Doc
           <p className="text-base font-semibold text-foreground">Creator Launchpad</p>
           <p className="text-base text-muted-foreground leading-relaxed">
             Collections, Orders, Minting, Remix Licensing, POP, Collection Drop, On-chain Comments.
-            Frictionless, fully gas-sponsored self-custody wallet UX.
+            Email sign-up with a passkey-secured self-custody wallet.
           </p>
         </div>
         <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-5 space-y-2">
