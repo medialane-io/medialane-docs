@@ -191,8 +191,8 @@ await client.api.registerUser({
   walletType: "braavos",     // free-form wallet-software label, e.g. "braavos" | "ready" | "mediawallet" | "cartridge"
 })
 
-// Register the signed-in wallet; add it to an email account with its accountToken
-await client.api.upsertMyWallet(siwsToken, { walletType: "mediawallet", accountToken })
+// Register the signed-in wallet; your server adds the account session (x-account-session) to link it to an email account
+await client.api.upsertMyWallet(siwsToken, { walletType: "mediawallet" })
 
 // Read the caller's account: wallet, email, emailDeadline (null until registered)
 const me = await client.api.getMyWallet(siwsToken)`}</DocCodeBlock>

@@ -126,7 +126,7 @@ export default function ApiReferencePage() {
         Keys are prefixed <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ml_live_</code>. Keep them secret, and treat them like passwords.
       </p>
       <p className="text-muted-foreground text-base">
-        The API key identifies the app that is calling: every app is a client holding its own key, and an account belongs to the client it registered through. An account has at most one wallet and one email. When a request acts for a user, it also carries that user&apos;s sign-in, either a wallet sign-in token (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer siws_...</code>) or an account session from email sign-in. See <a href="#sign-in" className="text-primary hover:underline">Sign-in</a>.
+        The API key identifies the app that is calling: every app is a client holding its own key, and an account belongs to the client it registered through. An account has at most one wallet and one email. When a request acts for a user, it also carries that user&apos;s sign-in, either a wallet sign-in token (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer siws_...</code>) or an account session from email sign-in (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-account-session</code>). Routes that act for a user accept either. See <a href="#sign-in" className="text-primary hover:underline">Sign-in</a>.
       </p>
 
       <DocH2 id="response-format" border>Response Format</DocH2>
@@ -1428,13 +1428,13 @@ const resumeSource = new EventSource(url, {
         description="Open a top-up."
         params={[
           { name: "method", type: "string", required: true, desc: "A method id from /methods" },
-          { name: "params", type: "object", required: true, desc: "Method-specific, e.g. { \"amountUsdc\": \"5\" } for chain-transfer" },
+          { name: "params", type: "object", required: true, desc: "Method-specific. chain-transfer: asset (USDC, USDT, ETH or STRK) with amount in that token, or amountUsdc in dollars" },
         ]}
         curl={`curl -X POST "${BASE}/v1/portal/funding" \\
   -H "x-api-key: ${KEY}" \\
   -H "Authorization: Bearer <SIGN_IN_TOKEN>" \\
   -H "Content-Type: application/json" \\
-  -d '{ "method": "chain-transfer", "params": { "amountUsdc": "5" } }'`}
+  -d '{ "method": "chain-transfer", "params": { "asset": "STRK", "amount": "50" } }'`}
         response={`{ "data": { "id": "fi_...", "method": "chain-transfer", "status": "PENDING", "expiresAt": "..." } }`}
       />
 
@@ -2733,11 +2733,10 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/users/me"
-        description="Register the signed-in wallet in the calling app (the wallet comes from the token, never the body). Pass an accountToken to add the wallet to an existing account, such as one created by email sign-in. Pass email to attach an email and send it a code. Returns 409 wallet_already_attached when the account in the session already has a wallet; use generate-wallet to replace it."
+        description="Register the signed-in wallet in the calling app (the wallet comes from the token, never the body). Send the account session in x-account-session to add the wallet to that account, such as one created by email sign-in. Pass email to attach an email and send it a code. Returns 409 wallet_already_attached when the account in the session already has a wallet; use generate-wallet to replace it."
         params={[
           { name: "walletType", type: "string", required: false, desc: "Defaults to UNKNOWN" },
           { name: "chain", type: "string", required: false, desc: "STARKNET only in v1" },
-          { name: "accountToken", type: "string", required: false, desc: "Account session from email sign-in" },
           { name: "email", type: "string", required: false, desc: "An email to attach and verify" },
         ]}
         curl={`curl -X POST "${BASE}/v1/users/me" \\
@@ -2751,7 +2750,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/users/me"
-        description="The signed-in wallet's account in the calling app, with its email and whether it is verified; 404 if the app has no account for the wallet."
+        description="The signed-in account in the calling app, with its email and whether it is verified. Accepts a wallet token or an account session (x-account-session); walletAddress is null for an account with no wallet yet. 403 account_inactive for an inactive account."
         curl={`curl "${BASE}/v1/users/me" \\
   -H "x-api-key: ${KEY}" \\
   -H "Authorization: Bearer <SIWS_TOKEN>"`}
@@ -2783,13 +2782,9 @@ const resumeSource = new EventSource(url, {
         method="POST"
         path="/v1/users/me/wallet"
         description="The wallet of the account behind an account session, or null if it has none yet. When needsKeySetup is true, set up the user's key with /v1/users/me/wallet/key."
-        params={[
-          { name: "accountToken", type: "string", required: true, desc: "Account session from email sign-in" },
-        ]}
         curl={`curl -X POST "${BASE}/v1/users/me/wallet" \\
   -H "x-api-key: ${KEY}" \\
-  -H "Content-Type: application/json" \\
-  -d '{"accountToken":"..."}'`}
+  -H "x-account-session: <ACCOUNT_SESSION>"`}
         response={`{ "walletAddress": "0x0591...", "needsKeySetup": false }`}
       />
 
@@ -2813,15 +2808,15 @@ const resumeSource = new EventSource(url, {
         path="/v1/users/me/wallet/key"
         description="Make the user's key the only owner of the account's wallet. Returns 409 when the wallet is already set up."
         params={[
-          { name: "accountToken", type: "string", required: true, desc: "Account session from email sign-in" },
           { name: "newOwnerPubkey", type: "string", required: true, desc: "The user's own owner key" },
           { name: "signature", type: "string[]", required: true, desc: "The new key's owner-alive signature for the wallet" },
           { name: "expiration", type: "number", required: true, desc: "Expiry of the owner-alive signature (unix seconds)" },
         ]}
         curl={`curl -X POST "${BASE}/v1/users/me/wallet/key" \\
   -H "x-api-key: ${KEY}" \\
+  -H "x-account-session: <ACCOUNT_SESSION>" \\
   -H "Content-Type: application/json" \\
-  -d '{"accountToken":"...","newOwnerPubkey":"0x...","signature":["0x..","0x.."],"expiration":1790000000}'`}
+  -d '{"newOwnerPubkey":"0x...","signature":["0x..","0x.."],"expiration":1790000000}'`}
         response={`{ "walletAddress": "0x0abc..." }`}
       />
 
