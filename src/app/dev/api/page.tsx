@@ -2075,56 +2075,77 @@ const resumeSource = new EventSource(url, {
 
       <DocH2 id="collection-drop" border>Collection Drop</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. On-chain minting and configuration are handled via the SDK <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.drop</code>.
+        Indexed drops: terms, supply, sales and mints, rebuilt from the drop contracts' events. Transactions go through <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.drop</code> or the drop intents.
       </p>
 
       <Endpoint
         method="GET"
-        path="/v1/drop/mint-status/:collection/:wallet"
-        description="Return how many tokens a wallet has minted from a Drop collection and the total minted across all wallets."
+        path="/v1/drops"
+        description="Drops, newest first; upcoming drops by start time."
         params={[
-          { name: "collection", type: "string", required: true, desc: "Drop collection contract address" },
-          { name: "wallet", type: "string", required: true, desc: "Wallet address to check" },
+          { name: "status", type: "string", required: false, desc: "live | upcoming | ended" },
+          { name: "organizer", type: "string", required: false, desc: "Organizer address" },
+          { name: "page", type: "number", required: false, desc: "Default 1" },
+          { name: "limit", type: "number", required: false, desc: "Default 24, max 100" },
         ]}
-        curl={`curl "${BASE}/v1/drop/mint-status/0x03587f.../0x0591..." \\
+        curl={`curl "${BASE}/v1/drops?status=live" \\
   -H "x-api-key: ${KEY}"`}
         response={`{
-  "data": {
-    "mintedByWallet": 2,
-    "totalMinted": 347
-  }
-}`}
-      />
-
-      <Endpoint
-        method="GET"
-        path="/v1/drop/:contract/info"
-        description="Collection metadata for a drop. Public. Claim conditions are read from chain via /v1/drop/:contract/state."
-        params={[
-          { name: "contract", type: "string", required: true, desc: "Drop collection contract address" },
-        ]}
-        curl={`curl "${BASE}/v1/drop/0x03587f.../info" \\
-  -H "x-api-key: ${KEY}"`}
-        response={`{
-  "data": {
+  "data": [{
     "contractAddress": "0x03587f...",
+    "dropId": "4",
+    "organizer": "0x0591...",
     "name": "Genesis Drop",
     "symbol": "GEN",
     "description": "...",
     "image": "ipfs://...",
-    "owner": "0x0591...",
-    "totalMinted": 347
-  }
+    "baseUri": "ipfs://.../",
+    "maxSupply": "1000",
+    "minted": "347",
+    "revenue": "1735000000",
+    "collectors": 212,
+    "terms": { "startTime": 0, "endTime": 1790000000, "price": "5000000", "paymentToken": "0x033068f6...", "maxPerWallet": "5" },
+    "allowlistRoot": "0x0",
+    "createdBlock": "16240900"
+  }],
+  "meta": { "page": 1, "limit": 24, "total": 1 }
 }`}
       />
 
       <Endpoint
         method="GET"
-        path="/v1/drop/:contract/state"
-        description="A drop's live on-chain state: claim conditions, minted, supply, allowlist and pause."
-        curl={`curl "${BASE}/v1/drop/0x.../state" \\
+        path="/v1/drops/:contract"
+        description="One drop, same shape as a list item. 404 when not indexed."
+        params={[{ name: "contract", type: "string", required: true, desc: "Drop collection address" }]}
+        curl={`curl "${BASE}/v1/drops/0x03587f..." \\
   -H "x-api-key: ${KEY}"`}
-        response={`{ "data": { "conditions": { "maxSupply": "1000", "price": "0", "paymentToken": "0x0", "startTime": 1780000000, "endTime": 1790000000, "maxPerWallet": "5" }, "totalMinted": 120, "maxSupply": 1000, "allowlistEnabled": false, "paused": false } }`}
+        response={`{ "data": { "contractAddress": "0x03587f...", "minted": "347", "...": "..." } }`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/drops/:contract/mints"
+        description="Claims and organizer issues, newest first."
+        params={[
+          { name: "contract", type: "string", required: true, desc: "Drop collection address" },
+          { name: "page", type: "number", required: false, desc: "Default 1" },
+          { name: "limit", type: "number", required: false, desc: "Default 24, max 100" },
+        ]}
+        curl={`curl "${BASE}/v1/drops/0x03587f.../mints?limit=20" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{
+  "data": [{ "kind": "claim", "wallet": "0x0591...", "quantity": "2", "firstTokenId": "346", "totalPaid": "10000000", "txHash": "0x...", "blockNumber": "16251234", "createdAt": "2026-10-12T10:00:00.000Z" }],
+  "meta": { "page": 1, "limit": 20, "total": 290 }
+}`}
+      />
+
+      <Endpoint
+        method="GET"
+        path="/v1/drops/fee"
+        description="The platform fee added to a mint for the calling app, in basis points (0 when none applies)."
+        curl={`curl "${BASE}/v1/drops/fee" \\
+  -H "x-api-key: ${KEY}"`}
+        response={`{ "data": { "launchpadBps": 100 } }`}
       />
 
       <DocH2 id="tickets-club" border>IP Tickets &amp; IP Club</DocH2>

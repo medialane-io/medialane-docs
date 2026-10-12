@@ -5,15 +5,15 @@ import { Section } from "@/components/docs";
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/collection-drop" },
   title: "Collection Drop | Learn | Medialane",
-  description: "Learn how to launch and participate in time-limited NFT Collection Drops on Medialane.",
+  description: "Learn how to launch and collect Collection Drops on Medialane.",
   openGraph: {
     title: "Collection Drop | Learn | Medialane",
-    description: "Learn how to launch and participate in time-limited NFT Collection Drops on Medialane.",
+    description: "Learn how to launch and collect Collection Drops on Medialane.",
     url: "https://docs.medialane.io/learn/collection-drop",
   },
   twitter: {
     title: "Collection Drop | Learn | Medialane",
-    description: "Learn how to launch and participate in time-limited NFT Collection Drops on Medialane.",
+    description: "Learn how to launch and collect Collection Drops on Medialane.",
   },
 };
 
@@ -23,77 +23,31 @@ export default function LearnCollectionDropPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Collection Drop</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          A Collection Drop is a time-limited release of a set of <strong className="text-foreground">unique,
-          individually-licensed</strong> NFTs on Medialane. A creator prepares the works, sets a mint
-          window and price, and optionally restricts minting to a whitelist. Collectors mint directly
-          from the drop, with settlement handled on Starknet. Every token is its own one-of-one IP
-          asset, with distinct artwork and its own license, never an identical copy.
+          A Collection Drop is a timed release with a fixed set of terms. A creator chooses an{" "}
+          <strong className="text-foreground">edition</strong> (one artwork in numbered copies) or a{" "}
+          <strong className="text-foreground">collection</strong> (many unique items), sets the price and the
+          sale window, and collectors mint from the drop page.
         </p>
         <p className="text-base text-muted-foreground">
           Service ID:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">drop-collection</code>.
-          Each drop is an independent smart contract deployed from the Collection Drop Factory.
-          See{" "}
+          Each drop is its own ERC-721 contract, created by the Collection Drop factory. See{" "}
           <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
           for the full capability set.
         </p>
       </div>
 
       <div className="space-y-8">
-        <Section title="What is a Collection Drop?">
-          <p>
-            A Collection Drop is the primary mechanism for releasing an NFT collection in
-            a structured, event-style format. Instead of simply deploying a collection and
-            listing individual assets on the marketplace, an organizer defines:
-          </p>
-          <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li>A set of unique works, each becoming its own token (supply equals the number of items)</li>
-            <li>Shared licensing terms applied to every item (CC BY-SA by default, fully customizable)</li>
-            <li>A mint price (or free mint)</li>
-            <li>A mint window (start and end time)</li>
-            <li>An optional whitelist that restricts who can mint</li>
-            <li>A per-wallet mint limit</li>
-          </ul>
-          <p>
-            Once the drop is live, eligible collectors mint directly from the drop page.
-            On medialane.io, minting is frictionless: gas is sponsored, start to finish.
-            On the Starknet app, users pay their own gas.
-          </p>
-        </Section>
-
-        <Section title="Participating in a Drop">
-          <p>
-            Browse active and upcoming drops under{" "}
-            <strong className="text-foreground">Launchpad → Collection Drop</strong>. Each
-            drop shows its live status, current mint count, supply remaining, price, and
-            time remaining in the mint window.
-          </p>
-          <p>
-            To participate, connect your Medialane account and click{" "}
-            <strong className="text-foreground">Mint</strong> on the drop page. If the drop
-            has a whitelist and your wallet is included, you will be able to mint during the
-            window. Confirm the transaction and the NFT is minted to your wallet immediately.
-          </p>
-          <p>
-            Minted assets appear in your Portfolio within a few seconds after the transaction
-            is confirmed on Starknet (typically under 10 seconds).
-          </p>
-        </Section>
-
-        <Section title="Launching a Drop">
-          <p>
-            Launching a drop is permissionless: any creator can do it. Open the{" "}
-            <strong className="text-foreground">Create Drop</strong> button in the
-            Collection Drop section. When setting up a drop, you configure:
-          </p>
+        <Section title="Launching a drop">
+          <p>Anyone can launch a drop from <strong className="text-foreground">Launchpad → Collection Drop</strong>. You set:</p>
           <div className="space-y-2">
             {[
-              ["Items", "Add your artwork; each image becomes a unique token. The drop's supply equals the number of items you add. Each is minted from a fresh ERC-721 contract deployed on Starknet with you as the owner."],
-              ["Licensing & IP", "Shared license terms applied to every item, embedded as immutable IPFS metadata (Berne Convention-compatible). CC BY-SA by default, with IP type and royalty fully customizable."],
-              ["Mint Window", "A start and end timestamp defining when minting is open. Mints outside this window are rejected by the contract."],
-              ["Price", "Set a mint price in any supported currency (STRK, ETH, USDC, USDT, WBTC), or set to free."],
-              ["Whitelist", "Optionally restrict minting to a set of wallet addresses. You can open the drop to everyone later from Manage."],
-              ["Per-wallet Limit", "Optionally cap how many NFTs a single wallet can mint from this drop."],
+              ["Edition or collection", "One artwork minted as numbered copies, or many unique items — each item becomes its own token."],
+              ["Licensing", "License terms written into every token's metadata."],
+              ["Price", "Free, or a price in a supported token. A platform fee is added at mint and shown to collectors before they confirm; you receive the price."],
+              ["Sale window", "Open now or from a date; close on a date or never."],
+              ["Per-wallet limit", "How many one wallet can mint, or unlimited."],
+              ["Who can mint", "Everyone, or only the wallets on your list. Listed wallets get a personal claim link."],
             ].map(([title, desc]) => (
               <div key={title} className="bento-cell px-4 py-3 space-y-1">
                 <p className="text-base font-semibold text-foreground">{title}</p>
@@ -101,50 +55,31 @@ export default function LearnCollectionDropPage() {
               </div>
             ))}
           </div>
+          <p>The terms are fixed when the drop launches, in one transaction.</p>
         </Section>
 
-        <Section title="ERC-721 Token Standard">
+        <Section title="Collecting">
           <p>
-            Collection Drop NFTs use the <strong className="text-foreground">ERC-721</strong> token
-            standard with sequential minting. Each mint issues a unique, sequentially-numbered
-            token: a drop of 500 items produces 500 distinct one-of-one NFTs, each with its own
-            artwork, its own license, its own owner, and its own token ID. A drop token is a
-            first-class IP asset, indistinguishable in standard from any other asset on Medialane.
-          </p>
-          <p>
-            Maximum supply caps the number of tokens that can be minted; the per-wallet limit
-            caps how many a single wallet may claim. If you instead want a single work that
-            many collectors share, use{" "}
-            <Link href="/learn/ip-collection-1155" className="text-primary hover:underline">NFT Editions</Link>,
-            an ERC-1155 collection where holders own editions of the same token.
+            Open a drop to see its status, supply, price and time left. Choose how many to mint (up to 50 at once,
+            within the drop's limits) and confirm; the tokens arrive in your wallet. For a list-only drop, use the
+            claim link you were sent. Payment goes straight to the creator. On medialane.io, gas is sponsored.
           </p>
         </Section>
 
-        <Section title="Onchain Settlement">
+        <Section title="Managing a drop">
           <p>
-            Collection Drop contracts are deployed on Starknet. Every mint is an onchain
-            transaction, checked entirely by the contract itself rather than an off-chain
-            allowlist service or a centralized mint server. The contract enforces supply caps,
-            time windows, allowlists, and per-wallet limits automatically without any backend
-            intervention.
-          </p>
-          <p>
-            Royalties configured on the underlying collection are inherited by all assets
-            minted through a drop, ensuring creators receive royalties on every secondary
-            sale in the Medialane marketplace.
+            The drop page has a Manage tab for its creator: send tokens directly to any wallet (within the supply),
+            publish a new list of who can mint or open the drop to everyone, download claim links, and add exclusive
+            content for holders.
           </p>
         </Section>
 
-        <Section title="After the Drop">
+        <Section title="Onchain">
           <p>
-            Once the mint window closes or the supply is exhausted, assets from the drop
-            become freely tradeable on the Medialane marketplace. Collectors can list,
-            sell, or make offers on their minted assets just like any other NFT on the platform.
-          </p>
-          <p>
-            Drop creators retain ownership of the collection contract. From the drop's
-            Manage page they can manage the whitelist (add or remove addresses, or open the
-            drop to everyone), and withdraw proceeds from paid drops.
+            The drop contract enforces the price, sale window, per-wallet limit, supply and allowlist itself. Drop
+            tokens are standard ERC-721 tokens: collectors can keep, sell or trade them like any other asset on
+            Medialane. For a single work many collectors share as one token id, use{" "}
+            <Link href="/learn/ip-collection-1155" className="text-primary hover:underline">NFT Editions</Link>.
           </p>
         </Section>
       </div>
