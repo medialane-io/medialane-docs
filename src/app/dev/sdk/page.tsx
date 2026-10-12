@@ -362,67 +362,61 @@ await client.services.pop.burn(account, { collection, tokenId: "1" })`}</DocCode
 
       <DocH2 id="collection-drop" border>Collection Drop</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        Collection Drops are public minting campaigns with configurable claim conditions: price, supply cap, time window, and per-wallet limits. Use <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.drop</code> for on-chain interactions and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> for status queries.
+        A drop is an ERC-721 collection minted in order by collectors. Anyone can create one and becomes its organizer. The terms are fixed at creation: price and payment token (or free), start and end time (0 = open now / never closes), per-wallet limit (0 = unlimited) and supply (0 = no cap). Payment goes to the organizer at each mint. An optional Merkle allowlist limits who can claim; the organizer can replace it or open the drop to everyone, and can issue tokens directly within the supply. Use <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.drop</code> for transactions and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> for indexed reads.
       </p>
 
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Claim (public mint)</h3>
-      <DocCodeBlock>{`// Check mint status for a wallet before claiming
-const status = await client.api.getDropMintStatus(
-  "0x03587f...",   // Drop collection address
-  "0x0591...",     // wallet address
-)
-// status: { mintedByWallet: number; totalMinted: number }
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Create a drop</h3>
+      <DocCodeBlock>{`import type { CreateDropParams } from "@medialane/sdk"
+import { buildPopAllowlist } from "@medialane/sdk/starknet"
 
-// Claim 1 token (default)
-const { txHash } = await client.services.drop.claim(account, "0x03587f...")
-
-// Claim multiple tokens
-await client.services.drop.claim(account, "0x03587f...", 3)`}</DocCodeBlock>
-
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">List Drop collections</h3>
-      <DocCodeBlock>{`const drops = await client.api.listCollections({ service: "drop-collection", page: 1, limit: 20, sort: "recent" })
-drops.data.forEach((col) => console.log(col.name, col.source)) // source: "COLLECTION_DROP"`}</DocCodeBlock>
-
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Deploy a new Drop</h3>
-      <DocCodeBlock>{`import type { CreateDropParams, ClaimConditions } from "@medialane/sdk"
-
-const conditions: ClaimConditions = {
-  startTime: Math.floor(Date.now() / 1000),          // open now
-  endTime: Math.floor(Date.now() / 1000) + 86400 * 30, // closes in 30 days
-  price: BigInt("1000000"),                           // 1 USDC (6 decimals). 0 = free mint
-  paymentToken: "0x033068f6...",                      // USDC contract
-  maxQuantityPerWallet: BigInt(5),                    // max 5 per wallet. 0 = unlimited
-}
+const allowlist = buildPopAllowlist(["0x0591...", "0x06a3..."])  // optional
 
 const params: CreateDropParams = {
   name: "Genesis Drop",
   symbol: "GEN",
-  baseUri: "ipfs://...",
-  maxSupply: BigInt(1000),
-  initialConditions: conditions,
+  baseUri: "ipfs://.../",          // token URI = baseUri + token id
+  maxSupply: 1000n,                // 0 = no cap
+  terms: {
+    startTime: 0,                  // open now
+    endTime: Math.floor(Date.now() / 1000) + 86400 * 30,
+    price: 5_000_000n,             // 5 USDC (6 decimals); 0 = free
+    paymentToken: "0x033068f6...", // USDC
+    maxPerWallet: 5n,              // 0 = unlimited
+  },
+  allowlistRoot: allowlist.root,   // omit to open the drop to everyone
 }
-const { txHash } = await client.services.drop.createDrop(account, params)
-console.log("Drop deployed:", txHash)`}</DocCodeBlock>
+const { txHash } = await client.services.drop.createDrop(account, params)`}</DocCodeBlock>
 
-      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Manage an active Drop</h3>
-      <DocCodeBlock>{`// Update claim conditions (price, time window, wallet limits)
-await client.services.drop.setClaimConditions(account, {
-  collection: "0x03587f...",
-  conditions: { startTime: 0, endTime: 0, price: 0n, paymentToken: "0x0", maxQuantityPerWallet: 0n },
-})
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Share claim links</h3>
+      <DocCodeBlock>{`import { dropClaimLinks, popClaimLinksCsv } from "@medialane/sdk/starknet"
 
-// Pause or unpause minting
-await client.services.drop.setPaused(account, { collection: "0x03587f...", paused: true })
+// One link per listed address; the proof travels in the link's fragment
+const links = dropClaimLinks("https://medialane.io", collection, allowlist)
+const csv = popClaimLinksCsv(links)`}</DocCodeBlock>
 
-// Enable allowlist gate
-await client.services.drop.setAllowlistEnabled(account, { collection: "0x03587f...", enabled: true })
-await client.services.drop.batchAddToAllowlist(account, {
-  collection: "0x03587f...",
-  addresses: ["0x0591...", "0x06a3..."],
-})
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Mint</h3>
+      <DocCodeBlock>{`import { readDrop, dropClaimedBy, dropMintCost } from "@medialane/sdk/starknet"
 
-// Withdraw ERC-20 proceeds
-await client.services.drop.withdrawPayments(account, { collection: "0x03587f..." })`}</DocCodeBlock>
+const drop = await readDrop(provider, collection)          // terms, supply, allowlist root
+const claimed = await dropClaimedBy(provider, collection, account.address)
+const { launchpadBps } = await client.api.getDropFee()
+const { total } = dropMintCost(drop.price, 2, launchpadBps) // what the collector pays for 2
+
+// quantity 1 to 50 per call; proof only for allowlisted drops
+await client.services.drop.claim(account, { collection, quantity: 2, proof })`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Organizer actions</h3>
+      <DocCodeBlock>{`// Issue tokens directly, within the supply
+await client.services.drop.issue(account, { collection, recipient: "0x0591...", quantity: 3 })
+
+// Replace the allowlist, or open the drop to everyone with "0x0"
+await client.services.drop.setAllowlistRoot(account, { collection, root: "0x0" })`}</DocCodeBlock>
+
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Read indexed drops</h3>
+      <DocCodeBlock>{`const live = await client.api.getDrops({ status: "live", limit: 24 })   // "live" | "upcoming" | "ended"
+const mine = await client.api.getDrops({ organizer: "0x0591..." })
+const drop = await client.api.getDrop(collection)                        // null when not indexed
+const mints = await client.api.getDropMints(collection, { limit: 20 })`}</DocCodeBlock>
 
       <DocH2 id="marketplace-1155" border>ERC-1155 Marketplace</DocH2>
       <p className="text-muted-foreground text-base mb-3">
