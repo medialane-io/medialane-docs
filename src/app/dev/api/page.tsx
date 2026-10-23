@@ -1002,7 +1002,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/metadata/upload-directory"
-        description="Pin several JSON files as one IPFS directory, e.g. a drop's token metadata. Up to 5 MB in total."
+        description="Pin several JSON files as one IPFS directory, e.g. a drop's token metadata."
         params={[
           { name: "files", type: "{ name, content }[]", required: true, desc: "File names use letters, digits, dot, dash and underscore" },
         ]}
