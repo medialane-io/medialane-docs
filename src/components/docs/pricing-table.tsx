@@ -15,6 +15,7 @@ const ACTION_LABELS: Record<string, string> = {
   "intent:checkout": "Checkout",
   "metadata:upload-json": "Upload metadata JSON to IPFS",
   "metadata:upload-file": "Upload a media file to IPFS",
+  "metadata:signed-url": "Upload link for a direct IPFS upload",
   "rpc:call": "On-chain RPC call (nonce / fee estimate / submit / receipt)",
   "paymaster:invoke-build": "Build a gas-sponsored transaction (io wallet)",
   "paymaster:invoke-execute": "Execute a gas-sponsored transaction (io wallet)",

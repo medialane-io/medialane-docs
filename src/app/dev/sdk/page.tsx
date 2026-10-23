@@ -122,6 +122,21 @@ console.log(orders.data[0].orderHash, orders.data[0].price)`}</DocCodeBlock>
 
 console.log(token.data.metadata?.name)`}</DocCodeBlock>
 
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Upload files and metadata</h3>
+      <p className="text-muted-foreground text-base mb-3">
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">uploadError</code> checks a file against the accepted types and the 90 MB size before uploading, and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">acceptFor</code> gives a file picker the same types. In a browser, upload through <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getMetadataSignedUrl</code> so the file goes straight to IPFS.
+      </p>
+      <DocCodeBlock>{`import { acceptFor, uploadError } from "@medialane/sdk"
+
+// <input type="file" accept={acceptFor("image")} />
+const problem = uploadError(file, "image")   // a message to show, or null
+if (problem) throw new Error(problem)
+
+const image = await client.api.uploadFile(file)   // { data: { cid, url: "ipfs://..." } }
+const meta  = await client.api.uploadMetadata({ name: "My work", image: image.data.url })
+
+const link  = await client.api.getMetadataSignedUrl("image")   // one upload, within 2 minutes`}</DocCodeBlock>
+
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Get collections by owner</h3>
       <DocCodeBlock>{`// Fetch collections owned by a wallet address
 // Addresses are normalized automatically — pass any valid Starknet format

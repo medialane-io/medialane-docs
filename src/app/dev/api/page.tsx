@@ -938,49 +938,40 @@ export default function ApiReferencePage() {
       <Endpoint
         method="GET"
         path="/v1/metadata/signed-url"
-        description="Get a pre-signed upload URL for pinning metadata to IPFS via Medialane CDN."
-        params={[]}
-        curl={`curl "${BASE}/v1/metadata/signed-url" \\
+        description="Get a link for uploading one file straight to IPFS, up to 90 MB. POST the file to it as multipart (file, plus network=public) within 2 minutes; the response carries the CID. Each link takes one upload of its kind's file types."
+        params={[
+          { name: "kind", type: "string", required: false, desc: "image (default), document or media" },
+        ]}
+        curl={`curl "${BASE}/v1/metadata/signed-url?kind=image" \\
   -H "x-api-key: ${KEY}"`}
-        response={`{
-  "url": "https://ipfs.io/ipfs/...",
-  "fields": { ... },
-  "expiresAt": "2026-03-01T10:30:00Z"
-}`}
+        response={`{ "data": { "url": "https://uploads.pinata.cloud/v3/files/..." } }`}
       />
 
       <Endpoint
         method="POST"
         path="/v1/metadata/upload"
-        description="Upload JSON metadata. Returns an IPFS CID."
+        description="Pin a metadata JSON object to IPFS, up to 90 MB. The request body is the metadata itself."
         params={[
-          { name: "metadata", type: "object", required: true, desc: "ERC-721 compatible JSON metadata" },
+          { name: "(body)", type: "object", required: true, desc: "ERC-721 compatible metadata JSON" },
         ]}
         curl={`curl -X POST "${BASE}/v1/metadata/upload" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{ "metadata": { "name": "My NFT", "description": "...", "image": "ipfs://..." } }'`}
-        response={`{
-  "cid": "QmXyz...",
-  "uri": "ipfs://QmXyz..."
-}`}
+  -d '{ "name": "My work", "description": "...", "image": "ipfs://..." }'`}
+        response={`{ "data": { "cid": "bafkrei...", "url": "ipfs://bafkrei..." } }`}
       />
 
       <Endpoint
         method="POST"
         path="/v1/metadata/upload-file"
-        description="Upload a media file. Returns an IPFS CID and gateway URL."
+        description="Pin a file to IPFS, up to 90 MB."
         params={[
-          { name: "file", type: "File (multipart)", required: true, desc: "Image, audio, or video file" },
+          { name: "file", type: "File (multipart)", required: true, desc: "Image, audio, video, document or 3D model (GLB, GLTF)" },
         ]}
         curl={`curl -X POST "${BASE}/v1/metadata/upload-file" \\
   -H "x-api-key: ${KEY}" \\
   -F "file=@artwork.png"`}
-        response={`{
-  "cid": "QmAbc...",
-  "uri": "ipfs://QmAbc...",
-  "gateway": "https://gateway.pinata.cloud/ipfs/QmAbc..."
-}`}
+        response={`{ "data": { "cid": "bafkrei...", "url": "ipfs://bafkrei..." } }`}
       />
 
       <Endpoint
@@ -993,9 +984,11 @@ export default function ApiReferencePage() {
         curl={`curl "${BASE}/v1/metadata/resolve?uri=ipfs%3A%2F%2FQmXyz..." \\
   -H "x-api-key: ${KEY}"`}
         response={`{
-  "name": "My NFT",
-  "description": "...",
-  "image": "ipfs://QmAbc..."
+  "data": {
+    "name": "My work",
+    "description": "...",
+    "image": "ipfs://bafkrei..."
+  }
 }`}
       />
 
