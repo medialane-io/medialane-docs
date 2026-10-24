@@ -124,12 +124,11 @@ console.log(token.data.metadata?.name)`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Upload files and metadata</h3>
       <p className="text-muted-foreground text-base mb-3">
-        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">uploadError</code> checks a file against the accepted types and the 90 MB size before uploading, and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">acceptFor</code> gives a file picker the same types. In a browser, upload through <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getMetadataSignedUrl</code> so the file goes straight to IPFS.
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">uploadSizeError</code> checks a file against the 90 MB size before uploading. Any file type can be uploaded. In a browser, upload through <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getMetadataSignedUrl</code> so the file goes straight to IPFS.
       </p>
-      <DocCodeBlock>{`import { acceptFor, uploadError } from "@medialane/sdk"
+      <DocCodeBlock>{`import { uploadSizeError } from "@medialane/sdk"
 
-// <input type="file" accept={acceptFor("image")} />
-const problem = uploadError(file, "image")   // a message to show, or null
+const problem = uploadSizeError(file, "image")   // a message to show, or null
 if (problem) throw new Error(problem)
 
 const image = await client.api.uploadFile(file)   // { data: { cid, url: "ipfs://..." } }
