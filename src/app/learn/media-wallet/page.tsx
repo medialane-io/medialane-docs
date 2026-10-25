@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Fingerprint, KeyRound, Lock, Wallet, Smartphone, Shield, UserCheck } from "lucide-react";
+import { Fingerprint, KeyRound, Lock, Smartphone, UserCheck } from "lucide-react";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
@@ -131,38 +131,25 @@ export default function LearnMediaWalletPage() {
         </Section>
 
         <Section title="Where You Meet It Today">
-          <div className="bento-cell border border-brand-rose/20 bg-brand-rose/5 p-5 space-y-3">
-            <div className="flex items-center gap-2">
-              <Smartphone className="h-5 w-5 text-brand-rose" />
-              <p className="font-bold text-foreground">medialane.io</p>
-            </div>
-            <p className="text-base text-muted-foreground leading-relaxed">
-              medialane.io&apos;s built-in wallet creates and manages accounts under this
-              contract for anyone signing up there.
-            </p>
-          </div>
-        </Section>
-
-        <Section title="Not the Same as the dApp&apos;s Wallets">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
+            <div className="bento-cell border border-brand-rose/20 bg-brand-rose/5 p-5 space-y-3">
               <div className="flex items-center gap-2">
-                <Wallet className="h-4 w-4 text-brand-blue" />
-                <p className="font-bold text-foreground text-base">starknet.medialane.io</p>
+                <Smartphone className="h-5 w-5 text-brand-rose" />
+                <p className="font-bold text-foreground">medialane.io</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Connects to a wallet you already have, such as an injected extension
-                or a Starknet wallet app. You choose and control the wallet.
+                medialane.io&apos;s built-in wallet creates and manages accounts under this
+                contract for anyone signing up there.
               </p>
             </div>
-            <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
+            <div className="bento-cell border border-brand-rose/20 bg-brand-rose/5 p-5 space-y-3">
               <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 text-brand-purple" />
-                <p className="font-bold text-foreground text-base">Media Wallet</p>
+                <Smartphone className="h-5 w-5 text-brand-rose" />
+                <p className="font-bold text-foreground">portal.medialane.io</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Is the account: created from a passkey, self-custody by construction,
-                with no separate wallet app to install or connect.
+                portal.medialane.io&apos;s built-in wallet creates and manages accounts under this
+                contract for anyone signing up there.
               </p>
             </div>
           </div>
@@ -172,8 +159,7 @@ export default function LearnMediaWalletPage() {
           <p>
             See{" "}
             <Link href="/learn/identity" className="text-primary hover:underline">Identity</Link>
-            {" "}for how a Media Wallet account relates to your Medialane account and
-            profile, and{" "}
+            {" "}for how identity works, and{" "}
             <Link href="/dev/security" className="text-primary hover:underline">Security</Link>
             {" "}for the platform&apos;s broader security model.
           </p>
