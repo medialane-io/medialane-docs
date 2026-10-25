@@ -70,7 +70,7 @@ const TOPICS = [
     href: "/learn/identity",
     icon: Fingerprint,
     title: "Identity",
-    description: "Identity is the actor itself, appearing on the chain as an address: read from the chain, and built to outlive any single chain or app.",
+    description: "Identity is the actor itself, recognized on the chain by its address and read directly from the chain.",
   },
   {
     href: "/learn/media-wallet",
