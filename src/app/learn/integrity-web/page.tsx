@@ -38,7 +38,7 @@ const AXIOMS = [
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
     medialane: "Every Starknet transaction is backed by a ZK-STARK validity proof, verifiable by anyone independently of Medialane, a bank, or a registrar.",
-    highlights: ["ZK-STARK validity proofs for every transaction", "No trusted setup required", "Quantum-resistant cryptography"],
+    highlights: ["ZK-STARK validity proofs for every transaction", "No trusted setup required", "Hash-based proofs"],
   },
   {
     num: "03",
@@ -220,16 +220,15 @@ export default function IntegrityWebPage() {
           by anyone.
         </p>
         <p className="text-muted-foreground leading-relaxed">
-          STARKs are also <strong className="text-foreground">quantum-resistant</strong>. The
-          cryptographic assumptions underlying ZK-STARKs (hash functions and information-theoretic
-          arguments) remain unbroken by quantum computers, unlike elliptic curve cryptography used
-          by most blockchains today. As quantum computing advances, Starknet's proof system remains
-          secure. Medialane inherits this resilience by building on Starknet.
+          STARK proofs also hold up against <strong className="text-foreground">quantum computers</strong>.
+          Their security rests on hash functions rather than elliptic curves, and no known quantum
+          attack breaks a hash function. Because every Starknet account is a smart contract,
+          accounts can also adopt quantum-resistant signatures without changing address.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
           {[
             { label: "No trusted setup", desc: "Transparent by design" },
-            { label: "Quantum-resistant", desc: "Safe from future computing threats" },
+            { label: "Hash-based proofs", desc: "No known quantum attack breaks them" },
             { label: "Trustless by design", desc: "Math replaces intermediaries" },
           ].map(({ label, desc }) => (
             <div key={label} className="bento-cell p-4 space-y-1">

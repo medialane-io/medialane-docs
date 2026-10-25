@@ -133,7 +133,7 @@ const DESIGN_CHOICES = [
 ];
 
 const STARKNET_REASONS = [
-  { label: "Quantum-resistant", desc: "ZK-STARK proofs rely on hash functions, not elliptic curves. Safe from future quantum computing threats." },
+  { label: "Hash-based proofs", desc: "ZK-STARK proofs rely on hash functions, not elliptic curves, and no known quantum attack breaks them." },
   { label: "No trusted setup", desc: "No ceremony that could be compromised. The security is fully transparent and verifiable by anyone." },
   { label: "Account abstraction", desc: "Native AA means session keys, gasless UX, and smart wallet capabilities at the protocol level." },
   { label: "Verifiable computation", desc: "Every transaction is backed by a validity proof: math, not trust." },
@@ -251,7 +251,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-black">The foundation matters.</h2>
           <p className="text-muted-foreground leading-relaxed">
             Medialane is built on Starknet because its cryptographic properties fit the
-            bigger vision: quantum-resistant proofs, no trusted setup, and account
+            bigger vision: hash-based proofs, no trusted setup, and account
             abstraction at the protocol level.
           </p>
         </div>

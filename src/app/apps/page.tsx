@@ -133,7 +133,7 @@ const PLATFORM_FEATURES = [
     icon: Lock,
     title: "Zero-Knowledge Security",
     description:
-      "Built on Starknet's ZK-STARK technology. Every transaction is provably valid, settled with quantum-resistant cryptography and no trusted setup.",
+      "Built on Starknet's ZK-STARK technology. Every transaction is provably valid, verified by hash-based STARK proofs with no trusted setup.",
     color: "text-primary",
     bg: "bg-primary/10",
   },

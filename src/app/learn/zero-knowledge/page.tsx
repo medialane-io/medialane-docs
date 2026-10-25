@@ -53,7 +53,7 @@ export default function ZeroKnowledgePage() {
             { icon: Shield, title: "Validity", desc: "ZK proofs guarantee that a computation was performed correctly, so no one can submit fake transactions that violate the rules of the protocol." },
             { icon: Eye, title: "Privacy", desc: "The same proof mechanics let an application confirm ownership or eligibility without revealing the underlying data, proving you hold a token without revealing which one." },
             { icon: Zap, title: "Scalability", desc: "Starknet bundles thousands of transactions into one ZK-STARK proof verified on Ethereum. This makes gas fees tiny and throughput massive." },
-            { icon: Lock, title: "Security", desc: "ZK-STARKs (the variant used by Starknet) are quantum-resistant, secure against future quantum computers unlike older cryptographic systems." },
+            { icon: Lock, title: "Security", desc: "ZK-STARKs (the variant used by Starknet) rely on hash functions, not elliptic curves, and no known quantum attack breaks them." },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bento-cell p-5 space-y-3">
               <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
