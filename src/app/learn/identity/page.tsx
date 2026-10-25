@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Star, Key, Link2, Globe, Anchor, Eye, Shield, User, Bot } from "lucide-react";
+import { Star, Key, Link2, Anchor, Eye, Shield, User, Bot } from "lucide-react";
 import { Section } from "@/components/docs";
 
 const description =
@@ -52,15 +52,6 @@ const WHAT_IT_IS = [
 ];
 
 const BUILT_TO_LAST = [
-  {
-    label: "Portable across chains",
-    icon: Globe,
-    color: "text-brand-blue",
-    bg: "bg-brand-blue/10",
-    border: "border-brand-blue/20",
-    def: "An actor may use addresses on several chains. Signed statements, which anyone can verify, link them to one identity, so reputation stays whole across every chain.",
-    note: "Where identity is heading.",
-  },
   {
     label: "A durable foundation",
     icon: Anchor,
@@ -118,7 +109,7 @@ export default function LearnIdentityPage() {
             An identity is meant to outlive any single chain, app or venue. A creator&apos;s
             authorship should not depend on where it happens to be listed.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="space-y-3">
             {BUILT_TO_LAST.map((card) => (
               <IdentityCard key={card.label} {...card} />
             ))}
