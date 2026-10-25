@@ -85,14 +85,14 @@ export const CONTRACTS: ContractInfo[] = [
     name: "Creator Coin Factory",
     chain: "Starknet",
     address: "0x50fa807b5274079fb19374673d7bab6d2dc3af7e1032ea43eb6e44bcbde4c3c",
-    desc: "Deploys fixed-supply standard ERC-20 Creator Coins and launches them on Ekubo. Faithful fork of unruggable.meme, Ekubo-only. Ownership is renounced at launch. Trades on external Ekubo, not a Medialane venue; Medialane settles no coin trades. Deployed mainnet 2026-06-04.",
+    desc: "Deploys fixed-supply standard ERC-20 Creator Coins and launches them with a public liquidity pool. Ownership is renounced at launch. Trades on an external exchange, not a Medialane venue; Medialane settles no coin trades. Deployed mainnet 2026-06-04.",
   },
   {
     category: "Creator Coin",
     name: "EkuboLauncher",
     chain: "Starknet",
     address: "0x4f7fceb5ac10f12f9544a09580592e5bdf1b7f04f48765eecf12286d8ccb7b4",
-    desc: "Permanently locks each Creator Coin's liquidity position on Ekubo at launch.",
+    desc: "Permanently locks each Creator Coin's liquidity position at launch.",
   },
 ];
 

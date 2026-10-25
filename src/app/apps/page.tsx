@@ -53,7 +53,7 @@ const APPS = [
     description:
       "Web3-native interface for power users and self-custody advocates. Connect any Starknet wallet and interact directly with all platform smart contracts.",
     features: [
-      "Connect Argent, Braavos, or any Starknet wallet",
+      "Connect any Starknet wallet",
       "Full self-custody: your keys, your assets",
       "See every price in USD, side by side with the asset's listed currency",
       "Buy with any token in your wallet — the right amount is exchanged automatically as part of the purchase",

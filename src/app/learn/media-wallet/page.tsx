@@ -134,12 +134,11 @@ export default function LearnMediaWalletPage() {
           <div className="bento-cell border border-brand-rose/20 bg-brand-rose/5 p-5 space-y-3">
             <div className="flex items-center gap-2">
               <Smartphone className="h-5 w-5 text-brand-rose" />
-              <p className="font-bold text-foreground">medialane.io, today&apos;s client</p>
+              <p className="font-bold text-foreground">medialane.io</p>
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
               medialane.io&apos;s built-in wallet creates and manages accounts under this
-              contract for anyone signing up there. A standalone Media Wallet app is
-              planned as a second client of the same contract, later.
+              contract for anyone signing up there.
             </p>
           </div>
         </Section>
@@ -152,8 +151,8 @@ export default function LearnMediaWalletPage() {
                 <p className="font-bold text-foreground text-base">starknet.medialane.io</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Connects to a wallet you already have: Ready, Braavos, an injected
-                extension, Cartridge, or Privy. You choose and control the wallet.
+                Connects to a wallet you already have, such as an injected extension
+                or a Starknet wallet app. You choose and control the wallet.
               </p>
             </div>
             <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">

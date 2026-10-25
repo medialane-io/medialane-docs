@@ -83,7 +83,7 @@ const LAYERS = [
     icon: Monitor,
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
-    desc: "medialane.io and partner apps. Views, UX, fees. Cannot override what the contracts say.",
+    desc: "medialane.io and every app built on it. Views, UX, fees. Cannot override what the contracts say.",
   },
 ];
 

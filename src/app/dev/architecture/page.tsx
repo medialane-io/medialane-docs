@@ -57,7 +57,7 @@ const LAYERS = [
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
     role: "Views, UX, platform-layer fees, curation, house rules",
-    detail: "medialane.io, the developer portal, and any third-party app built on the SDK. Apps can add house rules and platform-layer fees. They cannot override what the contracts say.",
+    detail: "medialane.io, the developer portal, and every other app built on the SDK. Apps can add house rules and platform-layer fees. They cannot override what the contracts say.",
   },
 ];
 
@@ -206,7 +206,7 @@ export default function DocsArchitecturePage() {
               <p className="font-bold text-foreground">Platform</p>
               <ul className="space-y-1.5 text-sm">
                 {[
-                  "medialane.io and partner apps",
+                  "medialane.io and every app built on it",
                   "Service registry curation (in the SDK)",
                   "Settlement fee schedule (DAO-controlled)",
                   "UI curation and house rules",

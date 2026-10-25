@@ -119,7 +119,7 @@ export default function LearnPOPPage() {
 
         <Section title="Why On-Chain Credentials?">
           <p>
-            Traditional credentials (conference badges, certificates, Discord roles) are
+            Traditional credentials (conference badges, certificates, community roles) are
             controlled by the platform that issued them. If that platform disappears or
             revokes your access, the credential is gone. On-chain credentials are permanent
             and self-sovereign: they live in your wallet and cannot be taken away.

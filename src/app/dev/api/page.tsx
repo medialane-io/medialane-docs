@@ -443,7 +443,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/intents/launch-coin"
-        description="Launch an already-deployed Creator Coin on Ekubo (owner-only; the contract itself is the authority)."
+        description="Launch an already-deployed Creator Coin with its liquidity pool (owner-only; the contract itself is the authority)."
         params={[
           { name: "owner", type: "string", required: true, desc: "Wallet that must own the coin" },
           { name: "creatorCoin", type: "string", required: true, desc: "The deployed CreatorCoin contract, from create-coin's receipt" },
@@ -944,7 +944,7 @@ export default function ApiReferencePage() {
         ]}
         curl={`curl "${BASE}/v1/metadata/signed-url?kind=image" \\
   -H "x-api-key: ${KEY}"`}
-        response={`{ "data": { "url": "https://uploads.pinata.cloud/v3/files/..." } }`}
+        response={`{ "data": { "url": "https://uploads.example/files/..." } }`}
       />
 
       <Endpoint
@@ -1032,7 +1032,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/swap/quote"
-        description="Best available swap quote from the AVNU aggregator. Give exactly one of sellAmountRaw or buyAmountRaw, and identify each token by catalogue symbol or contract address."
+        description="Best available swap quote from a swap aggregator. Give exactly one of sellAmountRaw or buyAmountRaw, and identify each token by catalogue symbol or contract address."
         params={[
           { name: "sellSymbol", type: "string", required: false, desc: "Catalogue symbol, e.g. STRK. Use this or sellTokenAddress" },
           { name: "sellTokenAddress", type: "string", required: false, desc: "Contract address, for a coin outside the catalogue" },
@@ -2649,12 +2649,12 @@ const resumeSource = new EventSource(url, {
           { name: "walletAddress", type: "string", required: true, desc: "The signing wallet" },
           { name: "nonce", type: "string", required: true, desc: "From /nonce" },
           { name: "signature", type: "string[]", required: true, desc: "The wallet's signature over the typed data" },
-          { name: "appSource", type: "string", required: false, desc: "The app declaring the registration, e.g. MEDIALANE_IO, MEDIALANE_PORTAL, MEDIALANE_STARKNET" },
+          { name: "appSource", type: "string", required: false, desc: "Set to register the account at sign-in" },
         ]}
         curl={`curl -X POST "${BASE}/v1/auth/siws/verify" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{ "walletAddress": "0x0591...", "nonce": "...", "signature": ["0x..", "0x.."], "appSource": "MEDIALANE_STARKNET" }'`}
+  -d '{ "walletAddress": "0x0591...", "nonce": "...", "signature": ["0x..", "0x.."], "appSource": "my-app" }'`}
         response={`{
   "token": "siws_...",
   "accountId": "...",
@@ -2719,7 +2719,7 @@ const resumeSource = new EventSource(url, {
 
       <DocH2 id="accounts" border>Accounts</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        An account is its own record, defined by no wallet, email or app. Each registration through an app is its own account in that app: the same email or wallet registered in two apps is two accounts. An account holds its sign-in records (its wallets and email) and a status: <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ACTIVE</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">PENDING</code> (an email account whose email is not yet verified) or <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">INACTIVE</code> (refused). Accounts have no type and no roles.
+        An account holds its sign-in records (its wallets and email) and a status: <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">ACTIVE</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">PENDING</code> (an email account whose email is not yet verified) or <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">INACTIVE</code> (refused). Accounts have no type and no roles.
       </p>
       <Endpoint
         method="POST"
@@ -2733,13 +2733,13 @@ const resumeSource = new EventSource(url, {
         curl={`curl -X POST "${BASE}/v1/users/register" \\
   -H "x-api-key: ${KEY}" \\
   -H "Content-Type: application/json" \\
-  -d '{"walletAddress":"0x0591...","walletType":"braavos"}'`}
+  -d '{"walletAddress":"0x0591...","walletType":"mediawallet"}'`}
         response={`{
   "accountId": "...",
   "publicId": "acc_...",
   "walletAddress": "0x0591...",
   "chain": "STARKNET",
-  "provider": "braavos",
+  "provider": "mediawallet",
   "createdAt": "2026-10-01T12:00:00Z"
 }`}
       />
@@ -2840,7 +2840,7 @@ const resumeSource = new EventSource(url, {
         description="Number of accounts, with optional filters. An account with any matching sign-in record is counted once."
         params={[
           { name: "chain", type: "string", required: false, desc: "Filter by wallet chain" },
-          { name: "appId", type: "string", required: false, desc: "Filter by the app the account registered through, e.g. MEDIALANE_IO" },
+          { name: "appId", type: "string", required: false, desc: "Filter by the app the account registered through" },
           { name: "walletType", type: "string", required: false, desc: "Filter by wallet type" },
           { name: "since", type: "string", required: false, desc: "ISO date; accounts created on or after" },
         ]}

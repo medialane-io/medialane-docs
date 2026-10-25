@@ -106,7 +106,7 @@ const SERVICES = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    desc: "Your own fixed-supply standard ERC-20 with permanently-locked Ekubo liquidity (audited unruggable.meme fork). Launch price fixed at 0.01 quote/coin; up to 10% creator allocation, funded by the creator. Ownership renounced at launch: the contract is the only authority.",
+    desc: "Your own fixed-supply standard ERC-20 with permanently-locked liquidity. Launch price fixed at 0.01 quote/coin; up to 10% creator allocation, funded by the creator. Ownership renounced at launch: the contract is the only authority.",
     caps: ["launch", "swap", "transfer"],
   },
   {
@@ -116,7 +116,7 @@ const SERVICES = [
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    desc: "Coins launched outside Medialane (unruggable.meme or partner launches), brought in individually by owner claim with team review, never bulk-indexed. Listed on the Coins page with live Ekubo prices.",
+    desc: "Coins launched elsewhere, brought in individually by owner claim with team review, never bulk-indexed. Listed on the Coins page with live prices.",
     caps: ["swap", "transfer"],
   },
   {

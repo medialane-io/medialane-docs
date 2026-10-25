@@ -228,7 +228,7 @@ export default function IntegrityWebPage() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
           {[
-            { label: "No trusted setup", desc: "Transparent, nothing to compromise" },
+            { label: "No trusted setup", desc: "Transparent by design" },
             { label: "Quantum-resistant", desc: "Safe from future computing threats" },
             { label: "Trustless by design", desc: "Math replaces intermediaries" },
           ].map(({ label, desc }) => (
