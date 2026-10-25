@@ -143,31 +143,6 @@ export default function LearnMediaWalletPage() {
           </div>
         </Section>
 
-        <Section title="Not the Same as the dApp&apos;s Wallets">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
-              <div className="flex items-center gap-2">
-                <Wallet className="h-4 w-4 text-brand-blue" />
-                <p className="font-bold text-foreground text-base">starknet.medialane.io</p>
-              </div>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Connects to a wallet you already have, such as an injected extension
-                or a Starknet wallet app. You choose and control the wallet.
-              </p>
-            </div>
-            <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
-              <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 text-brand-purple" />
-                <p className="font-bold text-foreground text-base">Media Wallet</p>
-              </div>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Is the account: created from a passkey, self-custody by construction,
-                with no separate wallet app to install or connect.
-              </p>
-            </div>
-          </div>
-        </Section>
-
         <Section title="Learn More">
           <p>
             See{" "}
