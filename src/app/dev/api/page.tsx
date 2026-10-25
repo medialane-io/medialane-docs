@@ -401,7 +401,7 @@ export default function ApiReferencePage() {
         description="Update a coin's image and/or description. Creator-authed (SIWS token); only the coin's on-chain creator may edit. The creator is set trustlessly from the factory event, never from the request body."
         params={[
           { name: "image", type: "string", desc: "ipfs:// or https:// URI (body, optional, nullable)" },
-          { name: "description", type: "string", desc: "Up to 500 chars (body, optional, nullable)" },
+          { name: "description", type: "string", desc: "Optional, nullable" },
         ]}
         curl={`curl -X PATCH "${BASE}/v1/coins/0x04c1..." \\
   -H "Authorization: Bearer <SIWS_TOKEN>" \\
@@ -1804,7 +1804,7 @@ const resumeSource = new EventSource(url, {
           { name: "originalOrderHash", type: "string", required: true, desc: "Order hash of the original buyer bid" },
           { name: "counterPrice", type: "string", required: true, desc: "Counter price as raw wei integer string" },
           { name: "durationSeconds", type: "number", required: true, desc: "Validity duration in seconds (3600–2592000)" },
-          { name: "message", type: "string", desc: "Optional seller message to buyer (max 500 chars)" },
+          { name: "message", type: "string", desc: "Optional seller message to the buyer" },
         ]}
         curl={`curl -X POST "${BASE}/v1/intents/counter-offer" \\
   -H "x-api-key: ${KEY}" \\
@@ -2940,7 +2940,7 @@ const resumeSource = new EventSource(url, {
           { name: "targetContract", type: "string", required: false, desc: "For TOKEN/COLLECTION targets" },
           { name: "targetTokenId", type: "string", required: false, desc: "For TOKEN targets" },
           { name: "targetAddress", type: "string", required: false, desc: "For CREATOR targets" },
-          { name: "description", type: "string", required: false, desc: "Free text, max 500 chars" },
+          { name: "description", type: "string", required: false, desc: "Free text" },
         ]}
         curl={`curl -X POST "${BASE}/v1/reports" \\
   -H "x-api-key: ${KEY}" \\
