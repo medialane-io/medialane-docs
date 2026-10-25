@@ -74,7 +74,7 @@ const PRIMITIVES = [
     icon: Star,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
-    def: "The actor. Three facets: Wallet (signs), Account (on-chain reputation), Profile (editable public face). See /learn/identity.",
+    def: "The actor. You sign in with a wallet or an email, and add a name, bio and avatar if you like. See /learn/identity.",
   },
   {
     label: "Service",
