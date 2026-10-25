@@ -109,7 +109,7 @@ export default function LearnProtectIPPage() {
             Medialane is built on the{" "}
             <strong className="text-foreground">Mediolano protocol</strong>, a
             permissionless, open-source IP protection infrastructure anchored to Starknet.
-            When you mint a work on Medialane:
+            When you mint a work:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
             <li>An <strong className="text-foreground">immutable timestamped record</strong> is created on Starknet: a public, verifiable proof of existence at a specific point in time.</li>
