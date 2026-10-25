@@ -24,50 +24,36 @@ export default function ProgrammableIPPage() {
       <div className="space-y-3">
         <h2 className="text-2xl font-bold">Programmable IP</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Traditional IP is a legal document. Programmable IP is structured data anchored
-          onchain. Instead of a license stored in a file or a lawyer&apos;s database, the
-          terms are embedded directly in the token, readable by any application, agent, or
-          contract, and permanent from the moment of minting.
+          Programmable IP is structured data anchored onchain. The terms of a work are
+          embedded directly in its token, readable by any application, agent, or contract,
+          and permanent from the moment of minting.
         </p>
         <p className="text-muted-foreground leading-relaxed">
-          This does not replace legal copyright or eliminate the need for enforcement in
-          the traditional sense. What it changes is the evidence layer: authorship, timing,
+          It works alongside copyright and adds a clear evidence layer: authorship, timing,
           and license terms are recorded in a way that is tamper-proof and independently
           verifiable by anyone.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="bento-cell p-5 space-y-3">
-          <p className="text-base font-semibold text-muted-foreground uppercase tracking-widest">Traditional IP</p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2"><span className="text-destructive shrink-0">✗</span> License stored in a document or database</li>
-            <li className="flex items-start gap-2"><span className="text-destructive shrink-0">✗</span> Authorship requires witnesses or registration</li>
-            <li className="flex items-start gap-2"><span className="text-destructive shrink-0">✗</span> Terms don&apos;t travel with the work</li>
-            <li className="flex items-start gap-2"><span className="text-destructive shrink-0">✗</span> Licensing requires intermediaries</li>
-            <li className="flex items-start gap-2"><span className="text-destructive shrink-0">✗</span> No machine-readable format</li>
-          </ul>
-        </div>
-        <div className="bento-cell p-5 space-y-3">
-          <p className="text-base font-semibold text-primary uppercase tracking-widest">Programmable IP</p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> License embedded in the token itself</li>
-            <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Timestamped authorship record on-chain</li>
-            <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Terms travel with every transfer</li>
-            <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Permissionless, no approval required</li>
-            <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Machine-readable by applications and agents</li>
-          </ul>
-        </div>
+      <div className="bento-cell p-5 space-y-3">
+        <p className="text-base font-semibold text-primary uppercase tracking-widest">At a glance</p>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-muted-foreground">
+          <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> License embedded in the token itself</li>
+          <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Timestamped authorship record on-chain</li>
+          <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Terms travel with every transfer</li>
+          <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Permissionless, no approval required</li>
+          <li className="flex items-start gap-2"><span className="text-green-400 shrink-0">✓</span> Machine-readable by applications and agents</li>
+        </ul>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">What it actually does</h3>
+        <h3 className="text-lg font-semibold">What it does</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
             {
               icon: FileText,
               title: "License terms as structured data",
-              desc: "When you mint an NFT on Medialane, you attach a license (commercial use, derivative rights, AI training policy, geographic scope) encoded as structured metadata in the token. The terms are permanent and travel with the token through every transfer.",
+              desc: "When you mint an NFT, you attach a license (commercial use, derivative rights, AI training policy, geographic scope) encoded as structured metadata in the token. The terms are permanent and travel with the token through every transfer.",
             },
             {
               icon: Code2,
@@ -76,8 +62,8 @@ export default function ProgrammableIPPage() {
             },
             {
               icon: Shield,
-              title: "Independent of the platform",
-              desc: "The record exists on Starknet and IPFS, independent of Medialane's servers. Even if the platform goes offline, the authorship record and license terms remain accessible and verifiable from the blockchain.",
+              title: "Verifiable by anyone",
+              desc: "The record lives on Starknet and IPFS, so the authorship record and license terms stay accessible and verifiable from the blockchain at any time.",
             },
             {
               icon: GitBranch,
@@ -96,19 +82,16 @@ export default function ProgrammableIPPage() {
         </div>
       </div>
 
-      <div className="bento-cell p-6 space-y-3 border-amber-500/20 border">
-        <h3 className="font-semibold text-base">What programmable IP does not do</h3>
+      <div className="bento-cell p-6 space-y-3">
+        <h3 className="font-semibold text-base">Evidence for your work</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
-          The license terms in token metadata are not automatically enforced at the legal level.
-          If someone copies your work and uses it outside the terms you set, the marketplace
-          contract does not prevent that; it has no visibility into activity outside of
-          on-chain transactions. What the record provides is evidence: a timestamped, immutable,
-          publicly verifiable document of your authorship and your stated terms.
+          The license terms in token metadata are a clear, public statement of the terms you
+          choose. The record provides evidence: a timestamped, immutable, publicly verifiable
+          document of your authorship and your stated terms.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">
-          Enforcing IP rights against infringement still requires the same tools it always has:
-          legal process, takedown requests, and in some cases litigation. The on-chain record
-          strengthens your position by providing clear, undeniable evidence of prior authorship.
+          That evidence supports your position in any process you choose to pursue, such as
+          takedown requests or legal action, with clear proof of prior authorship.
         </p>
       </div>
 
@@ -122,8 +105,8 @@ export default function ProgrammableIPPage() {
           <strong className="text-foreground">Berne Convention</strong> so authorship is
           recognized across its 181 member countries. Mediolano is a separate, independent
           public good that predates Medialane; Medialane builds its commercial layer on top.
-          Its records exist on-chain regardless of whether Medialane continues to operate, and
-          any developer can build on it without permission or payment.
+          Its records exist on-chain independently of Medialane, and any developer can build on
+          it without permission or payment.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">
           Learn more about{" "}
