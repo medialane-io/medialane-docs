@@ -2862,44 +2862,6 @@ const resumeSource = new EventSource(url, {
         response={`{ "data": [{ "type": "RECEIVE", "tokenAddress": "0x...", "amount": "5000000", "counterparty": "0x...", "txHash": "0x...", "blockNumber": "123456", "timestamp": "..." }] }`}
       />
 
-      <DocH2 id="business" border>Business</DocH2>
-      <p className="text-base text-muted-foreground mb-6">
-        A business can give people wallets and assets before they have signed up. A person who already has a wallet keeps getting assets in it.
-      </p>
-      <Endpoint
-        method="POST"
-        path="/v1/business/provisioning"
-        description="Give a recipient a wallet: reuses the one they already have (200, reusedExistingWallet), or deploys a new one (201)."
-        params={[
-          { name: "email", type: "string", required: true, desc: "The recipient's email address" },
-          { name: "chain", type: "string", required: false, desc: "STARKNET" },
-        ]}
-        curl={`curl -X POST "${BASE}/v1/business/provisioning" \\
-  -H "x-api-key: ${KEY}" \\
-  -H "Content-Type: application/json" \\
-  -d '{"email":"ana@example.com"}'`}
-        response={`{ "data": { "chain": "STARKNET", "walletAddress": "0x0abc..." } }`}
-      />
-
-      <Endpoint
-        method="POST"
-        path="/v1/business/issuance/emission"
-        description="Build the mint calls that issue an asset to up to 500 provisioned recipients, in batches to execute from your wallet."
-        params={[
-          { name: "service", type: "string", required: true, desc: "A minting service id" },
-          { name: "owner", type: "string", required: true, desc: "Your wallet, the collection owner" },
-          { name: "recipients", type: "string[]", required: true, desc: "Up to 500 recipient emails" },
-          { name: "collectionId", type: "string", required: false, desc: "Collection to mint into" },
-          { name: "tokenUri", type: "string", required: false, desc: "Token metadata" },
-          { name: "batchSize", type: "number", required: false, desc: "Calls per batch, 1 to 100" },
-        ]}
-        curl={`curl -X POST "${BASE}/v1/business/issuance/emission" \\
-  -H "x-api-key: ${KEY}" \\
-  -H "Content-Type: application/json" \\
-  -d '{"service":"mip-erc721","owner":"0x0591...","recipients":["ana@example.com"],"tokenUri":"ipfs://..."}'`}
-        response={`{ "data": { "service": "mip-erc721", "recipientCount": 1, "callCount": 1, "batches": [[{ "contractAddress": "0x...", "entrypoint": "mint", "calldata": [] }]] } }`}
-      />
-
       <DocH2 id="gated-content" border>Gated Content &amp; Slugs</DocH2>
       <p className="text-base text-muted-foreground mb-6">
         Holder-only collection content and vanity-slug resolution.
