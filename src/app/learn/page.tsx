@@ -5,7 +5,7 @@ import { BookOpen, Fingerprint, Image, Rocket, Store, Globe, Shield, FileText, A
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn" },
   title: "Learn | Medialane",
-  description: "Learn about NFTs, IP protection, blockchain technology, and how the Medialane platform works.",
+  description: "Learn about NFTs, IP protection, blockchain technology, and how the platform works.",
   openGraph: {
     title: "Learn | Medialane",
     description: "Learn about NFTs, IP protection, blockchain technology, and how the Medialane platform works.",
@@ -22,7 +22,7 @@ const TOPICS = [
     href: "/learn/integrity-web",
     icon: Shield,
     title: "The Integrity Web",
-    description: "The ten axioms that shape Medialane's architecture: proof over trust, permissionless participation, and integrity by design.",
+    description: "The ten axioms that shape the architecture: proof over trust, permissionless participation, and integrity by design.",
   },
   {
     href: "/learn/nft",
@@ -34,13 +34,13 @@ const TOPICS = [
     href: "/learn/blockchain",
     icon: Globe,
     title: "Blockchain Basics",
-    description: "A plain-language introduction to blockchains, wallets, and how Medialane settles on Starknet.",
+    description: "A plain-language introduction to blockchains, wallets, and how settlement works on Starknet.",
   },
   {
     href: "/learn/zero-knowledge",
     icon: Eye,
     title: "Zero-Knowledge Proofs",
-    description: "How ZK-STARK proofs verify computation without revealing the underlying data, and what that means for Medialane.",
+    description: "How ZK-STARK proofs verify computation without revealing the underlying data, and what that means in practice.",
   },
   {
     href: "/learn/privacy",
@@ -64,7 +64,7 @@ const TOPICS = [
     href: "/learn/services",
     icon: Layers,
     title: "Services",
-    description: "How Medialane services work: the registry that defines what creators can do, canonical service IDs, and the capability set.",
+    description: "How services work: the registry that defines what creators can do, canonical service IDs, and the capability set.",
   },
   {
     href: "/learn/identity",
@@ -76,19 +76,19 @@ const TOPICS = [
     href: "/learn/media-wallet",
     icon: KeyRound,
     title: "Media Wallet",
-    description: "Medialane's self-custody account contract on Starknet: passkey-based keys, no seed phrase, live on mainnet.",
+    description: "A self-custody account contract on Starknet, secured by passkey-based keys and live on mainnet.",
   },
   {
     href: "/learn/funding-your-account",
     icon: Wallet,
     title: "Funding Your Account",
-    description: "How to get tokens onto Starknet and into your Medialane account: on-ramps, exchange withdrawals, and cross-chain bridges.",
+    description: "How to get tokens onto Starknet and into your account: on-ramps, exchange withdrawals, and cross-chain bridges.",
   },
   {
     href: "/learn/creator-launchpad",
     icon: Rocket,
     title: "Creator Launchpad",
-    description: "Learn how to deploy your own collection, mint IP assets, and launch your creative work on Medialane.",
+    description: "Learn how to deploy your own collection, mint IP assets, and launch your creative work.",
   },
   {
     href: "/learn/creator-coin",
@@ -106,7 +106,7 @@ const TOPICS = [
     href: "/learn/agent-payments",
     icon: Bot,
     title: "Payments for AI Agents",
-    description: "How AI agents and any software pay to use Medialane: automatic per-use micropayments in USDC, without a human in the loop.",
+    description: "How AI agents and any software pay to use the platform: automatic per-use micropayments in USDC, without a human in the loop.",
   },
   {
     href: "/learn/pop-protocol",
@@ -160,13 +160,13 @@ const TOPICS = [
     href: "/learn/protect-your-ip",
     icon: Shield,
     title: "Protect Your IP",
-    description: "Understand the Berne Convention, copyright principles, and how Medialane helps creators protect their intellectual property.",
+    description: "Understand the Berne Convention, copyright principles, and how creators protect their intellectual property.",
   },
   {
     href: "/learn/programmable-licensing",
     icon: FileText,
     title: "Programmable Licensing",
-    description: "Explore Medialane's onchain licensing system: Creative Commons variants, AI policy, royalties, and derivative rules.",
+    description: "Explore the onchain licensing system: Creative Commons variants, AI policy, royalties, and derivative rules.",
   },
 ];
 
