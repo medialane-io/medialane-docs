@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Key, Star, User, Shield, Eye, Bot, Mail } from "lucide-react";
+import { Key, Star, User, Shield, Eye, Bot } from "lucide-react";
 import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/identity" },
   title: "Identity | Learn | Medialane",
-  description: "How identity works on Medialane: Wallet, Account, and Profile, accounts per app, signing in with a wallet or an email code, wallets set up for you by a business, and AI agent accounts.",
+  description: "How identity works on Medialane: Wallet, Account, and Profile, accounts per app, signing in with a wallet or an email code, and AI agent accounts.",
   openGraph: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane: Wallet, Account, and Profile, accounts per app, signing in with a wallet or an email code, wallets set up for you by a business, and AI agent accounts.",
+    description: "How identity works on Medialane: Wallet, Account, and Profile, accounts per app, signing in with a wallet or an email code, and AI agent accounts.",
     url: "https://docs.medialane.io/learn/identity",
   },
   twitter: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane: Wallet, Account, and Profile, accounts per app, signing in with a wallet or an email code, wallets set up for you by a business, and AI agent accounts.",
+    description: "How identity works on Medialane: Wallet, Account, and Profile, accounts per app, signing in with a wallet or an email code, and AI agent accounts.",
   },
 };
 
@@ -137,19 +137,6 @@ export default function LearnIdentityPage() {
             address is yours. Nothing else on the platform waits on it: holding assets,
             sending and receiving, browsing and listing are open to every account.
           </p>
-          <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
-            <div className="flex items-center gap-2">
-              <Mail className="h-4 w-4 text-brand-orange" />
-              <p className="font-bold text-foreground text-base">A wallet set up for you</p>
-            </div>
-            <p className="text-base text-muted-foreground leading-relaxed">
-              A business can send you a ticket, a membership or any other asset before you
-              have signed up: Medialane creates a wallet for your email and the assets go
-              there. When you sign in with that email and confirm the code, the wallet is
-              handed over to your own key, so it is fully yours. If you already have a
-              wallet, new assets simply arrive in it.
-            </p>
-          </div>
         </Section>
 
         <Section title="AI Agents">
