@@ -133,6 +133,24 @@ const TOPICS = [
     description: "Create verifiable on-chain tickets your audience can hold and trade, a real asset rather than a soulbound pass.",
   },
   {
+    href: "/learn/data-tokenization",
+    icon: FileText,
+    title: "Data Tokenization",
+    description: "Register a whole catalog in one run, with authorship, date, license terms and an AI policy recorded for every item.",
+  },
+  {
+    href: "/learn/ip-ticketing",
+    icon: Ticket,
+    title: "IP Ticketing",
+    description: "Issue tickets to a guest list, each ticket type with its own supply and validity window.",
+  },
+  {
+    href: "/learn/certificate-emission",
+    icon: Award,
+    title: "Certificate Emission",
+    description: "Issue non-transferable certificates to a list of recipients, each one verifiable against the chain.",
+  },
+  {
     href: "/learn/ip-club",
     icon: Users,
     title: "IP Club",

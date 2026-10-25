@@ -29,9 +29,9 @@ const FLOWS = [
 ];
 
 const RUNS = [
-  { name: "Data Tokenization", desc: "Register a whole catalog in one run, with license terms attached to every item.", href: "https://portal.medialane.io/services/data-tokenization" },
-  { name: "IP Ticketing", desc: "Issue tickets with their own supply and validity window to a guest list.", href: "https://portal.medialane.io/services/tickets" },
-  { name: "Certificate Emission", desc: "Issue non-transferable certificates to a list of recipients.", href: "https://portal.medialane.io/services/certificates" },
+  { name: "Data Tokenization", desc: "Register a whole catalog in one run, with license terms attached to every item.", href: "/learn/data-tokenization" },
+  { name: "IP Ticketing", desc: "Issue tickets with their own supply and validity window to a guest list.", href: "/learn/ip-ticketing" },
+  { name: "Certificate Emission", desc: "Issue non-transferable certificates to a list of recipients.", href: "/learn/certificate-emission" },
 ];
 
 function FlowCard({ name, desc, href }: { name: string; desc: string; href: string }) {
