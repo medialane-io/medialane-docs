@@ -4,7 +4,7 @@ import { Star, Key, Link2, Globe, Anchor, Eye, Shield, User, Bot } from "lucide-
 import { Section } from "@/components/docs";
 
 const description =
-  "Identity on Medialane is the actor itself, not a wallet or an email: read from the chain, and built to outlive any single chain, app or venue.";
+  "Identity is the actor itself, with wallets and emails as ways to reach it: read from the chain, and built to outlive any single chain, app or venue.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/identity" },
@@ -28,8 +28,8 @@ const WHAT_IT_IS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    def: "An identity is who acts on Medialane. It carries the reputation, the work and the history, and it exists whether or not a wallet or an email is attached to it.",
-    note: "People, organizations and AI agents are the same kind of identity. There are no types or roles.",
+    def: "An identity is who acts. It carries the reputation, the work and the history, and it stays the same whichever wallet or email it uses.",
+    note: "People, organizations and AI agents are all the same kind of identity.",
   },
   {
     label: "Wallets are infrastructure",
@@ -46,8 +46,8 @@ const WHAT_IT_IS = [
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    def: "What an identity has created, collected and earned is read from the chain, never from a label or a database row. Authorship, date and license terms are recorded permanently with every asset.",
-    note: "The record lives on the chain, not on Medialane's servers.",
+    def: "What an identity has created, collected and earned is read directly from the chain. Authorship, date and license terms are recorded permanently with every asset.",
+    note: "The record lives on the chain.",
   },
 ];
 
@@ -58,8 +58,8 @@ const BUILT_TO_LAST = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    def: "An actor may hold wallets on several chains. Medialane is built so that signed statements, which anyone can verify, link them to one identity, and reputation stays whole instead of fragmenting per chain.",
-    note: "A direction Medialane is building toward.",
+    def: "An actor may hold wallets on several chains. Signed statements, which anyone can verify, link them to one identity, so reputation stays whole across every chain.",
+    note: "Where identity is heading.",
   },
   {
     label: "A durable foundation",
@@ -68,7 +68,7 @@ const BUILT_TO_LAST = [
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
     def: "Identity, attestations and proofs are designed to live on Starknet, whose STARK cryptography is post-quantum secure, so they would outlast a break in the signatures other chains rely on.",
-    note: "A direction Medialane is building toward.",
+    note: "Where identity is heading.",
   },
 ];
 
@@ -98,8 +98,8 @@ export default function LearnIdentityPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Identity</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          An identity is the actor itself: a person, an organization or an AI agent. It is not a
-          wallet, an email or a profile. Those are ways to reach it and act for it.
+          An identity is the actor itself: a person, an organization or an AI agent. Wallets,
+          emails and profiles are ways to reach it and act for it.
         </p>
       </div>
 
@@ -134,8 +134,7 @@ export default function LearnIdentityPage() {
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Proving who is asking, with a wallet signature or by signing in to your
-                Medialane account. This is a platform concern, and the protocol does not
-                depend on it.
+                account.
               </p>
             </div>
             <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
@@ -152,21 +151,20 @@ export default function LearnIdentityPage() {
           </div>
           <p className="text-base">
             These are separate concerns. Authentication identifies you. Authorization
-            checks the chain. Medialane can verify who you are without controlling
+            checks the chain. Your identity can be verified without controlling
             what you can do.
           </p>
         </Section>
 
-        <Section title="Your Medialane account">
+        <Section title="Your account">
           <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
             <div className="flex items-center gap-2">
               <User className="h-4 w-4 text-brand-orange" />
               <p className="font-bold text-foreground text-base">Where you sign in</p>
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
-              Your Medialane account is where you sign in and keep your credits and, if you like,
-              a profile. It makes using Medialane easy, and your identity stays yours on the
-              chain either way.
+              Your account is where you sign in and keep your credits and, if you like, a profile.
+              It keeps everything easy to use, and your identity stays yours on the chain either way.
             </p>
           </div>
         </Section>
@@ -178,7 +176,7 @@ export default function LearnIdentityPage() {
               <p className="font-bold text-foreground">First-class accounts</p>
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
-              An AI agent&apos;s wallet is a first-class Medialane account. The contracts make
+              An AI agent&apos;s wallet is a first-class account. The contracts make
               no distinction between a human signing a transaction and an agent doing the same.
               Same API surface. Same fee model. Same protocol capabilities.
             </p>
