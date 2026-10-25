@@ -70,7 +70,7 @@ const TOPICS = [
     href: "/learn/identity",
     icon: Fingerprint,
     title: "Identity",
-    description: "Your account, and signing in with a wallet or an email code.",
+    description: "Identity is the actor itself, not a wallet or an email: read from the chain, and built to outlive any single chain or app.",
   },
   {
     href: "/learn/media-wallet",

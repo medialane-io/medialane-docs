@@ -1,61 +1,95 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Key, Star, User, Shield, Eye, Bot, Mail } from "lucide-react";
+import { Star, Key, Link2, Globe, Anchor, Eye, Shield, User, Bot } from "lucide-react";
 import { Section } from "@/components/docs";
+
+const description =
+  "Identity on Medialane is the actor itself, not a wallet or an email: read from the chain, and built to outlive any single chain, app or venue.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/identity" },
   title: "Identity | Learn | Medialane",
-  description: "How identity works on Medialane: your account, signing in with a wallet or an email code, and AI agent accounts.",
+  description,
   openGraph: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane: your account, signing in with a wallet or an email code, and AI agent accounts.",
+    description,
     url: "https://docs.medialane.io/learn/identity",
   },
   twitter: {
     title: "Identity | Learn | Medialane",
-    description: "How identity works on Medialane: your account, signing in with a wallet or an email code, and AI agent accounts.",
+    description,
   },
 };
 
-const ITEMS = [
+const WHAT_IT_IS = [
   {
-    label: "Account",
+    label: "The actor",
     icon: Star,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    def: "Your account is you on Medialane. It brings together the work you have created, the assets you have collected and the credentials you have earned, and it is the one thing you sign in to.",
-    note: "You sign in with a wallet or with an email.",
+    def: "An identity is who acts on Medialane. It carries the reputation, the work and the history, and it exists whether or not a wallet or an email is attached to it.",
+    note: "People, organizations and AI agents are the same kind of identity. There are no types or roles.",
   },
   {
-    label: "Wallet",
+    label: "Wallets are infrastructure",
     icon: Key,
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    def: "A wallet holds the key that signs your transactions, and it is one way to sign in. Nothing happens on your behalf without your signature.",
+    def: "A wallet is how an identity acts on a chain. It holds the key that signs transactions, and an identity can change wallets without changing who it is.",
     note: "Self-custody: your keys, your assets. Medialane cannot recover a lost wallet.",
   },
   {
-    label: "Email",
-    icon: Mail,
+    label: "Read from the chain",
+    icon: Link2,
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    def: "An email is the other way to sign in. Medialane sends a 6-digit code to your inbox, you enter it, and you are in. There is no password to remember or lose.",
-    note: "The code also confirms that the address is yours.",
-  },
-  {
-    label: "Profile",
-    icon: User,
-    color: "text-brand-rose",
-    bg: "bg-brand-rose/10",
-    border: "border-brand-rose/20",
-    def: "Your name, bio, avatar and social handles. A profile is optional, you can change it any time, and it makes you easier to find.",
-    note: "A profile describes you. It does not decide what you own.",
+    def: "What an identity has created, collected and earned is read from the chain, never from a label or a database row. Authorship, date and license terms are recorded permanently with every asset.",
+    note: "The record lives on the chain, not on Medialane's servers.",
   },
 ];
+
+const BUILT_TO_LAST = [
+  {
+    label: "Portable across chains",
+    icon: Globe,
+    color: "text-brand-blue",
+    bg: "bg-brand-blue/10",
+    border: "border-brand-blue/20",
+    def: "An actor may hold wallets on several chains. Medialane is built so that signed statements, which anyone can verify, link them to one identity, and reputation stays whole instead of fragmenting per chain.",
+    note: "A direction Medialane is building toward.",
+  },
+  {
+    label: "A durable foundation",
+    icon: Anchor,
+    color: "text-brand-purple",
+    bg: "bg-brand-purple/10",
+    border: "border-brand-purple/20",
+    def: "Identity, attestations and proofs are designed to live on Starknet, whose STARK cryptography is post-quantum secure, so they would outlast a break in the signatures other chains rely on.",
+    note: "A direction Medialane is building toward.",
+  },
+];
+
+type Card = (typeof WHAT_IT_IS)[number];
+
+function IdentityCard({ label, icon: Icon, color, bg, border, def, note }: Card) {
+  return (
+    <div className={`bento-cell border ${border} p-5 space-y-3`}>
+      <div className="flex items-center gap-3">
+        <div className={`h-9 w-9 rounded-xl ${bg} flex items-center justify-center shrink-0`}>
+          <Icon className={`h-5 w-5 ${color}`} />
+        </div>
+        <p className={`font-bold ${color}`}>{label}</p>
+      </div>
+      <p className="text-base text-muted-foreground leading-relaxed">{def}</p>
+      <div className="border-t border-border/40 pt-2">
+        <p className="text-base text-muted-foreground italic">{note}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function LearnIdentityPage() {
   return (
@@ -64,28 +98,29 @@ export default function LearnIdentityPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Identity</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          On Medialane, your identity is your account. It is how you are recognized and how
-          you sign in, with a wallet or with an email. Adding a name, bio and avatar is up to you.
+          An identity is the actor itself: a person, an organization or an AI agent. It is not a
+          wallet, an email or a profile. Those are ways to reach it and act for it.
         </p>
       </div>
 
       <div className="space-y-8">
 
-        <Section title="Your account">
+        <Section title="What identity is">
           <div className="space-y-3">
-            {ITEMS.map(({ label, icon: Icon, color, bg, border, def, note }) => (
-              <div key={label} className={`bento-cell border ${border} p-5 space-y-3`}>
-                <div className="flex items-center gap-3">
-                  <div className={`h-9 w-9 rounded-xl ${bg} flex items-center justify-center shrink-0`}>
-                    <Icon className={`h-5 w-5 ${color}`} />
-                  </div>
-                  <p className={`font-bold ${color}`}>{label}</p>
-                </div>
-                <p className="text-base text-muted-foreground leading-relaxed">{def}</p>
-                <div className="border-t border-border/40 pt-2">
-                  <p className="text-base text-muted-foreground italic">{note}</p>
-                </div>
-              </div>
+            {WHAT_IT_IS.map((card) => (
+              <IdentityCard key={card.label} {...card} />
+            ))}
+          </div>
+        </Section>
+
+        <Section title="Built to last">
+          <p>
+            An identity is meant to outlive any single chain, app or venue. A creator&apos;s
+            authorship should not depend on where it happens to be listed.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {BUILT_TO_LAST.map((card) => (
+              <IdentityCard key={card.label} {...card} />
             ))}
           </div>
         </Section>
@@ -98,11 +133,9 @@ export default function LearnIdentityPage() {
                 <p className="font-bold text-foreground text-base">Authentication</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Proving who you are. With a wallet, you sign in with SIWS (Sign In With
-                Starknet): you sign a message, unlocked by your device passkey, and the
-                API verifies the signature. With an email, you enter the 6-digit code sent
-                to your inbox. No password or third-party identity provider is
-                involved anywhere on the platform.
+                Proving who is asking, with a wallet signature or by signing in to your
+                Medialane account. This is a platform concern, and the protocol does not
+                depend on it.
               </p>
             </div>
             <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
@@ -122,6 +155,20 @@ export default function LearnIdentityPage() {
             checks the chain. Medialane can verify who you are without controlling
             what you can do.
           </p>
+        </Section>
+
+        <Section title="Identity and your account">
+          <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
+            <div className="flex items-center gap-2">
+              <User className="h-4 w-4 text-brand-orange" />
+              <p className="font-bold text-foreground text-base">Separate on purpose</p>
+            </div>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              Your Medialane account is separate from your identity. It belongs to the platform
+              and holds how you sign in, your credits and an optional profile. Your identity
+              does not depend on it.
+            </p>
+          </div>
         </Section>
 
         <Section title="AI Agents">
