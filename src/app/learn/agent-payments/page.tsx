@@ -7,17 +7,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/agent-payments" },
   title: "Payments for AI Agents | Learn | Medialane",
   description:
-    "How AI agents (and any software) pay to use Medialane: automatic, per-use micropayments in USDC that settle without an account, a card, or a human in the loop. The x402 standard, in plain language.",
+    "How AI agents (and any software) pay to use Medialane: automatic, per-use micropayments in USDC that settle automatically, without a human in the loop. The x402 standard, in plain language.",
   openGraph: {
     title: "Payments for AI Agents | Learn | Medialane",
     description:
-      "How AI agents and any software pay to use Medialane: automatic per-use micropayments in USDC that settle without an account, a card, or a human in the loop.",
+      "How AI agents and any software pay to use Medialane: automatic per-use micropayments in USDC that settle automatically, without a human in the loop.",
     url: "https://docs.medialane.io/learn/agent-payments",
   },
   twitter: {
     title: "Payments for AI Agents | Learn | Medialane",
     description:
-      "How AI agents and any software pay to use Medialane: automatic per-use micropayments in USDC that settle without an account, a card, or a human in the loop.",
+      "How AI agents and any software pay to use Medialane: automatic per-use micropayments in USDC that settle automatically, without a human in the loop.",
   },
 };
 
@@ -35,7 +35,7 @@ const WHO = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    title: "Businesses & products",
+    title: "Products & services",
     desc: "Usage-based access with no contracts, seats, or invoices. You pay only for the calls you make, and every payment is on-chain and easy to audit.",
   },
   {
@@ -44,7 +44,7 @@ const WHO = [
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
     title: "Any service that can sign",
-    desc: "A wallet is the only identity needed. Any script, backend, or device that can sign a transaction can pay and use the platform, with no sign-up required.",
+    desc: "A wallet is the only identity needed. Any script, backend, or device that can sign a transaction can pay and use the platform.",
   },
 ];
 

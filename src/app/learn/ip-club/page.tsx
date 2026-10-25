@@ -49,7 +49,7 @@ export default function LearnIPClubPage() {
             <li>A fan club with multiple tiers: supporter, patron, front-row</li>
             <li>A capped-membership collective (fixed supply per tier)</li>
             <li>A season or annual pass, sold ahead of the period it covers</li>
-            <li>Token-gated perks: exclusive content, early access, Discord roles</li>
+            <li>Token-gated perks: exclusive content, early access, community roles</li>
           </ul>
         </Section>
 

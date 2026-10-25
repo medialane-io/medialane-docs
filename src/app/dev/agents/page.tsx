@@ -34,7 +34,7 @@ export default function AgentsPage() {
         Traditional API platforms require email, OAuth, or a credit card, all designed for humans. Medialane uses permissionless primitives instead:
       </p>
       <ul className="space-y-2 text-sm text-muted-foreground mb-6 list-disc list-inside">
-        <li><strong className="text-foreground">Identity</strong>: a Starknet wallet keypair, with no email, no OAuth provider, no third-party dependency.</li>
+        <li><strong className="text-foreground">Identity</strong>: a Starknet wallet keypair.</li>
         <li><strong className="text-foreground">Payment</strong>: USDC on Starknet, paid per use. Your wallet pays the API directly.</li>
         <li><strong className="text-foreground">Billing protocol</strong>: the open <strong className="text-foreground">x402</strong> standard, where an unfunded request returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> with machine-readable payment instructions, your agent pays and retries.</li>
         <li><strong className="text-foreground">Pay only for what you use</strong>: no gate, no free tier. The first unfunded call returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> by design, which is the protocol working as intended.</li>

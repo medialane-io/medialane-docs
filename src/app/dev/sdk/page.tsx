@@ -184,12 +184,12 @@ const deposits = await client.api.getCreditHistory(siwsToken)`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Sign-in</h3>
       <p className="text-muted-foreground text-base mb-3">
-        Every call carries your app&apos;s API key, which identifies the app. A user signs in with their wallet (SIWS) or with an email code; an account belongs to the app it registered through.
+        Every call carries your API key, which identifies you and meters your credits. A user signs in with their wallet (SIWS) or with an email code.
       </p>
       <DocCodeBlock>{`import { requestSiwsToken } from "@medialane/sdk/starknet"
 
 // Wallet sign-in: appSource makes the backend register the account at sign-in
-const siwsToken = await requestSiwsToken({ backendUrl, walletAddress, signer, appSource: "MEDIALANE_STARKNET" })
+const siwsToken = await requestSiwsToken({ backendUrl, walletAddress, signer, appSource: "my-app" })
 
 // Email sign-in: a 6-digit code, then an account session
 await client.api.requestEmailCode("ana@example.com")
@@ -197,12 +197,12 @@ await client.api.verifyEmailCode("ana@example.com", "482913")`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Accounts</h3>
       <p className="text-muted-foreground text-base mb-3">
-        An account is defined by no wallet, email or app: each registration through an app is its own account, holding its wallets and email. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">registerUser</code> uses the API key alone (e.g. on wallet connect); <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">upsertMyWallet</code> and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getMyWallet</code> use the user&apos;s SIWS token.
+        An account holds its wallets and email. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">registerUser</code> uses the API key alone (e.g. on wallet connect); <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">upsertMyWallet</code> and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getMyWallet</code> use the user&apos;s SIWS token.
       </p>
       <DocCodeBlock>{`// Register a connected wallet in your app — idempotent
 await client.api.registerUser({
   walletAddress: "0x0591...",
-  walletType: "braavos",     // free-form wallet-software label, e.g. "braavos" | "ready" | "mediawallet" | "cartridge"
+  walletType: "mediawallet", // free-form wallet-software label
 })
 
 // Register the signed-in wallet; your server adds the account session (x-account-session) to link it to an email account
@@ -481,7 +481,7 @@ await client.services.erc1155Collection.setTokenRoyalty(account, { collection: "
 
       <DocH2 id="creator-coins" border>Creator Coins</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        Fixed-supply standard ERC-20s with permanently-locked Ekubo liquidity (audited unruggable.meme fork).
+        Fixed-supply standard ERC-20s with permanently-locked liquidity.
         The creator sets both the launch price and the quote token (STRK, ETH, WBTC, USDC, or USDT); supply
         and price together set the market cap. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.creatorCoin</code> executes
         with a starknet.js account; the account-free <strong>call builders</strong> (0.35+) return raw calls for custom
@@ -713,7 +713,7 @@ const { txHash } = await executeIntent(provider, signer, client, intent);`}</Doc
 
       <DocH2 id="consumer-apps" border>Built with the SDK</DocH2>
       <p className="text-muted-foreground text-base mb-4">
-        Both Medialane consumer apps use the same SDK you&apos;re integrating:
+        Medialane&apos;s own apps use the same SDK you&apos;re integrating:
       </p>
       <div className="grid md:grid-cols-2 gap-4">
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-5 space-y-2">

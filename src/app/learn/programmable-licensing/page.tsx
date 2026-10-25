@@ -53,13 +53,13 @@ export default function LearnProgrammableLicensingPage() {
         <Section title="License as Metadata">
           <p>
             License terms are encoded as plain attributes on the token, the same attribute
-            format that OpenSea, Rarible, and any other NFT viewer reads. This means the
+            format that any NFT viewer or marketplace reads. This means the
             terms are portable: visible wherever the asset appears, not just on Medialane.
           </p>
           <p>
-            Medialane extends the OpenSea metadata baseline with a structured license object.
+            Medialane extends the standard NFT metadata baseline with a structured license object.
             Third parties that don&apos;t understand the extension can still read the plain
-            attributes. The OpenSea baseline is always the floor and stays fixed there.
+            attributes. The standard baseline is always the floor and stays fixed there.
           </p>
         </Section>
 

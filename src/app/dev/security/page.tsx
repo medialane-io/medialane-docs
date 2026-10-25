@@ -68,39 +68,6 @@ export default function DocsSecurityPage() {
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-base font-semibold text-foreground">Backend &amp; app-server: SSRF, request-size, and metering hardening</p>
-                <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Completed August 2026</span>
-              </div>
-              <p className="text-base text-muted-foreground">Internal review of medialane-backend and the app-server (BFF) layer of all first-party apps · August 2026</p>
-              <p className="text-base text-muted-foreground">
-                Closed a gap in the indexer&apos;s outbound-fetch guard (added DNS-resolution
-                checking alongside the existing literal-hostname allowlist, and a response-size
-                cap, for collection metadata fetches) and tightened payment settlement to require
-                on-chain finality before crediting an account. Separately, an app-server-level
-                sweep verified every first-party app&apos;s server-side proxy to a paid upstream
-                (RPC, IPFS pinning) is metered through the same accounted path as every other
-                billed action, closing two routes that had drifted out of sync with that
-                pattern. No user funds, assets, or credit balances were at risk — these were
-                platform cost-accounting and outbound-request hardening fixes, not asset-custody
-                or authentication issues.
-              </p>
-            </div>
-            <div className="bento-cell px-4 py-3 space-y-1">
-              <div className="flex items-center justify-between">
-                <p className="text-base font-semibold text-foreground">Backend &amp; SDK: P0/P1/P2 hardening cycle</p>
-                <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Completed May 2026</span>
-              </div>
-              <p className="text-base text-muted-foreground">Internal review of medialane-backend (~16k LOC) and @medialane/sdk · May 2026</p>
-              <p className="text-base text-muted-foreground">
-                Three-batch hardening pass: P0 correctness (webhook fanout, indexer stall vectors,
-                BFF proxy allowlist), P1 atomicity (rate-limit single round-trip, intent batch
-                lookup, transaction atomicity), P2 hygiene (SSRF integer/hex/octal block, SIWS iat
-                guard, server-only API key via BFF proxy, HMAC-required key hashing). TypeScript
-                strict-mode errors driven from 8 → 0 across the cycle.
-              </p>
-            </div>
-            <div className="bento-cell px-4 py-3 space-y-1">
-              <div className="flex items-center justify-between">
                 <p className="text-base font-semibold text-foreground">Marketplace &amp; collection contracts: Joint Internal Audit + Remediation</p>
                 <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Fixes deployed June 2026</span>
               </div>

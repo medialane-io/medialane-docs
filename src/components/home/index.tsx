@@ -82,7 +82,7 @@ const AGENT_PAYMENT_USE_CASES = [
     icon: Building2,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
-    title: "Businesses & products",
+    title: "Products & services",
     description:
       "Usage-based access, billed per call instead of by seat or contract. Every payment is on-chain and verifiable, so you pay only for what you use.",
   },

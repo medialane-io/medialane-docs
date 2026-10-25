@@ -42,9 +42,8 @@ export default function LearnCreatorCoinPage() {
         <Section title="What is a Creator Coin?">
           <p>
             A Creator Coin is a standard ERC-20 token with a fixed supply, deployed from
-            Medialane&apos;s audited Creator Coin Factory (a faithful fork of the
-            unruggable.meme model). At launch, the entire supply pairs with a public
-            liquidity pool on Ekubo, and that liquidity locks permanently in a dedicated
+            the audited Creator Coin Factory. At launch, the entire supply pairs with a public
+            liquidity pool, and that liquidity locks permanently in a dedicated
             locker contract, with only trading fees left collectible.
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
@@ -87,8 +86,7 @@ export default function LearnCreatorCoinPage() {
 
         <Section title="Already launched a coin? Claim it">
           <p>
-            If you launched a coin on Starknet elsewhere (an unruggable.meme coin or a partner
-            launch), you can claim it on Medialane. Paste the coin&apos;s address, our team
+            If you launched a coin on Starknet elsewhere, you can claim it here. Paste the coin&apos;s address, our team
             reviews the claim, and once approved the coin appears on the Coins page and your
             creator profile, with the same image and description tools as a native launch.
           </p>
@@ -97,7 +95,7 @@ export default function LearnCreatorCoinPage() {
         <Section title="Trading & discovery">
           <p>
             Coins are listed on the Coins page with live prices read directly from
-            their Ekubo pool: price, supply, and market cap. Trading settles on Ekubo, an
+            their liquidity pool: price, supply, and market cap. Trading settles on an
             external public exchange, with Medialane holding no custody of coins or funds.
           </p>
         </Section>

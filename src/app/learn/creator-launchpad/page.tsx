@@ -86,7 +86,7 @@ export default function LearnCreatorLaunchpadPage() {
             <li>Geographic scope</li>
           </ul>
           <p>
-            Your file is uploaded to IPFS via Pinata, giving it a permanent content
+            Your file is uploaded to IPFS, giving it a permanent content
             address. The metadata JSON, including your license terms, is also stored
             on IPFS and linked to the NFT onchain.
           </p>

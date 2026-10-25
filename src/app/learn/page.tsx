@@ -58,7 +58,7 @@ const TOPICS = [
     href: "/learn/tokenization",
     icon: Coins,
     title: "Tokenization",
-    description: "How minting turns a creative work into a verifiable, ownable on-chain asset, and what that record does and doesn't claim.",
+    description: "How minting turns a creative work into a verifiable, ownable on-chain asset, and what that record covers.",
   },
   {
     href: "/learn/services",
@@ -106,7 +106,7 @@ const TOPICS = [
     href: "/learn/agent-payments",
     icon: Bot,
     title: "Payments for AI Agents",
-    description: "How AI agents and any software pay to use Medialane: automatic per-use micropayments in USDC, no account or card, no human in the loop.",
+    description: "How AI agents and any software pay to use Medialane: automatic per-use micropayments in USDC, without a human in the loop.",
   },
   {
     href: "/learn/pop-protocol",
