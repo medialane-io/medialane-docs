@@ -4,7 +4,7 @@ import { Star, Key, Link2, Globe, Anchor, Eye, Shield, User, Bot } from "lucide-
 import { Section } from "@/components/docs";
 
 const description =
-  "Identity is the actor itself, with wallets and emails as ways to reach it: read from the chain, and built to outlive any single chain, app or venue.";
+  "Identity is the actor itself, appearing on the chain as an address: read from the chain, and built to outlive any single chain, app or venue.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/identity" },
@@ -28,20 +28,20 @@ const WHAT_IT_IS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    def: "An identity is who acts. It carries the reputation, the work and the history, and it stays the same whichever wallet or email it uses.",
+    def: "An identity is who acts. It carries the reputation, the work and the history that the chain records.",
     note: "People, organizations and AI agents are all the same kind of identity.",
   },
   {
-    label: "Wallets are infrastructure",
+    label: "Your address",
     icon: Key,
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    def: "A wallet is how an identity acts on a chain. It holds the key that signs transactions, and an identity can change wallets without changing who it is.",
+    def: "Your address is how the chain recognizes you. It is public, and anyone can verify what it has done.",
     note: "Self-custody: your keys, your assets. Medialane cannot recover a lost wallet.",
   },
   {
-    label: "Read from the chain",
+    label: "Your track record",
     icon: Link2,
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
@@ -58,7 +58,7 @@ const BUILT_TO_LAST = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    def: "An actor may hold wallets on several chains. Signed statements, which anyone can verify, link them to one identity, so reputation stays whole across every chain.",
+    def: "An actor may use addresses on several chains. Signed statements, which anyone can verify, link them to one identity, so reputation stays whole across every chain.",
     note: "Where identity is heading.",
   },
   {
@@ -98,8 +98,8 @@ export default function LearnIdentityPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Identity</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          An identity is the actor itself: a person, an organization or an AI agent. Wallets,
-          emails and profiles are ways to reach it and act for it.
+          An identity is the actor itself: a person, an organization or an AI agent, recognized
+          on the chain by its address.
         </p>
       </div>
 
@@ -133,7 +133,7 @@ export default function LearnIdentityPage() {
                 <p className="font-bold text-foreground text-base">Authentication</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Proving who is asking, with a wallet signature or by signing in to your
+                Proving who is asking, with a signature from your address or by signing in to your
                 account.
               </p>
             </div>
@@ -144,7 +144,7 @@ export default function LearnIdentityPage() {
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Proving what you can do. Authorization is determined by on-chain state:
-                what assets you hold, what contracts record about your wallet. Medialane does
+                what assets you hold, what contracts record about your address. Medialane does
                 not grant permissions. The contract is the authority.
               </p>
             </div>

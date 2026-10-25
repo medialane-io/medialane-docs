@@ -74,7 +74,7 @@ const PRIMITIVES = [
     icon: Star,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
-    def: "The actor: a person, an organization or an AI agent. Wallets and emails attach to it, and none of them is the actor. See /learn/identity.",
+    def: "The actor: a person, an organization or an AI agent, appearing on the chain as an address. See /learn/identity.",
   },
   {
     label: "Service",
