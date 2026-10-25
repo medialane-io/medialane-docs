@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Package, Image, Music, Award, Clock, Store, TrendingUp, Coins, Ticket, Users, Handshake } from "lucide-react";
 import { Section } from "@/components/docs";
 
@@ -241,29 +240,6 @@ export default function LearnServicesPage() {
               </div>
             ))}
           </div>
-        </Section>
-
-        <Section title="Why Service IDs Never Change">
-          <p>
-            Service IDs are stable across contract upgrades. If the marketplace contract
-            is redeployed, the service ID stays{" "}
-            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">medialane-marketplace-erc721</code>.
-            There are no{" "}
-            <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">-v3</code> suffixes.
-          </p>
-          <p>
-            This means your integration, whether you are a developer reading the SDK or
-            an AI agent querying the API, keeps working after upgrades. The contract
-            address changes; the service ID does not.
-          </p>
-          <p className="text-base">
-            For developers: see{" "}
-            <Link href="/dev/sdk" className="text-primary hover:underline">SDK documentation</Link>
-            {" "}for{" "}
-            <code className="font-mono text-xs">getService()</code> usage, and{" "}
-            <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link>
-            {" "}for how the registry fits into the four-layer model.
-          </p>
         </Section>
 
       </div>
