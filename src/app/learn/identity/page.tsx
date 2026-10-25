@@ -151,11 +151,11 @@ export default function LearnIdentityPage() {
           <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
             <div className="flex items-center gap-2">
               <User className="h-4 w-4 text-brand-orange" />
-              <p className="font-bold text-foreground text-base">Where you sign in</p>
+              <p className="font-bold text-foreground text-base">Using the platform</p>
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
-              Your account is where you sign in and keep your credits and, if you like, a profile.
-              It keeps everything easy to use, and your identity stays yours on the chain either way.
+              Your account is how you use the apps and services. Your identity is the record the
+              chain keeps of what you do.
             </p>
           </div>
         </Section>
