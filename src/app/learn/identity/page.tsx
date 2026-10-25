@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Star, Key, Link2, Anchor, Eye, Shield, User, Bot } from "lucide-react";
+import { Star, Key, Link2, Eye, Shield, User, Bot } from "lucide-react";
 import { Section } from "@/components/docs";
 
 const description =
-  "Identity is the actor itself, appearing on the chain as an address: read from the chain, and built to outlive any single chain, app or venue.";
+  "Identity is the actor itself, recognized on the chain by its address and read directly from the chain.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/identity" },
@@ -51,18 +51,6 @@ const WHAT_IT_IS = [
   },
 ];
 
-const BUILT_TO_LAST = [
-  {
-    label: "A durable foundation",
-    icon: Anchor,
-    color: "text-brand-purple",
-    bg: "bg-brand-purple/10",
-    border: "border-brand-purple/20",
-    def: "Identity, attestations and proofs are designed to live on Starknet, whose STARK cryptography is post-quantum secure, so they would outlast a break in the signatures other chains rely on.",
-    note: "Where identity is heading.",
-  },
-];
-
 type Card = (typeof WHAT_IT_IS)[number];
 
 function IdentityCard({ label, icon: Icon, color, bg, border, def, note }: Card) {
@@ -99,18 +87,6 @@ export default function LearnIdentityPage() {
         <Section title="What identity is">
           <div className="space-y-3">
             {WHAT_IT_IS.map((card) => (
-              <IdentityCard key={card.label} {...card} />
-            ))}
-          </div>
-        </Section>
-
-        <Section title="Built to last">
-          <p>
-            An identity is meant to outlive any single chain, app or venue. A creator&apos;s
-            authorship should not depend on where it happens to be listed.
-          </p>
-          <div className="space-y-3">
-            {BUILT_TO_LAST.map((card) => (
               <IdentityCard key={card.label} {...card} />
             ))}
           </div>
