@@ -70,7 +70,7 @@ const TOPICS = [
     href: "/learn/identity",
     icon: Fingerprint,
     title: "Identity",
-    description: "Wallets, accounts, and profiles: three separate things. Accounts per app, signing in with a wallet or an email code, and AI agent accounts.",
+    description: "Your account, and signing in with a wallet or an email code.",
   },
   {
     href: "/learn/media-wallet",
