@@ -29,9 +29,8 @@ export default function ProgrammableIPPage() {
           and permanent from the moment of minting.
         </p>
         <p className="text-muted-foreground leading-relaxed">
-          It works alongside copyright and adds a clear evidence layer: authorship, timing,
-          and license terms are recorded in a way that is tamper-proof and independently
-          verifiable by anyone.
+          Authorship, timing, and license terms are recorded in a way that is tamper-proof
+          and independently verifiable by anyone.
         </p>
       </div>
 
@@ -83,19 +82,6 @@ export default function ProgrammableIPPage() {
       </div>
 
       <div className="bento-cell p-6 space-y-3">
-        <h3 className="font-semibold text-base">Evidence for your work</h3>
-        <p className="text-base text-muted-foreground leading-relaxed">
-          The license terms in token metadata are a clear, public statement of the terms you
-          choose. The record provides evidence: a timestamped, immutable, publicly verifiable
-          document of your authorship and your stated terms.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed">
-          That evidence supports your position in any process you choose to pursue, such as
-          takedown requests or legal action, with clear proof of prior authorship.
-        </p>
-      </div>
-
-      <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold text-base">The Mediolano Protocol</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
           The IP record infrastructure on Medialane is built on the{" "}
@@ -103,10 +89,9 @@ export default function ProgrammableIPPage() {
           permissionless, <strong className="text-foreground">zero-fee</strong> IP tokenization
           layer on Starknet, built for compliance with the{" "}
           <strong className="text-foreground">Berne Convention</strong> so authorship is
-          recognized across its 181 member countries. Mediolano is a separate, independent
-          public good that predates Medialane; Medialane builds its commercial layer on top.
-          Its records exist on-chain independently of Medialane, and any developer can build on
-          it without permission or payment.
+          recognized across its 181 member countries. Medialane builds its commercial
+          layer on top. Its records live on-chain, and any developer can build on it without
+          permission or payment.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">
           Learn more about{" "}
