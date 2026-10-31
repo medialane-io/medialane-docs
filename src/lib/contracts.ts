@@ -50,7 +50,7 @@ export const CONTRACTS: ContractInfo[] = [
     name: "Collection Drop Factory",
     chain: "Starknet",
     address: "0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800",
-    desc: "Factory for timed NFT drop campaigns. Enforces supply caps, mint windows, per-wallet limits, allowlists, and mint prices entirely on-chain. No admin can override these parameters after deploy.",
+    desc: "Factory for timed NFT drop campaigns. Enforces supply caps, mint windows, per-wallet limits, allowlists, and mint prices entirely on-chain. These parameters are fixed after deploy.",
   },
   {
     category: "Collections & Launchpad",
@@ -85,7 +85,7 @@ export const CONTRACTS: ContractInfo[] = [
     name: "Creator Coin Factory",
     chain: "Starknet",
     address: "0x50fa807b5274079fb19374673d7bab6d2dc3af7e1032ea43eb6e44bcbde4c3c",
-    desc: "Deploys fixed-supply standard ERC-20 Creator Coins and launches them with a public liquidity pool. Ownership is renounced at launch. Trades on an external exchange, not a Medialane venue; Medialane settles no coin trades. Deployed mainnet 2026-06-04.",
+    desc: "Deploys fixed-supply standard ERC-20 Creator Coins and launches them with a public liquidity pool. Ownership is renounced at launch. Trades on an external exchange, and Medialane does not settle coin trades. Deployed mainnet 2026-06-04.",
   },
   {
     category: "Creator Coin",

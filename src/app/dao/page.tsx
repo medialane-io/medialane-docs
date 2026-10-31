@@ -122,7 +122,7 @@ export default function DAOPage() {
           protocol direction) to MDLN holders as the community grows and governance tooling matures.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">
-          Fully on-chain governance is a goal, not the current state. The constitution and governance
+          Fully on-chain governance is a future goal. The constitution and governance
           charter define the process for getting there without centralizing control along the way.
         </p>
       </div>

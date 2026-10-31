@@ -59,8 +59,7 @@ export default function DocsProtocolPage() {
             ))}
           </div>
           <p className="text-base">
-            These contracts have no admin key and no upgrade path. Once deployed, the rules
-            are fixed. Canonical addresses are also published in the{" "}
+            These contracts are deployed without an admin key or upgrade path, so the rules are fixed. Canonical addresses are also published in the{" "}
             <Link href="/dev/contracts" className="text-primary hover:underline">Contracts</Link> reference.
           </p>
         </Section>
@@ -138,25 +137,24 @@ service    — string ID from the registry, e.g. "mip-erc721" or "pop-protocol"`
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 The indexer polls Starknet for new events, parses them with per-event handlers,
-                and writes a normalized PostgreSQL cache. It holds no state of its own; everything
+                and writes a normalized cache. It holds no state of its own; everything
                 it knows came from the chain.
               </p>
             </div>
             <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
               <div className="flex items-center gap-2">
                 <Package className="h-4 w-4 text-brand-orange" />
-                <p className="font-bold text-foreground text-base">Rebuild guarantee</p>
+                <p className="font-bold text-foreground text-base">Rebuild from events</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Drop the database. The indexer replays events from genesis and reconstructs
-                the full state. This is not a disaster-recovery feature; it is the protocol
-                invariant that proves the DB is a cache, not a source of truth.
+                the full state. This is the protocol invariant that shows the database is a cache of on-chain state.
               </p>
             </div>
           </div>
           <p className="text-base">
             Platform state (profiles, slugs, API keys) cannot be reconstructed from events.
-            It is honestly classified as off-chain enrichment and stored in a separate namespace.
+            It is classified as off-chain enrichment and stored in a separate namespace.
             See{" "}
             <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link> for
             the protocol vs. platform distinction.

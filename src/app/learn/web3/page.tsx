@@ -31,9 +31,7 @@ export default function LearnWeb3Page() {
         <Section title="What is a Blockchain?">
           <p>
             A blockchain is a shared database maintained by thousands of computers worldwide.
-            Once data is written to a blockchain, it cannot be altered or deleted: every
-            entry is permanent and publicly visible, with no single company, government, or
-            person in control.
+            Once data is written to a blockchain, it stays: every entry is permanent and publicly visible, and no single party controls the network.
           </p>
           <p>
             This makes blockchains ideal for recording ownership. If a name is on the
@@ -50,8 +48,7 @@ export default function LearnWeb3Page() {
             with their owner across applications.
           </p>
           <p>
-            A wallet address on a blockchain is like an email address, except instead of a
-            company controlling the account, the holder controls it through a cryptographic key pair.
+            A wallet address on a blockchain is like an email address that the holder controls through a cryptographic key pair.
             Medialane generates this key pair on the holder&apos;s own device and seals it behind the
             device passkey (Face ID, Touch ID, Windows Hello), so the holder gets real Web3
             ownership without ever having to write down or manage a seed phrase.
@@ -105,13 +102,10 @@ export default function LearnWeb3Page() {
         <Section title="Account Abstraction">
           <p>
             Starknet natively supports account abstraction, a model where wallets are
-            smart contracts themselves, not just key pairs. Medialane&apos;s wallet is
+            smart contracts themselves. Medialane&apos;s wallet is
             exactly this: a smart-contract account with a single passkey-sealed owner key.
             The standalone MediaWallet app deploys and operates it permissionlessly, funded
-            by the user, with no dependency on any Medialane-run service, true first-principles
-            self-custody. medialane.io is built for a different audience: every transaction
-            there is gas-sponsored, so no STRK or ETH is needed in the wallet to use the
-            platform, a frictionless experience layered on top of the same account model.
+            by the user, and operates independently of any Medialane-run service, which gives first-principles self-custody. On medialane.io every transaction is gas-sponsored, so the wallet needs no STRK or ETH, on top of the same account model.
           </p>
           <p>
             Every action (minting, listing, buying) is signed directly by the

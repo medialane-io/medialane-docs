@@ -54,7 +54,7 @@ export default function LearnProgrammableLicensingPage() {
           <p>
             License terms are encoded as plain attributes on the token, the same attribute
             format that any NFT viewer or marketplace reads. This means the
-            terms are portable: visible wherever the asset appears, not just on Medialane.
+            terms are portable: visible wherever the asset appears, including outside Medialane.
           </p>
           <p>
             Medialane extends the standard NFT metadata baseline with a structured license object.
@@ -147,7 +147,7 @@ export default function LearnProgrammableLicensingPage() {
 
         <Section title="Requesting a License">
           <p>
-            Licenses on Medialane are declarations rather than gates: anyone can read them, and
+            Licenses on Medialane are declarations: anyone can read them, and
             remixing is permissionless. When the creator&apos;s explicit agreement is wanted,
             to pay or credit them, secure a formal commercial license, or use a work the
             creator marked <span className="font-mono text-xs">no-derivatives</span>, a

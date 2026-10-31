@@ -54,7 +54,7 @@ const UTILITIES = [
 const DISTRIBUTION = [
   { category: "Vested DAO Treasury", pct: "90%", desc: "18,900,000 MDLN time-locked for 9 years, releasing 2,100,000 MDLN per year to the DAO treasury." },
   { category: "Operational Runway", pct: "10%", desc: "2,100,000 MDLN available for protocol operations through the DAO treasury." },
-  { category: "VC Allocation", pct: "0%", desc: "No venture capital allocation, no private sale, and no preferential investor tranche." },
+  { category: "VC Allocation", pct: "0%", desc: "Zero venture capital, private sale, or preferential investor allocation." },
   { category: "Team Allocation", pct: "0%", desc: "No separate founder or team allocation outside DAO-governed treasury operations." },
 ];
 
@@ -126,7 +126,7 @@ export default function TokenPage() {
 
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Token Distribution</h3>
-        <p className="text-base text-muted-foreground">MDLN has a fixed {CANONICAL.mdln.totalSupply} token supply. 100% is DAO-controlled, with no VC allocation, no team allocation, and no insider pre-mine.</p>
+        <p className="text-base text-muted-foreground">MDLN has a fixed {CANONICAL.mdln.totalSupply} token supply. 100% is DAO-controlled, with no VC, team, or insider allocation.</p>
         <div className="space-y-2">
           {DISTRIBUTION.map(({ category, pct, desc }) => (
             <div key={category} className="bento-cell p-4 flex items-start gap-4">
@@ -191,7 +191,7 @@ export default function TokenPage() {
         <div className="space-y-2">
           {[
             { label: "Ethereum", desc: "Primary deployment. ERC-20. Where MDLN is minted, held, and voted with on Snapshot." },
-            { label: "StarkGate bridge", desc: "The canonical bridge between Ethereum and Starknet, the same infrastructure used by the Starknet Foundation for STRK. Trustless, no custodian." },
+            { label: "StarkGate bridge", desc: "The canonical bridge between Ethereum and Starknet, the same infrastructure used by the Starknet Foundation for STRK. Non-custodial." },
             { label: "Starknet", desc: "Bridged MDLN (ERC-20) for use in developer portal multipliers, on-chain tooling, and future protocol integrations." },
             { label: "Ekubo", desc: "Liquidity pool on Starknet. Bridged MDLN is tradeable onchain without returning to Ethereum." },
           ].map(({ label, desc }) => (

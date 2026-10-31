@@ -11,9 +11,9 @@ const HUBS = [
   {
     icon: Rocket,
     name: "Launchpad",
-    tagline: "Structure capital from IP",
+    tagline: "Revenue products from IP",
     description:
-      "Turn creative work into revenue products: collection drops, NFT editions, memberships and subscriptions, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended, never a fixed menu.",
+      "Turn creative work into revenue products: collection drops, NFT editions, memberships and subscriptions, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
@@ -21,9 +21,9 @@ const HUBS = [
   {
     icon: Store,
     name: "Marketplace",
-    tagline: "Trade every tokenized asset",
+    tagline: "Buy, sell, license, and remix IP",
     description:
-      "A high-integrity secondary exchange for buying, selling, auctioning, licensing, and remixing IP. Atomic settlement: payment and asset move in one transaction, or both revert. Assets stay in the owner's wallet, interoperable with the wider ecosystem, at minimal fees.",
+      "A secondary exchange for buying, selling, auctioning, licensing, and remixing IP. Atomic settlement: payment and asset move in one transaction, or both revert. Assets stay in the owner's wallet, interoperable with the wider ecosystem, at minimal fees.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
@@ -33,15 +33,15 @@ const HUBS = [
 const PRINCIPLES = [
   {
     icon: Lock,
-    title: "The contract is the only authority",
+    title: "The contract sets the rules",
     description:
-      "Immutable Cairo contracts, deployed without an admin key, upgrade path, or pause switch. If the contract accepts a call, it happens; the rules are fixed, including for us.",
+      "Immutable Cairo contracts, deployed without an admin key, upgrade path, or pause switch. The rules are fixed for every participant, including Medialane.",
   },
   {
     icon: InfinityIcon,
     title: "Permissionless and open-ended",
     description:
-      "Anyone can create, trade, license, build, and integrate without asking. The protocol grows by adding services, an extensible set of monetization primitives rather than a closed list.",
+      "Anyone can create, trade, license, build, and integrate. The protocol grows by adding services, an extensible set of monetization primitives.",
   },
   {
     icon: ShieldCheck,
@@ -84,7 +84,7 @@ const AGENT_PAYMENT_USE_CASES = [
     bg: "bg-brand-blue/10",
     title: "Products & services",
     description:
-      "Usage-based access, billed per call instead of by seat or contract. Every payment is on-chain and verifiable, so payment covers only what is used.",
+      "Usage-based access, billed per call. Every payment is on-chain and verifiable.",
   },
   {
     icon: Terminal,
@@ -242,14 +242,12 @@ export function HomePage() {
           <span className="pill-badge">Knowledge Hub</span>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
-            Monetization for the<br />
-            <span className="gradient-text">creative economy.</span>
+            Medialane<br /> <span className="gradient-text">documentation.</span>
           </h1>
 
           <p className="text-lg text-muted-foreground leading-relaxed">
             Medialane lets humans, organizations, and AI agents turn intellectual property
-            into revenue streams, with full sovereignty over their assets and identity.
-            Open, permissionless, and built on immutable smart contracts. Live on Starknet.
+            into revenue streams. It runs on immutable smart contracts on Starknet, and anyone can use it without permission.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-1">
@@ -280,7 +278,7 @@ export function HomePage() {
       <div className="space-y-6">
         <div className="space-y-3 max-w-2xl">
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
-            Two hubs, <span className="gradient-text">one protocol</span>
+            Launchpad and <span className="gradient-text">Marketplace</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             Medialane builds a commercial layer on top of Mediolano&apos;s zero-fee,
@@ -335,14 +333,13 @@ export function HomePage() {
         <div className="space-y-3 max-w-2xl">
           <span className="pill-badge">x402 · pay-per-call</span>
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
-            Payments built for <span className="gradient-text">machines</span>
+            Pay-per-call payments for <span className="gradient-text">agents</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Agents are first-class users on Medialane, and they pay like one. The API speaks{" "}
+            Agents are first-class users on Medialane. The API speaks{" "}
             <strong className="text-foreground">x402</strong>, the open HTTP standard for machine
             payments: a request returns a price, the agent pays per call in USDC on Starknet, and
-            continues. A wallet keypair is the identity it needs, so signup, login, and billing
-            paperwork drop out of the flow. Built for machine-to-machine payments from day one.
+            continues. A wallet keypair serves as the agent&apos;s identity.
           </p>
         </div>
 

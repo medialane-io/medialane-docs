@@ -34,9 +34,9 @@ export default function BlockchainPage() {
         <h3 className="text-lg font-semibold">Core Properties</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
-            { icon: Layers, title: "Immutability", desc: "Once a record is added to a blockchain, it cannot be changed or deleted. Every transaction, every ownership transfer, every license grant is permanent and auditable." },
-            { icon: Globe, title: "Decentralization", desc: "No single party controls the blockchain. Thousands of independent nodes validate and store the data, meaning no government, company, or individual can censor or alter it." },
-            { icon: Shield, title: "Trustlessness", desc: "No party needs to be trusted; the math is what is trusted. Smart contracts execute exactly as written, with no possibility of last-minute changes or hidden clauses." },
+            { icon: Layers, title: "Immutability", desc: "Once a record is added to a blockchain, it stays. Every transaction, ownership transfer, and license grant is permanent and auditable." },
+            { icon: Globe, title: "Decentralization", desc: "Thousands of independent nodes validate and store the data, so no single party controls the blockchain." },
+            { icon: Shield, title: "Trustlessness", desc: "Smart contracts execute exactly as written, and their code is public for anyone to verify." },
             { icon: Clock, title: "Transparency", desc: "All transactions are publicly visible. Anyone can verify who owns what, when a transfer happened, and what licenses are attached, without asking anyone for permission." },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bento-cell p-5 space-y-3">
