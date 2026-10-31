@@ -85,7 +85,7 @@ export default function DocsProtocolPage() {
         <Section title="Order Lifecycle">
           <p>
             An order is a signed proposal: one offer item and one consideration item,
-            signed with your wallet using SNIP-12 typed data. The{" "}
+            signed with the wallet using SNIP-12 typed data. The{" "}
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">orderHash</code>{" "}
             is computed at creation and is the permanent on-chain identifier.
           </p>

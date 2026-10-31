@@ -148,16 +148,16 @@ export default function LearnProgrammableLicensingPage() {
         <Section title="Requesting a License">
           <p>
             Licenses on Medialane are declarations rather than gates: anyone can read them, and
-            remixing is permissionless. When you want the creator&apos;s explicit agreement,
+            remixing is permissionless. When the creator&apos;s explicit agreement is wanted,
             to pay or credit them, secure a formal commercial license, or use a work the
-            creator marked <span className="font-mono text-xs">no-derivatives</span>, you
-            can <strong className="text-foreground">request a license</strong> directly.
+            creator marked <span className="font-mono text-xs">no-derivatives</span>, a
+            license can be <strong className="text-foreground">requested</strong> directly.
           </p>
           <div className="space-y-2">
             {[
-              { name: "Propose terms + a fee", desc: "From an asset page, choose License. You set the proposed license (commercial use, derivatives, royalty) and a fee you're offering the creator, plus an optional message." },
+              { name: "Propose terms + a fee", desc: "From an asset page, choose License. The proposed license (commercial use, derivatives, royalty) and the fee offered to the creator are set, plus an optional message." },
               { name: "The creator decides", desc: "The request goes to the creator. They can accept or decline; nothing is minted or charged unless they accept. It's a voluntary agreement, never enforced by the platform." },
-              { name: "Licensed derivative is delivered", desc: "On acceptance, the licensed derivative is minted and listed for you to complete. Track requests under Portfolio → Licensing." },
+              { name: "Licensed derivative is delivered", desc: "On acceptance, the licensed derivative is minted and listed for the requester to complete. Track requests under Portfolio → Licensing." },
             ].map(({ name, desc }) => (
               <div key={name} className="bento-cell px-4 py-3 space-y-1">
                 <p className="text-base font-semibold text-foreground">{name}</p>
@@ -165,10 +165,6 @@ export default function LearnProgrammableLicensingPage() {
               </div>
             ))}
           </div>
-          <p className="text-base">
-            Licensing is a distinct, optional service, separate from the free, permissionless{" "}
-            <Link href="/learn/remix" className="text-primary hover:underline">Remix</Link>.
-          </p>
         </Section>
 
       </div>

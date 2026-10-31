@@ -34,10 +34,10 @@ export default function TokenizationPage() {
         <h3 className="font-semibold">What Gets Tokenized on Medialane?</h3>
         <div className="space-y-3">
           {[
-            { label: "Ownership", desc: "The right to claim authorship and control over an IP asset, represented as an NFT in your wallet." },
+            { label: "Ownership", desc: "The right to claim authorship and control over an IP asset, represented as an NFT in a wallet." },
             { label: "Licenses", desc: "Specific usage rights (commercial, derivative, distribution) encoded in a programmable license attached to the token." },
             { label: "Royalties", desc: "Creators define royalty terms (percentage and recipient) for secondary sales. Medialane's marketplace pays them on-chain at settlement via EIP-2981; third-party marketplaces honor them at their discretion." },
-            { label: "Credentials", desc: "Participation records (POP Protocol): proof you attended an event, joined a community, or reached a milestone." },
+            { label: "Credentials", desc: "Participation records (POP Protocol): proof of attending an event, joined a community, or reached a milestone." },
           ].map(({ label, desc }) => (
             <div key={label} className="flex items-start gap-3">
               <span className="text-sm font-semibold text-primary shrink-0 pt-0.5 w-20">{label}</span>
@@ -70,13 +70,13 @@ export default function TokenizationPage() {
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">Tokenization on Medialane</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
-          When you mint an NFT on Medialane, you register your IP on the Mediolano protocol,
-          attach programmable license terms, and create a verifiable ownership record aligned
+          Minting an NFT on Medialane registers the IP on the Mediolano protocol,
+          attaches programmable license terms, and creates a verifiable ownership record aligned
           with the Berne Convention.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">
-          Your tokenized IP lives in your portfolio, can be listed on the marketplace, licensed
-          to other creators, or passed to the next generation of owners, with your authorship record
+          Tokenized IP lives in the owner&apos;s portfolio, can be listed on the marketplace, licensed
+          to other creators, or passed to the next generation of owners, with the authorship record
           and license terms permanently attached and publicly readable.
         </p>
       </div>

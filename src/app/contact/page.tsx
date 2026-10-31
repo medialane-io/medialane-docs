@@ -40,7 +40,7 @@ export default function ContactPage() {
         <p className="text-muted-foreground leading-relaxed max-w-xl">
           Have a question, support request, partnership inquiry, or feedback? Fill out the form or mail us at{" "}
           <a href="mailto:dao@medialane.org" className="text-primary hover:underline">dao@medialane.org</a>{" "}
-          and we&apos;ll get back to you as soon as possible.
+          and a reply will follow as soon as possible.
         </p>
       </div>
 
@@ -51,7 +51,7 @@ export default function ContactPage() {
               <CheckCircle className="h-12 w-12 text-green-500" />
               <h2 className="text-lg font-semibold">Message sent!</h2>
               <p className="text-base text-muted-foreground">
-                Thank you for reaching out. We&apos;ll get back to you as soon as possible.
+                Thank you for reaching out. A reply will follow as soon as possible.
               </p>
               <Button variant="outline" onClick={() => setStep("form")}>Send another message</Button>
             </div>
@@ -63,7 +63,7 @@ export default function ContactPage() {
                   id="name"
                   name="name"
                   required
-                  placeholder="Your name"
+                  placeholder="Name"
                   disabled={step === "submitting"}
                   className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 />
@@ -76,7 +76,7 @@ export default function ContactPage() {
                   name="email"
                   type="email"
                   required
-                  placeholder="you@example.com"
+                  placeholder="name@example.com"
                   disabled={step === "submitting"}
                   className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 />

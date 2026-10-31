@@ -5,50 +5,43 @@ import { Section } from "@/components/docs";
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/creator-launchpad" },
   title: "Creator Launchpad | Learn | Medialane",
-  description: "Learn how to deploy collections, mint IP assets, and launch your creative work on Medialane.",
+  description: "Learn how to deploy collections, mint IP assets, and launch creative work on Medialane.",
   openGraph: {
     title: "Creator Launchpad | Learn | Medialane",
-    description: "Learn how to deploy collections, mint IP assets, and launch your creative work on Medialane.",
+    description: "Learn how to deploy collections, mint IP assets, and launch creative work on Medialane.",
     url: "https://docs.medialane.io/learn/creator-launchpad",
   },
   twitter: {
     title: "Creator Launchpad | Learn | Medialane",
-    description: "Learn how to deploy collections, mint IP assets, and launch your creative work on Medialane.",
+    description: "Learn how to deploy collections, mint IP assets, and launch creative work on Medialane.",
   },
 };
 
 const FLOWS = [
-  { name: "IP Asset", desc: "Deploy your own collection and mint 1-of-1 IP assets, each with its own license terms.", href: "#ip-assets" },
+  { name: "IP Asset", desc: "Deploy a collection and mint 1-of-1 IP assets, each with its own license terms.", href: "#ip-assets" },
   { name: "IP Collection 1155", desc: "Multi-edition releases: mint editions into an ERC-1155 collection, each with its own supply, metadata, and price.", href: "/learn/ip-collection-1155" },
   { name: "Collection Drop", desc: "Launch a fixed-supply drop with a timed mint window and an optional allowlist.", href: "/learn/collection-drop" },
   { name: "POP Protocol", desc: "Issue soulbound proof-of-participation credentials for events, communities, and milestones.", href: "/learn/pop-protocol" },
-  { name: "IP Tickets", desc: "Create verifiable on-chain tickets with their own supply and validity window, and mint them to your audience.", href: "/learn/ip-tickets" },
+  { name: "IP Tickets", desc: "Create verifiable on-chain tickets with their own supply and validity window, and mint them to an audience.", href: "/learn/ip-tickets" },
   { name: "IP Club", desc: "Run a membership club with tiered on-chain membership cards.", href: "/learn/ip-club" },
   { name: "IP Sponsorship", desc: "Offer or propose a sponsorship license that settles directly between the two sides.", href: "/learn/ip-sponsorship" },
-  { name: "Creator Coin", desc: "Launch your own fixed-supply coin with permanently locked liquidity, or claim one you already launched.", href: "/learn/creator-coin" },
+  { name: "Creator Coin", desc: "Launch a fixed-supply coin with permanently locked liquidity, or claim one already launched.", href: "/learn/creator-coin" },
 ];
 
-const RUNS = [
-  { name: "Data Tokenization", desc: "Register a whole catalog in one run, with license terms attached to every item.", href: "/learn/data-tokenization" },
+const LIST_FLOWS = [
+  { name: "Data Tokenization", desc: "Register a whole catalog at once, with license terms attached to every item.", href: "/learn/data-tokenization" },
   { name: "IP Ticketing", desc: "Issue tickets with their own supply and validity window to a guest list.", href: "/learn/ip-ticketing" },
   { name: "Certificate Emission", desc: "Issue non-transferable certificates to a list of recipients.", href: "/learn/certificate-emission" },
 ];
 
 function FlowCard({ name, desc, href }: { name: string; desc: string; href: string }) {
-  const external = href.startsWith("http");
   return (
     <div className="bento-cell px-4 py-3 space-y-1">
       <p className="text-base font-semibold text-foreground">{name}</p>
       <p className="text-base text-muted-foreground">{desc}</p>
-      {external ? (
-        <a href={href} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-          Open on the portal →
-        </a>
-      ) : (
-        <Link href={href} className="text-sm text-primary hover:underline">
-          {href.startsWith("#") ? "See the steps below →" : "Learn more →"}
-        </Link>
-      )}
+      <Link href={href} className="text-sm text-primary hover:underline">
+        {href.startsWith("#") ? "See the steps below →" : "Learn more →"}
+      </Link>
     </div>
   );
 }
@@ -59,8 +52,8 @@ export default function LearnCreatorLaunchpadPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Creator Launchpad</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          The Launchpad is where you create and release something new. Each flow is built for a
-          different kind of work, so you start from the one that fits: a collection, a drop,
+          The Launchpad is where something new is created and released. Each flow is built for a
+          different kind of work, so each project starts from the one that fits: a collection, a drop,
           tickets, credentials, a coin, and more. No coding or prior blockchain experience is
           needed.
         </p>
@@ -78,20 +71,20 @@ export default function LearnCreatorLaunchpadPage() {
             ))}
           </div>
           <p>
-            Every flow is permissionless, with no approval required. Your contract is deployed
-            directly to Starknet mainnet, owned by your wallet. See{" "}
+            Every flow is permissionless, with no approval required. The contract is deployed
+            directly to Starknet mainnet, owned by the creator&apos;s wallet. See{" "}
             <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
             for the full registry and capability set.
           </p>
         </Section>
 
-        <Section title="Runs for lists of people">
+        <Section title="Flows for lists of people">
           <p>
-            Some flows work from a list: your catalog items, your guests, or your recipients.
-            You prepare the list once and the Launchpad issues everything in batches.
+            Some flows work from a list: catalog items, guests, or recipients. The list is
+            prepared once and the Launchpad issues everything in batches.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {RUNS.map((flow) => (
+            {LIST_FLOWS.map((flow) => (
               <FlowCard key={flow.name} {...flow} />
             ))}
           </div>
@@ -102,14 +95,14 @@ export default function LearnCreatorLaunchpadPage() {
             <h3 className="text-lg font-semibold text-foreground">Create an account</h3>
             <p>
               Set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key)
-              on your device. Medialane generates a self-custody Starknet wallet sealed to
+              on a device. Medialane generates a self-custody Starknet wallet sealed to
               that passkey automatically: gas-free setup, skipping seed phrases and browser
-              extensions entirely. The key never leaves your device.
+              extensions entirely. The key never leaves the device.
             </p>
             <h3 className="text-lg font-semibold text-foreground">Deploy a collection</h3>
             <p>
               A collection is a smart contract on Starknet that groups related NFTs under
-              a shared name, symbol, and identity. Think of it as your brand onchain:
+              a shared name, symbol, and identity. Think of it as a brand onchain:
               an art series, a music catalogue, a portfolio of photographs.
             </p>
             <p>
@@ -120,7 +113,7 @@ export default function LearnCreatorLaunchpadPage() {
               <p className="text-base leading-relaxed">
                 From <strong>Create → Collection</strong>, choose a name, symbol, and cover image.
                 Medialane deploys an ERC-721 contract and registers it in the onchain registry.
-                Each asset you mint into it will be a unique, 1-of-1 token with its own owner.
+                Each asset minted into it is a unique, 1-of-1 token with its own owner.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
@@ -128,16 +121,17 @@ export default function LearnCreatorLaunchpadPage() {
               <p className="text-base leading-relaxed">
                 From <strong>Launchpad → IP Collection 1155 → Create Collection</strong>, deploy an
                 ERC-1155 contract for multi-edition releases. Once deployed, the collection appears
-                in your Launchpad with a <em>Mint</em> button, letting you mint new token editions
+                in the Launchpad with a <em>Mint</em> button, for minting new token editions
                 directly into it, each with its own supply, metadata, and price. Best for music tracks,
-                art series, or any creative work you want multiple people to own.
+                art series, or any creative work meant to be owned by many people.
               </p>
             </div>
             <h3 className="text-lg font-semibold text-foreground">Mint an IP asset</h3>
             <p>
-              From <strong className="text-foreground">Create → Asset</strong>, upload your
-              file (image, audio, video, or document), fill in the title and description,
-              select the collection, and define the programmable license terms:
+              From <strong className="text-foreground">Create → Asset</strong>, the file
+              (image, audio, video, or document) is uploaded, the title and description are
+              filled in, the collection is selected, and the programmable license terms are
+              defined:
             </p>
             <ul className="list-disc list-inside space-y-1 text-sm">
               <li>License type (All Rights Reserved, Creative Commons, Custom)</li>
@@ -147,14 +141,14 @@ export default function LearnCreatorLaunchpadPage() {
               <li>Geographic scope</li>
             </ul>
             <p>
-              Your file is uploaded to IPFS, giving it a permanent content
-              address. The metadata JSON, including your license terms, is also stored
+              The file is uploaded to IPFS, giving it a permanent content
+              address. The metadata JSON, including the license terms, is also stored
               on IPFS and linked to the NFT onchain.
             </p>
             <h3 className="text-lg font-semibold text-foreground">List or hold</h3>
             <p>
-              Once minted, your asset appears in your Portfolio. You can hold it as proof
-              of ownership, list it for sale at a fixed price, or receive offers from
+              Once minted, the asset appears in the owner&apos;s Portfolio. It can be held as
+              proof of ownership, listed for sale at a fixed price, or open to offers from
               interested collectors directly through the platform.
             </p>
           </Section>
@@ -164,7 +158,7 @@ export default function LearnCreatorLaunchpadPage() {
           <p>
             On <strong className="text-foreground">medialane.io</strong>, everything is
             frictionless: wallet setup, minting, listing, and accepting offers are all
-            gas-sponsored, so you never need STRK or ETH in your wallet to use the platform.
+            gas-sponsored, so no STRK or ETH is needed in the wallet to use the platform.
             On the wallet-sovereign Starknet app, users pay their own gas.
           </p>
           <p>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Lock, Eye, ShieldCheck, KeyRound, ScrollText, Users } from "lucide-react";
+import { Lock, Eye, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/privacy" },
@@ -122,28 +122,6 @@ export default function LearnPrivacyPage() {
         <Link href="/dev/api#gated-content" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
           See the gated-content API →
         </Link>
-      </div>
-
-      <div className="bento-cell p-6 space-y-3">
-        <div className="flex items-center gap-3">
-          <KeyRound className="h-5 w-5 text-brand-purple" />
-          <p className="font-semibold">Where this is heading</p>
-        </div>
-        <p className="text-base text-muted-foreground leading-relaxed">
-          The same split (provable on-chain facts versus information a creator controls) is
-          the design basis for confidential creator economics: subscription and sponsorship
-          tooling that shows a total raised or a membership count without exposing who paid what.
-          Gated content today applies the same idea to access; the underlying primitive
-          generalizes to earnings and negotiations as that tooling ships.
-        </p>
-        <div className="flex flex-wrap gap-4 pt-1">
-          <Link href="/learn/zero-knowledge" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
-            <ScrollText className="h-3.5 w-3.5" /> Zero-Knowledge Proofs
-          </Link>
-          <Link href="/learn/identity" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
-            <Users className="h-3.5 w-3.5" /> Identity
-          </Link>
-        </div>
       </div>
 
     </div>

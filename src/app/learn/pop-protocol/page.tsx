@@ -86,10 +86,10 @@ export default function LearnPOPPage() {
         <Section title="Claiming a POP Credential">
           <p>
             To claim a credential, navigate to the POP Protocol section under{" "}
-            <strong className="text-foreground">Launchpad → POP Protocol</strong>. You will
-            see a list of active events. Click <strong className="text-foreground">Claim</strong>{" "}
-            on any event you participated in, confirm with your device passkey, and the
-            credential is minted to your wallet.
+            <strong className="text-foreground">Launchpad → POP Protocol</strong>. A list of
+            active events is shown. Clicking <strong className="text-foreground">Claim</strong>{" "}
+            on an event attended, then confirming with the device passkey, mints the
+            credential to the claimant&apos;s wallet.
           </p>
           <p>
             Each credential can only be claimed once per wallet. Duplicate claims are
@@ -100,10 +100,10 @@ export default function LearnPOPPage() {
 
         <Section title="Creating an Event (Providers Only)">
           <p>
-            To create POP events, you must first apply to become an approved provider.
+            Creating POP events requires first applying to become an approved provider.
             Approved providers have access to the{" "}
             <strong className="text-foreground">Create Event</strong> button in the POP
-            Protocol section. When creating an event you define:
+            Protocol section. When creating an event, the provider defines:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
             <li>Event name and description</li>
@@ -113,7 +113,7 @@ export default function LearnPOPPage() {
           </ul>
           <p>
             The event is deployed as a smart contract on Starknet. Each credential issued
-            is a soulbound NFT under a unique on-chain collection associated with your event.
+            is a soulbound NFT under a unique on-chain collection associated with the event.
           </p>
         </Section>
 
@@ -121,8 +121,8 @@ export default function LearnPOPPage() {
           <p>
             Traditional credentials (conference badges, certificates, community roles) are
             controlled by the platform that issued them. If that platform disappears or
-            revokes your access, the credential is gone. On-chain credentials are permanent
-            and self-sovereign: they live in your wallet and cannot be taken away.
+            revokes access, the credential is gone. On-chain credentials are permanent
+            and self-sovereign: they live in the holder&apos;s wallet and cannot be taken away.
           </p>
           <p>
             POP credentials are publicly verifiable. Any application can query the Starknet

@@ -4,15 +4,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/protect-your-ip" },
-  title: "Protect Your IP | Learn | Medialane",
+  title: "Protecting IP | Learn | Medialane",
   description: "Understand the Berne Convention, cryptographic IP protection, and how Medialane and the Mediolano protocol protect creators in 181 countries.",
   openGraph: {
-    title: "Protect Your IP | Learn | Medialane",
+    title: "Protecting IP | Learn | Medialane",
     description: "Understand the Berne Convention, cryptographic IP protection, and how Medialane and the Mediolano protocol protect creators in 181 countries.",
     url: "https://docs.medialane.io/learn/protect-your-ip",
   },
   twitter: {
-    title: "Protect Your IP | Learn | Medialane",
+    title: "Protecting IP | Learn | Medialane",
     description: "Understand the Berne Convention, cryptographic IP protection, and how Medialane and the Mediolano protocol protect creators in 181 countries.",
   },
 };
@@ -21,12 +21,11 @@ export default function LearnProtectIPPage() {
   return (
     <div className="space-y-10">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">Protecting Your Intellectual Property</h2>
+        <h2 className="text-2xl font-bold">Protecting Intellectual Property</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Your creative work is automatically protected by international copyright law
-          the moment you create it, regardless of Medialane. What minting
-          adds is a timestamped, immutable, publicly verifiable record of authorship that
-          can serve as evidence of when a work existed and who published it.
+          Creative work is automatically protected by international copyright law
+          the moment it is created. What minting adds is a timestamped, immutable,
+          publicly verifiable record of authorship.
         </p>
       </div>
 
@@ -99,7 +98,7 @@ export default function LearnProtectIPPage() {
             Traditional copyright enforcement requires timestamps, witnesses, or formal
             registration, all expensive and inaccessible to most independent creators.
             And even with copyright established, licensing is fragmented: tracking who
-            uses your work, in what context, and whether royalties are being paid
+            uses a work, in what context, and whether royalties are being paid
             requires lawyers and contracts built for large corporations.
           </p>
         </Section>
@@ -109,12 +108,12 @@ export default function LearnProtectIPPage() {
             Medialane is built on the{" "}
             <strong className="text-foreground">Mediolano protocol</strong>, a
             permissionless, open-source IP protection infrastructure anchored to Starknet.
-            When you mint a work:
+            When a work is minted:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
             <li>An <strong className="text-foreground">immutable timestamped record</strong> is created on Starknet: a public, verifiable proof of existence at a specific point in time.</li>
-            <li>An <strong className="text-foreground">ERC-721 NFT</strong> is minted to your wallet; the token acts as the cryptographic key to your IP. Only the holder of the private key can manage, license, or transfer rights.</li>
-            <li>Your <strong className="text-foreground">license terms</strong> are embedded in the token metadata and stored on IPFS: machine-readable and immutable, independent of the Medialane platform.</li>
+            <li>An <strong className="text-foreground">ERC-721 NFT</strong> is minted to the creator's wallet; the token acts as the cryptographic key to the IP. Only the holder of the private key can manage, license, or transfer rights.</li>
+            <li>The <strong className="text-foreground">license terms</strong> are embedded in the token metadata and stored on IPFS: machine-readable and immutable, independent of the Medialane platform.</li>
             <li>A <strong className="text-foreground">content hash</strong> of the metadata is committed to the blockchain, linking the on-chain record to the off-chain content.</li>
           </ul>
           <p>
@@ -127,13 +126,13 @@ export default function LearnProtectIPPage() {
 
         <Section title="Decentralized & Censorship-Resistant">
           <p>
-            Your IP record lives on Starknet and IPFS, independent of Medialane's servers.
+            The IP record lives on Starknet and IPFS, independent of Medialane's servers.
             This means:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li><strong className="text-foreground">Vendor independence</strong>: your proof of ownership exists independently of the Medialane platform.</li>
-            <li><strong className="text-foreground">Censorship resistance</strong>: your on-chain record stands beyond any central server's reach to take down or alter.</li>
-            <li><strong className="text-foreground">Perpetual access</strong>: IPFS ensures your metadata remains accessible for the lifetime of the network.</li>
+            <li><strong className="text-foreground">Vendor independence</strong>: proof of ownership exists independently of the Medialane platform.</li>
+            <li><strong className="text-foreground">Censorship resistance</strong>: the on-chain record stands beyond any central server's reach to take down or alter.</li>
+            <li><strong className="text-foreground">Perpetual access</strong>: IPFS ensures the metadata remains accessible for the lifetime of the network.</li>
             <li><strong className="text-foreground">Open source</strong>: the entire Mediolano protocol is publicly verifiable, with every line auditable.</li>
           </ul>
         </Section>
@@ -157,9 +156,9 @@ export default function LearnProtectIPPage() {
 
         <Section title="On-Chain Licensing">
           <p>
-            Beyond proof of authorship, you attach your own license terms to every
+            Beyond proof of authorship, creators attach their own license terms to every
             work at mint time, defining in machine-readable form what others can and cannot
-            do with your creation. The terms are embedded in the token metadata and travel
+            do with the creation. The terms are embedded in the token metadata and travel
             with every transfer, publicly readable by any application or agent.
           </p>
           <p>

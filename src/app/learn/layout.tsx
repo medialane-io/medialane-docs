@@ -31,7 +31,7 @@ const LEARN_NAV = [
   { label: "Certificate Emission",   href: "/learn/certificate-emission" },
   { label: "Remix & Derivatives",    href: "/learn/remix" },
   { label: "Web3 & Starknet",        href: "/learn/web3" },
-  { label: "Protect Your IP",        href: "/learn/protect-your-ip" },
+  { label: "Protecting IP",           href: "/learn/protect-your-ip" },
   { label: "Programmable Licensing", href: "/learn/programmable-licensing" },
 ];
 

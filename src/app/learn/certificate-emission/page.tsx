@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FlowPage, type FlowContent } from "@/components/docs/flow-page";
+import { Section } from "@/components/docs";
 
 const title = "Certificate Emission | Learn | Medialane";
 const description = "Learn how Certificate Emission issues non-transferable certificates to a list of recipients.";
@@ -13,32 +13,56 @@ export const metadata: Metadata = {
   twitter: { title, description },
 };
 
-const content: FlowContent = {
-  title: "Certificate Emission",
-  lead: "Certificate Emission issues non-transferable certificates to a list of recipients. Each recipient keeps their certificate, and anyone can confirm it against the chain without asking you.",
-  serviceId: "certificate-emission",
-  see: (
-    <>
-      For soulbound proof-of-participation credentials, see <Link href="/learn/pop-protocol" className="text-primary hover:underline">POP Protocol</Link>.
-    </>
-  ),
-  gets: [
-    "Each certificate is non-transferable, so every recipient keeps the one they are issued",
-    "The record lives onchain with the recipient, so there is no file to store or misplace",
-    "Anyone can confirm a certificate against the chain",
-    "License terms and an AI policy are recorded with the certificate",
-    "Issue more certificates into the same collection later",
-  ],
-  steps: [
-    { title: "Choose a collection", desc: "Use an existing one, or name a new one." },
-    { title: "Describe the certificate", desc: "Add a name, a description and artwork." },
-    { title: "Add your recipients", desc: "Paste your recipient list." },
-    { title: "Pay and run", desc: "Pay once for the run, then approve each batch with your passkey." },
-  ],
-  resume: "A run is saved as you go. If a batch is interrupted, you resume where it stopped.",
-  portalHref: "https://portal.medialane.io/launchpad/certificate-emission",
-};
+const certificateTraits = [
+  "Issued to one recipient and non-transferable. It stays with them, and only they can remove it.",
+  "One certificate per recipient in each collection.",
+  "Recorded onchain with the recipient, so there is no file to store or misplace.",
+  "Verifiable by anyone against the chain.",
+  "Described by the name, description and artwork the issuer chooses.",
+  "Issued with license terms and an AI policy recorded alongside it.",
+];
 
 export default function LearnCertificateEmissionPage() {
-  return <FlowPage content={content} />;
+  return (
+    <div className="space-y-10">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold">Certificate Emission</h2>
+        <p className="text-muted-foreground text-lg leading-relaxed">
+          Certificate Emission issues a certificate to everyone on a list, in one go. Each recipient
+          receives their own non-transferable certificate, and anyone can confirm it against the chain
+          without asking the issuer.
+        </p>
+        <p className="text-base text-muted-foreground">
+          Service ID:{" "}
+          <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">certificate-emission</code>{" "}
+          For proof-of-participation credentials created independently, see{" "}
+          <Link href="/learn/pop-protocol" className="text-primary hover:underline">POP Protocol</Link>.
+        </p>
+      </div>
+
+      <div className="space-y-8">
+        <Section title="What every certificate is">
+          <ul className="list-disc list-inside space-y-1.5 text-sm">
+            {certificateTraits.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section title="Recipients">
+          <p>
+            Recipients don&apos;t need a wallet beforehand. Everyone on the list receives a wallet and
+            their certificate.
+          </p>
+        </Section>
+
+        <Section title="Collections">
+          <p>
+            Certificates go into a collection. Use an existing one or create a new one, and add more
+            certificates to the same collection later.
+          </p>
+        </Section>
+      </div>
+    </div>
+  );
 }

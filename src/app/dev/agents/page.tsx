@@ -26,7 +26,7 @@ export default function AgentsPage() {
       </h2>
 
       <p className="text-muted-foreground text-lg mt-2 mb-8">
-        The Medialane API is built to be consumed by autonomous AI agents. A wallet keypair is your identity, you pay per request in USDC on Starknet, and billing speaks the open <strong className="text-foreground">x402</strong> standard: machine-readable <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402 Payment Required</code>, no human in the loop.
+        The Medialane API is built to be consumed by autonomous AI agents. A wallet keypair is the identity, payment is per request in USDC on Starknet, and billing speaks the open <strong className="text-foreground">x402</strong> standard: machine-readable <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402 Payment Required</code>, no human in the loop.
       </p>
 
       <DocH2 id="why">Why agents work here</DocH2>
@@ -35,10 +35,10 @@ export default function AgentsPage() {
       </p>
       <ul className="space-y-2 text-sm text-muted-foreground mb-6 list-disc list-inside">
         <li><strong className="text-foreground">Identity</strong>: a Starknet wallet keypair.</li>
-        <li><strong className="text-foreground">Payment</strong>: USDC on Starknet, paid per use. Your wallet pays the API directly.</li>
-        <li><strong className="text-foreground">Billing protocol</strong>: the open <strong className="text-foreground">x402</strong> standard, where an unfunded request returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> with machine-readable payment instructions, your agent pays and retries.</li>
-        <li><strong className="text-foreground">Pay only for what you use</strong>: no gate, no free tier. The first unfunded call returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> by design, which is the protocol working as intended.</li>
-        <li><strong className="text-foreground">MDLN bonus</strong>: hold MDLN in the paying wallet and your credits-per-USDC multiply automatically (see below).</li>
+        <li><strong className="text-foreground">Payment</strong>: USDC on Starknet, paid per use. The wallet pays the API directly.</li>
+        <li><strong className="text-foreground">Billing protocol</strong>: the open <strong className="text-foreground">x402</strong> standard, where an unfunded request returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> with machine-readable payment instructions, after which the agent pays and retries.</li>
+        <li><strong className="text-foreground">Pay only for what is used</strong>: no gate, no free tier. The first unfunded call returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> by design, which is the protocol working as intended.</li>
+        <li><strong className="text-foreground">MDLN bonus</strong>: hold MDLN in the paying wallet and credits-per-USDC multiply automatically (see below).</li>
       </ul>
 
       <DocH2 id="api-key">Get an API key</DocH2>
@@ -63,12 +63,12 @@ const headers = { "x-api-key": process.env.ML_API_KEY! };`}</DocCodeBlock>
   "pricing": { "default": 1 }
 }`}</DocCodeBlock>
       <p className="text-muted-foreground mb-4 text-base">
-        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">asset</code> is USDC on Starknet, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">payTo</code> is where you send it, and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">1 USDC = 100 credits</code> (1 credit per read; some operations cost more).
+        <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">asset</code> is USDC on Starknet, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">payTo</code> is where it is sent, and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">1 USDC = 100 credits</code> (1 credit per read; some operations cost more).
       </p>
 
       <DocH2 id="flow">Pay-per-use with x402</DocH2>
       <p className="text-muted-foreground mb-4 text-base">
-        Call any endpoint with your key. If your balance can&apos;t cover the call, you get <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> with a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">paymentRequirements</code> body:
+        Any endpoint can be called with a key. If the balance can&apos;t cover the call, the response is <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> with a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">paymentRequirements</code> body:
       </p>
       <DocCodeBlock lang="json">{`HTTP/1.1 402 Payment Required
 X-Credits-Remaining: 0
@@ -88,7 +88,7 @@ X-Credits-Remaining: 0
 
       <DocH3>Handle it: pay, then retry with X-PAYMENT</DocH3>
       <p className="text-muted-foreground mb-4 text-base">
-        Send USDC to <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">payTo</code>, then retry the <em>same</em> request with an <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">X-PAYMENT</code> header (base64 JSON). The API verifies the transfer on-chain, credits your account, and serves the response. One on-chain transfer credits exactly once, safe to retry the same proof.
+        Send USDC to <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">payTo</code>, then retry the <em>same</em> request with an <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">X-PAYMENT</code> header (base64 JSON). The API verifies the transfer on-chain, credits the account, and serves the response. One on-chain transfer credits exactly once, safe to retry the same proof.
       </p>
       <DocCodeBlock lang="ts">{`const BASE = "https://api.medialane.io";
 
@@ -140,12 +140,12 @@ async function payUsdc(payTo: string, amountAtomic: bigint): Promise<string> {
   return transaction_hash;
 }`}</DocCodeBlock>
       <p className="text-muted-foreground mb-4 text-base">
-        After funding, subsequent calls return <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">200</code> and spend down your balance, no payment per call. Check it any time via <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/portal/me</code> (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">creditBalance</code>) and your payment history via <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/portal/credits/history</code>.
+        After funding, subsequent calls return <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">200</code> and spend down the balance, with no payment per call. Check it any time via <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/portal/me</code> (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">creditBalance</code>) and the payment history via <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/portal/credits/history</code>.
       </p>
 
       <DocH2 id="mdln">MDLN credit bonus</DocH2>
       <p className="text-muted-foreground mb-4 text-base">
-        If the wallet that paid holds MDLN, the multiplier is applied automatically when your payment is credited, with no configuration needed. The on-chain balance is read at credit time.
+        If the wallet that paid holds MDLN, the multiplier is applied automatically when the payment is credited, with no configuration needed. The on-chain balance is read at credit time.
       </p>
       <div className="rounded-xl border border-foreground/10 overflow-hidden bg-foreground/[0.02] text-sm">
         <div className="grid grid-cols-3 px-5 py-3 bg-foreground/[0.03] border-b border-foreground/10 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
@@ -170,7 +170,7 @@ async function payUsdc(payTo: string, amountAtomic: bigint): Promise<string> {
         Learn more about MDLN at{" "}
         <a href="https://medialane.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
           medialane.org
-        </a>. Hold MDLN in the same wallet you pay from.
+        </a>. Holding MDLN in the same wallet used for payment applies the multiplier.
       </p>
 
       <DocH2 id="next">Next steps</DocH2>

@@ -25,8 +25,8 @@ export default function ZeroKnowledgePage() {
         <span className="pill-badge">Cryptography</span>
         <h2 className="text-2xl font-bold">Zero-Knowledge Proofs</h2>
         <p className="text-muted-foreground leading-relaxed">
-          A zero-knowledge proof (ZKP) lets you prove that something is true without revealing anything
-          about <em>why</em> it is true. Imagine proving you know a secret without ever saying the secret aloud.
+          A zero-knowledge proof (ZKP) lets a prover show that something is true without revealing anything
+          about <em>why</em> it is true. Imagine proving knowledge of a secret without ever saying the secret aloud.
           This seemingly simple idea is the foundation of Starknet, and it has powerful implications for
           privacy, scalability, and trust.
         </p>
@@ -35,11 +35,11 @@ export default function ZeroKnowledgePage() {
       <div className="bento-cell p-6 space-y-3">
         <h3 className="font-semibold">The Intuition</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
-          Imagine a maze with two entrances (A and B) that meet in the middle. You want to prove you know the
-          secret path through without revealing the path itself. You enter from one side while a verifier picks
-          which exit they want to see you emerge from. Repeat this 100 times: if you always emerge from the
-          correct exit, the verifier is statistically certain you know the path, but you&apos;ve revealed nothing
-          about the path itself.
+          Imagine a maze with two entrances (A and B) that meet in the middle. A prover wants to show knowledge of the
+          secret path through without revealing the path itself. The prover enters from one side while a verifier picks
+          which exit they want to see the prover emerge from. Repeated 100 times, if the prover always emerges from the
+          correct exit, the verifier is statistically certain the path is known, yet nothing
+          about the path itself has been revealed.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">
           Real ZK proofs work similarly, but with mathematics instead of mazes, and in milliseconds.
@@ -51,7 +51,7 @@ export default function ZeroKnowledgePage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
             { icon: Shield, title: "Validity", desc: "ZK proofs guarantee that a computation was performed correctly, so no one can submit fake transactions that violate the rules of the protocol." },
-            { icon: Eye, title: "Privacy", desc: "The same proof mechanics let an application confirm ownership or eligibility without revealing the underlying data, proving you hold a token without revealing which one." },
+            { icon: Eye, title: "Privacy", desc: "The same proof mechanics let an application confirm ownership or eligibility without revealing the underlying data, proving a token is held without revealing which one." },
             { icon: Zap, title: "Scalability", desc: "Starknet bundles thousands of transactions into one ZK-STARK proof verified on Ethereum. This makes gas fees tiny and throughput massive." },
             { icon: Lock, title: "Security", desc: "ZK-STARKs (the variant used by Starknet) rely on hash functions, not elliptic curves, and no known quantum attack breaks them." },
           ].map(({ icon: Icon, title, desc }) => (
@@ -70,7 +70,7 @@ export default function ZeroKnowledgePage() {
         <h3 className="font-semibold">ZK Proofs on Medialane</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
           Every transaction on Medialane (minting an NFT, transferring ownership, executing a marketplace sale)
-          is included in a batch that Starknet proves to Ethereum with a ZK-STARK. This means your IP records
+          is included in a batch that Starknet proves to Ethereum with a ZK-STARK. This means IP records
           inherit the full security of Ethereum, regardless of how many transactions are processed.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">

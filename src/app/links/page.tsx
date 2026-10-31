@@ -133,8 +133,8 @@ export default function LinksPage() {
       </div>
 
       <div className="bento-cell p-4 text-sm text-muted-foreground">
-        <strong className="text-foreground">Verify before you click.</strong> Medialane only operates through the links above.
-        We will never DM you asking for seed phrases, private keys, or funds. If you receive unsolicited messages claiming to be Medialane, they are scams.
+        <strong className="text-foreground">Verify before clicking.</strong> Medialane only operates through the links above.
+        Medialane will never DM anyone asking for seed phrases, private keys, or funds. Unsolicited messages claiming to be Medialane are scams.
       </div>
 
     </PageContainer>

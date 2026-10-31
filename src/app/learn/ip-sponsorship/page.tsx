@@ -24,7 +24,7 @@ export default function LearnIPSponsorshipPage() {
         <h2 className="text-2xl font-bold">IP Sponsorship</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           IP Sponsorship lets a creator sell a sponsorship license on an asset they own,
-          where a brand or backer pays to attach their name or support to your work, and it lets
+          where a brand or backer pays to attach their name or support to the work, and it lets
           a sponsor propose that deal directly on any asset they&apos;d like to back. Either
           way, payment settles directly from sponsor to creator the instant a deal is
           accepted. There is no escrow: the contract never holds funds.
@@ -87,8 +87,8 @@ export default function LearnIPSponsorshipPage() {
         <Section title="Starting a Sponsorship">
           <p>
             From <strong className="text-foreground">Launchpad → IP Sponsorship → Set up a sponsorship</strong>,
-            pick a mode. <strong className="text-foreground">Offer your asset</strong>: choose
-            one you own, a minimum bid and payment token, how long the resulting license runs
+            pick a mode. <strong className="text-foreground">Offer an asset</strong>: choose
+            one owned, a minimum bid and payment token, how long the resulting license runs
             (counted from acceptance, not from creation), a resale royalty, and the license
             terms. <strong className="text-foreground">Propose to sponsor</strong>: point at any
             asset by its contract address and token id, and set the same terms as a

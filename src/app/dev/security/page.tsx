@@ -106,7 +106,7 @@ export default function DocsSecurityPage() {
             between the on-chain record and the off-chain content.
           </p>
           <p>
-            This means your IP proof is not dependent on Medialane's servers continuing to
+            This means the IP proof is not dependent on Medialane's servers continuing to
             operate. The record exists on the Starknet blockchain and IPFS permanently,
             independent of the platform.
           </p>
@@ -124,12 +124,12 @@ export default function DocsSecurityPage() {
               verification, and continuous testing), user funds and IP assets could
               theoretically be at risk due to unforeseen bugs in the protocol or the
               underlying Starknet network. Use caution and only commit assets whose
-              loss you could tolerate.
+              loss is tolerable.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed">
-              Medialane does not take custody of your assets. Your NFTs remain in
-              your self-custodied wallet at all times. Marketplace orders are signed
-              intents, so your asset does not leave your wallet until a transaction is
+              Medialane does not take custody of assets. NFTs remain in
+              the owner&apos;s self-custodied wallet at all times. Marketplace orders are signed
+              intents, so an asset does not leave its wallet until a transaction is
               fully executed and settled on Starknet.
             </p>
           </div>
@@ -137,8 +137,8 @@ export default function DocsSecurityPage() {
 
         <Section title="Responsible Disclosure">
           <p>
-            If you discover a security vulnerability in the Medialane platform or the
-            Mediolano protocol, please report it responsibly to{" "}
+            Security vulnerabilities in the Medialane platform or the
+            Mediolano protocol should be reported responsibly to{" "}
             <a href="mailto:security@medialane.io" className="text-primary hover:underline">
               security@medialane.io
             </a>

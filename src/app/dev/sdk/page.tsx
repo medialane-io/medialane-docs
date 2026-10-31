@@ -41,7 +41,7 @@ yarn add @medialane/sdk starknet`}</DocCodeBlock>
 
       <DocH2 id="configure" border>Configure</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        Create a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneClient</code> with your chain and API key.
+        Create a <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">MedialaneClient</code> with a chain and an API key.
       </p>
       <DocCodeBlock>{`import { MedialaneClient } from "@medialane/sdk/starknet"
 
@@ -59,7 +59,7 @@ const client = new MedialaneClient({
   },
 })`}</DocCodeBlock>
       <p className="text-base text-muted-foreground">
-        The <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">apiKey</code> is sent as <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-api-key</code> on every request. Get your key at <Link href="https://portal.medialane.io/account" className="text-primary hover:underline">/account</Link>.
+        The <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">apiKey</code> is sent as <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-api-key</code> on every request. A key is available at <Link href="https://portal.medialane.io/account" className="text-primary hover:underline">/account</Link>.
       </p>
 
       <DocH2 id="minting" border>Minting & Launchpad</DocH2>
@@ -171,20 +171,20 @@ results.data.collections.forEach((c) => console.log(c.name))`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Portal: keys and credits</h3>
       <DocCodeBlock>{`// Portal calls act for the signed-in user: pass their SIWS token (see Sign-in below)
-// List your API keys
+// List the API keys
 const keys = await client.api.getApiKeys(siwsToken)
 
-// Create your API key
+// Create an API key
 const newKey = await client.api.createApiKey({ label: "Agent Key" }, siwsToken)
 console.log(newKey.data.plaintext) // shown once — save it!
 
-// What your credits were spent on, and your deposits
+// What credits were spent on, and the deposits
 const spend = await client.api.getSpend(siwsToken)
 const deposits = await client.api.getCreditHistory(siwsToken)`}</DocCodeBlock>
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">Sign-in</h3>
       <p className="text-muted-foreground text-base mb-3">
-        Every call carries your API key, which identifies you and meters your credits. A user signs in with their wallet (SIWS) or with an email code.
+        Every call carries an API key, which identifies the caller and meters its credits. A user signs in with their wallet (SIWS) or with an email code.
       </p>
       <DocCodeBlock>{`import { requestSiwsToken } from "@medialane/sdk/starknet"
 
@@ -199,13 +199,13 @@ await client.api.verifyEmailCode("ana@example.com", "482913")`}</DocCodeBlock>
       <p className="text-muted-foreground text-base mb-3">
         An account holds its wallets and email. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">registerUser</code> uses the API key alone (e.g. on wallet connect); <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">upsertMyWallet</code> and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getMyWallet</code> use the user&apos;s SIWS token.
       </p>
-      <DocCodeBlock>{`// Register a connected wallet in your app — idempotent
+      <DocCodeBlock>{`// Register a connected wallet in an app — idempotent
 await client.api.registerUser({
   walletAddress: "0x0591...",
   walletType: "mediawallet", // free-form wallet-software label
 })
 
-// Register the signed-in wallet; your server adds the account session (x-account-session) to link it to an email account
+// Register the signed-in wallet; the server adds the account session (x-account-session) to link it to an email account
 await client.api.upsertMyWallet(siwsToken, { walletType: "mediawallet" })
 
 // Read the caller's account: wallet, email, emailDeadline (null until registered)
@@ -507,7 +507,7 @@ const ekubo       = priceToEkuboParams(quoteDecimals, price)       // Ekubo star
 const createCall = buildCreateCreatorCoinCall({
   owner, name: "My Coin", symbol: "COIN", initialSupply: supplyRaw,
 })
-// execute with your pipeline, then read the coin address from the receipt:
+// execute with the pipeline, then read the coin address from the receipt:
 const coinAddress = parseCreatorCoinCreated(receipt)
 
 // 3. Tx 2 — launch on Ekubo (quote transfer + launch_on_ekubo multicall)
@@ -526,7 +526,7 @@ await client.services.creatorCoin.launchOnEkubo(account, { creatorCoin, quoteTok
 
       <DocH2 id="tickets-club" border>IP Tickets &amp; IP Club</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        Ticket types and membership tiers are numbered from 1 with no gaps, so a count gives every id. Counts are read fresh, so you can use them to choose the next id right before creating one.
+        Ticket types and membership tiers are numbered from 1 with no gaps, so a count gives every id. Counts are read fresh, so they can be used to choose the next id right before creating one.
       </p>
       <DocCodeBlock>{`const ticketTypes = await client.api.getTicketCount(ticketContract)
 const ticket      = await client.api.getTicket(ticketContract, "1")  // { maxSupply, minted, startTime, endTime, royaltyBps }
@@ -537,7 +537,7 @@ const isMember = await client.api.isClubMember(clubContract, "1", wallet)`}</Doc
 
       <DocH2 id="launchpad-runs" border>Launchpad Runs</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        A run is a paid, multi-step launch (data tokenization, IP ticketing) for your account. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">createLaunchpadRunsClient</code> creates, pays for and executes it step by step; point <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">baseUrl</code> at the backend, or at your app&apos;s proxy to it.
+        A run is a paid, multi-step launch (data tokenization, IP ticketing) for an account. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">createLaunchpadRunsClient</code> creates, pays for and executes it step by step; point <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">baseUrl</code> at the backend, or at the app&apos;s proxy to it.
       </p>
       <DocCodeBlock>{`import { createLaunchpadRunsClient } from "@medialane/sdk"
 
@@ -549,7 +549,7 @@ const next = (await runs.get(run.id)).next              // what the run asks for
 
       <DocH2 id="platform-fee" border>Platform Fee</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer, distinct from any on-chain protocol rule. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Call</code> into your multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or unconfigured, treating a missing config as a zero fee.
+        The creators-fund fee (default 1%) is a <strong>platform-layer</strong> ERC-20 transfer, distinct from any on-chain protocol rule. <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">buildFeeCall</code> is the single source of truth; splice the returned <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Call</code> into the multicall after the trade. Fail-safe: returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">null</code> when the fee is disabled or unconfigured, treating a missing config as a zero fee.
       </p>
       <DocCodeBlock>{`import { resolveFeeConfig } from "@medialane/sdk"
 import { buildFeeCall } from "@medialane/sdk/starknet"
@@ -566,7 +566,7 @@ const feeCall = buildFeeCall(
   feeConfig,
 )
 
-// feeCall is a starknet Call (or null). Append it to your trade multicall:
+// feeCall is a starknet Call (or null). Append it to the trade multicall:
 const calls = feeCall ? [...tradeCalls, feeCall] : tradeCalls
 await account.execute(calls)`}</DocCodeBlock>
 
@@ -611,7 +611,7 @@ catch (err) {
   setError(describe(err, "We couldn't create that listing. Please try again."))
 }`}</DocCodeBlock>
       <p className="text-muted-foreground text-base mb-3">
-        The fallback carries the weight. An error matching none of those types says nothing a reader can act on, and its text is as likely to be a gateway response as a sentence. Your call site knows which action was attempted, so that is the message worth showing. A response body that is not ours stays in <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">err.details</code>, available while debugging without reaching a reader.
+        The fallback carries the weight. An error matching none of those types says nothing a reader can act on, and its text is as likely to be a gateway response as a sentence. The call site knows which action was attempted, so that is the message worth showing. A response body that is not ours stays in <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">err.details</code>, available while debugging without reaching a reader.
       </p>
 
       <DocH2 id="error-codes" border>Error Codes</DocH2>
@@ -673,7 +673,7 @@ catch (err) {
 
       <DocH2 id="examples" border>Use Case Examples</DocH2>
       <p className="text-muted-foreground text-base mb-3">
-        Common patterns you can build with the SDK:
+        Common patterns to build with the SDK:
       </p>
 
       <DocH3>Fetch a wallet&apos;s portfolio</DocH3>
@@ -713,7 +713,7 @@ const { txHash } = await executeIntent(provider, signer, client, intent);`}</Doc
 
       <DocH2 id="consumer-apps" border>Built with the SDK</DocH2>
       <p className="text-muted-foreground text-base mb-4">
-        Medialane&apos;s own apps use the same SDK you&apos;re integrating:
+        Medialane&apos;s own apps use the same SDK being integrated:
       </p>
       <div className="grid md:grid-cols-2 gap-4">
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-5 space-y-2">

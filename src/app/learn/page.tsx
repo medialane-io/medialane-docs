@@ -81,20 +81,20 @@ const TOPICS = [
   {
     href: "/learn/funding-your-account",
     icon: Wallet,
-    title: "Funding Your Account",
-    description: "How to get tokens onto Starknet and into your account: on-ramps, exchange withdrawals, and cross-chain bridges.",
+    title: "Funding an Account",
+    description: "How to get tokens onto Starknet and into an account: on-ramps, exchange withdrawals, and cross-chain bridges.",
   },
   {
     href: "/learn/creator-launchpad",
     icon: Rocket,
     title: "Creator Launchpad",
-    description: "Learn how to deploy your own collection, mint IP assets, and launch your creative work.",
+    description: "Learn how to deploy a collection, mint IP assets, and launch creative work.",
   },
   {
     href: "/learn/creator-coin",
     icon: Coins,
     title: "Creator Coins",
-    description: "Launch your own fixed-supply coin with permanently locked liquidity, tradeable by your community on a public pool.",
+    description: "Launch a fixed-supply coin with permanently locked liquidity, tradeable by a community on a public pool.",
   },
   {
     href: "/learn/marketplace",
@@ -130,7 +130,7 @@ const TOPICS = [
     href: "/learn/ip-tickets",
     icon: Ticket,
     title: "IP Tickets",
-    description: "Create verifiable on-chain tickets your audience can hold and trade, a real asset rather than a soulbound pass.",
+    description: "Create verifiable on-chain tickets an audience can hold and trade, a real asset rather than a soulbound pass.",
   },
   {
     href: "/learn/data-tokenization",
@@ -160,7 +160,7 @@ const TOPICS = [
     href: "/learn/ip-sponsorship",
     icon: Handshake,
     title: "IP Sponsorship",
-    description: "Sell a sponsorship license on an asset you own: sponsors bid, you accept, payment settles directly with no escrow.",
+    description: "Sell a sponsorship license on an owned asset: sponsors bid, the owner accepts, payment settles directly with no escrow.",
   },
   {
     href: "/learn/remix",
@@ -177,7 +177,7 @@ const TOPICS = [
   {
     href: "/learn/protect-your-ip",
     icon: Shield,
-    title: "Protect Your IP",
+    title: "Protecting IP",
     description: "Understand the Berne Convention, copyright principles, and how creators protect their intellectual property.",
   },
   {
@@ -197,8 +197,8 @@ export default function LearnPage() {
           <span className="text-sm font-medium text-primary">Knowledge Base</span>
         </div>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">
-          Whether you&apos;re a creator exploring blockchain for the first time or a developer
-          building on top of the Medialane protocol, this section covers everything you need
+          Whether a creator is exploring blockchain for the first time or a developer is
+          building on top of the Medialane protocol, this section covers everything needed
           to get started and go deeper.
         </p>
       </div>

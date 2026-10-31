@@ -11,7 +11,7 @@ const HUBS = [
   {
     icon: Rocket,
     name: "Launchpad",
-    tagline: "Structure capital from your IP",
+    tagline: "Structure capital from IP",
     description:
       "Turn creative work into revenue products: collection drops, NFT editions, memberships and subscriptions, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended, never a fixed menu.",
     color: "text-brand-purple",
@@ -23,7 +23,7 @@ const HUBS = [
     name: "Marketplace",
     tagline: "Trade every tokenized asset",
     description:
-      "A high-integrity secondary exchange for buying, selling, auctioning, licensing, and remixing IP. Atomic settlement: payment and asset move in one transaction, or both revert. Assets stay in your wallet, interoperable with the wider ecosystem, at minimal fees.",
+      "A high-integrity secondary exchange for buying, selling, auctioning, licensing, and remixing IP. Atomic settlement: payment and asset move in one transaction, or both revert. Assets stay in the owner's wallet, interoperable with the wider ecosystem, at minimal fees.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
@@ -35,7 +35,7 @@ const PRINCIPLES = [
     icon: Lock,
     title: "The contract is the only authority",
     description:
-      "Immutable Cairo contracts, deployed without an admin key, upgrade path, or pause switch. If the contract accepts your call, it happens; the rules are fixed, including for us.",
+      "Immutable Cairo contracts, deployed without an admin key, upgrade path, or pause switch. If the contract accepts a call, it happens; the rules are fixed, including for us.",
   },
   {
     icon: InfinityIcon,
@@ -59,7 +59,7 @@ const PRINCIPLES = [
     icon: Eye,
     title: "Open and verifiable",
     description:
-      "Contracts, the TypeScript SDK, and the indexer are open source; deployed addresses are public. Verify exactly what the code does before you trust it.",
+      "Contracts, the TypeScript SDK, and the indexer are open source; deployed addresses are public. Verify exactly what the code does before trusting it.",
   },
   {
     icon: Building2,
@@ -84,7 +84,7 @@ const AGENT_PAYMENT_USE_CASES = [
     bg: "bg-brand-blue/10",
     title: "Products & services",
     description:
-      "Usage-based access, billed per call instead of by seat or contract. Every payment is on-chain and verifiable, so you pay only for what you use.",
+      "Usage-based access, billed per call instead of by seat or contract. Every payment is on-chain and verifiable, so payment covers only what is used.",
   },
   {
     icon: Terminal,
@@ -98,7 +98,7 @@ const AGENT_PAYMENT_USE_CASES = [
 
 const X402_STEPS = [
   { n: "1", title: "Discover", description: "A machine-readable endpoint publishes prices and payment details; agents read it like code." },
-  { n: "2", title: "Call", description: "Hit any endpoint with your key. Out of credits? You get a standard 402 with payment instructions." },
+  { n: "2", title: "Call", description: "Hit any endpoint with a key. Out of credits? A standard 402 returns payment instructions." },
   { n: "3", title: "Pay", description: "Send a USDC micropayment on Starknet to the address in the 402, settled on-chain in seconds." },
   { n: "4", title: "Continue", description: "Retry with proof of payment; credits apply and the call goes through. Hold MDLN for a bonus." },
 ];
@@ -184,7 +184,7 @@ const TOPIC_GROUPS = [
       { href: "/learn/agent-payments", label: "AI Agent Payments" },
       { href: "/learn/services", label: "Services" },
       { href: "/learn/identity", label: "Identity" },
-      { href: "/learn/protect-your-ip", label: "Protect Your IP" },
+      { href: "/learn/protect-your-ip", label: "Protecting IP" },
       { href: "/learn/web3", label: "Web3 & Blockchain" },
       { href: "/learn/zero-knowledge", label: "Zero-Knowledge" },
       { href: "/learn/privacy", label: "Privacy" },
@@ -384,7 +384,7 @@ export function HomePage() {
             Explore the <span className="gradient-text">hub</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            Everything you need to understand, build on, and use Medialane.
+            Everything needed to understand, build on, and use Medialane.
           </p>
         </div>
 

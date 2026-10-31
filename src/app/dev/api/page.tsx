@@ -115,7 +115,7 @@ export default function ApiReferencePage() {
 
       <DocH2 id="authentication" border>Authentication</DocH2>
       <p className="text-muted-foreground mb-3">
-        Every request carries an API key in the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-api-key</code> header. Keys are self-service from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a>. An account has one key; creating a new key replaces the current one.
+        Every request carries an API key in the <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">x-api-key</code> header. Keys are self-service from the <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a>. An account has one key; creating a new key replaces the current one.
       </p>
       <DocCodeBlock lang="bash">{`curl "${BASE}/v1/orders" \\
   -H "x-api-key: ${KEY}"
@@ -160,11 +160,11 @@ export default function ApiReferencePage() {
 
       <DocH2 id="credits" border>Credits &amp; Billing</DocH2>
       <p className="text-muted-foreground mb-3 text-base">
-        Credits are the billing unit: 1 credit = $0.01. Fund your balance with USDC on Starknet from your <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> or the <a href="/dev/agents" className="text-primary hover:underline">x402 flow</a>; credits appear within ~2 minutes and never expire. This table is live, pulled from the same endpoint every call is priced against (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/pricing</code>), never a hand-maintained copy:
+        Credits are the billing unit: 1 credit = $0.01. A balance is funded with USDC on Starknet from the <a href="https://portal.medialane.io/account" className="text-primary hover:underline">account dashboard</a> or the <a href="/dev/agents" className="text-primary hover:underline">x402 flow</a>; credits appear within ~2 minutes and never expire. This table is live, pulled from the same endpoint every call is priced against (<code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">GET /v1/pricing</code>), never a hand-maintained copy:
       </p>
       <PricingTable />
       <p className="text-muted-foreground text-base">
-        When credits run out you receive <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402 Payment Required</code> with an <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">X-Credits-Remaining: 0</code> header. An autonomous agent can detect the 402 and top up on its own; see <a href="/dev/agents" className="text-primary hover:underline">AI Agents</a>.
+        When credits run out the API returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402 Payment Required</code> with an <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">X-Credits-Remaining: 0</code> header. An autonomous agent can detect the 402 and top up on its own; see <a href="/dev/agents" className="text-primary hover:underline">AI Agents</a>.
       </p>
 
       <DocH2 id="health" border>Health</DocH2>
@@ -419,7 +419,7 @@ export default function ApiReferencePage() {
       <p className="text-muted-foreground text-base mb-3 mt-6">
         Deploying and launching a coin is two intents, one per on-chain transaction. The
         coin&apos;s address is only known from the deploy receipt, so launch is a separate call
-        made once you have it (same shape as create-tier → mint for tickets/club).
+        made once it is known (same shape as create-tier → mint for tickets/club).
       </p>
 
       <Endpoint
@@ -500,7 +500,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/coins/claim"
-        description="Claim a Creator Coin you created, to edit its profile. Checked on-chain against the coin's owner."
+        description="Claim a created Creator Coin, to edit its profile. Checked on-chain against the coin's owner."
         params={[
           { name: "coinAddress", type: "string", required: true, desc: "The coin contract" },
         ]}
@@ -1182,7 +1182,7 @@ export default function ApiReferencePage() {
         path="/v1/events"
         description="Open a Server-Sent Events stream. The server sends transfer, order.created, order.fulfilled, order.cancelled, and ping (keepalive every 15s) events. Automatically reconnects after 10 minutes via a reconnect event."
         params={[
-          { name: "apiKey", type: "string", required: true, desc: "Your API key (query param, required because EventSource cannot send custom headers)" },
+          { name: "apiKey", type: "string", required: true, desc: "The API key (query param, required because EventSource cannot send custom headers)" },
           { name: "since", type: "string", desc: "ISO 8601 timestamp; resume stream from this point in time" },
         ]}
         curl={`# Open the stream (cURL streams until closed)
@@ -1279,13 +1279,13 @@ const resumeSource = new EventSource(url, {
 
       <DocH2 id="portal" border>Portal (Self-service)</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Portal endpoints manage your account: API keys, credits, top-ups, launchpad runs. They act for a signed-in user, so every call also carries <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer</code> with a wallet sign-in token or an account session. Creating or deleting a key needs a recent sign-in (within 10 minutes). These calls are never metered.
+        Portal endpoints manage the account: API keys, credits, top-ups, launchpad runs. They act for a signed-in user, so every call also carries <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">Authorization: Bearer</code> with a wallet sign-in token or an account session. Creating or deleting a key needs a recent sign-in (within 10 minutes). These calls are never metered.
       </p>
 
       <Endpoint
         method="GET"
         path="/v1/portal/me"
-        description="Get your account: status and live credit balance."
+        description="Get the account: status and live credit balance."
         params={[]}
         curl={`curl "${BASE}/v1/portal/me" \\
   -H "x-api-key: ${KEY}" \\
@@ -1302,7 +1302,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/portal/credits/spend"
-        description="See what your credits were spent on: recent actions, totals grouped by action, and what you have been credited against what you have used."
+        description="See what credits were spent on: recent actions, totals grouped by action, and credits received against credits used."
         params={[]}
         curl={`curl "${BASE}/v1/portal/credits/spend" \\
   -H "x-api-key: ${KEY}" \\
@@ -1375,7 +1375,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/portal/credits/history"
-        description="Your last 20 credit deposits: asset, amount, credits added and status."
+        description="The last 20 credit deposits: asset, amount, credits added and status."
         curl={`curl "${BASE}/v1/portal/credits/history" \\
   -H "x-api-key: ${KEY}" \\
   -H "Authorization: Bearer <SIGN_IN_TOKEN>"`}
@@ -1389,7 +1389,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/portal/credits/check"
-        description="Credit a USDC deposit you already sent, by its transaction hash. Safe to repeat: a transfer is only counted once."
+        description="Credit a USDC deposit already sent, by its transaction hash. Safe to repeat: a transfer is only counted once."
         params={[
           { name: "txHash", type: "string", required: true, desc: "The deposit transaction" },
         ]}
@@ -1403,7 +1403,7 @@ const resumeSource = new EventSource(url, {
 
       <DocH3>Top-ups</DocH3>
       <p className="text-muted-foreground mb-6 text-base">
-        A top-up pays for credits with a method from <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">/methods</code>: create it, sign the challenge with the paying wallet, send the payment, then submit. Request bodies depend on the method; the SDK&apos;s <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getFundingMethods</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">createFunding</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getFundingChallenge</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">authorizeFunding</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">submitFunding</code> and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">cancelFunding</code> build them for you. An account can have any number of top-ups open.
+        A top-up pays for credits with a method from <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">/methods</code>: create it, sign the challenge with the paying wallet, send the payment, then submit. Request bodies depend on the method; the SDK&apos;s <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getFundingMethods</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">createFunding</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">getFundingChallenge</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">authorizeFunding</code>, <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">submitFunding</code> and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">cancelFunding</code> build them. An account can have any number of top-ups open.
       </p>
       <Endpoint
         method="GET"
@@ -1445,7 +1445,7 @@ const resumeSource = new EventSource(url, {
 
       <DocH3>Launchpad runs</DocH3>
       <p className="text-muted-foreground mb-6 text-base">
-        A run is a paid, multi-step launch (data tokenization, IP ticketing) for your account: create it with a spec, check out with credits or a settled top-up, then execute its steps. The SDK&apos;s <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">createLaunchpadRunsClient</code> wraps every step; the routes live under <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">/v1/portal/runs</code>.
+        A run is a paid, multi-step launch (data tokenization, IP ticketing) for an account: create it with a spec, check out with credits or a settled top-up, then execute its steps. The SDK&apos;s <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">createLaunchpadRunsClient</code> wraps every step; the routes live under <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">/v1/portal/runs</code>.
       </p>
       <Endpoint
         method="POST"
@@ -1509,7 +1509,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/collections/claim/challenge"
-        description="Path 2 (step 1): Request a SNIP-12 typed-data challenge for a contract address. Sign the returned typedData with your Starknet wallet, then submit to /verify."
+        description="Path 2 (step 1): Request a SNIP-12 typed-data challenge for a contract address. Sign the returned typedData with the Starknet wallet, then submit to /verify."
         params={[
           { name: "contractAddress", type: "string", required: true, desc: "The ERC-721 contract address to claim" },
           { name: "walletAddress", type: "string", required: true, desc: "The wallet that will sign the challenge" },
@@ -1550,8 +1550,8 @@ const resumeSource = new EventSource(url, {
         params={[
           { name: "contractAddress", type: "string", required: true, desc: "The ERC-721 contract address to claim" },
           { name: "email", type: "string", required: true, desc: "Email address for review correspondence" },
-          { name: "walletAddress", type: "string", desc: "Optional: your Starknet wallet address" },
-          { name: "notes", type: "string", desc: "Optional: context about your connection to the collection" },
+          { name: "walletAddress", type: "string", desc: "Optional: the Starknet wallet address" },
+          { name: "notes", type: "string", desc: "Optional: context about the connection to the collection" },
         ]}
         curl={`curl -X POST "${BASE}/v1/collections/claim/request" \\
   -H "x-api-key: ${KEY}" \\
@@ -1952,7 +1952,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="GET"
         path="/v1/remix-offers"
-        description="List remix offers for the authenticated user. Pass role=creator to see incoming offers (you are the original creator), or role=requester to see offers you made. Requires SIWS session JWT."
+        description="List remix offers for the authenticated user. Pass role=creator to see incoming offers (the caller is the original creator), or role=requester to see offers the caller made. Requires SIWS session JWT."
         params={[
           { name: "role", type: "string", required: true, desc: '"creator" or "requester"' },
           { name: "page", type: "number", desc: "Page (default: 1)" },
@@ -2143,7 +2143,7 @@ const resumeSource = new EventSource(url, {
 
       <DocH2 id="tickets-club" border>IP Tickets &amp; IP Club</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Ticket types and membership tiers are read from their contracts. Tiers are numbered from 1 with no gaps, so a count tells you every id; counts are never cached, since apps use them to choose the next id.
+        Ticket types and membership tiers are read from their contracts. Tiers are numbered from 1 with no gaps, so a count reveals every id; counts are never cached, since apps use them to choose the next id.
       </p>
       <Endpoint
         method="GET"
@@ -2354,7 +2354,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/intents/sponsorship-offer"
-        description="Create a sponsorship offer on an asset you own. Open bidding by default; pass specificSponsor to restrict acceptance to one invited address."
+        description="Create a sponsorship offer on an owned asset. Open bidding by default; pass specificSponsor to restrict acceptance to one invited address."
         params={[
           { name: "author", type: "string", required: true, desc: "Must currently own (nftContract, tokenId) on-chain" },
           { name: "nftContract", type: "string", required: true, desc: "Asset contract" },
@@ -3066,7 +3066,7 @@ const resumeSource = new EventSource(url, {
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">SNIP-12 Domain</h3>
       <p className="text-base text-muted-foreground mb-4">
-        Medialane uses SNIP-12 for off-chain message signing. If you are building your own signer, use the following domain:
+        Medialane uses SNIP-12 for off-chain message signing. A custom signer should use the following domain:
       </p>
       <DocCodeBlock>{`{
   "name": "Medialane",
@@ -3076,7 +3076,7 @@ const resumeSource = new EventSource(url, {
 
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Address Normalization</h3>
       <p className="text-base text-muted-foreground mb-4">
-        The API normalizes all addresses server-side to 64-character lowercase hex strings (prefixed with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">0x</code>). You can pass any valid Starknet address format (short, long, or mixed-case) and the API will handle normalization automatically. The <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">@medialane/sdk</code> also normalizes addresses before every API call.
+        The API normalizes all addresses server-side to 64-character lowercase hex strings (prefixed with <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">0x</code>). Any valid Starknet address format (short, long, or mixed-case) can be passed, and the API will handle normalization automatically. The <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">@medialane/sdk</code> also normalizes addresses before every API call.
       </p>
     </div>
   )

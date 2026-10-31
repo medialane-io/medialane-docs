@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const HUBS = [
   {
     label: "Launchpad",
-    desc: "Structure capital from your IP: collection drops, NFT editions, memberships, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
+    desc: "Structure capital from IP: collection drops, NFT editions, memberships, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
     href: "/learn/creator-launchpad",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Medialane Docs: Knowledge Hub",
     description:
-      "Everything you need to understand, build on, and use the Medialane platform.",
+      "Everything needed to understand, build on, and use the Medialane platform.",
     type: "website",
     url: "https://docs.medialane.io",
   },

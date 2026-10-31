@@ -20,19 +20,19 @@ export const metadata: Metadata = {
 const LICENSE_RULES = [
   {
     rule: "Permissionless by default",
-    desc: "Anyone can create a derivative of any asset; you don't need to own the parent or ask permission. Your remix is your own asset, minted into your own collection.",
+    desc: "Anyone can create a derivative of any asset; no one needs to own the parent or ask permission. A remix is its own asset, minted into the remixer's own collection.",
   },
   {
     rule: "Attribution embedded",
-    desc: "The parent asset's ID is written into your derivative's on-chain metadata automatically. The lineage is permanent and publicly verifiable; the contract records provenance, but it makes no permission claim.",
+    desc: "The parent asset's ID is written into the derivative's on-chain metadata automatically. The lineage is permanent and publicly verifiable; the contract records provenance, but it makes no permission claim.",
   },
   {
-    rule: "You set your own license",
-    desc: "You choose the license for your derivative. The parent's declared terms are surfaced for transparency, but Medialane doesn't force them onto your work; honoring them is your responsibility as the creator.",
+    rule: "The remixer sets the license",
+    desc: "The remixer chooses the license for the derivative. The parent's declared terms are surfaced for transparency, but Medialane doesn't force them onto the new work; honoring them is the responsibility of the remixer as creator.",
   },
   {
     rule: "No-derivatives → request a license",
-    desc: "If the parent declares Derivatives: Not Allowed, Medialane doesn't offer a direct remix in the app; instead, you can request a license from the creator. This is an application-layer courtesy that respects the creator's stated wishes; the contract itself stays fully permissionless.",
+    desc: "If the parent declares Derivatives: Not Allowed, Medialane doesn't offer a direct remix in the app; instead, a license can be requested from the creator. This is an application-layer courtesy that respects the creator's stated wishes; the contract itself stays fully permissionless.",
   },
 ];
 
@@ -46,8 +46,8 @@ export default function LearnRemixPage() {
           A remix is a new IP asset that builds on an existing one. Remixing is
           permissionless: anyone can build on any asset, and the relationship is
           recorded on-chain, publicly and immutably, with the parent staying linked to
-          your derivative. Need the creator&apos;s blessing or a paid license instead?
-          That&apos;s a separate, optional flow; see{" "}
+          the derivative. When the creator&apos;s blessing or a paid license is needed instead,
+          that is a separate, optional flow; see{" "}
           <Link href="/learn/programmable-licensing" className="text-primary hover:underline">Licensing</Link>.
         </p>
       </div>
@@ -82,8 +82,8 @@ export default function LearnRemixPage() {
               to follow.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed">
-              That record is tamper-proof. It is exactly what you need for legal
-              enforcement without encoding jurisdiction-specific law into immutable contracts.
+              That record is tamper-proof. It is exactly what legal
+              enforcement requires, without encoding jurisdiction-specific law into immutable contracts.
             </p>
           </div>
           <p className="text-base">
@@ -96,7 +96,7 @@ export default function LearnRemixPage() {
         <Section title="What Medialane Surfaces and Honors">
           <p>
             License terms are attributes on the parent token, readable by any third party.
-            Before minting a remix, the application surfaces the parent&apos;s terms so you can
+            Before minting a remix, the application surfaces the parent&apos;s terms so the remixer can
             make an informed choice. The platform stays neutral and permissionless: it only
             honors the creator&apos;s explicit no-derivatives declaration (at the app layer), and
             always embeds attribution:
@@ -114,13 +114,13 @@ export default function LearnRemixPage() {
         <Section title="Creating a Remix">
           <p>
             Navigate to any asset page and click <strong className="text-foreground">Remix</strong>.
-            The parent&apos;s license terms are shown for context before you proceed. Steps:
+            The parent&apos;s license terms are shown for context before proceeding. Steps:
           </p>
           <ol className="list-decimal list-inside space-y-1.5 text-sm text-muted-foreground">
-            <li>Upload your derivative work (image, audio, video, or other format).</li>
+            <li>Upload the derivative work (image, audio, video, or other format).</li>
             <li>Set metadata: name, description, IP type.</li>
-            <li>Choose the license for your remix; you decide your own terms.</li>
-            <li>Sign and mint; the parent asset&apos;s ID is embedded in your new token&apos;s metadata.</li>
+            <li>Choose the license for the remix; the remixer decides the terms.</li>
+            <li>Sign and mint; the parent asset&apos;s ID is embedded in the new token&apos;s metadata.</li>
           </ol>
           <p>
             Minting a remix carries the same gas model as any other IP asset mint.
@@ -136,14 +136,14 @@ export default function LearnRemixPage() {
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-base font-semibold text-foreground">Remix: free, permissionless</p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Mint your own attributed derivative. Free and permissionless: your work, your license.
+                Mint an attributed derivative. Free and permissionless: the remixer&apos;s work, the remixer&apos;s license.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-base font-semibold text-foreground">Licensing: optional, by agreement</p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Propose a license deal to the creator: your terms plus a fee. If they accept, the
-                licensed derivative is minted and listed for you. Use it to pay or credit the
+                Propose a license deal to the creator: proposed terms plus a fee. If the creator accepts, the
+                licensed derivative is minted and listed for the requester. Use it to pay or credit the
                 original creator, get a formal commercial license, or remix a work the creator
                 marked no-derivatives. See{" "}
                 <Link href="/learn/programmable-licensing" className="text-primary hover:underline">Programmable Licensing</Link>.
