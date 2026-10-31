@@ -27,7 +27,7 @@ const LAYERS = [
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
     role: "Contracts, state, immutable rules, on-chain events",
-    detail: "Deployed Cairo smart contracts on Starknet mainnet. Once deployed, no admin can change the rules. Every state change emits an event. This layer is the only truth; everything above it is a view.",
+    detail: "Deployed Cairo smart contracts on Starknet mainnet. Once deployed, the rules are fixed. Every state change emits an event. This layer is the source of truth; everything above it is a view.",
   },
   {
     num: "02",
@@ -36,7 +36,7 @@ const LAYERS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    role: "Event reducer: reads chain, writes PostgreSQL cache",
+    role: "Event reducer: reads chain, writes a queryable cache",
     detail: "The indexer is a deterministic function: it reads on-chain events and produces a queryable cache. Drop the database and it rebuilds from scratch. It adds nothing; it only reduces what the chain already recorded.",
   },
   {
@@ -156,13 +156,11 @@ export default function DocsArchitecturePage() {
             <p className="text-base text-muted-foreground leading-relaxed">
               If a piece of state can be reconstructed by replaying on-chain events and fetching
               off-chain metadata, it is protocol state. If it cannot (profiles, slugs, API keys,
-              experience points), it is platform state: honestly labeled as off-chain enrichment,
-              never confused with protocol guarantees.
+              experience points), it is platform state: labeled as off-chain enrichment.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed">
               The rebuild test is the architectural decision rule for every new piece of state
-              added to the system. Anything that fails it belongs to the platform layer, not
-              the protocol.
+              added to the system. Anything that fails it belongs to the platform layer.
             </p>
           </div>
         </Section>
@@ -192,8 +190,8 @@ export default function DocsArchitecturePage() {
                   "Immutable Cairo contracts on Starknet",
                   "Permissionless, no whitelist to mint or trade",
                   "Zero fees at contract level",
-                  "Events as the only source of truth",
-                  "Governed by math, not policy",
+                  "Events as the source of truth",
+                  "Governed by code",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <span className="text-brand-purple mt-0.5 shrink-0">✓</span>

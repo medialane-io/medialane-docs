@@ -24,7 +24,7 @@ export default function LearnCreatorCoinPage() {
         <h2 className="text-2xl font-bold">Creator Coins</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
           A Creator Coin is a creator&apos;s own coin, a standard token tied to creative work,
-          launched with a public liquidity pool that is locked forever. A community can
+          launched with a public liquidity pool that is permanently locked. A community can
           back the creator by holding it, while the creator stays in control of what it means.
         </p>
         <p className="text-base text-muted-foreground">
@@ -47,8 +47,8 @@ export default function LearnCreatorCoinPage() {
             locker contract, with only trading fees left collectible.
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
-            <li><strong>Fixed supply forever</strong>: minting is disabled the moment the coin is created; the contract exposes no mint function beyond that.</li>
-            <li><strong>Purchased at market price</strong>: the creator&apos;s allocation is capped at 10% and bought from the pool at the coin&apos;s own launch price, not minted for free.</li>
+            <li><strong>Fixed supply</strong>: minting is disabled the moment the coin is created; the contract exposes no mint function beyond that.</li>
+            <li><strong>Purchased at market price</strong>: the creator&apos;s allocation is capped at 10% and bought from the pool at the coin&apos;s own launch price.</li>
             <li><strong>Ownership renounced</strong>: control transfers away automatically at launch, verifiable on any explorer.</li>
             <li><strong>Creator-chosen pair</strong>: the creator sets both the launch price and the quote currency.</li>
             <li><strong>Tradable immediately</strong>: the market opens the moment the coin launches.</li>
@@ -64,7 +64,7 @@ export default function LearnCreatorCoinPage() {
             <li>
               <strong>The coin</strong>: name, symbol, a feature image, and a description.
               The image and description live on the coin&apos;s Medialane page and can be
-              edited anytime; the name and symbol are recorded on-chain forever.
+              edited anytime; the name and symbol are recorded on-chain.
             </li>
             <li>
               <strong>Economics</strong>: choose the total supply, the launch price, and the
@@ -100,10 +100,9 @@ export default function LearnCreatorCoinPage() {
           </p>
         </Section>
 
-        <Section title="What the contract guarantees">
+        <Section title="What the contract enforces">
           <p className="text-base text-muted-foreground">
-            Every guarantee below is enforced by the Creator Coin Factory contract itself,
-            verifiable on any Starknet explorer, not a claim made by Medialane.
+            Every item below is enforced by the Creator Coin Factory contract itself and verifiable on any Starknet explorer.
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
             <li>Fixed supply: minting is disabled the moment a coin is created, permanently.</li>

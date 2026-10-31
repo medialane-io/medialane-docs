@@ -130,8 +130,7 @@ export default function LearnIPTicketsPage() {
             <Link href="/learn/pop-protocol" className="text-primary hover:underline">POP Protocol</Link>{" "}
             badge. A ticket represents a claim to access, and access rights are
             legitimately resellable: think of them as the on-chain equivalent of a paper
-            ticket, except the resale market is transparent, the creator captures
-            royalties on every resale, and counterfeits are impossible.
+            ticket, with a transparent resale market and royalties to the creator on every resale.
           </p>
         </Section>
       </div>

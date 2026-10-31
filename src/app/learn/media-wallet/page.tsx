@@ -54,7 +54,7 @@ export default function LearnMediaWalletPage() {
         <p className="text-muted-foreground text-lg leading-relaxed">
           Media Wallet is Medialane&apos;s self-custody account standard: an audited
           account contract deployed on Starknet mainnet, paired with a passkey-based
-          key model. No seed phrase, no server-side signer, no key Medialane can access.
+          key model. The owner key is created on the owner&apos;s own device and stays there.
         </p>
       </div>
 
@@ -108,9 +108,7 @@ export default function LearnMediaWalletPage() {
             Every Media Wallet supports an optional guardian: a second Stark-curve key,
             typically another device&apos;s Media Wallet, registered from{" "}
             Settings → Account → Security &amp; Recovery. Once set, the guardian
-            co-signs every transaction alongside the owner key, not just recovery
-            actions, since that is what makes it a real safeguard against a stolen or
-            phished device rather than a passive fallback.
+            co-signs every transaction alongside the owner key, which makes it an active safeguard against a stolen or phished device.
           </p>
           <div className="bento-cell border border-brand-orange/20 bg-brand-orange/5 p-5 space-y-3">
             <div className="flex items-center gap-2">

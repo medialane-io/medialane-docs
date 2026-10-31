@@ -118,8 +118,7 @@ export default function FeesPage() {
           ))}
         </div>
         <p className="text-base">
-          On medialane.io, sponsorship is not a promise that every possible transaction is always
-          free. Abuse controls, unsupported flows, or future DAO policy may require users to pay
+          On medialane.io, sponsorship covers supported transactions. Abuse controls, unsupported flows, or future DAO policy may require users to pay
           Starknet gas there too.
         </p>
       </Section>

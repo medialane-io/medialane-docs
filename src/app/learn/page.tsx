@@ -130,7 +130,7 @@ const TOPICS = [
     href: "/learn/ip-tickets",
     icon: Ticket,
     title: "IP Tickets",
-    description: "Create verifiable on-chain tickets an audience can hold and trade, a real asset rather than a soulbound pass.",
+    description: "Create verifiable on-chain tickets an audience can hold and trade as ordinary Medialane assets.",
   },
   {
     href: "/learn/data-tokenization",

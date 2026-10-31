@@ -29,8 +29,7 @@ export default function ContractsPage() {
         <h2 className="text-2xl font-bold">Contracts</h2>
         <p className="text-muted-foreground leading-relaxed">
           All Medialane contracts are Cairo smart contracts deployed on Starknet Mainnet.
-          The current v3 contracts are fully immutable: no admin keys, upgrade paths,
-          or emergency pause. Rules are enforced by code.
+          The current v3 contracts are fully immutable, deployed without admin keys, upgrade paths, or an emergency pause. The code enforces the rules.
         </p>
       </div>
 
@@ -40,16 +39,13 @@ export default function ContractsPage() {
           <h3 className="font-semibold text-base">Immutable &amp; Permissionless by Design</h3>
         </div>
         <p className="text-base text-muted-foreground leading-relaxed">
-          The current contracts are fully immutable: no admin account, no{" "}
-          <code className="font-mono bg-muted px-1 py-0.5 rounded">UpgradeableComponent</code>, no owner role,
-          no emergency pause. Evolution happens by redeploy, not by upgrade; the class hashes
-          themselves cannot be rotated. The collection factories shipped fresh v0.2.0 / v0.3.0
+          The current contracts are fully immutable and are deployed without an admin account,{" "} <code className="font-mono bg-muted px-1 py-0.5 rounded">UpgradeableComponent</code>, owner role, or emergency pause. Evolution happens by redeploy, and the class hashes cannot be rotated. The collection factories shipped fresh v0.2.0 / v0.3.0
           deployments on 2026-05-22, and the redesigned marketplace venues
           (Medialane721 / Medialane1155) were redeployed as new immutable contracts on
           2026-05-31.
         </p>
         <div className="flex flex-wrap gap-2">
-          {["No admin keys", "No upgrade path", "No emergency pause", "Atomic swaps", "ZK-proven execution"].map((t) => (
+          {["Immutable", "Permissionless", "Atomic swaps", "ZK-proven execution"].map((t) => (
             <span key={t} className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
               {t}
             </span>

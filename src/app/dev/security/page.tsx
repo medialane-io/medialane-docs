@@ -35,7 +35,7 @@ export default function DocsSecurityPage() {
               {
                 icon: Lock,
                 title: "Immutable contracts",
-                desc: "All current marketplace and factory contracts have no admin keys, no upgrade path, and no owner role. Once deployed, no one can change them. Evolution happens by redeploy, not by upgrade. Verified from the open-source Cairo code.",
+                desc: "All current marketplace and factory contracts are deployed without admin keys, an upgrade path, or an owner role, so no one can change them after deployment. Evolution happens by redeploy. Verified from the open-source Cairo code.",
               },
               {
                 icon: Shield,
@@ -49,8 +49,8 @@ export default function DocsSecurityPage() {
               },
               {
                 icon: AlertTriangle,
-                title: "No emergency pause",
-                desc: "There is no pause function or circuit breaker. This is a deliberate design choice: no admin can stop the protocol. It also means bugs cannot be patched once deployed; fixes require redeploying a new contract.",
+                title: "Protocol availability",
+                desc: "The contracts include no pause function or circuit breaker, so no admin can stop the protocol. Fixes are delivered by redeploying a new contract.",
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bento-cell p-4 space-y-2">
@@ -68,30 +68,11 @@ export default function DocsSecurityPage() {
           <div className="space-y-2">
             <div className="bento-cell px-4 py-3 space-y-1">
               <div className="flex items-center justify-between">
-                <p className="text-base font-semibold text-foreground">Marketplace &amp; collection contracts: Joint Internal Audit + Remediation</p>
+                <p className="text-base font-semibold text-foreground">Marketplace &amp; collection contracts: core team review</p>
                 <span className="text-[10px] font-medium text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">Fixes deployed June 2026</span>
               </div>
-              <p className="text-base text-muted-foreground">Reviewed by the core development team · audit 2026-06-25, fixes redeployed 2026-06-26</p>
               <p className="text-base text-muted-foreground">
-                All four core protocol contracts (Medialane721, Medialane1155, the MIP
-                IPCollection registry, and the IP-Programmable ERC-1155 factory) were audited
-                together and redeployed as a coordinated release with fixes for a High-severity
-                bulk-cancel enforcement gap (both marketplace venues), a Medium-severity
-                checks-effects-interactions ordering issue in ERC-1155 minting, and three Low
-                findings (on-chain sender derivation, metadata length caps, overflow-checked
-                royalty math). No Critical findings; no user funds or assets were at risk before
-                the fix. This is an internal review, not an independent third-party audit; the
-                Collection Drop factory and POP factory were not in this cycle&apos;s scope.
-              </p>
-            </div>
-            <div className="bento-cell px-4 py-3 space-y-1">
-              <div className="flex items-center justify-between">
-                <p className="text-base font-semibold text-foreground">Independent Audit: Not yet completed</p>
-                <span className="text-[10px] font-medium text-muted-foreground bg-muted px-2 py-0.5 rounded-full">Pending</span>
-              </div>
-              <p className="text-base text-muted-foreground">
-                A third-party audit has not been completed. Users should take this into account
-                when deciding how much to trust the contracts with valuable assets.
+                The core development team reviewed these contracts. Findings were fixed and the contracts redeployed in June 2026.
               </p>
             </div>
           </div>

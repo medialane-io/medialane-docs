@@ -62,7 +62,7 @@ export default function DocsGovernancePage() {
             {[
               { title: "Sovereignty", desc: "Users own their data, their IP, and their assets, with no platform extracting value without consent." },
               { title: "Transparency", desc: "All governance is open and verifiable. Smart contracts are the source of truth." },
-              { title: "Innovation", desc: "Continuous protocol improvement, driven by the community rather than a central team." },
+              { title: "Innovation", desc: "Continuous protocol improvement, driven by the community." },
               { title: "Inclusivity", desc: "Anyone can participate: creators, collectors, developers, organizations, and AI agents." },
             ].map(({ title, desc }) => (
               <div key={title} className="bento-cell p-4 space-y-1.5">

@@ -74,7 +74,7 @@ const APPS = [
     url: "https://portal.medialane.io",
     label: "portal.medialane.io",
     description:
-      "Self-service developer portal for API and SDK access. Generate keys, monitor usage, and unlock MDLN-boosted quotas, fully permissionless, no approval required.",
+      "Self-service developer portal for API and SDK access. Generate keys, monitor usage, and use MDLN-boosted quotas. Open to anyone.",
     features: [
       "Create an API key instantly, no approval needed",
       "MDLN token multiplier: up to 2× quota for 5,000 MDLN holders",
@@ -214,7 +214,7 @@ const SC_GUARANTEES = [
     icon: Shield,
     title: "Contract-Executed",
     description:
-      "All critical operations (minting, trading, royalty distribution, licensing) execute inside audited Cairo smart contracts on Starknet. The outcome of a submitted transaction follows the code, not an operator decision.",
+      "All critical operations (minting, trading, royalty distribution, licensing) execute inside audited Cairo smart contracts on Starknet. The outcome of a submitted transaction is determined by the code.",
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
   },
@@ -222,7 +222,7 @@ const SC_GUARANTEES = [
     icon: Ban,
     title: "Censorship Resistance",
     description:
-      "Freezing assets, delisting NFTs, or blocking a transaction would require rewriting the chain itself, with no company, government, or platform operator positioned to do it. IP lives on a decentralised blockchain.",
+      "IP lives on a decentralised blockchain maintained by many independent participants, so no single operator controls it.",
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
   },
@@ -230,7 +230,7 @@ const SC_GUARANTEES = [
     icon: Unlock,
     title: "Permissionless",
     description:
-      "Anyone can mint, list, buy, or build on Medialane by calling the contract directly, with no whitelist or approval process sitting in front of it. The Mediolano protocol is open to every creator and developer on Earth.",
+      "Anyone can mint, list, buy, or build on Medialane by calling the contract directly, with no whitelist or approval process sitting in front of it. The Mediolano protocol is open to every creator and developer.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
@@ -392,8 +392,7 @@ export default function AppsPage() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary/70">Architecture</span>
           <h2 className="text-2xl font-bold">Smart Contract Based</h2>
           <p className="text-muted-foreground text-base max-w-2xl">
-            Every core operation on Medialane is executed by audited smart contracts on Starknet
-            rather than by servers we control. That shapes four properties of the platform.
+            Every core operation on Medialane is executed by audited smart contracts on Starknet. That gives the platform four properties.
           </p>
         </div>
 
@@ -430,8 +429,8 @@ export default function AppsPage() {
 
       <div className="space-y-6">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold">Built for Everyone</h2>
-          <p className="text-muted-foreground text-base">Whether the goal is to create, collect, or build, Medialane has dedicated tools.</p>
+          <h2 className="text-2xl font-bold">Creators, Collectors, and Builders</h2>
+          <p className="text-muted-foreground text-base">Medialane has dedicated tools for each.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

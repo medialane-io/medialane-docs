@@ -26,8 +26,8 @@ const AXIOMS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    medialane: "The v3 marketplace contracts have no admin keys and cannot be upgraded. What they do is determined by the deployed code, which is open source and verifiable by anyone. A listing, an order, a transfer: the rules are fixed at deployment.",
-    highlights: ["ZK-STARK proofs verified on Starknet", "Cairo 2 smart contracts open-sourced", "Immutable after deployment, no admin keys"],
+    medialane: "The v3 marketplace contracts are deployed without admin keys or an upgrade path. What they do is determined by the deployed code, which is open source and verifiable by anyone. A listing, an order, a transfer: the rules are fixed at deployment.",
+    highlights: ["ZK-STARK proofs verified on Starknet", "Cairo 2 smart contracts open-sourced", "Immutable after deployment"],
   },
   {
     num: "02",
@@ -43,23 +43,23 @@ const AXIOMS = [
   {
     num: "03",
     title: "Freedom in Protocol",
-    quote: "Participation is permissionless, innovation is open, censorship is impossible — guaranteed by technical design.",
+    quote: "Participation is permissionless and innovation is open, by technical design.",
     icon: Globe,
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    medialane: "No application, KYC, waitlist, or approval. Anyone with a wallet can mint on Medialane, and anyone who can write code can build on the Mediolano protocol. Permissionless here means the smart contract architecture enforces it directly.",
+    medialane: "Anyone with a wallet can mint on Medialane, and anyone who can write code can build on the Mediolano protocol. The smart contract architecture enforces this directly.",
     highlights: ["No whitelist or application to mint", "Open Mediolano protocol for builders", "Gasless on medialane.io, open access from the start"],
   },
   {
     num: "04",
     title: "Integrity by Design",
-    quote: "Records cannot be altered, actions are verifiable, and individuals control their own identities.",
+    quote: "Records are tamper-evident, and individuals control their own identities.",
     icon: FileCheck,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    medialane: "Every IP record minted on Medialane is anchored on Starknet. The timestamp, creator address, license terms, and provenance chain are tamper-proof, held by a self-sovereign wallet key, entirely outside Medialane's ability to revoke, freeze, or alter.",
+    medialane: "Every IP record minted on Medialane is anchored on Starknet. The timestamp, creator address, license terms, and provenance chain are tamper-evident and held by a self-sovereign wallet key, so Medialane cannot revoke or alter them.",
     highlights: ["Immutable IP records on Starknet", "Berne Convention-aligned copyright anchoring", "Self-custody: the holder keeps the keys and the NFTs"],
   },
   {
@@ -221,7 +221,7 @@ export default function IntegrityWebPage() {
         </p>
         <p className="text-muted-foreground leading-relaxed">
           STARK proofs also hold up against <strong className="text-foreground">quantum computers</strong>.
-          Their security rests on hash functions rather than elliptic curves, and no known quantum
+          Their security rests on hash functions, and no known quantum
           attack breaks a hash function. Because every Starknet account is a smart contract,
           accounts can also adopt quantum-resistant signatures without changing address.
         </p>
@@ -229,7 +229,7 @@ export default function IntegrityWebPage() {
           {[
             { label: "No trusted setup", desc: "Transparent by design" },
             { label: "Hash-based proofs", desc: "No known quantum attack breaks them" },
-            { label: "Trustless by design", desc: "Math replaces intermediaries" },
+            { label: "Verifiable by design", desc: "Proofs anyone can check" },
           ].map(({ label, desc }) => (
             <div key={label} className="bento-cell p-4 space-y-1">
               <p className="text-base font-semibold text-foreground">{label}</p>

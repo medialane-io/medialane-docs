@@ -41,7 +41,7 @@ export default function LearnMarketplacePage() {
 
       <div className="space-y-8">
 
-        <Section title="A Venue, Not a Custodian">
+        <Section title="The Marketplace Venue">
           <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
             <p className="font-bold text-foreground">The marketplace contract never holds assets.</p>
             <p className="text-base text-muted-foreground leading-relaxed">

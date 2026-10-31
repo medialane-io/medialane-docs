@@ -27,8 +27,7 @@ export default function ZeroKnowledgePage() {
         <p className="text-muted-foreground leading-relaxed">
           A zero-knowledge proof (ZKP) lets a prover show that something is true without revealing anything
           about <em>why</em> it is true. Imagine proving knowledge of a secret without ever saying the secret aloud.
-          This seemingly simple idea is the foundation of Starknet, and it has powerful implications for
-          privacy, scalability, and trust.
+          This idea is the foundation of Starknet, with implications for privacy, scalability, and trust.
         </p>
       </div>
 
@@ -42,7 +41,7 @@ export default function ZeroKnowledgePage() {
           about the path itself has been revealed.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">
-          Real ZK proofs work similarly, but with mathematics instead of mazes, and in milliseconds.
+          Real ZK proofs work similarly, using mathematics and taking milliseconds.
         </p>
       </div>
 
@@ -50,10 +49,10 @@ export default function ZeroKnowledgePage() {
         <h3 className="text-lg font-semibold">Why It Matters</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
-            { icon: Shield, title: "Validity", desc: "ZK proofs guarantee that a computation was performed correctly, so no one can submit fake transactions that violate the rules of the protocol." },
+            { icon: Shield, title: "Validity", desc: "ZK proofs verify that a computation was performed correctly, so transactions that violate the rules of the protocol are rejected." },
             { icon: Eye, title: "Privacy", desc: "The same proof mechanics let an application confirm ownership or eligibility without revealing the underlying data, proving a token is held without revealing which one." },
-            { icon: Zap, title: "Scalability", desc: "Starknet bundles thousands of transactions into one ZK-STARK proof verified on Ethereum. This makes gas fees tiny and throughput massive." },
-            { icon: Lock, title: "Security", desc: "ZK-STARKs (the variant used by Starknet) rely on hash functions, not elliptic curves, and no known quantum attack breaks them." },
+            { icon: Zap, title: "Scalability", desc: "Starknet bundles thousands of transactions into one ZK-STARK proof verified on Ethereum. This lowers gas fees and raises throughput." },
+            { icon: Lock, title: "Security", desc: "ZK-STARKs (the variant used by Starknet) rely on hash functions, and no known quantum attack breaks them." },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bento-cell p-5 space-y-3">
               <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">

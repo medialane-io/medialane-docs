@@ -126,9 +126,7 @@ export default function LearnIPSponsorshipPage() {
             The sponsorship contract is <strong className="text-foreground">zero-fee</strong>: it
             never holds funds and takes no cut of its own. A 1% fee applies when a bid or proposal
             is accepted, the same rate and platform-layer mechanism as the marketplace fee, and it
-            is routed to the creators fund. Because the fee lives at the platform layer rather than
-            inside the contract, the DAO can evolve it without a contract migration, and anyone
-            interacting with the contract directly is never forced to pay it.
+            is routed to the creators fund. Because the fee lives at the platform layer, outside the contract, the DAO can evolve it without a contract migration, and anyone interacting with the contract directly does not pay it.
           </p>
           <p className="text-base">
             See{" "}
@@ -143,11 +141,9 @@ export default function LearnIPSponsorshipPage() {
             ordinary transfer like any other Medialane asset, and can be resold on the
             marketplace with a royalty paid automatically to the original author. The length of
             the license and whether the author intended it to be resold are terms carried in
-            the license&apos;s own metadata, not conditions the contract enforces against a
-            transfer. This is the same soft-by-default approach every Medialane license takes:
+            the license&apos;s own metadata, and the contract does not enforce them against a transfer. This is the same soft-by-default approach every Medialane license takes:
             the chain is the source of truth for who holds the license and that payment
-            genuinely settled. Real-world terms like usage rights or resale intent stay
-            declarative record rather than a lock the contract holds a wallet to.
+            genuinely settled. Real-world terms like usage rights or resale intent stay declarative records.
           </p>
         </Section>
       </div>

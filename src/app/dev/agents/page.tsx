@@ -6,7 +6,7 @@ import { DocH2, DocH3, DocCodeBlock } from "@/components/docs/typography"
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/dev/agents" },
   title: "AI Agents | Medialane Docs",
-  description: "Build autonomous AI agents on Medialane: wallet identity, pay-per-use x402 micropayments in USDC on Starknet, and MDLN credit bonuses. No email, no OAuth, no human in the loop.",
+  description: "Build autonomous AI agents on Medialane: wallet identity, pay-per-use x402 micropayments in USDC on Starknet, and MDLN credit bonuses. Authentication is by wallet, and agents run autonomously.",
   openGraph: {
     title: "AI Agents | Medialane Docs",
     description: "Build autonomous AI agents on Medialane: wallet identity, pay-per-use x402 micropayments in USDC on Starknet, and MDLN credit bonuses.",
@@ -37,7 +37,7 @@ export default function AgentsPage() {
         <li><strong className="text-foreground">Identity</strong>: a Starknet wallet keypair.</li>
         <li><strong className="text-foreground">Payment</strong>: USDC on Starknet, paid per use. The wallet pays the API directly.</li>
         <li><strong className="text-foreground">Billing protocol</strong>: the open <strong className="text-foreground">x402</strong> standard, where an unfunded request returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> with machine-readable payment instructions, after which the agent pays and retries.</li>
-        <li><strong className="text-foreground">Pay only for what is used</strong>: no gate, no free tier. The first unfunded call returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> by design, which is the protocol working as intended.</li>
+        <li><strong className="text-foreground">Pay only for what is used</strong>: every call is metered. The first unfunded call returns <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">402</code> by design, which is the protocol working as intended.</li>
         <li><strong className="text-foreground">MDLN bonus</strong>: hold MDLN in the paying wallet and credits-per-USDC multiply automatically (see below).</li>
       </ul>
 

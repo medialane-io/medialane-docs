@@ -33,7 +33,7 @@ const HUBS = [
   },
   {
     label: "Marketplace",
-    desc: "Trade every tokenized asset: buy, sell, auction, license, and remix. Atomic settlement: payment and asset move in one transaction, or both revert. No escrow, no custody.",
+    desc: "Buy, sell, auction, license, and remix tokenized assets. Atomic settlement: payment and asset move in one transaction, or both revert.",
     href: "/learn/marketplace",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
@@ -59,7 +59,7 @@ const LAYERS = [
     icon: Lock,
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
-    desc: "Immutable Cairo contracts on Starknet. The only truth. No admin can change the rules.",
+    desc: "Immutable Cairo contracts on Starknet. The source of truth. The rules are fixed once deployed.",
   },
   {
     num: "02",
@@ -90,21 +90,21 @@ const LAYERS = [
 const DESIGN_CHOICES = [
   {
     icon: Lock,
-    title: "No admin keys",
+    title: "Fixed rules",
     desc: "The contracts ship without an owner role, an upgrade path, or an emergency pause. Once deployed, the rules are fixed, including for us.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
   {
     icon: Zap,
-    title: "No custody",
+    title: "Atomic settlement",
     desc: "Sales settle via atomic swap. The marketplace contract never holds buyer funds; the payment and the NFT transfer in the same transaction, or both revert.",
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
   },
   {
     icon: Unlock,
-    title: "No approval required",
+    title: "Open access",
     desc: "Any wallet can mint, list, make offers, and deploy collections. The contract level runs without a whitelist, an application process, or content moderation.",
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
@@ -149,14 +149,11 @@ export default function AboutPage() {
         <div className="relative space-y-5">
           <span className="pill-badge">About Medialane</span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
-            <span className="gradient-text">Built for creators,</span>
-            <br />on rules that don&apos;t change.
+            <span className="gradient-text">Medialane</span> <br />an open hub for monetizing IP.
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
             Medialane is a monetization hub for the creative economy. Humans, organizations,
-            and AI agents turn intellectual property into revenue streams, with full sovereignty
-            over their assets and identity. Open, permissionless, immutable. Built on Mediolano&apos;s
-            zero-fee tokenization and live on Starknet.
+            and AI agents turn intellectual property into revenue streams. Medialane is open and permissionless, runs on immutable contracts, builds on Mediolano&apos;s zero-fee tokenization, and is live on Starknet.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <a

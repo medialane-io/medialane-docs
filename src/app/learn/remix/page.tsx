@@ -154,11 +154,11 @@ export default function LearnRemixPage() {
 
         <Section title="Attribution on Immutable Records">
           <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
-            <p className="font-bold text-foreground">Attribution is embedded in the token, not the description.</p>
+            <p className="font-bold text-foreground">Attribution is embedded in the token.</p>
             <p className="text-base text-muted-foreground leading-relaxed">
               When attribution is required by the parent's license, the original creator's
               wallet address and asset ID are written into the derivative token's structured
-              metadata, not a freeform description field. This makes the attribution
+              metadata. This makes the attribution
               machine-readable, queryable, and as permanent as the token itself.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed">

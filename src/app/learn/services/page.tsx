@@ -167,7 +167,7 @@ export default function LearnServicesPage() {
           Every action on Medialane (minting, trading, dropping, issuing credentials) is
           powered by a service: a registered module that produces assets, venues, or both.
           Services are how the protocol grows. The set of ways to create and monetize expands
-          by registering a new service, keeping the list open-ended rather than fixed.
+          by registering a new service, so the list stays open-ended.
         </p>
       </div>
 
@@ -181,8 +181,7 @@ export default function LearnServicesPage() {
           </p>
           <p>
             This design means adding a new capability to Medialane (a new collection type,
-            a new marketplace, a new credential system) is a registry update, not a contract
-            rewrite. Existing integrations keep working without changes.
+            a new marketplace, a new credential system) is a registry update. Existing integrations keep working without changes.
           </p>
           <div className="bento-cell border border-brand-blue/20 bg-brand-blue/5 p-4 space-y-1">
             <p className="text-base font-semibold text-foreground">The service registry</p>
@@ -198,8 +197,7 @@ export default function LearnServicesPage() {
           <p>
             These are the services live on mainnet now. The catalog stays open-ended: new
             monetization primitives (commissions, auctions, subscriptions, and more) are
-            added as new services over time, each a registry entry rather than a protocol
-            change.
+            added as new services over time, each as a registry entry.
           </p>
           <div className="space-y-3">
             {SERVICES.map(({ id, label, icon: Icon, color, bg, border, desc, caps }) => (

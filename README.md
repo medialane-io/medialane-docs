@@ -1,8 +1,8 @@
 # Medialane Docs
 
-**Everything you need to create, collect and build on Medialane.**
+**Documentation for creating, collecting and building on Medialane.**
 
-[docs.medialane.io](https://docs.medialane.io) is the knowledge hub of the Medialane platform: the open rails for creators, collectors, businesses and builders, and the foundation for creator capital markets onchain.
+[docs.medialane.io](https://docs.medialane.io) is the knowledge hub of the Medialane platform.
 
 ## What's inside
 
