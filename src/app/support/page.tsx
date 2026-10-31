@@ -10,39 +10,39 @@ import { PageContainer } from "@/components/page-container";
 const FAQS = [
   {
     q: "How do I create a wallet on Medialane?",
-    a: "Enter your email to connect. If it's your first time, we'll create your account and send you straight to set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key). Medialane deploys a self-custody Starknet wallet sealed to that passkey automatically: gas-free, with nothing to write down or type as a password.",
+    a: "Enter an email to connect. On a first visit, an account is created and the flow continues straight to setting up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key). Medialane deploys a self-custody Starknet wallet sealed to that passkey automatically: gas-free, with nothing to write down or type as a password.",
   },
   {
     q: "I didn't receive my verification code.",
-    a: "Check your spam or junk folder first. Once 60 seconds have passed you can request a new code from the same screen. If it still doesn't arrive, email dao@medialane.org and we'll help you get signed in.",
+    a: "Check the spam or junk folder first. Once 60 seconds have passed, a new code can be requested from the same screen. If it still doesn't arrive, email dao@medialane.org for help getting signed in.",
   },
   {
     q: "Where is my private key stored? Is it safe?",
-    a: "Your private key is generated and encrypted directly in your browser, sealed to your device's passkey. It never leaves your device and is never sent to or stored on Medialane's servers; Medialane has no way to access or recover it on your behalf.",
+    a: "The private key is generated and encrypted directly in the browser, sealed to the device's passkey. It never leaves the device and is never sent to or stored on Medialane's servers; Medialane has no way to access or recover it.",
   },
   {
     q: "What happens if I lose my device or clear my browser data?",
-    a: "Each device keeps its own signing key, so the surest protection is to use Medialane on more than one. Approve a second device from Settings → Account → Your devices while you still have access, and either one can sign on its own from then on. You can also save your recovery key from Settings → Account, or register a guardian, both of which restore access if every device is gone. Set at least one of these up before you need it.",
+    a: "Each device keeps its own signing key, so the surest protection is to use Medialane on more than one. Approve a second device from Settings → Account → Your devices while access remains, and either one can sign on its own from then on. A recovery key can also be saved from Settings → Account, or a guardian registered, both of which restore access if every device is gone. At least one of these should be set up before it is needed.",
   },
   {
     q: "My NFT minted but doesn't appear in my Portfolio.",
-    a: "The Medialane indexer processes new blocks every ~6 seconds. If your asset doesn't appear within 1–2 minutes, try refreshing the page. If the issue persists after 5 minutes, contact support with your transaction hash.",
+    a: "The Medialane indexer processes new blocks every ~6 seconds. If an asset doesn't appear within 1–2 minutes, try refreshing the page. If the issue persists after 5 minutes, contact support with the transaction hash.",
   },
   {
     q: "I listed an asset but the listing isn't showing in the Marketplace.",
-    a: "Listings appear once the indexer processes the block containing your transaction. This typically takes under 30 seconds. If not visible after 2 minutes, check your Portfolio → Listings to confirm the listing was recorded.",
+    a: "Listings appear once the indexer processes the block containing the transaction. This typically takes under 30 seconds. If not visible after 2 minutes, check Portfolio → Listings to confirm the listing was recorded.",
   },
   {
     q: "Can I cancel a listing or offer?",
-    a: "Yes. Go to Portfolio → Listings (for your listings) or Portfolio → Offers sent (for your offers). Click Cancel on any active order. Cancellation is an onchain transaction and may require a small gas fee.",
+    a: "Yes. Go to Portfolio → Listings (for listings) or Portfolio → Offers sent (for offers). Click Cancel on any active order. Cancellation is an onchain transaction and may require a small gas fee.",
   },
   {
     q: "My session expired. Do I lose my assets?",
-    a: "No. Sign-in sessions expire after 24 hours for security but have no effect on your assets or wallet. You'll just be prompted for a quick passkey confirmation to start a new session and continue trading.",
+    a: "No. Sign-in sessions expire after 24 hours for security but have no effect on assets or wallet. A quick passkey confirmation starts a new session to continue trading.",
   },
   {
     q: "What currencies does Medialane support?",
-    a: "Medialane supports STRK, ETH, USDC, USDT, and WBTC on Starknet mainnet for marketplace listings and offers. You can filter the marketplace by token and set prices in any supported currency.",
+    a: "Medialane supports STRK, ETH, USDC, USDT, and WBTC on Starknet mainnet for marketplace listings and offers. The marketplace can be filtered by token, and prices can be set in any supported currency.",
   },
   {
     q: "How do royalties work?",
@@ -50,15 +50,15 @@ const FAQS = [
   },
   {
     q: "I think someone copied my work. How do I report it?",
-    a: "Send a DMCA notice to dmca@medialane.io with links to the infringing content, your original work, and a statement of ownership. We aim to respond within 3 business days.",
+    a: "Send a DMCA notice to dmca@medialane.io with links to the infringing content, the original work, and a statement of ownership. We aim to respond within 3 business days.",
   },
   {
     q: "What is the POP Protocol and how do I claim a credential?",
-    a: "The POP Protocol issues soulbound (non-transferable) NFTs as proof-of-participation for events, communities, and milestones. To claim one, go to Launchpad → POP Protocol, find an active event you participated in, and click Claim. It's free, gas is sponsored. Claimed credentials appear in your Portfolio.",
+    a: "The POP Protocol issues soulbound (non-transferable) NFTs as proof-of-participation for events, communities, and milestones. To claim one, go to Launchpad → POP Protocol, find an active event that was attended, and click Claim. It's free, gas is sponsored. Claimed credentials appear in the Portfolio.",
   },
   {
     q: "How do I participate in a Collection Drop?",
-    a: "Go to Launchpad → Collection Drop to see active and upcoming drops. Click Mint on a drop you're eligible for and confirm with your passkey, and the NFT is sent to your wallet. Drop eligibility is enforced onchain; if your wallet is on the allowlist, you'll see the option automatically.",
+    a: "Go to Launchpad → Collection Drop to see active and upcoming drops. Click Mint on an eligible drop and confirm with the passkey, and the NFT is sent to the wallet. Drop eligibility is enforced onchain; a wallet on the allowlist sees the option automatically.",
   },
   {
     q: "Is Medialane available worldwide?",
@@ -111,8 +111,8 @@ export default function SupportPage() {
           <h1 className="text-3xl font-bold">Support</h1>
         </div>
         <p className="text-muted-foreground leading-relaxed">
-          Check the FAQ below for quick answers. If you can&apos;t find what you&apos;re looking for,
-          submit a support ticket and we&apos;ll get back to you.
+          Check the FAQ below for quick answers. If an answer isn&apos;t listed,
+          submit a support ticket for a reply.
         </p>
       </div>
 
@@ -141,7 +141,7 @@ export default function SupportPage() {
                 id="support-name"
                 name="name"
                 required
-                placeholder="Your name"
+                placeholder="Name"
                 className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               />
             </div>
@@ -152,7 +152,7 @@ export default function SupportPage() {
                 name="email"
                 type="email"
                 required
-                placeholder="you@example.com"
+                placeholder="name@example.com"
                 className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               />
             </div>
@@ -181,7 +181,7 @@ export default function SupportPage() {
 
           <div className="space-y-1.5">
             <label htmlFor="support-message" className="text-sm font-medium">
-              Describe your issue
+              Describe the issue
             </label>
             <textarea
               id="support-message"

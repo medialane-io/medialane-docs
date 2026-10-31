@@ -48,7 +48,7 @@ const AXIOMS = [
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
     border: "border-brand-orange/20",
-    medialane: "No application, KYC, waitlist, or approval. If you have a wallet, you can mint on Medialane. If you can write code, you can build on the Mediolano protocol. Permissionless here means the smart contract architecture enforces it directly.",
+    medialane: "No application, KYC, waitlist, or approval. Anyone with a wallet can mint on Medialane, and anyone who can write code can build on the Mediolano protocol. Permissionless here means the smart contract architecture enforces it directly.",
     highlights: ["No whitelist or application to mint", "Open Mediolano protocol for builders", "Gasless on medialane.io, open access from the start"],
   },
   {
@@ -59,8 +59,8 @@ const AXIOMS = [
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    medialane: "Every IP record minted on Medialane is anchored on Starknet. The timestamp, creator address, license terms, and provenance chain are tamper-proof, held by your self-sovereign wallet key, entirely outside Medialane's ability to revoke, freeze, or alter.",
-    highlights: ["Immutable IP records on Starknet", "Berne Convention-aligned copyright anchoring", "Self-custody: your keys, your NFTs"],
+    medialane: "Every IP record minted on Medialane is anchored on Starknet. The timestamp, creator address, license terms, and provenance chain are tamper-proof, held by a self-sovereign wallet key, entirely outside Medialane's ability to revoke, freeze, or alter.",
+    highlights: ["Immutable IP records on Starknet", "Berne Convention-aligned copyright anchoring", "Self-custody: the holder keeps the keys and the NFTs"],
   },
   {
     num: "05",
@@ -81,7 +81,7 @@ const AXIOMS = [
     color: "text-primary",
     bg: "bg-primary/10",
     border: "border-primary/20",
-    medialane: "ZK-STARK proofs let Medialane verify ownership, license compliance, and transaction validity without exposing private information. Selective disclosure (proving what you need to prove, revealing nothing more) is the cryptographic foundation of creator sovereignty.",
+    medialane: "ZK-STARK proofs let Medialane verify ownership, license compliance, and transaction validity without exposing private information. Selective disclosure (proving only what needs to be proved, revealing nothing more) is the cryptographic foundation of creator sovereignty.",
     highlights: ["ZK proofs for license verification without exposure", "Selective disclosure of IP metadata", "Privacy-preserving credential systems via POP Protocol"],
   },
   {
@@ -244,7 +244,7 @@ export default function IntegrityWebPage() {
           Ready to build on the Integrity Web?
         </h2>
         <p className="text-muted-foreground max-w-xl mx-auto">
-          Mint your IP, build on the Mediolano protocol, or start with the API.
+          Mint IP, build on the Mediolano protocol, or start with the API.
           No approval required.
         </p>
         <div className="flex flex-wrap justify-center gap-3 pt-2">

@@ -127,8 +127,8 @@ export default function DocsGovernancePage() {
           </p>
           <p>
             This is a deliberate philosophical commitment rooted in the Mediolano
-            constitution: whether you are a human creator, an organization, or an
-            autonomous intelligence, your contributions to the Integrity Web deserve
+            constitution: whether a contributor is a human creator, an organization, or an
+            autonomous intelligence, contributions to the Integrity Web deserve
             recognition and protection.
           </p>
         </Section>

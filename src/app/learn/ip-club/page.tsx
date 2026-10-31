@@ -77,7 +77,7 @@ export default function LearnIPClubPage() {
               <p className="text-base text-muted-foreground">
                 A membership card is a standard tradeable asset: buy one on the marketplace,
                 receive one directly from the creator, or resell it like any collection item.
-                Holding a card inside its tier&apos;s validity window is what makes you a
+                Holding a card inside its tier&apos;s validity window is what makes a holder a
                 member; there is no separate join or leave action.
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function LearnIPClubPage() {
         <Section title="Creating a Club">
           <p>
             From <strong className="text-foreground">Launchpad → IP Club → Create</strong>,
-            deploy your club&apos;s collection with a name, symbol, and cover image; the
+            deploy the club&apos;s collection with a name, symbol, and cover image; the
             same factory pattern used for IP Collections and IP Tickets. Inside the
             collection, define one or more membership tiers: a supply cap, an optional
             validity window, a royalty rate, and the tier&apos;s own image and metadata.
@@ -108,7 +108,7 @@ export default function LearnIPClubPage() {
           <p>
             Unlike a <Link href="/learn/pop-protocol" className="text-primary hover:underline">POP Protocol</Link>{" "}
             credential, a club membership is <strong className="text-foreground">not</strong>{" "}
-            soulbound: it lives in your Portfolio and can be sold, gifted, or transferred
+            soulbound: it lives in the holder&apos;s Portfolio and can be sold, gifted, or transferred
             like any collection item. Membership follows the card: whoever holds a valid card
             inside its tier&apos;s window is the member. Verification is a public, on-chain
             read (<code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">is_member</code>{" "}

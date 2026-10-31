@@ -39,15 +39,15 @@ export default function LearnCollectionDropPage() {
 
       <div className="space-y-8">
         <Section title="Launching a drop">
-          <p>Anyone can launch a drop from <strong className="text-foreground">Launchpad → Collection Drop</strong>. You set:</p>
+          <p>Anyone can launch a drop from <strong className="text-foreground">Launchpad → Collection Drop</strong>. The creator sets:</p>
           <div className="space-y-2">
             {[
               ["Edition or collection", "One artwork minted as numbered copies, or many unique items — each item becomes its own token."],
               ["Licensing", "License terms written into every token's metadata."],
-              ["Price", "Free, or a price in a supported token. A platform fee is added at mint and shown to collectors before they confirm; you receive the price."],
+              ["Price", "Free, or a price in a supported token. A platform fee is added at mint and shown to collectors before they confirm; the creator receives the price."],
               ["Sale window", "Open now or from a date; close on a date or never."],
               ["Per-wallet limit", "How many one wallet can mint, or unlimited."],
-              ["Who can mint", "Everyone, or only the wallets on your list. Listed wallets get a personal claim link."],
+              ["Who can mint", "Everyone, or only the wallets on the creator&apos;s list. Listed wallets get a personal claim link."],
             ].map(([title, desc]) => (
               <div key={title} className="bento-cell px-4 py-3 space-y-1">
                 <p className="text-base font-semibold text-foreground">{title}</p>
@@ -61,8 +61,8 @@ export default function LearnCollectionDropPage() {
         <Section title="Collecting">
           <p>
             Open a drop to see its status, supply, price and time left. Choose how many to mint (up to 50 at once,
-            within the drop's limits) and confirm; the tokens arrive in your wallet. For a list-only drop, use the
-            claim link you were sent. Payment goes straight to the creator. On medialane.io, gas is sponsored.
+            within the drop's limits) and confirm; the tokens arrive in the collector&apos;s wallet. For a list-only drop, the
+            claim link that was sent is used. Payment goes straight to the creator. On medialane.io, gas is sponsored.
           </p>
         </Section>
 

@@ -33,7 +33,7 @@ const APPS = [
       "Mint & protect IP as NFTs with programmable licenses",
       "List, buy, and sell in the peer-to-peer marketplace",
       "See every price in USD, side by side with the asset's listed currency",
-      "Buy with any token in your wallet — the right amount is exchanged automatically as part of the purchase",
+      "Buy with any token held — the right amount is exchanged automatically as part of the purchase",
       "Launch POP Protocol credential campaigns",
       "Deploy collection drops with on-chain allowlists",
       "Gasless: passkey sign-in, no seed phrases",
@@ -54,9 +54,9 @@ const APPS = [
       "Web3-native interface for power users and self-custody advocates. Connect any Starknet wallet and interact directly with all platform smart contracts.",
     features: [
       "Connect any Starknet wallet",
-      "Full self-custody: your keys, your assets",
+      "Full self-custody: the holder keeps the keys and the assets",
       "See every price in USD, side by side with the asset's listed currency",
-      "Buy with any token in your wallet — the right amount is exchanged automatically as part of the purchase",
+      "Buy with any token held — the right amount is exchanged automatically as part of the purchase",
       "Direct smart contract interaction",
       "Session key management and permissions",
       "Access all platform features on-chain",
@@ -76,7 +76,7 @@ const APPS = [
     description:
       "Self-service developer portal for API and SDK access. Generate keys, monitor usage, and unlock MDLN-boosted quotas, fully permissionless, no approval required.",
     features: [
-      "Create your API key instantly, no approval needed",
+      "Create an API key instantly, no approval needed",
       "MDLN token multiplier: up to 2× quota for 5,000 MDLN holders",
       "USDC credit deposits for autonomous AI agent billing (HTTP 402)",
       "Usage dashboard: quota, multiplier, credit balance",
@@ -173,7 +173,7 @@ const AUDIENCES = [
       "Mint any creative work as an IP NFT",
       "Set programmable licenses and royalty rates",
       "Launch collections and timed drops",
-      "Issue POP credentials to your community",
+      "Issue POP credentials to a community",
       "No gas fees, gasless by default",
     ],
     cta: { label: "Start creating", href: "https://medialane.io", external: true },
@@ -222,7 +222,7 @@ const SC_GUARANTEES = [
     icon: Ban,
     title: "Censorship Resistance",
     description:
-      "Freezing assets, delisting NFTs, or blocking a transaction would require rewriting the chain itself, with no company, government, or platform operator positioned to do it. Your IP lives on a decentralised blockchain.",
+      "Freezing assets, delisting NFTs, or blocking a transaction would require rewriting the chain itself, with no company, government, or platform operator positioned to do it. IP lives on a decentralised blockchain.",
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
   },
@@ -238,7 +238,7 @@ const SC_GUARANTEES = [
     icon: Crown,
     title: "Self-Custody",
     description:
-      "Your NFTs exist in your wallet, not on Medialane's servers. Your wallet key is what signs for them. If Medialane's frontend went offline, your assets would remain on-chain and transferable through any other interface.",
+      "NFTs exist in the owner's wallet, not on Medialane's servers. The wallet key is what signs for them. If Medialane's frontend went offline, the assets would remain on-chain and transferable through any other interface.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
   },
@@ -431,7 +431,7 @@ export default function AppsPage() {
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">Built for Everyone</h2>
-          <p className="text-muted-foreground text-base">Whether you create, collect, or build, Medialane has dedicated tools for you.</p>
+          <p className="text-muted-foreground text-base">Whether the goal is to create, collect, or build, Medialane has dedicated tools.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -478,7 +478,7 @@ export default function AppsPage() {
       <div className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold">SDK & Developer Tools</h2>
-          <p className="text-muted-foreground text-base">Everything you need to build on top of the Medialane platform.</p>
+          <p className="text-muted-foreground text-base">Everything needed to build on top of the Medialane platform.</p>
         </div>
 
         <div className="bento-cell p-6 space-y-6">
@@ -490,7 +490,7 @@ export default function AppsPage() {
               <p className="font-bold">@medialane/sdk</p>
               <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
                 Open-source TypeScript SDK. Query assets, manage minting, interact with the marketplace,
-                and build your own interfaces on top of the Mediolano protocol. MIT licensed.
+                and build interfaces on top of the Mediolano protocol. MIT licensed.
               </p>
             </div>
           </div>

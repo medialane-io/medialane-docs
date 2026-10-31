@@ -24,20 +24,12 @@ const content: FlowContent = {
   ),
   gets: [
     "Each ticket type has its own supply and a start and end time",
-    "Every guest on your list receives a ticket",
-    "You choose per ticket whether it can be passed on or stays with its original holder",
+    "Every guest on the list receives a ticket",
+    "Each ticket is set to be passed on or stay with its original holder or stays with its original holder",
     "Tickets are verified against the chain directly, by anyone",
     "Every ticket carries its terms, including an AI policy, in its record",
-    "Issue new tickets into a group you already created",
+    "Issue new tickets into an existing group",
   ],
-  steps: [
-    { title: "Choose a ticket group", desc: "Use an existing group, or name a new one." },
-    { title: "Create the ticket", desc: "Add a name, artwork, a supply and the validity window." },
-    { title: "Add your guests", desc: "Paste or upload the guest list." },
-    { title: "Pay and run", desc: "Pay once for the run, then approve each batch with your passkey." },
-  ],
-  resume: "A run is saved as you go. If a batch is interrupted, you resume where it stopped.",
-  portalHref: "https://portal.medialane.io/launchpad/ip-ticketing",
 };
 
 export default function LearnIPTicketingPage() {

@@ -52,12 +52,12 @@ export default function ProgrammableIPPage() {
             {
               icon: FileText,
               title: "License terms as structured data",
-              desc: "When you mint an NFT, you attach a license (commercial use, derivative rights, AI training policy, geographic scope) encoded as structured metadata in the token. The terms are permanent and travel with the token through every transfer.",
+              desc: "Minting an NFT attaches a license (commercial use, derivative rights, AI training policy, geographic scope) encoded as structured metadata in the token. The terms are permanent and travel with the token through every transfer.",
             },
             {
               icon: Code2,
               title: "On-chain authorship record",
-              desc: "Minting creates an immutable, timestamped record on Starknet: your wallet address, the content hash, and the time of creation. This is publicly verifiable evidence of when a work existed and who published it.",
+              desc: "Minting creates an immutable, timestamped record on Starknet: the wallet address, the content hash, and the time of creation. This is publicly verifiable evidence of when a work existed and who published it.",
             },
             {
               icon: Shield,

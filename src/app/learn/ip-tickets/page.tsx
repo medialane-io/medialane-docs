@@ -5,15 +5,15 @@ import { Section } from "@/components/docs";
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/ip-tickets" },
   title: "IP Tickets | Learn | Medialane",
-  description: "Learn how IP Tickets let creators issue verifiable on-chain tickets: mint them to your audience, trade them like any collection.",
+  description: "Learn how IP Tickets let creators issue verifiable on-chain tickets: mint them to an audience, trade them like any collection.",
   openGraph: {
     title: "IP Tickets | Learn | Medialane",
-    description: "Learn how IP Tickets let creators issue verifiable on-chain tickets: mint them to your audience, trade them like any collection.",
+    description: "Learn how IP Tickets let creators issue verifiable on-chain tickets: mint them to an audience, trade them like any collection.",
     url: "https://docs.medialane.io/learn/ip-tickets",
   },
   twitter: {
     title: "IP Tickets | Learn | Medialane",
-    description: "Learn how IP Tickets let creators issue verifiable on-chain tickets: mint them to your audience, trade them like any collection.",
+    description: "Learn how IP Tickets let creators issue verifiable on-chain tickets: mint them to an audience, trade them like any collection.",
   },
 };
 
@@ -42,8 +42,8 @@ export default function LearnIPTicketsPage() {
       <div className="space-y-8">
         <Section title="What is an IP Ticket?">
           <p>
-            An IP Ticket is a token issued from a collection your wallet owns. Each
-            ticket you create has its own supply, image and details, an optional
+            An IP Ticket is a token issued from a collection owned by the creator&apos;s wallet. Each
+            ticket created has its own supply, image and details, an optional
             royalty, and an optional <strong className="text-foreground">validity
             window</strong>: valid from a date, until a date, or always. Unlike a
             soulbound credential, a ticket is <strong className="text-foreground">fully
@@ -55,7 +55,7 @@ export default function LearnIPTicketsPage() {
             <li>Concert, conference, or screening admission</li>
             <li>Workshop or course seats</li>
             <li>Early-access passes to a future drop</li>
-            <li>Time-boxed access to anything you run</li>
+            <li>Time-boxed access to anything a creator runs</li>
           </ul>
         </Section>
 
@@ -71,9 +71,9 @@ export default function LearnIPTicketsPage() {
               <p className="text-base font-semibold text-foreground">Creators</p>
               <p className="text-base text-muted-foreground">
                 Any creator can create a tickets collection, no approval required. The
-                collection is a contract owned by your wallet; inside it you create
+                collection is a contract owned by the creator&apos;s wallet; inside it the creator creates
                 tickets (each with its supply and validity window) and mint them
-                directly to your audience&apos;s wallets. Everything a ticket is lives
+                directly to the audience&apos;s wallets. Everything a ticket is lives
                 on-chain and is permanent once created.
               </p>
             </div>
@@ -92,11 +92,11 @@ export default function LearnIPTicketsPage() {
         <Section title="Creating and Minting Tickets">
           <p>
             From <strong className="text-foreground">Launchpad → IP Tickets → Create</strong>,
-            publish your tickets collection with a name, symbol, and cover image; the
+            publish a tickets collection with a name, symbol, and cover image; the
             collection&apos;s identity is embedded on-chain in the same transaction. The
-            collection then lives at its own collection page, where you create tickets
-            and mint them to attendees with one featured action. Each ticket&apos;s
-            image, supply, royalty, and validity window are set when you create it and
+            collection then lives at its own collection page, where tickets are created
+            and minted to attendees with one featured action. Each ticket&apos;s
+            image, supply, royalty, and validity window are set when it is created and
             never change afterwards.
           </p>
         </Section>

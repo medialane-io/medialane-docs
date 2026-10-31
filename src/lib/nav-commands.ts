@@ -42,7 +42,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: "learn-certificate-emission",    label: "Certificate Emission",    icon: Award,      href: "/learn/certificate-emission",     keywords: ["certificate", "credential", "recipients", "graduates"] },
       { id: "learn-ip-sponsorship",          label: "IP Sponsorship",          icon: Handshake,  href: "/learn/ip-sponsorship",           keywords: ["sponsor", "sponsorship", "bid", "license"] },
       { id: "learn-remix",                   label: "Remix & Derivatives",     icon: GitBranch,  href: "/learn/remix",                    keywords: ["remix", "fork", "attribution"] },
-      { id: "learn-protect-your-ip",         label: "Protect Your IP",         icon: Shield,     href: "/learn/protect-your-ip",          keywords: ["protect", "rights", "evidence"] },
+      { id: "learn-protect-your-ip",         label: "Protecting IP",            icon: Shield,     href: "/learn/protect-your-ip",          keywords: ["protect", "rights", "evidence"] },
       { id: "learn-programmable-licensing",  label: "Programmable Licensing",  icon: FileText,   href: "/learn/programmable-licensing",   keywords: ["license", "cc", "license type"] },
       { id: "learn-services",                label: "Services",                icon: Layers,     href: "/learn/services",                 keywords: ["service id", "registry", "capabilities"] },
       { id: "learn-identity",                label: "Identity",                icon: User,       href: "/learn/identity",                 keywords: ["account", "wallet", "profile"] },

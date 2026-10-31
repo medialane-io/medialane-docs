@@ -36,7 +36,7 @@ export default function BlockchainPage() {
           {[
             { icon: Layers, title: "Immutability", desc: "Once a record is added to a blockchain, it cannot be changed or deleted. Every transaction, every ownership transfer, every license grant is permanent and auditable." },
             { icon: Globe, title: "Decentralization", desc: "No single party controls the blockchain. Thousands of independent nodes validate and store the data, meaning no government, company, or individual can censor or alter it." },
-            { icon: Shield, title: "Trustlessness", desc: "You don't need to trust any party; you trust the math. Smart contracts execute exactly as written, with no possibility of last-minute changes or hidden clauses." },
+            { icon: Shield, title: "Trustlessness", desc: "No party needs to be trusted; the math is what is trusted. Smart contracts execute exactly as written, with no possibility of last-minute changes or hidden clauses." },
             { icon: Clock, title: "Transparency", desc: "All transactions are publicly visible. Anyone can verify who owns what, when a transfer happened, and what licenses are attached, without asking anyone for permission." },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bento-cell p-5 space-y-3">
@@ -53,12 +53,12 @@ export default function BlockchainPage() {
       <div className="bento-cell p-6 space-y-4">
         <h3 className="font-semibold">How It Works</h3>
         <p className="text-base text-muted-foreground leading-relaxed">
-          When you mint an NFT on Medialane, a record is written to the Starknet blockchain stating:
+          When an NFT is minted on Medialane, a record is written to the Starknet blockchain stating:
           &ldquo;This wallet address is the owner of this IP asset, registered at this timestamp, with these license terms.&rdquo;
           That record is cryptographically linked to every record before it, forming an unbroken chain of history.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed">
-          When you later sell or license the asset, another record is appended: &ldquo;The previous owner transferred
+          When the asset is later sold or licensed, another record is appended: &ldquo;The previous owner transferred
           ownership to this new wallet address.&rdquo; The full provenance history is always visible and cannot be falsified.
         </p>
       </div>

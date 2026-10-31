@@ -23,9 +23,9 @@ export default function DeveloperHubPage() {
         <p className="text-muted-foreground leading-relaxed">
           Medialane is an open protocol: a set of immutable contracts and the SDK and API that
           expose them. Anyone can build on it without asking, and everything the apps do is
-          available to you and to autonomous agents on the same terms, including paying per call
+          available to people and to autonomous agents on the same terms, including paying per call
           with x402 micropayments in USDC. The contract is the only
-          authority; every claim here is something you can verify on-chain.
+          authority; every claim here can be verified on-chain.
         </p>
       </div>
 

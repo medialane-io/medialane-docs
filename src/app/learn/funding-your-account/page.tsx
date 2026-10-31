@@ -4,16 +4,16 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/funding-your-account" },
-  title: "Funding Your Account | Learn | Medialane",
-  description: "How to get tokens into your Medialane account on Starknet: buying with a card through an on-ramp, withdrawing from an exchange, or moving assets in from another chain.",
+  title: "Funding an Account | Learn | Medialane",
+  description: "How to get tokens into an account on Starknet: buying with a card through an on-ramp, withdrawing from an exchange, or moving assets in from another chain.",
   openGraph: {
-    title: "Funding Your Account | Learn | Medialane",
-    description: "How to get tokens into your Medialane account on Starknet: buying with a card through an on-ramp, withdrawing from an exchange, or moving assets in from another chain.",
+    title: "Funding an Account | Learn | Medialane",
+    description: "How to get tokens into an account on Starknet: buying with a card through an on-ramp, withdrawing from an exchange, or moving assets in from another chain.",
     url: "https://docs.medialane.io/learn/funding-your-account",
   },
   twitter: {
-    title: "Funding Your Account | Learn | Medialane",
-    description: "How to get tokens into your Medialane account on Starknet: buying with a card through an on-ramp, withdrawing from an exchange, or moving assets in from another chain.",
+    title: "Funding an Account | Learn | Medialane",
+    description: "How to get tokens into an account on Starknet: buying with a card through an on-ramp, withdrawing from an exchange, or moving assets in from another chain.",
   },
 };
 
@@ -21,11 +21,11 @@ export default function LearnFundingYourAccountPage() {
   return (
     <div className="space-y-10">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">Funding Your Account</h2>
+        <h2 className="text-2xl font-bold">Funding an Account</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Your Medialane account is a real self-custody address on Starknet. To send,
-          hold, or spend tokens with it, that address needs to actually hold something.
-          Here are the common ways to get tokens onto Starknet and into your account.
+          An account is a real self-custody address on Starknet. To send, hold, or spend
+          tokens with it, that address needs to actually hold something. These are the
+          common ways to get tokens onto Starknet and into an account.
         </p>
       </div>
 
@@ -33,23 +33,23 @@ export default function LearnFundingYourAccountPage() {
         <Section title="Buy with a Card (On-Ramp)">
           <p>
             An on-ramp is a service that converts money from a debit card, credit card,
-            or bank transfer directly into crypto, delivered straight to a wallet address
-            you provide. This is usually the most direct path if you&apos;re starting from
-            regular money and have never held crypto before.
+            or bank transfer directly into crypto, delivered straight to a wallet address.
+            This is usually the most direct path when starting from regular money with no
+            prior crypto.
           </p>
           <p>
-            When using an on-ramp, paste your Medialane account address as the delivery
-            address and select Starknet as the network, then choose the token you want
-            (STRK, ETH, or USDC are all supported on Medialane).
+            With an on-ramp, the account address is pasted in as the delivery address,
+            Starknet is selected as the network, and the token is chosen (STRK, ETH, or USDC
+            are all supported on Medialane).
           </p>
         </Section>
 
         <Section title="Withdraw from an Exchange">
           <p>
-            If you already hold crypto on a centralized exchange (Coinbase, Binance,
-            Kraken, and similar platforms), you can withdraw it directly to your
-            Medialane account. Open the withdrawal flow on the exchange, paste your
-            account address, and make sure the network selected is{" "}
+            Crypto held on a centralized exchange (Coinbase, Binance, Kraken, and similar
+            platforms) can be withdrawn directly to an account. In the exchange&apos;s
+            withdrawal flow, the account address is pasted in and the selected network must
+            be{" "}
             <strong className="text-foreground">Starknet</strong>.
           </p>
           <p>
@@ -61,24 +61,25 @@ export default function LearnFundingYourAccountPage() {
 
         <Section title="Bridge from Another Chain">
           <p>
-            If your funds already live on another blockchain, cross-chain bridges and
+            Funds that already live on another blockchain can move over with cross-chain
+            bridges and
             intent-based transfer services (such as NEAR Intents, or a chain&apos;s
-            native Starknet bridge) can move assets over to Starknet without first
-            routing through a centralized exchange. These services quote you a
-            destination amount and settle the transfer directly to the Starknet
-            address you provide.
+            native Starknet bridge) without first routing through a centralized exchange.
+            These services quote a destination amount and settle the transfer directly to
+            the Starknet address provided.
           </p>
           <p>
-            As with an exchange withdrawal, the address you provide is your Medialane
-            account address, and the destination network is Starknet.
+            As with an exchange withdrawal, the address provided is the account address,
+            and the destination network is Starknet.
           </p>
         </Section>
 
-        <Section title="Your Address, One Source of Truth">
+        <Section title="One Source of Truth for the Address">
           <p>
-            Whichever path you use, the destination is always the same: the address
-            shown on your account&apos;s Receive screen. That address is yours alone,
-            generated and controlled by your own device key, not by Medialane.
+            Whichever path is used, the destination is always the same: the address shown
+            on the account&apos;s Receive screen. That address belongs to the account holder
+            alone, generated and controlled by the holder&apos;s own device key, not by
+            Medialane.
           </p>
         </Section>
 
@@ -86,9 +87,9 @@ export default function LearnFundingYourAccountPage() {
           <p>
             See{" "}
             <Link href="/learn/media-wallet" className="text-primary hover:underline">Media Wallet</Link>
-            {" "}for how your account and its keys work, and{" "}
+            {" "}for how an account and its keys work, and{" "}
             <Link href="/learn/web3" className="text-primary hover:underline">Web3 &amp; Starknet</Link>
-            {" "}for background on the network your account lives on.
+            {" "}for background on the network an account lives on.
           </p>
         </Section>
       </div>

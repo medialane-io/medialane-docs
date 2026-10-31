@@ -32,16 +32,16 @@ const WHAT_IT_IS = [
     note: "People, organizations and AI agents are all the same kind of identity.",
   },
   {
-    label: "Your address",
+    label: "The address",
     icon: Key,
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    def: "Your address is how the chain recognizes you. It is public, and anyone can verify what it has done.",
-    note: "Self-custody: your keys, your assets. Medialane cannot recover a lost wallet.",
+    def: "An address is how the chain recognizes an identity. It is public, and anyone can verify what it has done.",
+    note: "Self-custody: the keys and the assets belong to the holder. Medialane cannot recover a lost wallet.",
   },
   {
-    label: "Your track record",
+    label: "The track record",
     icon: Link2,
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
@@ -100,7 +100,7 @@ export default function LearnIdentityPage() {
                 <p className="font-bold text-foreground text-base">Authentication</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Proving who is asking, with a signature from your address or by signing in to your
+                Proving who is asking, with a signature from an address or by signing in to an
                 account.
               </p>
             </div>
@@ -110,28 +110,28 @@ export default function LearnIdentityPage() {
                 <p className="font-bold text-foreground text-base">Authorization</p>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Proving what you can do. Authorization is determined by on-chain state:
-                what assets you hold, what contracts record about your address. Medialane does
+                Proving what an identity can do. Authorization is determined by on-chain state:
+                what assets an address holds and what contracts record about it. Medialane does
                 not grant permissions. The contract is the authority.
               </p>
             </div>
           </div>
           <p className="text-base">
-            These are separate concerns. Authentication identifies you. Authorization
-            checks the chain. Your identity can be verified without controlling
-            what you can do.
+            These are separate concerns. Authentication identifies the caller. Authorization
+            checks the chain. An identity can be verified without that verification
+            controlling what it can do.
           </p>
         </Section>
 
-        <Section title="Your account">
+        <Section title="Accounts">
           <div className="bento-cell border border-brand-orange/20 p-5 space-y-2">
             <div className="flex items-center gap-2">
               <User className="h-4 w-4 text-brand-orange" />
               <p className="font-bold text-foreground text-base">Using the platform</p>
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
-              Your account is how you use the apps and services. Your identity is the record the
-              chain keeps of what you do.
+              An account is how people use the apps and services. An identity is the record the
+              chain keeps of what an actor does.
             </p>
           </div>
         </Section>

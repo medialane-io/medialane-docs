@@ -36,7 +36,7 @@ const WHO = [
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
     title: "Products & services",
-    desc: "Usage-based access with no contracts, seats, or invoices. You pay only for the calls you make, and every payment is on-chain and easy to audit.",
+    desc: "Usage-based access with no contracts, seats, or invoices. Payment covers only the calls made, and every payment is on-chain and easy to audit.",
   },
   {
     icon: Terminal,
@@ -88,7 +88,7 @@ export default function LearnAgentPaymentsPage() {
         </p>
         <ul className="space-y-2 list-disc list-inside">
           <li><strong className="text-foreground">Permissionless</strong>: no gatekeeper decides who is allowed. A wallet is the whole identity.</li>
-          <li><strong className="text-foreground">Pay only for what you use</strong>: billed per call instead of by subscription or seat.</li>
+          <li><strong className="text-foreground">Pay only for what is used</strong>: billed per call instead of by subscription or seat.</li>
           <li><strong className="text-foreground">Open and verifiable</strong>: every payment settles on-chain in USDC, in the open, for anyone to check.</li>
         </ul>
       </Section>

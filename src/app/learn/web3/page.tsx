@@ -36,8 +36,8 @@ export default function LearnWeb3Page() {
             person in control.
           </p>
           <p>
-            This makes blockchains ideal for recording ownership. If your name is on the
-            blockchain as the owner of an asset, that record stands without requiring you
+            This makes blockchains ideal for recording ownership. If a name is on the
+            blockchain as the owner of an asset, that record stands without requiring anyone
             to trust a platform, registry, or intermediary to maintain it.
           </p>
         </Section>
@@ -45,16 +45,16 @@ export default function LearnWeb3Page() {
         <Section title="What is Web3?">
           <p>
             Web3 is the name for the emerging internet built on public blockchains. In Web2
-            (the current internet), your data is owned by platforms: Instagram, YouTube,
-            Spotify. In Web3, your assets and identity are stored onchain and you carry
-            them with you across applications.
+            (the current internet), data is owned by platforms: Instagram, YouTube,
+            Spotify. In Web3, assets and identity are stored onchain and travel
+            with their owner across applications.
           </p>
           <p>
             A wallet address on a blockchain is like an email address, except instead of a
-            company controlling the account, you control it through a cryptographic key pair.
-            Medialane generates this key pair on your own device and seals it behind your
-            device passkey (Face ID, Touch ID, Windows Hello), so you get real Web3
-            ownership without ever having to write down or manage a seed phrase yourself.
+            company controlling the account, the holder controls it through a cryptographic key pair.
+            Medialane generates this key pair on the holder&apos;s own device and seals it behind the
+            device passkey (Face ID, Touch ID, Windows Hello), so the holder gets real Web3
+            ownership without ever having to write down or manage a seed phrase.
           </p>
         </Section>
 
@@ -67,8 +67,8 @@ export default function LearnWeb3Page() {
             at a fraction of the cost.
           </p>
           <p>
-            Starknet is where Medialane&apos;s smart contracts live. When you mint an NFT,
-            list an asset, or accept an offer, those transactions happen on Starknet and
+            Starknet is where Medialane&apos;s smart contracts live. Minting an NFT,
+            listing an asset, and accepting an offer all happen as transactions on Starknet and
             are settled with finality on Ethereum.
           </p>
         </Section>
@@ -108,15 +108,15 @@ export default function LearnWeb3Page() {
             smart contracts themselves, not just key pairs. Medialane&apos;s wallet is
             exactly this: a smart-contract account with a single passkey-sealed owner key.
             The standalone MediaWallet app deploys and operates it permissionlessly, funded
-            by you, with no dependency on any Medialane-run service, true first-principles
+            by the user, with no dependency on any Medialane-run service, true first-principles
             self-custody. medialane.io is built for a different audience: every transaction
-            there is gas-sponsored, so you never need STRK or ETH in your wallet to use the
+            there is gas-sponsored, so no STRK or ETH is needed in the wallet to use the
             platform, a frictionless experience layered on top of the same account model.
           </p>
           <p>
-            Every action you take (minting, listing, buying) is signed directly by your
+            Every action (minting, listing, buying) is signed directly by the
             device passkey, no separate password or PIN. Nothing is delegated to a third
-            party: your device is the only place your key ever exists.
+            party: the device is the only place the key ever exists.
           </p>
         </Section>
       </div>

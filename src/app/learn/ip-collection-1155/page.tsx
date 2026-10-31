@@ -35,43 +35,43 @@ export default function LearnIPCollection1155Page() {
             there is only one original, one owner, one provenance record. That is ERC-721.
           </p>
           <p>
-            A printing press lets you produce 100 identical copies of a magazine. Each
+            A printing press produces 100 identical copies of a magazine. Each
             reader holds an authentic copy, verifiable, numbered, and owned, yet they
             are not unique from one another. That is ERC-1155.
           </p>
           <p>
-            IP Collection 1155 brings this model onchain. You own the press. Each token
-            edition you mint defines how many copies exist and who can hold them.
+            IP Collection 1155 brings this model onchain. The creator owns the press. Each token
+            edition minted defines how many copies exist and who can hold them.
           </p>
         </Section>
 
         <Section title="How It Works">
           <p>
             The flow has two steps: deploy the collection once, then mint editions into it
-            whenever you have new creative work to release.
+            whenever there is new creative work to release.
           </p>
           <div className="bento-cell px-4 py-3 space-y-1">
             <p className="text-base font-semibold text-foreground">Step 1: Deploy a collection</p>
             <p className="text-base leading-relaxed">
               From <strong>Launchpad → IP Collection 1155 → Create Collection</strong>, choose a name,
               symbol, and upload a collection image. Medialane deploys an ERC-1155 contract
-              to Starknet mainnet, owned entirely by your wallet. The collection appears
-              in your Portfolio and on the Launchpad under &quot;Your IP Collections&quot;.
+              to Starknet mainnet, owned entirely by the creator&apos;s wallet. The collection appears
+              in the Portfolio and on the Launchpad under &quot;IP Collections&quot;.
             </p>
           </div>
           <div className="bento-cell px-4 py-3 space-y-1">
             <p className="text-base font-semibold text-foreground">Step 2: Mint token editions</p>
             <p className="text-base leading-relaxed">
-              Click <strong>Mint</strong> next to your collection on the Launchpad. Upload
+              Click <strong>Mint</strong> next to the collection on the Launchpad. Upload
               the asset file, set a title, description, and supply: how many copies of
-              this edition should exist. Each mint call writes a new token ID to your
+              this edition should exist. Each mint call writes a new token ID to the
               collection contract on-chain, with the metadata and edition count permanently
               anchored to IPFS.
             </p>
           </div>
         </Section>
 
-        <Section title="What You Can Mint">
+        <Section title="What Can Be Minted">
           <p>
             Any creative work that naturally exists in multiple copies is a good fit for
             IP Collection 1155:
@@ -98,7 +98,7 @@ export default function LearnIPCollection1155Page() {
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-base font-semibold text-foreground">Choose ERC-1155 when editions are the format</p>
               <p className="text-base leading-relaxed">
-                Creative work you want many people to own authentically: music, prints,
+                Creative work meant for many people to own authentically: music, prints,
                 passes. Every holder owns a real, on-chain copy of the same edition.
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function LearnIPCollection1155Page() {
         <Section title="Onchain Ownership and Provenance">
           <p>
             Every IP Collection 1155 contract is deployed directly to Starknet mainnet.
-            Your wallet address is the contract owner, and no Medialane account is required to
+            The creator&apos;s wallet address is the contract owner, and no Medialane account is required to
             hold or transfer the assets after minting.
           </p>
           <p>

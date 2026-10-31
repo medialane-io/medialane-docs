@@ -20,7 +20,7 @@ export default function SearchPage() {
           <Search className="h-5 w-5" />
           <span className="text-sm font-semibold uppercase tracking-wider">Knowledge Index</span>
         </div>
-        <h1 className="text-3xl font-bold">Find what you need</h1>
+        <h1 className="text-3xl font-bold">Find answers</h1>
         <p className="text-muted-foreground max-w-2xl leading-relaxed">
           Browse the current knowledge hub by topic. Product education lives here;
           DAO, MDLN, treasury, and canonical governance records live at medialane.org.
@@ -56,7 +56,7 @@ export default function SearchPage() {
           <p className="text-base text-muted-foreground leading-relaxed">
             Start with <Link href="/support" className="text-primary hover:underline">Support</Link> or{" "}
             <Link href="/contact" className="text-primary hover:underline">Contact</Link> and include any wallet address,
-            transaction hash, collection address, token ID, or order hash relevant to your question.
+            transaction hash, collection address, token ID, or order hash relevant to the question.
           </p>
         </div>
       </div>

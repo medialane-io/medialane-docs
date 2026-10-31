@@ -27,10 +27,10 @@ const WAYS_TO_EARN = [
     colorClass: "text-emerald-400",
     bgClass: "bg-emerald-500/10",
     actions: [
-      "Create a free Medialane account with your email",
-      "Claim your participation certificate, an optional XP-earning action among many",
+      "Create a free Medialane account with an email",
+      "Claim a participation certificate, an optional XP-earning action among many",
     ],
-    desc: "Creating your account is all it takes to be included. Every action from here adds to the same running XP total.",
+    desc: "Creating an account is all it takes to be included. Every action from here adds to the same running XP total.",
   },
   {
     icon: PenLine,
@@ -41,7 +41,7 @@ const WAYS_TO_EARN = [
       "Publish original content (digital assets, collections)",
       "Launch a collection or creator profile",
     ],
-    desc: "Publishing and building earns XP toward your share, same as any other action.",
+    desc: "Publishing and building earns XP toward a share, same as any other action.",
   },
   {
     icon: ShoppingCart,
@@ -98,7 +98,7 @@ export default function AirdropPage() {
         <p className="text-muted-foreground leading-relaxed">
           The Creator&apos;s Airdrop rewards the people who build and use the platform. Every action
           is verified on-chain. Signing up is enough to be included, and every real interaction from
-          there earns XP toward your share.
+          there earns XP toward a share.
         </p>
       </div>
 
@@ -141,7 +141,7 @@ export default function AirdropPage() {
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">How It Works</h3>
         <p className="text-base text-muted-foreground">
-          Every real interaction earns XP, and your total XP decides your share. Signing up is
+          Every real interaction earns XP, and total XP decides each share. Signing up is
           all it takes to be included; everything below adds to the same running total.
         </p>
         <div className="space-y-4">
@@ -237,7 +237,7 @@ export default function AirdropPage() {
           >
             <div>
               <p className="font-semibold text-base">Global campaign</p>
-              <p className="text-base text-muted-foreground mt-0.5">Register and claim your participation record</p>
+              <p className="text-base text-muted-foreground mt-0.5">Register and claim a participation record</p>
             </div>
             <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
           </a>

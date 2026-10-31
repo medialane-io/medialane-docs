@@ -44,7 +44,7 @@ export default function LearnNFTPage() {
 
         <Section title="NFTs and Intellectual Property">
           <p>
-            Traditionally, proving you created something required expensive legal processes:
+            Traditionally, proving authorship required expensive legal processes:
             copyright registration, notarised documents, or contracts with distributors.
             NFTs provide a timestamped, immutable proof of creation that anyone can verify
             instantly, anywhere in the world.
@@ -59,7 +59,7 @@ export default function LearnNFTPage() {
 
         <Section title="Non-Fungibility Explained">
           <p>
-            &ldquo;Fungible&rdquo; means interchangeable. A dollar bill is fungible: you can swap it
+            &ldquo;Fungible&rdquo; means interchangeable. A dollar bill is fungible: it can be swapped
             for any other dollar bill and have the same value. Gold is fungible. Bitcoin is fungible.
           </p>
           <p>
@@ -105,8 +105,8 @@ export default function LearnNFTPage() {
             <div className="bento-cell px-4 py-3 space-y-2">
               <p className="text-base font-semibold text-foreground">ERC-1155: The printing press</p>
               <p className="text-base leading-relaxed">
-                Think of it like a printing press. You can print 100 identical copies of a
-                magazine, each reader holds an authentic copy, but they are not unique from
+                Think of it like a printing press. 100 identical copies of a
+                magazine can be printed, each reader holds an authentic copy, but they are not unique from
                 one another. A single ERC-1155 contract can manage unlimited token types and
                 quantities. Mint 50 copies of a music track, 200 editions of a poster, or
                 1,000 membership passes, all in one transaction.
@@ -118,9 +118,9 @@ export default function LearnNFTPage() {
             </div>
           </div>
           <p>
-            The right choice depends on your creative intent. If scarcity and uniqueness define
-            the value of your work, choose ERC-721. If you want to release editions, letting
-            many people own the same authentic piece, choose ERC-1155 via IP Collection 1155.
+            The right choice depends on the creative intent. When scarcity and uniqueness define
+            the value of a work, ERC-721 fits. For releasing editions, letting
+            many people own the same authentic piece, ERC-1155 via IP Collection 1155 fits.
           </p>
         </Section>
 
@@ -139,8 +139,8 @@ export default function LearnNFTPage() {
           </p>
           <p>
             <strong className="text-foreground">What happens if Medialane shuts down?</strong><br />
-            Your NFTs are on the Starknet blockchain and stored on IPFS. They exist
-            independently of Medialane. You control them through your wallet and can
+            NFTs are on the Starknet blockchain and stored on IPFS. They exist
+            independently of Medialane. The owner controls them through a wallet and can
             transfer, sell, or display them through any compatible platform.
           </p>
         </Section>

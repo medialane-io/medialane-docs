@@ -175,8 +175,8 @@ export default function TokenPage() {
           ))}
         </div>
         <p className="text-base text-muted-foreground">
-          Your MDLN balance on Starknet is read on-chain each time credits are added, so a
-          larger balance applies to your next deposit with nothing to lock up or stake.
+          The MDLN balance on Starknet is read on-chain each time credits are added, so a
+          larger balance applies to the next deposit with nothing to lock up or stake.
         </p>
       </div>
 

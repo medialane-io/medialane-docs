@@ -43,10 +43,10 @@ export default function LearnMarketplacePage() {
 
         <Section title="A Venue, Not a Custodian">
           <div className="bento-cell border border-brand-purple/20 p-5 space-y-2">
-            <p className="font-bold text-foreground">The marketplace contract never holds your assets.</p>
+            <p className="font-bold text-foreground">The marketplace contract never holds assets.</p>
             <p className="text-base text-muted-foreground leading-relaxed">
-              A listing is a signed order: a cryptographic intent that sits on-chain. Your NFT
-              stays in your wallet until a buyer fills the order. At that moment, the NFT and
+              A listing is a signed order: a cryptographic intent that sits on-chain. The NFT
+              stays in the seller&apos;s wallet until a buyer fills the order. At that moment, the NFT and
               the payment swap atomically in a single Starknet transaction. If anything fails,
               both revert.
             </p>
@@ -64,8 +64,8 @@ export default function LearnMarketplacePage() {
 
         <Section title="Order Lifecycle">
           <p>
-            An order is a signed proposal: one offer item (what you give) and one
-            consideration item (what you receive). The{" "}
+            An order is a signed proposal: one offer item (what is given) and one
+            consideration item (what is received). The{" "}
             <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">orderHash</code>{" "}
             is computed at creation and is the permanent on-chain identifier. Orders move
             through four states:
@@ -90,7 +90,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Navigate to any asset page and click <strong>List for sale</strong>. Set a price
                 in any supported currency. The listing is signed with SNIP-12 typed data and
-                recorded on the marketplace contract. Your asset stays in your wallet.
+                recorded on the marketplace contract. The asset stays in the seller&apos;s wallet.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
@@ -104,7 +104,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-base font-semibold text-foreground">Counter-offer</p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                When you receive an offer, you can counter with a different price. A
+                When an offer is received, the owner can counter with a different price. A
                 counter-offer is a new order referencing the original. Both parties can
                 cancel at any point before acceptance. Managed from Portfolio → Offers received.
               </p>
@@ -113,7 +113,7 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
               <p className="text-base font-semibold text-foreground">Partial fills (ERC-1155)</p>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Multi-edition assets support partial fills: buy any quantity up to the
-                available supply. The order stays ACTIVE after your purchase so other
+                available supply. The order stays ACTIVE after a purchase so other
                 collectors can buy the remaining editions. Total = price per unit × quantity.
               </p>
             </div>
@@ -135,21 +135,21 @@ EXPIRED      — past the order's expiry timestamp`}</Code>
           </p>
         </Section>
 
-        <Section title="Buy With Any Token You Hold">
+        <Section title="Buy With Any Token Held">
           <div className="bento-cell border border-brand-blue/20 p-5 space-y-2">
             <p className="font-bold text-foreground">Every price shows in USD, next to its listed currency.</p>
             <p className="text-base text-muted-foreground leading-relaxed">
-              You don&apos;t need to know what STRK or ETH is worth to buy an asset —
+              Knowing what STRK or ETH is worth is not needed to buy an asset —
               the USD value sits right alongside the price, at all times.
             </p>
           </div>
           <p>
-            If an asset is listed in a currency you don&apos;t hold enough of, you can
-            still buy it with whatever else is in your wallet. Pick an alternative
-            currency, and the right amount is exchanged for the listing&apos;s currency
+            If an asset is listed in a currency the buyer doesn&apos;t hold enough of, it can
+            still be bought with whatever else is in the wallet. Once an alternative
+            currency is picked, the right amount is exchanged for the listing&apos;s currency
             automatically, in the same transaction as the purchase itself: one
             approval, one signature, no separate exchange step. If the trade can&apos;t
-            go through, the whole transaction reverts — you&apos;re never left holding
+            go through, the whole transaction reverts — no one is ever left holding
             half a swap.
           </p>
         </Section>

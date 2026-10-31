@@ -24,12 +24,12 @@ export default function DocsDevsPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Developer Guide</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Everything you need to integrate with Medialane, from API key setup to
+          Everything needed to integrate with Medialane, from API key setup to
           MDLN-boosted quotas.
         </p>
         <p className="text-base text-muted-foreground">
           The Medialane stack has four layers: immutable contracts on Starknet, an indexer that
-          reads chain events, the SDK that wraps both, and apps on top. The API and SDK give you
+          reads chain events, the SDK that wraps both, and apps on top. The API and SDK give
           access to everything the apps can do, and nothing they do can override the contracts.
           See{" "}
           <Link href="/dev/architecture" className="text-primary hover:underline">Architecture</Link>{" "}
@@ -45,11 +45,11 @@ export default function DocsDevsPage() {
             <a href="https://portal.medialane.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
               portal.medialane.io
             </a>.
-            Sign in and create your key. An account has one key, and creating a new one replaces the current key.
-            Every request is paid from your account&apos;s credits, which you fund with USDC in the portal.
+            Sign in and create a key. An account has one key, and creating a new one replaces the current key.
+            Every request is paid from the account&apos;s credits, which are funded with USDC in the portal.
           </p>
           <Code>{`# Sign in at portal.medialane.io → Account → Create key
-# Copy your key, then store it securely:
+# Copy the key, then store it securely:
 export MEDIALANE_API_KEY=ml_live_your_key_here`}</Code>
           <p>Pass the key on every request:</p>
           <Code>{`curl https://api.medialane.io/v1/collections \\
@@ -59,7 +59,7 @@ export MEDIALANE_API_KEY=ml_live_your_key_here`}</Code>
         <Section title="2. Credits and MDLN">
           <p>
             Credits are the billing unit: 1 credit is $0.01, and every endpoint is metered in credits.
-            Hold MDLN in the wallet you pay from and a multiplier is applied automatically when your
+            Holding MDLN in the paying wallet applies a multiplier automatically when the
             payment is credited. The balance is read on-chain at that moment.
           </p>
           <div className="space-y-2">

@@ -95,7 +95,7 @@ const SERVICES = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    desc: "Sponsorship licenses on assets you own, or ones you'd like to sponsor. An owner opens an offer and sponsors bid, or a sponsor proposes terms directly; either way payment settles directly with no escrow, and the license mints as a standard, transferable ERC-721 the moment a deal is accepted.",
+    desc: "Sponsorship licenses on owned assets, or on assets a sponsor wants to back. An owner opens an offer and sponsors bid, or a sponsor proposes terms directly; either way payment settles directly with no escrow, and the license mints as a standard, transferable ERC-721 the moment a deal is accepted.",
     caps: ["sponsor", "transfer"],
   },
   {
@@ -105,7 +105,7 @@ const SERVICES = [
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
     border: "border-brand-rose/20",
-    desc: "Your own fixed-supply standard ERC-20 with permanently-locked liquidity. Launch price fixed at 0.01 quote/coin; up to 10% creator allocation, funded by the creator. Ownership renounced at launch: the contract is the only authority.",
+    desc: "A fixed-supply standard ERC-20 with permanently-locked liquidity. Launch price fixed at 0.01 quote/coin; up to 10% creator allocation, funded by the creator. Ownership renounced at launch: the contract is the only authority.",
     caps: ["launch", "swap", "transfer"],
   },
   {
@@ -176,7 +176,7 @@ export default function LearnServicesPage() {
         <Section title="What Is a Service?">
           <p>
             A service is a registry entry that describes a set of actions and the contracts
-            that power them. When you deploy a collection, you choose a service. When the
+            that power them. Deploying a collection means choosing a service. When the
             marketplace handles a listing, it operates as a service with marketplace capabilities.
           </p>
           <p>

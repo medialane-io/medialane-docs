@@ -5,15 +5,15 @@ import { Section } from "@/components/docs";
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/creator-coin" },
   title: "Creator Coins | Learn | Medialane",
-  description: "Launch your own coin with permanently-locked liquidity, or claim a coin you already launched on Starknet.",
+  description: "Launch a coin with permanently-locked liquidity, or claim a coin already launched on Starknet.",
   openGraph: {
     title: "Creator Coins | Learn | Medialane",
-    description: "Launch your own coin with permanently-locked liquidity, or claim a coin you already launched on Starknet.",
+    description: "Launch a coin with permanently-locked liquidity, or claim a coin already launched on Starknet.",
     url: "https://docs.medialane.io/learn/creator-coin",
   },
   twitter: {
     title: "Creator Coins | Learn | Medialane",
-    description: "Launch your own coin with permanently-locked liquidity, or claim a coin you already launched on Starknet.",
+    description: "Launch a coin with permanently-locked liquidity, or claim a coin already launched on Starknet.",
   },
 };
 
@@ -23,9 +23,9 @@ export default function LearnCreatorCoinPage() {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Creator Coins</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          A Creator Coin is your own coin, a standard token tied to your creative work,
-          launched with a public liquidity pool that is locked forever. Your community can
-          back you by holding it; you stay in control of what it means.
+          A Creator Coin is a creator&apos;s own coin, a standard token tied to creative work,
+          launched with a public liquidity pool that is locked forever. A community can
+          back the creator by holding it, while the creator stays in control of what it means.
         </p>
         <p className="text-base text-muted-foreground">
           Service IDs:{" "}
@@ -55,15 +55,15 @@ export default function LearnCreatorCoinPage() {
           </ul>
         </Section>
 
-        <Section title="Launching your coin">
+        <Section title="Launching a coin">
           <p>
             The Launch Studio walks through a coin&apos;s design, its economics, and the
-            launch itself, with a live preview updating as you type:
+            launch itself, with a live preview updating as the details are typed:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
             <li>
-              <strong>Your coin</strong>: name, symbol, a feature image, and a description.
-              The image and description live on your coin&apos;s Medialane page and can be
+              <strong>The coin</strong>: name, symbol, a feature image, and a description.
+              The image and description live on the coin&apos;s Medialane page and can be
               edited anytime; the name and symbol are recorded on-chain forever.
             </li>
             <li>
@@ -72,22 +72,22 @@ export default function LearnCreatorCoinPage() {
               the starting market cap.
             </li>
             <li>
-              <strong>Your allocation</strong>: up to 10% of the supply can go to the
+              <strong>The allocation</strong>: up to 10% of the supply can go to the
               creator&apos;s wallet at launch, capped and bought from the pool at the coin&apos;s
               own launch price. That purchase is what funds the coin&apos;s starting
               liquidity. The rest belongs to the market.
             </li>
           </ul>
           <p>
-            On medialane.io the launch is gasless: two on-chain steps confirmed with your
-            passkey. On the web3 dApp your own wallet signs each step.
+            On medialane.io the launch is gasless: two on-chain steps confirmed with a
+            passkey. On the web3 dApp the creator&apos;s own wallet signs each step.
           </p>
         </Section>
 
         <Section title="Already launched a coin? Claim it">
           <p>
-            If you launched a coin on Starknet elsewhere, you can claim it here. Paste the coin&apos;s address, our team
-            reviews the claim, and once approved the coin appears on the Coins page and your
+            A coin launched on Starknet elsewhere can be claimed here. The coin&apos;s address is pasted in, the team
+            reviews the claim, and once approved the coin appears on the Coins page and the
             creator profile, with the same image and description tools as a native launch.
           </p>
         </Section>
