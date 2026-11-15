@@ -468,7 +468,7 @@ export default function ApiReferencePage() {
       <Endpoint
         method="POST"
         path="/v1/coins/sync"
-        description="Index a freshly-launched Creator Coin on demand (idempotent). Verifies is_creator_coin on the Factory and reads name/symbol on-chain. The factory event poller is the backstop; trustless ownership (claimedBy) is set from the on-chain CreatorCoinCreated event when it indexes."
+        description="Index a freshly-launched Creator Coin on demand (idempotent). Verifies is_creator_coin on the Factory and reads name/symbol on-chain. The factory event poller is the backstop."
         params={[
           { name: "coinAddress", type: "string", desc: "The launched coin's contract address (body)" },
           { name: "owner", type: "string", desc: "Display-only owner hint (body, optional)" },
@@ -1481,7 +1481,7 @@ const resumeSource = new EventSource(url, {
 
       <DocH2 id="claims" border>Collection Claims</DocH2>
       <p className="text-base text-muted-foreground mb-6">
-        Claim ownership of an existing Starknet ERC-721 collection. Three verification paths available: automatic on-chain check (requires SIWS session JWT), SNIP-12 signature challenge, or manual email review.
+        Claim an existing Starknet ERC-721 collection. Ownership is always read from the chain. Three verification paths available: automatic on-chain check (requires SIWS session JWT), SNIP-12 signature challenge, or manual email review.
       </p>
 
       <Endpoint
@@ -1499,7 +1499,7 @@ const resumeSource = new EventSource(url, {
   -d '{ "contractAddress": "0x076c...", "walletAddress": "0x03d0..." }'`}
         response={`{
   "verified": true,
-  "collection": { "contractAddress": "0x076c...", "name": "My Collection", "claimedBy": "0x03d0..." }
+  "collection": { "contractAddress": "0x076c...", "name": "My Collection" }
 }
 
 // If not verified:
@@ -1528,7 +1528,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/collections/claim/verify"
-        description="Path 2 (step 2): Submit the SNIP-12 signature from the challenge step. If valid, the collection is marked as claimed by the wallet."
+        description="Path 2 (step 2): Submit the SNIP-12 signature from the challenge step. If valid and the wallet is the collection's on-chain owner, the claim is verified."
         params={[
           { name: "challengeId", type: "string", required: true, desc: "Challenge ID from /claim/challenge" },
           { name: "signature", type: "object", required: true, desc: '{ r: string; s: string }, a starknet.js signature object' },
@@ -1539,7 +1539,7 @@ const resumeSource = new EventSource(url, {
   -d '{ "challengeId": "chal_abc123", "signature": { "r": "0x...", "s": "0x..." } }'`}
         response={`{
   "verified": true,
-  "collection": { "contractAddress": "0x076c...", "claimedBy": "0x03d0..." }
+  "collection": { "contractAddress": "0x076c...", "name": "My Collection" }
 }`}
       />
 
@@ -1600,7 +1600,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="PATCH"
         path="/v1/collections/:contract/profile"
-        description="Update the display profile for a collection. Requires a SIWS session JWT; the authenticated wallet must be the claimedBy address for this collection."
+        description="Update the display profile for a collection. Requires a SIWS session JWT; the authenticated wallet must be the collection's on-chain owner."
         params={[
           { name: "contract", type: "string", required: true, desc: "NFT contract address (URL param)" },
           { name: "displayName", type: "string", desc: "Display name (overrides on-chain name)" },
@@ -3026,7 +3026,7 @@ const resumeSource = new EventSource(url, {
       <Endpoint
         method="POST"
         path="/v1/collection-slug-claims"
-        description="Submit a collection slug claim. Requires a SIWS token; the caller must be the collection owner (owner or claimedBy). One pending claim per collection at a time."
+        description="Submit a collection slug claim. Requires a SIWS token; the caller must be the collection's on-chain owner. One pending claim per collection at a time."
         params={[
           { name: "contractAddress", type: "string", required: true, desc: "Collection contract address" },
           { name: "slug", type: "string", required: true, desc: "Requested slug" },
