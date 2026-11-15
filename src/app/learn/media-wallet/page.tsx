@@ -64,7 +64,7 @@ export default function LearnMediaWalletPage() {
           <p>
             The Media Wallet contract is an audited fork of Argent&apos;s v0.5.0 account,
             live on Starknet mainnet. Every account it creates accepts one or more owner
-            keys, an optional guardian for recovery, support for session keys, and
+            keys, a guardian for recovery, support for session keys, and
             SNIP-9 outside execution, the mechanism that lets a transaction be signed
             without the signer paying gas directly.
           </p>
@@ -105,10 +105,11 @@ export default function LearnMediaWalletPage() {
             own afterwards, and losing one leaves the account reachable from the other.
           </p>
           <p>
-            Every Media Wallet supports an optional guardian: a second Stark-curve key,
-            typically another device&apos;s Media Wallet, registered from{" "}
-            Settings → Account → Security &amp; Recovery. Once set, the guardian
-            co-signs every transaction alongside the owner key, which makes it an active safeguard against a stolen or phished device.
+            New wallets start with a guardian: a backup key kept by the service and unique
+            to that wallet, registered when the wallet is created. The guardian co-signs
+            transactions alongside the owner key, which makes it an active safeguard
+            against a stolen or phished device. Wallets created earlier can turn it on from
+            Settings → Recovery.
           </p>
           <div className="bento-cell border border-brand-orange/20 bg-brand-orange/5 p-5 space-y-3">
             <div className="flex items-center gap-2">
@@ -116,14 +117,12 @@ export default function LearnMediaWalletPage() {
               <p className="font-bold text-foreground">If the device is lost</p>
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
-              From any device, generate a new owner key and share it with the guardian.
-              The guardian starts the recovery from their own device at{" "}
-              <a href="https://medialane.io/recover" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                medialane.io/recover
-              </a>
-              , and completes it once the wallet&apos;s security delay (seven days by
-              default) has passed. A guardian covers the case where every device is
-              gone, alongside the exported recovery key.
+              Signing in with the account email on a new browser starts a recovery with the
+              guardian. It completes once the wallet&apos;s security delay (seven days by
+              default) has passed, and it can be cancelled from Settings → Recovery while it
+              waits. A recovery key saved from Settings → Recovery restores the wallet as
+              well, and devices approved under Settings → Devices keep it reachable if one
+              is lost.
             </p>
           </div>
         </Section>

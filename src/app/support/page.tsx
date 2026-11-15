@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "What happens if I lose my device or clear my browser data?",
-    a: "Each device keeps its own signing key, so the surest protection is to use Medialane on more than one. Approve a second device from Settings → Account → Your devices while access remains, and either one can sign on its own from then on. A recovery key can also be saved from Settings → Account, or a guardian registered, both of which restore access if every device is gone. At least one of these should be set up before it is needed.",
+    a: "Each device keeps its own signing key, so the surest protection is to use Medialane on more than one. A second device can be approved from Settings → Devices while access remains, and either one can sign on its own from then on. New wallets also start with recovery by email: signing in with the account email on a new browser brings the wallet back. A recovery key can be saved from Settings → Recovery as another way back if every device is gone.",,
   },
   {
     q: "My NFT minted but doesn't appear in my Portfolio.",
