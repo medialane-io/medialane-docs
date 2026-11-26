@@ -86,9 +86,9 @@ export default function LearnIPClubPage() {
 
         <Section title="Creating a Club">
           <p>
-            From <strong className="text-foreground">Launchpad → IP Club → Create</strong>,
+            From <strong className="text-foreground">Launchpad → IP Club → Create club</strong>,
             deploy the club&apos;s collection with a name, symbol, and cover image; the
-            same factory pattern used for IP Collections and IP Tickets. Inside the
+            same factory pattern used for NFT Collections and IP Tickets. Inside the
             collection, define one or more membership tiers: a supply cap, an optional
             validity window, a royalty rate, and the tier&apos;s own image and metadata.
           </p>

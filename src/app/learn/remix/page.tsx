@@ -4,15 +4,15 @@ import { Section, Code } from "@/components/docs";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/remix" },
-  title: "Remix & Derivatives | Learn | Medialane",
+  title: "NFT Remix | Learn | Medialane",
   description: "How derivative works flow through Medialane: on-chain attribution, license propagation, soft enforcement, and the remix graph.",
   openGraph: {
-    title: "Remix & Derivatives | Learn | Medialane",
+    title: "NFT Remix | Learn | Medialane",
     description: "How derivative works flow through Medialane: on-chain attribution, license propagation, soft enforcement, and the remix graph.",
     url: "https://docs.medialane.io/learn/remix",
   },
   twitter: {
-    title: "Remix & Derivatives | Learn | Medialane",
+    title: "NFT Remix | Learn | Medialane",
     description: "How derivative works flow through Medialane: on-chain attribution, license propagation, soft enforcement, and the remix graph.",
   },
 };
@@ -41,9 +41,9 @@ export default function LearnRemixPage() {
     <div className="space-y-10">
 
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">Remix &amp; Derivatives</h2>
+        <h2 className="text-2xl font-bold">NFT Remix</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          A remix is a new IP asset that builds on an existing one. Remixing is
+          An NFT Remix is a new NFT that builds on an existing one. Remixing is
           permissionless: anyone can build on any asset, and the relationship is
           recorded on-chain, publicly and immutably, with the parent staying linked to
           the derivative. When the creator&apos;s blessing or a paid license is needed instead,
@@ -117,10 +117,10 @@ export default function LearnRemixPage() {
             The parent&apos;s license terms are shown for context before proceeding. Steps:
           </p>
           <ol className="list-decimal list-inside space-y-1.5 text-sm text-muted-foreground">
-            <li>Upload the derivative work (image, audio, video, or other format).</li>
+            <li>Upload the new content (image, audio, video or another format).</li>
             <li>Set metadata: name, description, IP type.</li>
             <li>Choose the license for the remix; the remixer decides the terms.</li>
-            <li>Sign and mint; the parent asset&apos;s ID is embedded in the new token&apos;s metadata.</li>
+            <li>Sign and create; the parent asset&apos;s ID is embedded in the new token&apos;s metadata.</li>
           </ol>
           <p>
             Minting a remix carries the same gas model as any other IP asset mint.
@@ -136,7 +136,7 @@ export default function LearnRemixPage() {
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-base font-semibold text-foreground">Remix: free, permissionless</p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Mint an attributed derivative. Free and permissionless: the remixer&apos;s work, the remixer&apos;s license.
+                Mint an attributed derivative. Free and permissionless: the remixer&apos;s content, the remixer&apos;s license.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">

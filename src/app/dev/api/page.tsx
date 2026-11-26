@@ -2066,7 +2066,7 @@ const resumeSource = new EventSource(url, {
 }`}
       />
 
-      <DocH2 id="collection-drop" border>Collection Drop</DocH2>
+      <DocH2 id="collection-drop" border>NFT Drop</DocH2>
       <p className="text-base text-muted-foreground mb-6">
         Indexed drops: terms, supply, sales and mints, rebuilt from the drop contracts' events. Transactions go through <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.drop</code> or the drop intents.
       </p>

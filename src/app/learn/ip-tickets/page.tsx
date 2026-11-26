@@ -32,8 +32,7 @@ export default function LearnIPTicketsPage() {
         <p className="text-base text-muted-foreground">
           Service ID:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">ip-tickets</code>.
-          A factory contract deploys one tickets collection per creator, the same
-          pattern as an IP Collection. See{" "}
+          A factory contract deploys one tickets collection per creator, the same pattern as an NFT Collection. See{" "}
           <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
           for the full capability set.
         </p>
@@ -91,8 +90,7 @@ export default function LearnIPTicketsPage() {
 
         <Section title="Creating and Minting Tickets">
           <p>
-            From <strong className="text-foreground">Launchpad → IP Tickets → Create</strong>,
-            publish a tickets collection with a name, symbol, and cover image; the
+            From <strong className="text-foreground">Launchpad → IP Tickets → Create collection</strong>, create a tickets collection with a name, symbol, and cover image; the
             collection&apos;s identity is embedded on-chain in the same transaction. The
             collection then lives at its own collection page, where tickets are created
             and minted to attendees with one featured action. Each ticket&apos;s

@@ -7,10 +7,10 @@ import { DocH2, DocH3, DocCodeBlock } from "@/components/docs/typography"
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/dev/sdk" },
   title: "SDK | Medialane Docs",
-  description: "@medialane/sdk: TypeScript client for the Medialane API and on-chain marketplace, minting, POP Protocol, and Collection Drop.",
+  description: "@medialane/sdk: TypeScript client for the Medialane API and on-chain marketplace, minting, POP Protocol, and NFT Drop.",
   openGraph: {
     title: "SDK | Medialane Docs",
-    description: "@medialane/sdk: TypeScript client for the Medialane API and on-chain marketplace, minting, POP Protocol, and Collection Drop.",
+    description: "@medialane/sdk: TypeScript client for the Medialane API and on-chain marketplace, minting, POP Protocol, and NFT Drop.",
     url: "https://docs.medialane.io/dev/sdk",
   },
 }
@@ -374,7 +374,7 @@ await client.services.pop.burn(account, { collection, tokenId: "1" })`}</DocCode
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">List POP collections</h3>
       <DocCodeBlock>{`const pops = await client.api.listCollections({ service: "pop-protocol", page: 1, limit: 20, sort: "recent" })`}</DocCodeBlock>
 
-      <DocH2 id="collection-drop" border>Collection Drop</DocH2>
+      <DocH2 id="collection-drop" border>NFT Drop</DocH2>
       <p className="text-muted-foreground text-base mb-3">
         A drop is an ERC-721 collection minted in order by collectors. Anyone can create one and becomes its organizer. The terms are fixed at creation: price and payment token (or free), start and end time (0 = open now / never closes), per-wallet limit (0 = unlimited) and supply (0 = no cap). Payment goes to the organizer at each mint. An optional Merkle allowlist limits who can claim; the organizer can replace it or open the drop to everyone, and can issue tokens directly within the supply. Use <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.services.drop</code> for transactions and <code className="font-mono text-xs bg-foreground/10 px-1.5 py-0.5 rounded">client.api</code> for indexed reads.
       </p>
@@ -720,7 +720,7 @@ const { txHash } = await executeIntent(provider, signer, client, intent);`}</Doc
           <p className="text-base font-mono text-muted-foreground">medialane.io</p>
           <p className="text-base font-semibold text-foreground">Creator Launchpad</p>
           <p className="text-base text-muted-foreground leading-relaxed">
-            Collections, Orders, Minting, Remix Licensing, POP, Collection Drop, On-chain Comments.
+            Collections, Orders, Minting, Remix Licensing, POP, NFT Drop, On-chain Comments.
             Email sign-up with a passkey-secured self-custody wallet.
           </p>
         </div>

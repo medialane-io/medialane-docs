@@ -4,16 +4,16 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/collection-drop" },
-  title: "Collection Drop | Learn | Medialane",
-  description: "Learn how to launch and collect Collection Drops on Medialane.",
+  title: "NFT Drop | Learn | Medialane",
+  description: "Learn how to launch and collect NFT Drops on Medialane.",
   openGraph: {
-    title: "Collection Drop | Learn | Medialane",
-    description: "Learn how to launch and collect Collection Drops on Medialane.",
+    title: "NFT Drop | Learn | Medialane",
+    description: "Learn how to launch and collect NFT Drops on Medialane.",
     url: "https://docs.medialane.io/learn/collection-drop",
   },
   twitter: {
-    title: "Collection Drop | Learn | Medialane",
-    description: "Learn how to launch and collect Collection Drops on Medialane.",
+    title: "NFT Drop | Learn | Medialane",
+    description: "Learn how to launch and collect NFT Drops on Medialane.",
   },
 };
 
@@ -21,9 +21,9 @@ export default function LearnCollectionDropPage() {
   return (
     <div className="space-y-10">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">Collection Drop</h2>
+        <h2 className="text-2xl font-bold">NFT Drop</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          A Collection Drop is a timed release with a fixed set of terms. A creator chooses an{" "}
+          An NFT Drop launches a new collection that an audience gets directly from its creator, free or at a set price. A creator chooses an{" "}
           <strong className="text-foreground">edition</strong> (one artwork in numbered copies) or a{" "}
           <strong className="text-foreground">collection</strong> (many unique items), sets the price and the
           sale window, and collectors mint from the drop page.
@@ -31,7 +31,7 @@ export default function LearnCollectionDropPage() {
         <p className="text-base text-muted-foreground">
           Service ID:{" "}
           <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">drop-collection</code>.
-          Each drop is its own ERC-721 contract, created by the Collection Drop factory. See{" "}
+          Each drop is its own ERC-721 contract, created by the NFT Drop factory. See{" "}
           <Link href="/learn/services" className="text-primary hover:underline">Services</Link>{" "}
           for the full capability set.
         </p>
@@ -39,7 +39,7 @@ export default function LearnCollectionDropPage() {
 
       <div className="space-y-8">
         <Section title="Launching a drop">
-          <p>Anyone can launch a drop from <strong className="text-foreground">Launchpad → Collection Drop</strong>. The creator sets:</p>
+          <p>Anyone can launch a drop from <strong className="text-foreground">Launchpad → NFT Drop</strong>. The creator sets:</p>
           <div className="space-y-2">
             {[
               ["Edition or collection", "One artwork minted as numbered copies, or many unique items — each item becomes its own token."],
@@ -60,8 +60,7 @@ export default function LearnCollectionDropPage() {
 
         <Section title="Collecting">
           <p>
-            Open a drop to see its status, supply, price and time left. Choose how many to mint (up to 50 at once,
-            within the drop's limits) and confirm; the tokens arrive in the collector&apos;s wallet. For a list-only drop, the
+            Open a drop to see its status, supply, price and time left. Choose how many to mint (within the drop's limits) and confirm; the tokens arrive in the collector&apos;s wallet. For a list-only drop, the
             claim link that was sent is used. Payment goes straight to the creator. On medialane.io, gas is sponsored.
           </p>
         </Section>
@@ -78,8 +77,8 @@ export default function LearnCollectionDropPage() {
           <p>
             The drop contract enforces the price, sale window, per-wallet limit, supply and allowlist itself. Drop
             tokens are standard ERC-721 tokens: collectors can keep, sell or trade them like any other asset on
-            Medialane. For a single work many collectors share as one token id, use{" "}
-            <Link href="/learn/ip-collection-1155" className="text-primary hover:underline">NFT Editions</Link>.
+            Medialane. For one NFT that many collectors hold as copies of a single token id, use{" "}
+            <Link href="/learn/ip-collection-1155" className="text-primary hover:underline">Limited Edition NFT</Link>.
           </p>
         </Section>
       </div>

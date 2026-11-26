@@ -3,16 +3,16 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/ip-collection-1155" },
-  title: "IP Collection 1155 | Learn | Medialane",
-  description: "Learn how to deploy a multi-edition ERC-1155 IP collection on Medialane: mint music tracks, art series, and creative editions.",
+  title: "Limited Edition NFT | Learn | Medialane",
+  description: "Learn how Limited Edition NFTs and their ERC-1155 collections work on Medialane.",
   openGraph: {
-    title: "IP Collection 1155 | Learn | Medialane",
-    description: "Learn how to deploy a multi-edition ERC-1155 IP collection on Medialane: mint music tracks, art series, and creative editions.",
+    title: "Limited Edition NFT | Learn | Medialane",
+  description: "Learn how Limited Edition NFTs and their ERC-1155 collections work on Medialane.",
     url: "https://docs.medialane.io/learn/ip-collection-1155",
   },
   twitter: {
-    title: "IP Collection 1155 | Learn | Medialane",
-    description: "Learn how to deploy a multi-edition ERC-1155 IP collection on Medialane: mint music tracks, art series, and creative editions.",
+    title: "Limited Edition NFT | Learn | Medialane",
+  description: "Learn how Limited Edition NFTs and their ERC-1155 collections work on Medialane.",
   },
 };
 
@@ -20,11 +20,9 @@ export default function LearnIPCollection1155Page() {
   return (
     <div className="space-y-10">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">IP Collection 1155</h2>
+        <h2 className="text-2xl font-bold">Limited Edition NFT</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          IP Collection 1155 is Medialane&apos;s multi-edition format, built on the ERC-1155
-          token standard. Deploy a single collection contract and mint unlimited token
-          editions into it, each with its own artwork, supply, and metadata.
+          A Limited Edition NFT is an immutable, licensed NFT in multiple copies, built on the ERC-1155 token standard. Its Limited Edition NFT Collection is one contract that holds any number of them, each with its own artwork, copies and metadata.
         </p>
       </div>
 
@@ -36,52 +34,45 @@ export default function LearnIPCollection1155Page() {
           </p>
           <p>
             A printing press produces 100 identical copies of a magazine. Each
-            reader holds an authentic copy, verifiable, numbered, and owned, yet they
+            reader holds an authentic copy, verifiable and owned, yet they
             are not unique from one another. That is ERC-1155.
           </p>
           <p>
-            IP Collection 1155 brings this model onchain. The creator owns the press. Each token
-            edition minted defines how many copies exist and who can hold them.
+            Limited Edition NFTs bring this model onchain. The creator owns the press, and chooses how many copies to create of each one.
           </p>
         </Section>
 
         <Section title="How It Works">
           <p>
-            The flow has two steps: deploy the collection once, then mint editions into it
-            whenever there is new creative work to release.
+            The flow has two steps: create the collection once, then create Limited Edition NFTs in it whenever there is new content to release.
           </p>
           <div className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-base font-semibold text-foreground">Step 1: Deploy a collection</p>
+            <p className="text-base font-semibold text-foreground">Step 1: Create a collection</p>
             <p className="text-base leading-relaxed">
-              From <strong>Launchpad → IP Collection 1155 → Create Collection</strong>, choose a name,
+              From <strong>Launchpad → Limited Edition NFT Collection</strong>, choose a name,
               symbol, and upload a collection image. Medialane deploys an ERC-1155 contract
               to Starknet mainnet, owned entirely by the creator&apos;s wallet. The collection appears
-              in the Portfolio and on the Launchpad under &quot;IP Collections&quot;.
+              in the Portfolio and under <strong>Launchpad → Limited Edition NFT</strong>.
             </p>
           </div>
           <div className="bento-cell px-4 py-3 space-y-1">
-            <p className="text-base font-semibold text-foreground">Step 2: Mint token editions</p>
+            <p className="text-base font-semibold text-foreground">Step 2: Create a Limited Edition NFT</p>
             <p className="text-base leading-relaxed">
-              Click <strong>Mint</strong> next to the collection on the Launchpad. Upload
-              the asset file, set a title, description, and supply: how many copies of
-              this edition should exist. Each mint call writes a new token ID to the
-              collection contract on-chain, with the metadata and edition count permanently
-              anchored to IPFS.
+              Under <strong>Launchpad → Limited Edition NFT</strong>, choose <strong>Create Limited Edition NFT</strong> for the collection. Upload the file, then set a title, description and number of copies. Each one gets a new token ID in the collection contract, with its metadata anchored to IPFS.
             </p>
           </div>
         </Section>
 
-        <Section title="What Can Be Minted">
+        <Section title="What to Release">
           <p>
-            Any creative work that naturally exists in multiple copies is a good fit for
-            IP Collection 1155:
+            Content that naturally exists in multiple copies is a good fit for a Limited Edition NFT:
           </p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>Music tracks: release 100 copies of a new single</li>
             <li>Art editions: limited prints of a digital artwork</li>
             <li>Photo series: a set of images, each available to multiple collectors</li>
             <li>Short films or video clips with a defined release count</li>
-            <li>Written works: essays, poems, or short stories in numbered editions</li>
+            <li>Writing: essays, poems or short stories</li>
             <li>Membership access passes: tiered or uniform</li>
           </ul>
         </Section>
@@ -98,7 +89,7 @@ export default function LearnIPCollection1155Page() {
             <div className="bento-cell px-4 py-3 space-y-1">
               <p className="text-base font-semibold text-foreground">Choose ERC-1155 when editions are the format</p>
               <p className="text-base leading-relaxed">
-                Creative work meant for many people to own authentically: music, prints,
+                Content meant for many people to own authentically: music, prints,
                 passes. Every holder owns a real, on-chain copy of the same edition.
               </p>
             </div>
@@ -107,14 +98,13 @@ export default function LearnIPCollection1155Page() {
 
         <Section title="Onchain Ownership and Provenance">
           <p>
-            Every IP Collection 1155 contract is deployed directly to Starknet mainnet.
+            Every Limited Edition NFT Collection contract is deployed directly to Starknet mainnet.
             The creator&apos;s wallet address is the contract owner, and no Medialane account is required to
             hold or transfer the assets after minting.
           </p>
           <p>
             All token metadata is stored on IPFS with a content-addressed identifier (CID)
-            anchored to the onchain token. The artwork and edition count cannot be changed
-            after minting. Every transfer is permanently recorded.
+            anchored to the onchain token. The artwork and metadata cannot be changed after creation. Every transfer is permanently recorded.
           </p>
           <p>
             Collections are immediately discoverable on the Medialane marketplace and

@@ -99,7 +99,7 @@ export default function LearnNFTPage() {
                 and anything where uniqueness is the point.
               </p>
               <p className="text-base text-muted-foreground/70 italic">
-                Used by: IP Assets, Creator Collections, POP Protocol credentials, Collection Drops.
+                Used by: Single NFTs, NFT Collections, POP Protocol credentials, NFT Drops.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-2">
@@ -112,15 +112,14 @@ export default function LearnNFTPage() {
                 1,000 membership passes, all in one transaction.
               </p>
               <p className="text-base text-muted-foreground/70 italic">
-                Used by: IP Collection 1155, Medialane&apos;s multi-edition format for music,
-                art series, and any creative work with multiple copies.
+                Used by: Limited Edition NFTs, for music, art series and other content released in multiple copies.
               </p>
             </div>
           </div>
           <p>
             The right choice depends on the creative intent. When scarcity and uniqueness define
             the value of a work, ERC-721 fits. For releasing editions, letting
-            many people own the same authentic piece, ERC-1155 via IP Collection 1155 fits.
+            many people own the same authentic piece, an ERC-1155 Limited Edition NFT fits.
           </p>
         </Section>
 

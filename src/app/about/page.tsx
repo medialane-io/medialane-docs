@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const HUBS = [
   {
     label: "Launchpad",
-    desc: "Structure capital from IP: collection drops, NFT editions, memberships, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
+    desc: "Structure capital from IP: NFT drops, limited edition NFTs, memberships, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
     href: "/learn/creator-launchpad",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
@@ -44,8 +44,8 @@ const HUBS = [
 const SERVICE_LINKS = [
   { href: "/learn/services", label: "Services model" },
   { href: "/learn/creator-launchpad", label: "Creator Launchpad" },
-  { href: "/learn/collection-drop", label: "Collection Drops" },
-  { href: "/learn/ip-collection-1155", label: "NFT Editions" },
+  { href: "/learn/collection-drop", label: "NFT Drops" },
+  { href: "/learn/ip-collection-1155", label: "Limited Edition NFTs" },
   { href: "/learn/pop-protocol", label: "POP Protocol" },
   { href: "/learn/ip-tickets", label: "IP Tickets" },
   { href: "/learn/ip-club", label: "IP Club" },

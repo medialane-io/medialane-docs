@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/support" },
   title: "Support | Medialane",
   description:
-    "Get help with Medialane: frequently asked questions about wallets, passkeys, marketplace, minting, POP Protocol, and Collection Drop.",
+    "Get help with Medialane: frequently asked questions about wallets, passkeys, marketplace, minting, POP Protocol, and NFT Drop.",
   openGraph: {
     title: "Support | Medialane",
     description:

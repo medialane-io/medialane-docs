@@ -22,9 +22,9 @@ export const metadata: Metadata = {
 
 const FREE_ACTIONS = [
   "Create an account",
-  "Mint an IP asset",
+  "Create an NFT",
   "Create an ERC-721 collection",
-  "Create an ERC-1155 edition collection",
+  "Create a Limited Edition NFT Collection",
   "List an asset for sale",
   "Make or cancel an offer",
   "Claim eligible POP credentials",
