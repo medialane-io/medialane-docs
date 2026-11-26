@@ -140,7 +140,7 @@ export default function LearnProgrammableLicensingPage() {
           </div>
           <p className="text-base">
             See{" "}
-            <Link href="/learn/remix" className="text-primary hover:underline">Remix &amp; Derivatives</Link>
+            <Link href="/learn/remix" className="text-primary hover:underline">NFT Remix</Link>
             {" "}for how remixing and on-chain attribution work.
           </p>
         </Section>

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const EARN_GROUPS = [
   {
     title: "Create",
-    items: ["Complete a profile", "Mint an IP asset", "Deploy a collection", "Launch a drop or POP", "Remix existing work", "Launch a creator coin"],
+    items: ["Complete a profile", "Create an NFT", "Create an NFT Collection", "Launch an NFT Drop or POP", "Remix an NFT", "Launch a creator coin"],
   },
   {
     title: "Collect & trade",

@@ -71,7 +71,7 @@ export const CONTRACTS: ContractInfo[] = [
     name: "IP Club Factory",
     chain: "Starknet",
     address: "0x06a0b0be16d70c78f2e18119dbf90e5911cbfd5d8d484bc555dc61d96f56a2b9",
-    desc: "Ownerless factory deploying one ERC-1155 IP Club membership collection per creator, the same per-creator pattern as IP Tickets and IP Collections. Membership cards are tradeable like any collectible, not soulbound — a validity window gates membership, not minting or trading. Rebuilt 2026-07-16, superseding the 2026-07-12/07-15 factories.",
+    desc: "Ownerless factory deploying one ERC-1155 IP Club membership collection per creator, the same per-creator pattern as IP Tickets and NFT Collections. Membership cards are tradeable like any collectible, not soulbound — a validity window gates membership, not minting or trading. Rebuilt 2026-07-16, superseding the 2026-07-12/07-15 factories.",
   },
   {
     category: "Collections & Launchpad",

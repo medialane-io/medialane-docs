@@ -5,27 +5,56 @@ import { Section } from "@/components/docs";
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/creator-launchpad" },
   title: "Creator Launchpad | Learn | Medialane",
-  description: "Learn how to deploy collections, mint IP assets, and launch creative work on Medialane.",
+  description: "Learn how to create NFTs, collections and coins on the Creator Launchpad.",
   openGraph: {
     title: "Creator Launchpad | Learn | Medialane",
-    description: "Learn how to deploy collections, mint IP assets, and launch creative work on Medialane.",
+    description: "Learn how to create NFTs, collections and coins on the Creator Launchpad.",
     url: "https://docs.medialane.io/learn/creator-launchpad",
   },
   twitter: {
     title: "Creator Launchpad | Learn | Medialane",
-    description: "Learn how to deploy collections, mint IP assets, and launch creative work on Medialane.",
+    description: "Learn how to create NFTs, collections and coins on the Creator Launchpad.",
   },
 };
 
-const FLOWS = [
-  { name: "IP Asset", desc: "Deploy a collection and mint 1-of-1 IP assets, each with its own license terms.", href: "#ip-assets" },
-  { name: "IP Collection 1155", desc: "Multi-edition releases: mint editions into an ERC-1155 collection, each with its own supply, metadata, and price.", href: "/learn/ip-collection-1155" },
-  { name: "Collection Drop", desc: "Launch a fixed-supply drop with a timed mint window and an optional allowlist.", href: "/learn/collection-drop" },
-  { name: "POP Protocol", desc: "Issue soulbound proof-of-participation credentials for events, communities, and milestones.", href: "/learn/pop-protocol" },
-  { name: "IP Tickets", desc: "Create verifiable on-chain tickets with their own supply and validity window, and mint them to an audience.", href: "/learn/ip-tickets" },
-  { name: "IP Club", desc: "Run a membership club with tiered on-chain membership cards.", href: "/learn/ip-club" },
-  { name: "IP Sponsorship", desc: "Offer or propose a sponsorship license that settles directly between the two sides.", href: "/learn/ip-sponsorship" },
-  { name: "Creator Coin", desc: "Launch a fixed-supply coin with permanently locked liquidity, or claim one already launched.", href: "/learn/creator-coin" },
+const FLOW_GROUPS = [
+  {
+    title: "NFTs",
+    flows: [
+      { name: "Single NFT", desc: "An immutable NFT with licensing for its content.", href: "#ip-assets" },
+      { name: "Limited Edition NFT", desc: "An immutable, licensed NFT in multiple copies for an audience to collect and trade.", href: "/learn/ip-collection-1155" },
+      { name: "NFT Remix", desc: "A new NFT created from an existing one, with its own license and recorded credit to the original.", href: "/learn/remix" },
+    ],
+  },
+  {
+    title: "Collections",
+    flows: [
+      { name: "NFT Collection", desc: "An onchain collection, owned by its creator, for a series, project or catalog.", href: "#ip-assets" },
+      { name: "Limited Edition NFT Collection", desc: "A creator-owned contract for releasing multiple limited editions as one series.", href: "/learn/ip-collection-1155" },
+      { name: "NFT Drop", desc: "A new collection an audience gets directly from its creator, free or at a set price.", href: "/learn/collection-drop" },
+    ],
+  },
+  {
+    title: "Coins",
+    flows: [
+      { name: "Creator Coin", desc: "A coin for building a community, launched with its own liquidity pair.", href: "/learn/creator-coin" },
+      { name: "Existing Memecoin", desc: "An already launched memecoin, connected to a creator profile.", href: "/learn/creator-coin" },
+    ],
+  },
+  {
+    title: "Membership",
+    flows: [
+      { name: "POP Protocol", desc: "Soulbound certificates as lasting proof of participation and achievement.", href: "/learn/pop-protocol" },
+      { name: "IP Tickets", desc: "Event tickets with verifiable ownership and validity, which holders can resell.", href: "/learn/ip-tickets" },
+      { name: "IP Club", desc: "Memberships that give a community access to the benefits a creator offers.", href: "/learn/ip-club" },
+    ],
+  },
+  {
+    title: "Licensing",
+    flows: [
+      { name: "IP Sponsorship", desc: "An onchain deal where a sponsor pays an NFT's creator and receives a license.", href: "/learn/ip-sponsorship" },
+    ],
+  },
 ];
 
 const LIST_FLOWS = [
@@ -65,11 +94,16 @@ export default function LearnCreatorLaunchpadPage() {
 
       <div className="space-y-8">
         <Section title="Choose a flow">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {FLOWS.map((flow) => (
-              <FlowCard key={flow.name} {...flow} />
-            ))}
-          </div>
+          {FLOW_GROUPS.map((group) => (
+            <div key={group.title} className="space-y-3">
+              <h3 className="text-lg font-semibold text-foreground">{group.title}</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {group.flows.map((flow) => (
+                  <FlowCard key={flow.name} {...flow} />
+                ))}
+              </div>
+            </div>
+          ))}
           <p>
             Every flow is permissionless, with no approval required. The contract is deployed
             directly to Starknet mainnet, owned by the creator&apos;s wallet. See{" "}
@@ -91,7 +125,7 @@ export default function LearnCreatorLaunchpadPage() {
         </Section>
 
         <div id="ip-assets" className="scroll-mt-24 space-y-8">
-          <Section title="IP Asset: from collection to market">
+          <Section title="Single NFT: from collection to market">
             <h3 className="text-lg font-semibold text-foreground">Create an account</h3>
             <p>
               Set up a passkey (Face ID, Touch ID, Windows Hello, or a hardware security key)
@@ -99,36 +133,32 @@ export default function LearnCreatorLaunchpadPage() {
               that passkey automatically: gas-free setup, skipping seed phrases and browser
               extensions entirely. The key never leaves the device.
             </p>
-            <h3 className="text-lg font-semibold text-foreground">Deploy a collection</h3>
+            <h3 className="text-lg font-semibold text-foreground">Create a collection</h3>
             <p>
               A collection is a smart contract on Starknet that groups related NFTs under
               a shared name, symbol, and identity. Think of it as a brand onchain:
               an art series, a music catalogue, a portfolio of photographs.
             </p>
             <p>
-              Medialane supports two collection formats, each deployed from the Launchpad:
+              Medialane supports two collection formats, each created from the Launchpad:
             </p>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-base font-semibold text-foreground">ERC-721 Collection</p>
+              <p className="text-base font-semibold text-foreground">NFT Collection (ERC-721)</p>
               <p className="text-base leading-relaxed">
-                From <strong>Create → Collection</strong>, choose a name, symbol, and cover image.
+                From <strong>Launchpad → NFT Collection</strong>, choose a name, symbol, and cover image.
                 Medialane deploys an ERC-721 contract and registers it in the onchain registry.
-                Each asset minted into it is a unique, 1-of-1 token with its own owner.
+                Each Single NFT created in it is a unique, 1-of-1 token with its own owner.
               </p>
             </div>
             <div className="bento-cell px-4 py-3 space-y-1">
-              <p className="text-base font-semibold text-foreground">IP Collection 1155: Multi-Edition</p>
+              <p className="text-base font-semibold text-foreground">Limited Edition NFT Collection (ERC-1155)</p>
               <p className="text-base leading-relaxed">
-                From <strong>Launchpad → IP Collection 1155 → Create Collection</strong>, deploy an
-                ERC-1155 contract for multi-edition releases. Once deployed, the collection appears
-                in the Launchpad with a <em>Mint</em> button, for minting new token editions
-                directly into it, each with its own supply, metadata, and price. Best for music tracks,
-                art series, or any creative work meant to be owned by many people.
+                From <strong>Launchpad → Limited Edition NFT Collection</strong>, create an ERC-1155 contract for releasing limited editions. Each Limited Edition NFT created in it has its own copies and metadata. It suits music tracks, art series and other content meant to be owned by many people.
               </p>
             </div>
-            <h3 className="text-lg font-semibold text-foreground">Mint an IP asset</h3>
+            <h3 className="text-lg font-semibold text-foreground">Create a Single NFT</h3>
             <p>
-              From <strong className="text-foreground">Create → Asset</strong>, the file
+              From <strong className="text-foreground">Launchpad → Single NFT</strong>, the file
               (image, audio, video, or document) is uploaded, the title and description are
               filled in, the collection is selected, and the programmable license terms are
               defined:
@@ -147,7 +177,7 @@ export default function LearnCreatorLaunchpadPage() {
             </p>
             <h3 className="text-lg font-semibold text-foreground">List or hold</h3>
             <p>
-              Once minted, the asset appears in the owner&apos;s Portfolio. It can be held as
+              Once created, the NFT appears in the owner&apos;s Portfolio. It can be held as
               proof of ownership, listed for sale at a fixed price, or open to offers from
               interested collectors directly through the platform.
             </p>

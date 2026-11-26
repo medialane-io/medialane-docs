@@ -4,15 +4,15 @@ import { Section } from "@/components/docs";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://docs.medialane.io/learn/creator-coin" },
-  title: "Creator Coins | Learn | Medialane",
+  title: "Creator Coin | Learn | Medialane",
   description: "Launch a coin with permanently-locked liquidity, or claim a coin already launched on Starknet.",
   openGraph: {
-    title: "Creator Coins | Learn | Medialane",
+    title: "Creator Coin | Learn | Medialane",
     description: "Launch a coin with permanently-locked liquidity, or claim a coin already launched on Starknet.",
     url: "https://docs.medialane.io/learn/creator-coin",
   },
   twitter: {
-    title: "Creator Coins | Learn | Medialane",
+    title: "Creator Coin | Learn | Medialane",
     description: "Launch a coin with permanently-locked liquidity, or claim a coin already launched on Starknet.",
   },
 };
@@ -21,11 +21,9 @@ export default function LearnCreatorCoinPage() {
   return (
     <div className="space-y-10">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold">Creator Coins</h2>
+        <h2 className="text-2xl font-bold">Creator Coin</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          A Creator Coin is a creator&apos;s own coin, a standard token tied to creative work,
-          launched with a public liquidity pool that is permanently locked. A community can
-          back the creator by holding it, while the creator stays in control of what it means.
+          A Creator Coin is a creator&apos;s own coin, a standard token for building a community, launched with its own liquidity pair. The liquidity pool is public and permanently locked, and a community can back the creator by holding the coin.
         </p>
         <p className="text-base text-muted-foreground">
           Service IDs:{" "}
@@ -57,7 +55,7 @@ export default function LearnCreatorCoinPage() {
 
         <Section title="Launching a coin">
           <p>
-            The Launch Studio walks through a coin&apos;s design, its economics, and the
+            The Creator Coin flow on the Launchpad walks through a coin&apos;s design, its economics, and the
             launch itself, with a live preview updating as the details are typed:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-sm">
@@ -84,9 +82,9 @@ export default function LearnCreatorCoinPage() {
           </p>
         </Section>
 
-        <Section title="Already launched a coin? Claim it">
+        <Section title="Existing Memecoin">
           <p>
-            A coin launched on Starknet elsewhere can be claimed here. The coin&apos;s address is pasted in, the team
+            A memecoin already launched on Starknet can be connected to a creator profile. The coin&apos;s address is pasted in, the team
             reviews the claim, and once approved the coin appears on the Coins page and the
             creator profile, with the same image and description tools as a native launch.
           </p>

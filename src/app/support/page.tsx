@@ -57,8 +57,8 @@ const FAQS = [
     a: "The POP Protocol issues soulbound (non-transferable) NFTs as proof-of-participation for events, communities, and milestones. To claim one, go to Launchpad → POP Protocol, find an active event that was attended, and click Claim. It's free, gas is sponsored. Claimed credentials appear in the Portfolio.",
   },
   {
-    q: "How do I participate in a Collection Drop?",
-    a: "Go to Launchpad → Collection Drop to see active and upcoming drops. Click Mint on an eligible drop and confirm with the passkey, and the NFT is sent to the wallet. Drop eligibility is enforced onchain; a wallet on the allowlist sees the option automatically.",
+    q: "How do I participate in an NFT Drop?",
+    a: "Go to Launchpad → NFT Drop to see active and upcoming drops. Click Mint on an eligible drop and confirm with the passkey, and the NFT is sent to the wallet. Drop eligibility is enforced onchain; a wallet on the allowlist sees the option automatically.",
   },
   {
     q: "Is Medialane available worldwide?",
@@ -173,7 +173,7 @@ export default function SupportPage() {
               <option value="marketplace">Marketplace / trading</option>
               <option value="missing">Missing asset or listing</option>
               <option value="pop">POP Protocol / credentials</option>
-              <option value="drop">Collection Drop</option>
+              <option value="drop">NFT Drop</option>
               <option value="technical">Technical / API</option>
               <option value="other">Other</option>
             </select>

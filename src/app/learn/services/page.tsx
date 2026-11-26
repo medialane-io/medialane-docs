@@ -20,22 +20,22 @@ export const metadata: Metadata = {
 const SERVICES = [
   {
     id: "mip-erc721",
-    label: "IP Collection (ERC-721)",
+    label: "NFT Collection (ERC-721)",
     icon: Image,
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
-    desc: "A standard single-edition IP collection. Each token is unique. The default service for art, photography, writing, and one-of-a-kind creative work.",
+    desc: "A creator-owned collection of Single NFTs, where each token is unique. The default service for art, photography, writing and other one-of-a-kind content.",
     caps: ["mint", "list", "buy", "make_offer", "transfer", "remix", "license"],
   },
   {
     id: "mip-erc1155",
-    label: "NFT Editions (ERC-1155)",
+    label: "Limited Edition NFT Collection (ERC-1155)",
     icon: Music,
     color: "text-brand-blue",
     bg: "bg-brand-blue/10",
     border: "border-brand-blue/20",
-    desc: "Multiple collectors can own the same piece. Ideal for music tracks, art prints, and any work where shared ownership makes sense.",
+    desc: "Limited Edition NFTs, where multiple collectors own copies of the same piece. Ideal for music tracks, art prints and other content where shared ownership makes sense.",
     caps: ["mint", "list", "buy", "make_offer", "transfer", "remix", "license"],
   },
   {
@@ -60,7 +60,7 @@ const SERVICES = [
   },
   {
     id: "drop-collection",
-    label: "Collection Drop",
+    label: "NFT Drop",
     icon: Clock,
     color: "text-brand-rose",
     bg: "bg-brand-rose/10",
@@ -110,7 +110,7 @@ const SERVICES = [
   },
   {
     id: "external-erc20",
-    label: "External ERC-20 (claimed coins)",
+    label: "Existing Memecoin (external ERC-20)",
     icon: Coins,
     color: "text-brand-orange",
     bg: "bg-brand-orange/10",
@@ -193,7 +193,7 @@ export default function LearnServicesPage() {
           </div>
         </Section>
 
-        <Section title="Services Available Today">
+        <Section title="Services">
           <p>
             These are the services live on mainnet now. The catalog stays open-ended: new
             monetization primitives (commissions, auctions, subscriptions, and more) are

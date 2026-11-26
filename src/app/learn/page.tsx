@@ -88,13 +88,13 @@ const TOPICS = [
     href: "/learn/creator-launchpad",
     icon: Rocket,
     title: "Creator Launchpad",
-    description: "Learn how to deploy a collection, mint IP assets, and launch creative work.",
+    description: "Learn how to create NFTs, collections and coins.",
   },
   {
     href: "/learn/creator-coin",
     icon: Coins,
-    title: "Creator Coins",
-    description: "Launch a fixed-supply coin with permanently locked liquidity, tradeable by a community on a public pool.",
+    title: "Creator Coin",
+    description: "A coin for building a community, launched with its own liquidity pair and permanently locked liquidity.",
   },
   {
     href: "/learn/marketplace",
@@ -117,14 +117,14 @@ const TOPICS = [
   {
     href: "/learn/collection-drop",
     icon: Package,
-    title: "Collection Drop",
-    description: "Launch time-limited NFT drop events with supply caps, mint windows, allowlists, and onchain settlement.",
+    title: "NFT Drop",
+    description: "Launch a new collection an audience gets directly from its creator, with a sale window, optional allowlist and onchain settlement.",
   },
   {
     href: "/learn/ip-collection-1155",
     icon: Layers,
-    title: "IP Collection 1155",
-    description: "Deploy a multi-edition ERC-1155 collection for music, art series, and any creative work where multiple people should own the same piece.",
+    title: "Limited Edition NFT",
+    description: "Release an immutable, licensed NFT in multiple copies, for music, art series and other content many people can own.",
   },
   {
     href: "/learn/ip-tickets",
@@ -165,8 +165,8 @@ const TOPICS = [
   {
     href: "/learn/remix",
     icon: GitBranch,
-    title: "Remix & Derivatives",
-    description: "Build on existing works with automatic license compliance, on-chain attribution, and royalty propagation through the remix graph.",
+    title: "NFT Remix",
+    description: "Create a new NFT from an existing one, with its own license and credit to the original recorded onchain.",
   },
   {
     href: "/learn/web3",

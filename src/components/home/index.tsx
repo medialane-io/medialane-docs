@@ -13,7 +13,7 @@ const HUBS = [
     name: "Launchpad",
     tagline: "Revenue products from IP",
     description:
-      "Turn creative work into revenue products: collection drops, NFT editions, memberships and subscriptions, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
+      "Turn creative work into revenue products: NFT drops, limited edition NFTs, memberships and subscriptions, tickets, commissions, creator coins, and more. New product types are added as services, so the ways to monetize stay open-ended.",
     color: "text-brand-purple",
     bg: "bg-brand-purple/10",
     border: "border-brand-purple/20",
@@ -195,8 +195,8 @@ const TOPIC_GROUPS = [
     color: "text-brand-purple",
     links: [
       { href: "/learn/creator-launchpad", label: "Creator Launchpad" },
-      { href: "/learn/collection-drop", label: "Collection Drops" },
-      { href: "/learn/ip-collection-1155", label: "NFT Editions" },
+      { href: "/learn/collection-drop", label: "NFT Drops" },
+      { href: "/learn/ip-collection-1155", label: "Limited Edition NFTs" },
       { href: "/learn/pop-protocol", label: "POP Protocol" },
       { href: "/learn/integrity-web", label: "Integrity Web" },
     ],
